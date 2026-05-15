@@ -165,7 +165,7 @@
         return bar;
     }
 
-    function injectToolbar(saveBtn) {
+    function injectToolbar(anchor, beforeBegin = true) {
         if (document.getElementById('giu-toolbar')) return;
 
         const container = document.createElement('div');
@@ -206,7 +206,7 @@
             const evalEl   = document.querySelector(SEL.eval);
             const seasonEl = document.querySelector(SEL.season);
             const courseEl = document.querySelector(SEL.course);
-            const evalInvalid = !evalEl?.value;
+            const evalInvalid = !evalEl?.value || evalEl.value === 'Please Choose an Evaluation';
             if (!seasonEl?.value || !courseEl?.value || !groupEl?.value || evalInvalid) {
                 alert('Select all four dropdowns first (Season, Course, Group, Evaluation Method).');
                 return;
@@ -222,7 +222,7 @@
         });
 
         container.append(uploadBtn, fileInput, downloadBtn, batchBtn, statsBar);
-        saveBtn.insertAdjacentElement('beforebegin', container);
+        anchor.insertAdjacentElement(beforeBegin ? 'beforebegin' : 'afterend', container);
 
         refreshStats(statsBar);
     }
@@ -451,9 +451,13 @@
         if (runQueue()) return;
 
         const saveBtn = document.querySelector(SEL.saveBtn);
-        if (!saveBtn) return;
-        if (document.querySelector(SEL.rows)) {
-            injectToolbar(saveBtn);
+        if (saveBtn) {
+            injectToolbar(saveBtn, true);
+            return;
+        }
+        const evalEl = document.querySelector(SEL.eval);
+        if (evalEl) {
+            injectToolbar(evalEl.closest('section') ?? evalEl, false);
         }
     }
 
