@@ -52,4 +52,74 @@
         return getEl('form1');
     }
 
+    // ── State machine runner ─────────────────────────────────────────────────────
+
+    function advanceOrDone(queue) {
+        queue.currentIndex++;
+        if (queue.currentIndex >= queue.groups.length) {
+            queue.step = 'done';
+            saveQueue(queue);
+            // no reload — entry point renders summary immediately
+        } else {
+            queue.step = 'select';
+            saveQueue(queue);
+            location.reload();
+        }
+    }
+
+    function runQueueStep(queue) {
+        const { step, currentIndex, groups, sharedSubject, sharedBody } = queue;
+        const group = groups[currentIndex];
+
+        if (step === 'select') {
+            const ddl = getEl('MainContent_DDL_Group');
+            if (!ddl) {
+                queue.results.push({ label: group.label, status: 'failed', info: 'DDL_Group not found — session may have expired' });
+                advanceOrDone(queue);
+                return;
+            }
+            const option = Array.from(ddl.options).find(o => o.value === group.value);
+            if (!option) {
+                queue.results.push({ label: group.label, status: 'failed', info: 'Group not found in dropdown' });
+                advanceOrDone(queue);
+                return;
+            }
+            ddl.value = group.value;
+            queue.step = 'send';
+            saveQueue(queue);
+            triggerPostBack('ctl00$MainContent$DDL_Group');
+            return;
+        }
+
+        if (step === 'send') {
+            const subjectEl = getEl('MainContent_T_Subject');
+            const bodyEl    = getEl('MainContent_TA_Body');
+            const sendBtn   = getEl('MainContent_B_Send');
+            if (!subjectEl || !bodyEl || !sendBtn) {
+                queue.results.push({ label: group.label, status: 'failed', info: 'Form fields missing after group load' });
+                advanceOrDone(queue);
+                return;
+            }
+            subjectEl.value = group.subject || sharedSubject;
+            bodyEl.value    = group.body    || sharedBody;
+            queue.step = 'advance';
+            saveQueue(queue);
+            sendBtn.click();
+            return;
+        }
+
+        if (step === 'advance') {
+            const infoEl   = getEl('MainContent_L_SendInfo');
+            const infoText = infoEl ? infoEl.textContent.trim() : '';
+            const failed   = /error|fail|could not|invalid/i.test(infoText);
+            queue.results.push({
+                label:  group.label,
+                status: failed ? 'failed' : 'sent',
+                info:   infoText || 'Sent'
+            });
+            advanceOrDone(queue);
+            return;
+        }
+    }
+
 })();
