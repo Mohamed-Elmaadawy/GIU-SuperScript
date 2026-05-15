@@ -242,7 +242,196 @@
         };
     }
 
+    function renderProgress(queue) {
+        const existing = document.getElementById('giu-batch-progress');
+        if (existing) existing.remove();
+
+        const total = queue.groups.length;
+        const done  = queue.currentIndex;
+        const pct   = total > 0 ? Math.round((done / total) * 100) : 0;
+        const label = queue.groups[queue.currentIndex]?.label ?? '—';
+
+        const div = document.createElement('div');
+        div.id = 'giu-batch-progress';
+        div.className = 'alert alert-info';
+        div.style.cssText = 'margin: 10px 0;';
+        div.innerHTML = `
+            <strong>Batch running…</strong> Group ${done + 1} of ${total}: ${label}<br>
+            <div style="background:#dee2e6;border-radius:4px;height:8px;margin-top:6px;">
+                <div style="background:#0d6efd;width:${pct}%;height:8px;border-radius:4px;transition:width 0.3s;"></div>
+            </div>`;
+
+        const anchor = document.querySelector(SEL.season)?.closest('section')
+            ?? document.querySelector(SEL.saveBtn)
+            ?? document.querySelector('form');
+        anchor?.insertAdjacentElement('beforebegin', div);
+    }
+
+    function advanceQueue(queue) {
+        queue.currentIndex++;
+        if (queue.currentIndex >= queue.groups.length) {
+            queue.step = 'done';
+            saveQueue(queue);
+            runQueue();
+            return;
+        }
+        queue.step = 'select-group';
+        saveQueue(queue);
+        location.reload();
+    }
+
+    function stepSelectGroup(queue) {
+        const groupEl = document.querySelector(SEL.group);
+        const target  = queue.groups[queue.currentIndex];
+
+        if (!groupEl) {
+            clearQueue();
+            const div = document.createElement('div');
+            div.className = 'alert alert-danger';
+            div.textContent = 'Batch aborted: Group dropdown not found. Session may have expired.';
+            document.querySelector('form')?.prepend(div);
+            return;
+        }
+
+        const option = Array.from(groupEl.options).find(o => o.value === target.value);
+        if (!option) {
+            queue.results.push({ label: target.label, status: 'skipped', reason: 'group not in dropdown' });
+            advanceQueue(queue);
+            return;
+        }
+
+        queue.step = 'select-eval';
+        saveQueue(queue);
+        groupEl.value = target.value;
+        triggerPostBack('ctl00$MainContent$grpLst');
+    }
+
+    function stepSelectEval(queue) {
+        const evalEl = document.querySelector(SEL.eval);
+        const target = queue.groups[queue.currentIndex];
+
+        if (!evalEl) {
+            queue.results.push({ label: target.label, status: 'failed', reason: 'eval dropdown not found' });
+            advanceQueue(queue);
+            return;
+        }
+
+        const option = Array.from(evalEl.options).find(o => o.value === queue.savedEvalId);
+        if (!option) {
+            queue.results.push({ label: target.label, status: 'failed', reason: 'eval method not in dropdown after group select' });
+            advanceQueue(queue);
+            return;
+        }
+
+        queue.step = 'collect';
+        saveQueue(queue);
+        evalEl.value = queue.savedEvalId;
+        triggerPostBack('ctl00$MainContent$evalMethIdLst');
+    }
+
+    function stepCollect(queue) {
+        const rows   = getGradeRows();
+        const target = queue.groups[queue.currentIndex];
+
+        if (rows.length === 0) {
+            queue.results.push({ label: target.label, status: 'failed', reason: 'no student rows after eval select' });
+            advanceQueue(queue);
+            return;
+        }
+
+        if (Object.keys(queue.csvMap).length > 0) {
+            fillGradesFromMap(queue.csvMap, null);
+        }
+
+        const values = rows
+            .map(r => r.querySelector(SEL.gradeIn)?.value?.trim())
+            .filter(v => v && !isNaN(v));
+        const stats = computeStats(values);
+        queue.results.push({ label: target.label, status: 'done', ...stats });
+
+        downloadCSV(rows, target.label, queue.savedEvalLabel);
+
+        queue.currentIndex++;
+        queue.step = queue.currentIndex < queue.groups.length ? 'select-group' : 'done';
+        saveQueue(queue);
+
+        if (Object.keys(queue.csvMap).length > 0) {
+            document.querySelector(SEL.saveBtn)?.click();
+        } else if (queue.step !== 'done') {
+            location.reload();
+        } else {
+            runQueue();
+        }
+    }
+
+    function renderSummary(queue) {
+        const progress = document.getElementById('giu-batch-progress');
+        if (progress) progress.remove();
+
+        const done    = queue.results.filter(r => r.status === 'done');
+        const skipped = queue.results.filter(r => r.status !== 'done');
+
+        let html = `<strong>Batch Complete</strong> — ${done.length} group(s) processed`;
+        if (skipped.length) html += `, ${skipped.length} skipped/failed`;
+
+        html += `
+        <table class="table table-bordered table-sm" style="margin-top:10px;">
+            <thead>
+                <tr><th>Group</th><th>Avg</th><th>Min</th><th>Max</th><th>Range</th><th>Students</th></tr>
+            </thead>
+            <tbody>`;
+
+        for (const r of done) {
+            html += `<tr>
+                <td>${r.label}</td>
+                <td>${r.avg}</td><td>${r.min}</td><td>${r.max}</td>
+                <td>${r.range}</td><td>${r.count}</td>
+            </tr>`;
+        }
+        for (const r of skipped) {
+            html += `<tr class="table-warning">
+                <td>${r.label}</td>
+                <td colspan="5">${r.status}${r.reason ? ': ' + r.reason : ''}</td>
+            </tr>`;
+        }
+
+        html += '</tbody></table>';
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'alert alert-success';
+        wrapper.style.cssText = 'margin: 10px 0;';
+        wrapper.innerHTML = html;
+
+        const anchor = document.querySelector(SEL.season)?.closest('section')
+            ?? document.querySelector('form');
+        anchor?.insertAdjacentElement('beforebegin', wrapper);
+    }
+
+    function runQueue() {
+        const queue = loadQueue();
+        if (!queue) return false;
+
+        if (queue.step === 'done') {
+            renderSummary(queue);
+            clearQueue();
+            return true;
+        }
+
+        renderProgress(queue);
+
+        switch (queue.step) {
+            case 'select-group': stepSelectGroup(queue); break;
+            case 'select-eval':  stepSelectEval(queue);  break;
+            case 'collect':      stepCollect(queue);     break;
+            default:
+                clearQueue();
+        }
+        return true;
+    }
+
     function init() {
+        if (runQueue()) return;
+
         const saveBtn = document.querySelector(SEL.saveBtn);
         if (!saveBtn) return;
         if (document.querySelector(SEL.rows)) {
