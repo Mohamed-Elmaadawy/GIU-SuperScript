@@ -25,4 +25,31 @@
         localStorage.removeItem(QUEUE_KEY);
     }
 
+    // ── Page helpers ────────────────────────────────────────────────────────────
+
+    function getEl(id) {
+        return document.getElementById(id);
+    }
+
+    function getGroupOptions() {
+        const ddl = getEl('MainContent_DDL_Group');
+        if (!ddl) return [];
+        return Array.from(ddl.options)
+            .filter(o => o.value !== '')
+            .map(o => ({ value: o.value, label: o.text.trim() }));
+    }
+
+    function triggerPostBack(target) {
+        getEl('__EVENTTARGET').value = target;
+        getEl('__EVENTARGUMENT').value = '';
+        getEl('form1').submit();
+    }
+
+    function getInjectionAnchor() {
+        // inject before the <table> that follows MainContent_lblText
+        const ref = getEl('MainContent_lblText');
+        if (ref && ref.nextElementSibling) return ref.nextElementSibling;
+        return getEl('form1');
+    }
+
 })();
