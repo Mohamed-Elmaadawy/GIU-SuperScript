@@ -217,4 +217,85 @@
         anchor.parentNode.insertBefore(wrapper, anchor);
     }
 
+    // ── Progress view ─────────────────────────────────────────────────────────────
+
+    function renderProgress(queue) {
+        const total   = queue.groups.length;
+        const done    = queue.results.length;
+        const current = queue.groups[queue.currentIndex];
+        const pct     = Math.round((done / total) * 100);
+
+        const resultRows = queue.results.map(r => {
+            const icon  = r.status === 'sent' ? '&#10003;' : r.status === 'failed' ? '&#10007;' : '&ndash;';
+            const color = r.status === 'sent' ? 'green'    : r.status === 'failed' ? 'red'      : 'gray';
+            return `<div style="color:${color};font-size:0.88em;">${icon} ${r.label} &mdash; ${r.info}</div>`;
+        }).join('');
+
+        const wrapper = document.createElement('div');
+        wrapper.id = 'giu-batch-progress';
+        wrapper.style.cssText = 'background:#d1ecf1;border:1px solid #bee5eb;border-radius:4px;padding:12px;margin-bottom:16px;';
+        wrapper.innerHTML = `
+            <h5 style="margin:0 0 8px;font-size:1rem;">&#128232; Sending&hellip;</h5>
+            <div style="background:#fff;border-radius:4px;overflow:hidden;height:14px;margin-bottom:8px;">
+                <div style="background:#0d6efd;height:100%;width:${pct}%;"></div>
+            </div>
+            <div style="margin-bottom:8px;">Group ${done + 1} of ${total}: <b>${current ? current.label : ''}</b></div>
+            <div>${resultRows}</div>
+            <div style="margin-top:10px;">
+                <button type="button" id="giu-cancel-btn" class="btn btn-sm btn-danger">Cancel</button>
+            </div>
+        `;
+
+        wrapper.querySelector('#giu-cancel-btn').addEventListener('click', () => {
+            const remaining = queue.groups.slice(queue.currentIndex);
+            remaining.forEach(g => queue.results.push({ label: g.label, status: 'cancelled', info: 'Cancelled by user' }));
+            queue.step = 'done';
+            saveQueue(queue);
+            location.reload();
+        });
+
+        const anchor = getInjectionAnchor();
+        anchor.parentNode.insertBefore(wrapper, anchor);
+    }
+
+    // ── Completion summary ────────────────────────────────────────────────────────
+
+    function renderSummary(results) {
+        const sent      = results.filter(r => r.status === 'sent').length;
+        const failed    = results.filter(r => r.status === 'failed').length;
+        const cancelled = results.filter(r => r.status === 'cancelled').length;
+        const hasErrors = failed > 0;
+
+        const rows = results.map(r => {
+            const icon  = r.status === 'sent' ? '&#10003;' : r.status === 'failed' ? '&#10007;' : '&ndash;';
+            const color = r.status === 'sent' ? 'green'    : r.status === 'failed' ? 'red'      : 'gray';
+            return `<div style="color:${color};font-size:0.88em;">${icon} ${r.label} &mdash; ${r.info}</div>`;
+        }).join('');
+
+        const bg     = hasErrors ? '#f8d7da' : '#d4edda';
+        const border = hasErrors ? '#f5c6cb' : '#c3e6cb';
+
+        const wrapper = document.createElement('div');
+        wrapper.id = 'giu-batch-summary';
+        wrapper.style.cssText = `background:${bg};border:1px solid ${border};border-radius:4px;padding:12px;margin-bottom:16px;`;
+        wrapper.innerHTML = `
+            <h5 style="margin:0 0 8px;font-size:1rem;">&#128232; Batch Send Complete</h5>
+            <div style="margin-bottom:8px;">
+                <span style="color:green;">&#10003; ${sent} sent</span>
+                &nbsp;|&nbsp;
+                <span style="color:red;">&#10007; ${failed} failed</span>
+                ${cancelled > 0 ? `&nbsp;|&nbsp;<span style="color:gray;">&ndash; ${cancelled} cancelled</span>` : ''}
+            </div>
+            <div>${rows}</div>
+            <div style="margin-top:10px;">
+                <button type="button" id="giu-dismiss-btn" class="btn btn-sm btn-secondary">Dismiss</button>
+            </div>
+        `;
+
+        wrapper.querySelector('#giu-dismiss-btn').addEventListener('click', () => wrapper.remove());
+
+        const anchor = getInjectionAnchor();
+        anchor.parentNode.insertBefore(wrapper, anchor);
+    }
+
 })();
