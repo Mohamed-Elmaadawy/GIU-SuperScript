@@ -71,15 +71,9 @@
 
     function advanceOrDone(queue) {
         queue.currentIndex++;
-        if (queue.currentIndex >= queue.groups.length) {
-            queue.step = 'done';
-            saveQueue(queue);
-            // no reload — entry point renders summary immediately
-        } else {
-            queue.step = 'select';
-            saveQueue(queue);
-            location.reload();
-        }
+        queue.step = queue.currentIndex >= queue.groups.length ? 'done' : 'select';
+        saveQueue(queue);
+        location.reload();
     }
 
     function runQueueStep(queue) {
