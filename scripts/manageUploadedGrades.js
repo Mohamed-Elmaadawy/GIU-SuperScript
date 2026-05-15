@@ -81,11 +81,11 @@
             const reader = new FileReader();
             reader.onload = (e) => {
                 const map = {};
-                e.target.result.trim().split(/\r?\n/).forEach(line => {
+                e.target.result.trim().split(/\r?\n/).filter(l => l.trim()).forEach(line => {
                     const cols = line.split(',').map(v => v.trim());
                     const id   = extractStudentId(cols[0]);
                     const grade = cols[cols.length - 1];
-                    if (id && grade !== '' && !isNaN(grade)) map[id] = grade;
+                    if (id && grade !== '' && Number.isFinite(+grade)) map[id] = grade;
                 });
                 resolve(map);
             };
@@ -109,7 +109,7 @@
             ...rows.map(row => {
                 const name  = row.querySelector(SEL.nameLbl)?.textContent?.trim() ?? '';
                 const grade = row.querySelector(SEL.gradeIn)?.value ?? '';
-                return `${name},${grade}`;
+                return `"${name.replace(/"/g, '""')}",${grade}`;
             }),
         ].join('\n');
         const filename = `${groupLabel}-${evalLabel}.csv`.replace(/[/\\?%*:|"<>]/g, '_').replace(/\s+/g, '_');
