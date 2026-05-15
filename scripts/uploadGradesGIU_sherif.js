@@ -3,7 +3,8 @@
 // @description Upload/download grades per group + batch all groups via fetch chain.
 // @include     https://portal.giu-uni.de/*
 // @namespace   ramin0
-// @version     2.0
+// @version     2.2
+// @author      Ahmed Sherif, Mo.Elmaadawy
 // @icon        https://i.ibb.co/Q7mgLHsW/GIU-images.png
 // @run-at      document-idle
 // ==/UserScript==
@@ -16,7 +17,6 @@
         course:  '#MainContent_smCrsLst',
         group:   '#MainContent_grpLst',
         eval:    '#MainContent_evalMethIdLst',
-        evalId:  'input[id^="MainContent_rptrNtt_evalMethId_"]',
         crntLbl: '#MainContent_crntLbl',
         saveBtn: '#MainContent_saveBtn',
         rows:    '#data tbody tr',
@@ -83,10 +83,10 @@
 
     // ── Fetch helpers ────────────────────────────────────────────────────────
 
-    function extractHiddenFields(doc) {
+    function extractFormFields(doc) {
         const fields = {};
-        doc.querySelectorAll('input[type="hidden"]').forEach(inp => {
-            if (inp.name) fields[inp.name] = inp.value;
+        doc.querySelectorAll('input[type="hidden"], select').forEach(el => {
+            if (el.name) fields[el.name] = el.value;
         });
         return fields;
     }
@@ -97,39 +97,35 @@
         data.set('__EVENTTARGET',   eventTarget);
         data.set('__EVENTARGUMENT', '');
         for (const [k, v] of Object.entries(overrides)) data.set(k, v);
+        console.log('[GIU] POST __EVENTTARGET=', eventTarget, 'keys=', [...data.keys()].join(','));
         const resp = await fetch(location.href, { method: 'POST', body: data });
-        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        if (!resp.ok) {
+            const body = await resp.text();
+            const doc  = new DOMParser().parseFromString(body, 'text/html');
+            const msg  = doc.querySelector('#ctl00_lblError, .error, h2, h1, [id*="Error"]')?.textContent?.trim()
+                      ?? body.substring(0, 600);
+            console.error('[GIU] HTTP', resp.status, 'EVENTTARGET=', eventTarget, '\n', msg);
+            throw new Error(`HTTP ${resp.status}: ${msg.substring(0, 120)}`);
+        }
         return new DOMParser().parseFromString(await resp.text(), 'text/html');
     }
 
-    // ── Group/Eval helpers ───────────────────────────────────────────────────
+    function isValidId(val) {
+        return /^\d+$/.test(String(val)) && +val > 0;
+    }
 
-    async function getBeforeState() {
-        const resp = await fetch(location.href, { method: 'GET' });
-        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-        const doc = new DOMParser().parseFromString(await resp.text(), 'text/html');
-        const groupEl = doc.querySelector(SEL.group);
-        if (!groupEl) throw new Error('group dropdown not found in page — session may have expired');
+    // ── State A: read groups/viewstate from current DOM ───────────────────────
+
+    function readPageState() {
+        const groupEl = document.querySelector(SEL.group);
         return {
-            groups: Array.from(groupEl.options)
-                        .filter(o => o.value && o.value !== '')
-                        .map(o => ({ value: o.value, label: o.text.trim() })),
-            hidden: extractHiddenFields(doc),
-            season: doc.querySelector(SEL.season)?.value ?? '',
-            course: doc.querySelector(SEL.course)?.value ?? '',
+            groups:  Array.from(groupEl.options)
+                         .filter(o => o.value && o.value !== '')
+                         .map(o => ({ value: o.value, label: o.text.trim() })),
+            hidden:  extractFormFields(document),
+            season:  document.querySelector(SEL.season)?.value ?? '',
+            course:  document.querySelector(SEL.course)?.value ?? '',
         };
-    }
-
-    function resolveEvalId() {
-        const evalEl = document.querySelector(SEL.eval);
-        if (evalEl?.value) return evalEl.value;
-        const hidden = document.querySelector(SEL.evalId);
-        return hidden?.value ?? null;
-    }
-
-    function getEvalLabel() {
-        const crnt = document.querySelector(SEL.crntLbl)?.textContent ?? '';
-        return crnt.split(' - ').pop()?.split('||')[0]?.trim() ?? 'eval';
     }
 
     // ── CSV helpers ──────────────────────────────────────────────────────────
@@ -161,19 +157,12 @@
         });
     }
 
-    // ── Batch download ───────────────────────────────────────────────────────
+    // ── Batch download (State A) ─────────────────────────────────────────────
 
     async function batchDownload(evalId, evalLabel, toolbar) {
-        showInfo(toolbar, 'Loading group list…');
-        let beforeState;
-        try {
-            beforeState = await getBeforeState();
-        } catch (err) {
-            clearProgress(toolbar);
-            showError(toolbar, `Could not load groups: ${err.message}`);
-            return;
-        }
-        const { groups, hidden: beforeHidden, season, course } = beforeState;
+        const { groups, hidden, season, course } = readPageState();
+
+        if (!groups.length) { showError(toolbar, 'No groups found.'); return; }
 
         const allLines = ['Name,Group,Grade'];
         let errors = 0;
@@ -183,18 +172,18 @@
             showInfo(toolbar, `Downloading group ${i + 1} of ${groups.length}: ${group.label}…`);
 
             try {
-                const doc1 = await doPostBack(beforeHidden, 'ctl00$MainContent$grpLst', {
+                const doc1 = await doPostBack(hidden, 'ctl00$MainContent$grpLst', {
                     'ctl00$MainContent$dlSeason': season,
                     'ctl00$MainContent$smCrsLst': course,
                     'ctl00$MainContent$grpLst':   group.value,
                 });
 
-                const doc1Hidden = extractHiddenFields(doc1);
+                const doc1Hidden = extractFormFields(doc1);
                 const doc2 = await doPostBack(doc1Hidden, 'ctl00$MainContent$evalMethIdLst', {
-                    'ctl00$MainContent$dlSeason':        season,
-                    'ctl00$MainContent$smCrsLst':        course,
-                    'ctl00$MainContent$grpLst':          group.value,
-                    'ctl00$MainContent$evalMethIdLst':   evalId,
+                    'ctl00$MainContent$dlSeason':       season,
+                    'ctl00$MainContent$smCrsLst':       course,
+                    'ctl00$MainContent$grpLst':         group.value,
+                    'ctl00$MainContent$evalMethIdLst':  evalId,
                 });
 
                 const rows = getRows(doc2);
@@ -217,19 +206,12 @@
         }
     }
 
-    // ── Batch upload ─────────────────────────────────────────────────────────
+    // ── Batch upload (State A) ───────────────────────────────────────────────
 
     async function batchUpload(evalId, csvMap, toolbar) {
-        showInfo(toolbar, 'Loading group list…');
-        let beforeState;
-        try {
-            beforeState = await getBeforeState();
-        } catch (err) {
-            clearProgress(toolbar);
-            showError(toolbar, `Could not load groups: ${err.message}`);
-            return;
-        }
-        const { groups, hidden: beforeHidden, season, course } = beforeState;
+        const { groups, hidden, season, course } = readPageState();
+
+        if (!groups.length) { showError(toolbar, 'No groups found.'); return; }
 
         let saved  = 0;
         let errors = 0;
@@ -239,18 +221,18 @@
             showInfo(toolbar, `Uploading group ${i + 1} of ${groups.length}: ${group.label}…`);
 
             try {
-                const doc1 = await doPostBack(beforeHidden, 'ctl00$MainContent$grpLst', {
+                const doc1 = await doPostBack(hidden, 'ctl00$MainContent$grpLst', {
                     'ctl00$MainContent$dlSeason': season,
                     'ctl00$MainContent$smCrsLst': course,
                     'ctl00$MainContent$grpLst':   group.value,
                 });
 
-                const doc1Hidden = extractHiddenFields(doc1);
+                const doc1Hidden = extractFormFields(doc1);
                 const doc2 = await doPostBack(doc1Hidden, 'ctl00$MainContent$evalMethIdLst', {
-                    'ctl00$MainContent$dlSeason':        season,
-                    'ctl00$MainContent$smCrsLst':        course,
-                    'ctl00$MainContent$grpLst':          group.value,
-                    'ctl00$MainContent$evalMethIdLst':   evalId,
+                    'ctl00$MainContent$dlSeason':       season,
+                    'ctl00$MainContent$smCrsLst':       course,
+                    'ctl00$MainContent$grpLst':         group.value,
+                    'ctl00$MainContent$evalMethIdLst':  evalId,
                 });
 
                 const rows = getRows(doc2);
@@ -259,7 +241,7 @@
                 const saveBtnEl = doc2.querySelector(SEL.saveBtn);
                 if (!saveBtnEl) throw new Error('save button not found in fetched page');
 
-                const doc2Hidden     = extractHiddenFields(doc2);
+                const doc2Hidden     = extractFormFields(doc2);
                 const gradeOverrides = {};
                 rows.forEach(row => {
                     const nameEl  = row.cells[0]?.querySelector('span');
@@ -271,12 +253,7 @@
                         : gradeEl.value;
                 });
 
-                await doPostBack(doc2Hidden, '', {
-                    'ctl00$MainContent$grpLst':        group.value,
-                    'ctl00$MainContent$evalMethIdLst': evalId,
-                    [saveBtnEl.name]: saveBtnEl.value,
-                    ...gradeOverrides,
-                });
+                await doPostBack(doc2Hidden, saveBtnEl.name, gradeOverrides);
 
                 saved++;
             } catch (err) {
@@ -289,9 +266,102 @@
         showInfo(toolbar, `Done — ${saved} group(s) saved${errors ? `, ${errors} failed` : ''}.`);
     }
 
-    // ── Toolbar ──────────────────────────────────────────────────────────────
+    // ── State A toolbar: intercept eval dropdown + batch buttons ─────────────
 
-    function injectToolbar(table) {
+    function injectBatchToolbar() {
+        if (document.getElementById('giu-toolbar')) return;
+
+        const toolbar = document.createElement('div');
+        toolbar.id = 'giu-toolbar';
+        toolbar.style.cssText = 'margin-top:15px;padding:10px;background:#f8f9fa;border:1px solid #dee2e6;border-radius:4px;';
+
+        const fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.accept = '.csv';
+        fileInput.style.display = 'none';
+
+        // Build custom eval picker from the page's eval dropdown options (no postback)
+        const pageEvalEl   = document.querySelector(SEL.eval);
+        const evalOptions  = pageEvalEl
+            ? Array.from(pageEvalEl.options).filter(o => isValidId(o.value))
+            : [];
+
+        const evalPicker = document.createElement('select');
+        evalPicker.style.cssText = 'padding:6px 10px;border:1px solid #ced4da;border-radius:4px;background:#fff;cursor:pointer;max-width:320px;';
+
+        const placeholder = document.createElement('option');
+        placeholder.value = '';
+        placeholder.textContent = evalOptions.length
+            ? '— Select evaluation method —'
+            : '— No evaluations found (select a group first) —';
+        evalPicker.appendChild(placeholder);
+
+        evalOptions.forEach(o => {
+            const opt = document.createElement('option');
+            opt.value = o.value;
+            opt.textContent = o.text.split('||')[0].trim();
+            evalPicker.appendChild(opt);
+        });
+
+        const loadCsvBtn = makeBtn('📄 Load CSV for Upload');
+        const batchDlBtn = makeBtn('▶ Batch Download', true);
+        const batchUpBtn = makeBtn('▶ Batch Upload', true);
+
+        let csvMap = null;
+
+        const getEvalId    = () => evalPicker.value;
+        const getEvalLabel = () => evalPicker.options[evalPicker.selectedIndex]?.text ?? evalPicker.value;
+
+        evalPicker.onchange = () => {
+            const valid = isValidId(evalPicker.value);
+            batchDlBtn.disabled = !valid;
+            batchDlBtn.style.cssText = valid ? BTN_BASE : BTN_OFF;
+            batchUpBtn.disabled = !(valid && csvMap);
+            batchUpBtn.style.cssText = (valid && csvMap) ? BTN_BASE : BTN_OFF;
+        };
+
+        loadCsvBtn.onclick = () => fileInput.click();
+
+        fileInput.onchange = async () => {
+            const file = fileInput.files[0];
+            if (!file) return;
+            csvMap = await parseCSV(file);
+            showInfo(toolbar, `CSV loaded — ${Object.keys(csvMap).length} student grade(s) ready.`);
+            batchUpBtn.disabled = !isValidId(evalPicker.value);
+            batchUpBtn.style.cssText = (!isValidId(evalPicker.value)) ? BTN_OFF : BTN_BASE;
+        };
+
+        batchDlBtn.onclick = async () => {
+            if (!isValidId(getEvalId())) { showError(toolbar, 'Pick an evaluation method first.'); return; }
+            batchDlBtn.disabled = true;
+            batchDlBtn.style.cssText = BTN_OFF;
+            await batchDownload(getEvalId(), getEvalLabel(), toolbar);
+            batchDlBtn.disabled = false;
+            batchDlBtn.style.cssText = BTN_BASE;
+        };
+
+        batchUpBtn.onclick = async () => {
+            if (!csvMap || !isValidId(getEvalId())) return;
+            batchUpBtn.disabled = true;
+            batchUpBtn.style.cssText = BTN_OFF;
+            await batchUpload(getEvalId(), csvMap, toolbar);
+            batchUpBtn.disabled = false;
+            batchUpBtn.style.cssText = BTN_BASE;
+        };
+
+        const btnRow = document.createElement('div');
+        btnRow.style.cssText = 'display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:6px;';
+        btnRow.append(evalPicker, loadCsvBtn, fileInput, batchDlBtn, batchUpBtn);
+        toolbar.appendChild(btnRow);
+
+        // Insert after eval dropdown's containing row, fallback to group dropdown
+        const anchor = pageEvalEl?.closest('tr') ?? pageEvalEl?.closest('div') ?? document.querySelector(SEL.group);
+        anchor?.insertAdjacentElement('afterend', toolbar);
+    }
+
+    // ── State B toolbar: per-group upload/download ────────────────────────────
+
+    function injectPerGroupToolbar(table) {
         if (document.getElementById('giu-toolbar')) return;
 
         const toolbar = document.createElement('div');
@@ -305,55 +375,34 @@
 
         const uploadBtn   = makeBtn('📄 Upload CSV');
         const downloadBtn = makeBtn('📥 Download CSV');
-        const batchDlBtn  = makeBtn('▶ Batch Download');
-        const batchUpBtn  = makeBtn('▶ Batch Upload', true);
-
-        let csvMap = null;
 
         uploadBtn.onclick = () => fileInput.click();
 
         fileInput.onchange = async () => {
             const file = fileInput.files[0];
             if (!file) return;
-            csvMap = await parseCSV(file);
+            const csvMap = await parseCSV(file);
             getRows().forEach(row => {
                 const id      = extractId(row.cells[0]?.querySelector('span')?.textContent ?? '');
                 const gradeEl = row.cells[2]?.querySelector('input');
                 if (id && gradeEl && id in csvMap) gradeEl.value = csvMap[id];
             });
-            batchUpBtn.disabled = false;
-            batchUpBtn.style.cssText = BTN_BASE;
         };
 
         downloadBtn.onclick = () => {
-            const groupEl   = document.querySelector(SEL.group);
-            const gLabel    = groupEl?.options[groupEl.selectedIndex]?.text?.trim() ?? 'group';
+            const crnt   = document.querySelector(SEL.crntLbl)?.textContent ?? '';
+            const parts  = crnt.split(' - ');
+            const gLabel = parts[0]?.trim() ?? 'group';
+            const eLabel = parts.pop()?.split('||')[0]?.trim() ?? 'eval';
             downloadCSV(
                 ['Name,Group,Grade', ...rowsToCsvLines(getRows(), gLabel)],
-                `${gLabel}-${getEvalLabel()}.csv`
+                `${gLabel}-${eLabel}.csv`
             );
-        };
-
-        batchDlBtn.onclick = async () => {
-            const evalId = resolveEvalId();
-            if (!evalId) { showError(toolbar, 'Could not determine Evaluation Method. Select an eval first.'); return; }
-            batchDlBtn.disabled = true;
-            await batchDownload(evalId, getEvalLabel(), toolbar);
-            batchDlBtn.disabled = false;
-        };
-
-        batchUpBtn.onclick = async () => {
-            if (!csvMap) return;
-            const evalId = resolveEvalId();
-            if (!evalId) { showError(toolbar, 'Could not determine Evaluation Method. Select an eval first.'); return; }
-            batchUpBtn.disabled = true;
-            await batchUpload(evalId, csvMap, toolbar);
-            batchUpBtn.disabled = false;
         };
 
         const btnRow = document.createElement('div');
         btnRow.style.cssText = 'display:flex;align-items:center;flex-wrap:wrap;gap:8px;';
-        btnRow.append(uploadBtn, fileInput, downloadBtn, batchDlBtn, batchUpBtn);
+        btnRow.append(uploadBtn, fileInput, downloadBtn);
         toolbar.appendChild(btnRow);
 
         table.insertAdjacentElement('afterend', toolbar);
@@ -363,11 +412,21 @@
 
     function init() {
         if (location.pathname !== '/GIUb/EXT/ManageUploadedGrades_m.aspx') return;
+
+        // State A: dropdowns visible — intercept eval, batch all groups
+        const groupEl = document.querySelector(SEL.group);
+        if (groupEl) {
+            injectBatchToolbar();
+            return;
+        }
+
+        // State B: grade table visible — per-group upload/download
         const table = document.getElementById('data');
-        if (table?.tagName === 'TABLE') injectToolbar(table);
+        if (table?.tagName === 'TABLE') {
+            injectPerGroupToolbar(table);
+        }
     }
 
     init();
 
 })();
-
