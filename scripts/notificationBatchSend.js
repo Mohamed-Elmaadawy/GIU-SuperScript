@@ -4,6 +4,8 @@
 // @match       https://portal.giu-uni.de/GIUb/INTStaff/NotificationSystem_SendEmail_m.aspx
 // @namespace   ramin0
 // @version     1.0
+// @author      Mo.Elmaadawy
+// @icon        https://i.ibb.co/Q7mgLHsW/GIU-images.png
 // @run-at      document-idle
 // ==/UserScript==
 
