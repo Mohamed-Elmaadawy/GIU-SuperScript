@@ -53,6 +53,10 @@
         return m ? m[1] : null;
     }
 
+    function findOption(selectEl, value) {
+        return Array.from(selectEl.options).find(o => o.value === value);
+    }
+
     function triggerPostBack(target) {
         const et = document.getElementById('__EVENTTARGET');
         const ea = document.getElementById('__EVENTARGUMENT');
@@ -293,7 +297,7 @@
             return;
         }
 
-        const option = Array.from(groupEl.options).find(o => o.value === target.value);
+        const option = findOption(groupEl, target.value);
         if (!option) {
             queue.results.push({ label: target.label, status: 'skipped', reason: 'group not in dropdown' });
             advanceQueue(queue);
@@ -316,7 +320,7 @@
             return;
         }
 
-        const option = Array.from(evalEl.options).find(o => o.value === queue.savedEvalId);
+        const option = findOption(evalEl, queue.savedEvalId);
         if (!option) {
             queue.results.push({ label: target.label, status: 'failed', reason: 'eval method not in dropdown after group select' });
             advanceQueue(queue);
@@ -339,7 +343,9 @@
             return;
         }
 
-        if (Object.keys(queue.csvMap).length > 0) {
+        const hasCsv = Object.keys(queue.csvMap).length > 0;
+
+        if (hasCsv) {
             fillGradesFromMap(queue.csvMap, null);
         }
 
@@ -355,7 +361,7 @@
         queue.step = queue.currentIndex < queue.groups.length ? 'select-group' : 'done';
         saveQueue(queue);
 
-        if (Object.keys(queue.csvMap).length > 0) {
+        if (hasCsv) {
             document.querySelector(SEL.saveBtn)?.click();
         } else if (queue.step !== 'done') {
             location.reload();
