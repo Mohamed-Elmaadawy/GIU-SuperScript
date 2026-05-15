@@ -122,4 +122,33 @@
         return crnt.split(' - ').pop()?.split('||')[0]?.trim() ?? 'eval';
     }
 
+    // ── CSV helpers ──────────────────────────────────────────────────────────
+
+    function rowsToCsvLines(rows, groupLabel) {
+        return rows.map(row => {
+            const name  = row.cells[0]?.querySelector('span')?.textContent?.trim() ?? '';
+            const grade = row.cells[2]?.querySelector('input')?.value ?? '';
+            return `"${name.replace(/"/g, '""')}",${groupLabel},${grade}`;
+        });
+    }
+
+    function parseCSV(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = e => {
+                const map = {};
+                e.target.result.trim().split(/\r?\n/).forEach((line, i) => {
+                    if (i === 0 || !line.trim()) return;
+                    const cols  = line.split(',').map(v => v.trim().replace(/^"|"$/g, '').replace(/""/g, '"'));
+                    const id    = extractId(cols[0]);
+                    const grade = cols[cols.length - 1];
+                    if (id && grade !== '' && Number.isFinite(+grade)) map[id] = grade;
+                });
+                resolve(map);
+            };
+            reader.onerror = reject;
+            reader.readAsText(file);
+        });
+    }
+
 })();
