@@ -196,15 +196,9 @@
         };
 
         batchBtn.onclick = () => {
-            const groupEl  = document.querySelector(SEL.group);
-            const evalEl   = document.querySelector(SEL.eval);
-            const seasonEl = document.querySelector(SEL.season);
-            const courseEl = document.querySelector(SEL.course);
+            const groupEl = document.querySelector(SEL.group);
+            const evalEl  = document.querySelector(SEL.eval);
 
-            if (!seasonEl?.value || !courseEl?.value || !groupEl?.value) {
-                alert('Select Season, Course, and Group first.');
-                return;
-            }
             const evalVal = evalEl?.value;
             if (!evalVal || evalVal === 'Please Choose an Evaluation') {
                 alert('Select an Evaluation Method first.');
