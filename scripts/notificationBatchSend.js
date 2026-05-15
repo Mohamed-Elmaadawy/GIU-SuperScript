@@ -71,9 +71,26 @@
 
     function advanceOrDone(queue) {
         queue.currentIndex++;
-        queue.step = queue.currentIndex >= queue.groups.length ? 'done' : 'select';
+        if (queue.currentIndex >= queue.groups.length) {
+            clearQueue();
+            const progress = getEl('giu-batch-progress');
+            if (progress) progress.remove();
+            renderSummary(queue.results);
+            injectPanel();
+            return;
+        }
+        const nextGroup = queue.groups[queue.currentIndex];
+        const ddl = getEl('MainContent_DDL_Group');
+        const option = ddl ? Array.from(ddl.options).find(o => o.value === nextGroup.value) : null;
+        if (!option) {
+            queue.results.push({ label: nextGroup.label, status: 'failed', info: 'Group not found in dropdown' });
+            advanceOrDone(queue);
+            return;
+        }
+        ddl.value = nextGroup.value;
+        queue.step = 'send';
         saveQueue(queue);
-        window.location.href = window.location.href;
+        triggerPostBack('ctl00$MainContent$DDL_Group');
     }
 
     function runQueueStep(queue) {
@@ -288,9 +305,10 @@
         wrapper.querySelector('#giu-cancel-btn').addEventListener('click', () => {
             const remaining = queue.groups.slice(queue.currentIndex);
             remaining.forEach(g => queue.results.push({ label: g.label, status: 'cancelled', info: 'Cancelled by user' }));
-            queue.step = 'done';
-            saveQueue(queue);
-            location.reload();
+            clearQueue();
+            wrapper.remove();
+            renderSummary(queue.results);
+            injectPanel();
         });
 
         const anchor = getInjectionAnchor();
