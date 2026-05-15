@@ -93,7 +93,8 @@
                     const map = {};
                     e.target.result.trim().split(/\r?\n/).filter(l => l.trim()).forEach(line => {
                         const cols = line.split(',').map(v => v.trim());
-                        const id   = extractStudentId(cols[0]);
+                        const rawName = cols[0].replace(/^"|"$/g, '').replace(/""/g, '"');
+                        const id   = extractStudentId(rawName);
                         const grade = cols[cols.length - 1];
                         if (id && grade !== '' && Number.isFinite(+grade)) map[id] = grade;
                     });
@@ -247,8 +248,9 @@
                 savedEvalId:    evalEl.value,
                 savedEvalLabel: evalOpt?.text?.split('||')[0]?.trim() ?? '',
                 groups,
-                csvMap:   csvMap ?? {},
-                results:  [],
+                csvMap:        csvMap ?? {},
+                collectedRows: [],
+                results:       [],
             };
         }
 
@@ -359,6 +361,12 @@
 
             if (hasCsv) {
                 fillGradesFromMap(queue.csvMap, null);
+            } else {
+                rows.forEach(row => {
+                    const name  = row.querySelector(SEL.nameLbl)?.textContent?.trim() ?? '';
+                    const grade = row.querySelector(SEL.gradeIn)?.value ?? '';
+                    queue.collectedRows.push({ name, grade });
+                });
             }
 
             const values = rows
@@ -366,8 +374,6 @@
                 .filter(v => v && !isNaN(v));
             const stats = computeStats(values);
             queue.results.push({ label: target.label, status: 'done', ...stats });
-
-            downloadCSV(rows, target.label, queue.savedEvalLabel);
 
             queue.currentIndex++;
             queue.step = queue.currentIndex < queue.groups.length ? 'select-group' : 'done';
@@ -385,6 +391,20 @@
         function renderSummary(queue) {
             const progress = document.getElementById('giu-batch-progress');
             if (progress) progress.remove();
+
+            const hasCsv = Object.keys(queue.csvMap).length > 0;
+            if (!hasCsv && queue.collectedRows?.length) {
+                const csv = [
+                    'Name,Grade',
+                    ...queue.collectedRows.map(({ name, grade }) => `"${name.replace(/"/g, '""')}",${grade}`),
+                ].join('\n');
+                const filename = `All-Groups-${queue.savedEvalLabel}.csv`
+                    .replace(/[/\\?%*:|"<>]/g, '_').replace(/\s+/g, '_');
+                const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
+                const a = document.createElement('a');
+                a.href = url; a.download = filename; a.click(); a.remove();
+                URL.revokeObjectURL(url);
+            }
 
             const done    = queue.results.filter(r => r.status === 'done');
             const skipped = queue.results.filter(r => r.status !== 'done');
