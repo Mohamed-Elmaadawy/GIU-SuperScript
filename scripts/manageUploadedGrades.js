@@ -192,9 +192,12 @@
         });
 
         batchBtn.onclick = () => {
-            const groupEl = document.querySelector(SEL.group);
-            const evalEl  = document.querySelector(SEL.eval);
-            if (!groupEl || !evalEl || !evalEl.value || evalEl.value === 'Please Choose an Evaluation') {
+            const groupEl  = document.querySelector(SEL.group);
+            const evalEl   = document.querySelector(SEL.eval);
+            const seasonEl = document.querySelector(SEL.season);
+            const courseEl = document.querySelector(SEL.course);
+            const evalInvalid = !evalEl?.value || evalEl.value === 'Please Choose an Evaluation';
+            if (!seasonEl?.value || !courseEl?.value || !groupEl?.value || evalInvalid) {
                 alert('Select all four dropdowns first (Season, Course, Group, Evaluation Method).');
                 return;
             }
