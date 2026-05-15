@@ -73,7 +73,7 @@
         queue.currentIndex++;
         queue.step = queue.currentIndex >= queue.groups.length ? 'done' : 'select';
         saveQueue(queue);
-        location.reload();
+        window.location.href = window.location.href;
     }
 
     function runQueueStep(queue) {
