@@ -151,4 +151,46 @@
         });
     }
 
+    // ── Batch download ───────────────────────────────────────────────────────
+
+    async function batchDownload(groups, evalId, evalLabel, toolbar) {
+        const allLines = ['Name,Group,Grade'];
+        let errors = 0;
+
+        for (let i = 0; i < groups.length; i++) {
+            const group = groups[i];
+            showInfo(toolbar, `Downloading group ${i + 1} of ${groups.length}: ${group.label}…`);
+
+            try {
+                const liveHidden = extractHiddenFields(document);
+                const doc1 = await doPostBack(liveHidden, 'ctl00$MainContent$grpLst', {
+                    'ctl00$MainContent$grpLst': group.value,
+                });
+
+                const doc1Hidden = extractHiddenFields(doc1);
+                const doc2 = await doPostBack(doc1Hidden, 'ctl00$MainContent$evalMethIdLst', {
+                    'ctl00$MainContent$grpLst':        group.value,
+                    'ctl00$MainContent$evalMethIdLst': evalId,
+                });
+
+                const rows = getRows(doc2);
+                if (!rows.length) throw new Error('no student rows found');
+                rowsToCsvLines(rows, group.label).forEach(l => allLines.push(l));
+
+            } catch (err) {
+                errors++;
+                showError(toolbar, `Group "${group.label}": ${err.message}`);
+            }
+        }
+
+        clearProgress(toolbar);
+
+        if (allLines.length > 1) {
+            downloadCSV(allLines, `All-Groups-${evalLabel}.csv`);
+            showInfo(toolbar, `Done — ${groups.length - errors} group(s) collected${errors ? `, ${errors} failed` : ''}.`);
+        } else {
+            showError(toolbar, 'No rows collected. All groups failed — check errors above.');
+        }
+    }
+
 })();
