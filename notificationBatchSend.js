@@ -25,6 +25,15 @@
         localStorage.removeItem(QUEUE_KEY);
     }
 
+    function escapeHtml(str) {
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
+
     // ── Page helpers ────────────────────────────────────────────────────────────
 
     function getEl(id) {
@@ -40,9 +49,13 @@
     }
 
     function triggerPostBack(target) {
-        getEl('__EVENTTARGET').value = target;
-        getEl('__EVENTARGUMENT').value = '';
-        getEl('form1').submit();
+        const et = getEl('__EVENTTARGET');
+        const ea = getEl('__EVENTARGUMENT');
+        const f  = getEl('form1');
+        if (!et || !ea || !f) return;
+        et.value = target;
+        ea.value = '';
+        f.submit();
     }
 
     function getInjectionAnchor() {
@@ -138,7 +151,7 @@
                     ? groups.map(g => `
                         <div class="giu-group-row" style="margin-bottom:4px;">
                             <label style="cursor:pointer;font-weight:normal;">
-                                <input type="checkbox" class="giu-group-cb" data-value="${g.value}" data-label="${g.label}">
+                                <input type="checkbox" class="giu-group-cb" data-value="${escapeHtml(g.value)}" data-label="${escapeHtml(g.label)}">
                                 &nbsp;${g.label}
                             </label>
                         </div>`).join('')
@@ -188,8 +201,8 @@
                     fields.className = 'giu-per-group-fields';
                     fields.style.cssText = 'margin:4px 0 8px 20px;';
                     fields.innerHTML = `
-                        <input type="text" class="form-control form-control-sm giu-pg-subject" placeholder="Subject for ${lbl}" style="margin-bottom:4px;max-width:480px;">
-                        <textarea class="form-control form-control-sm giu-pg-body" rows="2" placeholder="Body for ${lbl}" style="max-width:480px;"></textarea>
+                        <input type="text" class="form-control form-control-sm giu-pg-subject" placeholder="Subject for ${escapeHtml(lbl)}" style="margin-bottom:4px;max-width:480px;">
+                        <textarea class="form-control form-control-sm giu-pg-body" rows="2" placeholder="Body for ${escapeHtml(lbl)}" style="max-width:480px;"></textarea>
                     `;
                     row.appendChild(fields);
                 });
@@ -244,7 +257,7 @@
         });
 
         const anchor = getInjectionAnchor();
-        anchor.parentNode.insertBefore(wrapper, anchor);
+        if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(wrapper, anchor);
     }
 
     // ── Progress view ─────────────────────────────────────────────────────────────
@@ -258,7 +271,7 @@
         const resultRows = queue.results.map(r => {
             const icon  = r.status === 'sent' ? '&#10003;' : r.status === 'failed' ? '&#10007;' : '&ndash;';
             const color = r.status === 'sent' ? 'green'    : r.status === 'failed' ? 'red'      : 'gray';
-            return `<div style="color:${color};font-size:0.88em;">${icon} ${r.label} &mdash; ${r.info}</div>`;
+            return `<div style="color:${color};font-size:0.88em;">${icon} ${escapeHtml(r.label)} &mdash; ${escapeHtml(r.info)}</div>`;
         }).join('');
 
         const wrapper = document.createElement('div');
@@ -285,7 +298,7 @@
         });
 
         const anchor = getInjectionAnchor();
-        anchor.parentNode.insertBefore(wrapper, anchor);
+        if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(wrapper, anchor);
     }
 
     // ── Completion summary ────────────────────────────────────────────────────────
@@ -299,7 +312,7 @@
         const rows = results.map(r => {
             const icon  = r.status === 'sent' ? '&#10003;' : r.status === 'failed' ? '&#10007;' : '&ndash;';
             const color = r.status === 'sent' ? 'green'    : r.status === 'failed' ? 'red'      : 'gray';
-            return `<div style="color:${color};font-size:0.88em;">${icon} ${r.label} &mdash; ${r.info}</div>`;
+            return `<div style="color:${color};font-size:0.88em;">${icon} ${escapeHtml(r.label)} &mdash; ${escapeHtml(r.info)}</div>`;
         }).join('');
 
         const bg     = hasErrors ? '#f8d7da' : '#d4edda';
@@ -325,7 +338,7 @@
         wrapper.querySelector('#giu-dismiss-btn').addEventListener('click', () => wrapper.remove());
 
         const anchor = getInjectionAnchor();
-        anchor.parentNode.insertBefore(wrapper, anchor);
+        if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(wrapper, anchor);
     }
 
     // ── Entry point ──────────────────────────────────────────────────────────────
