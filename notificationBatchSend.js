@@ -213,6 +213,36 @@
             btn.textContent = `Start Batch Send (${checked} group${checked !== 1 ? 's' : ''})`;
         }
 
+        wrapper.querySelector('#giu-start-btn').addEventListener('click', () => {
+            const sameMsg       = wrapper.querySelector('#giu-same-msg').checked;
+            const sharedSubject = sameMsg ? wrapper.querySelector('#giu-shared-subject').value.trim() : '';
+            const sharedBody    = sameMsg ? wrapper.querySelector('#giu-shared-body').value.trim()    : '';
+
+            const selectedGroups = [];
+            wrapper.querySelectorAll('.giu-group-cb:checked').forEach(cb => {
+                const row     = cb.closest('.giu-group-row');
+                const subject = sameMsg ? null : (row.querySelector('.giu-pg-subject')?.value.trim() || null);
+                const body    = sameMsg ? null : (row.querySelector('.giu-pg-body')?.value.trim()    || null);
+                selectedGroups.push({
+                    value:   cb.dataset.value,
+                    label:   cb.dataset.label,
+                    subject: subject || null,
+                    body:    body    || null
+                });
+            });
+
+            saveQueue({
+                step:          'select',
+                currentIndex:  0,
+                sharedSubject,
+                sharedBody,
+                groups:        selectedGroups,
+                results:       []
+            });
+
+            location.reload();
+        });
+
         const anchor = getInjectionAnchor();
         anchor.parentNode.insertBefore(wrapper, anchor);
     }
@@ -297,5 +327,28 @@
         const anchor = getInjectionAnchor();
         anchor.parentNode.insertBefore(wrapper, anchor);
     }
+
+    // ── Entry point ──────────────────────────────────────────────────────────────
+
+    function init() {
+        const queue = loadQueue();
+
+        if (!queue) {
+            injectPanel();
+            return;
+        }
+
+        if (queue.step === 'done') {
+            renderSummary(queue.results);
+            clearQueue();
+            injectPanel();
+            return;
+        }
+
+        renderProgress(queue);
+        runQueueStep(queue);
+    }
+
+    init();
 
 })();
