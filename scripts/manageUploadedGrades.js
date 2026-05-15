@@ -57,6 +57,12 @@
         return Array.from(selectEl.options).find(o => o.value === value);
     }
 
+    function escHtml(str) {
+        const d = document.createElement('div');
+        d.textContent = str;
+        return d.innerHTML;
+    }
+
     function triggerPostBack(target) {
         const et = document.getElementById('__EVENTTARGET');
         const ea = document.getElementById('__EVENTARGUMENT');
@@ -200,7 +206,7 @@
             const evalEl   = document.querySelector(SEL.eval);
             const seasonEl = document.querySelector(SEL.season);
             const courseEl = document.querySelector(SEL.course);
-            const evalInvalid = !evalEl?.value || evalEl.value === 'Please Choose an Evaluation';
+            const evalInvalid = !evalEl?.value;
             if (!seasonEl?.value || !courseEl?.value || !groupEl?.value || evalInvalid) {
                 alert('Select all four dropdowns first (Season, Course, Group, Evaluation Method).');
                 return;
@@ -260,7 +266,7 @@
         div.className = 'alert alert-info';
         div.style.cssText = 'margin: 10px 0;';
         div.innerHTML = `
-            <strong>Batch running…</strong> Group ${done + 1} of ${total}: ${label}<br>
+            <strong>Batch running…</strong> Group ${done + 1} of ${total}: ${escHtml(label)}<br>
             <div style="background:#dee2e6;border-radius:4px;height:8px;margin-top:6px;">
                 <div style="background:#0d6efd;width:${pct}%;height:8px;border-radius:4px;transition:width 0.3s;"></div>
             </div>`;
@@ -288,6 +294,8 @@
         const groupEl = document.querySelector(SEL.group);
         const target  = queue.groups[queue.currentIndex];
 
+        if (!target) { clearQueue(); return; }
+
         if (!groupEl) {
             clearQueue();
             const div = document.createElement('div');
@@ -314,6 +322,8 @@
         const evalEl = document.querySelector(SEL.eval);
         const target = queue.groups[queue.currentIndex];
 
+        if (!target) { clearQueue(); return; }
+
         if (!evalEl) {
             queue.results.push({ label: target.label, status: 'failed', reason: 'eval dropdown not found' });
             advanceQueue(queue);
@@ -336,6 +346,8 @@
     function stepCollect(queue) {
         const rows   = getGradeRows();
         const target = queue.groups[queue.currentIndex];
+
+        if (!target) { clearQueue(); return; }
 
         if (rows.length === 0) {
             queue.results.push({ label: target.label, status: 'failed', reason: 'no student rows after eval select' });
@@ -389,15 +401,15 @@
 
         for (const r of done) {
             html += `<tr>
-                <td>${r.label}</td>
+                <td>${escHtml(r.label)}</td>
                 <td>${r.avg}</td><td>${r.min}</td><td>${r.max}</td>
                 <td>${r.range}</td><td>${r.count}</td>
             </tr>`;
         }
         for (const r of skipped) {
             html += `<tr class="table-warning">
-                <td>${r.label}</td>
-                <td colspan="5">${r.status}${r.reason ? ': ' + r.reason : ''}</td>
+                <td>${escHtml(r.label)}</td>
+                <td colspan="5">${r.status}${r.reason ? ': ' + escHtml(r.reason) : ''}</td>
             </tr>`;
         }
 
