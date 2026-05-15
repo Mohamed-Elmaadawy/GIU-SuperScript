@@ -193,4 +193,62 @@
         }
     }
 
+    // ── Batch upload ─────────────────────────────────────────────────────────
+
+    async function batchUpload(groups, evalId, csvMap, toolbar) {
+        let saved  = 0;
+        let errors = 0;
+
+        for (let i = 0; i < groups.length; i++) {
+            const group = groups[i];
+            showInfo(toolbar, `Uploading group ${i + 1} of ${groups.length}: ${group.label}…`);
+
+            try {
+                const liveHidden = extractHiddenFields(document);
+                const doc1 = await doPostBack(liveHidden, 'ctl00$MainContent$grpLst', {
+                    'ctl00$MainContent$grpLst': group.value,
+                });
+
+                const doc1Hidden = extractHiddenFields(doc1);
+                const doc2 = await doPostBack(doc1Hidden, 'ctl00$MainContent$evalMethIdLst', {
+                    'ctl00$MainContent$grpLst':        group.value,
+                    'ctl00$MainContent$evalMethIdLst': evalId,
+                });
+
+                const rows = getRows(doc2);
+                if (!rows.length) throw new Error('no student rows found');
+
+                const saveBtnEl = doc2.querySelector(SEL.saveBtn);
+                if (!saveBtnEl) throw new Error('save button not found in fetched page');
+
+                const doc2Hidden     = extractHiddenFields(doc2);
+                const gradeOverrides = {};
+                rows.forEach(row => {
+                    const nameEl  = row.cells[0]?.querySelector('span');
+                    const gradeEl = row.cells[2]?.querySelector('input');
+                    if (!gradeEl?.name) return;
+                    const id = extractId(nameEl?.textContent ?? '');
+                    gradeOverrides[gradeEl.name] = (id && csvMap[id] !== undefined)
+                        ? csvMap[id]
+                        : gradeEl.value;
+                });
+
+                await doPostBack(doc2Hidden, '', {
+                    'ctl00$MainContent$grpLst':        group.value,
+                    'ctl00$MainContent$evalMethIdLst': evalId,
+                    [saveBtnEl.name]: saveBtnEl.value,
+                    ...gradeOverrides,
+                });
+
+                saved++;
+            } catch (err) {
+                errors++;
+                showError(toolbar, `Group "${group.label}": ${err.message}`);
+            }
+        }
+
+        clearProgress(toolbar);
+        showInfo(toolbar, `Done — ${saved} group(s) saved${errors ? `, ${errors} failed` : ''}.`);
+    }
+
 })();
