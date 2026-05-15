@@ -3,7 +3,8 @@
         // @description  Enhances attendance system at GIU By Mo.Elmaadawy
         // @downloadURL  https://j.mp/ramin0-GUC_Staff
         // @grant        none
-        // @icon         https://is3-ssl.mzstatic.com/image/thumb/Purple128/v4/e7/cd/b0/e7cdb01f-0698-56bf-9752-c8d0294763f3/mzl.vprmijhl.png/246x0w.jpg
+        // @author       Mo.Elmaadawy
+        // @icon         https://i.ibb.co/Q7mgLHsW/GIU-images.png
         // @include      https://student.guc.edu.eg/*
         // @include      https://intranet.guc.edu.eg/*
         // @include      https://intranet/*
