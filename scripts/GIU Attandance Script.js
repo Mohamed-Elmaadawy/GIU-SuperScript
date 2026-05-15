@@ -1,6 +1,6 @@
         // ==UserScript==
-        // @name         GIU Staff Opus V3.0
-        // @description  Enhances attendance system at GIU By Mo.Elmaadawy
+        // @name         GIU Staff Enhanced Attendance
+        // @description  Enhances attendance system 
         // @downloadURL  https://j.mp/ramin0-GUC_Staff
         // @grant        none
         // @author       Mo.Elmaadawy
@@ -12,7 +12,7 @@
         // @include      https://portal.guc/*
         // @namespace    ramin0
         // @updateURL    https://j.mp/ramin0-GUC_Staff
-        // @version      2026030905
+        // @version      3.0.7
         // ==/UserScript==
 
         (function () {
