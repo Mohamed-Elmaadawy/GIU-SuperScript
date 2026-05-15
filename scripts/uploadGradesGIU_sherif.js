@@ -12,6 +12,8 @@
     'use strict';
 
     const SEL = {
+        season:  '#MainContent_dlSeason',
+        course:  '#MainContent_smCrsLst',
         group:   '#MainContent_grpLst',
         eval:    '#MainContent_evalMethIdLst',
         evalId:  'input[id^="MainContent_rptrNtt_evalMethId_"]',
@@ -102,12 +104,20 @@
 
     // ── Group/Eval helpers ───────────────────────────────────────────────────
 
-    function getGroupOptions() {
-        const el = document.querySelector(SEL.group);
-        if (!el) return null;
-        return Array.from(el.options)
-            .filter(o => o.value && o.value !== '')
-            .map(o => ({ value: o.value, label: o.text.trim() }));
+    async function getBeforeState() {
+        const resp = await fetch(location.href, { method: 'GET' });
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const doc = new DOMParser().parseFromString(await resp.text(), 'text/html');
+        const groupEl = doc.querySelector(SEL.group);
+        if (!groupEl) throw new Error('group dropdown not found in page — session may have expired');
+        return {
+            groups: Array.from(groupEl.options)
+                        .filter(o => o.value && o.value !== '')
+                        .map(o => ({ value: o.value, label: o.text.trim() })),
+            hidden: extractHiddenFields(doc),
+            season: doc.querySelector(SEL.season)?.value ?? '',
+            course: doc.querySelector(SEL.course)?.value ?? '',
+        };
     }
 
     function resolveEvalId() {
@@ -153,7 +163,18 @@
 
     // ── Batch download ───────────────────────────────────────────────────────
 
-    async function batchDownload(groups, evalId, evalLabel, toolbar) {
+    async function batchDownload(evalId, evalLabel, toolbar) {
+        showInfo(toolbar, 'Loading group list…');
+        let beforeState;
+        try {
+            beforeState = await getBeforeState();
+        } catch (err) {
+            clearProgress(toolbar);
+            showError(toolbar, `Could not load groups: ${err.message}`);
+            return;
+        }
+        const { groups, hidden: beforeHidden, season, course } = beforeState;
+
         const allLines = ['Name,Group,Grade'];
         let errors = 0;
 
@@ -162,15 +183,18 @@
             showInfo(toolbar, `Downloading group ${i + 1} of ${groups.length}: ${group.label}…`);
 
             try {
-                const liveHidden = extractHiddenFields(document);
-                const doc1 = await doPostBack(liveHidden, 'ctl00$MainContent$grpLst', {
-                    'ctl00$MainContent$grpLst': group.value,
+                const doc1 = await doPostBack(beforeHidden, 'ctl00$MainContent$grpLst', {
+                    'ctl00$MainContent$dlSeason': season,
+                    'ctl00$MainContent$smCrsLst': course,
+                    'ctl00$MainContent$grpLst':   group.value,
                 });
 
                 const doc1Hidden = extractHiddenFields(doc1);
                 const doc2 = await doPostBack(doc1Hidden, 'ctl00$MainContent$evalMethIdLst', {
-                    'ctl00$MainContent$grpLst':        group.value,
-                    'ctl00$MainContent$evalMethIdLst': evalId,
+                    'ctl00$MainContent$dlSeason':        season,
+                    'ctl00$MainContent$smCrsLst':        course,
+                    'ctl00$MainContent$grpLst':          group.value,
+                    'ctl00$MainContent$evalMethIdLst':   evalId,
                 });
 
                 const rows = getRows(doc2);
@@ -195,7 +219,18 @@
 
     // ── Batch upload ─────────────────────────────────────────────────────────
 
-    async function batchUpload(groups, evalId, csvMap, toolbar) {
+    async function batchUpload(evalId, csvMap, toolbar) {
+        showInfo(toolbar, 'Loading group list…');
+        let beforeState;
+        try {
+            beforeState = await getBeforeState();
+        } catch (err) {
+            clearProgress(toolbar);
+            showError(toolbar, `Could not load groups: ${err.message}`);
+            return;
+        }
+        const { groups, hidden: beforeHidden, season, course } = beforeState;
+
         let saved  = 0;
         let errors = 0;
 
@@ -204,15 +239,18 @@
             showInfo(toolbar, `Uploading group ${i + 1} of ${groups.length}: ${group.label}…`);
 
             try {
-                const liveHidden = extractHiddenFields(document);
-                const doc1 = await doPostBack(liveHidden, 'ctl00$MainContent$grpLst', {
-                    'ctl00$MainContent$grpLst': group.value,
+                const doc1 = await doPostBack(beforeHidden, 'ctl00$MainContent$grpLst', {
+                    'ctl00$MainContent$dlSeason': season,
+                    'ctl00$MainContent$smCrsLst': course,
+                    'ctl00$MainContent$grpLst':   group.value,
                 });
 
                 const doc1Hidden = extractHiddenFields(doc1);
                 const doc2 = await doPostBack(doc1Hidden, 'ctl00$MainContent$evalMethIdLst', {
-                    'ctl00$MainContent$grpLst':        group.value,
-                    'ctl00$MainContent$evalMethIdLst': evalId,
+                    'ctl00$MainContent$dlSeason':        season,
+                    'ctl00$MainContent$smCrsLst':        course,
+                    'ctl00$MainContent$grpLst':          group.value,
+                    'ctl00$MainContent$evalMethIdLst':   evalId,
                 });
 
                 const rows = getRows(doc2);
@@ -297,23 +335,19 @@
         };
 
         batchDlBtn.onclick = async () => {
-            const groups = getGroupOptions();
-            if (!groups?.length) { showError(toolbar, 'Group dropdown not found or empty.'); return; }
             const evalId = resolveEvalId();
             if (!evalId) { showError(toolbar, 'Could not determine Evaluation Method. Select an eval first.'); return; }
             batchDlBtn.disabled = true;
-            await batchDownload(groups, evalId, getEvalLabel(), toolbar);
+            await batchDownload(evalId, getEvalLabel(), toolbar);
             batchDlBtn.disabled = false;
         };
 
         batchUpBtn.onclick = async () => {
             if (!csvMap) return;
-            const groups = getGroupOptions();
-            if (!groups?.length) { showError(toolbar, 'Group dropdown not found or empty.'); return; }
             const evalId = resolveEvalId();
             if (!evalId) { showError(toolbar, 'Could not determine Evaluation Method. Select an eval first.'); return; }
             batchUpBtn.disabled = true;
-            await batchUpload(groups, evalId, csvMap, toolbar);
+            await batchUpload(evalId, csvMap, toolbar);
             batchUpBtn.disabled = false;
         };
 
