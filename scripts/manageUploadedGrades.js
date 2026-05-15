@@ -17,15 +17,17 @@
     const QUEUE_KEY = 'giuManageGradesQueueV2';
 
     const SEL = {
-        season:  '#MainContent_dlSeason',
-        course:  '#MainContent_smCrsLst',
-        group:   '#MainContent_grpLst',
-        eval:    '#MainContent_evalMethIdLst',
-        saveBtn: '#MainContent_saveBtn',
-        rows:    'tr[id^="MainContent_rptrNtt_stdRw_"]',
-        nameLbl: 'span[id^="MainContent_rptrNtt_stdNmLbl_"]',
-        gradeIn: 'input[id^="MainContent_rptrNtt_grd_"]',
-        maxPt:   'input[id^="MainContent_rptrNtt_mxPt_"]',
+        season:    '#MainContent_dlSeason',
+        course:    '#MainContent_smCrsLst',
+        group:     '#MainContent_grpLst',
+        eval:      '#MainContent_evalMethIdLst',
+        evalId:    'input[id^="MainContent_rptrNtt_evalMethId_"]',
+        crntLbl:   '#MainContent_crntLbl',
+        saveBtn:   '#MainContent_saveBtn',
+        rows:      'tr[id^="MainContent_rptrNtt_stdRw_"]',
+        nameLbl:   'span[id^="MainContent_rptrNtt_stdNmLbl_"]',
+        gradeIn:   'input[id^="MainContent_rptrNtt_grd_"]',
+        maxPt:     'input[id^="MainContent_rptrNtt_mxPt_"]',
     };
 
     const BTN_STYLE = 'padding:8px 14px;background:#0d6efd;color:#fff;border:none;border-radius:4px;cursor:pointer;margin-right:8px;';
@@ -197,22 +199,21 @@
 
         batchBtn.onclick = () => {
             const groupEl = document.querySelector(SEL.group);
-            const evalEl  = document.querySelector(SEL.eval);
 
-            const evalVal = evalEl?.value;
-            if (!evalVal || evalVal === 'Please Choose an Evaluation') {
-                alert('Select an Evaluation Method first.');
-                return;
-            }
+            // In State 3, eval dropdown is gone — read ID from hidden row input
+            const evalIdEl  = document.querySelector(SEL.evalId);
+            const evalVal   = evalIdEl?.value;
+            if (!evalVal) { alert('Could not determine Evaluation Method. Try reloading.'); return; }
 
-            const groups = Array.from(groupEl.options)
+            // Label from the current-selection label, strip group prefix and deadline suffix
+            const crntLbl   = document.querySelector(SEL.crntLbl)?.textContent ?? '';
+            const evalLabel = crntLbl.split(' - ').pop()?.split('||')[0]?.trim() ?? evalVal;
+
+            const groups = Array.from(groupEl?.options ?? [])
                 .filter(o => o.value && o.value !== '')
                 .map(o => ({ value: o.value, label: o.text.trim() }));
 
             if (!groups.length) { alert('No groups found.'); return; }
-
-            const evalOpt   = evalEl.options[evalEl.selectedIndex];
-            const evalLabel = evalOpt?.text?.split('||')[0]?.trim() ?? '';
 
             const queue = {
                 step:          'select-group',
