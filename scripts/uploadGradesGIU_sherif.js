@@ -251,4 +251,89 @@
         showInfo(toolbar, `Done — ${saved} group(s) saved${errors ? `, ${errors} failed` : ''}.`);
     }
 
+    // ── Toolbar ──────────────────────────────────────────────────────────────
+
+    function injectToolbar(table) {
+        if (document.getElementById('giu-toolbar')) return;
+
+        const toolbar = document.createElement('div');
+        toolbar.id = 'giu-toolbar';
+        toolbar.style.cssText = 'margin-top:15px;padding:10px;background:#f8f9fa;border:1px solid #dee2e6;border-radius:4px;';
+
+        const fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.accept = '.csv';
+        fileInput.style.display = 'none';
+
+        const uploadBtn   = makeBtn('📄 Upload CSV');
+        const downloadBtn = makeBtn('📥 Download CSV');
+        const batchDlBtn  = makeBtn('▶ Batch Download');
+        const batchUpBtn  = makeBtn('▶ Batch Upload', true);
+
+        let csvMap = null;
+
+        uploadBtn.onclick = () => fileInput.click();
+
+        fileInput.onchange = async () => {
+            const file = fileInput.files[0];
+            if (!file) return;
+            csvMap = await parseCSV(file);
+            getRows().forEach(row => {
+                const id      = extractId(row.cells[0]?.querySelector('span')?.textContent ?? '');
+                const gradeEl = row.cells[2]?.querySelector('input');
+                if (id && gradeEl && id in csvMap) gradeEl.value = csvMap[id];
+            });
+            batchUpBtn.disabled = false;
+            batchUpBtn.style.cssText = BTN_BASE;
+        };
+
+        downloadBtn.onclick = () => {
+            const groupEl   = document.querySelector(SEL.group);
+            const gLabel    = groupEl?.options[groupEl.selectedIndex]?.text?.trim() ?? 'group';
+            downloadCSV(
+                ['Name,Group,Grade', ...rowsToCsvLines(getRows(), gLabel)],
+                `${gLabel}-${getEvalLabel()}.csv`
+            );
+        };
+
+        batchDlBtn.onclick = async () => {
+            const groups = getGroupOptions();
+            if (!groups?.length) { showError(toolbar, 'Group dropdown not found or empty.'); return; }
+            const evalId = resolveEvalId();
+            if (!evalId) { showError(toolbar, 'Could not determine Evaluation Method. Select an eval first.'); return; }
+            batchDlBtn.disabled = true;
+            await batchDownload(groups, evalId, getEvalLabel(), toolbar);
+            batchDlBtn.disabled = false;
+        };
+
+        batchUpBtn.onclick = async () => {
+            if (!csvMap) return;
+            const groups = getGroupOptions();
+            if (!groups?.length) { showError(toolbar, 'Group dropdown not found or empty.'); return; }
+            const evalId = resolveEvalId();
+            if (!evalId) { showError(toolbar, 'Could not determine Evaluation Method. Select an eval first.'); return; }
+            batchUpBtn.disabled = true;
+            await batchUpload(groups, evalId, csvMap, toolbar);
+            batchUpBtn.disabled = false;
+        };
+
+        const btnRow = document.createElement('div');
+        btnRow.style.cssText = 'display:flex;align-items:center;flex-wrap:wrap;gap:8px;';
+        btnRow.append(uploadBtn, fileInput, downloadBtn, batchDlBtn, batchUpBtn);
+        toolbar.appendChild(btnRow);
+
+        table.insertAdjacentElement('afterend', toolbar);
+    }
+
+    // ── Entry point ──────────────────────────────────────────────────────────
+
+    function init() {
+        if (location.pathname !== '/GIUb/EXT/ManageUploadedGrades_m.aspx') return;
+        const table = document.getElementById('data');
+        if (table?.tagName === 'TABLE') injectToolbar(table);
+    }
+
+    init();
+
 })();
+
