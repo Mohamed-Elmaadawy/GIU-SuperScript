@@ -178,9 +178,9 @@
         wrapper.querySelector('#giu-same-msg').addEventListener('change', function () {
             if (this.checked) {
                 wrapper.querySelectorAll('.giu-per-group-fields').forEach(el => el.remove());
-                getEl('giu-shared-fields').style.display = '';
+                wrapper.querySelector('#giu-shared-fields').style.display = '';
             } else {
-                getEl('giu-shared-fields').style.display = 'none';
+                wrapper.querySelector('#giu-shared-fields').style.display = 'none';
                 wrapper.querySelectorAll('.giu-group-row').forEach(row => {
                     if (row.querySelector('.giu-per-group-fields')) return;
                     const lbl = row.querySelector('label').textContent.trim();
