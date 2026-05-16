@@ -10,6 +10,129 @@
 // ==/UserScript==
 
 
+// ── Style injection ──────────────────────────────────────────────────────────
+
+function injectGradeStyles() {
+    if (document.getElementById('gius-mgg-styles')) return;
+    const style = document.createElement('style');
+    style.id = 'gius-mgg-styles';
+    style.textContent = `
+        @keyframes giusMGGSlide {
+            from { opacity: 0; transform: translateY(-14px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes giusMGGFadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+        .gmgg-card {
+            background: #fff;
+            border-radius: 6px;
+            box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+            margin-bottom: 16px;
+            margin-top: 26px;
+            animation: giusMGGSlide 0.32s cubic-bezier(0.25,0.46,0.45,0.94);
+            overflow: visible;
+            font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+        }
+        .gmgg-card-header {
+            border-radius: 3px;
+            padding: 13px 18px;
+            margin: -16px 15px 0;
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(60deg, #1B59C6, #2d6fe0);
+            box-shadow: 0 4px 20px 0 rgba(0,0,0,0.14), 0 7px 10px -5px rgba(27,89,198,0.4);
+        }
+        .gmgg-card-title {
+            color: #fff;
+            font-size: 0.92rem;
+            font-weight: 600;
+            margin: 0 0 2px;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .gmgg-card-category {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.76rem;
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .gmgg-card-body {
+            padding: 22px 18px 14px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .gmgg-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 9px 18px;
+            font-size: 12.5px;
+            font-weight: 700;
+            font-family: 'Open Sans', sans-serif;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.22s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            white-space: nowrap;
+            outline: none;
+        }
+        .gmgg-btn:disabled {
+            opacity: 0.44;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+        .gmgg-btn-upload {
+            background: #1B59C6;
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(27,89,198,0.3);
+        }
+        .gmgg-btn-upload:not(:disabled):hover {
+            background: #1448a8;
+            box-shadow: 0 4px 14px rgba(27,89,198,0.46);
+            transform: translateY(-1px);
+        }
+        .gmgg-btn-upload:not(:disabled):active { transform: translateY(0); }
+        .gmgg-btn-download {
+            background: #43a047;
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(67,160,71,0.3);
+        }
+        .gmgg-btn-download:not(:disabled):hover {
+            background: #2e7d32;
+            box-shadow: 0 4px 14px rgba(67,160,71,0.46);
+            transform: translateY(-1px);
+        }
+        .gmgg-btn-download:not(:disabled):active { transform: translateY(0); }
+        .gmgg-feedback {
+            font-size: 12.5px;
+            font-family: 'Open Sans', sans-serif;
+            padding: 6px 12px;
+            border-radius: 4px;
+            animation: giusMGGFadeIn 0.25s ease;
+        }
+        .gmgg-feedback-success {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border-left: 3px solid #43a047;
+        }
+        .gmgg-feedback-error {
+            background: #fff5f5;
+            color: #c62828;
+            border-left: 3px solid #e53935;
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+
 function waitForElement(selector, callback, timeout = 10000) {
     const existing = document.querySelector(selector);
     if (existing) { callback(existing); return; }
@@ -38,12 +161,12 @@ function readMainCSVFile(file, index = -1) {
                 const name = row[0];
                 const grade = (index === -1) ? row[row.length - 1] : row[index] ?? "";
 
-                if (index === -1 && !name.match(/^\(\d+\)/)) return; // skip non-student rows
+                if (index === -1 && !name.match(/^\(\d+\)/)) return;
 
                 if (grade !== "" && !isNaN(grade)) {
                     outputArray.push(Number(grade));
                 } else {
-                    outputArray.push(0); // empty grade → 0
+                    outputArray.push(0);
                 }
             });
 
@@ -55,42 +178,41 @@ function readMainCSVFile(file, index = -1) {
     });
 }
 
+// ── UI ────────────────────────────────────────────────────────────────────────
 
 function createGradeButtons(table) {
+    injectGradeStyles();
 
-    const container = document.createElement("div");
-    container.style.cssText = `
-        margin-bottom: 15px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    `;
-
-    // ===== Upload Button =====
-    const uploadBtn = document.createElement("button");
-    uploadBtn.type = "button";
-    uploadBtn.textContent = "📄 Upload Grades CSV";
-    uploadBtn.style.cssText = `
-        padding: 8px 14px;
-        background-color: #0d6efd;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    `;
+    const card = document.createElement("div");
+    card.className = "gmgg-card";
 
     const fileInput = document.createElement("input");
     fileInput.type = "file";
     fileInput.accept = ".csv";
     fileInput.style.display = "none";
 
-    uploadBtn.onclick = () => fileInput.click();
+    const uploadBtn   = document.createElement("button");
+    uploadBtn.type    = "button";
+    uploadBtn.textContent = "📄 Upload Grades CSV";
+    uploadBtn.className   = "gmgg-btn gmgg-btn-upload";
 
-    // ===== Download Button =====
-    const downloadBtn = document.createElement("button");
-    downloadBtn.type = "button";
-    downloadBtn.textContent = "📄 Download Grades CSV";
-    downloadBtn.style.cssText = uploadBtn.style.cssText;
+    const downloadBtn   = document.createElement("button");
+    downloadBtn.type    = "button";
+    downloadBtn.textContent = "⬇ Download Grades CSV";
+    downloadBtn.className   = "gmgg-btn gmgg-btn-download";
+
+    let feedbackEl = null;
+
+    function showFeedback(msg, type = 'success') {
+        if (feedbackEl) feedbackEl.remove();
+        feedbackEl = document.createElement('span');
+        feedbackEl.className = `gmgg-feedback gmgg-feedback-${type}`;
+        feedbackEl.textContent = msg;
+        body.appendChild(feedbackEl);
+        setTimeout(() => { if (feedbackEl) { feedbackEl.remove(); feedbackEl = null; } }, 4000);
+    }
+
+    uploadBtn.onclick = () => fileInput.click();
 
     downloadBtn.onclick = () => {
         const rows = document.querySelectorAll("#Table1 tbody tr");
@@ -121,14 +243,8 @@ function createGradeButtons(table) {
         a.click();
 
         URL.revokeObjectURL(url);
+        showFeedback('✓ CSV downloaded successfully');
     };
-
-    container.appendChild(uploadBtn);
-    container.appendChild(fileInput);
-    container.appendChild(downloadBtn);
-
-    const labelEl = document.getElementById("MainContent_crntLbl");
-    (labelEl ?? table).insertAdjacentElement("afterend", container);
 
     fileInput.addEventListener("change", async () => {
         const file = fileInput.files[0];
@@ -138,13 +254,32 @@ function createGradeButtons(table) {
         console.log(data);
 
         let dataIndex = 0;
+        let applied = 0;
         document.querySelectorAll("#Table1 tbody tr").forEach((row, index) => {
             if (index === 0) return;
             const input = row.cells[2]?.querySelector("input");
             if (!input) return;
             input.value = data[dataIndex++];
+            applied++;
         });
+
+        showFeedback(`✓ Grades applied to ${applied} student(s)`);
     });
+
+    card.innerHTML = `
+        <div class="gmgg-card-header">
+            <h4 class="gmgg-card-title">📋 Group Grades</h4>
+            <p class="gmgg-card-category">Upload or download grades for this tutorial group</p>
+        </div>
+    `;
+
+    const body = document.createElement('div');
+    body.className = 'gmgg-card-body';
+    body.append(uploadBtn, fileInput, downloadBtn);
+    card.appendChild(body);
+
+    const labelEl = document.getElementById("MainContent_crntLbl");
+    (labelEl ?? table).insertAdjacentElement("afterend", card);
 }
 
 
