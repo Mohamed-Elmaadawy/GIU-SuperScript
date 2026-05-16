@@ -30,7 +30,7 @@
         style.id = 'gius-upload-styles';
         style.textContent = `
             @keyframes giusUGSlideDown {
-                from { opacity: 0; transform: translateY(-16px); }
+                from { opacity: 0; transform: translateY(-14px); }
                 to   { opacity: 1; transform: translateY(0); }
             }
             @keyframes giusUGFadeIn {
@@ -40,50 +40,47 @@
             @keyframes giusUGSpin {
                 to { transform: rotate(360deg); }
             }
-            @keyframes giusUGPulse {
-                0%, 100% { opacity: 1; }
-                50%       { opacity: 0.55; }
-            }
+
             .giug-card {
-                background: #fff;
+                background: #ffffff;
+                border: 1px solid #eeeeee;
                 border-radius: 6px;
-                box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
-                margin-bottom: 16px;
-                margin-top: 28px;
-                animation: giusUGSlideDown 0.32s cubic-bezier(0.25,0.46,0.45,0.94);
-                overflow: visible;
-                font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-            }
-            .giug-card-header {
-                border-radius: 3px;
-                padding: 14px 18px;
-                margin: -18px 15px 0;
+                box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
                 position: relative;
+                overflow: hidden;
+                margin-bottom: 16px;
+                margin-top: 20px;
+                animation: giusUGSlideDown 0.38s cubic-bezier(0.25,0.46,0.45,0.94);
+                font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+            }
+            .giug-card::before {
+                content: "";
+                position: absolute;
+                top: 0; left: 0;
+                width: 100%; height: 3px;
+                background: #ffc107;
                 z-index: 1;
             }
-            .giug-hdr-blue {
-                background: linear-gradient(60deg, #1B59C6, #2d6fe0);
-                box-shadow: 0 4px 20px 0 rgba(0,0,0,0.14), 0 7px 10px -5px rgba(27,89,198,0.4);
-            }
-            .giug-hdr-green {
-                background: linear-gradient(60deg, #43a047, #2e7d32);
-                box-shadow: 0 4px 20px 0 rgba(0,0,0,0.14), 0 7px 10px -5px rgba(67,160,71,0.4);
-            }
-            .giug-card-title {
+            .giug-card-header {
+                background: #272c33;
                 color: #fff;
-                font-size: 0.95rem;
-                font-weight: 600;
-                margin: 0 0 2px;
-                font-family: 'Open Sans', sans-serif;
+                padding: 10px 14px;
+                border-bottom: 2px solid #ffc107;
+            }
+            .giug-hdr-blue, .giug-hdr-green {}
+            .giug-card-title {
+                margin: 0;
+                font-size: 14px;
+                font-weight: 700;
+                color: #fff;
             }
             .giug-card-category {
-                color: rgba(255,255,255,0.8);
-                font-size: 0.78rem;
-                margin: 0;
-                font-family: 'Open Sans', sans-serif;
+                margin: 3px 0 0;
+                font-size: 12px;
+                color: rgba(255,255,255,0.7);
             }
             .giug-card-body {
-                padding: 24px 18px 16px;
+                padding: 14px 16px;
             }
             .giug-btn-row {
                 display: flex;
@@ -92,79 +89,76 @@
                 gap: 8px;
             }
             .giug-select {
-                padding: 8px 12px;
-                font-size: 13.5px;
+                height: 32px;
+                padding: 4px 8px;
+                font-size: 13px;
                 font-family: 'Open Sans', sans-serif;
-                color: #3C4858;
+                color: #111827;
                 background: #fff;
-                border: 1px solid #ced4da;
-                border-radius: 4px;
+                border: 1px solid #9ca3af;
+                border-radius: 6px;
                 cursor: pointer;
                 max-width: 320px;
-                transition: border-color 0.2s ease, box-shadow 0.2s ease;
                 outline: none;
+                transition: border-color 0.2s ease;
             }
             .giug-select:focus {
+                outline: 2px solid #60a5fa;
+                outline-offset: 1px;
                 border-color: #1B59C6;
-                box-shadow: 0 0 0 3px rgba(27,89,198,0.13);
             }
             .giug-btn {
+                height: 32px;
+                padding: 0 14px;
+                border-radius: 6px;
+                font-size: 13px;
+                font-weight: 700;
+                cursor: pointer;
+                border: 1px solid transparent;
+                transition: all 0.2s ease;
                 display: inline-flex;
                 align-items: center;
-                justify-content: center;
-                gap: 6px;
-                padding: 8px 16px;
-                font-size: 12.5px;
-                font-weight: 700;
-                font-family: 'Open Sans', sans-serif;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-                transition: all 0.22s ease;
-                text-transform: uppercase;
-                letter-spacing: 0.4px;
+                gap: 5px;
                 white-space: nowrap;
-                outline: none;
+                font-family: 'Open Sans', Arial, sans-serif;
             }
             .giug-btn:disabled {
-                opacity: 0.45;
+                opacity: 0.5;
                 cursor: not-allowed;
                 transform: none !important;
                 box-shadow: none !important;
             }
             .giug-btn-primary {
                 background: #1B59C6;
+                border-color: #1648a8;
                 color: #fff;
-                box-shadow: 0 2px 8px rgba(27,89,198,0.3);
             }
             .giug-btn-primary:not(:disabled):hover {
-                background: #1448a8;
-                box-shadow: 0 4px 14px rgba(27,89,198,0.46);
+                background: #1648a8;
                 transform: translateY(-1px);
+                box-shadow: 0 3px 10px rgba(27,89,198,0.35);
             }
-            .giug-btn-primary:not(:disabled):active { transform: translateY(0); }
             .giug-btn-success {
-                background: #43a047;
-                color: #fff;
-                box-shadow: 0 2px 8px rgba(67,160,71,0.3);
+                background: #fff;
+                border-color: #d1d5db;
+                color: #374151;
             }
             .giug-btn-success:not(:disabled):hover {
-                background: #2e7d32;
-                box-shadow: 0 4px 14px rgba(67,160,71,0.46);
-                transform: translateY(-1px);
+                background: #f9fafb;
+                border-color: #9ca3af;
             }
             .giug-btn-outline {
-                background: transparent;
-                color: #1B59C6;
-                border: 1.5px solid #1B59C6;
+                background: #fff;
+                border-color: #d1d5db;
+                color: #374151;
             }
             .giug-btn-outline:not(:disabled):hover {
-                background: rgba(27,89,198,0.07);
-                transform: translateY(-1px);
+                background: #f9fafb;
+                border-color: #9ca3af;
             }
             .giug-alert {
-                padding: 9px 13px;
-                border-radius: 4px;
+                padding: 8px 10px;
+                border-radius: 6px;
                 font-size: 13px;
                 font-family: 'Open Sans', sans-serif;
                 margin: 8px 0 0;
@@ -172,22 +166,23 @@
                 display: flex;
                 align-items: flex-start;
                 gap: 8px;
+                border: 1px solid #d1d5db;
             }
             .giug-alert-error {
-                background: #fff5f5;
-                border-left: 3px solid #e53935;
-                color: #c62828;
+                background: #fee2e2;
+                border-color: #fca5a5;
+                color: #991b1b;
             }
             .giug-alert-info {
-                background: #e8f4fd;
-                border-left: 3px solid #1B59C6;
-                color: #1a237e;
+                background: #e5e7eb;
+                border-color: #d1d5db;
+                color: #374151;
             }
             .giug-spinner {
                 display: inline-block;
                 width: 12px;
                 height: 12px;
-                border: 2px solid rgba(26,35,126,0.25);
+                border: 2px solid rgba(55,65,81,0.25);
                 border-top-color: #1B59C6;
                 border-radius: 50%;
                 animation: giusUGSpin 0.7s linear infinite;
@@ -196,76 +191,71 @@
             }
             .giug-stats-section {
                 margin-top: 14px;
-                border-top: 1px solid #eeeeee;
-                padding-top: 14px;
+                border-top: 1px solid #d1d5db;
+                padding-top: 12px;
                 animation: giusUGFadeIn 0.3s ease;
             }
             .giug-stats-label {
-                font-size: 10.5px;
+                font-size: 11px;
                 font-weight: 700;
-                color: #9e9e9e;
+                color: #6b7280;
                 text-transform: uppercase;
-                letter-spacing: 0.8px;
+                letter-spacing: 0.6px;
                 margin-bottom: 8px;
                 font-family: 'Open Sans', sans-serif;
             }
             .giug-stats-grid {
                 display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 8px;
+                grid-template-columns: 1fr 1fr;
+                gap: 6px;
                 margin-bottom: 6px;
             }
             .giug-stat {
-                background: #f1f2f7;
-                border-radius: 6px;
-                padding: 10px 6px;
-                text-align: center;
                 display: flex;
-                flex-direction: column;
+                justify-content: space-between;
                 align-items: center;
-                gap: 3px;
+                padding: 8px 10px;
+                background: #e5e7eb;
+                border: 1px solid #d1d5db;
+                border-radius: 6px;
+                font-size: 13px;
             }
             .giug-stat-val {
-                font-size: 18px;
                 font-weight: 700;
-                color: #1B59C6;
+                color: #111827;
                 font-family: 'Open Sans', sans-serif;
-                line-height: 1;
             }
             .giug-stat-key {
-                font-size: 10px;
                 font-weight: 600;
-                color: #9e9e9e;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
+                color: #374151;
                 font-family: 'Open Sans', sans-serif;
             }
             .giug-stats-table {
                 width: 100%;
                 border-collapse: collapse;
-                font-size: 12.5px;
+                font-size: 13px;
                 font-family: 'Open Sans', sans-serif;
             }
             .giug-stats-table th {
                 text-align: left;
-                padding: 6px 10px;
-                background: #f1f2f7;
+                padding: 8px 10px;
+                background: #1f2937;
+                color: #ffffff;
                 font-weight: 700;
-                color: #555;
-                border-bottom: 2px solid #eeeeee;
                 font-size: 11px;
                 text-transform: uppercase;
                 letter-spacing: 0.5px;
             }
             .giug-stats-table td {
-                padding: 6px 10px;
-                border-bottom: 1px solid #f5f5f5;
-                color: #3C4858;
+                padding: 7px 10px;
+                border-bottom: 1px solid #d1d5db;
+                background: #f9fafb;
+                color: #374151;
             }
             .giug-stats-table tr:last-child td { border-bottom: none; }
             .giug-stat-num {
                 font-weight: 700;
-                color: #1B59C6;
+                color: #111827;
             }
         `;
         document.head.appendChild(style);
@@ -333,12 +323,12 @@
         const section = document.createElement('div');
         section.className = 'giug-stats-section';
         section.innerHTML = `
-            <div class="giug-stats-label">Grade Statistics (${stats.count} students)</div>
+            <div class="giug-stats-label">Grade Statistics — ${stats.count} students</div>
             <div class="giug-stats-grid">
-                <div class="giug-stat"><span class="giug-stat-val">${stats.min}</span><span class="giug-stat-key">Min</span></div>
-                <div class="giug-stat"><span class="giug-stat-val">${stats.max}</span><span class="giug-stat-key">Max</span></div>
-                <div class="giug-stat"><span class="giug-stat-val">${stats.avg}</span><span class="giug-stat-key">Avg</span></div>
-                <div class="giug-stat"><span class="giug-stat-val">${stats.range}</span><span class="giug-stat-key">Range</span></div>
+                <div class="giug-stat"><span class="giug-stat-key">Min</span><span class="giug-stat-val">${stats.min}</span></div>
+                <div class="giug-stat"><span class="giug-stat-key">Max</span><span class="giug-stat-val">${stats.max}</span></div>
+                <div class="giug-stat"><span class="giug-stat-key">Avg</span><span class="giug-stat-val">${stats.avg}</span></div>
+                <div class="giug-stat"><span class="giug-stat-key">Range</span><span class="giug-stat-val">${stats.range}</span></div>
             </div>
         `;
         card.querySelector('.giug-card-body').appendChild(section);
