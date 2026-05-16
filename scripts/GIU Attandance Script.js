@@ -1239,24 +1239,27 @@
                         --giu-color-border: #d1d5db;
                         --giu-color-surface: #f3f4f6;
                         --giu-color-accent: #ffc107;
-                        --giu-color-primary: #2563eb;
+                        --giu-color-primary: #1B59C6;
                         --giu-color-success: #16a34a;
                         --giu-color-warn: #d97706;
                         --giu-color-danger: #dc2626;
                         margin: 14px auto 18px;
                         max-width: 1500px;
-                        font-family: Arial, Helvetica, sans-serif;
+                        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
                         color: #111827;
+                        animation: giusATSlideDown 0.38s cubic-bezier(0.25,0.46,0.45,0.94);
                     }
 
                     .giu-config-panel,
                     .giu-summary-panel {
-                        background: #f3f4f6;
-                        border: 1px solid #d1d5db;
+                        background: #ffffff;
+                        border: 1px solid #eeeeee;
                         border-radius: 6px;
                         padding: 12px;
                         position: relative;
                         margin-bottom: 14px;
+                        box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
+                        animation: giusATFadeIn 0.3s ease;
                     }
 
                     .giu-config-panel::before,
@@ -1386,10 +1389,13 @@
                         font-size: 13px;
                         font-weight: 700;
                         cursor: pointer;
+                        transition: all 0.2s ease;
                     }
 
                     .giu-add-holiday-btn:hover {
                         background: #f59e0b;
+                        transform: translateY(-1px);
+                        box-shadow: 0 3px 10px rgba(255,193,7,0.4);
                     }
 
                     .giu-table-tools {
@@ -1550,13 +1556,18 @@
                     }
 
                     .giu-summary-card {
-                        background: #f9fafb;
-                        border: 1px solid #d1d5db;
+                        background: #ffffff;
+                        border: 1px solid #eeeeee;
                         border-radius: 6px;
                         overflow: hidden;
                         display: flex;
                         flex-direction: column;
-                        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.10);
+                        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+                        transition: box-shadow 0.2s ease;
+                    }
+
+                    .giu-summary-card:hover {
+                        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
                     }
 
                     .giu-summary-card-header {
@@ -1742,7 +1753,7 @@
                         font-size: 12px;
                         color: #1e40af;
                         background: #eff6ff;
-                        border-left: 3px solid #3b82f6;
+                        border-left: 3px solid #1B59C6;
                         border-radius: 6px;
                         padding: 8px 10px;
                         line-height: 1.5;
@@ -1883,17 +1894,20 @@
                     .giu-save-exam-btn {
                         height: 32px;
                         padding: 0 12px;
-                        border: 1px solid #1d4ed8;
-                        background: #2563eb;
+                        border: 1px solid #1648a8;
+                        background: #1B59C6;
                         color: #ffffff;
                         border-radius: 6px;
                         font-size: 13px;
                         font-weight: 700;
                         cursor: pointer;
+                        transition: all 0.2s ease;
                     }
 
                     .giu-save-exam-btn:hover {
-                        background: #1d4ed8;
+                        background: #1648a8;
+                        transform: translateY(-1px);
+                        box-shadow: 0 4px 10px rgba(27,89,198,0.35);
                     }
 
                     .giu-clear-exam-btn {
@@ -2085,17 +2099,20 @@
                     .giu-add-override-btn {
                         height: 32px;
                         padding: 0 12px;
-                        border: 1px solid #2563eb;
-                        background: #3b82f6;
+                        border: 1px solid #1648a8;
+                        background: #1B59C6;
                         color: #ffffff;
                         border-radius: 6px;
                         font-size: 13px;
                         font-weight: 700;
                         cursor: pointer;
+                        transition: all 0.2s ease;
                     }
 
                     .giu-add-override-btn:hover {
-                        background: #2563eb;
+                        background: #1648a8;
+                        transform: translateY(-1px);
+                        box-shadow: 0 4px 10px rgba(27,89,198,0.35);
                     }
 
                     .giu-comp-balance-box {
@@ -2270,7 +2287,7 @@
 
                     .giu-undo-btn-overrides:hover {
                         background: #dbeafe;
-                        border-color: #3b82f6;
+                        border-color: #1B59C6;
                     }
 
                     .giu-undo-btn-compensation {
@@ -2487,14 +2504,15 @@
                     }
 
                     .giu-guide-btn-primary {
-                        border-color: #0369a1;
-                        background: linear-gradient(90deg, #0ea5e9, #0284c7);
+                        border-color: #1648a8;
+                        background: linear-gradient(60deg, #1B59C6, #2d6fe0);
                         color: #ffffff;
                     }
 
                     .giu-guide-btn-primary:hover {
-                        background: linear-gradient(90deg, #0284c7, #0369a1);
-                        border-color: #0369a1;
+                        background: linear-gradient(60deg, #1648a8, #1B59C6);
+                        border-color: #1648a8;
+                        box-shadow: 0 4px 10px rgba(27,89,198,0.35);
                     }
 
                     .giu-guide-btn-ghost {
@@ -2556,6 +2574,16 @@
                         .giu-guide-right {
                             justify-content: space-between;
                         }
+                    }
+
+                    @keyframes giusATSlideDown {
+                        from { opacity: 0; transform: translateY(-14px); }
+                        to   { opacity: 1; transform: translateY(0); }
+                    }
+
+                    @keyframes giusATFadeIn {
+                        from { opacity: 0; transform: translateY(6px); }
+                        to   { opacity: 1; transform: translateY(0); }
                     }
                 `;
                 document.head.appendChild(style);
