@@ -194,6 +194,79 @@
                 flex-shrink: 0;
                 margin-top: 2px;
             }
+            .giug-stats-section {
+                margin-top: 14px;
+                border-top: 1px solid #eeeeee;
+                padding-top: 14px;
+                animation: giusUGFadeIn 0.3s ease;
+            }
+            .giug-stats-label {
+                font-size: 10.5px;
+                font-weight: 700;
+                color: #9e9e9e;
+                text-transform: uppercase;
+                letter-spacing: 0.8px;
+                margin-bottom: 8px;
+                font-family: 'Open Sans', sans-serif;
+            }
+            .giug-stats-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 8px;
+                margin-bottom: 6px;
+            }
+            .giug-stat {
+                background: #f1f2f7;
+                border-radius: 6px;
+                padding: 10px 6px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 3px;
+            }
+            .giug-stat-val {
+                font-size: 18px;
+                font-weight: 700;
+                color: #1B59C6;
+                font-family: 'Open Sans', sans-serif;
+                line-height: 1;
+            }
+            .giug-stat-key {
+                font-size: 10px;
+                font-weight: 600;
+                color: #9e9e9e;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                font-family: 'Open Sans', sans-serif;
+            }
+            .giug-stats-table {
+                width: 100%;
+                border-collapse: collapse;
+                font-size: 12.5px;
+                font-family: 'Open Sans', sans-serif;
+            }
+            .giug-stats-table th {
+                text-align: left;
+                padding: 6px 10px;
+                background: #f1f2f7;
+                font-weight: 700;
+                color: #555;
+                border-bottom: 2px solid #eeeeee;
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+            .giug-stats-table td {
+                padding: 6px 10px;
+                border-bottom: 1px solid #f5f5f5;
+                color: #3C4858;
+            }
+            .giug-stats-table tr:last-child td { border-bottom: none; }
+            .giug-stat-num {
+                font-weight: 700;
+                color: #1B59C6;
+            }
         `;
         document.head.appendChild(style);
     }
@@ -216,7 +289,7 @@
         container.appendChild(d);
     }
 
-    function showInfo(container, msg) {
+    function showInfo(container, msg, spinning = true) {
         let el = container.querySelector('.gius-progress-info');
         if (!el) {
             el = document.createElement('div');
@@ -228,11 +301,73 @@
             el.appendChild(text);
             container.appendChild(el);
         }
+        const spinnerEl = el.querySelector('.giug-spinner');
+        if (spinnerEl) spinnerEl.style.display = spinning ? '' : 'none';
         el.querySelector('span:last-child').textContent = msg;
     }
 
     function clearProgress(container) {
         container.querySelector('.gius-progress-info')?.remove();
+    }
+
+    // ── Stats helpers ────────────────────────────────────────────────────────
+
+    function computeStats(values) {
+        const nums = values.filter(v => v !== '' && Number.isFinite(+v)).map(Number);
+        if (!nums.length) return null;
+        const min = Math.min(...nums);
+        const max = Math.max(...nums);
+        const avg = nums.reduce((a, b) => a + b, 0) / nums.length;
+        return {
+            min:   min.toFixed(1),
+            max:   max.toFixed(1),
+            avg:   avg.toFixed(1),
+            range: (max - min).toFixed(1),
+            count: nums.length
+        };
+    }
+
+    function renderGroupStats(card, stats) {
+        card.querySelector('.giug-stats-section')?.remove();
+        if (!stats || stats.count < 2) return;
+        const section = document.createElement('div');
+        section.className = 'giug-stats-section';
+        section.innerHTML = `
+            <div class="giug-stats-label">Grade Statistics (${stats.count} students)</div>
+            <div class="giug-stats-grid">
+                <div class="giug-stat"><span class="giug-stat-val">${stats.min}</span><span class="giug-stat-key">Min</span></div>
+                <div class="giug-stat"><span class="giug-stat-val">${stats.max}</span><span class="giug-stat-key">Max</span></div>
+                <div class="giug-stat"><span class="giug-stat-val">${stats.avg}</span><span class="giug-stat-key">Avg</span></div>
+                <div class="giug-stat"><span class="giug-stat-val">${stats.range}</span><span class="giug-stat-key">Range</span></div>
+            </div>
+        `;
+        card.querySelector('.giug-card-body').appendChild(section);
+    }
+
+    function renderBatchStats(card, groupStats) {
+        card.querySelector('.giug-stats-section')?.remove();
+        const withStats = groupStats.filter(g => g.stats);
+        if (!withStats.length) return;
+        const rows = withStats.map(g => `
+            <tr>
+                <td>${g.label}</td>
+                <td class="giug-stat-num">${g.stats.min}</td>
+                <td class="giug-stat-num">${g.stats.max}</td>
+                <td class="giug-stat-num">${g.stats.avg}</td>
+                <td class="giug-stat-num">${g.stats.range}</td>
+                <td style="color:#9e9e9e;font-size:11px;">${g.stats.count}</td>
+            </tr>
+        `).join('');
+        const section = document.createElement('div');
+        section.className = 'giug-stats-section';
+        section.innerHTML = `
+            <div class="giug-stats-label">Per-Group Statistics</div>
+            <table class="giug-stats-table">
+                <thead><tr><th>Group</th><th>Min</th><th>Max</th><th>Avg</th><th>Range</th><th>n</th></tr></thead>
+                <tbody>${rows}</tbody>
+            </table>
+        `;
+        card.querySelector('.giug-card-body').appendChild(section);
     }
 
     // ── Row helpers ──────────────────────────────────────────────────────────
@@ -341,7 +476,8 @@
 
         if (!groups.length) { showError(toolbar, 'No groups found.'); return; }
 
-        const allLines = ['Name,Group,Grade'];
+        const allLines  = ['Name,Group,Grade'];
+        const groupStats = [];
         let errors = 0;
 
         for (let i = 0; i < groups.length; i++) {
@@ -367,18 +503,22 @@
                 if (!rows.length) throw new Error('no student rows found');
                 rowsToCsvLines(rows, group.label).forEach(l => allLines.push(l));
 
+                const grades = rows.map(row => row.cells[2]?.querySelector('input')?.value ?? '');
+                groupStats.push({ label: group.label, stats: computeStats(grades) });
+
             } catch (err) {
                 errors++;
+                groupStats.push({ label: group.label, stats: null });
                 showError(toolbar, `Group "${group.label}": ${err.message}`);
             }
         }
 
-        clearProgress(toolbar);
-
         if (allLines.length > 1) {
             downloadCSV(allLines, `All-Groups-${evalLabel}.csv`);
-            showInfo(toolbar, `Done — ${groups.length - errors} group(s) collected${errors ? `, ${errors} failed` : ''}.`);
+            showInfo(toolbar, `Done — ${groups.length - errors} group(s) collected${errors ? `, ${errors} failed` : ''}.`, false);
+            renderBatchStats(toolbar, groupStats);
         } else {
+            clearProgress(toolbar);
             showError(toolbar, 'No rows collected. All groups failed — check errors above.');
         }
     }
@@ -390,6 +530,7 @@
 
         if (!groups.length) { showError(toolbar, 'No groups found.'); return; }
 
+        const groupStats = [];
         let saved  = 0;
         let errors = 0;
 
@@ -432,15 +573,17 @@
 
                 await doPostBack(doc2Hidden, saveBtnEl.name, gradeOverrides);
 
+                groupStats.push({ label: group.label, stats: computeStats(Object.values(gradeOverrides)) });
                 saved++;
             } catch (err) {
                 errors++;
+                groupStats.push({ label: group.label, stats: null });
                 showError(toolbar, `Group "${group.label}": ${err.message}`);
             }
         }
 
-        clearProgress(toolbar);
-        showInfo(toolbar, `Done — ${saved} group(s) saved${errors ? `, ${errors} failed` : ''}.`);
+        showInfo(toolbar, `Done — ${saved} group(s) saved${errors ? `, ${errors} failed` : ''}.`, false);
+        renderBatchStats(toolbar, groupStats);
     }
 
     // ── State A toolbar: intercept eval dropdown + batch buttons ─────────────
@@ -565,6 +708,8 @@
                 const gradeEl = row.cells[2]?.querySelector('input');
                 if (id && gradeEl && id in csvMap) gradeEl.value = csvMap[id];
             });
+            const grades = getRows().map(row => row.cells[2]?.querySelector('input')?.value ?? '');
+            renderGroupStats(card, computeStats(grades));
         };
 
         downloadBtn.onclick = () => {
@@ -576,6 +721,8 @@
                 ['Name,Group,Grade', ...rowsToCsvLines(getRows(), gLabel)],
                 `${gLabel}-${eLabel}.csv`
             );
+            const grades = getRows().map(row => row.cells[2]?.querySelector('input')?.value ?? '');
+            renderGroupStats(card, computeStats(grades));
         };
 
         card.innerHTML = `
@@ -593,6 +740,9 @@
 
         const crntEl = document.querySelector(SEL.crntLbl);
         (crntEl ?? table).insertAdjacentElement('afterend', card);
+
+        const initialGrades = getRows().map(row => row.cells[2]?.querySelector('input')?.value ?? '');
+        renderGroupStats(card, computeStats(initialGrades));
     }
 
     // ── Entry point ──────────────────────────────────────────────────────────
