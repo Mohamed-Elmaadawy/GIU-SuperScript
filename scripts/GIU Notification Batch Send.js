@@ -49,7 +49,7 @@
         style.id = 'gius-notify-styles';
         style.textContent = `
             @keyframes giusSlideDown {
-                from { opacity: 0; transform: translateY(-18px); }
+                from { opacity: 0; transform: translateY(-14px); }
                 to   { opacity: 1; transform: translateY(0); }
             }
             @keyframes giusFadeIn {
@@ -71,76 +71,70 @@
                 from { opacity: 0; transform: translateX(-8px); }
                 to   { opacity: 1; transform: translateX(0); }
             }
+
             .gius-card {
-                background: #fff;
+                background: #ffffff;
+                border: 1px solid #eeeeee;
                 border-radius: 6px;
-                box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
-                margin-bottom: 20px;
-                margin-top: 30px;
-                animation: giusSlideDown 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
-                overflow: visible;
-                font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-            }
-            .gius-card-header {
-                border-radius: 3px;
-                padding: 15px 20px;
-                margin: -20px 15px 0;
+                box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
                 position: relative;
+                overflow: hidden;
+                margin-bottom: 20px;
+                margin-top: 20px;
+                animation: giusSlideDown 0.38s cubic-bezier(0.25,0.46,0.45,0.94);
+                font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+            }
+            .gius-card::before {
+                content: "";
+                position: absolute;
+                top: 0; left: 0;
+                width: 100%; height: 3px;
+                background: #ffc107;
                 z-index: 1;
             }
-            .gius-hdr-blue {
-                background: linear-gradient(60deg, #1B59C6, #2d6fe0);
-                box-shadow: 0 4px 20px 0 rgba(0,0,0,0.14), 0 7px 10px -5px rgba(27,89,198,0.4);
-            }
-            .gius-hdr-info {
-                background: linear-gradient(60deg, #26c6da, #00acc1);
-                box-shadow: 0 4px 20px 0 rgba(0,0,0,0.14), 0 7px 10px -5px rgba(0,188,212,0.4);
-            }
-            .gius-hdr-success {
-                background: linear-gradient(60deg, #66bb6a, #43a047);
-                box-shadow: 0 4px 20px 0 rgba(0,0,0,0.14), 0 7px 10px -5px rgba(76,175,80,0.4);
-            }
-            .gius-hdr-danger {
-                background: linear-gradient(60deg, #ef5350, #e53935);
-                box-shadow: 0 4px 20px 0 rgba(0,0,0,0.14), 0 7px 10px -5px rgba(244,67,54,0.4);
-            }
-            .gius-card-title {
+            .gius-card-header {
+                background: #272c33;
                 color: #fff;
-                font-size: 1rem;
-                font-weight: 600;
-                margin: 0 0 4px;
-                font-family: 'Open Sans', sans-serif;
+                padding: 10px 14px;
+                border-bottom: 2px solid #ffc107;
+            }
+            .gius-hdr-blue, .gius-hdr-info, .gius-hdr-success, .gius-hdr-danger {}
+            .gius-card-title {
+                margin: 0;
+                font-size: 14px;
+                font-weight: 700;
+                color: #fff;
                 display: flex;
                 align-items: center;
                 gap: 8px;
             }
             .gius-card-category {
-                color: rgba(255,255,255,0.82);
-                font-size: 0.8rem;
-                margin: 0;
-                font-family: 'Open Sans', sans-serif;
+                margin: 3px 0 0;
+                font-size: 12px;
+                color: rgba(255,255,255,0.7);
             }
             .gius-card-body {
-                padding: 28px 20px 18px;
+                padding: 14px 16px;
             }
+
             .gius-section-label {
                 display: block;
                 font-weight: 700;
                 font-size: 11px;
-                color: #9e9e9e;
-                margin-bottom: 7px;
-                font-family: 'Open Sans', sans-serif;
+                color: #6b7280;
+                margin-bottom: 6px;
                 text-transform: uppercase;
-                letter-spacing: 0.8px;
+                letter-spacing: 0.6px;
             }
+
             .gius-group-list {
                 max-height: 190px;
                 overflow-y: auto;
-                border: 1px solid #eeeeee;
-                border-radius: 4px;
-                background: #fafbfc;
+                border: 1px solid #d1d5db;
+                border-radius: 6px;
+                background: #f9fafb;
                 padding: 4px;
-                margin-bottom: 14px;
+                margin-bottom: 12px;
                 scrollbar-width: thin;
                 scrollbar-color: #1B59C6 #f1f2f7;
             }
@@ -150,16 +144,16 @@
             .gius-group-row {
                 padding: 5px 8px;
                 border-radius: 4px;
-                transition: background 0.18s ease;
+                transition: background 0.15s ease;
             }
-            .gius-group-row:hover { background: rgba(27,89,198,0.06); }
+            .gius-group-row:hover { background: #e5e7eb; }
             .gius-group-row label {
                 display: flex !important;
                 align-items: center;
                 gap: 8px;
                 cursor: pointer;
-                font-size: 13.5px;
-                color: #3C4858;
+                font-size: 13px;
+                color: #374151;
                 font-weight: normal !important;
                 margin: 0 !important;
                 user-select: none;
@@ -173,28 +167,27 @@
                 flex-shrink: 0;
             }
             .gius-empty-msg {
-                color: #9e9e9e;
+                color: #6b7280;
                 font-size: 13px;
                 padding: 14px 8px;
                 font-style: italic;
-                font-family: 'Open Sans', sans-serif;
                 text-align: center;
             }
+
             .gius-toolbar-row {
                 display: flex;
                 align-items: center;
                 flex-wrap: wrap;
-                gap: 10px;
-                margin-bottom: 14px;
+                gap: 8px;
+                margin-bottom: 12px;
             }
             .gius-toggle-label {
                 display: flex !important;
                 align-items: center;
                 gap: 7px;
                 font-size: 13px;
-                color: #555;
+                color: #374151;
                 cursor: pointer;
-                font-family: 'Open Sans', sans-serif;
                 font-weight: normal !important;
             }
             .gius-toggle-label input[type="checkbox"] {
@@ -202,149 +195,146 @@
                 width: 14px;
                 height: 14px;
             }
+
             .gius-divider {
                 height: 1px;
-                background: #eeeeee;
-                margin: 14px 0;
+                background: #d1d5db;
+                margin: 12px 0;
             }
+
             .gius-field-label {
                 display: block;
-                font-weight: 600;
+                font-weight: 700;
                 font-size: 12px;
-                color: #3C4858;
-                margin-bottom: 5px;
-                font-family: 'Open Sans', sans-serif;
+                color: #374151;
+                margin-bottom: 4px;
             }
             .gius-input {
                 display: block;
                 width: 100%;
                 max-width: 500px;
-                padding: 8px 12px;
-                font-size: 14px;
-                font-family: 'Open Sans', sans-serif;
-                color: #495057;
+                height: 32px;
+                padding: 4px 8px;
+                font-size: 13px;
+                color: #111827;
                 background: #fff;
-                border: 1px solid #ced4da;
-                border-radius: 4px;
-                transition: border-color 0.2s ease, box-shadow 0.2s ease;
+                border: 1px solid #9ca3af;
+                border-radius: 6px;
+                transition: border-color 0.2s ease;
                 box-sizing: border-box;
-                margin-bottom: 10px;
+                margin-bottom: 8px;
+                font-family: 'Open Sans', sans-serif;
             }
+            textarea.gius-input { height: auto; }
             .gius-input:focus {
-                outline: none;
+                outline: 2px solid #60a5fa;
+                outline-offset: 1px;
                 border-color: #1B59C6;
-                box-shadow: 0 0 0 3px rgba(27,89,198,0.14);
             }
+
             .gius-btn {
+                height: 32px;
+                padding: 0 14px;
+                border-radius: 6px;
+                font-size: 13px;
+                font-weight: 700;
+                cursor: pointer;
+                border: 1px solid transparent;
+                transition: all 0.2s ease;
                 display: inline-flex;
                 align-items: center;
-                justify-content: center;
-                gap: 6px;
-                padding: 8px 18px;
-                font-size: 12.5px;
-                font-weight: 700;
-                font-family: 'Open Sans', sans-serif;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-                transition: all 0.22s ease;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
+                gap: 5px;
                 white-space: nowrap;
-                outline: none;
+                font-family: 'Open Sans', Arial, sans-serif;
             }
             .gius-btn:disabled {
-                opacity: 0.48;
+                opacity: 0.5;
                 cursor: not-allowed;
                 transform: none !important;
                 box-shadow: none !important;
             }
             .gius-btn-primary {
                 background: #1B59C6;
+                border-color: #1648a8;
                 color: #fff;
-                box-shadow: 0 2px 8px rgba(27,89,198,0.32);
             }
             .gius-btn-primary:not(:disabled):hover {
-                background: #1448a8;
-                box-shadow: 0 4px 14px rgba(27,89,198,0.48);
+                background: #1648a8;
                 transform: translateY(-1px);
+                box-shadow: 0 3px 10px rgba(27,89,198,0.35);
             }
-            .gius-btn-primary:not(:disabled):active { transform: translateY(0); }
             .gius-btn-outline {
-                background: transparent;
-                color: #1B59C6;
-                border: 1.5px solid #1B59C6;
-                box-shadow: none;
+                background: #fff;
+                border-color: #d1d5db;
+                color: #374151;
             }
             .gius-btn-outline:not(:disabled):hover {
-                background: rgba(27,89,198,0.07);
-                transform: translateY(-1px);
+                background: #f9fafb;
+                border-color: #9ca3af;
             }
             .gius-btn-danger {
-                background: #e53935;
-                color: #fff;
-                box-shadow: 0 2px 8px rgba(229,57,53,0.32);
+                background: #fee2e2;
+                border-color: #dc2626;
+                color: #991b1b;
             }
             .gius-btn-danger:not(:disabled):hover {
-                background: #c62828;
-                box-shadow: 0 4px 14px rgba(229,57,53,0.46);
+                background: #fecaca;
                 transform: translateY(-1px);
             }
             .gius-btn-muted {
-                background: #f1f2f7;
-                color: #3C4858;
-                border: 1px solid #ddd;
-                box-shadow: none;
+                background: #f9fafb;
+                border-color: #d1d5db;
+                color: #374151;
             }
-            .gius-btn-muted:not(:disabled):hover {
-                background: #e4e6ef;
-                transform: translateY(-1px);
-            }
+            .gius-btn-muted:not(:disabled):hover { background: #e5e7eb; }
+
             .gius-progress-wrap {
-                background: #eeeeee;
-                border-radius: 20px;
+                background: #e5e7eb;
+                border-radius: 999px;
                 height: 8px;
                 overflow: hidden;
-                margin-bottom: 8px;
+                margin-bottom: 6px;
             }
             .gius-progress-bar {
                 height: 100%;
-                border-radius: 20px;
-                background: linear-gradient(90deg, #1B59C6, #26c6da);
+                border-radius: 999px;
+                background: #1B59C6;
                 animation: giusProgressFill 0.5s ease-out;
                 transition: width 0.45s ease;
             }
             .gius-progress-label {
-                font-size: 12.5px;
-                color: #6c757d;
-                margin-bottom: 14px;
-                font-family: 'Open Sans', sans-serif;
+                font-size: 12px;
+                color: #6b7280;
+                margin-bottom: 12px;
             }
+
             .gius-spinner {
                 display: inline-block;
                 width: 13px;
                 height: 13px;
-                border: 2px solid rgba(255,255,255,0.35);
+                border: 2px solid rgba(255,255,255,0.3);
                 border-top-color: #fff;
                 border-radius: 50%;
                 animation: giusSpin 0.7s linear infinite;
                 vertical-align: middle;
             }
-            .gius-result-list { margin: 6px 0 12px; }
+
+            .gius-result-list { margin: 6px 0 10px; }
             .gius-result-row {
                 display: flex;
                 align-items: center;
                 gap: 10px;
-                padding: 6px 4px;
+                padding: 7px 10px;
                 font-size: 13px;
-                font-family: 'Open Sans', sans-serif;
-                border-bottom: 1px solid #f5f5f5;
+                border-radius: 6px;
+                margin-bottom: 4px;
+                background: #e5e7eb;
+                border: 1px solid #d1d5db;
                 animation: giusRowIn 0.3s ease both;
             }
-            .gius-result-row:last-child { border-bottom: none; }
             .gius-result-icon {
-                width: 22px;
-                height: 22px;
+                width: 20px;
+                height: 20px;
                 border-radius: 50%;
                 display: flex;
                 align-items: center;
@@ -354,38 +344,40 @@
                 flex-shrink: 0;
                 animation: giusBounceIn 0.4s ease both;
             }
-            .gius-icon-sent     { background: #e8f5e9; color: #43a047; }
-            .gius-icon-failed   { background: #ffebee; color: #e53935; }
-            .gius-icon-cancelled{ background: #f5f5f5; color: #9e9e9e; }
-            .gius-result-name { color: #3C4858; font-weight: 500; flex: 1; }
-            .gius-result-info { color: #9e9e9e; font-size: 11.5px; }
+            .gius-icon-sent     { background: #bbf7d0; color: #065f46; }
+            .gius-icon-failed   { background: #fecaca; color: #7f1d1d; }
+            .gius-icon-cancelled{ background: #e5e7eb; color: #6b7280; }
+            .gius-result-name { color: #374151; font-weight: 600; flex: 1; }
+            .gius-result-info { color: #6b7280; font-size: 11.5px; }
+
             .gius-summary-header-meta {
                 margin-top: 8px;
                 display: flex;
-                gap: 18px;
+                gap: 14px;
                 flex-wrap: wrap;
             }
             .gius-stat-pill {
                 display: flex;
                 align-items: baseline;
                 gap: 4px;
-                font-family: 'Open Sans', sans-serif;
-                color: rgba(255,255,255,0.95);
+                color: rgba(255,255,255,0.9);
             }
             .gius-stat-pill .gius-num {
-                font-size: 22px;
+                font-size: 20px;
                 font-weight: 700;
                 line-height: 1;
             }
-            .gius-stat-pill .gius-lbl { font-size: 12px; opacity: 0.85; }
+            .gius-stat-pill .gius-lbl { font-size: 12px; opacity: 0.8; }
+
             .gius-per-group-fields {
-                margin: 6px 0 10px 26px;
-                animation: giusSlideDown 0.22s ease;
+                margin: 6px 0 8px 24px;
+                animation: giusFadeIn 0.22s ease;
             }
             .gius-per-group-fields .gius-input {
                 max-width: 460px;
-                margin-bottom: 6px;
+                margin-bottom: 5px;
             }
+
             .gius-filter-row {
                 display: flex;
                 align-items: center;
@@ -393,22 +385,23 @@
                 margin-bottom: 8px;
             }
             .gius-course-filter {
-                flex: 1;
-                max-width: 260px;
-                padding: 6px 10px;
+                height: 32px;
+                padding: 4px 8px;
                 font-size: 13px;
-                font-family: 'Open Sans', sans-serif;
-                border: 1px solid #ced4da;
-                border-radius: 4px;
-                color: #3C4858;
+                border: 1px solid #9ca3af;
+                border-radius: 6px;
+                color: #111827;
                 background: #fff;
                 cursor: pointer;
-                outline: none;
-                transition: border-color 0.2s ease, box-shadow 0.2s ease;
+                font-family: 'Open Sans', sans-serif;
+                flex: 1;
+                max-width: 260px;
+                transition: border-color 0.2s ease;
             }
             .gius-course-filter:focus {
+                outline: 2px solid #60a5fa;
+                outline-offset: 1px;
                 border-color: #1B59C6;
-                box-shadow: 0 0 0 3px rgba(27,89,198,0.12);
             }
         `;
         document.head.appendChild(style);
