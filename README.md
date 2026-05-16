@@ -201,6 +201,12 @@ https://portal.giu-uni.de/GIUb/INTStaff/ManageGroupGrade_m.aspx
 
 ---
 
+## Suggestions & Feedback
+
+For suggestions, bug reports, or feature requests, send an email to [mohamed.elmaadawy@giu-uni.de](mailto:mohamed.elmaadawy@giu-uni.de).
+
+---
+
 ## Authors
 
 | Script | Authors |
