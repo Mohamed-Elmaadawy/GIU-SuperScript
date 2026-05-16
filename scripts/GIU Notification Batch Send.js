@@ -36,6 +36,11 @@
             .replace(/'/g, '&#039;');
     }
 
+    function extractCourseCode(label) {
+        const parts = label.split(' - ');
+        return parts.length >= 2 ? parts[1].trim() : null;
+    }
+
     // ── Style injection ──────────────────────────────────────────────────────────
 
     function injectStyles() {
@@ -381,6 +386,30 @@
                 max-width: 460px;
                 margin-bottom: 6px;
             }
+            .gius-filter-row {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                margin-bottom: 8px;
+            }
+            .gius-course-filter {
+                flex: 1;
+                max-width: 260px;
+                padding: 6px 10px;
+                font-size: 13px;
+                font-family: 'Open Sans', sans-serif;
+                border: 1px solid #ced4da;
+                border-radius: 4px;
+                color: #3C4858;
+                background: #fff;
+                cursor: pointer;
+                outline: none;
+                transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            }
+            .gius-course-filter:focus {
+                border-color: #1B59C6;
+                box-shadow: 0 0 0 3px rgba(27,89,198,0.12);
+            }
         `;
         document.head.appendChild(style);
     }
@@ -557,8 +586,29 @@
         const spinner = card.querySelector('.gius-spinner');
         if (spinner) spinner.style.display = 'none';
 
+        // Course filter — only rendered when multiple courses are present
+        const courseCodes = [...new Set(groups.map(g => extractCourseCode(g.label)).filter(Boolean))];
+        if (courseCodes.length > 1) {
+            const groupListEl = card.querySelector('#giu-group-list');
+            const filterRow   = document.createElement('div');
+            filterRow.className = 'gius-filter-row';
+            filterRow.innerHTML = `
+                <span class="gius-section-label" style="margin:0;white-space:nowrap;">Course</span>
+                <select id="giu-course-filter" class="gius-course-filter">
+                    <option value="">All courses</option>
+                    ${courseCodes.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('')}
+                </select>
+            `;
+            groupListEl.parentNode.insertBefore(filterRow, groupListEl);
+        }
+
         card.querySelector('#giu-select-all').addEventListener('click', () => {
-            card.querySelectorAll('.giu-group-cb').forEach(cb => { cb.checked = true; });
+            card.querySelectorAll('.gius-group-row').forEach(row => {
+                if (row.style.display !== 'none') {
+                    const cb = row.querySelector('.giu-group-cb');
+                    if (cb) cb.checked = true;
+                }
+            });
             updateStartBtn();
         });
 
@@ -591,7 +641,8 @@
         card.querySelector('#giu-shared-subject').addEventListener('input', updateStartBtn);
 
         function updateStartBtn() {
-            const checked = card.querySelectorAll('.giu-group-cb:checked').length;
+            const checked = [...card.querySelectorAll('.giu-group-cb:checked')]
+                .filter(cb => cb.closest('.gius-group-row').style.display !== 'none').length;
             const sameMsg = card.querySelector('#giu-same-msg').checked;
             const subject = card.querySelector('#giu-shared-subject').value.trim();
             const btn     = card.querySelector('#giu-start-btn');
@@ -606,7 +657,8 @@
 
             const selectedGroups = [];
             card.querySelectorAll('.giu-group-cb:checked').forEach(cb => {
-                const row     = cb.closest('.gius-group-row');
+                const row = cb.closest('.gius-group-row');
+                if (row.style.display === 'none') return;
                 const subject = sameMsg ? null : (row.querySelector('.giu-pg-subject')?.value.trim() || null);
                 const body    = sameMsg ? null : (row.querySelector('.giu-pg-body')?.value.trim()    || null);
                 selectedGroups.push({
@@ -628,6 +680,20 @@
 
             location.reload();
         });
+
+        // Wire course filter
+        const courseFilterEl = card.querySelector('#giu-course-filter');
+        if (courseFilterEl) {
+            courseFilterEl.addEventListener('change', () => {
+                const code = courseFilterEl.value;
+                card.querySelectorAll('.gius-group-row').forEach(row => {
+                    if (!code) { row.style.display = ''; return; }
+                    const label   = row.querySelector('.giu-group-cb')?.dataset.label ?? '';
+                    row.style.display = extractCourseCode(label) === code ? '' : 'none';
+                });
+                updateStartBtn();
+            });
+        }
 
         const anchor = getInjectionAnchor();
         if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(card, anchor);
