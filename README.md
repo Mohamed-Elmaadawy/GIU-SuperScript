@@ -4,6 +4,12 @@ A collection of Tampermonkey userscripts that enhance the GIU staff portal at [p
 
 ---
 
+## Suggestions & Feedback
+
+For suggestions, bug reports, or feature requests, send an email to [mohamed.elmaadawy@giu-uni.de](mailto:mohamed.elmaadawy@giu-uni.de).
+
+---
+
 ## Installation
 
 ### Step 1 — Install Tampermonkey
@@ -198,12 +204,6 @@ https://portal.giu-uni.de/GIUb/INTStaff/ManageGroupGrade_m.aspx
 - Tampermonkey v4.x or later
 - Chrome, Edge, Brave, or Firefox
 - Active GIU staff portal session (must be logged in)
-
----
-
-## Suggestions & Feedback
-
-For suggestions, bug reports, or feature requests, send an email to [mohamed.elmaadawy@giu-uni.de](mailto:mohamed.elmaadawy@giu-uni.de).
 
 ---
 
