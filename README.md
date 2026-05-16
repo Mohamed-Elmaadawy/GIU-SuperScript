@@ -157,7 +157,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/ManageGroupGrade_m.aspx
 4. Click **Download CSV** to export current grades, or **Upload CSV** to fill grades from a file
 5. Statistics update automatically based on the values in the table
 
-> **Note:** Upload matches grades by row position. The order of rows in your CSV must match the order on the page.
+> **Note:** Upload matches by student ID `(XXXXXXXX)` prefix in the Name column — safe against row reordering. Students missing from the CSV keep their current grade value.
 
 ---
 
