@@ -61,6 +61,12 @@ function injectGradeStyles() {
             padding: 22px 18px 14px;
             display: flex;
             flex-direction: column;
+            gap: 12px;
+        }
+        .gmgg-btn-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
             gap: 10px;
         }
         .gmgg-btn {
@@ -80,7 +86,6 @@ function injectGradeStyles() {
             letter-spacing: 0.4px;
             white-space: nowrap;
             outline: none;
-            width: fit-content;
         }
         .gmgg-btn:disabled {
             opacity: 0.44;
@@ -357,9 +362,13 @@ function createGradeButtons(table) {
         </div>
     `;
 
+    const btnRow = document.createElement('div');
+    btnRow.className = 'gmgg-btn-row';
+    btnRow.append(uploadBtn, fileInput, downloadBtn);
+
     const body = document.createElement('div');
     body.className = 'gmgg-card-body';
-    body.append(uploadBtn, fileInput, downloadBtn);
+    body.appendChild(btnRow);
     card.appendChild(body);
 
     const labelEl = document.getElementById('MainContent_crntLbl');
@@ -377,8 +386,10 @@ try {
         let activeCard = null;
 
         function checkTableVisibility() {
-            const table   = document.querySelector('#Table1');
-            const visible = table?.tagName === 'TABLE' && table.offsetParent !== null;
+            const table     = document.querySelector('#Table1');
+            const rowCount  = table?.querySelectorAll('tbody tr').length ?? 0;
+            const hasData   = rowCount > 1; // more than header row = student rows loaded
+            const visible   = table?.tagName === 'TABLE' && table.offsetParent !== null && hasData;
 
             if (visible && !activeCard) {
                 activeCard = createGradeButtons(table);
