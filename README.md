@@ -77,7 +77,39 @@ https://portal.giu-uni.de/GIUb/EXT/SwiftReports_m.aspx?swiftreportid=866&execute
 
 ---
 
-### 2. GIU Upload Grades
+### 2. GIU Notification Batch Send
+
+**File:** `GIU Notification Batch Send.js` | **Version:** 1.0 | **Author:** Mo.Elmaadawy
+
+Sends the same email notification to multiple tutorial groups in sequence. Write subject and body once — the script steps through each selected group using a localStorage queue and page reloads.
+
+**Target page:**
+```
+https://portal.giu-uni.de/GIUb/INTStaff/NotificationSystem_SendEmail_m.aspx
+```
+
+**Features:**
+
+- **Batch send** — select all groups or a specific subset, then send to all in one click
+- **Course filter** — filter the group list by course code (e.g. "INCS 406") when you teach multiple courses
+- **Select All** — respects the active course filter, only selects visible groups
+- **Progress tracking** — live banner updates after each group is processed
+- **Summary table** — shows sent / failed status per group when the batch completes
+
+**Usage:**
+
+1. Navigate to the Send Email page (link above)
+2. The batch panel loads above the standard email form
+3. *(Optional)* Use the course filter dropdown to narrow the group list to one course
+4. Select the groups you want to notify (or click **Select All**)
+5. Write your subject and body in the fields provided
+6. Click **Send to Selected Groups** — the script sends group by group and reports results
+
+> **Note:** The script uses page reloads to submit each group's form. Keep the tab open until the batch completes.
+
+---
+
+### 3. GIU Upload Grades
 
 **File:** `GIU Upload Grades.js` | **Version:** 2.2 | **Authors:** Ahmed Sherif, Mo.Elmaadawy
 
@@ -131,9 +163,9 @@ Grades are matched by student ID `(XXXXXXXX)` prefix — safe against row reorde
 
 ---
 
-### 3. GIU Manage Group Grades
+### 4. GIU Manage Group Grades
 
-**File:** `GIU Manage Group Grades.js` | **Version:** 1.3 | **Authors:** Ahmed Sherif, Mo.Elmaadawy
+**File:** `GIU Manage Group Grades.js` | **Version:** 1.4 | **Author:** Mo.Elmaadawy
 
 CSV upload/download buttons on the Manage Group Grade page (per-group grade entry, separate from the uploaded grades flow). The panel only appears after you have selected a season, course, group, and evaluation method — i.e., when the student grade table is actually visible.
 
@@ -144,7 +176,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/ManageGroupGrade_m.aspx
 
 **Features:**
 
-- **Upload Grades CSV** — reads a CSV and fills grade inputs by matching student rows
+- **Upload Grades CSV** — fills grade inputs by matching student ID — safe against row reordering
 - **Download Grades CSV** — exports student names and current grade values to CSV
 - **Grade statistics** — Min, Max, Average, and Range computed from current grade inputs
 - **Auto-hide** — panel is hidden until the grade table is present; disappears if you change selection
@@ -161,38 +193,6 @@ https://portal.giu-uni.de/GIUb/INTStaff/ManageGroupGrade_m.aspx
 
 ---
 
-### 4. GIU Notification Batch Send
-
-**File:** `GIU Notification Batch Send.js` | **Version:** 1.0 | **Author:** Mo.Elmaadawy
-
-Sends the same email notification to multiple tutorial groups in sequence. Write subject and body once — the script steps through each selected group using a localStorage queue and page reloads.
-
-**Target page:**
-```
-https://portal.giu-uni.de/GIUb/INTStaff/NotificationSystem_SendEmail_m.aspx
-```
-
-**Features:**
-
-- **Batch send** — select all groups or a specific subset, then send to all in one click
-- **Course filter** — filter the group list by course code (e.g. "INCS 406") when you teach multiple courses
-- **Select All** — respects the active course filter, only selects visible groups
-- **Progress tracking** — live banner updates after each group is processed
-- **Summary table** — shows sent / failed status per group when the batch completes
-
-**Usage:**
-
-1. Navigate to the Send Email page (link above)
-2. The batch panel loads above the standard email form
-3. *(Optional)* Use the course filter dropdown to narrow the group list to one course
-4. Select the groups you want to notify (or click **Select All**)
-5. Write your subject and body in the fields provided
-6. Click **Send to Selected Groups** — the script sends group by group and reports results
-
-> **Note:** The script uses page reloads to submit each group's form. Keep the tab open until the batch completes.
-
----
-
 ## Requirements
 
 - Tampermonkey v4.x or later
@@ -206,6 +206,6 @@ https://portal.giu-uni.de/GIUb/INTStaff/NotificationSystem_SendEmail_m.aspx
 | Script | Authors |
 |---|---|
 | GIU Staff Enhanced Attendance | Mo.Elmaadawy |
-| GIU Upload Grades | Ahmed Sherif, Mo.Elmaadawy |
-| GIU Manage Group Grades | Ahmed Sherif, Mo.Elmaadawy |
 | GIU Notification Batch Send | Mo.Elmaadawy |
+| GIU Upload Grades | Ahmed Sherif, Mo.Elmaadawy |
+| GIU Manage Group Grades | Mo.Elmaadawy |
