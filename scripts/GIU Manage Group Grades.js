@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name        GIU upload grades script
-// @description Adds some nice-to-have features to the Faculty section of the GIU Admin system.
-// @match       https://portal.giu-uni.de/*
+// @name        GIU Manage Group Grades
+// @description Upload and download grades CSV on the Manage Group Grade page.
+// @match       https://portal.giu-uni.de/GIUb/INTStaff/ManageGroupGrade_m.aspx
 // @namespace   ramin0
 // @version     1.1
 // @author      Ahmed Sherif, Mo.Elmaadawy

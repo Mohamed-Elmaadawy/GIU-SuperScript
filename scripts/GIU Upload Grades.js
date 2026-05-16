@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        GIU upload grades script
+// @name        GIU Upload Grades
 // @description Upload/download grades per group + batch all groups via fetch chain.
 // @include     https://portal.giu-uni.de/*
 // @namespace   ramin0
