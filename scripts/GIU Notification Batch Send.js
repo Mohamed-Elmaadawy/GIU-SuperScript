@@ -36,6 +36,355 @@
             .replace(/'/g, '&#039;');
     }
 
+    // ── Style injection ──────────────────────────────────────────────────────────
+
+    function injectStyles() {
+        if (document.getElementById('gius-notify-styles')) return;
+        const style = document.createElement('style');
+        style.id = 'gius-notify-styles';
+        style.textContent = `
+            @keyframes giusSlideDown {
+                from { opacity: 0; transform: translateY(-18px); }
+                to   { opacity: 1; transform: translateY(0); }
+            }
+            @keyframes giusFadeIn {
+                from { opacity: 0; }
+                to   { opacity: 1; }
+            }
+            @keyframes giusSpin {
+                to { transform: rotate(360deg); }
+            }
+            @keyframes giusBounceIn {
+                0%   { opacity: 0; transform: scale(0.5); }
+                65%  { transform: scale(1.12); }
+                100% { opacity: 1; transform: scale(1); }
+            }
+            @keyframes giusProgressFill {
+                from { width: 0%; }
+            }
+            @keyframes giusRowIn {
+                from { opacity: 0; transform: translateX(-8px); }
+                to   { opacity: 1; transform: translateX(0); }
+            }
+            .gius-card {
+                background: #fff;
+                border-radius: 6px;
+                box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+                margin-bottom: 20px;
+                margin-top: 30px;
+                animation: giusSlideDown 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
+                overflow: visible;
+                font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+            }
+            .gius-card-header {
+                border-radius: 3px;
+                padding: 15px 20px;
+                margin: -20px 15px 0;
+                position: relative;
+                z-index: 1;
+            }
+            .gius-hdr-blue {
+                background: linear-gradient(60deg, #1B59C6, #2d6fe0);
+                box-shadow: 0 4px 20px 0 rgba(0,0,0,0.14), 0 7px 10px -5px rgba(27,89,198,0.4);
+            }
+            .gius-hdr-info {
+                background: linear-gradient(60deg, #26c6da, #00acc1);
+                box-shadow: 0 4px 20px 0 rgba(0,0,0,0.14), 0 7px 10px -5px rgba(0,188,212,0.4);
+            }
+            .gius-hdr-success {
+                background: linear-gradient(60deg, #66bb6a, #43a047);
+                box-shadow: 0 4px 20px 0 rgba(0,0,0,0.14), 0 7px 10px -5px rgba(76,175,80,0.4);
+            }
+            .gius-hdr-danger {
+                background: linear-gradient(60deg, #ef5350, #e53935);
+                box-shadow: 0 4px 20px 0 rgba(0,0,0,0.14), 0 7px 10px -5px rgba(244,67,54,0.4);
+            }
+            .gius-card-title {
+                color: #fff;
+                font-size: 1rem;
+                font-weight: 600;
+                margin: 0 0 4px;
+                font-family: 'Open Sans', sans-serif;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            .gius-card-category {
+                color: rgba(255,255,255,0.82);
+                font-size: 0.8rem;
+                margin: 0;
+                font-family: 'Open Sans', sans-serif;
+            }
+            .gius-card-body {
+                padding: 28px 20px 18px;
+            }
+            .gius-section-label {
+                display: block;
+                font-weight: 700;
+                font-size: 11px;
+                color: #9e9e9e;
+                margin-bottom: 7px;
+                font-family: 'Open Sans', sans-serif;
+                text-transform: uppercase;
+                letter-spacing: 0.8px;
+            }
+            .gius-group-list {
+                max-height: 190px;
+                overflow-y: auto;
+                border: 1px solid #eeeeee;
+                border-radius: 4px;
+                background: #fafbfc;
+                padding: 4px;
+                margin-bottom: 14px;
+                scrollbar-width: thin;
+                scrollbar-color: #1B59C6 #f1f2f7;
+            }
+            .gius-group-list::-webkit-scrollbar { width: 4px; }
+            .gius-group-list::-webkit-scrollbar-track { background: #f1f2f7; }
+            .gius-group-list::-webkit-scrollbar-thumb { background: #1B59C6; border-radius: 2px; }
+            .gius-group-row {
+                padding: 5px 8px;
+                border-radius: 4px;
+                transition: background 0.18s ease;
+            }
+            .gius-group-row:hover { background: rgba(27,89,198,0.06); }
+            .gius-group-row label {
+                display: flex !important;
+                align-items: center;
+                gap: 8px;
+                cursor: pointer;
+                font-size: 13.5px;
+                color: #3C4858;
+                font-weight: normal !important;
+                margin: 0 !important;
+                user-select: none;
+                font-family: 'Open Sans', sans-serif;
+            }
+            .gius-group-row input[type="checkbox"] {
+                accent-color: #1B59C6;
+                width: 15px;
+                height: 15px;
+                cursor: pointer;
+                flex-shrink: 0;
+            }
+            .gius-empty-msg {
+                color: #9e9e9e;
+                font-size: 13px;
+                padding: 14px 8px;
+                font-style: italic;
+                font-family: 'Open Sans', sans-serif;
+                text-align: center;
+            }
+            .gius-toolbar-row {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-bottom: 14px;
+            }
+            .gius-toggle-label {
+                display: flex !important;
+                align-items: center;
+                gap: 7px;
+                font-size: 13px;
+                color: #555;
+                cursor: pointer;
+                font-family: 'Open Sans', sans-serif;
+                font-weight: normal !important;
+            }
+            .gius-toggle-label input[type="checkbox"] {
+                accent-color: #1B59C6;
+                width: 14px;
+                height: 14px;
+            }
+            .gius-divider {
+                height: 1px;
+                background: #eeeeee;
+                margin: 14px 0;
+            }
+            .gius-field-label {
+                display: block;
+                font-weight: 600;
+                font-size: 12px;
+                color: #3C4858;
+                margin-bottom: 5px;
+                font-family: 'Open Sans', sans-serif;
+            }
+            .gius-input {
+                display: block;
+                width: 100%;
+                max-width: 500px;
+                padding: 8px 12px;
+                font-size: 14px;
+                font-family: 'Open Sans', sans-serif;
+                color: #495057;
+                background: #fff;
+                border: 1px solid #ced4da;
+                border-radius: 4px;
+                transition: border-color 0.2s ease, box-shadow 0.2s ease;
+                box-sizing: border-box;
+                margin-bottom: 10px;
+            }
+            .gius-input:focus {
+                outline: none;
+                border-color: #1B59C6;
+                box-shadow: 0 0 0 3px rgba(27,89,198,0.14);
+            }
+            .gius-btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 6px;
+                padding: 8px 18px;
+                font-size: 12.5px;
+                font-weight: 700;
+                font-family: 'Open Sans', sans-serif;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: all 0.22s ease;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                white-space: nowrap;
+                outline: none;
+            }
+            .gius-btn:disabled {
+                opacity: 0.48;
+                cursor: not-allowed;
+                transform: none !important;
+                box-shadow: none !important;
+            }
+            .gius-btn-primary {
+                background: #1B59C6;
+                color: #fff;
+                box-shadow: 0 2px 8px rgba(27,89,198,0.32);
+            }
+            .gius-btn-primary:not(:disabled):hover {
+                background: #1448a8;
+                box-shadow: 0 4px 14px rgba(27,89,198,0.48);
+                transform: translateY(-1px);
+            }
+            .gius-btn-primary:not(:disabled):active { transform: translateY(0); }
+            .gius-btn-outline {
+                background: transparent;
+                color: #1B59C6;
+                border: 1.5px solid #1B59C6;
+                box-shadow: none;
+            }
+            .gius-btn-outline:not(:disabled):hover {
+                background: rgba(27,89,198,0.07);
+                transform: translateY(-1px);
+            }
+            .gius-btn-danger {
+                background: #e53935;
+                color: #fff;
+                box-shadow: 0 2px 8px rgba(229,57,53,0.32);
+            }
+            .gius-btn-danger:not(:disabled):hover {
+                background: #c62828;
+                box-shadow: 0 4px 14px rgba(229,57,53,0.46);
+                transform: translateY(-1px);
+            }
+            .gius-btn-muted {
+                background: #f1f2f7;
+                color: #3C4858;
+                border: 1px solid #ddd;
+                box-shadow: none;
+            }
+            .gius-btn-muted:not(:disabled):hover {
+                background: #e4e6ef;
+                transform: translateY(-1px);
+            }
+            .gius-progress-wrap {
+                background: #eeeeee;
+                border-radius: 20px;
+                height: 8px;
+                overflow: hidden;
+                margin-bottom: 8px;
+            }
+            .gius-progress-bar {
+                height: 100%;
+                border-radius: 20px;
+                background: linear-gradient(90deg, #1B59C6, #26c6da);
+                animation: giusProgressFill 0.5s ease-out;
+                transition: width 0.45s ease;
+            }
+            .gius-progress-label {
+                font-size: 12.5px;
+                color: #6c757d;
+                margin-bottom: 14px;
+                font-family: 'Open Sans', sans-serif;
+            }
+            .gius-spinner {
+                display: inline-block;
+                width: 13px;
+                height: 13px;
+                border: 2px solid rgba(255,255,255,0.35);
+                border-top-color: #fff;
+                border-radius: 50%;
+                animation: giusSpin 0.7s linear infinite;
+                vertical-align: middle;
+            }
+            .gius-result-list { margin: 6px 0 12px; }
+            .gius-result-row {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 6px 4px;
+                font-size: 13px;
+                font-family: 'Open Sans', sans-serif;
+                border-bottom: 1px solid #f5f5f5;
+                animation: giusRowIn 0.3s ease both;
+            }
+            .gius-result-row:last-child { border-bottom: none; }
+            .gius-result-icon {
+                width: 22px;
+                height: 22px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 11px;
+                font-weight: 700;
+                flex-shrink: 0;
+                animation: giusBounceIn 0.4s ease both;
+            }
+            .gius-icon-sent     { background: #e8f5e9; color: #43a047; }
+            .gius-icon-failed   { background: #ffebee; color: #e53935; }
+            .gius-icon-cancelled{ background: #f5f5f5; color: #9e9e9e; }
+            .gius-result-name { color: #3C4858; font-weight: 500; flex: 1; }
+            .gius-result-info { color: #9e9e9e; font-size: 11.5px; }
+            .gius-summary-header-meta {
+                margin-top: 8px;
+                display: flex;
+                gap: 18px;
+                flex-wrap: wrap;
+            }
+            .gius-stat-pill {
+                display: flex;
+                align-items: baseline;
+                gap: 4px;
+                font-family: 'Open Sans', sans-serif;
+                color: rgba(255,255,255,0.95);
+            }
+            .gius-stat-pill .gius-num {
+                font-size: 22px;
+                font-weight: 700;
+                line-height: 1;
+            }
+            .gius-stat-pill .gius-lbl { font-size: 12px; opacity: 0.85; }
+            .gius-per-group-fields {
+                margin: 6px 0 10px 26px;
+                animation: giusSlideDown 0.22s ease;
+            }
+            .gius-per-group-fields .gius-input {
+                max-width: 460px;
+                margin-bottom: 6px;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
     // ── Page helpers ────────────────────────────────────────────────────────────
 
     function getEl(id) {
@@ -61,7 +410,6 @@
     }
 
     function getInjectionAnchor() {
-        // inject before the <table> that follows MainContent_lblText
         const ref = getEl('MainContent_lblText');
         if (ref && ref.nextElementSibling) return ref.nextElementSibling;
         return getEl('form1');
@@ -151,102 +499,114 @@
     // ── UI panel ──────────────────────────────────────────────────────────────────
 
     function injectPanel() {
+        injectStyles();
         const groups = getGroupOptions();
 
-        const wrapper = document.createElement('div');
-        wrapper.id = 'giu-batch-panel';
-        wrapper.style.cssText = 'background:#fff3cd;border:1px solid #ffc107;border-radius:4px;padding:12px;margin-bottom:16px;';
+        const card = document.createElement('div');
+        card.id = 'giu-batch-panel';
+        card.className = 'gius-card';
 
-        wrapper.innerHTML = `
-            <h5 style="margin:0 0 10px;font-size:1rem;">&#128232; Batch Send</h5>
-            <div id="giu-group-list" style="max-height:180px;overflow-y:auto;border:1px solid #ddd;padding:8px;background:#fff;border-radius:4px;margin-bottom:8px;">
-                ${groups.length
-                    ? groups.map(g => `
-                        <div class="giu-group-row" style="margin-bottom:4px;">
-                            <label style="cursor:pointer;font-weight:normal;">
-                                <input type="checkbox" class="giu-group-cb" data-value="${escapeHtml(g.value)}" data-label="${escapeHtml(g.label)}">
-                                &nbsp;${g.label}
-                            </label>
-                        </div>`).join('')
-                    : '<em style="color:#888">No groups available. Make sure groups are assigned to your account.</em>'
-                }
+        card.innerHTML = `
+            <div class="gius-card-header gius-hdr-blue">
+                <h4 class="gius-card-title">
+                    <span class="gius-spinner"></span>
+                    Batch Notification
+                </h4>
+                <p class="gius-card-category">Send email to multiple tutorial groups at once</p>
             </div>
-            <div style="margin-bottom:8px;">
-                <button type="button" id="giu-select-all" class="btn btn-sm btn-outline-secondary">Select All</button>
-                &nbsp;
-                <label style="cursor:pointer;font-weight:normal;">
-                    <input type="checkbox" id="giu-same-msg" checked>
-                    &nbsp;Same message for all groups
-                </label>
-            </div>
-            <div id="giu-shared-fields">
-                <div style="margin-bottom:6px;">
-                    <label style="display:block;font-weight:600;">Subject</label>
-                    <input type="text" id="giu-shared-subject" class="form-control" placeholder="Email subject…" style="max-width:500px;">
+            <div class="gius-card-body">
+                <span class="gius-section-label">Tutorial Groups</span>
+                <div id="giu-group-list" class="gius-group-list">
+                    ${groups.length
+                        ? groups.map(g => `
+                            <div class="gius-group-row">
+                                <label>
+                                    <input type="checkbox" class="giu-group-cb"
+                                        data-value="${escapeHtml(g.value)}"
+                                        data-label="${escapeHtml(g.label)}">
+                                    ${escapeHtml(g.label)}
+                                </label>
+                            </div>`).join('')
+                        : `<div class="gius-empty-msg">No groups available. Make sure groups are assigned to your account.</div>`
+                    }
                 </div>
-                <div style="margin-bottom:6px;">
-                    <label style="display:block;font-weight:600;">Body</label>
-                    <textarea id="giu-shared-body" class="form-control" rows="4" placeholder="Email body…" style="max-width:500px;"></textarea>
+                <div class="gius-toolbar-row">
+                    <button type="button" id="giu-select-all" class="gius-btn gius-btn-outline">Select All</button>
+                    <label class="gius-toggle-label">
+                        <input type="checkbox" id="giu-same-msg" checked>
+                        Same message for all groups
+                    </label>
                 </div>
+                <div id="giu-shared-fields">
+                    <div class="gius-divider"></div>
+                    <label class="gius-field-label">Subject</label>
+                    <input type="text" id="giu-shared-subject" class="gius-input" placeholder="Email subject…">
+                    <label class="gius-field-label">Body</label>
+                    <textarea id="giu-shared-body" class="gius-input" rows="4"
+                        placeholder="Email body…"
+                        style="resize:vertical;min-height:88px;font-family:'Open Sans',sans-serif;"></textarea>
+                </div>
+                <div class="gius-divider"></div>
+                <button type="button" id="giu-start-btn" class="gius-btn gius-btn-primary" disabled>
+                    ▶ Start Batch Send (0 groups)
+                </button>
             </div>
-            <button type="button" id="giu-start-btn" class="btn btn-primary" disabled>
-                Start Batch Send (0 groups)
-            </button>
         `;
 
-        // Select All
-        wrapper.querySelector('#giu-select-all').addEventListener('click', () => {
-            wrapper.querySelectorAll('.giu-group-cb').forEach(cb => { cb.checked = true; });
+        // hide the spinner in header once loaded
+        const spinner = card.querySelector('.gius-spinner');
+        if (spinner) spinner.style.display = 'none';
+
+        card.querySelector('#giu-select-all').addEventListener('click', () => {
+            card.querySelectorAll('.giu-group-cb').forEach(cb => { cb.checked = true; });
             updateStartBtn();
         });
 
-        // Same-message toggle
-        wrapper.querySelector('#giu-same-msg').addEventListener('change', function () {
+        card.querySelector('#giu-same-msg').addEventListener('change', function () {
             if (this.checked) {
-                wrapper.querySelectorAll('.giu-per-group-fields').forEach(el => el.remove());
-                wrapper.querySelector('#giu-shared-fields').style.display = '';
+                card.querySelectorAll('.gius-per-group-fields').forEach(el => el.remove());
+                card.querySelector('#giu-shared-fields').style.display = '';
             } else {
-                wrapper.querySelector('#giu-shared-fields').style.display = 'none';
-                wrapper.querySelectorAll('.giu-group-row').forEach(row => {
-                    if (row.querySelector('.giu-per-group-fields')) return;
+                card.querySelector('#giu-shared-fields').style.display = 'none';
+                card.querySelectorAll('.gius-group-row').forEach(row => {
+                    if (row.querySelector('.gius-per-group-fields')) return;
                     const lbl = row.querySelector('label').textContent.trim();
                     const fields = document.createElement('div');
-                    fields.className = 'giu-per-group-fields';
-                    fields.style.cssText = 'margin:4px 0 8px 20px;';
+                    fields.className = 'gius-per-group-fields';
                     fields.innerHTML = `
-                        <input type="text" class="form-control form-control-sm giu-pg-subject" placeholder="Subject for ${escapeHtml(lbl)}" style="margin-bottom:4px;max-width:480px;">
-                        <textarea class="form-control form-control-sm giu-pg-body" rows="2" placeholder="Body for ${escapeHtml(lbl)}" style="max-width:480px;"></textarea>
+                        <input type="text" class="gius-input giu-pg-subject" placeholder="Subject for ${escapeHtml(lbl)}">
+                        <textarea class="gius-input giu-pg-body" rows="2"
+                            placeholder="Body for ${escapeHtml(lbl)}"
+                            style="resize:vertical;min-height:52px;font-family:'Open Sans',sans-serif;"></textarea>
                     `;
                     row.appendChild(fields);
                 });
             }
         });
 
-        // Group checkbox changes
-        wrapper.querySelectorAll('.giu-group-cb').forEach(cb => {
+        card.querySelectorAll('.giu-group-cb').forEach(cb => {
             cb.addEventListener('change', updateStartBtn);
         });
 
-        // Subject input
-        wrapper.querySelector('#giu-shared-subject').addEventListener('input', updateStartBtn);
+        card.querySelector('#giu-shared-subject').addEventListener('input', updateStartBtn);
 
         function updateStartBtn() {
-            const checked  = wrapper.querySelectorAll('.giu-group-cb:checked').length;
-            const sameMsg  = wrapper.querySelector('#giu-same-msg').checked;
-            const subject  = wrapper.querySelector('#giu-shared-subject').value.trim();
-            const btn      = wrapper.querySelector('#giu-start-btn');
-            btn.disabled   = checked === 0 || (sameMsg && !subject);
-            btn.textContent = `Start Batch Send (${checked} group${checked !== 1 ? 's' : ''})`;
+            const checked = card.querySelectorAll('.giu-group-cb:checked').length;
+            const sameMsg = card.querySelector('#giu-same-msg').checked;
+            const subject = card.querySelector('#giu-shared-subject').value.trim();
+            const btn     = card.querySelector('#giu-start-btn');
+            btn.disabled  = checked === 0 || (sameMsg && !subject);
+            btn.textContent = `▶ Start Batch Send (${checked} group${checked !== 1 ? 's' : ''})`;
         }
 
-        wrapper.querySelector('#giu-start-btn').addEventListener('click', () => {
-            const sameMsg       = wrapper.querySelector('#giu-same-msg').checked;
-            const sharedSubject = sameMsg ? wrapper.querySelector('#giu-shared-subject').value.trim() : '';
-            const sharedBody    = sameMsg ? wrapper.querySelector('#giu-shared-body').value.trim()    : '';
+        card.querySelector('#giu-start-btn').addEventListener('click', () => {
+            const sameMsg       = card.querySelector('#giu-same-msg').checked;
+            const sharedSubject = sameMsg ? card.querySelector('#giu-shared-subject').value.trim() : '';
+            const sharedBody    = sameMsg ? card.querySelector('#giu-shared-body').value.trim()    : '';
 
             const selectedGroups = [];
-            wrapper.querySelectorAll('.giu-group-cb:checked').forEach(cb => {
-                const row     = cb.closest('.giu-group-row');
+            card.querySelectorAll('.giu-group-cb:checked').forEach(cb => {
+                const row     = cb.closest('.gius-group-row');
                 const subject = sameMsg ? null : (row.querySelector('.giu-pg-subject')?.value.trim() || null);
                 const body    = sameMsg ? null : (row.querySelector('.giu-pg-body')?.value.trim()    || null);
                 selectedGroups.push({
@@ -270,89 +630,116 @@
         });
 
         const anchor = getInjectionAnchor();
-        if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(wrapper, anchor);
+        if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(card, anchor);
     }
 
     // ── Progress view ─────────────────────────────────────────────────────────────
 
     function renderProgress(queue) {
+        injectStyles();
         const total   = queue.groups.length;
         const done    = queue.results.length;
         const current = queue.groups[queue.currentIndex];
         const pct     = Math.round((done / total) * 100);
 
-        const resultRows = queue.results.map(r => {
-            const icon  = r.status === 'sent' ? '&#10003;' : r.status === 'failed' ? '&#10007;' : '&ndash;';
-            const color = r.status === 'sent' ? 'green'    : r.status === 'failed' ? 'red'      : 'gray';
-            return `<div style="color:${color};font-size:0.88em;">${icon} ${escapeHtml(r.label)} &mdash; ${escapeHtml(r.info)}</div>`;
+        const resultRows = queue.results.map((r, i) => {
+            const cls  = r.status === 'sent' ? 'gius-icon-sent' : r.status === 'failed' ? 'gius-icon-failed' : 'gius-icon-cancelled';
+            const icon = r.status === 'sent' ? '✓' : r.status === 'failed' ? '✕' : '–';
+            return `
+                <div class="gius-result-row" style="animation-delay:${i * 0.05}s">
+                    <span class="gius-result-icon ${cls}">${icon}</span>
+                    <span class="gius-result-name">${escapeHtml(r.label)}</span>
+                    <span class="gius-result-info">${escapeHtml(r.info)}</span>
+                </div>`;
         }).join('');
 
-        const wrapper = document.createElement('div');
-        wrapper.id = 'giu-batch-progress';
-        wrapper.style.cssText = 'background:#d1ecf1;border:1px solid #bee5eb;border-radius:4px;padding:12px;margin-bottom:16px;';
-        wrapper.innerHTML = `
-            <h5 style="margin:0 0 8px;font-size:1rem;">&#128232; Sending&hellip;</h5>
-            <div style="background:#fff;border-radius:4px;overflow:hidden;height:14px;margin-bottom:8px;">
-                <div style="background:#0d6efd;height:100%;width:${pct}%;"></div>
+        const card = document.createElement('div');
+        card.id = 'giu-batch-progress';
+        card.className = 'gius-card';
+        card.innerHTML = `
+            <div class="gius-card-header gius-hdr-info">
+                <h4 class="gius-card-title">
+                    <span class="gius-spinner"></span>
+                    Sending…
+                </h4>
+                <p class="gius-card-category">
+                    Group ${done + 1} of ${total}:
+                    <strong style="color:#fff;">${current ? escapeHtml(current.label) : ''}</strong>
+                </p>
             </div>
-            <div style="margin-bottom:8px;">Group ${done + 1} of ${total}: <b>${current ? current.label : ''}</b></div>
-            <div>${resultRows}</div>
-            <div style="margin-top:10px;">
-                <button type="button" id="giu-cancel-btn" class="btn btn-sm btn-danger">Cancel</button>
+            <div class="gius-card-body">
+                <div class="gius-progress-wrap">
+                    <div class="gius-progress-bar" style="width:${pct}%;"></div>
+                </div>
+                <div class="gius-progress-label">${pct}% complete — ${done} of ${total} processed</div>
+                <div class="gius-result-list">${resultRows}</div>
+                <button type="button" id="giu-cancel-btn" class="gius-btn gius-btn-danger">✕ Cancel</button>
             </div>
         `;
 
-        wrapper.querySelector('#giu-cancel-btn').addEventListener('click', () => {
+        card.querySelector('#giu-cancel-btn').addEventListener('click', () => {
             const remaining = queue.groups.slice(queue.currentIndex);
             remaining.forEach(g => queue.results.push({ label: g.label, status: 'cancelled', info: 'Cancelled by user' }));
             clearQueue();
-            wrapper.remove();
+            card.remove();
             renderSummary(queue.results);
             injectPanel();
         });
 
         const anchor = getInjectionAnchor();
-        if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(wrapper, anchor);
+        if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(card, anchor);
     }
 
     // ── Completion summary ────────────────────────────────────────────────────────
 
     function renderSummary(results) {
+        injectStyles();
         const sent      = results.filter(r => r.status === 'sent').length;
         const failed    = results.filter(r => r.status === 'failed').length;
         const cancelled = results.filter(r => r.status === 'cancelled').length;
         const hasErrors = failed > 0;
 
-        const rows = results.map(r => {
-            const icon  = r.status === 'sent' ? '&#10003;' : r.status === 'failed' ? '&#10007;' : '&ndash;';
-            const color = r.status === 'sent' ? 'green'    : r.status === 'failed' ? 'red'      : 'gray';
-            return `<div style="color:${color};font-size:0.88em;">${icon} ${escapeHtml(r.label)} &mdash; ${escapeHtml(r.info)}</div>`;
+        const rows = results.map((r, i) => {
+            const cls  = r.status === 'sent' ? 'gius-icon-sent' : r.status === 'failed' ? 'gius-icon-failed' : 'gius-icon-cancelled';
+            const icon = r.status === 'sent' ? '✓' : r.status === 'failed' ? '✕' : '–';
+            return `
+                <div class="gius-result-row" style="animation-delay:${i * 0.04}s">
+                    <span class="gius-result-icon ${cls}">${icon}</span>
+                    <span class="gius-result-name">${escapeHtml(r.label)}</span>
+                    <span class="gius-result-info">${escapeHtml(r.info)}</span>
+                </div>`;
         }).join('');
 
-        const bg     = hasErrors ? '#f8d7da' : '#d4edda';
-        const border = hasErrors ? '#f5c6cb' : '#c3e6cb';
+        const hdrClass = hasErrors ? 'gius-hdr-danger' : 'gius-hdr-success';
+        const titleIcon = hasErrors ? '⚠' : '✓';
+        const titleText = hasErrors ? 'Sent with Errors' : 'Batch Complete';
 
-        const wrapper = document.createElement('div');
-        wrapper.id = 'giu-batch-summary';
-        wrapper.style.cssText = `background:${bg};border:1px solid ${border};border-radius:4px;padding:12px;margin-bottom:16px;`;
-        wrapper.innerHTML = `
-            <h5 style="margin:0 0 8px;font-size:1rem;">&#128232; Batch Send Complete</h5>
-            <div style="margin-bottom:8px;">
-                <span style="color:green;">&#10003; ${sent} sent</span>
-                &nbsp;|&nbsp;
-                <span style="color:red;">&#10007; ${failed} failed</span>
-                ${cancelled > 0 ? `&nbsp;|&nbsp;<span style="color:gray;">&ndash; ${cancelled} cancelled</span>` : ''}
+        const card = document.createElement('div');
+        card.id = 'giu-batch-summary';
+        card.className = 'gius-card';
+        card.innerHTML = `
+            <div class="gius-card-header ${hdrClass}">
+                <h4 class="gius-card-title">${titleIcon} ${titleText}</h4>
+                <div class="gius-summary-header-meta">
+                    <div class="gius-stat-pill">
+                        <span class="gius-num">${sent}</span>
+                        <span class="gius-lbl">Sent</span>
+                    </div>
+                    ${failed > 0 ? `<div class="gius-stat-pill"><span class="gius-num">${failed}</span><span class="gius-lbl">Failed</span></div>` : ''}
+                    ${cancelled > 0 ? `<div class="gius-stat-pill"><span class="gius-num">${cancelled}</span><span class="gius-lbl">Cancelled</span></div>` : ''}
+                </div>
             </div>
-            <div>${rows}</div>
-            <div style="margin-top:10px;">
-                <button type="button" id="giu-dismiss-btn" class="btn btn-sm btn-secondary">Dismiss</button>
+            <div class="gius-card-body">
+                <div class="gius-result-list">${rows}</div>
+                <div class="gius-divider"></div>
+                <button type="button" id="giu-dismiss-btn" class="gius-btn gius-btn-muted">Dismiss</button>
             </div>
         `;
 
-        wrapper.querySelector('#giu-dismiss-btn').addEventListener('click', () => wrapper.remove());
+        card.querySelector('#giu-dismiss-btn').addEventListener('click', () => card.remove());
 
         const anchor = getInjectionAnchor();
-        if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(wrapper, anchor);
+        if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(card, anchor);
     }
 
     // ── Entry point ──────────────────────────────────────────────────────────────

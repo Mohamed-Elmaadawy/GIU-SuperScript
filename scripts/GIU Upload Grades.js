@@ -22,40 +22,217 @@
         rows:    '#data tbody tr',
     };
 
-    const BTN_BASE = 'padding:8px 14px;background:#0d6efd;color:#fff;border:none;border-radius:4px;cursor:pointer;margin-right:8px;';
-    const BTN_OFF  = BTN_BASE + 'opacity:0.5;cursor:not-allowed;';
+    // ── Style injection ──────────────────────────────────────────────────────────
+
+    function injectStyles() {
+        if (document.getElementById('gius-upload-styles')) return;
+        const style = document.createElement('style');
+        style.id = 'gius-upload-styles';
+        style.textContent = `
+            @keyframes giusUGSlideDown {
+                from { opacity: 0; transform: translateY(-16px); }
+                to   { opacity: 1; transform: translateY(0); }
+            }
+            @keyframes giusUGFadeIn {
+                from { opacity: 0; }
+                to   { opacity: 1; }
+            }
+            @keyframes giusUGSpin {
+                to { transform: rotate(360deg); }
+            }
+            @keyframes giusUGPulse {
+                0%, 100% { opacity: 1; }
+                50%       { opacity: 0.55; }
+            }
+            .giug-card {
+                background: #fff;
+                border-radius: 6px;
+                box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+                margin-bottom: 16px;
+                margin-top: 28px;
+                animation: giusUGSlideDown 0.32s cubic-bezier(0.25,0.46,0.45,0.94);
+                overflow: visible;
+                font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+            }
+            .giug-card-header {
+                border-radius: 3px;
+                padding: 14px 18px;
+                margin: -18px 15px 0;
+                position: relative;
+                z-index: 1;
+            }
+            .giug-hdr-blue {
+                background: linear-gradient(60deg, #1B59C6, #2d6fe0);
+                box-shadow: 0 4px 20px 0 rgba(0,0,0,0.14), 0 7px 10px -5px rgba(27,89,198,0.4);
+            }
+            .giug-hdr-green {
+                background: linear-gradient(60deg, #43a047, #2e7d32);
+                box-shadow: 0 4px 20px 0 rgba(0,0,0,0.14), 0 7px 10px -5px rgba(67,160,71,0.4);
+            }
+            .giug-card-title {
+                color: #fff;
+                font-size: 0.95rem;
+                font-weight: 600;
+                margin: 0 0 2px;
+                font-family: 'Open Sans', sans-serif;
+            }
+            .giug-card-category {
+                color: rgba(255,255,255,0.8);
+                font-size: 0.78rem;
+                margin: 0;
+                font-family: 'Open Sans', sans-serif;
+            }
+            .giug-card-body {
+                padding: 24px 18px 16px;
+            }
+            .giug-btn-row {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .giug-select {
+                padding: 8px 12px;
+                font-size: 13.5px;
+                font-family: 'Open Sans', sans-serif;
+                color: #3C4858;
+                background: #fff;
+                border: 1px solid #ced4da;
+                border-radius: 4px;
+                cursor: pointer;
+                max-width: 320px;
+                transition: border-color 0.2s ease, box-shadow 0.2s ease;
+                outline: none;
+            }
+            .giug-select:focus {
+                border-color: #1B59C6;
+                box-shadow: 0 0 0 3px rgba(27,89,198,0.13);
+            }
+            .giug-btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 6px;
+                padding: 8px 16px;
+                font-size: 12.5px;
+                font-weight: 700;
+                font-family: 'Open Sans', sans-serif;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: all 0.22s ease;
+                text-transform: uppercase;
+                letter-spacing: 0.4px;
+                white-space: nowrap;
+                outline: none;
+            }
+            .giug-btn:disabled {
+                opacity: 0.45;
+                cursor: not-allowed;
+                transform: none !important;
+                box-shadow: none !important;
+            }
+            .giug-btn-primary {
+                background: #1B59C6;
+                color: #fff;
+                box-shadow: 0 2px 8px rgba(27,89,198,0.3);
+            }
+            .giug-btn-primary:not(:disabled):hover {
+                background: #1448a8;
+                box-shadow: 0 4px 14px rgba(27,89,198,0.46);
+                transform: translateY(-1px);
+            }
+            .giug-btn-primary:not(:disabled):active { transform: translateY(0); }
+            .giug-btn-success {
+                background: #43a047;
+                color: #fff;
+                box-shadow: 0 2px 8px rgba(67,160,71,0.3);
+            }
+            .giug-btn-success:not(:disabled):hover {
+                background: #2e7d32;
+                box-shadow: 0 4px 14px rgba(67,160,71,0.46);
+                transform: translateY(-1px);
+            }
+            .giug-btn-outline {
+                background: transparent;
+                color: #1B59C6;
+                border: 1.5px solid #1B59C6;
+            }
+            .giug-btn-outline:not(:disabled):hover {
+                background: rgba(27,89,198,0.07);
+                transform: translateY(-1px);
+            }
+            .giug-alert {
+                padding: 9px 13px;
+                border-radius: 4px;
+                font-size: 13px;
+                font-family: 'Open Sans', sans-serif;
+                margin: 8px 0 0;
+                animation: giusUGFadeIn 0.25s ease;
+                display: flex;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            .giug-alert-error {
+                background: #fff5f5;
+                border-left: 3px solid #e53935;
+                color: #c62828;
+            }
+            .giug-alert-info {
+                background: #e8f4fd;
+                border-left: 3px solid #1B59C6;
+                color: #1a237e;
+            }
+            .giug-spinner {
+                display: inline-block;
+                width: 12px;
+                height: 12px;
+                border: 2px solid rgba(26,35,126,0.25);
+                border-top-color: #1B59C6;
+                border-radius: 50%;
+                animation: giusUGSpin 0.7s linear infinite;
+                flex-shrink: 0;
+                margin-top: 2px;
+            }
+        `;
+        document.head.appendChild(style);
+    }
 
     // ── DOM helpers ──────────────────────────────────────────────────────────
 
-    function makeBtn(text, disabled = false) {
+    function makeBtn(text, style = 'primary', disabled = false) {
         const b = document.createElement('button');
         b.type = 'button';
         b.textContent = text;
-        b.style.cssText = disabled ? BTN_OFF : BTN_BASE;
+        b.className = `giug-btn giug-btn-${style}`;
         b.disabled = disabled;
         return b;
     }
 
     function showError(container, msg) {
         const d = document.createElement('div');
-        d.style.cssText = 'margin:6px 0;padding:8px 12px;background:#f8d7da;border:1px solid #f5c2c7;border-radius:4px;color:#842029;';
-        d.textContent = '⚠ ' + msg;
-        container.insertAdjacentElement('afterbegin', d);
+        d.className = 'giug-alert giug-alert-error';
+        d.innerHTML = `<span>⚠</span><span>${msg}</span>`;
+        container.appendChild(d);
     }
 
     function showInfo(container, msg) {
-        let el = container.querySelector('.giu-progress');
+        let el = container.querySelector('.gius-progress-info');
         if (!el) {
             el = document.createElement('div');
-            el.className = 'giu-progress';
-            el.style.cssText = 'margin:6px 0;padding:8px 12px;background:#cff4fc;border:1px solid #b6effb;border-radius:4px;color:#055160;';
+            el.className = 'giug-alert giug-alert-info gius-progress-info';
+            const spinner = document.createElement('span');
+            spinner.className = 'giug-spinner';
+            el.appendChild(spinner);
+            const text = document.createElement('span');
+            el.appendChild(text);
             container.appendChild(el);
         }
-        el.textContent = msg;
+        el.querySelector('span:last-child').textContent = msg;
     }
 
     function clearProgress(container) {
-        container.querySelector('.giu-progress')?.remove();
+        container.querySelector('.gius-progress-info')?.remove();
     }
 
     // ── Row helpers ──────────────────────────────────────────────────────────
@@ -269,25 +446,25 @@
     // ── State A toolbar: intercept eval dropdown + batch buttons ─────────────
 
     function injectBatchToolbar() {
+        injectStyles();
         if (document.getElementById('giu-toolbar')) return;
 
-        const toolbar = document.createElement('div');
-        toolbar.id = 'giu-toolbar';
-        toolbar.style.cssText = 'margin-top:15px;padding:10px;background:#f8f9fa;border:1px solid #dee2e6;border-radius:4px;';
+        const card = document.createElement('div');
+        card.id = 'giu-toolbar';
+        card.className = 'giug-card';
 
         const fileInput = document.createElement('input');
         fileInput.type = 'file';
         fileInput.accept = '.csv';
         fileInput.style.display = 'none';
 
-        // Build custom eval picker from the page's eval dropdown options (no postback)
-        const pageEvalEl   = document.querySelector(SEL.eval);
-        const evalOptions  = pageEvalEl
+        const pageEvalEl  = document.querySelector(SEL.eval);
+        const evalOptions = pageEvalEl
             ? Array.from(pageEvalEl.options).filter(o => isValidId(o.value))
             : [];
 
         const evalPicker = document.createElement('select');
-        evalPicker.style.cssText = 'padding:6px 10px;border:1px solid #ced4da;border-radius:4px;background:#fff;cursor:pointer;max-width:320px;';
+        evalPicker.className = 'giug-select';
 
         const placeholder = document.createElement('option');
         placeholder.value = '';
@@ -303,9 +480,9 @@
             evalPicker.appendChild(opt);
         });
 
-        const loadCsvBtn = makeBtn('📄 Load CSV for Upload');
-        const batchDlBtn = makeBtn('▶ Batch Download', true);
-        const batchUpBtn = makeBtn('▶ Batch Upload', true);
+        const loadCsvBtn = makeBtn('📄 Load CSV', 'outline');
+        const batchDlBtn = makeBtn('⬇ Batch Download', 'primary', true);
+        const batchUpBtn = makeBtn('⬆ Batch Upload', 'success', true);
 
         let csvMap = null;
 
@@ -315,9 +492,7 @@
         evalPicker.onchange = () => {
             const valid = isValidId(evalPicker.value);
             batchDlBtn.disabled = !valid;
-            batchDlBtn.style.cssText = valid ? BTN_BASE : BTN_OFF;
             batchUpBtn.disabled = !(valid && csvMap);
-            batchUpBtn.style.cssText = (valid && csvMap) ? BTN_BASE : BTN_OFF;
         };
 
         loadCsvBtn.onclick = () => fileInput.click();
@@ -326,55 +501,58 @@
             const file = fileInput.files[0];
             if (!file) return;
             csvMap = await parseCSV(file);
-            showInfo(toolbar, `CSV loaded — ${Object.keys(csvMap).length} student grade(s) ready.`);
+            showInfo(card, `CSV loaded — ${Object.keys(csvMap).length} student grade(s) ready.`);
             batchUpBtn.disabled = !isValidId(evalPicker.value);
-            batchUpBtn.style.cssText = (!isValidId(evalPicker.value)) ? BTN_OFF : BTN_BASE;
         };
 
         batchDlBtn.onclick = async () => {
-            if (!isValidId(getEvalId())) { showError(toolbar, 'Pick an evaluation method first.'); return; }
+            if (!isValidId(getEvalId())) { showError(card, 'Pick an evaluation method first.'); return; }
             batchDlBtn.disabled = true;
-            batchDlBtn.style.cssText = BTN_OFF;
-            await batchDownload(getEvalId(), getEvalLabel(), toolbar);
+            await batchDownload(getEvalId(), getEvalLabel(), card);
             batchDlBtn.disabled = false;
-            batchDlBtn.style.cssText = BTN_BASE;
         };
 
         batchUpBtn.onclick = async () => {
             if (!csvMap || !isValidId(getEvalId())) return;
             batchUpBtn.disabled = true;
-            batchUpBtn.style.cssText = BTN_OFF;
-            await batchUpload(getEvalId(), csvMap, toolbar);
+            await batchUpload(getEvalId(), csvMap, card);
             batchUpBtn.disabled = false;
-            batchUpBtn.style.cssText = BTN_BASE;
         };
 
-        const btnRow = document.createElement('div');
-        btnRow.style.cssText = 'display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:6px;';
-        btnRow.append(evalPicker, loadCsvBtn, fileInput, batchDlBtn, batchUpBtn);
-        toolbar.appendChild(btnRow);
+        card.innerHTML = `
+            <div class="giug-card-header giug-hdr-blue">
+                <h4 class="giug-card-title">📊 Batch Grades</h4>
+                <p class="giug-card-category">Download or upload grades across all groups at once</p>
+            </div>
+            <div class="giug-card-body">
+                <div class="giug-btn-row" id="giug-btn-row"></div>
+            </div>
+        `;
 
-        // Insert after eval dropdown's containing row, fallback to group dropdown
+        const btnRow = card.querySelector('#giug-btn-row');
+        btnRow.append(evalPicker, loadCsvBtn, fileInput, batchDlBtn, batchUpBtn);
+
         const anchor = pageEvalEl?.closest('tr') ?? pageEvalEl?.closest('div') ?? document.querySelector(SEL.group);
-        anchor?.insertAdjacentElement('afterend', toolbar);
+        anchor?.insertAdjacentElement('afterend', card);
     }
 
     // ── State B toolbar: per-group upload/download ────────────────────────────
 
     function injectPerGroupToolbar(table) {
+        injectStyles();
         if (document.getElementById('giu-toolbar')) return;
 
-        const toolbar = document.createElement('div');
-        toolbar.id = 'giu-toolbar';
-        toolbar.style.cssText = 'margin-bottom:15px;padding:10px;background:#f8f9fa;border:1px solid #dee2e6;border-radius:4px;';
+        const card = document.createElement('div');
+        card.id = 'giu-toolbar';
+        card.className = 'giug-card';
 
         const fileInput = document.createElement('input');
         fileInput.type = 'file';
         fileInput.accept = '.csv';
         fileInput.style.display = 'none';
 
-        const uploadBtn   = makeBtn('📄 Upload CSV');
-        const downloadBtn = makeBtn('📥 Download CSV');
+        const uploadBtn   = makeBtn('📄 Upload CSV', 'outline');
+        const downloadBtn = makeBtn('⬇ Download CSV', 'primary');
 
         uploadBtn.onclick = () => fileInput.click();
 
@@ -400,13 +578,21 @@
             );
         };
 
-        const btnRow = document.createElement('div');
-        btnRow.style.cssText = 'display:flex;align-items:center;flex-wrap:wrap;gap:8px;';
+        card.innerHTML = `
+            <div class="giug-card-header giug-hdr-green">
+                <h4 class="giug-card-title">📋 Group Grades</h4>
+                <p class="giug-card-category">Upload or download grades for this group</p>
+            </div>
+            <div class="giug-card-body">
+                <div class="giug-btn-row" id="giug-per-btn-row"></div>
+            </div>
+        `;
+
+        const btnRow = card.querySelector('#giug-per-btn-row');
         btnRow.append(uploadBtn, fileInput, downloadBtn);
-        toolbar.appendChild(btnRow);
 
         const crntEl = document.querySelector(SEL.crntLbl);
-        (crntEl ?? table).insertAdjacentElement('afterend', toolbar);
+        (crntEl ?? table).insertAdjacentElement('afterend', card);
     }
 
     // ── Entry point ──────────────────────────────────────────────────────────
@@ -414,14 +600,12 @@
     function init() {
         if (location.pathname !== '/GIUb/EXT/ManageUploadedGrades_m.aspx') return;
 
-        // State A: dropdowns visible — intercept eval, batch all groups
         const groupEl = document.querySelector(SEL.group);
         if (groupEl) {
             injectBatchToolbar();
             return;
         }
 
-        // State B: grade table visible — per-group upload/download
         const table = document.getElementById('data');
         if (table?.tagName === 'TABLE') {
             injectPerGroupToolbar(table);
