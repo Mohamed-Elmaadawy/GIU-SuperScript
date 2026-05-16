@@ -5198,11 +5198,11 @@
                 const iconEl = document.createElement("div");
                 iconEl.className = "giu-stat-icon";
                 if (stats.absentDays > 0) {
-                    iconEl.textContent = "🚨";
+                    iconEl.textContent = "✕";
                     iconEl.title = `${stats.absentDays} absent day(s) not counted in hours`;
                     iconEl.style.color = "#dc2626";
                 } else if (!stats.isPositiveOrZero) {
-                    iconEl.textContent = "⚠️";
+                    iconEl.textContent = "⚠";
                     iconEl.title = "Negative balance (missing hours)";
                     iconEl.style.color = "#d97706";
                 } else {

@@ -259,12 +259,12 @@ function createGradeButtons(table) {
 
     const uploadBtn       = document.createElement('button');
     uploadBtn.type        = 'button';
-    uploadBtn.textContent = '📄 Upload Grades CSV';
+    uploadBtn.textContent = 'Upload Grades CSV';
     uploadBtn.className   = 'gmgg-btn gmgg-btn-upload';
 
     const downloadBtn       = document.createElement('button');
     downloadBtn.type        = 'button';
-    downloadBtn.textContent = '⬇ Download Grades CSV';
+    downloadBtn.textContent = 'Download Grades CSV';
     downloadBtn.className   = 'gmgg-btn gmgg-btn-download';
 
     let feedbackEl = null;
@@ -340,7 +340,7 @@ function createGradeButtons(table) {
 
     panel.innerHTML = `
         <div class="gmgg-panel-header">
-            <h4 class="gmgg-panel-title">📋 Group Grades</h4>
+            <h4 class="gmgg-panel-title">Group Grades</h4>
             <p class="gmgg-panel-subtitle">Upload or download grades for this tutorial group</p>
         </div>
     `;

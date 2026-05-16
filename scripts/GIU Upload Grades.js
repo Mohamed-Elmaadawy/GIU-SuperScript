@@ -613,9 +613,9 @@
             evalPicker.appendChild(opt);
         });
 
-        const loadCsvBtn = makeBtn('📄 Load CSV', 'outline');
-        const batchDlBtn = makeBtn('⬇ Batch Download', 'primary', true);
-        const batchUpBtn = makeBtn('⬆ Batch Upload', 'success', true);
+        const loadCsvBtn = makeBtn('Load CSV', 'outline');
+        const batchDlBtn = makeBtn('Batch Download', 'primary', true);
+        const batchUpBtn = makeBtn('Batch Upload', 'success', true);
 
         let csvMap = null;
 
@@ -654,7 +654,7 @@
 
         card.innerHTML = `
             <div class="giug-card-header giug-hdr-blue">
-                <h4 class="giug-card-title">📊 Batch Grades</h4>
+                <h4 class="giug-card-title">Batch Grades</h4>
                 <p class="giug-card-category">Download or upload grades across all groups at once</p>
             </div>
             <div class="giug-card-body">
@@ -684,8 +684,8 @@
         fileInput.accept = '.csv';
         fileInput.style.display = 'none';
 
-        const uploadBtn   = makeBtn('📄 Upload CSV', 'outline');
-        const downloadBtn = makeBtn('⬇ Download CSV', 'primary');
+        const uploadBtn   = makeBtn('Upload CSV', 'outline');
+        const downloadBtn = makeBtn('Download CSV', 'primary');
 
         uploadBtn.onclick = () => fileInput.click();
 
@@ -717,7 +717,7 @@
 
         card.innerHTML = `
             <div class="giug-card-header giug-hdr-green">
-                <h4 class="giug-card-title">📋 Group Grades</h4>
+                <h4 class="giug-card-title">Group Grades</h4>
                 <p class="giug-card-category">Upload or download grades for this group</p>
             </div>
             <div class="giug-card-body">
