@@ -386,13 +386,11 @@ try {
         let activeCard = null;
 
         function checkTableVisibility() {
-            const table     = document.querySelector('#Table1');
-            const rowCount  = table?.querySelectorAll('tbody tr').length ?? 0;
-            const hasData   = rowCount > 1; // more than header row = student rows loaded
-            const visible   = table?.tagName === 'TABLE' && table.offsetParent !== null && hasData;
+            const gradeTable = document.querySelector('#MainContent_nttTb');
+            const visible    = gradeTable !== null && gradeTable.offsetParent !== null;
 
             if (visible && !activeCard) {
-                activeCard = createGradeButtons(table);
+                activeCard = createGradeButtons(document.querySelector('#Table1'));
             } else if (!visible && activeCard) {
                 activeCard.remove();
                 activeCard = null;
