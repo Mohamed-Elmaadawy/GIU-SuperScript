@@ -51,9 +51,12 @@
     }
 
     function formatGroupLabel(label) {
+        const code = extractCourseCode(label);
         const parts = label.split(' - ');
-        // Drop season (parts[0]), keep: "CODE - Group..."
-        return parts.length >= 3 ? parts.slice(1).join(' - ') : label;
+        if (parts.length < 3) return label;
+        const name = (code && COURSE_NAMES[code]) || parts[1];
+        // Drop season (parts[0]), replace code with course name: "Course Name - Group..."
+        return [name, ...parts.slice(2)].join(' - ');
     }
 
     function getCourseTitle(label) {
