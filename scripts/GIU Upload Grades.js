@@ -672,6 +672,9 @@
             csvMap = await parseCSV(file);
             showInfo(card, `CSV loaded — ${Object.keys(csvMap).length} student grade(s) ready.`);
             batchUpBtn.disabled = !isValidId(evalPicker.value);
+            const maxGrade = getMaxGrade(evalPicker);
+            const previewStats = computeStats(Object.values(csvMap), maxGrade);
+            renderGroupStats(card, previewStats);
         };
 
         batchDlBtn.onclick = async () => {
@@ -735,7 +738,9 @@
                 if (id && gradeEl && id in csvMap) gradeEl.value = csvMap[id];
             });
             const grades = getRows().map(row => row.cells[2]?.querySelector('input')?.value ?? '');
-            renderGroupStats(card, computeStats(grades));
+            const crntText = document.querySelector(SEL.crntLbl)?.textContent ?? '';
+            const maxGradePerGroup = parseFloat(crntText.split('||')[1]) || null;
+            renderGroupStats(card, computeStats(grades, maxGradePerGroup));
         };
 
         downloadBtn.onclick = () => {
@@ -748,7 +753,9 @@
                 `${gLabel}-${eLabel}.csv`
             );
             const grades = getRows().map(row => row.cells[2]?.querySelector('input')?.value ?? '');
-            renderGroupStats(card, computeStats(grades));
+            const crntText = document.querySelector(SEL.crntLbl)?.textContent ?? '';
+            const maxGradePerGroup = parseFloat(crntText.split('||')[1]) || null;
+            renderGroupStats(card, computeStats(grades, maxGradePerGroup));
         };
 
         card.innerHTML = `
@@ -768,7 +775,9 @@
         (crntEl ?? table).insertAdjacentElement('afterend', card);
 
         const initialGrades = getRows().map(row => row.cells[2]?.querySelector('input')?.value ?? '');
-        renderGroupStats(card, computeStats(initialGrades));
+        const crntText = document.querySelector(SEL.crntLbl)?.textContent ?? '';
+        const maxGradePerGroup = parseFloat(crntText.split('||')[1]) || null;
+        renderGroupStats(card, computeStats(initialGrades, maxGradePerGroup));
     }
 
     // ── Entry point ──────────────────────────────────────────────────────────
