@@ -739,7 +739,8 @@
             });
             const grades = getRows().map(row => row.cells[2]?.querySelector('input')?.value ?? '');
             const crntText = document.querySelector(SEL.crntLbl)?.textContent ?? '';
-            const maxGradePerGroup = parseFloat(crntText.split('||')[1]) || null;
+            const _afterPipe = crntText.split('||')[1];
+            const maxGradePerGroup = (_afterPipe != null && _afterPipe !== '') ? parseFloat(_afterPipe) : null;
             renderGroupStats(card, computeStats(grades, maxGradePerGroup));
         };
 
@@ -754,7 +755,8 @@
             );
             const grades = getRows().map(row => row.cells[2]?.querySelector('input')?.value ?? '');
             const crntText = document.querySelector(SEL.crntLbl)?.textContent ?? '';
-            const maxGradePerGroup = parseFloat(crntText.split('||')[1]) || null;
+            const _afterPipe = crntText.split('||')[1];
+            const maxGradePerGroup = (_afterPipe != null && _afterPipe !== '') ? parseFloat(_afterPipe) : null;
             renderGroupStats(card, computeStats(grades, maxGradePerGroup));
         };
 
@@ -776,7 +778,8 @@
 
         const initialGrades = getRows().map(row => row.cells[2]?.querySelector('input')?.value ?? '');
         const crntText = document.querySelector(SEL.crntLbl)?.textContent ?? '';
-        const maxGradePerGroup = parseFloat(crntText.split('||')[1]) || null;
+        const _afterPipe = crntText.split('||')[1];
+        const maxGradePerGroup = (_afterPipe != null && _afterPipe !== '') ? parseFloat(_afterPipe) : null;
         renderGroupStats(card, computeStats(initialGrades, maxGradePerGroup));
     }
 
