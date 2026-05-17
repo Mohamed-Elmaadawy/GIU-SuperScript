@@ -45,19 +45,15 @@
 
     function getCourseLabel(code) {
         const name = COURSE_NAMES[code];
-        return name ? `${name} (${code})` : code;
+        if (!name) return code;
+        const short = name.length > 20 ? name.slice(0, 19) + '…' : name;
+        return `${code} – ${short}`;
     }
 
     function formatGroupLabel(label) {
-        const code = extractCourseCode(label);
         const parts = label.split(' - ');
-        if (parts.length < 3) return label;
-        const name = code && COURSE_NAMES[code];
-        const short = name
-            ? (name.length > 28 ? name.slice(0, 27) + '…' : name) + ` (${code})`
-            : code || parts[1];
-        // Drop season (parts[0]), show: "Short Name (CODE) - Group..."
-        return [short, ...parts.slice(2)].join(' - ');
+        // Drop season (parts[0]), keep: "CODE - Group..."
+        return parts.length >= 3 ? parts.slice(1).join(' - ') : label;
     }
 
     function getCourseTitle(label) {
