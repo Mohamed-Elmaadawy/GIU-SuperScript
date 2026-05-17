@@ -554,7 +554,7 @@
                     if (raw == null || raw === "") return 0;
                     const n = Number(raw);
                     if (!Number.isFinite(n) || n < 0) return 0;
-                    return Math.floor(n);
+                    return n;
                 } catch {
                     return 0;
                 }
@@ -562,7 +562,7 @@
 
             function setStoredAnnualLeaveBalance(value) {
                 const n = Number(value);
-                const safe = Number.isFinite(n) && n >= 0 ? Math.floor(n) : 0;
+                const safe = Number.isFinite(n) && n >= 0 ? n : 0;
                 localStorage.setItem(ANNUAL_LEAVE_BALANCE_KEY, String(safe));
             }
 
@@ -762,7 +762,7 @@
 
                 const periodsPassed = currIdx - lastIdx;
                 const currentBalance = getStoredAnnualLeaveBalance();
-                const updatedBalance = currentBalance + periodsPassed * 3;
+                const updatedBalance = currentBalance + periodsPassed * 2;
                 setStoredAnnualLeaveBalance(updatedBalance);
                 localStorage.setItem(ANNUAL_LEAVE_ACCRUAL_PERIOD_KEY, currentPeriodKey);
             }
@@ -3476,7 +3476,7 @@
                             alert("Please enter a valid number.");
                             return false;
                         }
-                        const desiredRemaining = Math.floor(parsed);
+                        const desiredRemaining = parsed;
                         const desiredTotal = Math.max(0, desiredRemaining + annualUsed);
                         setStoredAnnualLeaveBalance(desiredTotal);
                         renderEnhancedUI();
@@ -5198,11 +5198,11 @@
                 const iconEl = document.createElement("div");
                 iconEl.className = "giu-stat-icon";
                 if (stats.absentDays > 0) {
-                    iconEl.textContent = "🚨";
+                    iconEl.textContent = "✕";
                     iconEl.title = `${stats.absentDays} absent day(s) not counted in hours`;
                     iconEl.style.color = "#dc2626";
                 } else if (!stats.isPositiveOrZero) {
-                    iconEl.textContent = "⚠️";
+                    iconEl.textContent = "⚠";
                     iconEl.title = "Negative balance (missing hours)";
                     iconEl.style.color = "#d97706";
                 } else {

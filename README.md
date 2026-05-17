@@ -61,7 +61,7 @@ https://portal.giu-uni.de/GIUb/EXT/SwiftReports_m.aspx?swiftreportid=866&execute
 - **Balance summary** — actual vs. required hours, progress bar, extra/missing balance
 - **Present / Absent / Late tracking** — late threshold: 10:30 AM normal, 9:30 AM Ramadan
 - **Holiday & Annual Leave** — add single dates or ranges, bulk remove, deduplication
-- **Annual leave balance** — editable remaining days, auto-accrues +3 days per payroll month
+- **Annual leave balance** — editable remaining days (supports decimals), auto-accrues +2 days per payroll month
 - **Attendance overrides** — custom hours for mission days, IN/OUT anomalies, etc.
 - **Compensation days** — earn by working your day off (capped 1/week), use within same period
 - **Ramadan mode** — reduced required hours (6h), adjusted thresholds
