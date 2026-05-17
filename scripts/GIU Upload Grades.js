@@ -531,12 +531,30 @@
         }
     }
 
+    function validateCsvMap(csvMap, maxGrade) {
+        const errors = [];
+        for (const [id, raw] of Object.entries(csvMap)) {
+            const v = +raw;
+            if (!Number.isFinite(v))  { errors.push(`Student ${id}: invalid value "${raw}"`); continue; }
+            if (v < 0)                { errors.push(`Student ${id}: negative grade ${raw}`); continue; }
+            if (maxGrade != null && v > maxGrade) errors.push(`Student ${id}: ${raw} exceeds max ${maxGrade}`);
+        }
+        return errors;
+    }
+
     // ── Batch upload (State A) ───────────────────────────────────────────────
 
-    async function batchUpload(evalId, csvMap, toolbar) {
+    async function batchUpload(evalId, csvMap, toolbar, evalPicker) {
         const { groups, hidden, season, course } = readPageState();
 
         if (!groups.length) { showError(toolbar, 'No groups found.'); return; }
+
+        const maxGrade = getMaxGrade(evalPicker);
+        const validationErrors = validateCsvMap(csvMap, maxGrade);
+        if (validationErrors.length) {
+            showError(toolbar, `${validationErrors.length} grade(s) failed validation: ${validationErrors.slice(0, 5).join('; ')}${validationErrors.length > 5 ? ` … and ${validationErrors.length - 5} more` : ''}`);
+            return;
+        }
 
         const groupStats = [];
         let saved  = 0;
@@ -581,7 +599,7 @@
 
                 await doPostBack(doc2Hidden, saveBtnEl.name, gradeOverrides);
 
-                groupStats.push({ label: group.label, stats: computeStats(Object.values(gradeOverrides)) });
+                groupStats.push({ label: group.label, stats: computeStats(Object.values(gradeOverrides), maxGrade) });
                 saved++;
             } catch (err) {
                 errors++;
@@ -666,7 +684,7 @@
         batchUpBtn.onclick = async () => {
             if (!csvMap || !isValidId(getEvalId())) return;
             batchUpBtn.disabled = true;
-            await batchUpload(getEvalId(), csvMap, card);
+            await batchUpload(getEvalId(), csvMap, card, evalPicker);
             batchUpBtn.disabled = false;
         };
 
