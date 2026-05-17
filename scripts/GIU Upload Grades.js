@@ -340,6 +340,7 @@
                 <div class="giug-stat"><span class="giug-stat-key">Max</span><span class="giug-stat-val">${stats.max}</span></div>
                 <div class="giug-stat"><span class="giug-stat-key">Avg</span><span class="giug-stat-val">${stats.avg}</span></div>
                 <div class="giug-stat"><span class="giug-stat-key">Range</span><span class="giug-stat-val">${stats.range}</span></div>
+                ${stats.passRate != null ? `<div class="giug-stat"><span class="giug-stat-key">Pass</span><span class="giug-stat-val">${stats.passRate}</span></div>` : ''}
             </div>
         `;
         card.querySelector('.giug-card-body').appendChild(section);
@@ -349,6 +350,7 @@
         card.querySelector('.giug-stats-section')?.remove();
         const withStats = groupStats.filter(g => g.stats);
         if (!withStats.length) return;
+        const hasPass = withStats.some(g => g.stats.passRate != null);
         const rows = withStats.map(g => `
             <tr>
                 <td>${g.label}</td>
@@ -356,6 +358,7 @@
                 <td class="giug-stat-num">${g.stats.max}</td>
                 <td class="giug-stat-num">${g.stats.avg}</td>
                 <td class="giug-stat-num">${g.stats.range}</td>
+                ${hasPass ? `<td class="giug-stat-num">${g.stats.passRate ?? '—'}</td>` : ''}
                 <td style="color:#9e9e9e;font-size:11px;">${g.stats.count}</td>
             </tr>
         `).join('');
@@ -364,7 +367,11 @@
         section.innerHTML = `
             <div class="giug-stats-label">Per-Group Statistics</div>
             <table class="giug-stats-table">
-                <thead><tr><th>Group</th><th>Min</th><th>Max</th><th>Avg</th><th>Range</th><th>n</th></tr></thead>
+                <thead><tr>
+                    <th>Group</th><th>Min</th><th>Max</th><th>Avg</th><th>Range</th>
+                    ${hasPass ? '<th>Pass</th>' : ''}
+                    <th>n</th>
+                </tr></thead>
                 <tbody>${rows}</tbody>
             </table>
         `;
