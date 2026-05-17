@@ -5,4 +5,8 @@
 !scripts/**
 !README.md
 !.gitignore
-.claude/
+!package.json
+!package-lock.json
+# Allow screenshots GIFs (committed for README)
+!screenshots/
+!screenshots/*.gif
