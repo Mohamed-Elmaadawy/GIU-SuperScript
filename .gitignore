@@ -6,8 +6,6 @@
 scripts/scrape-courses.js
 scripts/screenshots/
 scripts/screenshots/**
-!data/
-!data/**
 !README.md
 !.gitignore
 # Allow screenshots GIFs (committed for README)
