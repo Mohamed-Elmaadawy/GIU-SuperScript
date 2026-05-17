@@ -310,6 +310,12 @@
                 color: #374151;
             }
             .gius-btn-muted:not(:disabled):hover { background: #e5e7eb; }
+            .gius-btn-danger {
+                background: #dc2626;
+                color: #fff;
+                border: none;
+            }
+            .gius-btn-danger:hover { background: #b91c1c; }
 
             .gius-progress-wrap {
                 background: #e5e7eb;
@@ -465,10 +471,14 @@
     function advanceOrDone(queue) {
         queue.currentIndex++;
         if (queue.currentIndex >= queue.groups.length) {
+            const failedGroups = queue.groups.filter((_, i) => queue.results[i]?.status === 'failed');
+            const retryPayload = failedGroups.length > 0
+                ? { groups: failedGroups, sharedSubject: queue.sharedSubject, sharedBody: queue.sharedBody }
+                : null;
             clearQueue();
             const progress = getEl('giu-batch-progress');
             if (progress) progress.remove();
-            renderSummary(queue.results);
+            renderSummary(queue.results, retryPayload);
             injectPanel();
             return;
         }
@@ -776,7 +786,7 @@
 
     // ── Completion summary ────────────────────────────────────────────────────────
 
-    function renderSummary(results) {
+    function renderSummary(results, retryPayload = null) {
         injectStyles();
         const sent      = results.filter(r => r.status === 'sent').length;
         const failed    = results.filter(r => r.status === 'failed').length;
@@ -817,10 +827,26 @@
                 <div class="gius-result-list">${rows}</div>
                 <div class="gius-divider"></div>
                 <button type="button" id="giu-dismiss-btn" class="gius-btn gius-btn-muted">Dismiss</button>
+                ${retryPayload ? `<button type="button" id="giu-retry-btn" class="gius-btn gius-btn-danger">Retry Failed (${retryPayload.groups.length})</button>` : ''}
             </div>
         `;
 
         card.querySelector('#giu-dismiss-btn').addEventListener('click', () => card.remove());
+
+        if (retryPayload) {
+            const retryBtn = card.querySelector('#giu-retry-btn');
+            retryBtn?.addEventListener('click', () => {
+                saveQueue({
+                    step:          'select',
+                    currentIndex:  0,
+                    sharedSubject: retryPayload.sharedSubject,
+                    sharedBody:    retryPayload.sharedBody,
+                    groups:        retryPayload.groups,
+                    results:       [],
+                });
+                location.reload();
+            });
+        }
 
         const anchor = getInjectionAnchor();
         if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(card, anchor);
