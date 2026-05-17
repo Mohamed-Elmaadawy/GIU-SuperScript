@@ -50,10 +50,19 @@
 
     function formatGroupLabel(label) {
         const code = extractCourseCode(label);
-        if (!code || !COURSE_NAMES[code]) return label;
         const parts = label.split(' - ');
-        parts[1] = getCourseLabel(code);
-        return parts.join(' - ');
+        if (parts.length < 3) return label;
+        const name = code && COURSE_NAMES[code];
+        const short = name
+            ? (name.length > 28 ? name.slice(0, 27) + '…' : name) + ` (${code})`
+            : code || parts[1];
+        // Drop season (parts[0]), show: "Short Name (CODE) - Group..."
+        return [short, ...parts.slice(2)].join(' - ');
+    }
+
+    function getCourseTitle(label) {
+        const code = extractCourseCode(label);
+        return (code && COURSE_NAMES[code]) ? `${COURSE_NAMES[code]} (${code})` : '';
     }
 
     // ── Style injection ──────────────────────────────────────────────────────────
@@ -557,7 +566,7 @@
                     ${groups.length
                         ? groups.map(g => `
                             <div class="gius-group-row">
-                                <label>
+                                <label title="${escapeHtml(getCourseTitle(g.label))}">
                                     <input type="checkbox" class="giu-group-cb"
                                         data-value="${escapeHtml(g.value)}"
                                         data-label="${escapeHtml(g.label)}">
