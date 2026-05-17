@@ -72,6 +72,8 @@ https://portal.giu-uni.de/GIUb/EXT/SwiftReports_m.aspx?swiftreportid=866&execute
 - **Onboarding guide** — first-time spotlight walkthrough for all features
 - **Auto record pruning** — cleans records older than 2 payroll months
 
+![Attendance Dashboard](screenshots/attendance.gif)
+
 **Usage:**
 
 1. Navigate to the Swift Report page (link above)
@@ -101,6 +103,8 @@ https://portal.giu-uni.de/GIUb/INTStaff/NotificationSystem_SendEmail_m.aspx
 - **Select All** — respects the active course filter, only selects visible groups
 - **Progress tracking** — live banner updates after each group is processed
 - **Summary table** — shows sent / failed status per group when the batch completes
+
+![Notification Batch Send](screenshots/notification-batch-send.gif)
 
 **Usage:**
 
@@ -149,6 +153,8 @@ Name,Group,Grade
 ```
 
 Grades are matched by student ID `(XXXXXXXX)` prefix — safe against row reordering.
+
+![Upload Grades — Toolbar (before selection)](screenshots/upload-grades-before.gif)
 
 **Usage:**
 
