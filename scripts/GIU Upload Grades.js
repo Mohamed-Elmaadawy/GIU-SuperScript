@@ -537,7 +537,7 @@
             const v = +raw;
             if (!Number.isFinite(v))  { errors.push(`Student ${id}: invalid value "${raw}"`); continue; }
             if (v < 0)                { errors.push(`Student ${id}: negative grade ${raw}`); continue; }
-            if (maxGrade != null && v > maxGrade) errors.push(`Student ${id}: ${raw} exceeds max ${maxGrade}`);
+            if (maxGrade != null && v > maxGrade) { errors.push(`Student ${id}: ${raw} exceeds max ${maxGrade}`); continue; }
         }
         return errors;
     }
