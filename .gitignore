@@ -5,6 +5,7 @@
 !scripts/**
 scripts/scrape-courses.js
 scripts/screenshots/
+scripts/screenshots/**
 !data/
 !data/**
 !README.md
