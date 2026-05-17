@@ -156,8 +156,6 @@ Grades are matched by student ID `(XXXXXXXX)` prefix — safe against row reorde
 
 ![Upload Grades — Toolbar (before selection)](screenshots/upload-grades-before.gif)
 
-![Upload Grades — Grade Table (after selection)](screenshots/upload-grades-after.gif)
-
 **Usage:**
 
 *Batch Download:*
@@ -194,8 +192,6 @@ https://portal.giu-uni.de/GIUb/INTStaff/ManageGroupGrade_m.aspx
 - **Download Grades CSV** — exports student names and current grade values to CSV
 - **Grade statistics** — Min, Max, Average, and Range computed from current grade inputs
 - **Auto-hide** — panel is hidden until the grade table is present; disappears if you change selection
-
-![Manage Group Grades](screenshots/manage-group-grades.gif)
 
 **Usage:**
 
