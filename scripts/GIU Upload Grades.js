@@ -300,20 +300,31 @@
         container.querySelector('.gius-progress-info')?.remove();
     }
 
+    function getMaxGrade(evalPicker) {
+        const text = evalPicker?.options[evalPicker.selectedIndex]?.text ?? '';
+        const after = text.split('||')[1];
+        return after != null && after !== '' ? parseFloat(after) : null;
+    }
+
     // ── Stats helpers ────────────────────────────────────────────────────────
 
-    function computeStats(values) {
+    function computeStats(values, maxGrade = null) {
         const nums = values.filter(v => v !== '' && Number.isFinite(+v)).map(Number);
         if (!nums.length) return null;
         const min = Math.min(...nums);
         const max = Math.max(...nums);
         const avg = nums.reduce((a, b) => a + b, 0) / nums.length;
+        const passThreshold = maxGrade != null ? maxGrade * 0.5 : null;
+        const passRate = passThreshold != null
+            ? ((nums.filter(n => n >= passThreshold).length / nums.length) * 100).toFixed(0) + '%'
+            : null;
         return {
-            min:   min.toFixed(1),
-            max:   max.toFixed(1),
-            avg:   avg.toFixed(1),
-            range: (max - min).toFixed(1),
-            count: nums.length
+            min:      min.toFixed(1),
+            max:      max.toFixed(1),
+            avg:      avg.toFixed(1),
+            range:    (max - min).toFixed(1),
+            count:    nums.length,
+            passRate,
         };
     }
 
