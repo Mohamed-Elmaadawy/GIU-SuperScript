@@ -14,7 +14,7 @@ const targets = [
   {
     name: 'attendance',
     url: `${PORTAL}/EXT/SwiftReports_m.aspx?swiftreportid=866&executereport=1`,
-    script: 'GIU Attandance Script.js',
+    script: 'GIU Attendance Script.js',
     selector: '#giu-attendance-container',
     useAuth: true,
   },

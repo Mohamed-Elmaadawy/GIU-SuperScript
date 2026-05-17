@@ -46,7 +46,7 @@ After saving, go to the target page listed for each script below. A new panel or
 
 ### 1. GIU Staff Enhanced Attendance
 
-**File:** `GIU Attandance Script.js` | **Version:** 3.0.7 | **Author:** Mo.Elmaadawy
+**File:** `GIU Attendance Script.js` | **Version:** 3.0.7 | **Author:** Mo.Elmaadawy
 
 A full attendance management dashboard injected above the Swift Report attendance table. Tracks your hours, leave balance, and exceptions — all stored locally in your browser.
 
