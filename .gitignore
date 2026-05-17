@@ -3,6 +3,8 @@
 # Except scripts folder and root files
 !scripts/
 !scripts/**
+!data/
+!data/**
 !README.md
 !.gitignore
 # Allow screenshots GIFs (committed for README)
