@@ -545,7 +545,9 @@
 
     function injectPanel() {
         injectStyles();
-        const groups = getGroupOptions();
+        const groups = getGroupOptions().sort((a, b) =>
+            formatGroupLabel(a.label).localeCompare(formatGroupLabel(b.label))
+        );
 
         const card = document.createElement('div');
         card.id = 'giu-batch-panel';
