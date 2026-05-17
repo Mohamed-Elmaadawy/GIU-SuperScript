@@ -8,6 +8,8 @@ scripts/screenshots/
 scripts/screenshots/**
 !README.md
 !.gitignore
+!docs/
+!docs/**
 # Allow screenshots GIFs (committed for README)
 !screenshots/
 !screenshots/*.gif
