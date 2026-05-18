@@ -33,9 +33,21 @@
             html.gius-dark #page-wrapper,
             html.gius-dark .right-panel,
             html.gius-dark .container,
-            html.gius-dark .container-fluid {
+            html.gius-dark .container-fluid,
+            html.gius-dark .content {
                 background-color: #1e1e2e !important;
                 color: #cdd6f4 !important;
+            }
+
+            /* ── Page title bar (light gray strip at top of content) ── */
+            html.gius-dark .page-header,
+            html.gius-dark .page-title,
+            html.gius-dark .header,
+            html.gius-dark .breadcrumbs,
+            html.gius-dark .alert-secondary {
+                background-color: #181825 !important;
+                color: #cdd6f4 !important;
+                border-color: #45475a !important;
             }
 
             /* ── General text ── */
