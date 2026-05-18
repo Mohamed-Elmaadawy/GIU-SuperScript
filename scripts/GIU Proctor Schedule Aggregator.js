@@ -40,4 +40,79 @@
         return `${days} days ago`;
     }
 
+    // ── ASP.NET helpers ───────────────────────────────────────────────────────
+
+    function extractFormState(doc) {
+        const get = id => (doc.getElementById(id) || {}).value || '';
+        return {
+            __VIEWSTATE:            get('__VIEWSTATE'),
+            __VIEWSTATEGENERATOR:   get('__VIEWSTATEGENERATOR'),
+            __EVENTVALIDATION:      get('__EVENTVALIDATION'),
+        };
+    }
+
+    async function doPostback(eventTarget, extraFields, baseState) {
+        const state = baseState || extractFormState(document);
+        const body = new URLSearchParams({
+            __EVENTTARGET:          eventTarget,
+            __EVENTARGUMENT:        '',
+            __LASTFOCUS:            '',
+            __VIEWSTATE:            state.__VIEWSTATE,
+            __VIEWSTATEGENERATOR:   state.__VIEWSTATEGENERATOR,
+            __EVENTVALIDATION:      state.__EVENTVALIDATION,
+            ...extraFields,
+        });
+        const resp = await fetch(PAGE_URL, {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: body.toString(),
+        });
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const html = await resp.text();
+        if (html.includes('Login_m.aspx') || html.includes('id="LoginPage"')) {
+            throw new Error('SESSION_EXPIRED');
+        }
+        return new DOMParser().parseFromString(html, 'text/html');
+    }
+
+    // ── Parsers ───────────────────────────────────────────────────────────────
+
+    function parseExamString(raw) {
+        // "Mar 28 2026  1:30PM ---> GIU-Cairo.Informatics 4th - MATH403 Mathematics IV"
+        const parts = raw.split(' ---> ');
+        if (parts.length < 2) return { courseCode: '', examName: raw.trim() };
+        const right = parts[1].trim();
+        const segs = right.split(' - ');
+        if (segs.length >= 3) {
+            const codeAndName = segs.slice(-2);
+            const codePart    = codeAndName[0].trim().split(/\s+/);
+            const courseCode  = codePart[codePart.length - 1];
+            const examName    = codeAndName[1].trim();
+            return { courseCode, examName };
+        }
+        return { courseCode: '', examName: right };
+    }
+
+    function formatTime(str) {
+        // "3/28/2026 1:30:00 PM" → "1:30 PM"
+        const d = new Date(str);
+        if (isNaN(d.getTime())) return str;
+        return d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+    }
+
+    function formatDate(str) {
+        // "3/28/2026 1:30:00 PM" → "Sat Mar 28"
+        const d = new Date(str);
+        if (isNaN(d.getTime())) return str;
+        return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+    }
+
+    function parseDateKey(str) {
+        // "3/28/2026 1:30:00 PM" → "2026-03-28" for sorting
+        const d = new Date(str);
+        if (isNaN(d.getTime())) return str;
+        return d.toISOString().slice(0, 10);
+    }
+
 })();
