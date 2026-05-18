@@ -683,4 +683,172 @@
         URL.revokeObjectURL(url);
     }
 
+    // ── Panel wiring ──────────────────────────────────────────────────────────
+
+    function wirePanel(panel) {
+        // Sort headers
+        panel.querySelectorAll('thead th[data-col]').forEach(th => {
+            th.addEventListener('click', () => {
+                const col = th.dataset.col;
+                if (_sortCol === col) _sortAsc = !_sortAsc;
+                else { _sortCol = col; _sortAsc = true; }
+                updateSortIcons();
+                applyFiltersAndSort();
+            });
+        });
+
+        // Filter inputs
+        function bindFilter(id, key) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.addEventListener('change', () => { _filters[key] = el.value; applyFiltersAndSort(); });
+            if (el.tagName === 'INPUT') {
+                el.addEventListener('input', () => { _filters[key] = el.value; applyFiltersAndSort(); });
+            }
+        }
+        bindFilter('gius-f-search',     'search');
+        bindFilter('gius-f-day',        'day');
+        bindFilter('gius-f-exam',       'exam');
+        bindFilter('gius-f-proctor',    'proctor');
+        bindFilter('gius-f-room',       'room');
+        bindFilter('gius-f-department', 'department');
+
+        // Clear all
+        document.getElementById('gius-f-clear')?.addEventListener('click', () => {
+            _filters = { search: '', day: '', exam: '', proctor: '', room: '', department: '' };
+            ['gius-f-search', 'gius-f-day', 'gius-f-exam', 'gius-f-proctor', 'gius-f-room', 'gius-f-department']
+                .forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+            applyFiltersAndSort();
+        });
+
+        // CSV
+        document.getElementById('gius-proctor-csv')?.addEventListener('click', exportCSV);
+
+        // Minimize
+        document.getElementById('gius-proctor-minimize')?.addEventListener('click', () => {
+            const body = document.getElementById('gius-proctor-body');
+            const btn  = document.getElementById('gius-proctor-minimize');
+            if (!body) return;
+            const collapsed = body.classList.toggle('collapsed');
+            btn.textContent = collapsed ? '□' : '─';
+        });
+
+        // Close
+        document.getElementById('gius-proctor-close')?.addEventListener('click', () => {
+            panel.remove();
+            _panelEl = null;
+        });
+
+        // Refresh
+        document.getElementById('gius-proctor-refresh')?.addEventListener('click', () => {
+            if (_scraping) return;
+            clearCache();
+            _allRows = [];
+            _filters = { search: '', day: '', exam: '', proctor: '', room: '', department: '' };
+            startScrape();
+        });
+    }
+
+    function startScrape() {
+        _scraping = true;
+        const progSec    = document.getElementById('gius-progress-section');
+        const progBar    = document.getElementById('gius-progress-bar');
+        const progLbl    = document.getElementById('gius-progress-label');
+        const filterBr   = document.getElementById('gius-filter-bar');
+        const metaEl     = document.getElementById('gius-proctor-meta');
+        const warnEl     = document.getElementById('gius-proctor-warn');
+        const refreshBtn = document.getElementById('gius-proctor-refresh');
+        if (refreshBtn) refreshBtn.disabled = true;
+        if (progSec)  progSec.style.display = '';
+        if (filterBr) filterBr.style.display = '';
+
+        scrapeAll({
+            onProgress(stats) {
+                const pct = stats.totalProctors
+                    ? Math.round((stats.proctorsDone / stats.totalProctors) * 100)
+                    : Math.round((stats.depts / stats.totalDepts) * 50);
+                if (progBar) progBar.style.width = pct + '%';
+                if (progLbl) {
+                    if (stats.totalProctors) {
+                        progLbl.textContent =
+                            `Scraped ${stats.proctorsDone} / ${stats.totalProctors} proctors · ${stats.exams.toLocaleString()} exams`;
+                    } else {
+                        progLbl.textContent =
+                            `Fetching departments ${stats.depts} / ${stats.totalDepts}…`;
+                    }
+                }
+            },
+            onRows(rows) {
+                _allRows = rows;
+                applyFiltersAndSort();
+            },
+            onError(type) {
+                if (type === 'SESSION_EXPIRED') {
+                    if (warnEl) {
+                        warnEl.style.display = '';
+                        warnEl.innerHTML = '<span class="gius-warn-pill">⚠ Session expired — reload page</span>';
+                    }
+                }
+            },
+            onComplete(rows) {
+                _scraping = false;
+                _allRows  = rows;
+                if (progSec)    progSec.style.display = 'none';
+                if (refreshBtn) refreshBtn.disabled = false;
+                const now = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+                if (metaEl) metaEl.textContent = `Last updated: ${now} · ${rows.length.toLocaleString()} exams`;
+                applyFiltersAndSort();
+            },
+        });
+    }
+
+    function openPanel() {
+        if (_panelEl) { _panelEl.style.display = ''; return; }
+
+        const panel = buildPanel();
+        _panelEl = panel;
+
+        const anchor = document.getElementById('mainTbl') || document.getElementById('form1');
+        anchor.parentNode.insertBefore(panel, anchor);
+        wirePanel(panel);
+
+        const cached = loadCache();
+        if (cached && cached.rows && cached.rows.length) {
+            _allRows = cached.rows;
+            const age     = formatCacheAge(cached.scrapedAt);
+            const dateStr = new Date(cached.scrapedAt).toLocaleDateString('en-GB',
+                { day: 'numeric', month: 'short', year: 'numeric' });
+            const metaEl   = document.getElementById('gius-proctor-meta');
+            if (metaEl) metaEl.textContent = `Last updated: ${dateStr} (${age}) · ${cached.rows.length.toLocaleString()} exams`;
+            const filterBr = document.getElementById('gius-filter-bar');
+            if (filterBr) filterBr.style.display = '';
+            applyFiltersAndSort();
+        } else {
+            startScrape();
+        }
+    }
+
+    // ── Entry point ───────────────────────────────────────────────────────────
+
+    function injectTrigger() {
+        if (document.getElementById('gius-proctor-trigger')) return;
+        const row = document.getElementById('MainContent_lstTR');
+        if (!row) return;
+        const btn = document.createElement('button');
+        btn.id        = 'gius-proctor-trigger';
+        btn.className = 'gius-btn gius-btn-primary';
+        btn.style.cssText = 'margin-top:8px;';
+        btn.innerHTML = '<i class="fa fa-laptop"></i> View All Proctor Schedules';
+        btn.addEventListener('click', openPanel);
+        const td = row.querySelector('td') || row;
+        td.appendChild(btn);
+    }
+
+    function init() {
+        injectStyles();
+        injectTrigger();
+    }
+
+    init();
+
 })();
