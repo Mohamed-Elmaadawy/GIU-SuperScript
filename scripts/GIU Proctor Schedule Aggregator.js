@@ -418,6 +418,7 @@
             html.gius-dark .gius-proctor-card {
                 background: #181825 !important; border-color: transparent !important;
             }
+            html.gius-dark .gius-proctor-hdr { background: #11111b !important; }
             html.gius-dark .gius-proctor-body { color: #cdd6f4 !important; }
             html.gius-dark .gius-proctor-table tbody tr { border-color: #313244 !important; }
             html.gius-dark .gius-proctor-table tbody tr:nth-child(even) { background: #181825 !important; }
@@ -499,14 +500,14 @@
                 </div>
                 <div class="gius-proctor-hdr-btns">
                     <span id="gius-proctor-warn" style="display:none"></span>
-                    <button class="gius-btn gius-btn-outline gius-btn-sm" id="gius-proctor-csv" title="Export filtered rows as CSV">
+                    <button type="button" class="gius-btn gius-btn-outline gius-btn-sm" id="gius-proctor-csv" title="Export filtered rows as CSV">
                         <i class="fa fa-download"></i> CSV
                     </button>
-                    <button class="gius-btn gius-btn-outline gius-btn-sm" id="gius-proctor-refresh" title="Re-scrape all departments">
+                    <button type="button" class="gius-btn gius-btn-outline gius-btn-sm" id="gius-proctor-refresh" title="Re-scrape all departments">
                         <i class="fa fa-refresh"></i> Refresh
                     </button>
-                    <button class="gius-btn gius-btn-muted gius-btn-sm" id="gius-proctor-minimize">&#x2015;</button>
-                    <button class="gius-btn gius-btn-muted gius-btn-sm" id="gius-proctor-close">&#x2715;</button>
+                    <button type="button" class="gius-btn gius-btn-muted gius-btn-sm" id="gius-proctor-minimize">&#x2015;</button>
+                    <button type="button" class="gius-btn gius-btn-muted gius-btn-sm" id="gius-proctor-close">&#x2715;</button>
                 </div>
             </div>
             <div class="gius-proctor-body" id="gius-proctor-body">
@@ -523,7 +524,7 @@
                     <select class="gius-filter-select" id="gius-f-proctor"    ><option value="">All Proctors</option></select>
                     <select class="gius-filter-select" id="gius-f-room"       ><option value="">All Rooms</option></select>
                     <select class="gius-filter-select" id="gius-f-department" ><option value="">All Departments</option></select>
-                    <button class="gius-btn gius-btn-muted gius-btn-sm" id="gius-f-clear" style="display:none">&#x2715; Clear all</button>
+                    <button type="button" class="gius-btn gius-btn-muted gius-btn-sm" id="gius-f-clear" style="display:none">&#x2715; Clear all</button>
                 </div>
                 <div class="gius-chip-row" id="gius-chip-row"></div>
                 <div class="gius-proctor-table-wrap" id="gius-table-wrap" style="display:none">
@@ -836,6 +837,7 @@
         if (!row) return;
         const btn = document.createElement('button');
         btn.id        = 'gius-proctor-trigger';
+        btn.type      = 'button';
         btn.className = 'gius-btn gius-btn-primary';
         btn.style.cssText = 'margin-top:8px;';
         btn.innerHTML = '<i class="fa fa-laptop"></i> View All Proctor Schedules';
