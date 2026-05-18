@@ -3,7 +3,7 @@
 // @description Dark mode toggle for the entire GIU portal
 // @include     https://portal.giu-uni.de/*
 // @namespace   ramin0
-// @version     1.4
+// @version     1.5
 // @author      Mo.Elmaadawy
 // @run-at      document-start
 // ==/UserScript==
@@ -137,15 +137,7 @@
                 color: #cdd6f4 !important;
             }
 
-            /* ── Navbar (top bar + logo area) ── */
-            html.gius-dark .navbar,
-            html.gius-dark .navbar-default {
-                background-color: #181825 !important;
-                border-color: #45475a !important;
-            }
-            html.gius-dark .navbar-brand {
-                background-color: #1e1e2e !important;
-            }
+            /* ── Top info bar (role/username strip above content) ── */
             html.gius-dark .navbar-nav > li > a,
             html.gius-dark .navbar-text {
                 color: #cdd6f4 !important;
