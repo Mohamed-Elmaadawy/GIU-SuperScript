@@ -414,9 +414,30 @@
                 animation: giusSlideDown 0.2s ease;
             }
 
-            .gius-table-footer {
-                font-size: 12px; color: #6b7280; margin-top: 8px; text-align: right;
+            .gius-table-footer { margin-top: 8px; }
+            .gius-pagination {
+                display: flex; align-items: center; justify-content: space-between;
+                flex-wrap: wrap; gap: 8px;
             }
+            .gius-page-info { font-size: 12px; color: #6b7280; }
+            .gius-page-controls { display: flex; align-items: center; gap: 6px; }
+            .gius-page-size-label { font-size: 12px; color: #6b7280; }
+            .gius-page-size-select {
+                height: 26px; padding: 0 6px; font-size: 12px;
+                border: 1px solid #d1d5db; border-radius: 4px;
+                background: #fff; color: #374151; cursor: pointer;
+                font-family: 'Open Sans', sans-serif;
+            }
+            .gius-page-btn {
+                height: 26px; min-width: 26px; padding: 0 7px;
+                border: 1px solid #d1d5db; border-radius: 4px;
+                background: #fff; color: #374151; font-size: 14px; cursor: pointer;
+                display: inline-flex; align-items: center; justify-content: center;
+                font-family: 'Open Sans', sans-serif;
+            }
+            .gius-page-btn:hover:not(:disabled) { background: #f3f4f6; }
+            .gius-page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+            .gius-page-num { font-size: 12px; color: #374151; white-space: nowrap; }
 
             .gius-spinner {
                 display: inline-block; width: 13px; height: 13px;
@@ -456,7 +477,16 @@
                 background: #313244 !important; border-color: #45475a !important;
                 color: #cdd6f4 !important;
             }
-            html.gius-dark .gius-table-footer { color: #a6adc8 !important; }
+            html.gius-dark .gius-page-info  { color: #a6adc8 !important; }
+            html.gius-dark .gius-page-num   { color: #cdd6f4 !important; }
+            html.gius-dark .gius-page-size-label { color: #a6adc8 !important; }
+            html.gius-dark .gius-page-size-select {
+                background: #313244 !important; color: #cdd6f4 !important; border-color: #45475a !important;
+            }
+            html.gius-dark .gius-page-btn {
+                background: #313244 !important; color: #cdd6f4 !important; border-color: #45475a !important;
+            }
+            html.gius-dark .gius-page-btn:hover:not(:disabled) { background: #45475a !important; }
             html.gius-dark .gius-proctor-table-wrap { border-color: #45475a !important; }
             html.gius-dark .gius-chip {
                 background: #1a2a4a !important; color: #89b4fa !important;
@@ -476,11 +506,14 @@
 
     // ── UI state ──────────────────────────────────────────────────────────────
 
-    let _allRows      = [];
-    let _renderedRows = [];
+    let _allRows       = [];
+    let _filteredRows  = [];
+    let _renderedRows  = [];
     let _filters  = { search: '', day: '', exam: '', proctor: '', room: '', department: '' };
     let _sortCol  = 'dateKey';
     let _sortAsc  = true;
+    let _pageSize    = 20;
+    let _currentPage = 1;
     let _panelEl  = null;
     let _scraping = false;
 
@@ -621,7 +654,9 @@
             return _sortAsc ? cmp : -cmp;
         });
 
-        renderTable(rows);
+        _filteredRows = rows;
+        _currentPage  = 1;
+        renderTable(_filteredRows);
         renderChips();
         updateFilterOptions();
     }
@@ -629,13 +664,20 @@
     function renderTable(rows) {
         const tbody = document.getElementById('gius-tbody');
         const wrap  = document.getElementById('gius-table-wrap');
-        const foot  = document.getElementById('gius-table-footer');
         if (!tbody) return;
 
         _renderedRows = rows;
         wrap.style.display = (_allRows.length || rows.length) ? '' : 'none';
-        tbody.innerHTML = rows.map((r, idx) => `
-            <tr class="gius-row-in gius-data-row" data-idx="${idx}" style="animation-delay:${Math.min(idx, 30) * 12}ms">
+
+        const total      = rows.length;
+        const totalPages = Math.max(1, Math.ceil(total / _pageSize));
+        _currentPage     = Math.min(_currentPage, totalPages);
+        const start      = (_currentPage - 1) * _pageSize;
+        const end        = Math.min(start + _pageSize, total);
+        const pageRows   = rows.slice(start, end);
+
+        tbody.innerHTML = pageRows.map((r, i) => `
+            <tr class="gius-row-in gius-data-row" data-idx="${start + i}" style="animation-delay:${Math.min(i, 30) * 12}ms">
                 <td>${escHtml(r.proctor)}</td>
                 <td>${escHtml(r.program || r.courseCode)} &ndash; ${escHtml(r.examName)}</td>
                 <td>${escHtml(r.hall)}</td>
@@ -646,9 +688,45 @@
             </tr>
         `).join('');
 
-        if (_allRows.length) {
-            foot.textContent = `Showing ${rows.length.toLocaleString()} / ${_allRows.length.toLocaleString()} exams`;
-        }
+        renderPagination(total, totalPages, start, end);
+    }
+
+    function renderPagination(total, totalPages, start, end) {
+        const foot = document.getElementById('gius-table-footer');
+        if (!foot) return;
+        if (!_allRows.length) { foot.innerHTML = ''; return; }
+
+        const from    = total === 0 ? 0 : start + 1;
+        const filtered = total !== _allRows.length ? ` (filtered from ${_allRows.length.toLocaleString()})` : '';
+        foot.innerHTML = `
+            <div class="gius-pagination">
+                <span class="gius-page-info">Showing ${from}–${end} of ${total.toLocaleString()} exams${filtered}</span>
+                <div class="gius-page-controls">
+                    <label class="gius-page-size-label">Rows:
+                        <select class="gius-page-size-select" id="gius-page-size">
+                            ${[5, 10, 20, 50].map(n =>
+                                `<option value="${n}"${_pageSize === n ? ' selected' : ''}>${n}</option>`
+                            ).join('')}
+                        </select>
+                    </label>
+                    <button type="button" class="gius-page-btn" id="gius-page-prev"${_currentPage <= 1 ? ' disabled' : ''}>&#x2039;</button>
+                    <span class="gius-page-num" id="gius-page-num">Page ${_currentPage} / ${totalPages}</span>
+                    <button type="button" class="gius-page-btn" id="gius-page-next"${_currentPage >= totalPages ? ' disabled' : ''}>&#x203A;</button>
+                </div>
+            </div>
+        `;
+
+        document.getElementById('gius-page-size')?.addEventListener('change', e => {
+            _pageSize    = parseInt(e.target.value, 10);
+            _currentPage = 1;
+            renderTable(_filteredRows);
+        });
+        document.getElementById('gius-page-prev')?.addEventListener('click', () => {
+            if (_currentPage > 1) { _currentPage--; renderTable(_filteredRows); }
+        });
+        document.getElementById('gius-page-next')?.addEventListener('click', () => {
+            if (_currentPage < totalPages) { _currentPage++; renderTable(_filteredRows); }
+        });
     }
 
     function renderChips() {
