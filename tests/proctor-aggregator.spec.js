@@ -271,4 +271,28 @@ test.describe('GIU Proctor Schedule Aggregator', () => {
         await expect(page.locator('#gius-proctor-meta')).toContainText('Loaded from CSV');
     });
 
+    test('pagination — page size and prev/next controls work', async ({ page }) => {
+        await setup(page);
+        await openAndScrape(page);
+
+        // Default page size 20 → all 12 rows visible on one page
+        await expect(page.locator('#gius-tbody tr')).toHaveCount(EXPECTED_ROWS);
+        await expect(page.locator('#gius-page-num')).toContainText('Page 1 / 1');
+
+        // Switch to 5 per page → only 5 rows visible
+        await page.locator('#gius-page-size').selectOption('5');
+        await expect(page.locator('#gius-tbody tr')).toHaveCount(5);
+        await expect(page.locator('#gius-page-num')).toContainText('Page 1 /');
+
+        // Next page → next 5
+        await page.locator('#gius-page-next').click();
+        await expect(page.locator('#gius-tbody tr')).toHaveCount(5);
+        await expect(page.locator('#gius-page-num')).toContainText('Page 2 /');
+
+        // Prev page → back to page 1
+        await page.locator('#gius-page-prev').click();
+        await expect(page.locator('#gius-page-num')).toContainText('Page 1 /');
+        await expect(page.locator('#gius-page-btn:disabled, #gius-page-prev:disabled')).toHaveCount(1);
+    });
+
 });
