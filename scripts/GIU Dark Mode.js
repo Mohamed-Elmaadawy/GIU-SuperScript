@@ -3,7 +3,7 @@
 // @description Dark mode toggle for the entire GIU portal
 // @include     https://portal.giu-uni.de/*
 // @namespace   ramin0
-// @version     1.6
+// @version     1.7
 // @author      Mo.Elmaadawy
 // @run-at      document-start
 // ==/UserScript==
@@ -121,7 +121,7 @@
             html.gius-dark .panel-body,
             html.gius-dark .card,
             html.gius-dark .card-body {
-                background-color: #1e1e2e !important;
+                background-color: #26263a !important;
                 border-color: #45475a !important;
                 color: #cdd6f4 !important;
             }
@@ -253,11 +253,11 @@
 
             /* ── GIUS injected cards (white bg in light mode) ── */
             html.gius-dark .giug-card, html.gius-dark .gius-card {
-                background-color: #1e1e2e !important;
+                background-color: #26263a !important;
                 border-color: #45475a !important;
             }
             html.gius-dark .giug-card-body, html.gius-dark .gius-card-body {
-                background-color: #1e1e2e !important;
+                background-color: #26263a !important;
                 color: #cdd6f4 !important;
             }
             html.gius-dark .giug-select, html.gius-dark .gius-select {
