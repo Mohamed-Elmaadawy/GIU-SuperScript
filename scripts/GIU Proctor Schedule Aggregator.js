@@ -8,7 +8,7 @@
 // @icon        data:image/png;base64,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
 // @run-at      document-idle
 // @grant       none
-// ==/UserScript==
+// ==/UserScript== 
 
 (function () {
     'use strict';
@@ -80,18 +80,27 @@
 
     function parseExamString(raw) {
         // "Mar 28 2026  1:30PM ---> GIU-Cairo.Informatics 4th - MATH403 Mathematics IV"
+        const stripCampus = s => s.replace(/^GIU-[^.]+\./, '').trim();
         const parts = raw.split(' ---> ');
-        if (parts.length < 2) return { courseCode: '', examName: raw.trim() };
+        if (parts.length < 2) return { courseCode: '', examName: raw.trim(), program: '' };
         const right = parts[1].trim();
-        const segs = right.split(' - ');
+        const segs  = right.split(' - ');
         if (segs.length >= 3) {
+            const program     = stripCampus(segs[0]);
             const codeAndName = segs.slice(-2);
             const codePart    = codeAndName[0].trim().split(/\s+/);
             const courseCode  = codePart[codePart.length - 1];
             const examName    = codeAndName[1].trim();
-            return { courseCode, examName };
+            return { courseCode, examName, program };
         }
-        return { courseCode: '', examName: right };
+        if (segs.length === 2) {
+            const program    = stripCampus(segs[0]);
+            const nameParts  = segs[1].trim().split(/\s+/);
+            const courseCode = nameParts[0];
+            const examName   = nameParts.slice(1).join(' ');
+            return { courseCode, examName, program };
+        }
+        return { courseCode: '', examName: right, program: '' };
     }
 
     function formatTime(str) {
@@ -176,12 +185,13 @@
             const startRaw  = tds[2].textContent.trim();
             const endRaw    = tds[3].textContent.trim();
             const coverName = tds[4].textContent.replace(/ /g, '').trim();
-            const { courseCode, examName } = parseExamString(examRaw);
+            const { courseCode, examName, program } = parseExamString(examRaw);
             rows.push({
                 proctor:    proctor.name,
                 department: proctor.deptLabel,
                 examName,
                 courseCode,
+                program,
                 hall,
                 dateKey:    parseDateKey(startRaw),
                 date:       formatDate(startRaw),
@@ -396,6 +406,13 @@
             }
             .gius-proctor-table td.muted { color: #9ca3af; font-style: italic; }
             .gius-row-in { animation: giusRowIn 0.25s ease both; }
+            .gius-data-row { cursor: pointer; }
+            .gius-coproctor-row td {
+                background: #f0f4ff !important; color: #374151;
+                font-size: 0.85em; padding: 6px 16px !important;
+                border-top: 1px dashed #c7d2fe;
+                animation: giusSlideDown 0.2s ease;
+            }
 
             .gius-table-footer {
                 font-size: 12px; color: #6b7280; margin-top: 8px; text-align: right;
@@ -449,13 +466,18 @@
                 background: #2d1f00 !important; color: #fbbf24 !important;
                 border-color: #78350f !important;
             }
+            html.gius-dark .gius-coproctor-row td {
+                background: #1e1e2e !important; color: #a6adc8 !important;
+                border-top-color: #313244 !important;
+            }
         `;
         document.head.appendChild(s);
     }
 
     // ── UI state ──────────────────────────────────────────────────────────────
 
-    let _allRows  = [];
+    let _allRows      = [];
+    let _renderedRows = [];
     let _filters  = { search: '', day: '', exam: '', proctor: '', room: '', department: '' };
     let _sortCol  = 'dateKey';
     let _sortAsc  = true;
@@ -472,6 +494,12 @@
         const cur = sel.value;
         sel.innerHTML = `<option value="">${placeholder}</option>` +
             values.map(v => `<option value="${escHtml(v)}"${v === cur ? ' selected' : ''}>${escHtml(v)}</option>`).join('');
+    }
+
+    function repopulateDatalist(id, values) {
+        const dl = document.getElementById(id);
+        if (!dl) return;
+        dl.innerHTML = values.map(v => `<option value="${escHtml(v)}"></option>`).join('');
     }
 
     function escHtml(s) {
@@ -500,8 +528,12 @@
                 </div>
                 <div class="gius-proctor-hdr-btns">
                     <span id="gius-proctor-warn" style="display:none"></span>
+                    <button type="button" class="gius-btn gius-btn-outline gius-btn-sm" id="gius-proctor-upload" title="Load rows from a previously exported CSV">
+                        <i class="fa fa-upload"></i> Upload CSV
+                    </button>
+                    <input type="file" id="gius-file-input" accept=".csv" style="display:none">
                     <button type="button" class="gius-btn gius-btn-outline gius-btn-sm" id="gius-proctor-csv" title="Export filtered rows as CSV">
-                        <i class="fa fa-download"></i> CSV
+                        <i class="fa fa-download"></i> Export CSV
                     </button>
                     <button type="button" class="gius-btn gius-btn-outline gius-btn-sm" id="gius-proctor-refresh" title="Re-scrape all departments">
                         <i class="fa fa-refresh"></i> Refresh
@@ -518,12 +550,17 @@
                     <div class="gius-progress-label" id="gius-progress-label">Starting&hellip;</div>
                 </div>
                 <div class="gius-filter-bar" id="gius-filter-bar" style="display:none">
-                    <input  class="gius-filter-input"  id="gius-f-search"     type="text" placeholder="Search all columns&hellip;" />
-                    <select class="gius-filter-select" id="gius-f-day"        ><option value="">All Days</option></select>
-                    <select class="gius-filter-select" id="gius-f-exam"       ><option value="">All Exams</option></select>
-                    <select class="gius-filter-select" id="gius-f-proctor"    ><option value="">All Proctors</option></select>
-                    <select class="gius-filter-select" id="gius-f-room"       ><option value="">All Rooms</option></select>
-                    <select class="gius-filter-select" id="gius-f-department" ><option value="">All Departments</option></select>
+                    <input class="gius-filter-input" id="gius-f-search"     type="text" placeholder="Search all columns&hellip;" />
+                    <input class="gius-filter-input" id="gius-f-day"        type="text" placeholder="All Days"        list="gius-dl-day" />
+                    <datalist id="gius-dl-day"></datalist>
+                    <input class="gius-filter-input" id="gius-f-exam"       type="text" placeholder="All Exams"       list="gius-dl-exam" />
+                    <datalist id="gius-dl-exam"></datalist>
+                    <input class="gius-filter-input" id="gius-f-proctor"    type="text" placeholder="All Proctors"    list="gius-dl-proctor" />
+                    <datalist id="gius-dl-proctor"></datalist>
+                    <input class="gius-filter-input" id="gius-f-room"       type="text" placeholder="All Rooms"       list="gius-dl-room" />
+                    <datalist id="gius-dl-room"></datalist>
+                    <input class="gius-filter-input" id="gius-f-department" type="text" placeholder="All Departments" list="gius-dl-department" />
+                    <datalist id="gius-dl-department"></datalist>
                     <button type="button" class="gius-btn gius-btn-muted gius-btn-sm" id="gius-f-clear" style="display:none">&#x2715; Clear all</button>
                 </div>
                 <div class="gius-chip-row" id="gius-chip-row"></div>
@@ -552,17 +589,22 @@
     // ── Filter / sort / render ────────────────────────────────────────────────
 
     function applyFiltersAndSort() {
-        const f      = _filters;
-        const search = f.search.toLowerCase();
+        const f        = _filters;
+        const search   = f.search.toLowerCase();
+        const dayQ     = f.day.toLowerCase();
+        const examQ    = f.exam.toLowerCase();
+        const proctorQ = f.proctor.toLowerCase();
+        const roomQ    = f.room.toLowerCase();
+        const deptQ    = f.department.toLowerCase();
 
         let rows = _allRows.filter(r => {
-            if (f.day        && r.date       !== f.day)        return false;
-            if (f.exam       && r.examName   !== f.exam)       return false;
-            if (f.proctor    && r.proctor    !== f.proctor)    return false;
-            if (f.room       && r.hall       !== f.room)       return false;
-            if (f.department && r.department !== f.department) return false;
+            if (dayQ     && !r.date.toLowerCase().includes(dayQ))           return false;
+            if (examQ    && !r.examName.toLowerCase().includes(examQ))      return false;
+            if (proctorQ && !r.proctor.toLowerCase().includes(proctorQ))    return false;
+            if (roomQ    && !r.hall.toLowerCase().includes(roomQ))          return false;
+            if (deptQ    && !r.department.toLowerCase().includes(deptQ))    return false;
             if (search) {
-                const hay = [r.proctor, r.examName, r.courseCode, r.hall, r.date, r.department, r.coverName]
+                const hay = [r.proctor, r.examName, r.courseCode, r.program, r.hall, r.date, r.department, r.coverName]
                     .join(' ').toLowerCase();
                 if (!hay.includes(search)) return false;
             }
@@ -571,9 +613,9 @@
 
         rows.sort((a, b) => {
             const col = _sortCol;
-            const va = col === 'exam' ? (a.courseCode + ' ' + a.examName) :
+            const va = col === 'exam' ? ((a.program || a.courseCode) + ' ' + a.examName) :
                        col === 'time' ? (a.dateKey + a.startTime) : (a[col] || '');
-            const vb = col === 'exam' ? (b.courseCode + ' ' + b.examName) :
+            const vb = col === 'exam' ? ((b.program || b.courseCode) + ' ' + b.examName) :
                        col === 'time' ? (b.dateKey + b.startTime) : (b[col] || '');
             const cmp = va.localeCompare(vb, undefined, { numeric: true });
             return _sortAsc ? cmp : -cmp;
@@ -590,11 +632,12 @@
         const foot  = document.getElementById('gius-table-footer');
         if (!tbody) return;
 
+        _renderedRows = rows;
         wrap.style.display = (_allRows.length || rows.length) ? '' : 'none';
         tbody.innerHTML = rows.map((r, idx) => `
-            <tr class="gius-row-in" style="animation-delay:${Math.min(idx, 30) * 12}ms">
+            <tr class="gius-row-in gius-data-row" data-idx="${idx}" style="animation-delay:${Math.min(idx, 30) * 12}ms">
                 <td>${escHtml(r.proctor)}</td>
-                <td><strong>${escHtml(r.courseCode)}</strong> &ndash; ${escHtml(r.examName)}</td>
+                <td>${escHtml(r.program || r.courseCode)} &ndash; ${escHtml(r.examName)}</td>
                 <td>${escHtml(r.hall)}</td>
                 <td>${escHtml(r.date)}</td>
                 <td>${escHtml(r.startTime)} &ndash; ${escHtml(r.endTime)}</td>
@@ -630,11 +673,11 @@
     }
 
     function updateFilterOptions() {
-        repopulateSelect('gius-f-day',        uniqueSorted(_allRows, 'date'),       'All Days');
-        repopulateSelect('gius-f-exam',       uniqueSorted(_allRows, 'examName'),   'All Exams');
-        repopulateSelect('gius-f-proctor',    uniqueSorted(_allRows, 'proctor'),    'All Proctors');
-        repopulateSelect('gius-f-room',       uniqueSorted(_allRows, 'hall'),       'All Rooms');
-        repopulateSelect('gius-f-department', uniqueSorted(_allRows, 'department'), 'All Departments');
+        repopulateDatalist('gius-dl-day',        uniqueSorted(_allRows, 'date'));
+        repopulateDatalist('gius-dl-exam',       uniqueSorted(_allRows, 'examName'));
+        repopulateDatalist('gius-dl-proctor',    uniqueSorted(_allRows, 'proctor'));
+        repopulateDatalist('gius-dl-room',       uniqueSorted(_allRows, 'hall'));
+        repopulateDatalist('gius-dl-department', uniqueSorted(_allRows, 'department'));
     }
 
     function updateSortIcons() {
@@ -649,16 +692,21 @@
     // ── CSV export ────────────────────────────────────────────────────────────
 
     function exportCSV() {
-        const f      = _filters;
-        const search = f.search.toLowerCase();
-        const rows   = _allRows.filter(r => {
-            if (f.day        && r.date       !== f.day)        return false;
-            if (f.exam       && r.examName   !== f.exam)       return false;
-            if (f.proctor    && r.proctor    !== f.proctor)    return false;
-            if (f.room       && r.hall       !== f.room)       return false;
-            if (f.department && r.department !== f.department) return false;
+        const f        = _filters;
+        const search   = f.search.toLowerCase();
+        const dayQ     = f.day.toLowerCase();
+        const examQ    = f.exam.toLowerCase();
+        const proctorQ = f.proctor.toLowerCase();
+        const roomQ    = f.room.toLowerCase();
+        const deptQ    = f.department.toLowerCase();
+        const rows = _allRows.filter(r => {
+            if (dayQ     && !r.date.toLowerCase().includes(dayQ))           return false;
+            if (examQ    && !r.examName.toLowerCase().includes(examQ))      return false;
+            if (proctorQ && !r.proctor.toLowerCase().includes(proctorQ))    return false;
+            if (roomQ    && !r.hall.toLowerCase().includes(roomQ))          return false;
+            if (deptQ    && !r.department.toLowerCase().includes(deptQ))    return false;
             if (search) {
-                const h = [r.proctor, r.examName, r.courseCode, r.hall, r.date, r.department, r.coverName]
+                const h = [r.proctor, r.examName, r.courseCode, r.program, r.hall, r.date, r.department, r.coverName]
                     .join(' ').toLowerCase();
                 if (!h.includes(search)) return false;
             }
@@ -666,10 +714,10 @@
         });
 
         const esc    = v => `"${String(v ?? '').replace(/"/g, '""')}"`;
-        const header = ['Proctor', 'Course Code', 'Exam Name', 'Room', 'Date', 'Start Time', 'End Time', 'Department', 'Cover'];
+        const header = ['Proctor', 'Course Code', 'Exam Name', 'Room', 'Date', 'Start Time', 'End Time', 'Department', 'Cover', 'Program', 'Date Key'];
         const lines  = rows.map(r => [
             r.proctor, r.courseCode, r.examName, r.hall, r.date,
-            r.startTime, r.endTime, r.department, r.coverName,
+            r.startTime, r.endTime, r.department, r.coverName, r.program, r.dateKey,
         ].map(esc).join(','));
 
         const csv  = '﻿' + [header.join(','), ...lines].join('\r\n');
@@ -682,6 +730,78 @@
         a.click();
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
+    }
+
+    // ── CSV upload ────────────────────────────────────────────────────────────
+
+    function parseCsvLine(line) {
+        const fields = [];
+        let i = 0, field = '';
+        while (i < line.length) {
+            if (line[i] === '"') {
+                i++;
+                while (i < line.length) {
+                    if (line[i] === '"' && line[i + 1] === '"') { field += '"'; i += 2; }
+                    else if (line[i] === '"') { i++; break; }
+                    else { field += line[i++]; }
+                }
+                if (i < line.length && line[i] === ',') i++;
+            } else {
+                while (i < line.length && line[i] !== ',') field += line[i++];
+                if (i < line.length) i++;
+            }
+            fields.push(field);
+            field = '';
+        }
+        return fields;
+    }
+
+    function parseUploadedCSV(text) {
+        const cleaned = text.replace(/^﻿/, '');
+        const lines = cleaned.split(/\r?\n/).filter(l => l.trim());
+        if (lines.length < 2) return [];
+        const headers = parseCsvLine(lines[0]).map(h => h.toLowerCase().trim());
+        const idx = {};
+        headers.forEach((h, i) => { idx[h] = i; });
+        const get = (fields, col, fallback = '') => (fields[idx[col]] ?? fallback).trim();
+
+        return lines.slice(1).map(line => {
+            const f = parseCsvLine(line);
+            return {
+                proctor:    get(f, 'proctor'),
+                department: get(f, 'department'),
+                examName:   get(f, 'exam name'),
+                courseCode: get(f, 'course code'),
+                program:    get(f, 'program'),
+                hall:       get(f, 'room'),
+                dateKey:    get(f, 'date key') || get(f, 'date'),
+                date:       get(f, 'date'),
+                startTime:  get(f, 'start time'),
+                endTime:    get(f, 'end time'),
+                coverName:  get(f, 'cover'),
+            };
+        }).filter(r => r.proctor || r.examName);
+    }
+
+    // ── Co-proctor toggle ─────────────────────────────────────────────────────
+
+    function toggleCoProctors(tbody, tr, row) {
+        const existing = tr.nextElementSibling;
+        if (existing && existing.classList.contains('gius-coproctor-row')) {
+            existing.remove();
+            return;
+        }
+        const coProctors = _allRows.filter(r =>
+            r !== row &&
+            r.hall     === row.hall &&
+            r.dateKey  === row.dateKey &&
+            r.examName === row.examName
+        );
+        if (!coProctors.length) return;
+        const cpRow = document.createElement('tr');
+        cpRow.className = 'gius-coproctor-row';
+        cpRow.innerHTML = `<td colspan="7">Co-proctors: ${coProctors.map(r => escHtml(r.proctor)).join(', ')}</td>`;
+        tr.insertAdjacentElement('afterend', cpRow);
     }
 
     // ── Panel wiring ──────────────────────────────────────────────────────────
@@ -747,6 +867,38 @@
             _allRows = [];
             _filters = { search: '', day: '', exam: '', proctor: '', room: '', department: '' };
             startScrape();
+        });
+
+        // Co-proctor row expansion (event delegation on tbody)
+        const tbody = panel.querySelector('#gius-tbody');
+        tbody?.addEventListener('click', e => {
+            const tr = e.target.closest('tr.gius-data-row');
+            if (!tr) return;
+            const idx = parseInt(tr.dataset.idx, 10);
+            if (!isNaN(idx) && _renderedRows[idx]) toggleCoProctors(tbody, tr, _renderedRows[idx]);
+        });
+
+        // Upload CSV
+        const uploadBtn = document.getElementById('gius-proctor-upload');
+        const fileInput = document.getElementById('gius-file-input');
+        uploadBtn?.addEventListener('click', () => fileInput?.click());
+        fileInput?.addEventListener('change', () => {
+            const file = fileInput.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = ev => {
+                const rows = parseUploadedCSV(ev.target.result);
+                if (!rows.length) return;
+                _allRows = rows;
+                saveCache(rows);
+                const metaEl = document.getElementById('gius-proctor-meta');
+                if (metaEl) metaEl.textContent = `Loaded from CSV · ${rows.length.toLocaleString()} exams`;
+                const filterBr = document.getElementById('gius-filter-bar');
+                if (filterBr) filterBr.style.display = '';
+                applyFiltersAndSort();
+            };
+            reader.readAsText(file);
+            fileInput.value = '';
         });
     }
 

@@ -71,9 +71,9 @@ test.describe('GIU Proctor Schedule Aggregator', () => {
         const rows = page.locator('#gius-tbody tr');
         await expect(rows).toHaveCount(EXPECTED_ROWS);
 
-        // Verify row content: course code + exam name
+        // Verify row content: program – exam name format
         const firstRow = rows.first();
-        await expect(firstRow).toContainText('INCS616');
+        await expect(firstRow).toContainText('Business Informatics 6th');
         await expect(firstRow).toContainText('Business Continuity');
     });
 
@@ -88,8 +88,8 @@ test.describe('GIU Proctor Schedule Aggregator', () => {
         await setup(page);
         await openAndScrape(page);
 
-        // All rows share same dept label from mock; pick "Applied Computer Science"
-        await page.locator('#gius-f-department').selectOption({ label: 'Applied Computer Science' });
+        // Datalist input — type exact dept name to trigger substring filter
+        await page.locator('#gius-f-department').fill('Applied Computer Science');
 
         const rows = page.locator('#gius-tbody tr');
         const count = await rows.count();
@@ -104,9 +104,9 @@ test.describe('GIU Proctor Schedule Aggregator', () => {
         await setup(page);
         await openAndScrape(page);
 
-        await page.locator('#gius-f-search').fill('CSEN401');
+        await page.locator('#gius-f-search').fill('Computer Programming');
         const rows = page.locator('#gius-tbody tr');
-        await expect(rows.first()).toContainText('CSEN401');
+        await expect(rows.first()).toContainText('Computer Programming');
         const count = await rows.count();
         expect(count).toBeLessThan(EXPECTED_ROWS);
     });
@@ -222,6 +222,53 @@ test.describe('GIU Proctor Schedule Aggregator', () => {
         );
         // #11111b = rgb(17, 17, 27)
         expect(hdrBg).toBe('rgb(17, 17, 27)');
+    });
+
+    test('exam column shows Program – ExamName format', async ({ page }) => {
+        await setup(page);
+        await openAndScrape(page);
+
+        const firstRow = page.locator('#gius-tbody tr').first();
+        // Should show program name, not course code
+        await expect(firstRow).toContainText('Business Informatics 6th');
+        await expect(firstRow).not.toContainText('INCS616');
+    });
+
+    test('clicking data row expands co-proctors, clicking again collapses', async ({ page }) => {
+        await setup(page);
+        await openAndScrape(page);
+
+        // First data row is an INCS616 exam shared across all 3 depts × 2 proctors
+        const firstRow = page.locator('#gius-tbody tr.gius-data-row').first();
+        await firstRow.click();
+
+        const coRow = page.locator('#gius-tbody tr.gius-coproctor-row').first();
+        await expect(coRow).toBeVisible();
+        await expect(coRow).toContainText('Co-proctors:');
+
+        // Click again — collapses
+        await firstRow.click();
+        await expect(page.locator('#gius-tbody tr.gius-coproctor-row')).toHaveCount(0);
+    });
+
+    test('upload CSV populates table without scraping', async ({ page }) => {
+        await setup(page);
+        await openAndScrape(page);
+
+        const csvContent =
+            'Proctor,Course Code,Exam Name,Room,Date,Start Time,End Time,Department,Cover,Program,Date Key\r\n' +
+            '"Uploaded Proctor","TST101","Sample Exam","A1.001","Mon Jan 01","9:00 AM","11:00 AM","Test Dept","","Test Program","2026-01-01"\r\n';
+
+        await page.locator('#gius-file-input').setInputFiles({
+            name: 'test.csv',
+            mimeType: 'text/csv',
+            buffer: Buffer.from(csvContent),
+        });
+
+        await expect(page.locator('#gius-tbody tr')).toHaveCount(1);
+        await expect(page.locator('#gius-tbody tr').first()).toContainText('Uploaded Proctor');
+        await expect(page.locator('#gius-tbody tr').first()).toContainText('Sample Exam');
+        await expect(page.locator('#gius-proctor-meta')).toContainText('Loaded from CSV');
     });
 
 });
