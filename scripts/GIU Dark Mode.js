@@ -3,7 +3,7 @@
 // @description Dark mode toggle for the entire GIU portal
 // @include     https://portal.giu-uni.de/*
 // @namespace   ramin0
-// @version     1.5
+// @version     1.6
 // @author      Mo.Elmaadawy
 // @run-at      document-start
 // ==/UserScript==
@@ -160,16 +160,26 @@
                 color: #cdd6f4 !important;
             }
 
-            /* ── Bootstrap dropdowns ── */
-            html.gius-dark .dropdown-menu {
+            /* ── Bootstrap dropdowns (content area only — sidebar excluded) ── */
+            html.gius-dark .right-panel .dropdown-menu,
+            html.gius-dark .content .dropdown-menu {
                 background-color: #313244 !important;
                 border-color: #45475a !important;
             }
-            html.gius-dark .dropdown-menu > li > a { color: #cdd6f4 !important; }
-            html.gius-dark .dropdown-menu > li > a:hover,
-            html.gius-dark .dropdown-menu > .active > a {
+            html.gius-dark .right-panel .dropdown-menu > li > a { color: #cdd6f4 !important; }
+            html.gius-dark .right-panel .dropdown-menu > li > a:hover,
+            html.gius-dark .right-panel .dropdown-menu > .active > a {
                 background-color: #45475a !important;
                 color: #cdd6f4 !important;
+            }
+
+            /* ── Sidebar sub-menus: lock to native sidebar color ── */
+            html.gius-dark aside.left-panel .sub-menu,
+            html.gius-dark aside.left-panel .dropdown-menu,
+            html.gius-dark #left-panel .sub-menu,
+            html.gius-dark #left-panel .dropdown-menu {
+                background-color: #272c33 !important;
+                background: #272c33 !important;
             }
 
             /* ── Wells ── */
