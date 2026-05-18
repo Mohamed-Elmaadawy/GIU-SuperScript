@@ -452,4 +452,235 @@
         document.head.appendChild(s);
     }
 
+    // ── UI state ──────────────────────────────────────────────────────────────
+
+    let _allRows  = [];
+    let _filters  = { search: '', day: '', exam: '', proctor: '', room: '', department: '' };
+    let _sortCol  = 'dateKey';
+    let _sortAsc  = true;
+    let _panelEl  = null;
+    let _scraping = false;
+
+    function uniqueSorted(rows, key) {
+        return [...new Set(rows.map(r => r[key]).filter(Boolean))].sort();
+    }
+
+    function repopulateSelect(id, values, placeholder) {
+        const sel = document.getElementById(id);
+        if (!sel) return;
+        const cur = sel.value;
+        sel.innerHTML = `<option value="">${placeholder}</option>` +
+            values.map(v => `<option value="${escHtml(v)}"${v === cur ? ' selected' : ''}>${escHtml(v)}</option>`).join('');
+    }
+
+    function escHtml(s) {
+        return String(s)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+    }
+
+    // ── Panel skeleton ────────────────────────────────────────────────────────
+
+    function buildPanel() {
+        const div = document.createElement('div');
+        div.id = 'gius-proctor-panel';
+        div.className = 'gius-proctor-card';
+        div.innerHTML = `
+            <div class="gius-proctor-hdr">
+                <div class="gius-proctor-hdr-left">
+                    <div>
+                        <h3 class="gius-proctor-title">
+                            <i class="fa fa-laptop"></i> Proctor Schedule Aggregator
+                        </h3>
+                        <div class="gius-proctor-meta" id="gius-proctor-meta">Loading&hellip;</div>
+                    </div>
+                </div>
+                <div class="gius-proctor-hdr-btns">
+                    <span id="gius-proctor-warn" style="display:none"></span>
+                    <button class="gius-btn gius-btn-outline gius-btn-sm" id="gius-proctor-csv" title="Export filtered rows as CSV">
+                        <i class="fa fa-download"></i> CSV
+                    </button>
+                    <button class="gius-btn gius-btn-outline gius-btn-sm" id="gius-proctor-refresh" title="Re-scrape all departments">
+                        <i class="fa fa-refresh"></i> Refresh
+                    </button>
+                    <button class="gius-btn gius-btn-muted gius-btn-sm" id="gius-proctor-minimize">&#x2015;</button>
+                    <button class="gius-btn gius-btn-muted gius-btn-sm" id="gius-proctor-close">&#x2715;</button>
+                </div>
+            </div>
+            <div class="gius-proctor-body" id="gius-proctor-body">
+                <div id="gius-progress-section" style="display:none">
+                    <div class="gius-progress-wrap">
+                        <div class="gius-progress-bar" id="gius-progress-bar" style="width:0%"></div>
+                    </div>
+                    <div class="gius-progress-label" id="gius-progress-label">Starting&hellip;</div>
+                </div>
+                <div class="gius-filter-bar" id="gius-filter-bar" style="display:none">
+                    <input  class="gius-filter-input"  id="gius-f-search"     type="text" placeholder="Search all columns&hellip;" />
+                    <select class="gius-filter-select" id="gius-f-day"        ><option value="">All Days</option></select>
+                    <select class="gius-filter-select" id="gius-f-exam"       ><option value="">All Exams</option></select>
+                    <select class="gius-filter-select" id="gius-f-proctor"    ><option value="">All Proctors</option></select>
+                    <select class="gius-filter-select" id="gius-f-room"       ><option value="">All Rooms</option></select>
+                    <select class="gius-filter-select" id="gius-f-department" ><option value="">All Departments</option></select>
+                    <button class="gius-btn gius-btn-muted gius-btn-sm" id="gius-f-clear" style="display:none">&#x2715; Clear all</button>
+                </div>
+                <div class="gius-chip-row" id="gius-chip-row"></div>
+                <div class="gius-proctor-table-wrap" id="gius-table-wrap" style="display:none">
+                    <table class="gius-proctor-table">
+                        <thead>
+                            <tr>
+                                <th data-col="proctor">Proctor <span class="gius-sort-icon" data-col="proctor">&#x25B2;</span></th>
+                                <th data-col="exam">Exam <span class="gius-sort-icon" data-col="exam">&#x25B2;</span></th>
+                                <th data-col="hall">Room <span class="gius-sort-icon" data-col="hall">&#x25B2;</span></th>
+                                <th data-col="dateKey">Date <span class="gius-sort-icon active" data-col="dateKey">&#x25B2;</span></th>
+                                <th data-col="time">Time <span class="gius-sort-icon" data-col="time">&#x25B2;</span></th>
+                                <th data-col="department">Department <span class="gius-sort-icon" data-col="department">&#x25B2;</span></th>
+                                <th data-col="coverName">Cover <span class="gius-sort-icon" data-col="coverName">&#x25B2;</span></th>
+                            </tr>
+                        </thead>
+                        <tbody id="gius-tbody"></tbody>
+                    </table>
+                </div>
+                <div class="gius-table-footer" id="gius-table-footer"></div>
+            </div>
+        `;
+        return div;
+    }
+
+    // ── Filter / sort / render ────────────────────────────────────────────────
+
+    function applyFiltersAndSort() {
+        const f      = _filters;
+        const search = f.search.toLowerCase();
+
+        let rows = _allRows.filter(r => {
+            if (f.day        && r.date       !== f.day)        return false;
+            if (f.exam       && r.examName   !== f.exam)       return false;
+            if (f.proctor    && r.proctor    !== f.proctor)    return false;
+            if (f.room       && r.hall       !== f.room)       return false;
+            if (f.department && r.department !== f.department) return false;
+            if (search) {
+                const hay = [r.proctor, r.examName, r.courseCode, r.hall, r.date, r.department, r.coverName]
+                    .join(' ').toLowerCase();
+                if (!hay.includes(search)) return false;
+            }
+            return true;
+        });
+
+        rows.sort((a, b) => {
+            const col = _sortCol;
+            const va = col === 'exam' ? (a.courseCode + ' ' + a.examName) :
+                       col === 'time' ? (a.dateKey + a.startTime) : (a[col] || '');
+            const vb = col === 'exam' ? (b.courseCode + ' ' + b.examName) :
+                       col === 'time' ? (b.dateKey + b.startTime) : (b[col] || '');
+            const cmp = va.localeCompare(vb, undefined, { numeric: true });
+            return _sortAsc ? cmp : -cmp;
+        });
+
+        renderTable(rows);
+        renderChips();
+        updateFilterOptions();
+    }
+
+    function renderTable(rows) {
+        const tbody = document.getElementById('gius-tbody');
+        const wrap  = document.getElementById('gius-table-wrap');
+        const foot  = document.getElementById('gius-table-footer');
+        if (!tbody) return;
+
+        wrap.style.display = (_allRows.length || rows.length) ? '' : 'none';
+        tbody.innerHTML = rows.map((r, idx) => `
+            <tr class="gius-row-in" style="animation-delay:${Math.min(idx, 30) * 12}ms">
+                <td>${escHtml(r.proctor)}</td>
+                <td><strong>${escHtml(r.courseCode)}</strong> &ndash; ${escHtml(r.examName)}</td>
+                <td>${escHtml(r.hall)}</td>
+                <td>${escHtml(r.date)}</td>
+                <td>${escHtml(r.startTime)} &ndash; ${escHtml(r.endTime)}</td>
+                <td>${escHtml(r.department)}</td>
+                <td class="${r.coverName ? '' : 'muted'}">${escHtml(r.coverName || '—')}</td>
+            </tr>
+        `).join('');
+
+        if (_allRows.length) {
+            foot.textContent = `Showing ${rows.length.toLocaleString()} / ${_allRows.length.toLocaleString()} exams`;
+        }
+    }
+
+    function renderChips() {
+        const row     = document.getElementById('gius-chip-row');
+        const clearEl = document.getElementById('gius-f-clear');
+        if (!row) return;
+        const labels = { day: 'Day', exam: 'Exam', proctor: 'Proctor', room: 'Room', department: 'Dept', search: 'Search' };
+        const active = Object.entries(_filters).filter(([, v]) => v);
+        row.innerHTML = active.map(([k, v]) =>
+            `<span class="gius-chip">${labels[k] || k}: ${escHtml(v)}<span class="gius-chip-x" data-filter="${k}" title="Remove">&#x2715;</span></span>`
+        ).join('');
+        if (clearEl) clearEl.style.display = active.length ? '' : 'none';
+        row.querySelectorAll('.gius-chip-x').forEach(x => {
+            x.addEventListener('click', () => {
+                const key = x.dataset.filter;
+                _filters[key] = '';
+                const el = document.getElementById('gius-f-' + key);
+                if (el) el.value = '';
+                applyFiltersAndSort();
+            });
+        });
+    }
+
+    function updateFilterOptions() {
+        repopulateSelect('gius-f-day',        uniqueSorted(_allRows, 'date'),       'All Days');
+        repopulateSelect('gius-f-exam',       uniqueSorted(_allRows, 'examName'),   'All Exams');
+        repopulateSelect('gius-f-proctor',    uniqueSorted(_allRows, 'proctor'),    'All Proctors');
+        repopulateSelect('gius-f-room',       uniqueSorted(_allRows, 'hall'),       'All Rooms');
+        repopulateSelect('gius-f-department', uniqueSorted(_allRows, 'department'), 'All Departments');
+    }
+
+    function updateSortIcons() {
+        document.querySelectorAll('.gius-sort-icon').forEach(el => {
+            const col    = el.dataset.col;
+            const active = col === _sortCol;
+            el.classList.toggle('active', active);
+            el.textContent = active ? (_sortAsc ? '▲' : '▼') : '▲';
+        });
+    }
+
+    // ── CSV export ────────────────────────────────────────────────────────────
+
+    function exportCSV() {
+        const f      = _filters;
+        const search = f.search.toLowerCase();
+        const rows   = _allRows.filter(r => {
+            if (f.day        && r.date       !== f.day)        return false;
+            if (f.exam       && r.examName   !== f.exam)       return false;
+            if (f.proctor    && r.proctor    !== f.proctor)    return false;
+            if (f.room       && r.hall       !== f.room)       return false;
+            if (f.department && r.department !== f.department) return false;
+            if (search) {
+                const h = [r.proctor, r.examName, r.courseCode, r.hall, r.date, r.department, r.coverName]
+                    .join(' ').toLowerCase();
+                if (!h.includes(search)) return false;
+            }
+            return true;
+        });
+
+        const esc    = v => `"${String(v ?? '').replace(/"/g, '""')}"`;
+        const header = ['Proctor', 'Course Code', 'Exam Name', 'Room', 'Date', 'Start Time', 'End Time', 'Department', 'Cover'];
+        const lines  = rows.map(r => [
+            r.proctor, r.courseCode, r.examName, r.hall, r.date,
+            r.startTime, r.endTime, r.department, r.coverName,
+        ].map(esc).join(','));
+
+        const csv  = '﻿' + [header.join(','), ...lines].join('\r\n');
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const url  = URL.createObjectURL(blob);
+        const a    = document.createElement('a');
+        a.href     = url;
+        a.download = `proctor-schedule-${new Date().toISOString().slice(0, 10)}.csv`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+
 })();
