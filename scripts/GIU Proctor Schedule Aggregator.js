@@ -115,4 +115,132 @@
         return d.toISOString().slice(0, 10);
     }
 
+    // ── Concurrency pool ──────────────────────────────────────────────────────
+
+    function runPool(tasks, worker, onTaskDone) {
+        return new Promise(resolve => {
+            if (!tasks.length) { resolve([]); return; }
+            let running = 0, index = 0;
+            const results = new Array(tasks.length);
+
+            function next() {
+                while (running < MAX_CONCURRENT && index < tasks.length) {
+                    const i = index++;
+                    running++;
+                    worker(tasks[i], i)
+                        .then(r  => { results[i] = r; })
+                        .catch(() => { results[i] = null; })
+                        .finally(() => {
+                            running--;
+                            if (onTaskDone) onTaskDone();
+                            if (index < tasks.length) next();
+                            else if (running === 0) resolve(results);
+                        });
+                }
+            }
+            next();
+        });
+    }
+
+    // ── Scrape: Phase 1 — departments ─────────────────────────────────────────
+
+    async function fetchDepartment(dept, baseState) {
+        const doc = await doPostback(
+            'ctl00$MainContent$acdmcDpLst',
+            { 'ctl00$MainContent$acdmcDpLst': dept.value },
+            baseState
+        );
+        const deptState = extractFormState(doc);
+        const table = doc.getElementById('MainContent_dprtmntDg');
+        if (!table) return [];
+        return Array.from(table.querySelectorAll('a')).map(a => {
+            const href  = a.getAttribute('href') || '';
+            const match = href.match(/__doPostBack\('([^']+)'/);
+            return match ? { name: a.textContent.trim(), target: match[1], deptLabel: dept.label, state: deptState } : null;
+        }).filter(Boolean);
+    }
+
+    // ── Scrape: Phase 2 — proctor schedules ───────────────────────────────────
+
+    async function fetchProctorSchedule(proctor) {
+        const doc = await doPostback(proctor.target, {}, proctor.state);
+        const table = doc.getElementById('MainContent_schdlDg');
+        if (!table) return [];
+        const rows = [];
+        Array.from(table.querySelectorAll('tr')).forEach((tr, i) => {
+            if (i === 0) return; // skip header
+            const tds = tr.querySelectorAll('td');
+            if (tds.length < 5) return;
+            const examRaw   = tds[0].textContent.trim();
+            const hall      = tds[1].textContent.trim();
+            const startRaw  = tds[2].textContent.trim();
+            const endRaw    = tds[3].textContent.trim();
+            const coverName = tds[4].textContent.replace(/ /g, '').trim();
+            const { courseCode, examName } = parseExamString(examRaw);
+            rows.push({
+                proctor:    proctor.name,
+                department: proctor.deptLabel,
+                examName,
+                courseCode,
+                hall,
+                dateKey:    parseDateKey(startRaw),
+                date:       formatDate(startRaw),
+                startTime:  formatTime(startRaw),
+                endTime:    formatTime(endRaw),
+                coverName,
+            });
+        });
+        return rows;
+    }
+
+    // ── Scrape orchestrator ───────────────────────────────────────────────────
+
+    async function scrapeAll(cb) {
+        // cb: { onProgress(stats), onRows(rows), onError(type), onComplete(rows) }
+        const baseState = extractFormState(document);
+        const deptEl    = document.getElementById('MainContent_acdmcDpLst');
+        const depts     = Array.from(deptEl.options)
+            .filter(o => o.value !== '')
+            .map(o => ({ value: o.value, label: o.text.trim() }));
+
+        const stats = { depts: 0, totalDepts: depts.length, proctors: 0, exams: 0, failed: 0,
+                        proctorsDone: 0, totalProctors: 0 };
+        const allProctors = [];
+        const allRows     = [];
+
+        // Phase 1 — departments
+        await runPool(depts, async dept => {
+            try {
+                const proctors = await fetchDepartment(dept, baseState);
+                allProctors.push(...proctors);
+                stats.depts++;
+                stats.proctors = allProctors.length;
+            } catch (e) {
+                if (e.message === 'SESSION_EXPIRED') { cb.onError('SESSION_EXPIRED'); throw e; }
+                stats.failed++;
+            }
+            cb.onProgress({ ...stats });
+        }, null);
+
+        stats.totalProctors = allProctors.length;
+
+        // Phase 2 — proctor schedules
+        await runPool(allProctors, async proctor => {
+            try {
+                const rows = await fetchProctorSchedule(proctor);
+                allRows.push(...rows);
+                stats.exams += rows.length;
+            } catch (e) {
+                if (e.message === 'SESSION_EXPIRED') { cb.onError('SESSION_EXPIRED'); throw e; }
+                stats.failed++;
+            }
+            stats.proctorsDone++;
+            cb.onProgress({ ...stats });
+            cb.onRows([...allRows]);
+        }, null);
+
+        saveCache(allRows);
+        cb.onComplete(allRows);
+    }
+
 })();
