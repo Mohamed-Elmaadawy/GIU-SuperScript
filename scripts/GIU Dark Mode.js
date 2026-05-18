@@ -3,7 +3,7 @@
 // @description Dark mode toggle for the entire GIU portal
 // @include     https://portal.giu-uni.de/*
 // @namespace   ramin0
-// @version     1.2
+// @version     1.4
 // @author      Mo.Elmaadawy
 // @run-at      document-start
 // ==/UserScript==
@@ -50,11 +50,22 @@
                 border-color: #45475a !important;
             }
 
-            /* ── General text ── */
+            /* ── General text (scoped to content area — keeps sidebar native colors) ── */
             html.gius-dark h1, html.gius-dark h2, html.gius-dark h3,
-            html.gius-dark h4, html.gius-dark h5, html.gius-dark h6,
-            html.gius-dark p, html.gius-dark label, html.gius-dark li {
+            html.gius-dark h4, html.gius-dark h5, html.gius-dark h6 {
                 color: #cdd6f4 !important;
+            }
+            html.gius-dark .right-panel p,
+            html.gius-dark .right-panel label,
+            html.gius-dark .right-panel li,
+            html.gius-dark .right-panel span:not([class*="badge"]) {
+                color: #cdd6f4 !important;
+            }
+
+            /* ── Input placeholder text ── */
+            html.gius-dark ::placeholder {
+                color: #6c7086 !important;
+                opacity: 1 !important;
             }
 
             /* ── Tables ── */
@@ -215,6 +226,28 @@
                 background: #313244 !important;
             }
             html.gius-dark .chosen-results li.highlighted { background: #45475a !important; }
+
+            /* ── GIUS notification panel: group list + labels + inputs ── */
+            html.gius-dark .gius-group-list {
+                background: #181825 !important;
+                border-color: #45475a !important;
+                scrollbar-color: #585b70 #181825 !important;
+            }
+            html.gius-dark .gius-group-list::-webkit-scrollbar-track { background: #181825 !important; }
+            html.gius-dark .gius-group-list::-webkit-scrollbar-thumb { background: #585b70 !important; }
+            html.gius-dark .gius-group-row:hover { background: #313244 !important; }
+            html.gius-dark .gius-group-row label,
+            html.gius-dark .gius-toggle-label { color: #cdd6f4 !important; }
+            html.gius-dark .gius-section-label,
+            html.gius-dark .gius-field-label,
+            html.gius-dark .gius-empty-msg { color: #a6adc8 !important; }
+            html.gius-dark .gius-divider { background: #45475a !important; }
+            html.gius-dark .gius-input {
+                background: #313244 !important;
+                color: #cdd6f4 !important;
+                border-color: #45475a !important;
+            }
+            html.gius-dark .gius-card-category { color: rgba(205,214,244,0.7) !important; }
 
             /* ── GIUS injected cards (white bg in light mode) ── */
             html.gius-dark .giug-card, html.gius-dark .gius-card {
