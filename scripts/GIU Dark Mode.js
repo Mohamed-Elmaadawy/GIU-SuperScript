@@ -3,7 +3,7 @@
 // @description Dark mode toggle for the entire GIU portal
 // @include     https://portal.giu-uni.de/*
 // @namespace   ramin0
-// @version     1.1
+// @version     1.2
 // @author      Mo.Elmaadawy
 // @run-at      document-start
 // ==/UserScript==
@@ -104,17 +104,56 @@
                 border-color: #585b70 !important;
             }
 
-            /* ── Bootstrap panels ── */
+            /* ── Bootstrap 3 panels + Bootstrap 4 cards ── */
             html.gius-dark .panel,
             html.gius-dark .panel-default,
-            html.gius-dark .panel-body {
+            html.gius-dark .panel-body,
+            html.gius-dark .card,
+            html.gius-dark .card-body {
                 background-color: #1e1e2e !important;
                 border-color: #45475a !important;
                 color: #cdd6f4 !important;
             }
-            html.gius-dark .panel-heading {
+            html.gius-dark .panel-heading,
+            html.gius-dark .card-header {
                 background-color: #181825 !important;
                 border-color: #45475a !important;
+                color: #cdd6f4 !important;
+            }
+            html.gius-dark .card-footer {
+                background-color: #181825 !important;
+                border-color: #45475a !important;
+                color: #cdd6f4 !important;
+            }
+
+            /* ── Navbar (top bar + logo area) ── */
+            html.gius-dark .navbar,
+            html.gius-dark .navbar-default {
+                background-color: #181825 !important;
+                border-color: #45475a !important;
+            }
+            html.gius-dark .navbar-brand {
+                background-color: #1e1e2e !important;
+            }
+            html.gius-dark .navbar-nav > li > a,
+            html.gius-dark .navbar-text {
+                color: #cdd6f4 !important;
+            }
+
+            /* ── Nav tabs ── */
+            html.gius-dark .nav-tabs {
+                border-color: #45475a !important;
+            }
+            html.gius-dark .nav-tabs .nav-link,
+            html.gius-dark .nav-tabs > li > a {
+                color: #cdd6f4 !important;
+            }
+            html.gius-dark .nav-tabs .nav-link.active,
+            html.gius-dark .nav-tabs > li.active > a,
+            html.gius-dark .nav-tabs > li.active > a:focus,
+            html.gius-dark .nav-tabs > li.active > a:hover {
+                background-color: #1e1e2e !important;
+                border-color: #45475a #45475a #1e1e2e !important;
                 color: #cdd6f4 !important;
             }
 
