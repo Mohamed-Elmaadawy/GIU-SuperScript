@@ -3,7 +3,7 @@
 // @description Dark mode toggle for the entire GIU portal
 // @include     https://portal.giu-uni.de/*
 // @namespace   ramin0
-// @version     2.2
+// @version     2.3
 // @author      Mo.Elmaadawy
 // @run-at      document-start
 // ==/UserScript==
@@ -115,12 +115,14 @@
                 border-color: #585b70 !important;
             }
 
-            /* ── Bootstrap 3 panels + Bootstrap 4 cards ── */
+            /* ── Bootstrap 3 panels + Bootstrap 4 cards + thumbnails ── */
             html.gius-dark .panel,
             html.gius-dark .panel-default,
             html.gius-dark .panel-body,
             html.gius-dark .card,
-            html.gius-dark .card-body {
+            html.gius-dark .card-body,
+            html.gius-dark .thumbnail,
+            html.gius-dark a.thumbnail {
                 background-color: #1e1e2e !important;
                 border-color: transparent !important;
                 color: #cdd6f4 !important;
