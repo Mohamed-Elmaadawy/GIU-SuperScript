@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name        GIU Dark Mode
 // @description Dark mode toggle for the entire GIU portal
-// @match       https://portal.giu-uni.de/*
+// @include     https://portal.giu-uni.de/*
 // @namespace   ramin0
-// @version     1.0
+// @version     1.1
 // @author      Mo.Elmaadawy
 // @run-at      document-start
 // ==/UserScript==
@@ -28,24 +28,184 @@
         const style = document.createElement('style');
         style.id = 'gius-dm-styles';
         style.textContent = `
-            html.gius-dark {
-                filter: invert(1) hue-rotate(180deg);
+            /* ── Main layout (Sufee-Admin Bootstrap template) ── */
+            html.gius-dark body,
+            html.gius-dark #page-wrapper,
+            html.gius-dark .right-panel,
+            html.gius-dark .container,
+            html.gius-dark .container-fluid {
+                background-color: #1e1e2e !important;
+                color: #cdd6f4 !important;
             }
 
-            /* Restore images, video, iframes — double-invert = original colors */
-            html.gius-dark img,
-            html.gius-dark video,
-            html.gius-dark iframe {
-                filter: invert(1) hue-rotate(180deg);
+            /* ── General text ── */
+            html.gius-dark h1, html.gius-dark h2, html.gius-dark h3,
+            html.gius-dark h4, html.gius-dark h5, html.gius-dark h6,
+            html.gius-dark p, html.gius-dark label, html.gius-dark li {
+                color: #cdd6f4 !important;
             }
 
-            /* Restore GIUS panel headers — already dark (#272c33), would go light without this */
-            html.gius-dark [class*="giug-card-header"],
-            html.gius-dark [class*="gius-card-header"] {
-                filter: invert(1) hue-rotate(180deg);
+            /* ── Tables ── */
+            html.gius-dark table { border-color: #45475a !important; }
+            html.gius-dark thead, html.gius-dark tbody, html.gius-dark tfoot,
+            html.gius-dark tr { background-color: #1e1e2e !important; }
+            html.gius-dark tbody tr:nth-child(even) { background-color: #181825 !important; }
+            html.gius-dark thead tr { background-color: #11111b !important; }
+            html.gius-dark td, html.gius-dark th {
+                background-color: inherit !important;
+                color: #cdd6f4 !important;
+                border-color: #45475a !important;
+            }
+
+            /* ── Form inputs ── */
+            html.gius-dark .form-control,
+            html.gius-dark input[type="text"],
+            html.gius-dark input[type="email"],
+            html.gius-dark input[type="password"],
+            html.gius-dark input[type="search"],
+            html.gius-dark input[type="number"],
+            html.gius-dark input[type="date"],
+            html.gius-dark textarea {
+                background-color: #313244 !important;
+                color: #cdd6f4 !important;
+                border-color: #45475a !important;
+            }
+            html.gius-dark select:not([class*="giug-"]):not([class*="gius-"]) {
+                background-color: #313244 !important;
+                color: #cdd6f4 !important;
+                border-color: #45475a !important;
+            }
+            html.gius-dark .form-control:focus,
+            html.gius-dark input:focus,
+            html.gius-dark select:focus,
+            html.gius-dark textarea:focus {
+                border-color: #89b4fa !important;
+                outline-color: #89b4fa !important;
+            }
+
+            /* ── Native portal buttons (not GIUS custom buttons) ── */
+            html.gius-dark input[type="submit"],
+            html.gius-dark input[type="button"],
+            html.gius-dark button:not(#gius-dm-toggle):not([class*="giug-btn"]):not([class*="gius-btn"]) {
+                background-color: #45475a !important;
+                color: #cdd6f4 !important;
+                border-color: #585b70 !important;
+            }
+
+            /* ── Bootstrap panels ── */
+            html.gius-dark .panel,
+            html.gius-dark .panel-default,
+            html.gius-dark .panel-body {
+                background-color: #1e1e2e !important;
+                border-color: #45475a !important;
+                color: #cdd6f4 !important;
+            }
+            html.gius-dark .panel-heading {
+                background-color: #181825 !important;
+                border-color: #45475a !important;
+                color: #cdd6f4 !important;
+            }
+
+            /* ── Bootstrap dropdowns ── */
+            html.gius-dark .dropdown-menu {
+                background-color: #313244 !important;
+                border-color: #45475a !important;
+            }
+            html.gius-dark .dropdown-menu > li > a { color: #cdd6f4 !important; }
+            html.gius-dark .dropdown-menu > li > a:hover,
+            html.gius-dark .dropdown-menu > .active > a {
+                background-color: #45475a !important;
+                color: #cdd6f4 !important;
+            }
+
+            /* ── Wells ── */
+            html.gius-dark .well {
+                background-color: #181825 !important;
+                border-color: #45475a !important;
+                color: #cdd6f4 !important;
+            }
+
+            /* ── Modals ── */
+            html.gius-dark .modal-content {
+                background-color: #1e1e2e !important;
+                border-color: #45475a !important;
+            }
+            html.gius-dark .modal-header {
+                background-color: #181825 !important;
+                border-color: #45475a !important;
+                color: #cdd6f4 !important;
+            }
+            html.gius-dark .modal-body { color: #cdd6f4 !important; }
+            html.gius-dark .modal-footer {
+                background-color: #181825 !important;
+                border-color: #45475a !important;
+            }
+
+            /* ── Breadcrumbs ── */
+            html.gius-dark .breadcrumb {
+                background-color: #181825 !important;
+                border-color: #45475a !important;
+            }
+            html.gius-dark .breadcrumb > li { color: #cdd6f4 !important; }
+
+            /* ── Chosen.js select widget (used in portal dropdowns) ── */
+            html.gius-dark .chosen-container .chosen-single,
+            html.gius-dark .chosen-container-multi .chosen-choices {
+                background: #313244 !important;
+                color: #cdd6f4 !important;
+                border-color: #45475a !important;
+            }
+            html.gius-dark .chosen-container .chosen-drop {
+                background: #313244 !important;
+                border-color: #45475a !important;
+            }
+            html.gius-dark .chosen-results li {
+                color: #cdd6f4 !important;
+                background: #313244 !important;
+            }
+            html.gius-dark .chosen-results li.highlighted { background: #45475a !important; }
+
+            /* ── GIUS injected cards (white bg in light mode) ── */
+            html.gius-dark .giug-card, html.gius-dark .gius-card {
+                background-color: #1e1e2e !important;
+                border-color: #45475a !important;
+            }
+            html.gius-dark .giug-card-body, html.gius-dark .gius-card-body {
+                background-color: #1e1e2e !important;
+                color: #cdd6f4 !important;
+            }
+            html.gius-dark .giug-select, html.gius-dark .gius-select {
+                background-color: #313244 !important;
+                color: #cdd6f4 !important;
+                border-color: #45475a !important;
+            }
+            html.gius-dark .giug-btn-success, html.gius-dark .giug-btn-outline,
+            html.gius-dark .gius-btn-success, html.gius-dark .gius-btn-outline {
+                background-color: #313244 !important;
+                border-color: #45475a !important;
+                color: #cdd6f4 !important;
+            }
+            html.gius-dark .giug-btn-success:not(:disabled):hover,
+            html.gius-dark .giug-btn-outline:not(:disabled):hover {
+                background-color: #45475a !important;
+            }
+            html.gius-dark .giug-alert, html.gius-dark .gius-alert {
+                background-color: #181825 !important;
+                border-color: #45475a !important;
+                color: #cdd6f4 !important;
+            }
+            html.gius-dark .giug-alert-info, html.gius-dark .gius-alert-info {
+                background-color: #1a2a4a !important;
+                color: #89b4fa !important;
+                border-color: #1e3a6e !important;
+            }
+            html.gius-dark .giug-alert-error, html.gius-dark .gius-alert-error {
+                background-color: #3d0000 !important;
+                color: #f38ba8 !important;
+                border-color: #5a0000 !important;
             }
         `;
-        document.head.appendChild(style);
+        document.documentElement.appendChild(style);
     }
 
     function updateTabLabel(tab, on) {
@@ -61,6 +221,7 @@
 
     function injectToggle() {
         if (document.getElementById('gius-dm-toggle')) return;
+        if (!document.body) return;
 
         const tab = document.createElement('button');
         tab.id = 'gius-dm-toggle';
@@ -87,33 +248,27 @@
             align-items: center;
             gap: 4px;
             box-shadow: -2px 0 8px rgba(0,0,0,0.2);
-            transition: background 0.2s ease, padding 0.2s ease;
+            transition: background 0.2s ease;
             user-select: none;
         `;
 
         updateTabLabel(tab, isDarkEnabled());
 
-        tab.addEventListener('mouseenter', function () {
-            tab.style.background = '#e6ac00';
-        });
-        tab.addEventListener('mouseleave', function () {
-            tab.style.background = '#ffc107';
-        });
-        tab.addEventListener('click', function () {
-            toggleDark(tab);
-        });
+        tab.addEventListener('mouseenter', function () { tab.style.background = '#e6ac00'; });
+        tab.addEventListener('mouseleave', function () { tab.style.background = '#ffc107'; });
+        tab.addEventListener('click', function () { toggleDark(tab); });
 
         document.body.appendChild(tab);
     }
 
-    // Apply class immediately before paint to avoid light flash
+    // Apply class + styles immediately before first paint (document-start)
     if (isDarkEnabled()) {
         document.documentElement.classList.add('gius-dark');
     }
+    injectStyles();
 
-    document.addEventListener('DOMContentLoaded', function () {
-        injectStyles();
-        injectToggle();
-    });
+    document.addEventListener('DOMContentLoaded', injectToggle);
+    // Fallback for pages where DOMContentLoaded fires differently (ASP.NET postbacks, home page)
+    window.addEventListener('load', injectToggle);
 
 })();
