@@ -23,9 +23,38 @@
         catch { /* ignore */ }
     }
 
+    function injectStyles() {
+        if (document.getElementById('gius-dm-styles')) return;
+        const style = document.createElement('style');
+        style.id = 'gius-dm-styles';
+        style.textContent = `
+            html.gius-dark {
+                filter: invert(1) hue-rotate(180deg);
+            }
+
+            /* Restore images, video, iframes — double-invert = original colors */
+            html.gius-dark img,
+            html.gius-dark video,
+            html.gius-dark iframe {
+                filter: invert(1) hue-rotate(180deg);
+            }
+
+            /* Restore GIUS panel headers — already dark (#272c33), would go light without this */
+            html.gius-dark [class*="giug-card-header"],
+            html.gius-dark [class*="gius-card-header"] {
+                filter: invert(1) hue-rotate(180deg);
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
     // Apply class immediately before paint to avoid light flash
     if (isDarkEnabled()) {
         document.documentElement.classList.add('gius-dark');
     }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        injectStyles();
+    });
 
 })();
