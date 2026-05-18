@@ -295,15 +295,6 @@
                 background: #f9fafb;
                 border-color: #9ca3af;
             }
-            .gius-btn-danger {
-                background: #fee2e2;
-                border-color: #dc2626;
-                color: #991b1b;
-            }
-            .gius-btn-danger:not(:disabled):hover {
-                background: #fecaca;
-                transform: translateY(-1px);
-            }
             .gius-btn-muted {
                 background: #f9fafb;
                 border-color: #d1d5db;
