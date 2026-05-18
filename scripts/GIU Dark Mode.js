@@ -3,7 +3,7 @@
 // @description Dark mode toggle for the entire GIU portal
 // @include     https://portal.giu-uni.de/*
 // @namespace   ramin0
-// @version     2.4
+// @version     2.5
 // @author      Mo.Elmaadawy
 // @run-at      document-start
 // ==/UserScript==
@@ -140,11 +140,14 @@
             }
 
             /* ── Material Dashboard card-stats (no card-body — header IS the card) ── */
+            html.gius-dark .card-stats,
             html.gius-dark .card-header-icon,
-            html.gius-dark .card-header-dark,
-            html.gius-dark .card-icon {
-                background: #1e1e2e !important;
+            html.gius-dark .card-header-dark {
+                background: #181825 !important;
                 color: #cdd6f4 !important;
+            }
+            html.gius-dark .card-icon {
+                background: #11111b !important;
             }
 
             /* ── Top info bar (role/username strip above content) ── */
