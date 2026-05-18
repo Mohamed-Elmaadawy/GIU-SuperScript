@@ -48,6 +48,64 @@
         document.head.appendChild(style);
     }
 
+    function updateTabLabel(tab, on) {
+        tab.textContent = on ? '☀️ LIGHT' : '🌙 DARK';
+    }
+
+    function toggleDark(tab) {
+        const on = document.documentElement.classList.toggle('gius-dark');
+        saveDark(on);
+        injectStyles();
+        updateTabLabel(tab, on);
+    }
+
+    function injectToggle() {
+        if (document.getElementById('gius-dm-toggle')) return;
+
+        const tab = document.createElement('button');
+        tab.id = 'gius-dm-toggle';
+        tab.setAttribute('title', 'Toggle dark mode');
+        tab.style.cssText = `
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2147483647;
+            background: #ffc107;
+            color: #1a1a1a;
+            border: none;
+            border-radius: 6px 0 0 6px;
+            padding: 10px 5px;
+            cursor: pointer;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-family: 'Open Sans', Arial, sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+            transition: background 0.2s ease, padding 0.2s ease;
+            user-select: none;
+        `;
+
+        updateTabLabel(tab, isDarkEnabled());
+
+        tab.addEventListener('mouseenter', function () {
+            tab.style.background = '#e6ac00';
+        });
+        tab.addEventListener('mouseleave', function () {
+            tab.style.background = '#ffc107';
+        });
+        tab.addEventListener('click', function () {
+            toggleDark(tab);
+        });
+
+        document.body.appendChild(tab);
+    }
+
     // Apply class immediately before paint to avoid light flash
     if (isDarkEnabled()) {
         document.documentElement.classList.add('gius-dark');
@@ -55,6 +113,7 @@
 
     document.addEventListener('DOMContentLoaded', function () {
         injectStyles();
+        injectToggle();
     });
 
 })();
