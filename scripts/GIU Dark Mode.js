@@ -3,7 +3,7 @@
 // @description Dark mode toggle for the entire GIU portal
 // @include     https://portal.giu-uni.de/*
 // @namespace   ramin0
-// @version     1.8
+// @version     1.9
 // @author      Mo.Elmaadawy
 // @run-at      document-start
 // ==/UserScript==
@@ -45,7 +45,7 @@
             html.gius-dark .header,
             html.gius-dark .breadcrumbs,
             html.gius-dark .alert-secondary {
-                background-color: #181825 !important;
+                background-color: #1e1e2e !important;
                 color: #cdd6f4 !important;
                 border-color: #45475a !important;
             }
@@ -72,8 +72,8 @@
             html.gius-dark table { border-color: #45475a !important; }
             html.gius-dark thead, html.gius-dark tbody, html.gius-dark tfoot,
             html.gius-dark tr { background-color: #1e1e2e !important; }
-            html.gius-dark tbody tr:nth-child(even) { background-color: #181825 !important; }
-            html.gius-dark thead tr { background-color: #11111b !important; }
+            html.gius-dark tbody tr:nth-child(even) { background-color: #1e1e2e !important; }
+            html.gius-dark thead tr { background-color: #1e1e2e !important; }
             html.gius-dark td, html.gius-dark th {
                 background-color: inherit !important;
                 color: #cdd6f4 !important;
@@ -125,19 +125,14 @@
                 border-color: #45475a !important;
                 color: #cdd6f4 !important;
             }
-            html.gius-dark .panel,
-            html.gius-dark .panel-default,
-            html.gius-dark .card {
-                box-shadow: 0 0 0 1px #45475a !important;
-            }
             html.gius-dark .panel-heading,
             html.gius-dark .card-header {
-                background-color: #181825 !important;
+                background-color: #1e1e2e !important;
                 border-color: #45475a !important;
                 color: #cdd6f4 !important;
             }
             html.gius-dark .card-footer {
-                background-color: #181825 !important;
+                background-color: #1e1e2e !important;
                 border-color: #45475a !important;
                 color: #cdd6f4 !important;
             }
@@ -189,7 +184,7 @@
 
             /* ── Wells ── */
             html.gius-dark .well {
-                background-color: #181825 !important;
+                background-color: #1e1e2e !important;
                 border-color: #45475a !important;
                 color: #cdd6f4 !important;
             }
@@ -200,19 +195,19 @@
                 border-color: #45475a !important;
             }
             html.gius-dark .modal-header {
-                background-color: #181825 !important;
+                background-color: #1e1e2e !important;
                 border-color: #45475a !important;
                 color: #cdd6f4 !important;
             }
             html.gius-dark .modal-body { color: #cdd6f4 !important; }
             html.gius-dark .modal-footer {
-                background-color: #181825 !important;
+                background-color: #1e1e2e !important;
                 border-color: #45475a !important;
             }
 
             /* ── Breadcrumbs ── */
             html.gius-dark .breadcrumb {
-                background-color: #181825 !important;
+                background-color: #1e1e2e !important;
                 border-color: #45475a !important;
             }
             html.gius-dark .breadcrumb > li { color: #cdd6f4 !important; }
@@ -236,11 +231,11 @@
 
             /* ── GIUS notification panel: group list + labels + inputs ── */
             html.gius-dark .gius-group-list {
-                background: #181825 !important;
+                background: #1e1e2e !important;
                 border-color: #45475a !important;
-                scrollbar-color: #585b70 #181825 !important;
+                scrollbar-color: #585b70 #1e1e2e !important;
             }
-            html.gius-dark .gius-group-list::-webkit-scrollbar-track { background: #181825 !important; }
+            html.gius-dark .gius-group-list::-webkit-scrollbar-track { background: #1e1e2e !important; }
             html.gius-dark .gius-group-list::-webkit-scrollbar-thumb { background: #585b70 !important; }
             html.gius-dark .gius-group-row:hover { background: #313244 !important; }
             html.gius-dark .gius-group-row label,
@@ -260,7 +255,6 @@
             html.gius-dark .giug-card, html.gius-dark .gius-card {
                 background-color: #1e1e2e !important;
                 border-color: #45475a !important;
-                box-shadow: 0 0 0 1px #45475a !important;
             }
             html.gius-dark .giug-card-body, html.gius-dark .gius-card-body {
                 background-color: #1e1e2e !important;
@@ -282,7 +276,7 @@
                 background-color: #45475a !important;
             }
             html.gius-dark .giug-alert, html.gius-dark .gius-alert {
-                background-color: #181825 !important;
+                background-color: #1e1e2e !important;
                 border-color: #45475a !important;
                 color: #cdd6f4 !important;
             }
