@@ -3,7 +3,7 @@
 // @description Dark mode toggle for the entire GIU portal
 // @include     https://portal.giu-uni.de/*
 // @namespace   ramin0
-// @version     2.6
+// @version     2.7
 // @author      Mo.Elmaadawy
 // @run-at      document-start
 // ==/UserScript==
@@ -302,6 +302,143 @@
                 background-color: #3d0000 !important;
                 color: #f38ba8 !important;
                 border-color: #5a0000 !important;
+            }
+
+            /* ── GIU Upload Grades: stats table (not covered by generic rules) ── */
+            html.gius-dark .giug-stats-table td {
+                background: #181825 !important;
+                color: #cdd6f4 !important;
+                border-color: #45475a !important;
+            }
+            html.gius-dark .giug-stats-table th {
+                background: #11111b !important;
+                color: #cdd6f4 !important;
+                border-color: #45475a !important;
+            }
+            html.gius-dark .giug-stat-num,
+            html.gius-dark .giug-stats-label { color: #cdd6f4 !important; }
+            html.gius-dark .giug-stats-section { border-color: #45475a !important; }
+
+            /* ── GIU Manage Group Grades (.gmgg-*) ── */
+            html.gius-dark .gmgg-panel {
+                background: #181825 !important;
+                border-color: transparent !important;
+            }
+            html.gius-dark .gmgg-panel-body { color: #cdd6f4 !important; }
+            html.gius-dark .gmgg-btn-upload,
+            html.gius-dark .gmgg-btn-download {
+                background: #313244 !important;
+                border-color: #45475a !important;
+                color: #cdd6f4 !important;
+            }
+            html.gius-dark .gmgg-btn-upload:not(:disabled):hover,
+            html.gius-dark .gmgg-btn-download:not(:disabled):hover {
+                background: #45475a !important;
+            }
+            html.gius-dark .gmgg-feedback-success {
+                background: #0d3321 !important;
+                color: #a6e3a1 !important;
+                border-color: #1e4d33 !important;
+            }
+            html.gius-dark .gmgg-feedback-error {
+                background: #3d0000 !important;
+                color: #f38ba8 !important;
+                border-color: #5a0000 !important;
+            }
+            html.gius-dark .gmgg-stats {
+                background: #11111b !important;
+                border-color: #45475a !important;
+            }
+            html.gius-dark .gmgg-stats-title,
+            html.gius-dark .gmgg-stat-val { color: #cdd6f4 !important; }
+            html.gius-dark .gmgg-stat-label { color: #a6adc8 !important; }
+
+            /* ── GIU Attendance Script (.giu-*) ── */
+            html.gius-dark .giu-attendance-wrap {
+                --giu-color-text: #cdd6f4;
+                --giu-color-muted: #a6adc8;
+                --giu-color-border: #45475a;
+                --giu-color-surface: #313244;
+                color: #cdd6f4 !important;
+            }
+            html.gius-dark .giu-config-panel,
+            html.gius-dark .giu-summary-panel,
+            html.gius-dark .giu-summary-card {
+                background: #181825 !important;
+                border-color: transparent !important;
+            }
+            html.gius-dark .giu-summary-body { background: #181825 !important; }
+            html.gius-dark .giu-config-title,
+            html.gius-dark .giu-attendance-section-title,
+            html.gius-dark .giu-holiday-title { color: #cdd6f4 !important; }
+            html.gius-dark .giu-holiday-table {
+                background: #181825 !important;
+                border-color: #45475a !important;
+            }
+            html.gius-dark .giu-holiday-table th {
+                background: #11111b !important;
+                color: #cdd6f4 !important;
+                border-color: #45475a !important;
+            }
+            html.gius-dark .giu-holiday-table td {
+                background: #181825 !important;
+                color: #cdd6f4 !important;
+                border-color: #45475a !important;
+            }
+            html.gius-dark .giu-holiday-empty,
+            html.gius-dark .giu-pagination {
+                background: #181825 !important;
+                border-color: #45475a !important;
+                color: #cdd6f4 !important;
+            }
+            html.gius-dark .giu-pagination-btn {
+                background: #313244 !important;
+                border-color: #45475a !important;
+                color: #cdd6f4 !important;
+            }
+            html.gius-dark .giu-pagination-btn:hover:not(:disabled) {
+                background: #45475a !important;
+            }
+            html.gius-dark .giu-pagination-size select,
+            html.gius-dark .giu-dayoff-row select,
+            html.gius-dark .giu-dayoff-row input,
+            html.gius-dark .giu-holiday-controls select,
+            html.gius-dark .giu-holiday-controls input {
+                background: #313244 !important;
+                color: #cdd6f4 !important;
+                border-color: #45475a !important;
+            }
+            html.gius-dark .giu-stat-row {
+                background: #11111b !important;
+                border-color: #45475a !important;
+            }
+            html.gius-dark .giu-stat-label { color: #a6adc8 !important; }
+            html.gius-dark .giu-stat-value { color: #cdd6f4 !important; }
+            html.gius-dark .giu-progress-wrap {
+                background: #11111b !important;
+                border-color: #45475a !important;
+            }
+            html.gius-dark .giu-summary-toggle-hint {
+                background: #313244 !important;
+                border-color: #45475a !important;
+                color: #cdd6f4 !important;
+            }
+            html.gius-dark .giu-dayoff-row { border-color: #45475a !important; }
+            html.gius-dark .giu-dayoff-row label { color: #cdd6f4 !important; }
+            html.gius-dark .giu-config-divider { background: #45475a !important; }
+            html.gius-dark .giu-balance-positive { background: #0d3321 !important; border-color: #1e4d33 !important; }
+            html.gius-dark .giu-balance-negative { background: #3d0000 !important; border-color: #5a0000 !important; }
+            html.gius-dark .giu-tag-positive { background: #1e4d33 !important; color: #a6e3a1 !important; }
+            html.gius-dark .giu-tag-negative { background: #5a0000 !important; color: #f38ba8 !important; }
+            html.gius-dark .giu-remove-holiday-btn {
+                background: #3d0000 !important;
+                border-color: #5a0000 !important;
+                color: #f38ba8 !important;
+            }
+            html.gius-dark .giu-dayoff-badge {
+                background: #3d2a00 !important;
+                border-color: #ffc107 !important;
+                color: #ffc107 !important;
             }
         `;
         document.documentElement.appendChild(style);
