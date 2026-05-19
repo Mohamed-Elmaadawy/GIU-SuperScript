@@ -1,23 +1,15 @@
 # Ignore everything
 *
-# Except scripts folder and root files
+
+# Tampermonkey scripts (direct .js files only, no subdirs)
 !scripts/
-!scripts/**
+!scripts/*.js
 scripts/scrape-courses.js
-scripts/screenshots/
-scripts/screenshots/**
+
+# README screenshots
+!screenshots/
+!screenshots/*
+
+# Root files
 !README.md
 !.gitignore
-# Tests and tooling
-!tests/
-!tests/**
-!playwright.config.js
-!package.json
-!package-lock.json
-node_modules/
-test-results/
-playwright-report/
-
-# Allow screenshots GIFs (committed for README)
-!screenshots/
-!screenshots/*.gif
