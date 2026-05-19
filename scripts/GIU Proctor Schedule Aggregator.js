@@ -207,7 +207,10 @@
             const hall      = tds[1].textContent.trim();
             const startRaw  = tds[2].textContent.trim();
             const endRaw    = tds[3].textContent.trim();
-            const coverName = tds[4].textContent.replace(/ /g, '').trim();
+            const coverName = tds[4].textContent
+                .replace(/ /g, ' ')
+                .replace(/^(Ms\.|Mrs\.|Mr\.|Dr\.|Prof\.|Eng\.)\s*/i, '')
+                .trim();
             const { courseCode, examName, program } = parseExamString(examRaw);
             rows.push({
                 proctor:    proctor.name,
@@ -462,6 +465,12 @@
             .gius-coproctor-list li { margin: 2px 0; }
             .gius-coproctor-dept { color: #6366f1; margin-left: 4px; }
             html.gius-dark .gius-coproctor-dept { color: #818cf8 !important; }
+
+            .gius-covering-badge {
+                display: block; font-size: 11px; color: #6366f1;
+                font-style: italic; margin-top: 2px;
+            }
+            html.gius-dark .gius-covering-badge { color: #818cf8 !important; }
 
             .gius-table-footer { border-top: 1px solid #e5e7eb; padding: 6px 10px; }
             .gius-pagination {
@@ -723,6 +732,16 @@
         updateFilterOptions();
     }
 
+    function buildCoveringMap(rows) {
+        const map = new Map();
+        rows.forEach(r => {
+            if (r.coverName) {
+                map.set(`${r.coverName}|${r.hall}|${r.dateKey}|${r.examName}`, r.proctor);
+            }
+        });
+        return map;
+    }
+
     function renderTable(rows) {
         const tbody   = document.getElementById('gius-tbody');
         const section = document.getElementById('gius-table-section');
@@ -738,9 +757,13 @@
         const end        = Math.min(start + _pageSize, total);
         const pageRows   = rows.slice(start, end);
 
-        tbody.innerHTML = pageRows.map((r, i) => `
+        const coveringMap = buildCoveringMap(_allRows);
+
+        tbody.innerHTML = pageRows.map((r, i) => {
+            const coveringFor = coveringMap.get(`${r.proctor}|${r.hall}|${r.dateKey}|${r.examName}`) || '';
+            return `
             <tr class="gius-row-in gius-data-row" data-idx="${start + i}" style="animation-delay:${Math.min(i, 30) * 12}ms">
-                <td>${escHtml(r.proctor)}</td>
+                <td>${escHtml(r.proctor)}${coveringFor ? `<span class="gius-covering-badge">&#x21AA; Covering: ${escHtml(coveringFor)}</span>` : ''}</td>
                 <td>${escHtml(r.program || r.courseCode)} &ndash; ${escHtml(r.examName)}</td>
                 <td>${escHtml(r.hall)}</td>
                 <td>${escHtml(r.date)}</td>
@@ -748,7 +771,8 @@
                 <td>${escHtml(r.department)}</td>
                 <td class="${r.coverName ? '' : 'muted'}">${escHtml(r.coverName || '—')}</td>
             </tr>
-        `).join('');
+        `;
+        }).join('');
 
         renderPagination(total, totalPages, start, end);
     }
@@ -931,12 +955,25 @@
             existing.remove();
             return;
         }
-        const coProctors = _allRows.filter(r =>
-            r !== row &&
-            r.hall     === row.hall &&
-            r.dateKey  === row.dateKey &&
-            r.examName === row.examName
-        );
+        let coProctors;
+        if (row.coverName) {
+            coProctors = _allRows.filter(r =>
+                r.proctor  === row.coverName &&
+                r.hall     === row.hall &&
+                r.dateKey  === row.dateKey &&
+                r.examName === row.examName
+            );
+            if (!coProctors.length) {
+                coProctors = [{ proctor: row.coverName, department: '' }];
+            }
+        } else {
+            coProctors = _allRows.filter(r =>
+                r !== row &&
+                r.hall     === row.hall &&
+                r.dateKey  === row.dateKey &&
+                r.examName === row.examName
+            );
+        }
         if (!coProctors.length) return;
         const cpRow = document.createElement('tr');
         cpRow.className = 'gius-coproctor-row';
