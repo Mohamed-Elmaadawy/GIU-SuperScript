@@ -3,7 +3,7 @@
 // @description Upload/download grades per group + batch all groups via fetch chain.
 // @include     https://portal.giu-uni.de/*
 // @namespace   ramin0
-// @version     2.2
+// @version     2.3
 // @author      Ahmed Sherif, Mo.Elmaadawy
 // @icon         data:image/png;base64,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
 // @run-at      document-idle
@@ -300,20 +300,31 @@
         container.querySelector('.gius-progress-info')?.remove();
     }
 
+    function getMaxGrade(evalPicker) {
+        const text = evalPicker?.options[evalPicker.selectedIndex]?.text ?? '';
+        const after = text.split('||')[1];
+        return after != null && after !== '' ? parseFloat(after) : null;
+    }
+
     // ── Stats helpers ────────────────────────────────────────────────────────
 
-    function computeStats(values) {
+    function computeStats(values, maxGrade = null) {
         const nums = values.filter(v => v !== '' && Number.isFinite(+v)).map(Number);
         if (!nums.length) return null;
         const min = Math.min(...nums);
         const max = Math.max(...nums);
         const avg = nums.reduce((a, b) => a + b, 0) / nums.length;
+        const passThreshold = maxGrade != null ? maxGrade * 0.5 : null;
+        const passRate = passThreshold != null
+            ? ((nums.filter(n => n >= passThreshold).length / nums.length) * 100).toFixed(0) + '%'
+            : null;
         return {
-            min:   min.toFixed(1),
-            max:   max.toFixed(1),
-            avg:   avg.toFixed(1),
-            range: (max - min).toFixed(1),
-            count: nums.length
+            min:      min.toFixed(1),
+            max:      max.toFixed(1),
+            avg:      avg.toFixed(1),
+            range:    (max - min).toFixed(1),
+            count:    nums.length,
+            passRate,
         };
     }
 
@@ -329,6 +340,7 @@
                 <div class="giug-stat"><span class="giug-stat-key">Max</span><span class="giug-stat-val">${stats.max}</span></div>
                 <div class="giug-stat"><span class="giug-stat-key">Avg</span><span class="giug-stat-val">${stats.avg}</span></div>
                 <div class="giug-stat"><span class="giug-stat-key">Range</span><span class="giug-stat-val">${stats.range}</span></div>
+                ${stats.passRate != null ? `<div class="giug-stat"><span class="giug-stat-key">Pass</span><span class="giug-stat-val">${stats.passRate}</span></div>` : ''}
             </div>
         `;
         card.querySelector('.giug-card-body').appendChild(section);
@@ -338,6 +350,7 @@
         card.querySelector('.giug-stats-section')?.remove();
         const withStats = groupStats.filter(g => g.stats);
         if (!withStats.length) return;
+        const hasPass = withStats.some(g => g.stats.passRate != null);
         const rows = withStats.map(g => `
             <tr>
                 <td>${g.label}</td>
@@ -345,6 +358,7 @@
                 <td class="giug-stat-num">${g.stats.max}</td>
                 <td class="giug-stat-num">${g.stats.avg}</td>
                 <td class="giug-stat-num">${g.stats.range}</td>
+                ${hasPass ? `<td class="giug-stat-num">${g.stats.passRate ?? '—'}</td>` : ''}
                 <td style="color:#9e9e9e;font-size:11px;">${g.stats.count}</td>
             </tr>
         `).join('');
@@ -353,7 +367,11 @@
         section.innerHTML = `
             <div class="giug-stats-label">Per-Group Statistics</div>
             <table class="giug-stats-table">
-                <thead><tr><th>Group</th><th>Min</th><th>Max</th><th>Avg</th><th>Range</th><th>n</th></tr></thead>
+                <thead><tr>
+                    <th>Group</th><th>Min</th><th>Max</th><th>Avg</th><th>Range</th>
+                    ${hasPass ? '<th>Pass</th>' : ''}
+                    <th>n</th>
+                </tr></thead>
                 <tbody>${rows}</tbody>
             </table>
         `;
@@ -513,12 +531,30 @@
         }
     }
 
+    function validateCsvMap(csvMap, maxGrade) {
+        const errors = [];
+        for (const [id, raw] of Object.entries(csvMap)) {
+            const v = +raw;
+            if (!Number.isFinite(v))  { errors.push(`Student ${id}: invalid value "${raw}"`); continue; }
+            if (v < 0)                { errors.push(`Student ${id}: negative grade ${raw}`); continue; }
+            if (maxGrade != null && v > maxGrade) { errors.push(`Student ${id}: ${raw} exceeds max ${maxGrade}`); continue; }
+        }
+        return errors;
+    }
+
     // ── Batch upload (State A) ───────────────────────────────────────────────
 
-    async function batchUpload(evalId, csvMap, toolbar) {
+    async function batchUpload(evalId, csvMap, toolbar, evalPicker) {
         const { groups, hidden, season, course } = readPageState();
 
         if (!groups.length) { showError(toolbar, 'No groups found.'); return; }
+
+        const maxGrade = getMaxGrade(evalPicker);
+        const validationErrors = validateCsvMap(csvMap, maxGrade);
+        if (validationErrors.length) {
+            showError(toolbar, `${validationErrors.length} grade(s) failed validation: ${validationErrors.slice(0, 5).join('; ')}${validationErrors.length > 5 ? ` … and ${validationErrors.length - 5} more` : ''}`);
+            return;
+        }
 
         const groupStats = [];
         let saved  = 0;
@@ -563,7 +599,7 @@
 
                 await doPostBack(doc2Hidden, saveBtnEl.name, gradeOverrides);
 
-                groupStats.push({ label: group.label, stats: computeStats(Object.values(gradeOverrides)) });
+                groupStats.push({ label: group.label, stats: computeStats(Object.values(gradeOverrides), maxGrade) });
                 saved++;
             } catch (err) {
                 errors++;
@@ -636,6 +672,9 @@
             csvMap = await parseCSV(file);
             showInfo(card, `CSV loaded — ${Object.keys(csvMap).length} student grade(s) ready.`);
             batchUpBtn.disabled = !isValidId(evalPicker.value);
+            const maxGrade = getMaxGrade(evalPicker);
+            const previewStats = computeStats(Object.values(csvMap), maxGrade);
+            renderGroupStats(card, previewStats);
         };
 
         batchDlBtn.onclick = async () => {
@@ -648,7 +687,7 @@
         batchUpBtn.onclick = async () => {
             if (!csvMap || !isValidId(getEvalId())) return;
             batchUpBtn.disabled = true;
-            await batchUpload(getEvalId(), csvMap, card);
+            await batchUpload(getEvalId(), csvMap, card, evalPicker);
             batchUpBtn.disabled = false;
         };
 
@@ -699,7 +738,10 @@
                 if (id && gradeEl && id in csvMap) gradeEl.value = csvMap[id];
             });
             const grades = getRows().map(row => row.cells[2]?.querySelector('input')?.value ?? '');
-            renderGroupStats(card, computeStats(grades));
+            const crntText = document.querySelector(SEL.crntLbl)?.textContent ?? '';
+            const _afterPipe = crntText.split('||')[1];
+            const maxGradePerGroup = (_afterPipe != null && _afterPipe !== '') ? parseFloat(_afterPipe) : null;
+            renderGroupStats(card, computeStats(grades, maxGradePerGroup));
         };
 
         downloadBtn.onclick = () => {
@@ -712,7 +754,10 @@
                 `${gLabel}-${eLabel}.csv`
             );
             const grades = getRows().map(row => row.cells[2]?.querySelector('input')?.value ?? '');
-            renderGroupStats(card, computeStats(grades));
+            const crntText = document.querySelector(SEL.crntLbl)?.textContent ?? '';
+            const _afterPipe = crntText.split('||')[1];
+            const maxGradePerGroup = (_afterPipe != null && _afterPipe !== '') ? parseFloat(_afterPipe) : null;
+            renderGroupStats(card, computeStats(grades, maxGradePerGroup));
         };
 
         card.innerHTML = `
@@ -732,7 +777,10 @@
         (crntEl ?? table).insertAdjacentElement('afterend', card);
 
         const initialGrades = getRows().map(row => row.cells[2]?.querySelector('input')?.value ?? '');
-        renderGroupStats(card, computeStats(initialGrades));
+        const crntText = document.querySelector(SEL.crntLbl)?.textContent ?? '';
+        const _afterPipe = crntText.split('||')[1];
+        const maxGradePerGroup = (_afterPipe != null && _afterPipe !== '') ? parseFloat(_afterPipe) : null;
+        renderGroupStats(card, computeStats(initialGrades, maxGradePerGroup));
     }
 
     // ── Entry point ──────────────────────────────────────────────────────────
