@@ -319,6 +319,12 @@
             html.gius-dark .giug-stat-num,
             html.gius-dark .giug-stats-label { color: #cdd6f4 !important; }
             html.gius-dark .giug-stats-section { border-color: #45475a !important; }
+            html.gius-dark .giug-stat {
+                background: #11111b !important;
+                border-color: #45475a !important;
+            }
+            html.gius-dark .giug-stat-key { color: #a6adc8 !important; }
+            html.gius-dark .giug-stat-val { color: #cdd6f4 !important; }
 
             /* ── GIU Manage Group Grades (.gmgg-*) ── */
             html.gius-dark .gmgg-panel {
