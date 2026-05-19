@@ -238,8 +238,9 @@
 
         const stats = { depts: 0, totalDepts: depts.length, proctors: 0, exams: 0, failed: 0,
                         proctorsDone: 0, totalProctors: 0 };
-        const allProctors = [];
-        const allRows     = [];
+        const allProctors  = [];
+        const allRows      = [];
+        const uniqueExams  = new Set();
 
         // Phase 1 — departments
         await runPool(depts, async dept => {
@@ -262,7 +263,8 @@
             try {
                 const rows = await fetchProctorSchedule(proctor);
                 allRows.push(...rows);
-                stats.exams += rows.length;
+                rows.forEach(r => uniqueExams.add(`${r.examName}|${r.dateKey}|${r.hall}`));
+                stats.exams = uniqueExams.size;
             } catch (e) {
                 if (e.message === 'SESSION_EXPIRED') { cb.onError('SESSION_EXPIRED'); throw e; }
                 stats.failed++;
