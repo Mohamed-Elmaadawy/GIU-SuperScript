@@ -356,6 +356,10 @@
                 background: #11111b !important;
                 border-color: #45475a !important;
             }
+            html.gius-dark .gmgg-stat-row {
+                background: #11111b !important;
+                border-color: #45475a !important;
+            }
             html.gius-dark .gmgg-stats-title,
             html.gius-dark .gmgg-stat-val { color: #cdd6f4 !important; }
             html.gius-dark .gmgg-stat-label { color: #a6adc8 !important; }
