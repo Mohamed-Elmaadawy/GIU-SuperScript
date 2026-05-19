@@ -448,7 +448,7 @@
             .gius-data-row { cursor: pointer; }
             .gius-coproctor-row td {
                 background: #e0e7ff !important; color: #1e3a8a !important;
-                font-size: 0.9em; padding: 8px 16px 8px 20px !important;
+                font-size: 1em; padding: 8px 16px 8px 20px !important;
                 border-top: 1px solid #a5b4fc !important;
                 border-left: 4px solid #6366f1 !important;
                 animation: giusSlideDown 0.2s ease;
@@ -460,7 +460,7 @@
                 margin: 0; padding: 0 0 0 18px; list-style: disc;
             }
             .gius-coproctor-list li { margin: 2px 0; }
-            .gius-coproctor-dept { color: #6366f1; font-size: 0.9em; margin-left: 4px; }
+            .gius-coproctor-dept { color: #6366f1; margin-left: 4px; }
             html.gius-dark .gius-coproctor-dept { color: #818cf8 !important; }
 
             .gius-table-footer { border-top: 1px solid #e5e7eb; padding: 6px 10px; }
@@ -548,7 +548,7 @@
                 border-color: #78350f !important;
             }
             html.gius-dark .gius-coproctor-row td {
-                background: #1e2050 !important; color: #c7d2fe !important;
+                background: #1e2050 !important; color: #e0e7ff !important;
                 border-top-color: #4338ca !important; border-left-color: #818cf8 !important;
             }
             html.gius-dark .gius-coproctor-label { color: #a5b4fc !important; }
