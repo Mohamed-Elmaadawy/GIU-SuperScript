@@ -86,7 +86,7 @@
         // Campus prefix may use "." or "-" as separator (e.g. GIU-Cairo.Dept or GIU-Cairo-Dept)
         const stripCampus = s => s.replace(/^GIU-[^.-]*[.-]/, '').trim();
         // Course codes: 2-8 uppercase letters followed by 3-4 digits, optional trailing letter
-        const COURSE_CODE = /^[A-Z]{2,8}\d{3,4}[A-Z]?$/;
+        const COURSE_CODE = /^[A-Z]{2,8}[a-z]?\d{3,4}[A-Za-z]?$/;
 
         const parts = raw.split(' ---> ');
         if (parts.length < 2) return { courseCode: '', examName: raw.trim(), program: '' };
