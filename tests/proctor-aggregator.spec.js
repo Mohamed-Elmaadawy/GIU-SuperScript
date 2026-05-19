@@ -271,6 +271,60 @@ test.describe('GIU Proctor Schedule Aggregator', () => {
         await expect(page.locator('#gius-proctor-meta')).toContainText('Loaded from CSV');
     });
 
+    test('pause button appears during scrape, hides on complete', async ({ page }) => {
+        await setup(page);
+
+        await page.locator('#gius-proctor-trigger').click();
+        await expect(page.locator('#gius-progress-section')).toBeVisible({ timeout: 5_000 });
+
+        // Button visible and shows Pause while scraping
+        await expect(page.locator('#gius-proctor-pause')).toBeVisible();
+        await expect(page.locator('#gius-proctor-pause')).toContainText('Pause');
+
+        // Wait for scraping to finish — button should hide
+        await expect(page.locator('#gius-progress-section')).toBeHidden({ timeout: 25_000 });
+        await expect(page.locator('#gius-proctor-pause')).toBeHidden();
+    });
+
+    test('pause/resume toggles button label and suspends new fetches', async ({ page }) => {
+        await setup(page);
+
+        // Override the mock with a slow version (LIFO — this handler runs first).
+        // 200ms delay per POST → Phase1 ~200ms + Phase2 ~400ms = ~600ms total,
+        // comfortably longer than the panel's slide-down animation (380ms).
+        await page.route('**/ProctorExchange_m.aspx', async (route, request) => {
+            if (request.method() !== 'GET') {
+                await new Promise(r => setTimeout(r, 200));
+            }
+            if (request.method() === 'GET') {
+                await route.fulfill({ contentType: 'text/html; charset=utf-8', body: exchangeHtml });
+            } else {
+                const body = request.postData() || '';
+                const html = body.includes('acdmcDpLst') ? deptHtml : proctorHtml;
+                await route.fulfill({ contentType: 'text/html; charset=utf-8', body: html });
+            }
+        });
+
+        await page.locator('#gius-proctor-trigger').click();
+        await expect(page.locator('#gius-progress-section')).toBeVisible({ timeout: 5_000 });
+
+        // Wait past the panel's slide-down animation (~380ms) so the button is stable
+        await page.waitForTimeout(450);
+
+        // Scraping is still in progress (~600ms total) — button should be visible
+        await expect(page.locator('#gius-proctor-pause')).toBeVisible();
+        await page.locator('#gius-proctor-pause').click();
+        await expect(page.locator('#gius-proctor-pause')).toContainText('Resume');
+
+        // Resume
+        await page.locator('#gius-proctor-pause').click();
+        await expect(page.locator('#gius-proctor-pause')).toContainText('Pause');
+
+        // Scraping completes after resume
+        await expect(page.locator('#gius-progress-section')).toBeHidden({ timeout: 25_000 });
+        await expect(page.locator('#gius-tbody tr')).toHaveCount(EXPECTED_ROWS);
+    });
+
     test('pagination — page size and prev/next controls work', async ({ page }) => {
         await setup(page);
         await openAndScrape(page);
