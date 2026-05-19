@@ -938,7 +938,7 @@
         if (!coProctors.length) return;
         const cpRow = document.createElement('tr');
         cpRow.className = 'gius-coproctor-row';
-        cpRow.innerHTML = `<td colspan="7"><span class="gius-coproctor-label">&#x1F465; Co-proctors:</span><ul class="gius-coproctor-list">${coProctors.map(r => `<li>${escHtml(r.proctor)}</li>`).join('')}</ul></td>`;
+        cpRow.innerHTML = `<td colspan="7"><span class="gius-coproctor-label"><i class="fa fa-users"></i> Co-proctors:</span><ul class="gius-coproctor-list">${coProctors.map(r => `<li>${escHtml(r.proctor)}</li>`).join('')}</ul></td>`;
         tr.insertAdjacentElement('afterend', cpRow);
     }
 
