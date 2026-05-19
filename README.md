@@ -44,9 +44,43 @@ After saving, go to the target page listed for each script below. A new panel or
 
 ## Scripts
 
-### 1. GIU Staff Enhanced Attendance
+### 1. GIU Dark Mode
 
-**File:** `GIU Attendance Script.js` | **Version:** 3.0.7 | **Author:** Mo.Elmaadawy
+**File:** `GIU Dark Mode.js` | **Version:** 2.7 | **Author:** Mo.Elmaadawy
+
+A portal-wide dark mode toggle using the Catppuccin Mocha palette. Applies clean, layered dark colors to every portal page — including all co-scripts — without inverting images or breaking portal styling.
+
+**Target page:**
+```
+https://portal.giu-uni.de/*
+```
+
+**Features:**
+
+- **One-click toggle** — fixed yellow tab on the right edge of every portal page
+- **Persists across pages** — preference saved in `localStorage`, applies before first paint (no flash)
+- **Catppuccin Mocha palette** — page `#1e1e2e`, cards `#181825`, headers `#11111b`, inputs `#313244`
+- **Depth hierarchy** — cards darker than the page background for natural layering
+- **No visible borders** — transparent borders throughout; depth communicated through shade, not outlines
+- **Full co-script coverage** — correctly styles all other GIU SuperScript panels and components
+
+| Light | Dark |
+|---|---|
+| ![Light mode](screenshots/dark-mode-home-light.png) | ![Dark mode](screenshots/dark-mode-home-dark.png) |
+
+| Light | Dark |
+|---|---|
+| ![Notification light](screenshots/dark-mode-notification-light.png) | ![Notification dark](screenshots/dark-mode-notification-dark.png) |
+
+| Light | Dark |
+|---|---|
+| ![Upload grades light](screenshots/dark-mode-upload-grades-light.png) | ![Upload grades dark](screenshots/dark-mode-upload-grades-dark.png) |
+
+---
+
+### 2. GIU Staff Enhanced Attendance
+
+**File:** `GIU Staff Attendance Script.js` | **Version:** 3.0.7 | **Author:** Mo.Elmaadawy
 
 A full attendance management dashboard injected above the Swift Report attendance table. Tracks your hours, leave balance, and exceptions — all stored locally in your browser.
 
@@ -85,9 +119,9 @@ https://portal.giu-uni.de/GIUb/EXT/SwiftReports_m.aspx?swiftreportid=866&execute
 
 ---
 
-### 2. GIU Notification Batch Send
+### 3. GIU Notification Batch Send
 
-**File:** `GIU Notification Batch Send.js` | **Version:** 1.0 | **Author:** Mo.Elmaadawy
+**File:** `GIU Notification Batch Send.js` | **Version:** 1.3 | **Author:** Mo.Elmaadawy
 
 Sends the same email notification to multiple tutorial groups in sequence. Write subject and body once — the script steps through each selected group using a localStorage queue and page reloads.
 
@@ -99,7 +133,8 @@ https://portal.giu-uni.de/GIUb/INTStaff/NotificationSystem_SendEmail_m.aspx
 **Features:**
 
 - **Batch send** — select all groups or a specific subset, then send to all in one click
-- **Course filter** — filter the group list by course code (e.g. "INCS 406") when you teach multiple courses
+- **Course filter** — filter the group list by course name or code (e.g. "Distributed & Web-based Systems") when you teach multiple courses
+- **Course name display** — groups show full course name instead of raw codes (e.g. `Distributed & Web-based Systems - 4INF2 (Practical)`)
 - **Select All** — respects the active course filter, only selects visible groups
 - **Progress tracking** — live banner updates after each group is processed
 - **Summary table** — shows sent / failed status per group when the batch completes
@@ -119,9 +154,9 @@ https://portal.giu-uni.de/GIUb/INTStaff/NotificationSystem_SendEmail_m.aspx
 
 ---
 
-### 3. GIU Upload Grades
+### 4. GIU Upload Grades
 
-**File:** `GIU Upload Grades.js` | **Version:** 2.2 | **Authors:** Ahmed Sherif, Mo.Elmaadawy
+**File:** `GIU Upload Grades.js` | **Version:** 2.3 | **Authors:** Ahmed Sherif, Mo.Elmaadawy
 
 Batch grade download and upload across all student groups on the Manage Uploaded Grades page. Runs entirely in the background via fetch — no page reloads between groups.
 
@@ -138,7 +173,7 @@ A toolbar is injected with a custom evaluation method picker. Selecting from it 
 
 - **Batch Download** — iterates every group, downloads one combined CSV (Name, Group, Grade)
 - **Batch Upload** — load a CSV file, then push grades to every group automatically
-- **Grade statistics** per group — Min, Max, Average, Range displayed after each operation
+- **Grade statistics** per group — Min, Max, Average, Range, Pass Rate displayed after each operation
 
 **State B — Grade table visible (after selecting group + eval):**
 
@@ -175,7 +210,7 @@ Grades are matched by student ID `(XXXXXXXX)` prefix — safe against row reorde
 
 ---
 
-### 4. GIU Manage Group Grades
+### 5. GIU Manage Group Grades
 
 **File:** `GIU Manage Group Grades.js` | **Version:** 1.4 | **Author:** Mo.Elmaadawy
 
@@ -205,6 +240,43 @@ https://portal.giu-uni.de/GIUb/INTStaff/ManageGroupGrade_m.aspx
 
 ---
 
+### 6. GIU Proctor Schedule Aggregator
+
+**File:** `GIU Proctor Schedule Aggregator.js` | **Version:** 1.9 | **Author:** Mo.Elmaadawy
+
+Aggregates all proctor exam assignments across every department into a single searchable dashboard. Scrapes the Proctor Exchange page in the background and presents a unified, filterable table with cover-proctor awareness.
+
+**Target page:**
+```
+https://portal.giu-uni.de/GIUb/INTStaff/ProctorExchange_m.aspx
+```
+
+**Features:**
+
+- **Full-portal scrape** — fetches all departments and all proctors concurrently (up to 20 parallel requests)
+- **Cache** — results saved to `localStorage`; reopening loads instantly without re-scraping
+- **CSV upload** — load a previously exported schedule instead of scraping
+- **CSV export** — download the full aggregated schedule as a CSV file
+- **Searchable filters** — live-search by proctor name, department, exam hall, or exam name
+- **Cover-proctor view** — when filtering by your name, rows where you are covering someone else are highlighted in indigo and rendered from your perspective
+- **Covered-row highlight** — rows where someone else is covering your exam are highlighted in amber
+- **Co-proctor expand** — click any row to see all other proctors assigned to the same hall and time slot
+- **Covering badge** — each proctor cell shows who they are covering, if applicable
+- **Pause / Resume** — pause an in-progress scrape and resume later
+- **Progress indicator** — live count of scraped entities and unique exams found
+
+**Usage:**
+
+1. Navigate to the Proctor Exchange page (link above)
+2. Click **Fetch Schedules** to start scraping all departments
+3. Use the filter inputs to search by proctor name, department, hall, or exam
+4. Filter by your own name to see both your assigned exams and any exams you are covering for others
+5. Click any row to expand and see all co-proctors in that slot
+6. Click **Export CSV** to save the full schedule locally
+7. On future visits, the cached schedule loads automatically — click **Fetch Schedules** to refresh
+
+---
+
 ## Requirements
 
 - Tampermonkey v4.x or later
@@ -217,7 +289,9 @@ https://portal.giu-uni.de/GIUb/INTStaff/ManageGroupGrade_m.aspx
 
 | Script | Authors |
 |---|---|
+| GIU Dark Mode | Mo.Elmaadawy |
 | GIU Staff Enhanced Attendance | Mo.Elmaadawy |
 | GIU Notification Batch Send | Mo.Elmaadawy |
 | GIU Upload Grades | Ahmed Sherif, Mo.Elmaadawy |
 | GIU Manage Group Grades | Mo.Elmaadawy |
+| GIU Proctor Schedule Aggregator | Mo.Elmaadawy |
