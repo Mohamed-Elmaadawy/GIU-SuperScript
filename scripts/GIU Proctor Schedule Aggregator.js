@@ -1085,7 +1085,7 @@
                 if (progLbl) {
                     if (stats.totalProctors) {
                         progLbl.textContent =
-                            `Scraped ${stats.proctorsDone} / ${stats.totalProctors} proctors · ${stats.exams.toLocaleString()} exams`;
+                            `Scraped ${stats.proctorsDone} / ${stats.totalProctors} entities · ${stats.exams.toLocaleString()} exams`;
                     } else {
                         progLbl.textContent =
                             `Fetching departments ${stats.depts} / ${stats.totalDepts}…`;
