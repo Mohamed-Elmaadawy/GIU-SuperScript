@@ -454,8 +454,12 @@
                 animation: giusSlideDown 0.2s ease;
             }
             .gius-coproctor-label {
-                font-weight: 700; margin-right: 6px; color: #4338ca;
+                font-weight: 700; display: block; margin-bottom: 4px; color: #4338ca;
             }
+            .gius-coproctor-list {
+                margin: 0; padding: 0 0 0 18px; list-style: disc;
+            }
+            .gius-coproctor-list li { margin: 2px 0; }
 
             .gius-table-footer { border-top: 1px solid #e5e7eb; padding: 6px 10px; }
             .gius-pagination {
@@ -934,7 +938,7 @@
         if (!coProctors.length) return;
         const cpRow = document.createElement('tr');
         cpRow.className = 'gius-coproctor-row';
-        cpRow.innerHTML = `<td colspan="7"><span class="gius-coproctor-label">&#x1F465; Co-proctors:</span>${coProctors.map(r => escHtml(r.proctor)).join(' &bull; ')}</td>`;
+        cpRow.innerHTML = `<td colspan="7"><span class="gius-coproctor-label">&#x1F465; Co-proctors:</span><ul class="gius-coproctor-list">${coProctors.map(r => `<li>${escHtml(r.proctor)}</li>`).join('')}</ul></td>`;
         tr.insertAdjacentElement('afterend', cpRow);
     }
 
