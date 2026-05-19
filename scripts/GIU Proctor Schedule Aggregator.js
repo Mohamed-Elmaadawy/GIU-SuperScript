@@ -344,8 +344,9 @@
             }
             .gius-proctor-body.collapsed { display: none; }
 
-            .gius-proctor-hdr-left { cursor: pointer; }
-            .gius-proctor-hdr-left:hover { opacity: 0.88; }
+            .gius-proctor-hdr { cursor: pointer; }
+            .gius-proctor-hdr:hover { opacity: 0.92; }
+            .gius-proctor-hdr button { cursor: pointer; }
 
             .gius-empty-state {
                 text-align: center; padding: 32px 16px;
@@ -590,7 +591,7 @@
         div.id = 'gius-proctor-panel';
         div.className = 'gius-proctor-card';
         div.innerHTML = `
-            <div class="gius-proctor-hdr">
+            <div class="gius-proctor-hdr" id="gius-proctor-hdr">
                 <div class="gius-proctor-hdr-left" id="gius-proctor-hdr-toggle">
                     <div>
                         <h3 class="gius-proctor-title">
@@ -971,8 +972,9 @@
         // CSV
         document.getElementById('gius-proctor-csv')?.addEventListener('click', exportCSV);
 
-        // Toggle panel body on header-left click
-        document.getElementById('gius-proctor-hdr-toggle')?.addEventListener('click', () => {
+        // Toggle panel body on header click (but not when clicking buttons)
+        document.getElementById('gius-proctor-hdr')?.addEventListener('click', e => {
+            if (e.target.closest('button') || e.target.closest('input')) return;
             const body = document.getElementById('gius-proctor-body');
             if (body) body.classList.toggle('collapsed');
         });

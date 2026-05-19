@@ -154,11 +154,11 @@ test.describe('GIU Proctor Schedule Aggregator', () => {
         await setup(page);
         await openAndScrape(page);
 
-        await page.locator('#gius-proctor-hdr-toggle').click();
+        await page.locator('#gius-proctor-hdr').click();
         const body = page.locator('#gius-proctor-body');
         await expect(body).toHaveClass(/collapsed/);
 
-        await page.locator('#gius-proctor-hdr-toggle').click();
+        await page.locator('#gius-proctor-hdr').click();
         await expect(body).not.toHaveClass(/collapsed/);
     });
 
