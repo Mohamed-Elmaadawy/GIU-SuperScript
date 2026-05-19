@@ -8,6 +8,16 @@ scripts/screenshots/
 scripts/screenshots/**
 !README.md
 !.gitignore
+# Tests and tooling
+!tests/
+!tests/**
+!playwright.config.js
+!package.json
+!package-lock.json
+node_modules/
+test-results/
+playwright-report/
+
 # Allow screenshots GIFs (committed for README)
 !screenshots/
 !screenshots/*.gif
