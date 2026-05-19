@@ -46,6 +46,7 @@ async function openAndScrape(page) {
     });
 
     await page.locator('#gius-proctor-trigger').click();
+    await page.locator('#gius-start-fetch').click();
     // Wait for scraping to START (progress section becomes visible)
     await expect(page.locator('#gius-progress-section')).toBeVisible({ timeout: 5_000 });
     // Then wait for scraping to FINISH (progress section disappears)
@@ -149,18 +150,16 @@ test.describe('GIU Proctor Schedule Aggregator', () => {
         expect(download.suggestedFilename()).toMatch(/^proctor-schedule-\d{4}-\d{2}-\d{2}\.csv$/);
     });
 
-    test('minimize collapses and expands panel body', async ({ page }) => {
+    test('clicking header collapses and expands panel body', async ({ page }) => {
         await setup(page);
         await openAndScrape(page);
 
-        await page.locator('#gius-proctor-minimize').click();
+        await page.locator('#gius-proctor-hdr-toggle').click();
         const body = page.locator('#gius-proctor-body');
         await expect(body).toHaveClass(/collapsed/);
-        await expect(page.locator('#gius-proctor-minimize')).toContainText('□');
 
-        await page.locator('#gius-proctor-minimize').click();
+        await page.locator('#gius-proctor-hdr-toggle').click();
         await expect(body).not.toHaveClass(/collapsed/);
-        await expect(page.locator('#gius-proctor-minimize')).toContainText('─');
     });
 
     test('close button removes panel from DOM', async ({ page }) => {
@@ -271,10 +270,50 @@ test.describe('GIU Proctor Schedule Aggregator', () => {
         await expect(page.locator('#gius-proctor-meta')).toContainText('Loaded from CSV');
     });
 
+    test('uploading CSV during paused scrape hides progress section', async ({ page }) => {
+        await setup(page);
+
+        await page.route('**/ProctorExchange_m.aspx', async (route, request) => {
+            if (request.method() !== 'GET') {
+                await new Promise(r => setTimeout(r, 200));
+            }
+            if (request.method() === 'GET') {
+                await route.fulfill({ contentType: 'text/html; charset=utf-8', body: exchangeHtml });
+            } else {
+                const body = request.postData() || '';
+                const html = body.includes('acdmcDpLst') ? deptHtml : proctorHtml;
+                await route.fulfill({ contentType: 'text/html; charset=utf-8', body: html });
+            }
+        });
+
+        await page.locator('#gius-proctor-trigger').click();
+        await page.locator('#gius-start-fetch').click();
+        await expect(page.locator('#gius-progress-section')).toBeVisible({ timeout: 5_000 });
+        await page.waitForTimeout(450);
+        await page.locator('#gius-proctor-pause').click();
+        await expect(page.locator('#gius-proctor-pause')).toContainText('Resume');
+
+        const csvContent =
+            'Proctor,Course Code,Exam Name,Room,Date,Start Time,End Time,Department,Cover,Program,Date Key\r\n' +
+            '"Uploaded Proctor","TST101","Sample Exam","A1.001","Mon Jan 01","9:00 AM","11:00 AM","Test Dept","","Test Program","2026-01-01"\r\n';
+
+        await page.locator('#gius-file-input').setInputFiles({
+            name: 'test.csv',
+            mimeType: 'text/csv',
+            buffer: Buffer.from(csvContent),
+        });
+
+        await expect(page.locator('#gius-progress-section')).toBeHidden();
+        await expect(page.locator('#gius-proctor-pause')).toBeHidden();
+        await expect(page.locator('#gius-tbody tr')).toHaveCount(1);
+        await expect(page.locator('#gius-tbody tr').first()).toContainText('Uploaded Proctor');
+    });
+
     test('pause button appears during scrape, hides on complete', async ({ page }) => {
         await setup(page);
 
         await page.locator('#gius-proctor-trigger').click();
+        await page.locator('#gius-start-fetch').click();
         await expect(page.locator('#gius-progress-section')).toBeVisible({ timeout: 5_000 });
 
         // Button visible and shows Pause while scraping
@@ -306,6 +345,7 @@ test.describe('GIU Proctor Schedule Aggregator', () => {
         });
 
         await page.locator('#gius-proctor-trigger').click();
+        await page.locator('#gius-start-fetch').click();
         await expect(page.locator('#gius-progress-section')).toBeVisible({ timeout: 5_000 });
 
         // Wait past the panel's slide-down animation (~380ms) so the button is stable

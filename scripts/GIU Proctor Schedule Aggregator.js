@@ -33,8 +33,11 @@
     }
 
     function formatCacheAge(isoStr) {
-        const diff = Date.now() - new Date(isoStr).getTime();
-        const days = Math.floor(diff / 86400000);
+        const scraped  = new Date(isoStr);
+        const today    = new Date();
+        const scrapedD = new Date(scraped.getFullYear(), scraped.getMonth(), scraped.getDate());
+        const todayD   = new Date(today.getFullYear(),   today.getMonth(),   today.getDate());
+        const days     = Math.round((todayD - scrapedD) / 86400000);
         if (days === 0) return 'today';
         if (days === 1) return '1 day ago';
         return `${days} days ago`;
@@ -80,27 +83,45 @@
 
     function parseExamString(raw) {
         // "Mar 28 2026  1:30PM ---> GIU-Cairo.Informatics 4th - MATH403 Mathematics IV"
-        const stripCampus = s => s.replace(/^GIU-[^.]+\./, '').trim();
+        // Campus prefix may use "." or "-" as separator (e.g. GIU-Cairo.Dept or GIU-Cairo-Dept)
+        const stripCampus = s => s.replace(/^GIU-[^.-]*[.-]/, '').trim();
+        // Course codes: 2-8 uppercase letters followed by 3-4 digits, optional trailing letter
+        const COURSE_CODE = /^[A-Z]{2,8}\d{3,4}[A-Z]?$/;
+
         const parts = raw.split(' ---> ');
         if (parts.length < 2) return { courseCode: '', examName: raw.trim(), program: '' };
+
         const right = parts[1].trim();
         const segs  = right.split(' - ');
-        if (segs.length >= 3) {
-            const program     = stripCampus(segs[0]);
-            const codeAndName = segs.slice(-2);
-            const codePart    = codeAndName[0].trim().split(/\s+/);
-            const courseCode  = codePart[codePart.length - 1];
-            const examName    = codeAndName[1].trim();
-            return { courseCode, examName, program };
+        const program = stripCampus(segs[0]);
+
+        if (segs.length === 1) {
+            // No " - " separator — try to find course code inside the segment
+            const words   = program.split(/\s+/);
+            const codeIdx = words.findIndex(w => COURSE_CODE.test(w));
+            if (codeIdx !== -1) {
+                return {
+                    program:    words.slice(0, codeIdx).join(' '),
+                    courseCode: words[codeIdx],
+                    examName:   words.slice(codeIdx + 1).join(' '),
+                };
+            }
+            return { courseCode: '', examName: right, program: '' };
         }
-        if (segs.length === 2) {
-            const program    = stripCampus(segs[0]);
-            const nameParts  = segs[1].trim().split(/\s+/);
-            const courseCode = nameParts[0];
-            const examName   = nameParts.slice(1).join(' ');
-            return { courseCode, examName, program };
+
+        // Join remaining segs (handles exam names that contain " - ")
+        const rest    = segs.slice(1).join(' ').trim();
+        const words   = rest.split(/\s+/);
+        const codeIdx = words.findIndex(w => COURSE_CODE.test(w));
+
+        if (codeIdx !== -1) {
+            return {
+                program,
+                courseCode: words[codeIdx],
+                examName:   words.slice(codeIdx + 1).join(' ').replace(/^[-\s]+/, '').trim(),
+            };
         }
-        return { courseCode: '', examName: right, program: '' };
+        return { courseCode: '', program, examName: rest };
     }
 
     function formatTime(str) {
@@ -323,6 +344,16 @@
             }
             .gius-proctor-body.collapsed { display: none; }
 
+            .gius-proctor-hdr-left { cursor: pointer; }
+            .gius-proctor-hdr-left:hover { opacity: 0.88; }
+
+            .gius-empty-state {
+                text-align: center; padding: 32px 16px;
+            }
+            .gius-empty-state p {
+                color: #6b7280; margin: 0 0 14px; font-size: 14px;
+            }
+
             .gius-btn {
                 height: 32px; padding: 0 14px; border-radius: 6px;
                 font-size: 13px; font-weight: 700; cursor: pointer;
@@ -383,8 +414,11 @@
             }
             .gius-chip-x:hover { opacity: 1; }
 
+            .gius-table-section {
+                border: 1px solid #e5e7eb; border-radius: 4px;
+            }
             .gius-proctor-table-wrap {
-                overflow-x: auto; border-radius: 4px; border: 1px solid #e5e7eb;
+                overflow-x: auto; border-radius: 4px 4px 0 0;
             }
             .gius-proctor-table {
                 width: 100%; border-collapse: collapse;
@@ -416,7 +450,7 @@
                 animation: giusSlideDown 0.2s ease;
             }
 
-            .gius-table-footer { margin-top: 8px; }
+            .gius-table-footer { border-top: 1px solid #e5e7eb; padding: 6px 10px; }
             .gius-pagination {
                 display: flex; align-items: center; justify-content: space-between;
                 flex-wrap: wrap; gap: 8px;
@@ -489,7 +523,9 @@
                 background: #313244 !important; color: #cdd6f4 !important; border-color: #45475a !important;
             }
             html.gius-dark .gius-page-btn:hover:not(:disabled) { background: #45475a !important; }
-            html.gius-dark .gius-proctor-table-wrap { border-color: #45475a !important; }
+            html.gius-dark .gius-table-section { border-color: #45475a !important; }
+            html.gius-dark .gius-table-footer { border-top-color: #45475a !important; }
+            html.gius-dark .gius-empty-state p { color: #a6adc8 !important; }
             html.gius-dark .gius-chip {
                 background: #1a2a4a !important; color: #89b4fa !important;
                 border-color: #1e3a6e !important;
@@ -555,12 +591,12 @@
         div.className = 'gius-proctor-card';
         div.innerHTML = `
             <div class="gius-proctor-hdr">
-                <div class="gius-proctor-hdr-left">
+                <div class="gius-proctor-hdr-left" id="gius-proctor-hdr-toggle">
                     <div>
                         <h3 class="gius-proctor-title">
                             <i class="fa fa-laptop"></i> Proctor Schedule Aggregator
                         </h3>
-                        <div class="gius-proctor-meta" id="gius-proctor-meta">Loading&hellip;</div>
+                        <div class="gius-proctor-meta" id="gius-proctor-meta"></div>
                     </div>
                 </div>
                 <div class="gius-proctor-hdr-btns">
@@ -576,7 +612,6 @@
                         <i class="fa fa-refresh"></i> Refresh
                     </button>
                     <button type="button" class="gius-btn gius-btn-outline gius-btn-sm" id="gius-proctor-pause" style="display:none" title="Pause or resume fetching">&#x23F8; Pause</button>
-                    <button type="button" class="gius-btn gius-btn-muted gius-btn-sm" id="gius-proctor-minimize">&#x2015;</button>
                     <button type="button" class="gius-btn gius-btn-muted gius-btn-sm" id="gius-proctor-close">&#x2715;</button>
                 </div>
             </div>
@@ -602,23 +637,31 @@
                     <button type="button" class="gius-btn gius-btn-muted gius-btn-sm" id="gius-f-clear" style="display:none">&#x2715; Clear all</button>
                 </div>
                 <div class="gius-chip-row" id="gius-chip-row"></div>
-                <div class="gius-proctor-table-wrap" id="gius-table-wrap" style="display:none">
-                    <table class="gius-proctor-table">
-                        <thead>
-                            <tr>
-                                <th data-col="proctor">Proctor <span class="gius-sort-icon" data-col="proctor">&#x25B2;</span></th>
-                                <th data-col="exam">Exam <span class="gius-sort-icon" data-col="exam">&#x25B2;</span></th>
-                                <th data-col="hall">Room <span class="gius-sort-icon" data-col="hall">&#x25B2;</span></th>
-                                <th data-col="dateKey">Date <span class="gius-sort-icon active" data-col="dateKey">&#x25B2;</span></th>
-                                <th data-col="time">Time <span class="gius-sort-icon" data-col="time">&#x25B2;</span></th>
-                                <th data-col="department">Department <span class="gius-sort-icon" data-col="department">&#x25B2;</span></th>
-                                <th data-col="coverName">Cover <span class="gius-sort-icon" data-col="coverName">&#x25B2;</span></th>
-                            </tr>
-                        </thead>
-                        <tbody id="gius-tbody"></tbody>
-                    </table>
+                <div id="gius-empty-state" class="gius-empty-state" style="display:none">
+                    <p>No schedule data loaded yet.</p>
+                    <button type="button" class="gius-btn gius-btn-primary" id="gius-start-fetch">
+                        <i class="fa fa-play"></i> Fetch Schedules
+                    </button>
                 </div>
-                <div class="gius-table-footer" id="gius-table-footer"></div>
+                <div class="gius-table-section" id="gius-table-section" style="display:none">
+                    <div class="gius-proctor-table-wrap" id="gius-table-wrap">
+                        <table class="gius-proctor-table">
+                            <thead>
+                                <tr>
+                                    <th data-col="proctor">Proctor <span class="gius-sort-icon" data-col="proctor">&#x25B2;</span></th>
+                                    <th data-col="exam">Exam <span class="gius-sort-icon" data-col="exam">&#x25B2;</span></th>
+                                    <th data-col="hall">Room <span class="gius-sort-icon" data-col="hall">&#x25B2;</span></th>
+                                    <th data-col="dateKey">Date <span class="gius-sort-icon active" data-col="dateKey">&#x25B2;</span></th>
+                                    <th data-col="time">Time <span class="gius-sort-icon" data-col="time">&#x25B2;</span></th>
+                                    <th data-col="department">Department <span class="gius-sort-icon" data-col="department">&#x25B2;</span></th>
+                                    <th data-col="coverName">Cover <span class="gius-sort-icon" data-col="coverName">&#x25B2;</span></th>
+                                </tr>
+                            </thead>
+                            <tbody id="gius-tbody"></tbody>
+                        </table>
+                    </div>
+                    <div class="gius-table-footer" id="gius-table-footer"></div>
+                </div>
             </div>
         `;
         return div;
@@ -667,12 +710,12 @@
     }
 
     function renderTable(rows) {
-        const tbody = document.getElementById('gius-tbody');
-        const wrap  = document.getElementById('gius-table-wrap');
+        const tbody   = document.getElementById('gius-tbody');
+        const section = document.getElementById('gius-table-section');
         if (!tbody) return;
 
         _renderedRows = rows;
-        wrap.style.display = (_allRows.length || rows.length) ? '' : 'none';
+        if (section) section.style.display = (_allRows.length || rows.length) ? '' : 'none';
 
         const total      = rows.length;
         const totalPages = Math.max(1, Math.ceil(total / _pageSize));
@@ -928,13 +971,17 @@
         // CSV
         document.getElementById('gius-proctor-csv')?.addEventListener('click', exportCSV);
 
-        // Minimize
-        document.getElementById('gius-proctor-minimize')?.addEventListener('click', () => {
+        // Toggle panel body on header-left click
+        document.getElementById('gius-proctor-hdr-toggle')?.addEventListener('click', () => {
             const body = document.getElementById('gius-proctor-body');
-            const btn  = document.getElementById('gius-proctor-minimize');
-            if (!body) return;
-            const collapsed = body.classList.toggle('collapsed');
-            btn.textContent = collapsed ? '□' : '─';
+            if (body) body.classList.toggle('collapsed');
+        });
+
+        // First-run fetch button
+        document.getElementById('gius-start-fetch')?.addEventListener('click', () => {
+            const emptyState = document.getElementById('gius-empty-state');
+            if (emptyState) emptyState.style.display = 'none';
+            startScrape();
         });
 
         // Close
@@ -973,12 +1020,22 @@
             reader.onload = ev => {
                 const rows = parseUploadedCSV(ev.target.result);
                 if (!rows.length) return;
-                _allRows = rows;
+                _scraping = false;
+                _paused   = true;
+                _allRows  = rows;
                 saveCache(rows);
-                const metaEl = document.getElementById('gius-proctor-meta');
+                const metaEl     = document.getElementById('gius-proctor-meta');
                 if (metaEl) metaEl.textContent = `Loaded from CSV · ${rows.length.toLocaleString()} exams`;
-                const filterBr = document.getElementById('gius-filter-bar');
+                const filterBr   = document.getElementById('gius-filter-bar');
                 if (filterBr) filterBr.style.display = '';
+                const progSec    = document.getElementById('gius-progress-section');
+                if (progSec) progSec.style.display = 'none';
+                const pauseBtn   = document.getElementById('gius-proctor-pause');
+                if (pauseBtn)  { pauseBtn.style.display = 'none'; pauseBtn.innerHTML = '&#x23F8; Pause'; }
+                const refreshBtn = document.getElementById('gius-proctor-refresh');
+                if (refreshBtn) refreshBtn.disabled = false;
+                const emptyState = document.getElementById('gius-empty-state');
+                if (emptyState) emptyState.style.display = 'none';
                 applyFiltersAndSort();
             };
             reader.readAsText(file);
@@ -989,6 +1046,8 @@
     function startScrape() {
         _scraping = true;
         _paused   = false;
+        const emptyState = document.getElementById('gius-empty-state');
+        if (emptyState) emptyState.style.display = 'none';
         const progSec    = document.getElementById('gius-progress-section');
         const progBar    = document.getElementById('gius-progress-bar');
         const progLbl    = document.getElementById('gius-progress-label');
@@ -1032,6 +1091,7 @@
                 }
             },
             onRows(rows) {
+                if (!_scraping) return;
                 _allRows = rows;
                 applyFiltersAndSort();
             },
@@ -1044,6 +1104,7 @@
                 }
             },
             onComplete(rows) {
+                if (!_scraping) return;
                 _scraping = false;
                 _paused   = false;
                 _allRows  = rows;
@@ -1079,7 +1140,10 @@
             if (filterBr) filterBr.style.display = '';
             applyFiltersAndSort();
         } else {
-            startScrape();
+            const metaEl     = document.getElementById('gius-proctor-meta');
+            if (metaEl) metaEl.textContent = 'No data — click Fetch to load schedules';
+            const emptyState = document.getElementById('gius-empty-state');
+            if (emptyState) emptyState.style.display = '';
         }
     }
 
