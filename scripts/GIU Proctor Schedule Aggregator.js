@@ -14,7 +14,7 @@
     'use strict';
 
     const CACHE_KEY      = 'giuProctorScheduleV1';
-    const MAX_CONCURRENT = 5;
+    const MAX_CONCURRENT = 20;
     const PAGE_URL       = 'https://portal.giu-uni.de/GIUb/INTStaff/ProctorExchange_m.aspx';
 
     // ── Cache ─────────────────────────────────────────────────────────────────
@@ -447,10 +447,14 @@
             .gius-row-in { animation: giusRowIn 0.25s ease both; }
             .gius-data-row { cursor: pointer; }
             .gius-coproctor-row td {
-                background: #f0f4ff !important; color: #374151;
-                font-size: 0.85em; padding: 6px 16px !important;
-                border-top: 1px dashed #c7d2fe;
+                background: #e0e7ff !important; color: #1e3a8a !important;
+                font-size: 0.9em; padding: 8px 16px 8px 20px !important;
+                border-top: 1px solid #a5b4fc !important;
+                border-left: 4px solid #6366f1 !important;
                 animation: giusSlideDown 0.2s ease;
+            }
+            .gius-coproctor-label {
+                font-weight: 700; margin-right: 6px; color: #4338ca;
             }
 
             .gius-table-footer { border-top: 1px solid #e5e7eb; padding: 6px 10px; }
@@ -538,9 +542,10 @@
                 border-color: #78350f !important;
             }
             html.gius-dark .gius-coproctor-row td {
-                background: #1e1e2e !important; color: #a6adc8 !important;
-                border-top-color: #313244 !important;
+                background: #1e2050 !important; color: #c7d2fe !important;
+                border-top-color: #4338ca !important; border-left-color: #818cf8 !important;
             }
+            html.gius-dark .gius-coproctor-label { color: #a5b4fc !important; }
         `;
         document.head.appendChild(s);
     }
@@ -929,7 +934,7 @@
         if (!coProctors.length) return;
         const cpRow = document.createElement('tr');
         cpRow.className = 'gius-coproctor-row';
-        cpRow.innerHTML = `<td colspan="7">Co-proctors: ${coProctors.map(r => escHtml(r.proctor)).join(', ')}</td>`;
+        cpRow.innerHTML = `<td colspan="7"><span class="gius-coproctor-label">&#x1F465; Co-proctors:</span>${coProctors.map(r => escHtml(r.proctor)).join(' &bull; ')}</td>`;
         tr.insertAdjacentElement('afterend', cpRow);
     }
 

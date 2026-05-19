@@ -275,7 +275,7 @@ test.describe('GIU Proctor Schedule Aggregator', () => {
 
         await page.route('**/ProctorExchange_m.aspx', async (route, request) => {
             if (request.method() !== 'GET') {
-                await new Promise(r => setTimeout(r, 200));
+                await new Promise(r => setTimeout(r, 300));
             }
             if (request.method() === 'GET') {
                 await route.fulfill({ contentType: 'text/html; charset=utf-8', body: exchangeHtml });
@@ -333,7 +333,7 @@ test.describe('GIU Proctor Schedule Aggregator', () => {
         // comfortably longer than the panel's slide-down animation (380ms).
         await page.route('**/ProctorExchange_m.aspx', async (route, request) => {
             if (request.method() !== 'GET') {
-                await new Promise(r => setTimeout(r, 200));
+                await new Promise(r => setTimeout(r, 300));
             }
             if (request.method() === 'GET') {
                 await route.fulfill({ contentType: 'text/html; charset=utf-8', body: exchangeHtml });
