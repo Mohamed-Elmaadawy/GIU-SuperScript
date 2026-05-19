@@ -460,6 +460,8 @@
                 margin: 0; padding: 0 0 0 18px; list-style: disc;
             }
             .gius-coproctor-list li { margin: 2px 0; }
+            .gius-coproctor-dept { color: #6366f1; font-size: 0.9em; margin-left: 4px; }
+            html.gius-dark .gius-coproctor-dept { color: #818cf8 !important; }
 
             .gius-table-footer { border-top: 1px solid #e5e7eb; padding: 6px 10px; }
             .gius-pagination {
@@ -938,7 +940,7 @@
         if (!coProctors.length) return;
         const cpRow = document.createElement('tr');
         cpRow.className = 'gius-coproctor-row';
-        cpRow.innerHTML = `<td colspan="7"><span class="gius-coproctor-label"><i class="fa fa-users"></i> Co-proctors:</span><ul class="gius-coproctor-list">${coProctors.map(r => `<li>${escHtml(r.proctor)}</li>`).join('')}</ul></td>`;
+        cpRow.innerHTML = `<td colspan="7"><span class="gius-coproctor-label"><i class="fa fa-users"></i> Co-proctors:</span><ul class="gius-coproctor-list">${coProctors.map(r => `<li>${escHtml(r.proctor)}<span class="gius-coproctor-dept">&mdash; ${escHtml(r.department)}</span></li>`).join('')}</ul></td>`;
         tr.insertAdjacentElement('afterend', cpRow);
     }
 
