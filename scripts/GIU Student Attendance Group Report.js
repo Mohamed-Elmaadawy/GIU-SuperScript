@@ -3,7 +3,7 @@
     // @description Auto-scrapes all sessions for a group and shows absence level report above the student table
     // @match       https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx*
     // @namespace   ramin0
-    // @version     1.0
+    // @version     1.1
     // @author      Mo.Elmaadawy
     // @run-at      document-idle
     // @grant       none
