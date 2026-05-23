@@ -463,10 +463,10 @@
             // Stats
             const pct = n => `${(n * 100).toFixed(1)}%`;
             panel.querySelector('.gius-att-stats').innerHTML = `
-            <span class="gius-att-stat">● <span class="gius-att-stat-val">${report.total}</span> students</span>
-            <span class="gius-att-stat">✓ <span class="gius-att-stat-val">${report.levelCounts[0] + report.levelCounts[1]}</span> OK / Level 1</span>
-            <span class="gius-att-stat">⚠ <span class="gius-att-stat-val">${report.levelCounts[2]}</span> Second Warning</span>
-            <span class="gius-att-stat">✗ <span class="gius-att-stat-val">${report.levelCounts[3]}</span> Drop</span>
+            <span class="gius-att-stat"><span class="gius-att-stat-val">${report.total}</span> students</span>
+            <span class="gius-att-stat"><span class="gius-att-stat-val">${report.levelCounts[0] + report.levelCounts[1]}</span> OK / Level 1</span>
+            <span class="gius-att-stat"><span class="gius-att-stat-val">${report.levelCounts[2]}</span> Second Warning</span>
+            <span class="gius-att-stat"><span class="gius-att-stat-val">${report.levelCounts[3]}</span> Drop</span>
             <span class="gius-att-stat">Group avg: <span class="gius-att-stat-val">${pct(report.avgRate)}</span> absent</span>
             ${report.unrecordedCount > 0 ? `<span class="gius-att-stat" style="opacity:.7">(${report.unrecordedCount} unrecorded sessions excluded)</span>` : ''}
         `;
