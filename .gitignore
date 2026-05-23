@@ -19,3 +19,6 @@ scripts/dump-mainpage.js
 scripts/crawl-portal.js
 scripts/map-portal.js
 scripts/probe-attendance.js
+
+# Docs
+docs/
