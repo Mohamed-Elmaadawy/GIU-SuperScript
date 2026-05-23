@@ -309,8 +309,12 @@
         justify-content: space-between;
         gap: 10px;
         flex-wrap: wrap;
+        cursor: pointer;
     }
     .gius-att-title { font-size: 14px; font-weight: 700; flex: 1; }
+    .gius-att-chevron { transition: transform 0.25s ease; margin-right: 5px; font-size: 11px; }
+    .gius-att-panel.gius-att-collapsed .gius-att-body { display: none; }
+    .gius-att-panel.gius-att-collapsed .gius-att-chevron { transform: rotate(-90deg); }
     .gius-att-meta  { font-size: 12px; color: rgba(255,255,255,0.65); }
     .gius-att-refresh {
         height: 26px; padding: 0 10px; border-radius: 6px;
@@ -411,7 +415,7 @@
             panel.className = 'gius-att-panel';
             panel.innerHTML = `
             <div class="gius-att-header">
-                <span class="gius-att-title">Group Attendance Report — <strong>${groupLabel}</strong></span>
+                <span class="gius-att-title"><i class="fa fa-chevron-down gius-att-chevron"></i>Group Attendance Report — <strong>${groupLabel}</strong></span>
                 <span class="gius-att-meta"></span>
                 <button class="gius-att-refresh" type="button"><i class="fa fa-refresh"></i> Refresh</button>
             </div>
@@ -626,6 +630,11 @@
                 showProgress(panel, 0, sessions.length);
                 runScrape(_abortCtrl.signal, panel, sessions, groupId, formState, cacheKey, groupLabel, selectedSessionId);
             }
+
+            panel.querySelector('.gius-att-header').addEventListener('click', e => {
+                if (e.target.closest('button, input, a')) return;
+                panel.classList.toggle('gius-att-collapsed');
+            });
 
             panel.querySelector('.gius-att-refresh').addEventListener('click', () => {
                 clearCacheEntry(cacheKey);
