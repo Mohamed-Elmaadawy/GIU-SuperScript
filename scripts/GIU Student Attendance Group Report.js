@@ -3,7 +3,7 @@
     // @description Auto-scrapes all sessions for a group and shows absence level report above the student table
     // @match       https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx*
     // @namespace   ramin0
-    // @version     1.1
+    // @version     1.2
     // @icon         data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKgAAACUCAMAAAAwLZJQAAAAzFBMVEX////VlyYkHiAAAADTHyj36ereiIr8/vzIGSPPAAj//fziu4HTlRbnyp3x49HRHSTTkgzw8PD29vbl5eXV1NRjX2HWY2vUr2zMAADn1rfJjguzsrMfGRsaEBPltLX6+u/OmB67u7vIyMgyLC5sbGycnJypqKmLi4tYWFh9e3wWExXkoJ1HRUaUkpM3NjY+Pj4PAAe/AADIDxPYGiAnJicZGhn27df17eDXqE329uBVYF7AZ2jZjGvOWgTNlSzf0J7lw7PWozvqxcLZsl8WTjZKAAAHBElEQVR4nO2Ya3fbNhJAIWG92tJ2YwzApg6kTQDhQagkpXZlR/t03fz//7QDgo71jqQ0Pf2Ae45tipKlq8FgMAAhmUwmk8lkMplMJpPJZDKZTCaTyWQymUwmk8lkMpnMqRTAENi4dXUV710xvB6979n+v3R39IcoMmGrdkyR2bgtLX/Rvfr5uzdvfvnlx7/i9fc3g8EAf27IltNtfOLuetR9A22CEWB84Cp4C2A5IbzBj3B4IRU+kEAuhCk/pXQyHibGE0rnIb4viv7tH39BkujdoONm+/9v75Jo9HcPgghFqONga/4gWWsJ8TUQTtHWU0W4v1RUVRMaJWcxoJNedkFtEn0TRb9bF73bEe0jWmC46qa7haLEVrBUfEoJr+YcP2WJomYmuL1MlFVJbjEtJee6XPaqi4OiuxF9FRVLjbacUBO4m7YOR712Tg8FKeNTnmFMXXGJp17SLoKzININYbrwDieHRG8+HMrRl4gGU8zQ15Z4oZSjllGhjawMCQAhDdW5qOWs86SvGQ6OdjQHRO+OiRJJFZhAqJe8aTl1FvNVEyorRjQV+Ju1/oKIihS9h5lYv8udRfRFooQ5dMRAKs4F4YIzgrNS8PgBmgkMB+Pne7I2xfNBHnrF+aLfgsLP0rwJB19ytqjWRMewCe20VFxJCUpiCYghBQwoaMIkJi4XcdY1Dd4W3VMkPkVA7ot3P/Dj4eF6cbaoMaSssGp6IanVikpVzLx6EAozlXmGOcyYMrXi+ELXclYHYpeYI6HAv5gmVO+xMIsuoGna/F6igYSpAVyLGJYjTVlB5g5w1s9bgaLQzHDSNwZLQ+APOgZLyHbOuSfgxxJFxa4Eo31tP5Ldl4h6MfOsFx0bA3VVKaKUWXIHQjqMd2MARTXFDwaKGVJVwhKlfdgvammfoUdWinPraBdRDFNwhA1jRPG9a7NUxOmifPBgjccSm0RFlEIzJ2CONcuHMBZ7Rcu0BtGDU36/6OALOTrCcVXUdemmqOBkaO0Dx2rH2pKVMKpC4UsojCnwS2HNLTym6NLwAKxuOFWcbTmweZpK433pe0z03fFZX2CHRJQgDNc6ERoPXkHQKk5vKTAo2oO0UDiMeeODxfmFGaAldjJEeWYavx1T0SbR+Z5gHxU91pR8C3TfJ1XHVor9ET0iyuMEwbKJ14wVHNJjJgReClGQQmsADgLXLR4H+YRlSiXRSbWdE18lGnDxEJ7ULnbJfMktvj1W/dpbUXmsnd41WtTChtrLUMaXfhE53iPK14BLRE0SbXGKSo1zOE6phruqIHyKVZ+3MVeXHLs2IHqmw7EoHREFM5x+RnyFaOmoUIIvcFNimCWytY63NjRQzhwTU+yjUZSYpfuyJ1Hj3RwFsxj3TBZfI1oRPw1RFNdMjcGtMSPn1Ri7vIa6z6JiX9XcQUzTrG/XXgym7+9jqHdEb06Y9aHGfZMj+NvQrnyzOW6YbM2At6oMOM8aG4deTYDsX4d26OvocL2OromOd0QfP4seqaPcBNsAMfG9BIulz+Pi7qrG8UrrWnvrucBB1HWMaH2KKKn6lWktT/qh3y/6cdDvmbY39ht1FAsSfo+Y9wBdlcI/8SYrGBSMxZoE2KlA9wp+0j5P0n42vb4awjyy3Cv6fpVCevfPrcp+ZsHHbfUo/Yy2x2Y/kESH64nS1SVRzfaJjq779ul+642+eYfv+/ap3LrP9ouS+37obw+LinKTf/37h03+83aT61O+Hav7LFWnib6M/erjQVFNt/j5x03+++HdBv876cxKpz3TpN5ccQ+Jkqe+I306KMrlFn/f4tf7LU47W+t751m9MfsOio6eb1Lr/HhI9CgX7JNfTYfd6NOhXlM9KEoen/uJ/7ReotZEQaUFOXW/sV/APeYI9/JYqsBz3NMzBd2k5xCnvThZXqUjnck4vNT9QtjYqe6N6Oh+kExvPt2/qI4+vh28RlSlL6yxo+O4UeYkbouJULxQTCmNs6E/k0nf6IyDKF52B47jybIKVsrG1G1X8cc7a338EuT7d32e3qze3t7fP12/XT0PXkV5atuAKx+PRyQHpwng1o4RAdxy3OVJZR0BJwFko/Q5h6UitAuKgz1ZdOeOqDmjdNF2zcqWKPL+enDXR/UuEk928erD81M8HxWNwxnkvONGWy8FY9ZK65RyMgSwTBN85J1srHLOSaf0WWeQQob5ek2ZGytF9w5XfXn5LDoixeP1qjfsFPFqdX17/9inQjxJF9jKYdQgralMq4LExZOnhMQWKh5oxzvnn5QCw3GyTdNYiW3k6zk+/JT47VU0HuY/3l9/Wq2eV6tPOP6PH7drIfZIsOYAB7rj4uIz8iNs5vzo4IM/HX9uu0wmk8lkMplMJpPJZDKZTCaTyWQymUwmk8lkMplMJpPJHOP/Lb7en38r1wIAAAAASUVORK5CYII=
     // @author      Mo.Elmaadawy
     // @run-at      document-idle
@@ -236,6 +236,34 @@
 
         function makeCacheKey(groupId, sessions) {
             return `${CACHE_PREFIX}${groupId}_${extractSeasonYear(sessions)}`;
+        }
+
+        function makeOverridesKey(groupId, sessions) {
+            return `giuAttOverridesV1_${groupId}_${extractSeasonYear(sessions)}`;
+        }
+
+        // Loads persisted overrides. Returns empty Map if session count changed (new week added).
+        function loadOverrides(key, sessions) {
+            try {
+                const raw = localStorage.getItem(key);
+                if (!raw) return new Map();
+                const data = JSON.parse(raw);
+                if (!data || data.sessionCount !== sessions.length) return new Map();
+                return new Map(Object.entries(data.overrides || {}));
+            } catch { return new Map(); }
+        }
+
+        function saveOverrides(key, overridesMap, sessions) {
+            try {
+                localStorage.setItem(key, JSON.stringify({
+                    overrides:    Object.fromEntries(overridesMap),
+                    sessionCount: sessions.length,
+                }));
+            } catch { /* quota */ }
+        }
+
+        function clearOverrides(key) {
+            try { localStorage.removeItem(key); } catch { /* ignore */ }
         }
 
         // Returns cached data object if exists and within TTL, otherwise null.
@@ -511,7 +539,7 @@
             panel.querySelector('.gius-att-meta').textContent  = '';
         }
 
-        function renderReport(panel, report, { ts, sessions }) {
+        function renderReport(panel, report, { ts, sessions, overridesKey }) {
             panel.querySelector('.gius-att-idle').hidden     = true;
             panel.querySelector('.gius-att-progress').hidden = true;
             panel.querySelector('.gius-att-error').hidden    = true;
@@ -559,8 +587,8 @@
             </tr>`;
             }).join('');
 
-            // overrides: studentId:sessionId → true (attended) | false (absent)
-            const overrides = new Map();
+            // overrides: studentId:sessionId → 'attended' | 'absent' | 'onHold' — persisted in localStorage
+            const overrides = overridesKey ? loadOverrides(overridesKey, sessions) : new Map();
 
             function computeAdjusted(student) {
                 let extraTotal = 0, extraAbsent = 0;
@@ -629,6 +657,7 @@
                     const studentId = item.dataset.sid;
                     const sessId    = item.dataset.sessionId;
                     overrides.set(`${studentId}:${sessId}`, btn.dataset.val);
+                    if (overridesKey) saveOverrides(overridesKey, overrides, sessions);
                     item.querySelectorAll('.gius-att-miss-btn').forEach(b =>
                         b.classList.toggle('active', b.dataset.val === btn.dataset.val));
                     const dataTr  = item.closest('tr.gius-att-detail-row').previousElementSibling;
@@ -672,7 +701,7 @@
             return panel;
         }
 
-        async function runScrape(signal, panel, sessions, groupId, formState, cacheKey, groupLabel, preloadedSessionId) {
+        async function runScrape(signal, panel, sessions, groupId, formState, cacheKey, groupLabel, preloadedSessionId, overridesKey) {
             const worker = async (session) => {
                 let result;
                 if (session.id === preloadedSessionId) {
@@ -710,7 +739,7 @@
 
             const report = buildReport(sessions, rawResults);
             writeCache(cacheKey, { report, sessions, groupLabel });
-            renderReport(panel, report, { ts: Date.now(), sessions });
+            renderReport(panel, report, { ts: Date.now(), sessions, overridesKey });
         }
 
         function init() {
@@ -729,6 +758,7 @@
             if (!panel) return;
 
             const cacheKey          = makeCacheKey(groupId, sessions);
+            const overridesKey      = makeOverridesKey(groupId, sessions);
             const formState         = snapshotForm();
             const selectedSessionId = sessionDdl.value !== '0' ? sessionDdl.value : null;
 
@@ -736,7 +766,7 @@
                 if (_abortCtrl) _abortCtrl.abort();
                 _abortCtrl = new AbortController();
                 showProgress(panel, 0, sessions.length);
-                runScrape(_abortCtrl.signal, panel, sessions, groupId, formState, cacheKey, groupLabel, selectedSessionId);
+                runScrape(_abortCtrl.signal, panel, sessions, groupId, formState, cacheKey, groupLabel, selectedSessionId, overridesKey);
             }
 
             panel.querySelector('.gius-att-header').addEventListener('click', e => {
@@ -746,6 +776,7 @@
 
             panel.querySelector('.gius-att-refresh').addEventListener('click', () => {
                 clearCacheEntry(cacheKey);
+                clearOverrides(overridesKey);
                 startScrape();
             });
 
@@ -753,7 +784,7 @@
 
             const cached = readCache(cacheKey);
             if (cached && cached.report && cached.sessions) {
-                renderReport(panel, cached.report, { ts: cached.ts, sessions: cached.sessions });
+                renderReport(panel, cached.report, { ts: cached.ts, sessions: cached.sessions, overridesKey });
             } else {
                 showIdle(panel);
             }
