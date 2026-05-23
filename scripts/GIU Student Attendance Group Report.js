@@ -17,10 +17,10 @@
         const CACHE_TTL_MS   = 30 * 60 * 1000;
         const MAX_CONCURRENT = 5;
         const LEVEL_RULES = [
-            { min: 0.25, exclusive: true,  level: 3, badge: '✗ DROP',    label: 'Will Be Dropped' },
-            { min: 0.20, exclusive: false, level: 2, badge: '⚠ 2nd Wrn', label: 'Second Warning'  },
-            { min: 0.10, exclusive: false, level: 1, badge: '⚠ 1st Wrn', label: 'First Warning'   },
-            { min: 0,    exclusive: false, level: 0, badge: '✓ OK',       label: 'OK'              },
+            { min: 0.25, exclusive: true,  level: 3, badge: 'DROP',        label: 'Will Be Dropped' },
+            { min: 0.20, exclusive: false, level: 2, badge: '2nd Warning', label: 'Second Warning'  },
+            { min: 0.10, exclusive: false, level: 1, badge: '1st Warning', label: 'First Warning'   },
+            { min: 0,    exclusive: false, level: 0, badge: 'OK',          label: 'OK'              },
         ];
         let _abortCtrl = null;
 
@@ -350,11 +350,14 @@
     .gius-att-atrisk-table tbody tr:nth-child(even) { background: #f9fafb; }
     .gius-att-atrisk-table tbody tr:hover { background: #eff6ff; }
     .gius-att-atrisk-table td { padding: 6px 10px; color: #374151; }
-    /* ── Level row colours ───────────────────────────────────────── */
-    .gius-att-lvl-3, .gius-att-lvl-3:nth-child(even) { background: #ffcccc; }
-    .gius-att-lvl-3:hover { background: #ffb3b3 !important; }
-    .gius-att-lvl-2, .gius-att-lvl-2:nth-child(even) { background: #ffe0b2; }
-    .gius-att-lvl-2:hover { background: #ffd08a !important; }
+    /* ── Level badge pills ───────────────────────────────────────── */
+    .gius-att-badge {
+        display: inline-flex; align-items: center;
+        border-radius: 999px; padding: 2px 10px;
+        font-size: 11px; font-weight: 700; white-space: nowrap;
+    }
+    .gius-att-badge-red   { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
+    .gius-att-badge-amber { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
     /* ── Absent detail row ───────────────────────────────────────── */
     .gius-att-data-row { cursor: pointer; }
     .gius-att-detail-row td {
@@ -382,14 +385,8 @@
     html.gius-dark .gius-att-atrisk-table tbody tr:nth-child(even) { background: #181825 !important; }
     html.gius-dark .gius-att-atrisk-table tbody tr:hover { background: #1e3a6e !important; }
     html.gius-dark .gius-att-atrisk-table td { color: #cdd6f4 !important; }
-    html.gius-dark .gius-att-lvl-3,
-    html.gius-dark .gius-att-lvl-3:nth-child(even) { background: #3d1f1f !important; }
-    html.gius-dark .gius-att-lvl-3:hover { background: #4a2020 !important; }
-    html.gius-dark .gius-att-lvl-3 td { color: #f38ba8 !important; }
-    html.gius-dark .gius-att-lvl-2,
-    html.gius-dark .gius-att-lvl-2:nth-child(even) { background: #3d2e1a !important; }
-    html.gius-dark .gius-att-lvl-2:hover { background: #4a3820 !important; }
-    html.gius-dark .gius-att-lvl-2 td { color: #fab387 !important; }
+    html.gius-dark .gius-att-badge-red   { background: #3d1218 !important; color: #f38ba8 !important; border-color: #7f1d1d !important; }
+    html.gius-dark .gius-att-badge-amber { background: #2d1f00 !important; color: #fbbf24 !important; border-color: #78350f !important; }
     html.gius-dark .gius-att-detail-row td { background: #1e2050 !important; color: #e0e7ff !important; border-top-color: #4338ca !important; border-left-color: #818cf8 !important; }
     html.gius-dark .gius-att-detail-label { color: #a5b4fc !important; }
     `;
@@ -483,11 +480,11 @@
             atRiskEl.hidden = false;
             const tbody = panel.querySelector('.gius-att-atrisk-body');
             tbody.innerHTML = report.atRisk.map((s, idx) => {
-                const rule   = LEVEL_RULES.find(r => r.level === s.level);
-                const rowCls = s.level === 3 ? 'gius-att-lvl-3' : 'gius-att-lvl-2';
-                const absentHrs = s.totalHours > 0 ? `${s.absentHours}/${s.totalHours}h` : '—';
-                return `<tr class="${rowCls} gius-att-data-row" data-idx="${idx}">
-                <td>${rule.badge}</td>
+                const rule       = LEVEL_RULES.find(r => r.level === s.level);
+                const pillCls    = s.level === 3 ? 'gius-att-badge-red' : 'gius-att-badge-amber';
+                const absentHrs  = s.totalHours > 0 ? `${s.absentHours}/${s.totalHours}h` : '—';
+                return `<tr class="gius-att-data-row" data-idx="${idx}">
+                <td><span class="gius-att-badge ${pillCls}">${rule.badge}</span></td>
                 <td>${s.name}</td>
                 <td>${s.id}</td>
                 <td>${absentHrs}</td>
