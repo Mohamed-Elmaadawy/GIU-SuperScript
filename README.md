@@ -277,6 +277,41 @@ https://portal.giu-uni.de/GIUb/INTStaff/ProctorExchange_m.aspx
 
 ---
 
+### 7. GIU Student Attendance Group Report
+
+**File:** `GIU Student Attendance Group Report.js` | **Version:** 1.1 | **Author:** Mo.Elmaadawy
+
+Auto-scrapes all session attendance for the selected group and displays an absence-level summary panel above the student table. Runs entirely in the background via parallel fetch requests — no page reloads.
+
+**Target page:**
+```
+https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx
+```
+
+**Features:**
+
+- **Auto-trigger** — panel appears automatically when a group is selected; no manual action required
+- **Full-group scrape** — fetches all sessions in parallel (up to 5 concurrent requests) using the page's ASP.NET VIEWSTATE
+- **Hour-weighted absence rates** — weights each session by its contact-hour duration to match the portal's calculation approach
+- **On Hold / Compensation sessions** — included in the denominator with zero absences, matching portal behavior
+- **Unrecorded session detection** — sessions where all students are unchecked are excluded from calculations automatically
+- **Absence level classification** — Level 0 (< 10%), Level 1 (≥ 10%), Level 2 / Second Warning (≥ 20%), Level 3 / Drop (> 25%)
+- **Group stats** — total students, level distribution, group average absence rate
+- **At-risk list** — Level 2+ students shown in a table with name, ID, absent hours, and absence percentage
+- **Click to expand** — click any at-risk row to see the list of sessions the student was absent from
+- **Cache** — results cached in `localStorage` for 30 minutes; loads instantly on page reload
+- **Refresh button** — clears cache and re-scrapes on demand
+
+**Usage:**
+
+1. Navigate to the Manage Student Attendances page
+2. Select a group from the dropdown — the page reloads and the report panel appears automatically
+3. The panel scrapes all sessions in the background and displays group stats and at-risk students when done
+4. Click any at-risk row to expand and see which sessions that student missed
+5. Click **Refresh** to force a fresh scrape
+
+---
+
 ## Requirements
 
 - Tampermonkey v4.x or later
@@ -295,3 +330,4 @@ https://portal.giu-uni.de/GIUb/INTStaff/ProctorExchange_m.aspx
 | GIU Upload Grades | Ahmed Sherif, Mo.Elmaadawy |
 | GIU Manage Group Grades | Mo.Elmaadawy |
 | GIU Proctor Schedule Aggregator | Mo.Elmaadawy |
+| GIU Student Attendance Group Report | Mo.Elmaadawy |
