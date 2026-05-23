@@ -186,19 +186,23 @@
         // Aggregates per-student hour-weighted absence data across all sessions.
         // Returns {students, atRisk, levelCounts, avgRate, eligibleCount, errorCount, unrecordedCount, total}.
         function buildReport(sessions, sessionResults) {
-            const map = new Map(); // studentId → {id, name, absentHours, totalHours, absentSessions}
+            const map = new Map(); // studentId → {id, name, absentHours, totalHours, sessionCount, appearedIn, absentSessions}
+
+            const eligibleSessions = sessions.filter((_, i) => Array.isArray(sessionResults[i]));
+            const eligibleCount    = eligibleSessions.length;
 
             sessions.forEach((session, i) => {
                 const result = sessionResults[i];
-                // Skip unrecorded, errors, and aborted sessions
                 if (!Array.isArray(result)) return;
 
                 result.forEach(student => {
                     if (!map.has(student.id)) {
-                        map.set(student.id, { id: student.id, name: student.name, absentHours: 0, totalHours: 0, absentSessions: [] });
+                        map.set(student.id, { id: student.id, name: student.name, absentHours: 0, totalHours: 0, sessionCount: 0, appearedIn: new Set(), absentSessions: [] });
                     }
                     const s = map.get(student.id);
                     s.totalHours += session.durationHours;
+                    s.sessionCount++;
+                    s.appearedIn.add(session.id);
                     if (!student.attended) {
                         s.absentHours += session.durationHours;
                         s.absentSessions.push({ date: session.date, durationHours: session.durationHours, status: session.status });
@@ -207,9 +211,13 @@
             });
 
             const students = Array.from(map.values()).map(s => {
-                const rate  = s.totalHours > 0 ? s.absentHours / s.totalHours : 0;
+                const { appearedIn, ...rest } = s;
+                const missingSessions = eligibleSessions.filter(sess => !appearedIn.has(sess.id))
+                    .map(sess => ({ id: sess.id, date: sess.date, durationHours: sess.durationHours }));
+                const partialData = missingSessions.length > 0;
+                const rate  = rest.totalHours > 0 ? rest.absentHours / rest.totalHours : 0;
                 const level = classifyLevel(rate);
-                return { ...s, absenceRate: rate, level };
+                return { ...rest, missingSessions, absenceRate: rate, level, partialData };
             }).sort((a, b) => b.absenceRate - a.absenceRate);
 
             const levelCounts = { 0: 0, 1: 0, 2: 0, 3: 0 };
@@ -220,7 +228,6 @@
                 ? students.reduce((acc, s) => acc + s.absenceRate, 0) / students.length
                 : 0;
 
-            const eligibleCount   = sessionResults.filter(r => Array.isArray(r)).length;
             const errorCount      = sessionResults.filter(r => r === null).length;
             const unrecordedCount = sessionResults.filter(r => r === 'unrecorded').length;
 
@@ -363,6 +370,13 @@
     }
     .gius-att-badge-red   { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
     .gius-att-badge-amber { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+    /* ── Partial-data warning ───────────────────────────────────── */
+    .gius-att-partial {
+        display: inline-flex; align-items: center; gap: 3px;
+        color: #d97706; font-size: 11px; font-weight: 700;
+        cursor: help; margin-left: 4px;
+    }
+    html.gius-dark .gius-att-partial { color: #fbbf24 !important; }
     /* ── Absent detail row ───────────────────────────────────────── */
     .gius-att-data-row { cursor: pointer; }
     .gius-att-detail-row td {
@@ -376,6 +390,23 @@
     .gius-att-detail-label { font-weight: 700; display: block; margin-bottom: 3px; color: #4338ca; }
     .gius-att-detail-list { margin: 0; padding: 0 0 0 16px; list-style: disc; }
     .gius-att-detail-list li { margin: 1px 0; }
+    /* ── Missing-session override controls ──────────────────────── */
+    .gius-att-missing-section { margin-top: 8px; border-top: 1px dashed #a5b4fc; padding-top: 6px; }
+    .gius-att-missing-item { display: flex; align-items: center; gap: 8px; padding: 3px 0; }
+    .gius-att-missing-date { font-size: 12px; min-width: 90px; }
+    .gius-att-miss-btn {
+        padding: 2px 9px; border-radius: 4px; font-size: 11px; font-weight: 700;
+        cursor: pointer; border: 1px solid transparent; opacity: 0.35;
+        font-family: 'Open Sans', Arial, sans-serif; transition: opacity 0.15s;
+    }
+    .gius-att-miss-btn.active { opacity: 1; }
+    .gius-att-miss-btn[data-val="attended"] { background: #d1fae5; color: #065f46; border-color: #6ee7b7; }
+    .gius-att-miss-btn[data-val="absent"]   { background: #fee2e2; color: #991b1b; border-color: #fca5a5; }
+    .gius-att-adjusted { font-size: 12px; margin-top: 6px; font-weight: 700; color: #4338ca; }
+    html.gius-dark .gius-att-missing-section { border-top-color: #4338ca !important; }
+    html.gius-dark .gius-att-miss-btn[data-val="attended"] { background: #064e3b !important; color: #6ee7b7 !important; border-color: #065f46 !important; }
+    html.gius-dark .gius-att-miss-btn[data-val="absent"]   { background: #450a0a !important; color: #fca5a5 !important; border-color: #7f1d1d !important; }
+    html.gius-dark .gius-att-adjusted { color: #a5b4fc !important; }
     /* ── Dark mode ───────────────────────────────────────────────── */
     html.gius-dark .gius-att-panel { background: #181825 !important; border-color: transparent !important; }
     html.gius-dark .gius-att-header { background: #11111b !important; }
@@ -511,22 +542,103 @@
             atRiskEl.hidden = false;
             const tbody = panel.querySelector('.gius-att-atrisk-body');
             tbody.innerHTML = report.atRisk.map((s, idx) => {
-                const rule       = LEVEL_RULES.find(r => r.level === s.level);
-                const pillCls    = s.level === 3 ? 'gius-att-badge-red' : 'gius-att-badge-amber';
-                const absentHrs  = s.totalHours > 0 ? `${s.absentHours}/${s.totalHours}h` : '—';
+                const rule      = LEVEL_RULES.find(r => r.level === s.level);
+                const pillCls   = s.level === 3 ? 'gius-att-badge-red' : 'gius-att-badge-amber';
+                const absentHrs = s.totalHours > 0 ? `${s.absentHours}/${s.totalHours}h` : '—';
+                const partial   = s.partialData
+                    ? `<span class="gius-att-partial" title="Only ${s.sessionCount} of ${report.eligibleCount} sessions found in this group — student may have attended another group's session(s). Actual absence rate could be lower.">⚠ ${s.sessionCount}/${report.eligibleCount}</span>`
+                    : '';
                 return `<tr class="gius-att-data-row" data-idx="${idx}">
                 <td><span class="gius-att-badge ${pillCls}">${rule.badge}</span></td>
-                <td>${s.name}</td>
+                <td>${s.name}${partial}</td>
                 <td>${s.id}</td>
                 <td>${absentHrs}</td>
                 <td>${pct(s.absenceRate)}</td>
             </tr>`;
             }).join('');
 
+            // overrides: studentId:sessionId → true (attended) | false (absent)
+            const overrides = new Map();
+
+            function computeAdjusted(student) {
+                let extraTotal = 0, extraAbsent = 0;
+                (student.missingSessions || []).forEach(sess => {
+                    const attended = overrides.has(`${student.id}:${sess.id}`)
+                        ? overrides.get(`${student.id}:${sess.id}`) : true; // default: attended
+                    extraTotal += sess.durationHours;
+                    if (!attended) extraAbsent += sess.durationHours;
+                });
+                const adjTotal  = student.totalHours + extraTotal;
+                const adjAbsent = student.absentHours + extraAbsent;
+                const adjRate   = adjTotal > 0 ? adjAbsent / adjTotal : 0;
+                return { adjTotal, adjAbsent, adjRate, adjLevel: classifyLevel(adjRate) };
+            }
+
+            function refreshDataRow(dataTr, student) {
+                const adj     = computeAdjusted(student);
+                const rule    = LEVEL_RULES.find(r => r.level === adj.adjLevel);
+                const pillCls = adj.adjLevel === 3 ? 'gius-att-badge-red' : 'gius-att-badge-amber';
+                const tds     = dataTr.querySelectorAll('td');
+                tds[0].innerHTML = `<span class="gius-att-badge ${pillCls}">${rule.badge}</span>`;
+                tds[3].textContent = `${adj.adjAbsent}/${adj.adjTotal}h`;
+                tds[4].textContent = pct(adj.adjRate);
+                const adjEl = dataTr.nextElementSibling && dataTr.nextElementSibling.querySelector('[data-adjusted]');
+                if (adjEl) adjEl.textContent = `Adjusted: ${adj.adjAbsent}/${adj.adjTotal}h = ${pct(adj.adjRate)} → ${rule.label}`;
+            }
+
+            function buildDetailHtml(student) {
+                const items = (student.absentSessions || [])
+                    .map(s => `<li>${fmtSessionDate(s.date)} · ${s.durationHours}h</li>`)
+                    .join('');
+                const absentHtml = student.absentSessions.length
+                    ? `<span class="gius-att-detail-label">Absent sessions (${student.absentSessions.length}):</span>
+                       <ul class="gius-att-detail-list">${items}</ul>`
+                    : '';
+
+                let missingHtml = '';
+                if (student.partialData && (student.missingSessions || []).length) {
+                    const adj  = computeAdjusted(student);
+                    const rule = LEVEL_RULES.find(r => r.level === adj.adjLevel);
+                    const missItems = student.missingSessions.map(sess => {
+                        const attended = overrides.has(`${student.id}:${sess.id}`)
+                            ? overrides.get(`${student.id}:${sess.id}`) : true;
+                        return `<div class="gius-att-missing-item"
+                                     data-sid="${student.id}" data-session-id="${sess.id}" data-hours="${sess.durationHours}">
+                            <span class="gius-att-missing-date">${fmtSessionDate(sess.date)} · ${sess.durationHours}h</span>
+                            <button class="gius-att-miss-btn${attended  ? ' active' : ''}" data-val="attended">✓ Attended</button>
+                            <button class="gius-att-miss-btn${!attended ? ' active' : ''}" data-val="absent">✗ Absent</button>
+                        </div>`;
+                    }).join('');
+                    missingHtml = `<div class="gius-att-missing-section">
+                        <span class="gius-att-detail-label" style="color:#d97706">Missing sessions — mark attendance:</span>
+                        ${missItems}
+                        <div class="gius-att-adjusted" data-adjusted>Adjusted: ${adj.adjAbsent}/${adj.adjTotal}h = ${pct(adj.adjRate)} → ${rule.label}</div>
+                    </div>`;
+                }
+                return `<td colspan="5">${absentHtml}${missingHtml}</td>`;
+            }
+
             tbody.onclick = e => {
+                // Toggle button inside missing-session section
+                const btn = e.target.closest('.gius-att-miss-btn');
+                if (btn) {
+                    const item      = btn.closest('.gius-att-missing-item');
+                    const studentId = item.dataset.sid;
+                    const sessId    = item.dataset.sessionId;
+                    const attended  = btn.dataset.val === 'attended';
+                    overrides.set(`${studentId}:${sessId}`, attended);
+                    item.querySelectorAll('.gius-att-miss-btn').forEach(b =>
+                        b.classList.toggle('active', b.dataset.val === btn.dataset.val));
+                    const dataTr  = item.closest('tr.gius-att-detail-row').previousElementSibling;
+                    const idx     = parseInt(dataTr.dataset.idx, 10);
+                    refreshDataRow(dataTr, report.atRisk[idx]);
+                    return;
+                }
+
+                // Expand / collapse row
                 const tr = e.target.closest('tr.gius-att-data-row');
                 if (!tr) return;
-                const idx = parseInt(tr.dataset.idx, 10);
+                const idx     = parseInt(tr.dataset.idx, 10);
                 const student = report.atRisk[idx];
                 if (!student) return;
                 const existing = tr.nextElementSibling;
@@ -534,15 +646,9 @@
                     existing.remove();
                     return;
                 }
-                const items = (student.absentSessions || [])
-                    .map(s => `<li>${fmtSessionDate(s.date)} · ${s.durationHours}h</li>`)
-                    .join('');
                 const detailTr = document.createElement('tr');
                 detailTr.className = 'gius-att-detail-row';
-                detailTr.innerHTML = `<td colspan="5">
-                    <span class="gius-att-detail-label">Absent sessions (${student.absentSessions.length}):</span>
-                    <ul class="gius-att-detail-list">${items}</ul>
-                </td>`;
+                detailTr.innerHTML = buildDetailHtml(student);
                 tr.insertAdjacentElement('afterend', detailTr);
             };
         }
