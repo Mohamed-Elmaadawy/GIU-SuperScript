@@ -15,7 +15,7 @@
 
         const PAGE_URL       = 'https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx';
         const CACHE_PREFIX   = 'giuAttendanceGroupV1_';
-        const CACHE_TTL_MS   = 30 * 60 * 1000;
+        const CACHE_TTL_MS   = Infinity;
         const MAX_CONCURRENT = 5;
         const LEVEL_RULES = [
             { min: 0.25, exclusive: true,  level: 3, badge: 'DROP',        label: 'Will Be Dropped' },
