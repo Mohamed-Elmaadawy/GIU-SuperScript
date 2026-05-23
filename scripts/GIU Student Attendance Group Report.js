@@ -605,8 +605,8 @@
                         return `<div class="gius-att-missing-item"
                                      data-sid="${student.id}" data-session-id="${sess.id}" data-hours="${sess.durationHours}">
                             <span class="gius-att-missing-date">${fmtSessionDate(sess.date)} · ${sess.durationHours}h</span>
-                            <button class="gius-att-miss-btn${attended  ? ' active' : ''}" data-val="attended">✓ Attended</button>
-                            <button class="gius-att-miss-btn${!attended ? ' active' : ''}" data-val="absent">✗ Absent</button>
+                            <button type="button" class="gius-att-miss-btn${attended  ? ' active' : ''}" data-val="attended">✓ Attended</button>
+                            <button type="button" class="gius-att-miss-btn${!attended ? ' active' : ''}" data-val="absent">✗ Absent</button>
                         </div>`;
                     }).join('');
                     missingHtml = `<div class="gius-att-missing-section">
