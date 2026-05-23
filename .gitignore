@@ -5,6 +5,7 @@
 !scripts/
 !scripts/*.js
 scripts/scrape-courses.js
+scripts/GIU Proctor Schedule Aggregator.js
 
 
 # README screenshots
