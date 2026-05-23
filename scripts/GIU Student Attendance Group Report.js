@@ -389,6 +389,17 @@
     html.gius-dark .gius-att-badge-amber { background: #2d1f00 !important; color: #fbbf24 !important; border-color: #78350f !important; }
     html.gius-dark .gius-att-detail-row td { background: #1e2050 !important; color: #e0e7ff !important; border-top-color: #4338ca !important; border-left-color: #818cf8 !important; }
     html.gius-dark .gius-att-detail-label { color: #a5b4fc !important; }
+    /* ── Idle / fetch state ─────────────────────────────────────────── */
+    .gius-att-idle { display: flex; align-items: center; gap: 10px; padding: 4px 0; }
+    .gius-att-idle-text { font-size: 12px; color: #6b7280; }
+    .gius-att-fetch-btn {
+        height: 28px; padding: 0 14px; border-radius: 6px;
+        font-size: 12px; font-weight: 700; cursor: pointer;
+        border: none; background: #ffc107; color: #272c33;
+        display: inline-flex; align-items: center; gap: 4px;
+    }
+    .gius-att-fetch-btn:hover { background: #e6ac00; }
+    html.gius-dark .gius-att-idle-text { color: #a6adc8 !important; }
     `;
             document.head.appendChild(style);
         }
@@ -410,6 +421,10 @@
                     </div>
                     <span class="gius-att-progress-text">Preparing…</span>
                 </div>
+                <div class="gius-att-idle" hidden>
+                    <span class="gius-att-idle-text">Attendance data not loaded.</span>
+                    <button class="gius-att-fetch-btn" type="button">Fetch</button>
+                </div>
                 <div class="gius-att-error" hidden></div>
                 <div class="gius-att-report" hidden>
                     <div class="gius-att-stats"></div>
@@ -427,7 +442,16 @@
             return panel;
         }
 
+        function showIdle(panel) {
+            panel.querySelector('.gius-att-idle').hidden     = false;
+            panel.querySelector('.gius-att-progress').hidden = true;
+            panel.querySelector('.gius-att-error').hidden    = true;
+            panel.querySelector('.gius-att-report').hidden   = true;
+            panel.querySelector('.gius-att-meta').textContent = '';
+        }
+
         function showProgress(panel, done, total) {
+            panel.querySelector('.gius-att-idle').hidden     = true;
             panel.querySelector('.gius-att-progress').hidden = false;
             panel.querySelector('.gius-att-error').hidden    = true;
             panel.querySelector('.gius-att-report').hidden   = true;
@@ -440,6 +464,7 @@
         }
 
         function showError(panel, message) {
+            panel.querySelector('.gius-att-idle').hidden     = true;
             panel.querySelector('.gius-att-progress').hidden = true;
             panel.querySelector('.gius-att-error').hidden    = false;
             panel.querySelector('.gius-att-report').hidden   = true;
@@ -449,6 +474,7 @@
         }
 
         function renderReport(panel, report, { ts, sessions }) {
+            panel.querySelector('.gius-att-idle').hidden     = true;
             panel.querySelector('.gius-att-progress').hidden = true;
             panel.querySelector('.gius-att-error').hidden    = true;
             panel.querySelector('.gius-att-report').hidden   = false;
@@ -593,24 +619,26 @@
             const formState         = snapshotForm();
             const selectedSessionId = sessionDdl.value !== '0' ? sessionDdl.value : null;
 
-            panel.querySelector('.gius-att-refresh').addEventListener('click', () => {
+            function startScrape() {
                 if (_abortCtrl) _abortCtrl.abort();
-                clearCacheEntry(cacheKey);
                 _abortCtrl = new AbortController();
                 showProgress(panel, 0, sessions.length);
                 runScrape(_abortCtrl.signal, panel, sessions, groupId, formState, cacheKey, groupLabel, selectedSessionId);
+            }
+
+            panel.querySelector('.gius-att-refresh').addEventListener('click', () => {
+                clearCacheEntry(cacheKey);
+                startScrape();
             });
+
+            panel.querySelector('.gius-att-fetch-btn').addEventListener('click', startScrape);
 
             const cached = readCache(cacheKey);
             if (cached && cached.report && cached.sessions) {
                 renderReport(panel, cached.report, { ts: cached.ts, sessions: cached.sessions });
             } else {
-                showProgress(panel, 0, sessions.length);
+                showIdle(panel);
             }
-
-            if (_abortCtrl) _abortCtrl.abort();
-            _abortCtrl = new AbortController();
-            runScrape(_abortCtrl.signal, panel, sessions, groupId, formState, cacheKey, groupLabel, selectedSessionId);
         }
 
         init();
