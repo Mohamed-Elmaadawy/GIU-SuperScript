@@ -533,9 +533,16 @@
             return panel;
         }
 
-        async function runScrape(signal, panel, sessions, groupId, formState, cacheKey, groupLabel) {
+        async function runScrape(signal, panel, sessions, groupId, formState, cacheKey, groupLabel, preloadedSessionId) {
             const worker = async (session) => {
-                const result = await fetchSessionStudents(session.id, groupId, formState, signal);
+                let result;
+                if (session.id === preloadedSessionId) {
+                    // This session is already rendered on the page — read DOM directly.
+                    // Re-fetching it would send no-change postback → ASP.NET returns empty table.
+                    result = parseStudentTable(document);
+                } else {
+                    result = await fetchSessionStudents(session.id, groupId, formState, signal);
+                }
                 if (Array.isArray(result)) {
                     // On Hold / Compensation: portal counts hours in denominator but no absences
                     if (session.status === 'onHold' || session.status === 'compensation') {
@@ -543,7 +550,7 @@
                     }
                     return isUnrecorded(result) ? 'unrecorded' : result;
                 }
-                if (result.error === 'expired') return { error: 'expired' };
+                if (result && result.error === 'expired') return { error: 'expired' };
                 return null;
             };
 
@@ -582,15 +589,16 @@
             const panel = mountPanel(groupLabel);
             if (!panel) return;
 
-            const cacheKey  = makeCacheKey(groupId, sessions);
-            const formState = snapshotForm();
+            const cacheKey          = makeCacheKey(groupId, sessions);
+            const formState         = snapshotForm();
+            const selectedSessionId = sessionDdl.value !== '0' ? sessionDdl.value : null;
 
             panel.querySelector('.gius-att-refresh').addEventListener('click', () => {
                 if (_abortCtrl) _abortCtrl.abort();
                 clearCacheEntry(cacheKey);
                 _abortCtrl = new AbortController();
                 showProgress(panel, 0, sessions.length);
-                runScrape(_abortCtrl.signal, panel, sessions, groupId, formState, cacheKey, groupLabel);
+                runScrape(_abortCtrl.signal, panel, sessions, groupId, formState, cacheKey, groupLabel, selectedSessionId);
             });
 
             const cached = readCache(cacheKey);
@@ -602,7 +610,7 @@
 
             if (_abortCtrl) _abortCtrl.abort();
             _abortCtrl = new AbortController();
-            runScrape(_abortCtrl.signal, panel, sessions, groupId, formState, cacheKey, groupLabel);
+            runScrape(_abortCtrl.signal, panel, sessions, groupId, formState, cacheKey, groupLabel, selectedSessionId);
         }
 
         init();
