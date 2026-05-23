@@ -454,6 +454,10 @@ html.gius-dark .gius-att-lvl-2 { background: #3d2e1a; color: #fab387; }
         const worker = async (session) => {
             const result = await fetchSessionStudents(session.id, groupId, formState, signal);
             if (Array.isArray(result)) {
+                // On Hold / Compensation: portal counts hours in denominator but no absences
+                if (session.status === 'onHold' || session.status === 'compensation') {
+                    return result.map(s => ({ ...s, attended: true }));
+                }
                 return isUnrecorded(result) ? 'unrecorded' : result;
             }
             if (result.error === 'expired') return { error: 'expired' };
