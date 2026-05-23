@@ -420,22 +420,32 @@
     .gius-att-detail-list li { margin: 1px 0; }
     /* ── Missing-session override controls ──────────────────────── */
     .gius-att-missing-section { margin-top: 8px; border-top: 1px dashed #a5b4fc; padding-top: 6px; }
-    .gius-att-missing-item { display: flex; align-items: center; gap: 8px; padding: 3px 0; }
+    .gius-att-missing-item { display: flex; align-items: center; gap: 10px; padding: 3px 0; }
     .gius-att-missing-date { font-size: 12px; min-width: 90px; }
-    .gius-att-miss-btn {
-        padding: 2px 9px; border-radius: 4px; font-size: 11px; font-weight: 700;
-        cursor: pointer; border: 1px solid transparent; opacity: 0.35;
-        font-family: 'Open Sans', Arial, sans-serif; transition: opacity 0.15s;
+    .gius-att-miss-grp {
+        display: inline-flex; border-radius: 5px; overflow: hidden;
+        border: 1px solid #d1d5db; flex-shrink: 0;
     }
-    .gius-att-miss-btn.active { opacity: 1; }
-    .gius-att-miss-btn[data-val="attended"] { background: #d1fae5; color: #065f46; border-color: #6ee7b7; }
-    .gius-att-miss-btn[data-val="absent"]   { background: #fee2e2; color: #991b1b; border-color: #fca5a5; }
+    .gius-att-miss-btn {
+        padding: 3px 10px; font-size: 11px; font-weight: 600; cursor: pointer;
+        border: none; border-left: 1px solid #d1d5db;
+        background: transparent; color: #9ca3af;
+        font-family: 'Open Sans', Arial, sans-serif;
+        transition: background 0.15s, color 0.15s; white-space: nowrap;
+    }
+    .gius-att-miss-btn:first-child { border-left: none; }
+    .gius-att-miss-btn:not(.active):hover { background: #f3f4f6; color: #374151; }
+    .gius-att-miss-btn.active[data-val="attended"] { background: #d1fae5; color: #065f46; }
+    .gius-att-miss-btn.active[data-val="absent"]   { background: #fee2e2; color: #991b1b; }
+    .gius-att-miss-btn.active[data-val="onHold"]   { background: #fef3c7; color: #92400e; }
     .gius-att-adjusted { font-size: 12px; margin-top: 6px; font-weight: 700; color: #4338ca; }
     html.gius-dark .gius-att-missing-section { border-top-color: #4338ca !important; }
-    .gius-att-miss-btn[data-val="onHold"]  { background: #fef3c7; color: #92400e; border-color: #fcd34d; }
-    html.gius-dark .gius-att-miss-btn[data-val="attended"] { background: #064e3b !important; color: #6ee7b7 !important; border-color: #065f46 !important; }
-    html.gius-dark .gius-att-miss-btn[data-val="absent"]   { background: #450a0a !important; color: #fca5a5 !important; border-color: #7f1d1d !important; }
-    html.gius-dark .gius-att-miss-btn[data-val="onHold"]   { background: #2d1f00 !important; color: #fbbf24 !important; border-color: #78350f !important; }
+    html.gius-dark .gius-att-miss-grp { border-color: #45475a !important; }
+    html.gius-dark .gius-att-miss-btn { border-left-color: #45475a !important; color: #585b70 !important; }
+    html.gius-dark .gius-att-miss-btn:not(.active):hover { background: #313244 !important; color: #cdd6f4 !important; }
+    html.gius-dark .gius-att-miss-btn.active[data-val="attended"] { background: #064e3b !important; color: #6ee7b7 !important; }
+    html.gius-dark .gius-att-miss-btn.active[data-val="absent"]   { background: #450a0a !important; color: #fca5a5 !important; }
+    html.gius-dark .gius-att-miss-btn.active[data-val="onHold"]   { background: #2d1f00 !important; color: #fbbf24 !important; }
     html.gius-dark .gius-att-adjusted { color: #a5b4fc !important; }
     /* ── Dark mode ───────────────────────────────────────────────── */
     html.gius-dark .gius-att-panel { background: #181825 !important; border-color: transparent !important; }
@@ -593,9 +603,9 @@
             function computeAdjusted(student) {
                 let extraTotal = 0, extraAbsent = 0;
                 (student.missingSessions || []).forEach(sess => {
-                    const state = overrides.has(`${student.id}:${sess.id}`)
-                        ? overrides.get(`${student.id}:${sess.id}`) : 'attended'; // default: attended
-                    if (state !== 'onHold') extraTotal  += sess.durationHours; // onHold → excluded entirely
+                    const state = overrides.get(`${student.id}:${sess.id}`) ?? null;
+                    if (state === null || state === 'onHold') return; // unset/onHold → excluded from calc
+                    extraTotal += sess.durationHours;
                     if (state === 'absent') extraAbsent += sess.durationHours;
                 });
                 const adjTotal  = student.totalHours + extraTotal;
@@ -630,14 +640,15 @@
                     const adj  = computeAdjusted(student);
                     const rule = LEVEL_RULES.find(r => r.level === adj.adjLevel);
                     const missItems = student.missingSessions.map(sess => {
-                        const state = overrides.has(`${student.id}:${sess.id}`)
-                            ? overrides.get(`${student.id}:${sess.id}`) : 'attended';
+                        const state = overrides.get(`${student.id}:${sess.id}`) ?? null;
                         return `<div class="gius-att-missing-item"
                                      data-sid="${student.id}" data-session-id="${sess.id}" data-hours="${sess.durationHours}">
                             <span class="gius-att-missing-date">${fmtSessionDate(sess.date)} · ${sess.durationHours}h</span>
-                            <button type="button" class="gius-att-miss-btn${state === 'attended' ? ' active' : ''}" data-val="attended">✓ Attended</button>
-                            <button type="button" class="gius-att-miss-btn${state === 'absent'   ? ' active' : ''}" data-val="absent">✗ Absent</button>
-                            <button type="button" class="gius-att-miss-btn${state === 'onHold'   ? ' active' : ''}" data-val="onHold">⏸ On Hold</button>
+                            <div class="gius-att-miss-grp">
+                                <button type="button" class="gius-att-miss-btn${state === 'attended' ? ' active' : ''}" data-val="attended">✓ Attended</button>
+                                <button type="button" class="gius-att-miss-btn${state === 'absent'   ? ' active' : ''}" data-val="absent">✗ Absent</button>
+                                <button type="button" class="gius-att-miss-btn${state === 'onHold'   ? ' active' : ''}" data-val="onHold">⏸ On Hold</button>
+                            </div>
                         </div>`;
                     }).join('');
                     missingHtml = `<div class="gius-att-missing-section">
