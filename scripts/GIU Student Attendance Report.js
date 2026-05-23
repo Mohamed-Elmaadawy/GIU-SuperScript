@@ -1,5 +1,5 @@
     // ==UserScript==
-    // @name        GIU Student Attendance Group Report
+    // @name        GIU Student Attendance Report
     // @description Auto-scrapes all sessions for a group and shows absence level report above the student table
     // @match       https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx*
     // @namespace   ramin0
@@ -508,7 +508,7 @@
                         <div class="gius-att-atrisk-title">AT-RISK STUDENTS (Level 2+)</div>
                         <table class="gius-att-atrisk-table">
                             <thead><tr>
-                                <th>Level</th><th>Name</th><th>ID</th><th>Absent hrs</th><th>%</th>
+                                <th>Level</th><th>Name</th><th>ID</th><th>Absent</th><th>%</th>
                             </tr></thead>
                             <tbody class="gius-att-atrisk-body"></tbody>
                         </table>
@@ -584,15 +584,15 @@
             tbody.innerHTML = report.atRisk.map((s, idx) => {
                 const rule      = LEVEL_RULES.find(r => r.level === s.level);
                 const pillCls   = s.level === 3 ? 'gius-att-badge-red' : 'gius-att-badge-amber';
-                const absentHrs = s.totalHours > 0 ? `${s.absentHours}/${s.totalHours}h` : '—';
-                const partial   = s.partialData
+                const absentSess = `${s.absentSessions.length}/${s.sessionCount}`;
+                const partial    = s.partialData
                     ? `<span class="gius-att-partial" title="Only ${s.sessionCount} of ${report.eligibleCount} sessions found in this group — student may have attended another group's session(s). Actual absence rate could be lower.">⚠ ${s.sessionCount}/${report.eligibleCount}</span>`
                     : '';
                 return `<tr class="gius-att-data-row" data-idx="${idx}">
                 <td><span class="gius-att-badge ${pillCls}">${rule.badge}</span></td>
                 <td>${s.name}${partial}</td>
                 <td>${s.id}</td>
-                <td>${absentHrs}</td>
+                <td>${absentSess}</td>
                 <td>${pct(s.absenceRate)}</td>
             </tr>`;
             }).join('');
@@ -601,17 +601,20 @@
             const overrides = overridesKey ? loadOverrides(overridesKey, sessions) : new Map();
 
             function computeAdjusted(student) {
-                let extraTotal = 0, extraAbsent = 0;
+                let extraTotal = 0, extraAbsent = 0, extraTotalSess = 0, extraAbsentSess = 0;
                 (student.missingSessions || []).forEach(sess => {
                     const state = overrides.get(`${student.id}:${sess.id}`) ?? null;
-                    if (state === null || state === 'onHold') return; // unset/onHold → excluded from calc
+                    if (state === null || state === 'onHold') return;
                     extraTotal += sess.durationHours;
-                    if (state === 'absent') extraAbsent += sess.durationHours;
+                    extraTotalSess++;
+                    if (state === 'absent') { extraAbsent += sess.durationHours; extraAbsentSess++; }
                 });
-                const adjTotal  = student.totalHours + extraTotal;
-                const adjAbsent = student.absentHours + extraAbsent;
-                const adjRate   = adjTotal > 0 ? adjAbsent / adjTotal : 0;
-                return { adjTotal, adjAbsent, adjRate, adjLevel: classifyLevel(adjRate) };
+                const adjTotal      = student.totalHours + extraTotal;
+                const adjAbsent     = student.absentHours + extraAbsent;
+                const adjRate       = adjTotal > 0 ? adjAbsent / adjTotal : 0;
+                const adjTotalSess  = student.sessionCount + extraTotalSess;
+                const adjAbsentSess = student.absentSessions.length + extraAbsentSess;
+                return { adjTotal, adjAbsent, adjRate, adjLevel: classifyLevel(adjRate), adjTotalSess, adjAbsentSess };
             }
 
             function refreshDataRow(dataTr, student) {
@@ -620,10 +623,10 @@
                 const pillCls = adj.adjLevel === 3 ? 'gius-att-badge-red' : 'gius-att-badge-amber';
                 const tds     = dataTr.querySelectorAll('td');
                 tds[0].innerHTML = `<span class="gius-att-badge ${pillCls}">${rule.badge}</span>`;
-                tds[3].textContent = `${adj.adjAbsent}/${adj.adjTotal}h`;
+                tds[3].textContent = `${adj.adjAbsentSess}/${adj.adjTotalSess}`;
                 tds[4].textContent = pct(adj.adjRate);
                 const adjEl = dataTr.nextElementSibling && dataTr.nextElementSibling.querySelector('[data-adjusted]');
-                if (adjEl) adjEl.textContent = `Adjusted: ${adj.adjAbsent}/${adj.adjTotal}h = ${pct(adj.adjRate)} → ${rule.label}`;
+                if (adjEl) adjEl.textContent = `Adjusted: ${adj.adjAbsentSess}/${adj.adjTotalSess} sessions = ${pct(adj.adjRate)} → ${rule.label}`;
             }
 
             function buildDetailHtml(student) {
@@ -654,7 +657,7 @@
                     missingHtml = `<div class="gius-att-missing-section">
                         <span class="gius-att-detail-label" style="color:#d97706">Missing sessions — mark attendance:</span>
                         ${missItems}
-                        <div class="gius-att-adjusted" data-adjusted>Adjusted: ${adj.adjAbsent}/${adj.adjTotal}h = ${pct(adj.adjRate)} → ${rule.label}</div>
+                        <div class="gius-att-adjusted" data-adjusted>Adjusted: ${adj.adjAbsentSess}/${adj.adjTotalSess} sessions = ${pct(adj.adjRate)} → ${rule.label}</div>
                     </div>`;
                 }
                 return `<td colspan="5">${absentHtml}${missingHtml}</td>`;
