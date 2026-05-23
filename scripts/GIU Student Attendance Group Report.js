@@ -516,7 +516,7 @@
                     <ul class="gius-att-detail-list">${items}</ul>
                 </td>`;
                 tr.insertAdjacentElement('afterend', detailTr);
-            });
+            };
         }
 
         // Finds the best insertion point and inserts panel. Returns panel element or null.
