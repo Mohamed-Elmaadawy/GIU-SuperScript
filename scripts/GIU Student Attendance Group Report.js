@@ -404,8 +404,10 @@
     .gius-att-miss-btn[data-val="absent"]   { background: #fee2e2; color: #991b1b; border-color: #fca5a5; }
     .gius-att-adjusted { font-size: 12px; margin-top: 6px; font-weight: 700; color: #4338ca; }
     html.gius-dark .gius-att-missing-section { border-top-color: #4338ca !important; }
+    .gius-att-miss-btn[data-val="onHold"]  { background: #fef3c7; color: #92400e; border-color: #fcd34d; }
     html.gius-dark .gius-att-miss-btn[data-val="attended"] { background: #064e3b !important; color: #6ee7b7 !important; border-color: #065f46 !important; }
     html.gius-dark .gius-att-miss-btn[data-val="absent"]   { background: #450a0a !important; color: #fca5a5 !important; border-color: #7f1d1d !important; }
+    html.gius-dark .gius-att-miss-btn[data-val="onHold"]   { background: #2d1f00 !important; color: #fbbf24 !important; border-color: #78350f !important; }
     html.gius-dark .gius-att-adjusted { color: #a5b4fc !important; }
     /* ── Dark mode ───────────────────────────────────────────────── */
     html.gius-dark .gius-att-panel { background: #181825 !important; border-color: transparent !important; }
@@ -563,10 +565,10 @@
             function computeAdjusted(student) {
                 let extraTotal = 0, extraAbsent = 0;
                 (student.missingSessions || []).forEach(sess => {
-                    const attended = overrides.has(`${student.id}:${sess.id}`)
-                        ? overrides.get(`${student.id}:${sess.id}`) : true; // default: attended
-                    extraTotal += sess.durationHours;
-                    if (!attended) extraAbsent += sess.durationHours;
+                    const state = overrides.has(`${student.id}:${sess.id}`)
+                        ? overrides.get(`${student.id}:${sess.id}`) : 'attended'; // default: attended
+                    if (state !== 'onHold') extraTotal  += sess.durationHours; // onHold → excluded entirely
+                    if (state === 'absent') extraAbsent += sess.durationHours;
                 });
                 const adjTotal  = student.totalHours + extraTotal;
                 const adjAbsent = student.absentHours + extraAbsent;
@@ -600,13 +602,14 @@
                     const adj  = computeAdjusted(student);
                     const rule = LEVEL_RULES.find(r => r.level === adj.adjLevel);
                     const missItems = student.missingSessions.map(sess => {
-                        const attended = overrides.has(`${student.id}:${sess.id}`)
-                            ? overrides.get(`${student.id}:${sess.id}`) : true;
+                        const state = overrides.has(`${student.id}:${sess.id}`)
+                            ? overrides.get(`${student.id}:${sess.id}`) : 'attended';
                         return `<div class="gius-att-missing-item"
                                      data-sid="${student.id}" data-session-id="${sess.id}" data-hours="${sess.durationHours}">
                             <span class="gius-att-missing-date">${fmtSessionDate(sess.date)} · ${sess.durationHours}h</span>
-                            <button type="button" class="gius-att-miss-btn${attended  ? ' active' : ''}" data-val="attended">✓ Attended</button>
-                            <button type="button" class="gius-att-miss-btn${!attended ? ' active' : ''}" data-val="absent">✗ Absent</button>
+                            <button type="button" class="gius-att-miss-btn${state === 'attended' ? ' active' : ''}" data-val="attended">✓ Attended</button>
+                            <button type="button" class="gius-att-miss-btn${state === 'absent'   ? ' active' : ''}" data-val="absent">✗ Absent</button>
+                            <button type="button" class="gius-att-miss-btn${state === 'onHold'   ? ' active' : ''}" data-val="onHold">⏸ On Hold</button>
                         </div>`;
                     }).join('');
                     missingHtml = `<div class="gius-att-missing-section">
@@ -625,8 +628,7 @@
                     const item      = btn.closest('.gius-att-missing-item');
                     const studentId = item.dataset.sid;
                     const sessId    = item.dataset.sessionId;
-                    const attended  = btn.dataset.val === 'attended';
-                    overrides.set(`${studentId}:${sessId}`, attended);
+                    overrides.set(`${studentId}:${sessId}`, btn.dataset.val);
                     item.querySelectorAll('.gius-att-miss-btn').forEach(b =>
                         b.classList.toggle('active', b.dataset.val === btn.dataset.val));
                     const dataTr  = item.closest('tr.gius-att-detail-row').previousElementSibling;
