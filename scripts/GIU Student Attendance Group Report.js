@@ -682,6 +682,16 @@
                 detailTr.innerHTML = buildDetailHtml(student);
                 tr.insertAdjacentElement('afterend', detailTr);
             };
+
+            // Apply any saved overrides to the already-rendered rows immediately
+            report.atRisk.forEach((student, idx) => {
+                if (!student.partialData) return;
+                const hasOverride = (student.missingSessions || []).some(sess =>
+                    overrides.has(`${student.id}:${sess.id}`));
+                if (!hasOverride) return;
+                const dataTr = tbody.querySelector(`tr[data-idx="${idx}"]`);
+                if (dataTr) refreshDataRow(dataTr, student);
+            });
         }
 
         // Finds the best insertion point and inserts panel. Returns panel element or null.
