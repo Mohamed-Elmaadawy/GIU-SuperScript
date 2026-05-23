@@ -45,11 +45,11 @@
             });
     }
 
-    // Extracts year string from first session label for cache key (e.g. "2026")
+    // Extracts season+year from first session label for cache key (e.g. "Spring 2026" → "S2026")
     function extractSeasonYear(sessions) {
         if (!sessions.length) return 'unknown';
-        const m = sessions[0].label.match(/\b(\d{4})\b/);
-        return m ? m[1] : 'unknown';
+        const m = sessions[0].label.match(/([A-Za-z]+)\s+(\d{4})/);
+        return m ? `${m[1][0].toUpperCase()}${m[2]}` : 'unknown';
     }
 
     // Captures all hidden ASP.NET form fields from the live DOM
