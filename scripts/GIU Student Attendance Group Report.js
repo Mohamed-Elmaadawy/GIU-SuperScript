@@ -495,7 +495,7 @@
             </tr>`;
             }).join('');
 
-            tbody.addEventListener('click', e => {
+            tbody.onclick = e => {
                 const tr = e.target.closest('tr.gius-att-data-row');
                 if (!tr) return;
                 const idx = parseInt(tr.dataset.idx, 10);
