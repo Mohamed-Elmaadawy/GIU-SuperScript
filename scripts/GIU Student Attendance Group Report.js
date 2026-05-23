@@ -185,7 +185,7 @@
         // Aggregates per-student hour-weighted absence data across all sessions.
         // Returns {students, atRisk, levelCounts, avgRate, eligibleCount, errorCount, unrecordedCount, total}.
         function buildReport(sessions, sessionResults) {
-            const map = new Map(); // studentId → {id, name, absentHours, totalHours}
+            const map = new Map(); // studentId → {id, name, absentHours, totalHours, absentSessions}
 
             sessions.forEach((session, i) => {
                 const result = sessionResults[i];
@@ -194,11 +194,14 @@
 
                 result.forEach(student => {
                     if (!map.has(student.id)) {
-                        map.set(student.id, { id: student.id, name: student.name, absentHours: 0, totalHours: 0 });
+                        map.set(student.id, { id: student.id, name: student.name, absentHours: 0, totalHours: 0, absentSessions: [] });
                     }
                     const s = map.get(student.id);
                     s.totalHours += session.durationHours;
-                    if (!student.attended) s.absentHours += session.durationHours;
+                    if (!student.attended) {
+                        s.absentHours += session.durationHours;
+                        s.absentSessions.push({ date: session.date, durationHours: session.durationHours, status: session.status });
+                    }
                 });
             });
 
@@ -256,6 +259,13 @@
             if (sec < 60)   return `${sec}s ago`;
             if (sec < 3600) return `${Math.floor(sec / 60)}m ago`;
             return `${Math.floor(sec / 3600)}h ago`;
+        }
+
+        // "2026-02-14" → "Feb 14"
+        function fmtSessionDate(dateStr) {
+            if (!dateStr) return '?';
+            const d = new Date(dateStr + 'T00:00:00');
+            return isNaN(d) ? dateStr : d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
         }
 
         function injectStyles() {
@@ -345,6 +355,19 @@
     .gius-att-lvl-3:hover { background: #ffb3b3 !important; }
     .gius-att-lvl-2, .gius-att-lvl-2:nth-child(even) { background: #ffe0b2; }
     .gius-att-lvl-2:hover { background: #ffd08a !important; }
+    /* ── Absent detail row ───────────────────────────────────────── */
+    .gius-att-data-row { cursor: pointer; }
+    .gius-att-detail-row td {
+        font-size: 12px;
+        padding: 6px 10px 6px 20px !important;
+        border-top: 1px solid #a5b4fc !important;
+        border-left: 4px solid #6366f1 !important;
+        background: #eef2ff !important;
+        color: #1e3a8a !important;
+    }
+    .gius-att-detail-label { font-weight: 700; display: block; margin-bottom: 3px; color: #4338ca; }
+    .gius-att-detail-list { margin: 0; padding: 0 0 0 16px; list-style: disc; }
+    .gius-att-detail-list li { margin: 1px 0; }
     /* ── Dark mode ───────────────────────────────────────────────── */
     html.gius-dark .gius-att-panel { background: #181825 !important; border-color: transparent !important; }
     html.gius-dark .gius-att-header { background: #11111b !important; }
@@ -367,6 +390,8 @@
     html.gius-dark .gius-att-lvl-2:nth-child(even) { background: #3d2e1a !important; }
     html.gius-dark .gius-att-lvl-2:hover { background: #4a3820 !important; }
     html.gius-dark .gius-att-lvl-2 td { color: #fab387 !important; }
+    html.gius-dark .gius-att-detail-row td { background: #1e2050 !important; color: #e0e7ff !important; border-top-color: #4338ca !important; border-left-color: #818cf8 !important; }
+    html.gius-dark .gius-att-detail-label { color: #a5b4fc !important; }
     `;
             document.head.appendChild(style);
         }
@@ -457,20 +482,41 @@
             }
             atRiskEl.hidden = false;
             const tbody = panel.querySelector('.gius-att-atrisk-body');
-            tbody.innerHTML = report.atRisk.map(s => {
+            tbody.innerHTML = report.atRisk.map((s, idx) => {
                 const rule   = LEVEL_RULES.find(r => r.level === s.level);
                 const rowCls = s.level === 3 ? 'gius-att-lvl-3' : 'gius-att-lvl-2';
-                const absentSessions = s.totalHours > 0
-                    ? `${s.absentHours}/${s.totalHours}h`
-                    : '—';
-                return `<tr class="${rowCls}">
+                const absentHrs = s.totalHours > 0 ? `${s.absentHours}/${s.totalHours}h` : '—';
+                return `<tr class="${rowCls} gius-att-data-row" data-idx="${idx}">
                 <td>${rule.badge}</td>
                 <td>${s.name}</td>
                 <td>${s.id}</td>
-                <td>${absentSessions}</td>
+                <td>${absentHrs}</td>
                 <td>${pct(s.absenceRate)}</td>
             </tr>`;
             }).join('');
+
+            tbody.addEventListener('click', e => {
+                const tr = e.target.closest('tr.gius-att-data-row');
+                if (!tr) return;
+                const idx = parseInt(tr.dataset.idx, 10);
+                const student = report.atRisk[idx];
+                if (!student) return;
+                const existing = tr.nextElementSibling;
+                if (existing && existing.classList.contains('gius-att-detail-row')) {
+                    existing.remove();
+                    return;
+                }
+                const items = (student.absentSessions || [])
+                    .map(s => `<li>${fmtSessionDate(s.date)} · ${s.durationHours}h</li>`)
+                    .join('');
+                const detailTr = document.createElement('tr');
+                detailTr.className = 'gius-att-detail-row';
+                detailTr.innerHTML = `<td colspan="5">
+                    <span class="gius-att-detail-label">Absent sessions (${student.absentSessions.length}):</span>
+                    <ul class="gius-att-detail-list">${items}</ul>
+                </td>`;
+                tr.insertAdjacentElement('afterend', detailTr);
+            });
         }
 
         // Finds the best insertion point and inserts panel. Returns panel element or null.
