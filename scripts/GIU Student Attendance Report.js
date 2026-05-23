@@ -441,11 +441,11 @@
     .gius-att-adjusted { font-size: 12px; margin-top: 6px; font-weight: 700; color: #4338ca; }
     html.gius-dark .gius-att-missing-section { border-top-color: #4338ca !important; }
     html.gius-dark .gius-att-miss-grp { border-color: #45475a !important; }
-    html.gius-dark .gius-att-detail-row .gius-att-miss-btn { border-left-color: #45475a !important; color: #6c7086 !important; background: transparent !important; }
-    html.gius-dark .gius-att-detail-row .gius-att-miss-btn:not(.active):hover { background: #313244 !important; color: #cdd6f4 !important; }
-    html.gius-dark .gius-att-detail-row .gius-att-miss-btn.active[data-val="attended"] { background: #166534 !important; color: #86efac !important; }
-    html.gius-dark .gius-att-detail-row .gius-att-miss-btn.active[data-val="absent"]   { background: #7f1d1d !important; color: #fca5a5 !important; }
-    html.gius-dark .gius-att-detail-row .gius-att-miss-btn.active[data-val="onHold"]   { background: #78350f !important; color: #fcd34d !important; }
+    html.gius-dark tr.gius-att-detail-row td button.gius-att-miss-btn { border-left-color: #45475a !important; color: #6c7086 !important; background: transparent !important; }
+    html.gius-dark tr.gius-att-detail-row td button.gius-att-miss-btn:not(.active):hover { background: #313244 !important; color: #cdd6f4 !important; }
+    html.gius-dark tr.gius-att-detail-row td button.gius-att-miss-btn.active[data-val="attended"] { background: #166534 !important; color: #86efac !important; }
+    html.gius-dark tr.gius-att-detail-row td button.gius-att-miss-btn.active[data-val="absent"]   { background: #7f1d1d !important; color: #fca5a5 !important; }
+    html.gius-dark tr.gius-att-detail-row td button.gius-att-miss-btn.active[data-val="onHold"]   { background: #78350f !important; color: #fcd34d !important; }
     html.gius-dark .gius-att-adjusted { color: #a5b4fc !important; }
     /* ── Dark mode ───────────────────────────────────────────────── */
     html.gius-dark .gius-att-panel { background: #181825 !important; border-color: transparent !important; }
