@@ -640,17 +640,24 @@
 
                 let missingHtml = '';
                 if (student.partialData && (student.missingSessions || []).length) {
-                    const adj  = computeAdjusted(student);
-                    const rule = LEVEL_RULES.find(r => r.level === adj.adjLevel);
+                    const adj     = computeAdjusted(student);
+                    const rule    = LEVEL_RULES.find(r => r.level === adj.adjLevel);
+                    const isDark  = document.documentElement.classList.contains('gius-dark');
+                    const DARK_ACTIVE = {
+                        attended: 'background:#166534;color:#86efac',
+                        absent:   'background:#7f1d1d;color:#fca5a5',
+                        onHold:   'background:#78350f;color:#fcd34d',
+                    };
                     const missItems = student.missingSessions.map(sess => {
                         const state = overrides.get(`${student.id}:${sess.id}`) ?? null;
+                        const btnStyle = val => (state === val && isDark) ? ` style="${DARK_ACTIVE[val]}"` : '';
                         return `<div class="gius-att-missing-item"
                                      data-sid="${student.id}" data-session-id="${sess.id}" data-hours="${sess.durationHours}">
                             <span class="gius-att-missing-date">${fmtSessionDate(sess.date)} · ${sess.durationHours}h</span>
                             <div class="gius-att-miss-grp">
-                                <button type="button" class="gius-att-miss-btn${state === 'attended' ? ' active' : ''}" data-val="attended">✓ Attended</button>
-                                <button type="button" class="gius-att-miss-btn${state === 'absent'   ? ' active' : ''}" data-val="absent">✗ Absent</button>
-                                <button type="button" class="gius-att-miss-btn${state === 'onHold'   ? ' active' : ''}" data-val="onHold">⏸ On Hold</button>
+                                <button type="button" class="gius-att-miss-btn${state === 'attended' ? ' active' : ''}" data-val="attended"${btnStyle('attended')}>✓ Attended</button>
+                                <button type="button" class="gius-att-miss-btn${state === 'absent'   ? ' active' : ''}" data-val="absent"${btnStyle('absent')}>✗ Absent</button>
+                                <button type="button" class="gius-att-miss-btn${state === 'onHold'   ? ' active' : ''}" data-val="onHold"${btnStyle('onHold')}>⏸ On Hold</button>
                             </div>
                         </div>`;
                     }).join('');
@@ -672,8 +679,13 @@
                     const sessId    = item.dataset.sessionId;
                     overrides.set(`${studentId}:${sessId}`, btn.dataset.val);
                     if (overridesKey) saveOverrides(overridesKey, overrides, sessions);
-                    item.querySelectorAll('.gius-att-miss-btn').forEach(b =>
-                        b.classList.toggle('active', b.dataset.val === btn.dataset.val));
+                    const isDark = document.documentElement.classList.contains('gius-dark');
+                    const DARK_ACTIVE = { attended:'background:#166534;color:#86efac', absent:'background:#7f1d1d;color:#fca5a5', onHold:'background:#78350f;color:#fcd34d' };
+                    item.querySelectorAll('.gius-att-miss-btn').forEach(b => {
+                        const isActive = b.dataset.val === btn.dataset.val;
+                        b.classList.toggle('active', isActive);
+                        b.style.cssText = (isActive && isDark) ? DARK_ACTIVE[b.dataset.val] : '';
+                    });
                     const dataTr  = item.closest('tr.gius-att-detail-row').previousElementSibling;
                     const idx     = parseInt(dataTr.dataset.idx, 10);
                     refreshDataRow(dataTr, report.atRisk[idx]);
