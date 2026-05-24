@@ -20,6 +20,7 @@ scripts/dump-mainpage.js
 scripts/crawl-portal.js
 scripts/map-portal.js
 scripts/probe-attendance.js
+scripts/explore-attendance-report.js
 
 # Docs
 docs/
