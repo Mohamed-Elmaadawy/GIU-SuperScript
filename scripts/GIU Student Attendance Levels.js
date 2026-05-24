@@ -387,8 +387,12 @@
 
             if (!forceRefresh) {
                 const cached = readCache(key);
-                if (cached) {
-                    _students = cached;
+                const sessionCountChanged = cached && cached.sessionCount !== sessions.length;
+                if (sessionCountChanged) {
+                    clearCache(key);
+                    clearCache(syncCacheKey(_groupId, _seasonY));
+                } else if (cached?.students) {
+                    _students = cached.students;
                     // Restore any cached sync results
                     const syncCached = readCache(syncCacheKey(_groupId, _seasonY));
                     if (syncCached) {
@@ -427,7 +431,7 @@
             if (signal.aborted) { _running = false; return; }
 
             _students = buildReport(sessions, sessionResults);
-            writeCache(key, _students);
+            writeCache(key, { students: _students, sessionCount: sessions.length });
             content.innerHTML  = renderTable(_students, false);
             status.textContent = `${_students.length} students`;
             if (syncBtn) syncBtn.style.display = _courseCode ? '' : 'none';
