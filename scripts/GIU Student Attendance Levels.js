@@ -26,10 +26,10 @@
             { min: 0,    exclusive: false, level: 0 },
         ];
         const LEVEL_BADGE = [
-            { label: 'OK',          bg: '#16a34a', text: '#fff' },
-            { label: '1st Warning', bg: '#d97706', text: '#fff' },
-            { label: '2nd Warning', bg: '#b45309', text: '#fff' },
-            { label: 'DROP',        bg: '#dc2626', text: '#fff' },
+            { label: 'OK',          bg: '#dcfce7', color: '#166534', border: '#86efac', darkBg: '#052e16', darkColor: '#4ade80', darkBorder: '#166534' },
+            { label: '1st Warning', bg: '#fef3c7', color: '#92400e', border: '#fcd34d', darkBg: '#2d1f00', darkColor: '#fbbf24', darkBorder: '#78350f' },
+            { label: '2nd Warning', bg: '#fef3c7', color: '#92400e', border: '#fcd34d', darkBg: '#2d1f00', darkColor: '#fbbf24', darkBorder: '#78350f' },
+            { label: 'DROP',        bg: '#fee2e2', color: '#b91c1c', border: '#fca5a5', darkBg: '#3d1218', darkColor: '#f38ba8', darkBorder: '#7f1d1d' },
         ];
 
         // ── Helpers ────────────────────────────────────────────────────────────
@@ -251,11 +251,14 @@
             requestAnimationFrame(() => { el.style.maxHeight = el.scrollHeight + 1000 + 'px'; });
         }
 
-        function badge(level, prefix = '') {
-            if (level === null) return `<span style="color:#6b7280;font-size:12px">${prefix}—</span>`;
-            const m = LEVEL_BADGE[level] ?? { label: `L${level}`, bg: '#6b7280', text: '#fff' };
-            if (level === 0) return `<span style="color:#16a34a;font-size:12px;font-weight:600">${prefix}OK</span>`;
-            return `<span style="background:${m.bg};color:${m.text};padding:2px 8px;border-radius:12px;font-size:11px;font-weight:700">${prefix}${m.label}</span>`;
+        function badge(level) {
+            if (level === null) return `<span style="color:#6b7280;font-size:12px">—</span>`;
+            const m   = LEVEL_BADGE[level] ?? { label: `L${level}`, bg: '#e5e7eb', color: '#374151', border: '#d1d5db', darkBg: '#1f2937', darkColor: '#9ca3af', darkBorder: '#374151' };
+            const dark = document.documentElement.classList.contains('gius-dark');
+            const bg     = dark ? m.darkBg     : m.bg;
+            const color  = dark ? m.darkColor  : m.color;
+            const border = dark ? m.darkBorder : m.border;
+            return `<span style="background:${bg};color:${color};border:1px solid ${border};padding:2px 10px;border-radius:999px;font-size:11px;font-weight:600;white-space:nowrap">${m.label}</span>`;
         }
 
         function renderTable(students, syncDone) {
