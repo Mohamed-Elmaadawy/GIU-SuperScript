@@ -82,6 +82,27 @@
         return future.length ? future[0] : null;
     }
 
+    function saveCache(sessions) {
+        const payload = {
+            fetchedAt: Date.now(),
+            sessions: sessions.map(s => ({ ...s, start: s.start.toISOString(), end: s.end.toISOString() })),
+        };
+        try { localStorage.setItem(CACHE_KEY, JSON.stringify(payload)); } catch { /* quota */ }
+    }
+
+    function loadCache() {
+        try {
+            const raw = JSON.parse(localStorage.getItem(CACHE_KEY));
+            if (!raw || !Array.isArray(raw.sessions)) return null;
+            raw.sessions = raw.sessions.map(s => ({ ...s, start: new Date(s.start), end: new Date(s.end) }));
+            return raw;
+        } catch { return null; }
+    }
+
+    function isStale(fetchedAt) {
+        return !fetchedAt || (Date.now() - fetchedAt) > TTL_MS;
+    }
+
     // ── test hook (extended as functions are added) ──
-    window.__giuProctorReminder = { parseExamString, parseSessions, pickNext };
+    window.__giuProctorReminder = { parseExamString, parseSessions, pickNext, loadCache, saveCache, isStale };
 })();
