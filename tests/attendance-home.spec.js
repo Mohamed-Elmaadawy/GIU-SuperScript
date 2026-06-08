@@ -40,4 +40,28 @@ test.describe('GIU Attendance Home Summary', () => {
         const ok = await page.evaluate(() => window.__giuAttHome && window.__giuAttHome.isHomePage());
         expect(ok).toBe(true);
     });
+
+    test('pickGateOption picks "Gates", not "HRSystem"', async ({ page }) => {
+        await setup(page);
+        const val = await page.evaluate(() => {
+            const sel = document.createElement('select');
+            sel.innerHTML = `
+                <option value="">[Select]</option>
+                <option value="5">SR-00005.Gate Attendance:My User: x - HRSystem</option>
+                <option value="866">SR-00866.Gate Attendance:My User: x - Gates</option>`;
+            const opt = window.__giuAttHome.pickGateOption(sel);
+            return opt ? opt.value : null;
+        });
+        expect(val).toBe('866');
+    });
+
+    test('pickGateOption returns null when no gate report exists', async ({ page }) => {
+        await setup(page);
+        const res = await page.evaluate(() => {
+            const sel = document.createElement('select');
+            sel.innerHTML = `<option value="">[Select]</option><option value="1">SR-1.Advising:Semester Hours</option>`;
+            return window.__giuAttHome.pickGateOption(sel);
+        });
+        expect(res).toBeNull();
+    });
 });

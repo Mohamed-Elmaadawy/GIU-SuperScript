@@ -6397,6 +6397,17 @@
                 maybeStartOnboardingGuide();
             }
 
+            function pickGateOption(selectEl) {
+                if (!selectEl) return null;
+                const opts = Array.from(selectEl.options || []);
+                return opts.find(function (o) {
+                    return o.value &&
+                        /gate attendance/i.test(o.text) &&
+                        /\bgates\b/i.test(o.text) &&
+                        !/hrsystem/i.test(o.text);
+                }) || null;
+            }
+
             function bootHome() {
                 if (!isHomePage()) return;
                 // implemented in later tasks
@@ -6405,6 +6416,7 @@
             window.__giuAttHome = {
                 isHomePage,
                 getAttendanceRows,
+                pickGateOption,
             };
 
             try {
