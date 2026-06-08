@@ -133,7 +133,7 @@ test.describe('GIU Proctoring Reminder', () => {
         expect((ics.match(/BEGIN:VALARM/g) || []).length).toBe(10); // 2 per event
         expect(ics).toContain('TRIGGER:-P1D');
         expect(ics).toContain('TRIGGER:-PT1H');
-        expect(ics).toContain('SUMMARY:Proctoring: BSAD409 Applied Statistics');
+        expect(ics).toContain('SUMMARY:Supervising: BSAD409 Applied Statistics'); // type "Supervisor" → "Supervising"
         // Jun 8 2026 8:30 local Africa/Cairo (UTC+3 in summer) → 05:30Z
         expect(ics).toMatch(/DTSTART:20260608T0[0-9]{5}Z/);
     });
@@ -158,7 +158,7 @@ test.describe('GIU Proctoring Reminder', () => {
             return api.googleCalUrl(api.parseSessions(doc)[0]);
         }, timetableHtml);
         expect(url).toContain('https://calendar.google.com/calendar/render?action=TEMPLATE');
-        expect(url).toContain('text=Proctoring%3A%20BSAD409');
+        expect(url).toContain('text=Supervising%3A%20BSAD409');
         expect(url).toMatch(/dates=20260608T0[0-9]{5}Z%2F20260608T0[0-9]{5}Z/);
         expect(url).toContain('location=');
     });
@@ -180,7 +180,7 @@ test.describe('GIU Proctoring Reminder', () => {
     test('widget renders the next session after background fetch', async ({ page }) => {
         await setup(page);
         await expect(page.locator('#gius-pr-widget')).toBeVisible({ timeout: 5000 });
-        await expect(page.locator('#gius-pr-next')).toContainText('Proctoring', { timeout: 5000 });
+        await expect(page.locator('#gius-pr-next')).toContainText('Supervising', { timeout: 5000 });
         // soonest future relative to real "now" (fixture has Jun 2026 dates)
         await expect(page.locator('#gius-pr-next')).toContainText('Hall');
     });
