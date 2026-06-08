@@ -348,6 +348,12 @@ https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 4. Use the export buttons next to any session to add it to your calendar or send yourself a reminder
 5. Click **Download all** to download all upcoming sessions in one calendar file
 
+**Empty state** (no upcoming proctoring):
+
+| Light | Dark |
+|---|---|
+| ![Empty state light](screenshots/proctoring-reminder-empty.png) | ![Empty state dark](screenshots/proctoring-reminder-empty-dark.png) |
+
 ---
 
 ## Requirements
