@@ -10,8 +10,9 @@ const scriptSrc = fs.readFileSync(
     path.join(__dirname, '..', 'scripts', 'GIU Proctoring Reminder.js'),
     'utf8'
 );
-const homeHtml      = fix('home.html');
-const timetableHtml = fix('timetable.html');
+const homeHtml          = fix('home.html');
+const timetableHtml     = fix('timetable.html');
+const timetableEmptyHtml = fix('timetable-empty.html');
 
 // Route Home + timetable to fixtures, inject script, return the API hook.
 async function setup(page, { timetable = timetableHtml } = {}) {
@@ -195,9 +196,14 @@ test.describe('GIU Proctoring Reminder', () => {
     });
 
     test('empty timetable shows empty state', async ({ page }) => {
-        const empty = homeHtml; // no timetable tables present
-        await setup(page, { timetable: empty });
+        await setup(page, { timetable: timetableEmptyHtml }); // tables present, no data rows
         await expect(page.locator('#gius-pr-widget')).toContainText('No upcoming proctoring', { timeout: 5000 });
+    });
+
+    test('login redirect shows error and retry', async ({ page }) => {
+        await setup(page, { timetable: homeHtml }); // no timetable tables → login redirect
+        await expect(page.locator('#gius-pr-widget')).toContainText("Couldn't load schedule", { timeout: 5000 });
+        await expect(page.locator('#gius-pr-retry')).toBeVisible();
     });
 
     test('next session shows three export buttons', async ({ page }) => {
