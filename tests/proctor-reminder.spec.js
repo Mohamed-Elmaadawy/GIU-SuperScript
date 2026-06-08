@@ -185,6 +185,18 @@ test.describe('GIU Proctoring Reminder', () => {
         await expect(page.locator('#gius-pr-next')).toContainText('Hall');
     });
 
+    test('widget renders directly after the Target List block', async ({ page }) => {
+        await setup(page);
+        await expect(page.locator('#gius-pr-widget')).toBeVisible({ timeout: 5000 });
+        // widget must be the immediate next sibling of #MainContent_div_grid (Target List)
+        const isAfterTargetList = await page.evaluate(() =>
+            document.getElementById('MainContent_div_grid')?.nextElementSibling?.id === 'gius-pr-widget'
+        );
+        expect(isAfterTargetList).toBe(true);
+        // no "Own" badge is rendered (script shows only the user's own schedule)
+        await expect(page.locator('#gius-pr-widget')).not.toContainText('Own');
+    });
+
     test('widget lists all upcoming sessions on expand', async ({ page }) => {
         await setup(page);
         await expect(page.locator('#gius-pr-widget')).toBeVisible({ timeout: 5000 });
