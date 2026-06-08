@@ -47,6 +47,16 @@
             const DEFAULT_RAMADAN_END = "2026-03-19";
 
             const PAGE_PATH = "/GIUb/EXT/SwiftReports_m.aspx";
+            const HOME_PATH = "/giub/intstaff/home.aspx";
+            const REPORT_URL = "https://portal.giu-uni.de/GIUb/EXT/SwiftReports_m.aspx";
+            const HOME_CACHE_KEY = "giuAttendanceHomeV1";
+            const HOME_IFRAME_TIMEOUT_MS = 25000;
+
+            function isHomePage() {
+                const p = (location.pathname || "").replace(/\/+$/, "").toLowerCase();
+                return p === HOME_PATH;
+            }
+
             const REQUIRED_QUERY_PARAMS = {
                 swiftreportid: "866",
                 executereport: "1"
@@ -4479,8 +4489,9 @@
             //  DOM / Table Parsing
             // ═══════════════════════════════════════════════════════════
 
-            function getAttendanceRows() {
-                const table = document.getElementById("MainContent_DG_SwiftReport");
+            function getAttendanceRows(root) {
+                const scope = root || document;
+                const table = scope.getElementById("MainContent_DG_SwiftReport");
                 if (!table) return [];
 
                 const rows = Array.from(table.rows || []);
@@ -6386,8 +6397,23 @@
                 maybeStartOnboardingGuide();
             }
 
+            function bootHome() {
+                if (!isHomePage()) return;
+                // implemented in later tasks
+            }
+
+            window.__giuAttHome = {
+                isHomePage,
+                getAttendanceRows,
+            };
+
             try {
-                renderEnhancedUI();
+                // window.__giuAttDisableAutoRun lets tests inject the script and drive
+                // functions manually without the page-detection auto-run firing.
+                if (!window.__giuAttDisableAutoRun) {
+                    renderEnhancedUI();
+                    bootHome();
+                }
             } catch (err) {
                 console.log("Enhanced attendance script error:", err.message);
             }
