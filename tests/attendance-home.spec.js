@@ -64,4 +64,40 @@ test.describe('GIU Attendance Home Summary', () => {
         });
         expect(res).toBeNull();
     });
+
+    test('computeCurrentMonthSummary returns the latest period with present-day count', async ({ page }) => {
+        await setup(page);
+        const r = await page.evaluate(() => {
+            const doc = new DOMParser().parseFromString(`
+                <table id="MainContent_DG_SwiftReport">
+                  <tr><td>Serial</td><td>Day</td><td>FirstIn</td><td>LastOut</td><td>Duration</td></tr>
+                  <tr><td>1</td><td>2030-12-11</td><td>8:05:00 AM</td><td>4:05:00 PM</td><td>08:00:00</td></tr>
+                  <tr><td>2</td><td>2030-12-14</td><td>8:00:00 AM</td><td>4:00:00 PM</td><td>08:00:00</td></tr>
+                  <tr><td>3</td><td>2030-12-15</td><td>8:10:00 AM</td><td>4:10:00 PM</td><td>08:00:00</td></tr>
+                  <tr><td>4</td><td>2030-12-16</td><td>8:00:00 AM</td><td>4:00:00 PM</td><td>08:00:00</td></tr>
+                </table>`, 'text/html');
+            const rows = window.__giuAttHome.getAttendanceRows(doc);
+            const s = window.__giuAttHome.computeCurrentMonthSummary(rows);
+            return {
+                empty: !!s.empty,
+                label: s.label,
+                presentDays: s.stats && s.stats.presentDays,
+                hasActual: !!(s.stats && s.stats.actualHM),
+                hasBalance: !!(s.stats && s.stats.balanceHM),
+                absentIsArray: Array.isArray(s.stats && s.stats.absentDayDetails),
+            };
+        });
+        expect(r.empty).toBe(false);
+        expect(typeof r.label).toBe('string');
+        expect(r.presentDays).toBe(4);
+        expect(r.hasActual).toBe(true);
+        expect(r.hasBalance).toBe(true);
+        expect(r.absentIsArray).toBe(true);
+    });
+
+    test('computeCurrentMonthSummary returns empty for no rows', async ({ page }) => {
+        await setup(page);
+        const empty = await page.evaluate(() => window.__giuAttHome.computeCurrentMonthSummary([]).empty);
+        expect(empty).toBe(true);
+    });
 });
