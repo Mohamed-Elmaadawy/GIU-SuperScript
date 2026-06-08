@@ -77,6 +77,11 @@
         return all.sort((a, b) => a.start - b.start);
     }
 
+    function pickNext(sessions, now) {
+        const future = sessions.filter(s => s.start >= now).sort((a, b) => a.start - b.start);
+        return future.length ? future[0] : null;
+    }
+
     // ── test hook (extended as functions are added) ──
-    window.__giuProctorReminder = { parseExamString, parseSessions };
+    window.__giuProctorReminder = { parseExamString, parseSessions, pickNext };
 })();

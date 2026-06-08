@@ -65,4 +65,25 @@ test.describe('GIU Proctoring Reminder', () => {
         expect(r.courseCode).toBe('BSAD409');
         expect(r.examName).toBe('Applied Statistics');
     });
+
+    test('pickNext returns the soonest future session', async ({ page }) => {
+        await setup(page);
+        const code = await page.evaluate((html) => {
+            const doc = new DOMParser().parseFromString(html, 'text/html');
+            const sessions = window.__giuProctorReminder.parseSessions(doc);
+            const now = new Date('2026-06-10T00:00:00');
+            return window.__giuProctorReminder.pickNext(sessions, now).courseCode;
+        }, timetableHtml);
+        expect(code).toBe('MATH203'); // Jun 16 — first after Jun 10
+    });
+
+    test('pickNext returns null when all sessions are past', async ({ page }) => {
+        await setup(page);
+        const res = await page.evaluate((html) => {
+            const doc = new DOMParser().parseFromString(html, 'text/html');
+            const sessions = window.__giuProctorReminder.parseSessions(doc);
+            return window.__giuProctorReminder.pickNext(sessions, new Date('2027-01-01T00:00:00'));
+        }, timetableHtml);
+        expect(res).toBeNull();
+    });
 });
