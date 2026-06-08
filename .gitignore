@@ -12,6 +12,12 @@ scripts/GIU Proctor Schedule Aggregator.js
 !tests/
 !tests/**
 
+# Aggregator test files (kept untracked)
+tests/proctor-aggregator.spec.js
+tests/fixtures/dept-response.html
+tests/fixtures/exchange-page.html
+tests/fixtures/proctor-response.html
+
 # README screenshots
 !screenshots/
 !screenshots/*
