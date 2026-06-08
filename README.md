@@ -312,6 +312,37 @@ https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendances
 
 ---
 
+### 8. GIU Proctoring Reminder
+
+**File:** `GIU Proctoring Reminder.js` | **Version:** 1.0 | **Author:** Mo.Elmaadawy
+
+Shows your next proctoring session on the portal home page and exports reminders to `.ics`, Google Calendar, or email. Fetches your timetable in the background, caches it for 6 hours, and renders a dark-mode-aware widget above the home page content.
+
+**Target page:**
+```
+https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
+```
+
+**Features:**
+
+- **Next session at a glance** — displays course code, exam name, hall, control room, and a relative countdown (e.g. "in 3 days")
+- **Own / Covering badge** — distinguishes sessions from your own timetable vs. cover duties
+- **All upcoming list** — expand to see every future proctoring duty in chronological order
+- **Export per session** — download `.ics`, open in Google Calendar, or send a reminder email for any individual session
+- **Export all** — download a single `.ics` file containing all upcoming sessions with dual alarms (1 day and 1 hour before)
+- **6-hour cache** — schedule fetched once and cached in `localStorage`; stale data shown with an "offline cache" label until refresh
+- **Dark-mode aware** — widget uses Catppuccin Mocha colours when dark mode is active
+
+**Usage:**
+
+1. Navigate to the GIU staff portal Home page
+2. The widget appears automatically above the page content
+3. Click **All upcoming** to expand the full session list
+4. Use the export buttons next to any session to add it to your calendar or send yourself a reminder
+5. Click **⬇ All (.ics)** to download all upcoming sessions in one calendar file
+
+---
+
 ## Requirements
 
 - Tampermonkey v4.x or later
@@ -331,3 +362,4 @@ https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendances
 | GIU Manage Group Grades | Mo.Elmaadawy |
 | GIU Proctor Schedule Aggregator | Mo.Elmaadawy |
 | GIU Student Attendance Group Report | Mo.Elmaadawy |
+| GIU Proctoring Reminder | Mo.Elmaadawy |
