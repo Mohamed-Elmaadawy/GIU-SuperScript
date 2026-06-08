@@ -169,6 +169,47 @@
         return `mailto:?${p.toString().replace(/\+/g, '%20')}`;
     }
 
+    function downloadICS(sessions, filename) {
+        const blob = new Blob([buildICS(sessions)], { type: 'text/calendar;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = filename;
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+
+    function exportButtonsHTML(s) {
+        return `
+            <button class="gius-pr-act gius-pr-ics" title="Download .ics">📅 .ics</button>
+            <a class="gius-pr-act gius-pr-gcal" target="_blank" rel="noopener" href="${googleCalUrl(s)}" title="Google Calendar">G Cal</a>
+            <a class="gius-pr-act gius-pr-mail" href="${mailtoUrl(s)}" title="Email reminder">✉ Email</a>`;
+    }
+
+    function wireExports(host) {
+        const next = host._next;
+        const sessions = host._sessions;
+
+        const nextActions = host.querySelector('#gius-pr-next .gius-pr-actions');
+        if (nextActions && next) {
+            nextActions.innerHTML = exportButtonsHTML(next) +
+                `<button id="gius-pr-ics-all" class="gius-pr-act" title="Download all upcoming">⬇ All (.ics)</button>`;
+            nextActions.querySelector('.gius-pr-ics').addEventListener('click', () =>
+                downloadICS(next, `proctoring-${next.courseCode}.ics`));
+            nextActions.querySelector('#gius-pr-ics-all').addEventListener('click', () =>
+                downloadICS(sessions, 'proctoring-all.ics'));
+        }
+
+        host.querySelectorAll('.gius-pr-row').forEach(row => {
+            const idx = Number(row.dataset.idx);
+            const s = sessions[idx];
+            const act = row.querySelector('.gius-pr-actions');
+            if (!s || !act) return;
+            act.innerHTML = exportButtonsHTML(s);
+            act.querySelector('.gius-pr-ics').addEventListener('click', () =>
+                downloadICS(s, `proctoring-${s.courseCode}.ics`));
+        });
+    }
+
     async function fetchTimetable() {
         const resp = await fetch(TIMETABLE_URL, { credentials: 'include' });
         if (!resp.ok) throw new Error('HTTP ' + resp.status);
