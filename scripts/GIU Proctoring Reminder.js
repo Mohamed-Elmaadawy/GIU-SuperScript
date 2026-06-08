@@ -155,7 +155,7 @@
     function mailtoUrl(s) {
         const subject = `Proctoring reminder: ${s.courseCode} ${s.examName}`.trim();
         const body = [
-            `You have a proctoring duty${s.role === 'cover' ? ' (covering for a colleague)' : ''}.`,
+            `I have a proctoring duty${s.role === 'cover' ? ' (covering for a colleague)' : ''}.`,
             ``,
             `Course:  ${s.courseCode} ${s.examName}`,
             `Program: ${s.program}`,
@@ -163,8 +163,6 @@
             `Hall:    ${s.hall}`,
             `Control: ${s.controlRoom}`,
             `Role:    ${s.type}`,
-            ``,
-            `Set reminders 1 day and 1 hour before.`,
         ].join('\n');
         const p = new URLSearchParams({ subject, body });
         return `mailto:?${p.toString().replace(/\+/g, '%20')}`;
