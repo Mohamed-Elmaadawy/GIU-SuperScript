@@ -206,9 +206,10 @@ test.describe('GIU Proctoring Reminder', () => {
         await expect(page.locator('.gius-pr-next-head')).toContainText('2 duties');
         // end time present as a range
         await expect(cards.first().locator('.gius-pr-next-time')).toContainText('–');
-        // Supervisor card shows Control Room; Observer card does not
-        await expect(cards.filter({ hasText: 'Supervisor' })).toContainText('Control Room');
-        await expect(cards.filter({ hasText: 'Observer' })).not.toContainText('Control Room');
+        // Supervisor duty (BSAD409) shows Control Room; non-supervisor (MATH203) does not. Role text itself is not shown.
+        await expect(cards.filter({ hasText: 'BSAD409' })).toContainText('Control Room');
+        await expect(cards.filter({ hasText: 'MATH203' })).not.toContainText('Control Room');
+        await expect(page.locator('#gius-pr-next')).not.toContainText('Observer');
     });
 
     test('widget lists all upcoming sessions on expand', async ({ page }) => {
