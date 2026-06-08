@@ -148,4 +148,30 @@ test.describe('GIU Proctoring Reminder', () => {
         }, timetableHtml);
         expect(n).toBe(1);
     });
+
+    test('googleCalUrl encodes the event with a date range', async ({ page }) => {
+        await setup(page);
+        const url = await page.evaluate((html) => {
+            const api = window.__giuProctorReminder;
+            const doc = new DOMParser().parseFromString(html, 'text/html');
+            return api.googleCalUrl(api.parseSessions(doc)[0]);
+        }, timetableHtml);
+        expect(url).toContain('https://calendar.google.com/calendar/render?action=TEMPLATE');
+        expect(url).toContain('text=Proctoring%3A%20BSAD409');
+        expect(url).toMatch(/dates=20260608T0[0-9]{5}Z%2F20260608T0[0-9]{5}Z/);
+        expect(url).toContain('location=');
+    });
+
+    test('mailtoUrl builds a reminder email', async ({ page }) => {
+        await setup(page);
+        const url = await page.evaluate((html) => {
+            const api = window.__giuProctorReminder;
+            const doc = new DOMParser().parseFromString(html, 'text/html');
+            return api.mailtoUrl(api.parseSessions(doc)[0]);
+        }, timetableHtml);
+        expect(url.startsWith('mailto:?')).toBe(true);
+        expect(url).toContain('subject=');
+        expect(url).toContain('BSAD409');
+        expect(url).toContain('body=');
+    });
 });
