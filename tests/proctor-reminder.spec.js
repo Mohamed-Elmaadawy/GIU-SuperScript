@@ -245,6 +245,32 @@ test.describe('GIU Proctoring Reminder', () => {
         await expect(page.locator('#gius-pr-next')).toContainText('TEST101');
     });
 
+    test('expanded "Remaining exams" survives a re-render', async ({ page }) => {
+        await setup(page);
+        await expect(page.locator('#gius-pr-widget')).toBeVisible({ timeout: 5000 });
+        await page.locator('#gius-pr-toggle-all').click();
+        await expect(page.locator('#gius-pr-all')).toHaveClass(/gius-pr-expanded/);
+        // a background re-render (e.g. fetch completing) must not collapse it
+        await page.evaluate(() => window.__giuProctorReminder._rerender());
+        await expect(page.locator('#gius-pr-toggle-all')).toHaveAttribute('aria-expanded', 'true');
+        await expect(page.locator('#gius-pr-all')).toHaveClass(/gius-pr-expanded/);
+    });
+
+    test('Download all is hidden when only one upcoming session', async ({ page }) => {
+        const html = `<!DOCTYPE html><html><body><form action="./ViewTimeTable_m.aspx">
+            <table id="MainContent_tmTblDg"><tbody>
+            <tr><td>Exam</td><td>Hall</td><td>Start</td><td>End</td><td>Type</td><td>Control Room</td></tr>
+            <tr><td>x ---&gt; GIU-Cairo.Engineering 1st - SOLO101 Only Exam</td><td>H9</td><td>12/1/2030 9:00:00 AM</td><td>12/1/2030 11:00:00 AM</td><td>Supervisor</td><td>S.9</td></tr>
+            </tbody></table>
+            <table id="MainContent_coverDG"><tbody>
+            <tr><td>Exam</td><td>Hall</td><td>Start</td><td>End</td><td>Type</td><td>Control Room</td></tr>
+            </tbody></table></form></body></html>`;
+        await setup(page, { timetable: html });
+        await expect(page.locator('#gius-pr-next')).toContainText('SOLO101', { timeout: 5000 });
+        await expect(page.locator('#gius-pr-ics-all')).toHaveCount(0); // no "Download all"
+        await expect(page.locator('#gius-pr-toggle-all')).toHaveCount(0); // nothing remaining
+    });
+
     test('widget adapts to GIU dark mode (html.gius-dark)', async ({ page }) => {
         await setup(page);
         await expect(page.locator('#gius-pr-widget')).toBeVisible({ timeout: 5000 });
