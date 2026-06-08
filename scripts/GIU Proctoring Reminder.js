@@ -3,7 +3,7 @@
 // @description Shows your next proctoring session on the portal home page and exports reminders to calendar/email
 // @match       https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 // @namespace   ramin0
-// @version     1.3
+// @version     1.4
 // @author      Mo.Elmaadawy
 // @icon        data:image/png;base64,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
 // @run-at      document-idle
@@ -147,6 +147,12 @@
     function fmtHuman(d) {
         return d.toLocaleString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
     }
+    function fmtTimeOnly(d) {
+        return d.toLocaleString('en-GB', { hour: '2-digit', minute: '2-digit' });
+    }
+    function fmtDayLabel(d) {
+        return d.toLocaleString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+    }
     function googleCalUrl(s) {
         const text = `${dutyLabel(s)}: ${s.courseCode} ${s.examName}`.trim();
         const dates = `${icsDate(s.start)}/${icsDate(s.end)}`;
@@ -188,28 +194,22 @@
     }
 
     function wireExports(host) {
-        const next = host._next;
         const sessions = host._sessions;
 
-        const nextActions = host.querySelector('#gius-pr-next .gius-pr-actions');
-        if (nextActions && next) {
-            nextActions.innerHTML = exportButtonsHTML(next) +
-                `<button type="button" id="gius-pr-ics-all" class="gius-pr-act" title="Download all upcoming as .ics">Download all</button>`;
-            nextActions.querySelector('.gius-pr-ics').addEventListener('click', () =>
-                downloadICS(next, `proctoring-${next.courseCode}.ics`));
-            nextActions.querySelector('#gius-pr-ics-all').addEventListener('click', () =>
-                downloadICS(sessions, 'proctoring-all.ics'));
-        }
-
-        host.querySelectorAll('.gius-pr-row').forEach(row => {
-            const idx = Number(row.dataset.idx);
+        // Per-session export buttons for the next-day cards and the all-upcoming rows.
+        host.querySelectorAll('.gius-pr-next-card, .gius-pr-row').forEach(item => {
+            const idx = Number(item.dataset.idx);
             const s = sessions[idx];
-            const act = row.querySelector('.gius-pr-actions');
+            const act = item.querySelector('.gius-pr-actions');
             if (!s || !act) return;
             act.innerHTML = exportButtonsHTML(s);
             act.querySelector('.gius-pr-ics').addEventListener('click', () =>
                 downloadICS(s, `proctoring-${s.courseCode}.ics`));
         });
+
+        // "Download all" → every upcoming session in one file.
+        const allBtn = host.querySelector('#gius-pr-ics-all');
+        if (allBtn) allBtn.addEventListener('click', () => downloadICS(sessions, 'proctoring-all.ics'));
     }
 
     async function fetchTimetable() {
@@ -266,12 +266,24 @@
             ? '<span class="gius-pr-badge gius-pr-badge-cover">Covering</span>'
             : '';
 
+        // All duties sharing the next session's calendar day.
+        const nextDay = upcoming.filter(s => s.start.toDateString() === next.start.toDateString());
+
+        const locLine = s => `Hall ${s.hall}${s.type === 'Supervisor' ? ` · Control Room ${s.controlRoom}` : ''} · ${s.type}`;
+
+        const nextCard = s => `
+            <div class="gius-pr-next-card" data-idx="${upcoming.indexOf(s)}">
+                <div class="gius-pr-next-title">${dutyLabel(s)}: ${s.courseCode} ${s.examName} ${badge(s)}</div>
+                <div class="gius-pr-next-time">${fmtHuman(s.start)} – ${fmtTimeOnly(s.end)}</div>
+                <div class="gius-pr-meta">${locLine(s)}</div>
+                <div class="gius-pr-actions"></div>
+            </div>`;
+
         const nextHtml = `
             <div id="gius-pr-next" class="gius-pr-next">
-                <div class="gius-pr-title">${dutyLabel(next)}: ${next.courseCode} ${next.examName} ${badge(next)}</div>
-                <div class="gius-pr-meta">${fmtHuman(next.start)} · <b>${relTime(next.start, now)}</b></div>
-                <div class="gius-pr-meta">Hall ${next.hall} · Control Room ${next.controlRoom} · ${next.type}</div>
-                <div class="gius-pr-actions" data-idx="next"></div>
+                <div class="gius-pr-next-head">${fmtDayLabel(next.start)} · <b>${relTime(next.start, now)}</b>${nextDay.length > 1 ? ` · ${nextDay.length} duties` : ''}</div>
+                ${nextDay.map(nextCard).join('')}
+                <button type="button" id="gius-pr-ics-all" class="gius-pr-act gius-pr-act-all" title="Download all upcoming as .ics">Download all</button>
             </div>`;
 
         const listHtml = `
@@ -299,9 +311,7 @@
             toggleBtn.classList.toggle('gius-pr-toggle-open', open);
         });
 
-        // export buttons wired in Task 8
         host._sessions = upcoming;
-        host._next = next;
         wireExports(host);
     }
 
@@ -314,7 +324,16 @@
             .gius-pr-widget *{box-sizing:border-box;}
             .gius-pr-head{font-weight:700;font-size:16px;margin-bottom:12px;}
             .gius-pr-stale{color:#b8860b;font-weight:600;font-size:12px;}
-            .gius-pr-next{background:#f5f5fa;border-radius:10px;padding:12px 14px;margin-bottom:10px;}
+            .gius-pr-next{background:#eef2ff;border:1px solid #d7ddff;border-radius:12px;
+                padding:14px;margin-bottom:14px;}
+            .gius-pr-next-head{font-size:13px;font-weight:600;color:#4338ca;
+                text-transform:uppercase;letter-spacing:.03em;margin-bottom:10px;}
+            .gius-pr-next-card{background:#ffffff;border-radius:10px;padding:14px 16px;
+                box-shadow:0 1px 4px rgba(49,46,129,.08);}
+            .gius-pr-next-card + .gius-pr-next-card{margin-top:10px;}
+            .gius-pr-next-title{font-size:17px;font-weight:700;line-height:1.3;margin-bottom:6px;}
+            .gius-pr-next-time{font-size:14px;font-weight:600;color:#3730a3;margin-bottom:4px;}
+            .gius-pr-act-all{margin-top:12px;}
             .gius-pr-title{font-weight:600;margin-bottom:4px;}
             .gius-pr-meta{font-size:13px;opacity:.85;margin:2px 0;}
             .gius-pr-badge{display:inline-block;vertical-align:middle;line-height:1;font-size:11px;font-weight:700;
