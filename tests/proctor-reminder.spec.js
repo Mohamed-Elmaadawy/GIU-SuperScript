@@ -215,11 +215,34 @@ test.describe('GIU Proctoring Reminder', () => {
     test('widget lists all upcoming sessions on expand', async ({ page }) => {
         await setup(page);
         await expect(page.locator('#gius-pr-widget')).toBeVisible({ timeout: 5000 });
-        await page.locator('#gius-pr-toggle-all').click();
+        const toggle = page.locator('#gius-pr-toggle-all');
+        await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+        await toggle.click();
+        await expect(toggle).toHaveAttribute('aria-expanded', 'true');
         const rows = page.locator('.gius-pr-row');
         await expect(rows.first()).toBeVisible();
         // cover row carries a Covering badge
         await expect(page.locator('.gius-pr-badge-cover')).toHaveCount(1);
+    });
+
+    test('an in-progress duty is shown as ongoing', async ({ page }) => {
+        const fmt = ms => new Date(ms).toLocaleString('en-US', { hour12: true }).replace(',', '');
+        const row = (startMs, endMs, code, name, hall) =>
+            `<tr><td>x ---&gt; GIU-Cairo.Engineering 1st - ${code} ${name}</td><td>${hall}</td><td>${fmt(startMs)}</td><td>${fmt(endMs)}</td><td>Supervisor</td><td>S.1</td></tr>`;
+        const now = Date.now();
+        const html = `<!DOCTYPE html><html><body><form action="./ViewTimeTable_m.aspx">
+            <table id="MainContent_tmTblDg"><tbody>
+            <tr><td>Exam</td><td>Hall</td><td>Start</td><td>End</td><td>Type</td><td>Control Room</td></tr>
+            ${row(now - 3600000, now + 3600000, 'TEST101', 'Live Exam', 'H1')}
+            ${row(now + 2 * 86400000, now + 2 * 86400000 + 3600000, 'TEST202', 'Later Exam', 'H2')}
+            </tbody></table>
+            <table id="MainContent_coverDG"><tbody>
+            <tr><td>Exam</td><td>Hall</td><td>Start</td><td>End</td><td>Type</td><td>Control Room</td></tr>
+            </tbody></table></form></body></html>`;
+        await setup(page, { timetable: html });
+        await expect(page.locator('#gius-pr-widget')).toBeVisible({ timeout: 5000 });
+        await expect(page.locator('.gius-pr-next-head')).toContainText('ongoing');
+        await expect(page.locator('#gius-pr-next')).toContainText('TEST101');
     });
 
     test('empty timetable shows empty state', async ({ page }) => {
