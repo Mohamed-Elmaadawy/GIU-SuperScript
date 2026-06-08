@@ -226,4 +226,11 @@ test.describe('GIU Proctoring Reminder', () => {
         const href = await page.locator('#gius-pr-next .gius-pr-gcal').getAttribute('href');
         expect(href).toContain('calendar.google.com');
     });
+
+    test('widget injects its stylesheet', async ({ page }) => {
+        await setup(page);
+        await expect(page.locator('#gius-pr-widget')).toBeVisible({ timeout: 5000 });
+        const hasStyle = await page.evaluate(() => !!document.getElementById('gius-pr-style'));
+        expect(hasStyle).toBe(true);
+    });
 });
