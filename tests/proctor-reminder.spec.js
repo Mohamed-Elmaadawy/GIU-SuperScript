@@ -283,7 +283,8 @@ test.describe('GIU Proctoring Reminder', () => {
 
     test('empty timetable shows empty state', async ({ page }) => {
         await setup(page, { timetable: timetableEmptyHtml }); // tables present, no data rows
-        await expect(page.locator('#gius-pr-widget')).toContainText('No upcoming proctoring', { timeout: 5000 });
+        await expect(page.locator('.gius-pr-empty-state')).toContainText('No proctoring scheduled', { timeout: 5000 });
+        await expect(page.locator('.gius-pr-empty-title')).toContainText("You're all caught up");
     });
 
     test('login redirect shows error and retry', async ({ page }) => {
