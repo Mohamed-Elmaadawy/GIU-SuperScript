@@ -6408,6 +6408,14 @@
                 }) || null;
             }
 
+            function computeCurrentMonthSummary(rows) {
+                const periods = groupRowsByPayrollPeriod(rows || []);
+                if (!periods.length) return { empty: true };
+                const current = periods[periods.length - 1];
+                const stats = buildPeriodStats(current.rows, current.start, current.end);
+                return { label: current.label, stats: stats };
+            }
+
             function bootHome() {
                 if (!isHomePage()) return;
                 // implemented in later tasks
@@ -6417,6 +6425,7 @@
                 isHomePage,
                 getAttendanceRows,
                 pickGateOption,
+                computeCurrentMonthSummary,
             };
 
             try {
