@@ -55,7 +55,7 @@
             if (c.length < 6) continue;
             const start = new Date(c[2].textContent.trim());
             const end = new Date(c[3].textContent.trim());
-            if (isNaN(start.getTime())) continue;
+            if (isNaN(start.getTime()) || isNaN(end.getTime())) continue;
             const { program, courseCode, examName } = parseExamString(c[0].textContent.trim());
             out.push({
                 program, courseCode, examName,
