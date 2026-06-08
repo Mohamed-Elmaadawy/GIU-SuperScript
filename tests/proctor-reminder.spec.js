@@ -271,6 +271,38 @@ test.describe('GIU Proctoring Reminder', () => {
         await expect(page.locator('#gius-pr-toggle-all')).toHaveCount(0); // nothing remaining
     });
 
+    test('ICS folds long content lines to <=75 octets', async ({ page }) => {
+        await setup(page);
+        const ok = await page.evaluate((html) => {
+            const api = window.__giuProctorReminder;
+            const doc = new DOMParser().parseFromString(html, 'text/html');
+            const s = api.parseSessions(doc)[0];
+            s.examName = 'X'.repeat(200); // force a very long SUMMARY/DESCRIPTION
+            const enc = new TextEncoder();
+            return api.buildICS(s).split('\r\n').every(line => enc.encode(line).length <= 75);
+        }, timetableHtml);
+        expect(ok).toBe(true);
+    });
+
+    test('empty course code does not break ICS or links', async ({ page }) => {
+        await setup(page);
+        const r = await page.evaluate((html) => {
+            const api = window.__giuProctorReminder;
+            const doc = new DOMParser().parseFromString(html, 'text/html');
+            const s = api.parseSessions(doc)[0];
+            s.courseCode = '';
+            const ics = api.buildICS(s);
+            return {
+                uid: (ics.match(/UID:([^\r\n]+)/) || [])[1],
+                summary: (ics.match(/SUMMARY:([^\r\n]+)/) || [])[1],
+                gcal: api.googleCalUrl(s),
+            };
+        }, timetableHtml);
+        expect(r.uid).toContain('giu-session-');   // courseCode fallback
+        expect(r.summary).not.toMatch(/\s{2,}/);    // no double space
+        expect(r.gcal).not.toContain('%20%20');
+    });
+
     test('widget adapts to GIU dark mode (html.gius-dark)', async ({ page }) => {
         await setup(page);
         await expect(page.locator('#gius-pr-widget')).toBeVisible({ timeout: 5000 });
