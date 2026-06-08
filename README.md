@@ -314,7 +314,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendances
 
 ### 8. GIU Proctoring Reminder
 
-**File:** `GIU Proctoring Reminder.js` | **Version:** 1.4 | **Author:** Mo.Elmaadawy
+**File:** `GIU Proctoring Reminder.js` | **Version:** 1.5 | **Author:** Mo.Elmaadawy
 
 Shows your next proctoring session on the portal home page and exports reminders to `.ics`, Google Calendar, or email. Fetches your timetable in the background, caches it for 6 hours, and renders a full-width widget directly under the **Target List** block.
 
@@ -331,7 +331,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 - **All duties on that day** — if you have more than one duty on the next session's day, every one is shown
 - **Control room** — shown only for supervisor duties (where it's relevant)
 - **Covering badge** — cover duties (exams you took from a colleague) are tagged "Covering"; your own duties are shown plain
-- **All upcoming list** — expand (animated slide) to see every future proctoring duty in chronological order
+- **All upcoming list** — expand (animated slide) to see every future proctoring duty in chronological order, each with its full start–end time (12-hour AM/PM)
 - **Export per session** — **Download event** (`.ics`), open in **Google Calendar**, or send a reminder **Email** for any individual session
 - **Download all** — one `.ics` file containing all upcoming sessions, each with dual alarms (1 day and 1 hour before)
 - **6-hour cache** — schedule fetched once and cached in `localStorage`; stale data shown with an "offline cache" label until refresh
