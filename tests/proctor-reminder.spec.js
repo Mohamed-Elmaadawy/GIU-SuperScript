@@ -245,6 +245,16 @@ test.describe('GIU Proctoring Reminder', () => {
         await expect(page.locator('#gius-pr-next')).toContainText('TEST101');
     });
 
+    test('widget adapts to GIU dark mode (html.gius-dark)', async ({ page }) => {
+        await setup(page);
+        await expect(page.locator('#gius-pr-widget')).toBeVisible({ timeout: 5000 });
+        const lightBg = await page.evaluate(() => getComputedStyle(document.getElementById('gius-pr-widget')).backgroundColor);
+        expect(lightBg).toBe('rgb(255, 255, 255)'); // #ffffff
+        await page.evaluate(() => document.documentElement.classList.add('gius-dark'));
+        const darkBg = await page.evaluate(() => getComputedStyle(document.getElementById('gius-pr-widget')).backgroundColor);
+        expect(darkBg).toBe('rgb(30, 30, 46)'); // #1e1e2e Catppuccin base
+    });
+
     test('empty timetable shows empty state', async ({ page }) => {
         await setup(page, { timetable: timetableEmptyHtml }); // tables present, no data rows
         await expect(page.locator('#gius-pr-widget')).toContainText('No upcoming proctoring', { timeout: 5000 });
