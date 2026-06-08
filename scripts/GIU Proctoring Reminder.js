@@ -310,7 +310,8 @@
             .gius-pr-next{background:#f5f5fa;border-radius:10px;padding:12px 14px;margin-bottom:10px;}
             .gius-pr-title{font-weight:600;margin-bottom:4px;}
             .gius-pr-meta{font-size:13px;opacity:.85;margin:2px 0;}
-            .gius-pr-badge{font-size:11px;font-weight:700;padding:1px 7px;border-radius:9px;margin-left:6px;}
+            .gius-pr-badge{display:inline-block;vertical-align:middle;line-height:1;font-size:11px;font-weight:700;
+                padding:3px 9px;border-radius:999px;margin-left:6px;white-space:nowrap;}
             .gius-pr-badge-cover{background:#eef2ff;color:#6366f1;border:1px solid #6366f1;}
             .gius-pr-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
             .gius-pr-act{font-size:12px;font-weight:600;padding:4px 10px;border-radius:7px;cursor:pointer;
