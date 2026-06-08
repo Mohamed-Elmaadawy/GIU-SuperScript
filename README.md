@@ -314,7 +314,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendances
 
 ### 8. GIU Proctoring Reminder
 
-**File:** `GIU Proctoring Reminder.js` | **Version:** 1.5 | **Author:** Mo.Elmaadawy
+**File:** `GIU Proctoring Reminder.js` | **Version:** 1.6 | **Author:** Mo.Elmaadawy
 
 Shows your next proctoring session on the portal home page and exports reminders to `.ics`, Google Calendar, or email. Fetches your timetable in the background, caches it for 6 hours, and renders a full-width widget directly under the **Target List** block.
 
@@ -331,7 +331,8 @@ https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 - **All duties on that day** — if you have more than one duty on the next session's day, every one is shown
 - **Control room** — shown only for supervisor duties (where it's relevant)
 - **Covering badge** — cover duties (exams you took from a colleague) are tagged "Covering"; your own duties are shown plain
-- **All upcoming list** — expand (animated slide) to see every future proctoring duty in chronological order, each with its full start–end time (12-hour AM/PM)
+- **Hall-first titles** — each session title leads with the course code and **hall** (where you need to be); the exam name sits on the detail line
+- **Remaining exams** — expand (animated slide) to see the exams left *after* the next session's day, each labelled Supervising/Proctoring with its full start–end time (12-hour AM/PM)
 - **Export per session** — **Download event** (`.ics`), open in **Google Calendar**, or send a reminder **Email** for any individual session
 - **Download all** — one `.ics` file containing all upcoming sessions, each with dual alarms (1 day and 1 hour before)
 - **6-hour cache** — schedule fetched once and cached in `localStorage`; stale data shown with an "offline cache" label until refresh
@@ -340,7 +341,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 
 1. Navigate to the GIU staff portal Home page
 2. The widget appears automatically under the Target List
-3. Click **All upcoming** to expand the full session list
+3. Click **Remaining exams** to expand the list of later sessions
 4. Use the export buttons next to any session to add it to your calendar or send yourself a reminder
 5. Click **Download all** to download all upcoming sessions in one calendar file
 
