@@ -140,6 +140,35 @@
         ].join('\r\n');
     }
 
+    function fmtHuman(d) {
+        return d.toLocaleString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+    }
+    function googleCalUrl(s) {
+        const text = `Proctoring: ${s.courseCode} ${s.examName}`.trim();
+        const dates = `${icsDate(s.start)}/${icsDate(s.end)}`;
+        const details = `${s.type}${s.role === 'cover' ? ' (Covering)' : ''} — ${s.program}\nReminders: 1 day and 1 hour before.`;
+        const location = `Hall ${s.hall}, Control Room ${s.controlRoom}`;
+        const p = new URLSearchParams({ action: 'TEMPLATE', text, dates, details, location });
+        return `https://calendar.google.com/calendar/render?${p.toString().replace(/\+/g, '%20')}`;
+    }
+    function mailtoUrl(s) {
+        const subject = `Proctoring reminder: ${s.courseCode} ${s.examName}`.trim();
+        const body = [
+            `You have a proctoring duty${s.role === 'cover' ? ' (covering for a colleague)' : ''}.`,
+            ``,
+            `Course:  ${s.courseCode} ${s.examName}`,
+            `Program: ${s.program}`,
+            `When:    ${fmtHuman(s.start)} – ${fmtHuman(s.end)}`,
+            `Hall:    ${s.hall}`,
+            `Control: ${s.controlRoom}`,
+            `Role:    ${s.type}`,
+            ``,
+            `Set reminders 1 day and 1 hour before.`,
+        ].join('\n');
+        const p = new URLSearchParams({ subject, body });
+        return `mailto:?${p.toString()}`;
+    }
+
     // ── test hook (extended as functions are added) ──
-    window.__giuProctorReminder = { parseExamString, parseSessions, pickNext, loadCache, saveCache, isStale, buildICS };
+    window.__giuProctorReminder = { parseExamString, parseSessions, pickNext, loadCache, saveCache, isStale, buildICS, googleCalUrl, mailtoUrl };
 })();
