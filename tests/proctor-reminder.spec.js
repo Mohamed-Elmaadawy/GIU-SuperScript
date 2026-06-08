@@ -86,4 +86,35 @@ test.describe('GIU Proctoring Reminder', () => {
         }, timetableHtml);
         expect(res).toBeNull();
     });
+
+    test('saveCache then loadCache round-trips sessions with Date rehydration', async ({ page }) => {
+        await setup(page);
+        const res = await page.evaluate((html) => {
+            const api = window.__giuProctorReminder;
+            const doc = new DOMParser().parseFromString(html, 'text/html');
+            api.saveCache(api.parseSessions(doc));
+            const c = api.loadCache();
+            return {
+                n: c.sessions.length,
+                isDate: c.sessions[0].start instanceof Date,
+                firstCode: c.sessions[0].courseCode,
+                hasTs: typeof c.fetchedAt === 'number',
+            };
+        }, timetableHtml);
+        expect(res.n).toBe(5);
+        expect(res.isDate).toBe(true);
+        expect(res.firstCode).toBe('BSAD409');
+        expect(res.hasTs).toBe(true);
+    });
+
+    test('isStale is false for fresh and true for old timestamps', async ({ page }) => {
+        await setup(page);
+        const res = await page.evaluate(() => {
+            const api = window.__giuProctorReminder;
+            const now = Date.now();
+            return { fresh: api.isStale(now), old: api.isStale(now - 7 * 60 * 60 * 1000) };
+        });
+        expect(res.fresh).toBe(false);
+        expect(res.old).toBe(true);
+    });
 });
