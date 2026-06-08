@@ -103,6 +103,43 @@
         return !fetchedAt || (Date.now() - fetchedAt) > TTL_MS;
     }
 
+    function icsDate(d) {
+        // UTC basic format YYYYMMDDTHHMMSSZ
+        return d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}Z$/, 'Z');
+    }
+    function icsEscape(s) {
+        return String(s).replace(/([,;\\])/g, '\\$1').replace(/\n/g, '\\n');
+    }
+    function sessionUID(s) {
+        return `giu-${s.courseCode}-${icsDate(s.start)}@portal.giu-uni.de`;
+    }
+    function buildVEVENT(s) {
+        const summary = `Proctoring: ${s.courseCode} ${s.examName}`.trim();
+        const loc = `Hall ${s.hall}, Control Room ${s.controlRoom}`;
+        const desc = `${s.type}${s.role === 'cover' ? ' (Covering)' : ''} — ${s.program}`;
+        return [
+            'BEGIN:VEVENT',
+            `UID:${sessionUID(s)}`,
+            `DTSTAMP:${icsDate(new Date())}`,
+            `DTSTART:${icsDate(s.start)}`,
+            `DTEND:${icsDate(s.end)}`,
+            `SUMMARY:${icsEscape(summary)}`,
+            `LOCATION:${icsEscape(loc)}`,
+            `DESCRIPTION:${icsEscape(desc)}`,
+            'BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${icsEscape(summary)}`, 'TRIGGER:-P1D', 'END:VALARM',
+            'BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${icsEscape(summary)}`, 'TRIGGER:-PT1H', 'END:VALARM',
+            'END:VEVENT',
+        ].join('\r\n');
+    }
+    function buildICS(sessionOrList) {
+        const list = Array.isArray(sessionOrList) ? sessionOrList : [sessionOrList];
+        return [
+            'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//GIU SuperScript//Proctoring Reminder//EN',
+            ...list.map(buildVEVENT),
+            'END:VCALENDAR',
+        ].join('\r\n');
+    }
+
     // ── test hook (extended as functions are added) ──
-    window.__giuProctorReminder = { parseExamString, parseSessions, pickNext, loadCache, saveCache, isStale };
+    window.__giuProctorReminder = { parseExamString, parseSessions, pickNext, loadCache, saveCache, isStale, buildICS };
 })();
