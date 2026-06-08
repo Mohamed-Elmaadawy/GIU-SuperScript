@@ -147,7 +147,7 @@
     function googleCalUrl(s) {
         const text = `Proctoring: ${s.courseCode} ${s.examName}`.trim();
         const dates = `${icsDate(s.start)}/${icsDate(s.end)}`;
-        const details = `${s.type}${s.role === 'cover' ? ' (Covering)' : ''} — ${s.program}\nReminders: 1 day and 1 hour before.`;
+        const details = `${s.type}${s.role === 'cover' ? ' (Covering)' : ''} — ${s.program}`;
         const location = `Hall ${s.hall}, Control Room ${s.controlRoom}`;
         const p = new URLSearchParams({ action: 'TEMPLATE', text, dates, details, location });
         return `https://calendar.google.com/calendar/render?${p.toString().replace(/\+/g, '%20')}`;
