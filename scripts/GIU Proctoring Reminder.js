@@ -181,7 +181,7 @@
 
     function exportButtonsHTML(s) {
         return `
-            <button type="button" class="gius-pr-act gius-pr-ics" title="Download .ics">.ics</button>
+            <button type="button" class="gius-pr-act gius-pr-ics" title="Download this event as .ics">Download event</button>
             <a class="gius-pr-act gius-pr-gcal" target="_blank" rel="noopener" href="${googleCalUrl(s)}" title="Google Calendar">Google Calendar</a>
             <a class="gius-pr-act gius-pr-mail" href="${mailtoUrl(s)}" title="Email reminder">Email</a>`;
     }
@@ -193,7 +193,7 @@
         const nextActions = host.querySelector('#gius-pr-next .gius-pr-actions');
         if (nextActions && next) {
             nextActions.innerHTML = exportButtonsHTML(next) +
-                `<button type="button" id="gius-pr-ics-all" class="gius-pr-act" title="Download all upcoming">All (.ics)</button>`;
+                `<button type="button" id="gius-pr-ics-all" class="gius-pr-act" title="Download all upcoming as .ics">Download all</button>`;
             nextActions.querySelector('.gius-pr-ics').addEventListener('click', () =>
                 downloadICS(next, `proctoring-${next.courseCode}.ics`));
             nextActions.querySelector('#gius-pr-ics-all').addEventListener('click', () =>
