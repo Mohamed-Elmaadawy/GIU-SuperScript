@@ -326,7 +326,7 @@
             const sessions = await fetchTimetable();
             saveCache(sessions);
             render(sessions);
-        } catch (e) {
+        } catch {
             if (!cache) {
                 const host = document.getElementById('gius-pr-widget') || (() => {
                     const d = document.createElement('div');
