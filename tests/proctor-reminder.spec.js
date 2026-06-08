@@ -199,4 +199,31 @@ test.describe('GIU Proctoring Reminder', () => {
         await setup(page, { timetable: empty });
         await expect(page.locator('#gius-pr-widget')).toContainText('No upcoming proctoring', { timeout: 5000 });
     });
+
+    test('next session shows three export buttons', async ({ page }) => {
+        await setup(page);
+        await expect(page.locator('#gius-pr-widget')).toBeVisible({ timeout: 5000 });
+        const actions = page.locator('#gius-pr-next .gius-pr-actions');
+        await expect(actions.locator('.gius-pr-ics')).toBeVisible();
+        await expect(actions.locator('.gius-pr-gcal')).toBeVisible();
+        await expect(actions.locator('.gius-pr-mail')).toBeVisible();
+    });
+
+    test('an "Add all to calendar" button exists and triggers a download', async ({ page }) => {
+        await setup(page);
+        await expect(page.locator('#gius-pr-widget')).toBeVisible({ timeout: 5000 });
+        const btn = page.locator('#gius-pr-ics-all');
+        await expect(btn).toBeVisible();
+        const dl = page.waitForEvent('download');
+        await btn.click();
+        const download = await dl;
+        expect(download.suggestedFilename()).toMatch(/proctoring.*\.ics/);
+    });
+
+    test('gcal button has the correct href target', async ({ page }) => {
+        await setup(page);
+        await expect(page.locator('#gius-pr-widget')).toBeVisible({ timeout: 5000 });
+        const href = await page.locator('#gius-pr-next .gius-pr-gcal').getAttribute('href');
+        expect(href).toContain('calendar.google.com');
+    });
 });
