@@ -13,6 +13,7 @@ const scriptSrc = fs.readFileSync(
 const homeHtml          = fix('home.html');
 const timetableHtml     = fix('timetable.html');
 const timetableEmptyHtml = fix('timetable-empty.html');
+const timetableSameDayHtml = fix('timetable-sameday.html');
 
 // Route Home + timetable to fixtures, inject script, return the API hook.
 async function setup(page, { timetable = timetableHtml } = {}) {
@@ -195,6 +196,19 @@ test.describe('GIU Proctoring Reminder', () => {
         expect(isAfterTargetList).toBe(true);
         // no "Own" badge is rendered (script shows only the user's own schedule)
         await expect(page.locator('#gius-pr-widget')).not.toContainText('Own');
+    });
+
+    test('next block shows all duties on the next session day, end time, and conditional control room', async ({ page }) => {
+        await setup(page, { timetable: timetableSameDayHtml }); // two duties on Dec 1 2030
+        await expect(page.locator('#gius-pr-widget')).toBeVisible({ timeout: 5000 });
+        const cards = page.locator('#gius-pr-next .gius-pr-next-card');
+        await expect(cards).toHaveCount(2);
+        await expect(page.locator('.gius-pr-next-head')).toContainText('2 duties');
+        // end time present as a range
+        await expect(cards.first().locator('.gius-pr-next-time')).toContainText('–');
+        // Supervisor card shows Control Room; Observer card does not
+        await expect(cards.filter({ hasText: 'Supervisor' })).toContainText('Control Room');
+        await expect(cards.filter({ hasText: 'Observer' })).not.toContainText('Control Room');
     });
 
     test('widget lists all upcoming sessions on expand', async ({ page }) => {
