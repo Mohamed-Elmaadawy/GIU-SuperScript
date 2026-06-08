@@ -288,7 +288,38 @@
         if (typeof wireExports === 'function') wireExports(host);
     }
 
+    function injectStyles() {
+        if (document.getElementById('gius-pr-style')) return;
+        const dark = matchMedia && matchMedia('(prefers-color-scheme: dark)').matches;
+        const css = `
+            .gius-pr-widget{font-family:inherit;margin:0 0 16px;border-radius:12px;padding:14px 16px;
+                background:${dark ? '#1e1e2e' : '#ffffff'};color:${dark ? '#cdd6f4' : '#1e1e2e'};
+                box-shadow:0 2px 10px rgba(0,0,0,.12);}
+            .gius-pr-head{font-weight:700;font-size:15px;margin-bottom:10px;}
+            .gius-pr-stale{color:#f9e2af;font-weight:600;font-size:12px;}
+            .gius-pr-next{background:${dark ? '#181825' : '#f5f5fa'};border-radius:10px;padding:10px 12px;margin-bottom:8px;}
+            .gius-pr-title{font-weight:600;margin-bottom:4px;}
+            .gius-pr-meta{font-size:13px;opacity:.85;margin:2px 0;}
+            .gius-pr-badge{font-size:11px;font-weight:700;padding:1px 7px;border-radius:9px;margin-left:6px;}
+            .gius-pr-badge-own{background:${dark ? '#313244' : '#e6e9ef'};color:${dark ? '#cdd6f4' : '#4c4f69'};}
+            .gius-pr-badge-cover{background:${dark ? '#1e1e38' : '#eef2ff'};color:#6366f1;border:1px solid #6366f1;}
+            .gius-pr-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+            .gius-pr-act{font-size:12px;font-weight:600;padding:4px 10px;border-radius:7px;cursor:pointer;
+                border:1px solid ${dark ? '#45475a' : '#d0d3dc'};background:transparent;color:inherit;text-decoration:none;}
+            .gius-pr-act:hover{background:${dark ? '#313244' : '#e6e9ef'};}
+            .gius-pr-toggle{margin-top:6px;font-size:13px;font-weight:600;background:transparent;border:none;
+                color:#6366f1;cursor:pointer;padding:4px 0;}
+            .gius-pr-all{margin-top:6px;display:flex;flex-direction:column;gap:8px;}
+            .gius-pr-row{background:${dark ? '#181825' : '#f5f5fa'};border-radius:8px;padding:8px 10px;}
+            .gius-pr-empty{font-size:13px;opacity:.85;}`;
+        const style = document.createElement('style');
+        style.id = 'gius-pr-style';
+        style.textContent = css;
+        document.head.appendChild(style);
+    }
+
     async function boot() {
+        injectStyles();
         const cache = loadCache();
         if (cache) render(cache.sessions, { stale: isStale(cache.fetchedAt) });
         try {
