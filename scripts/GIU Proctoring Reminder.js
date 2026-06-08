@@ -166,7 +166,7 @@
             `Set reminders 1 day and 1 hour before.`,
         ].join('\n');
         const p = new URLSearchParams({ subject, body });
-        return `mailto:?${p.toString()}`;
+        return `mailto:?${p.toString().replace(/\+/g, '%20')}`;
     }
 
     // ── test hook (extended as functions are added) ──

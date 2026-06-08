@@ -173,5 +173,6 @@ test.describe('GIU Proctoring Reminder', () => {
         expect(url).toContain('subject=');
         expect(url).toContain('BSAD409');
         expect(url).toContain('body=');
+        expect(url).not.toContain('+'); // spaces must be %20 in mailto URIs
     });
 });
