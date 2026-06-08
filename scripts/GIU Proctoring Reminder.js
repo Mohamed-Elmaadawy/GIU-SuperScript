@@ -169,6 +169,107 @@
         return `mailto:?${p.toString().replace(/\+/g, '%20')}`;
     }
 
+    async function fetchTimetable() {
+        const resp = await fetch(TIMETABLE_URL, { credentials: 'include' });
+        if (!resp.ok) throw new Error('HTTP ' + resp.status);
+        const html = await resp.text();
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        return parseSessions(doc);
+    }
+
+    function mountPoint() {
+        return document.querySelector('.page-content') ||
+               document.querySelector('[id*=MainContent]') ||
+               document.body;
+    }
+
+    function relTime(d, now) {
+        const ms = d - now;
+        if (ms < 0) return 'now';
+        const day = 86400000, hr = 3600000;
+        if (ms >= day) { const n = Math.round(ms / day); return `in ${n} day${n > 1 ? 's' : ''}`; }
+        const n = Math.max(1, Math.round(ms / hr)); return `in ${n} hour${n > 1 ? 's' : ''}`;
+    }
+
+    function render(sessions, opts = {}) {
+        const now = new Date();
+        const upcoming = sessions.filter(s => s.start >= now).sort((a, b) => a.start - b.start);
+        const next = upcoming[0] || null;
+
+        let host = document.getElementById('gius-pr-widget');
+        if (!host) {
+            host = document.createElement('div');
+            host.id = 'gius-pr-widget';
+            host.className = 'gius-pr-widget';
+            mountPoint().prepend(host);
+        }
+
+        if (!next) {
+            host.innerHTML = `<div class="gius-pr-head">📋 Proctoring</div>
+                <div class="gius-pr-empty">No upcoming proctoring duties${opts.stale ? ' (offline cache)' : ''}.</div>`;
+            return;
+        }
+
+        const badge = s => s.role === 'cover'
+            ? '<span class="gius-pr-badge gius-pr-badge-cover">Covering</span>'
+            : '<span class="gius-pr-badge gius-pr-badge-own">Own</span>';
+
+        const nextHtml = `
+            <div id="gius-pr-next" class="gius-pr-next">
+                <div class="gius-pr-title">Proctoring: ${next.courseCode} ${next.examName} ${badge(next)}</div>
+                <div class="gius-pr-meta">${fmtHuman(next.start)} · <b>${relTime(next.start, now)}</b></div>
+                <div class="gius-pr-meta">Hall ${next.hall} · Control Room ${next.controlRoom} · ${next.type}</div>
+                <div class="gius-pr-actions" data-idx="next"></div>
+            </div>`;
+
+        const listHtml = `
+            <button type="button" id="gius-pr-toggle-all" class="gius-pr-toggle">All upcoming (${upcoming.length})</button>
+            <div id="gius-pr-all" class="gius-pr-all" hidden>
+                ${upcoming.map((s, i) => `
+                    <div class="gius-pr-row" data-idx="${i}">
+                        <div class="gius-pr-title">${s.courseCode} ${s.examName} ${badge(s)}</div>
+                        <div class="gius-pr-meta">${fmtHuman(s.start)} · Hall ${s.hall}</div>
+                        <div class="gius-pr-actions" data-idx="${i}"></div>
+                    </div>`).join('')}
+            </div>`;
+
+        host.innerHTML = `<div class="gius-pr-head">📋 Next Proctoring${opts.stale ? ' · <span class="gius-pr-stale">offline cache</span>' : ''}</div>
+            ${nextHtml}${listHtml}`;
+
+        host.querySelector('#gius-pr-toggle-all').addEventListener('click', () => {
+            const el = host.querySelector('#gius-pr-all');
+            el.hidden = !el.hidden;
+        });
+
+        // export buttons wired in Task 8
+        host._sessions = upcoming;
+        host._next = next;
+        if (typeof wireExports === 'function') wireExports(host);
+    }
+
+    async function boot() {
+        const cache = loadCache();
+        if (cache) render(cache.sessions, { stale: isStale(cache.fetchedAt) });
+        try {
+            const sessions = await fetchTimetable();
+            saveCache(sessions);
+            render(sessions);
+        } catch (e) {
+            if (!cache) {
+                const host = document.getElementById('gius-pr-widget') || (() => {
+                    const d = document.createElement('div');
+                    d.id = 'gius-pr-widget'; d.className = 'gius-pr-widget';
+                    mountPoint().prepend(d); return d;
+                })();
+                host.innerHTML = `<div class="gius-pr-head">📋 Proctoring</div>
+                    <div class="gius-pr-empty">Couldn't load schedule. <button type="button" id="gius-pr-retry" class="gius-pr-toggle">Retry</button></div>`;
+                host.querySelector('#gius-pr-retry').addEventListener('click', boot);
+            }
+        }
+    }
+
+    boot();
+
     // ── test hook (extended as functions are added) ──
     window.__giuProctorReminder = { parseExamString, parseSessions, pickNext, loadCache, saveCache, isStale, buildICS, googleCalUrl, mailtoUrl };
 })();

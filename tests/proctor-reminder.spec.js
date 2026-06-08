@@ -175,4 +175,28 @@ test.describe('GIU Proctoring Reminder', () => {
         expect(url).toContain('body=');
         expect(url).not.toContain('+'); // spaces must be %20 in mailto URIs
     });
+
+    test('widget renders the next session after background fetch', async ({ page }) => {
+        await setup(page);
+        await expect(page.locator('#gius-pr-widget')).toBeVisible({ timeout: 5000 });
+        await expect(page.locator('#gius-pr-next')).toContainText('Proctoring', { timeout: 5000 });
+        // soonest future relative to real "now" (fixture has Jun 2026 dates)
+        await expect(page.locator('#gius-pr-next')).toContainText('Hall');
+    });
+
+    test('widget lists all upcoming sessions on expand', async ({ page }) => {
+        await setup(page);
+        await expect(page.locator('#gius-pr-widget')).toBeVisible({ timeout: 5000 });
+        await page.locator('#gius-pr-toggle-all').click();
+        const rows = page.locator('.gius-pr-row');
+        await expect(rows.first()).toBeVisible();
+        // cover row carries a Covering badge
+        await expect(page.locator('.gius-pr-badge-cover')).toHaveCount(1);
+    });
+
+    test('empty timetable shows empty state', async ({ page }) => {
+        const empty = homeHtml; // no timetable tables present
+        await setup(page, { timetable: empty });
+        await expect(page.locator('#gius-pr-widget')).toContainText('No upcoming proctoring', { timeout: 5000 });
+    });
 });
