@@ -117,4 +117,35 @@ test.describe('GIU Proctoring Reminder', () => {
         expect(res.fresh).toBe(false);
         expect(res.old).toBe(true);
     });
+
+    test('buildICS produces a valid VCALENDAR with one VEVENT per session and two alarms each', async ({ page }) => {
+        await setup(page);
+        const ics = await page.evaluate((html) => {
+            const api = window.__giuProctorReminder;
+            const doc = new DOMParser().parseFromString(html, 'text/html');
+            return api.buildICS(api.parseSessions(doc));
+        }, timetableHtml);
+
+        expect(ics.startsWith('BEGIN:VCALENDAR')).toBe(true);
+        expect(ics.trim().endsWith('END:VCALENDAR')).toBe(true);
+        expect((ics.match(/BEGIN:VEVENT/g) || []).length).toBe(5);
+        expect((ics.match(/BEGIN:VALARM/g) || []).length).toBe(10); // 2 per event
+        expect(ics).toContain('TRIGGER:-P1D');
+        expect(ics).toContain('TRIGGER:-PT1H');
+        expect(ics).toContain('SUMMARY:Proctoring: BSAD409 Applied Statistics');
+        // Jun 8 2026 8:30 local Africa/Cairo (UTC+3 in summer) → 05:30Z
+        expect(ics).toMatch(/DTSTART:20260608T0[0-9]{5}Z/);
+    });
+
+    test('buildICS single session', async ({ page }) => {
+        await setup(page);
+        const n = await page.evaluate((html) => {
+            const api = window.__giuProctorReminder;
+            const doc = new DOMParser().parseFromString(html, 'text/html');
+            const one = api.parseSessions(doc)[0];
+            const ics = api.buildICS(one);
+            return (ics.match(/BEGIN:VEVENT/g) || []).length;
+        }, timetableHtml);
+        expect(n).toBe(1);
+    });
 });
