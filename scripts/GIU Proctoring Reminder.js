@@ -373,7 +373,21 @@
             .gius-pr-all{margin-top:6px;display:flex;flex-direction:column;gap:8px;}
             .gius-pr-row{background:#f5f5fa;border-radius:8px;padding:10px 12px;}
             .gius-pr-row-time{font-size:14px;font-weight:700;color:#272c33;margin:2px 0 4px;}
-            .gius-pr-empty{font-size:13px;opacity:.85;}`;
+            .gius-pr-empty{font-size:13px;opacity:.85;}
+
+            /* Dark mode — reacts live to the GIU Dark Mode script's html.gius-dark class (Catppuccin Mocha). */
+            html.gius-dark .gius-pr-widget{background:#1e1e2e;color:#cdd6f4;box-shadow:0 2px 10px rgba(0,0,0,.45);}
+            html.gius-dark .gius-pr-next{background:#181825;border-color:#313244;border-left-color:#f9e2af;}
+            html.gius-dark .gius-pr-next-head{color:#cdd6f4;}
+            html.gius-dark .gius-pr-next-card{background:#11111b;box-shadow:none;}
+            html.gius-dark .gius-pr-next-time,
+            html.gius-dark .gius-pr-row-time{color:#f9e2af;}
+            html.gius-dark .gius-pr-badge-cover{background:#2a2410;color:#f9e2af;border-color:#f9e2af;}
+            html.gius-dark .gius-pr-row{background:#181825;}
+            html.gius-dark .gius-pr-act{border-color:#45475a;color:#cdd6f4;}
+            html.gius-dark .gius-pr-act:hover{background:#313244;}
+            html.gius-dark .gius-pr-toggle{color:#cdd6f4;}
+            html.gius-dark .gius-pr-stale{color:#f9e2af;}`;
         const style = document.createElement('style');
         style.id = 'gius-pr-style';
         style.textContent = css;
