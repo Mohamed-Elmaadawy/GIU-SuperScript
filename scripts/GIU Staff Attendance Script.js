@@ -10,7 +10,7 @@
 // @include     https://portal.guc/*
 // @namespace   ramin0
 // @updateURL   https://j.mp/ramin0-GUC_Staff
-// @version     3.1.0
+// @version     3.1.1
 // @run-at      document-idle
 // ==/UserScript==
 
@@ -6536,7 +6536,7 @@
 
                 if (!summary || summary.empty) {
                     host.innerHTML = `<div class="gius-att-head">Attendance</div>
-                        <div class="gius-att-empty">No attendance records yet. <a class="gius-att-link" href="${REPORT_URL}">View full report</a></div>`;
+                        <div class="gius-att-empty">No attendance records yet. <a class="gius-att-link" href="${REPORT_DATA_URL}">View full report</a></div>`;
                     return;
                 }
 
@@ -6565,7 +6565,7 @@
                         <div class="gius-att-meta">Present ${st.presentDays} · Absent ${st.absentDays} · ${homeEsc(summary.label || "")}</div>
                     </div>
                     ${absentBlock}
-                    <a class="gius-att-link" href="${REPORT_URL}">View full report →</a>`;
+                    <a class="gius-att-link" href="${REPORT_DATA_URL}">View full report →</a>`;
 
                 const toggle = host.querySelector("#gius-att-toggle-absent");
                 if (toggle) {
