@@ -16,7 +16,7 @@ const swiftHtml = fix('att-swift.html');
 async function routeAndGoto(page, swift) {
     page.on('pageerror', err => console.error('PAGE ERROR:', err.message));
     await page.route('**/Home.aspx', route => route.fulfill({ contentType: 'text/html; charset=utf-8', body: homeHtml }));
-    await page.route('**/SwiftReports_m.aspx', route => route.fulfill({ contentType: 'text/html; charset=utf-8', body: swift }));
+    await page.route('**/SwiftReports_m.aspx**', route => route.fulfill({ contentType: 'text/html; charset=utf-8', body: swift }));
     await page.goto(HOME_URL, { waitUntil: 'domcontentloaded' });
     await page.evaluate(() => localStorage.clear());
 }
@@ -39,30 +39,6 @@ test.describe('GIU Attendance Home Summary', () => {
         await setup(page);
         const ok = await page.evaluate(() => window.__giuAttHome && window.__giuAttHome.isHomePage());
         expect(ok).toBe(true);
-    });
-
-    test('pickGateOption picks "Gates", not "HRSystem"', async ({ page }) => {
-        await setup(page);
-        const val = await page.evaluate(() => {
-            const sel = document.createElement('select');
-            sel.innerHTML = `
-                <option value="">[Select]</option>
-                <option value="5">SR-00005.Gate Attendance:My User: x - HRSystem</option>
-                <option value="866">SR-00866.Gate Attendance:My User: x - Gates</option>`;
-            const opt = window.__giuAttHome.pickGateOption(sel);
-            return opt ? opt.value : null;
-        });
-        expect(val).toBe('866');
-    });
-
-    test('pickGateOption returns null when no gate report exists', async ({ page }) => {
-        await setup(page);
-        const res = await page.evaluate(() => {
-            const sel = document.createElement('select');
-            sel.innerHTML = `<option value="">[Select]</option><option value="1">SR-1.Advising:Semester Hours</option>`;
-            return window.__giuAttHome.pickGateOption(sel);
-        });
-        expect(res).toBeNull();
     });
 
     test('computeCurrentMonthSummary returns the latest period with present-day count', async ({ page }) => {
@@ -167,11 +143,10 @@ test.describe('GIU Attendance Home Summary', () => {
         await expect(page.locator('#gius-att-widget')).toContainText('Worked', { timeout: 10000 });
     });
 
-    test('error state when the report has no gate option', async ({ page }) => {
-        const badSwift = swiftHtml.replace(/Gate Attendance:My User: tester - Gates/g, 'Advising:Semester Hours')
-                                  .replace(/Gate Attendance:My User: tester - HRSystem/g, 'Advising:Other');
-        await setupAuto(page, { swift: badSwift });
-        await expect(page.locator('#gius-att-widget')).toContainText("Couldn't load attendance", { timeout: 30000 });
+    test('error state when the report never loads', async ({ page }) => {
+        const noGrid = '<!DOCTYPE html><html><body><form action="./SwiftReports_m.aspx"></form></body></html>';
+        await setupAuto(page, { swift: noGrid });
+        await expect(page.locator('#gius-att-widget')).toContainText("Couldn't load attendance", { timeout: 20000 });
         await expect(page.locator('#gius-att-retry')).toBeVisible();
     });
 

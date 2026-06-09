@@ -49,8 +49,10 @@
             const PAGE_PATH = "/GIUb/EXT/SwiftReports_m.aspx";
             const HOME_PATH = "/giub/intstaff/home.aspx";
             const REPORT_URL = "https://portal.giu-uni.de/GIUb/EXT/SwiftReports_m.aspx";
+            const SWIFT_REPORT_ID = 866; // user's "Gate Attendance ... Gates" SwiftReport id (see README target page)
+            const REPORT_DATA_URL = REPORT_URL + "?swiftreportid=" + SWIFT_REPORT_ID + "&executereport=1";
             const HOME_CACHE_KEY = "giuAttendanceHomeV1";
-            const HOME_IFRAME_TIMEOUT_MS = 25000;
+            const HOME_IFRAME_TIMEOUT_MS = 15000;
 
             function isHomePage() {
                 const p = (location.pathname || "").replace(/\/+$/, "").toLowerCase();
@@ -6397,17 +6399,6 @@
                 maybeStartOnboardingGuide();
             }
 
-            function pickGateOption(selectEl) {
-                if (!selectEl) return null;
-                const opts = Array.from(selectEl.options || []);
-                return opts.find(function (o) {
-                    return o.value &&
-                        /gate attendance/i.test(o.text) &&
-                        /\bgates\b/i.test(o.text) &&
-                        !/hrsystem/i.test(o.text);
-                }) || null;
-            }
-
             function computeCurrentMonthSummary(rows) {
                 const periods = groupRowsByPayrollPeriod(rows || []);
                 if (!periods.length) return { empty: true };
@@ -6435,48 +6426,22 @@
                     const iframe = document.createElement("iframe");
                     iframe.setAttribute("data-gius-att", "1");
                     iframe.style.cssText = "position:absolute;left:-9999px;top:-9999px;width:0;height:0;border:0;";
-                    iframe.src = REPORT_URL;
+                    iframe.src = REPORT_DATA_URL;
 
                     let done = false;
                     const started = Date.now();
                     const cleanup = function () { try { iframe.remove(); } catch (e) {} };
                     const finish = function (fn, arg) { if (done) return; done = true; clearInterval(poll); cleanup(); fn(arg); };
 
-                    let executed = false;
                     const poll = setInterval(function () {
                         if (Date.now() - started > limit) { finish(reject, new Error("home-iframe-timeout")); return; }
                         let doc;
-                        try { doc = iframe.contentDocument; } catch (e) { return; } // not ready / cross-origin
+                        try { doc = iframe.contentDocument; } catch (e) { return; }
                         if (!doc) return;
-
-                        if (!executed) {
-                            const sel = doc.getElementById("MainContent_DDL_SwiftReportsList");
-                            const btn = doc.getElementById("MainContent_B_ExecuteReport");
-                            if (!sel || !btn) return; // page still loading
-                            // If chosen.jquery is in use, wait until it has initialized.
-                            if (iframe.contentWindow && iframe.contentWindow.jQuery &&
-                                sel.parentNode && !sel.parentNode.querySelector(".chosen-container")) {
-                                return;
-                            }
-                            const opt = pickGateOption(sel);
-                            if (!opt) { finish(reject, new Error("home-no-gate-report")); return; }
-                            const win = iframe.contentWindow;
-                            if (win && win.jQuery) {
-                                try { win.jQuery(sel).val(opt.value).trigger("chosen:updated").trigger("change"); }
-                                catch (e) { sel.value = opt.value; sel.dispatchEvent(new Event("change", { bubbles: true })); }
-                            } else {
-                                sel.value = opt.value;
-                                sel.dispatchEvent(new Event("change", { bubbles: true }));
-                            }
-                            btn.click();
-                            executed = true;
-                            return;
-                        }
-
                         const table = doc.getElementById("MainContent_DG_SwiftReport");
                         if (!table) return;
                         const rows = getAttendanceRows(doc);
-                        if (!rows.length) return; // grid present but not parsed yet
+                        if (!rows.length) return;
                         finish(resolve, rows);
                     }, 250);
 
@@ -6639,7 +6604,6 @@
             window.__giuAttHome = {
                 isHomePage,
                 getAttendanceRows,
-                pickGateOption,
                 computeCurrentMonthSummary,
                 fetchReportViaIframe,
                 loadHomeCache,
