@@ -10,7 +10,7 @@
 // @include     https://portal.guc/*
 // @namespace   ramin0
 // @updateURL   https://j.mp/ramin0-GUC_Staff
-// @version     3.0.7
+// @version     3.1.0
 // @run-at      document-idle
 // ==/UserScript==
 
