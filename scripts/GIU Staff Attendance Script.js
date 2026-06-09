@@ -6453,12 +6453,17 @@
                             const sel = doc.getElementById("MainContent_DDL_SwiftReportsList");
                             const btn = doc.getElementById("MainContent_B_ExecuteReport");
                             if (!sel || !btn) return; // page still loading
+                            // If chosen.jquery is in use, wait until it has initialized.
+                            if (iframe.contentWindow && iframe.contentWindow.jQuery &&
+                                sel.parentNode && !sel.parentNode.querySelector(".chosen-container")) {
+                                return;
+                            }
                             const opt = pickGateOption(sel);
                             if (!opt) { finish(reject, new Error("home-no-gate-report")); return; }
                             const win = iframe.contentWindow;
                             if (win && win.jQuery) {
                                 try { win.jQuery(sel).val(opt.value).trigger("chosen:updated").trigger("change"); }
-                                catch (e) { sel.value = opt.value; }
+                                catch (e) { sel.value = opt.value; sel.dispatchEvent(new Event("change", { bubbles: true })); }
                             } else {
                                 sel.value = opt.value;
                                 sel.dispatchEvent(new Event("change", { bubbles: true }));
