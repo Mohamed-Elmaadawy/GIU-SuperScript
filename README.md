@@ -80,7 +80,7 @@ https://portal.giu-uni.de/*
 
 ### 2. GIU Staff Enhanced Attendance
 
-**File:** `GIU Staff Attendance Script.js` | **Version:** 3.0.7 | **Author:** Mo.Elmaadawy
+**File:** `GIU Staff Attendance Script.js` | **Version:** 3.1.0 | **Author:** Mo.Elmaadawy
 
 A full attendance management dashboard injected above the Swift Report attendance table. Tracks your hours, leave balance, and exceptions — all stored locally in your browser.
 
@@ -105,6 +105,7 @@ https://portal.giu-uni.de/GIUb/EXT/SwiftReports_m.aspx?swiftreportid=866&execute
 - **Import / Export** — full settings backup and restore as JSON
 - **Onboarding guide** — first-time spotlight walkthrough for all features
 - **Auto record pruning** — cleans records older than 2 payroll months
+- **Home-page summary** — a current-payroll-month card (worked vs required, balance, present/absent, absent-day list) on the portal Home page, in the Proctoring Reminder style; dark-mode aware.
 
 ![Attendance Dashboard](screenshots/attendance.gif)
 

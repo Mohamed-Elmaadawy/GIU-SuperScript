@@ -174,4 +174,15 @@ test.describe('GIU Attendance Home Summary', () => {
         await expect(page.locator('#gius-att-widget')).toContainText("Couldn't load attendance", { timeout: 30000 });
         await expect(page.locator('#gius-att-retry')).toBeVisible();
     });
+
+    test('widget adapts to GIU dark mode', async ({ page }) => {
+        await setup(page);
+        await page.evaluate(() => window.__giuAttHome.renderHomeWidget({ empty: true }));
+        await expect(page.locator('#gius-att-widget')).toBeVisible();
+        const light = await page.evaluate(() => getComputedStyle(document.getElementById('gius-att-widget')).backgroundColor);
+        expect(light).toBe('rgb(255, 255, 255)');
+        await page.evaluate(() => document.documentElement.classList.add('gius-dark'));
+        const dark = await page.evaluate(() => getComputedStyle(document.getElementById('gius-att-widget')).backgroundColor);
+        expect(dark).toBe('rgb(30, 30, 46)');
+    });
 });
