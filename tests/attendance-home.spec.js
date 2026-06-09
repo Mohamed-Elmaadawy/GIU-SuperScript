@@ -118,6 +118,14 @@ test.describe('GIU Attendance Home Summary', () => {
         await expect(page.locator('#gius-att-widget')).toContainText('No attendance records');
     });
 
+    test('"View full report" link opens the executed report (auto-execute URL)', async ({ page }) => {
+        await setup(page);
+        await page.evaluate(() => window.__giuAttHome.renderHomeWidget({ empty: true }));
+        const href = await page.locator('#gius-att-widget .gius-att-link').getAttribute('href');
+        expect(href).toContain('swiftreportid=866');
+        expect(href).toContain('executereport=1');
+    });
+
     test('absent days toggle expands the list', async ({ page }) => {
         await setup(page);
         await page.evaluate(() => {
