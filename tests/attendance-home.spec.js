@@ -160,4 +160,18 @@ test.describe('GIU Attendance Home Summary', () => {
         await expect(page.locator('#gius-att-absent')).toHaveClass(/gius-att-expanded/);
         await expect(page.locator('#gius-att-absent')).toContainText('17 Dec');
     });
+
+    test('end-to-end: widget renders after the iframe fetch', async ({ page }) => {
+        await setupAuto(page);
+        await expect(page.locator('#gius-att-widget')).toBeVisible({ timeout: 10000 });
+        await expect(page.locator('#gius-att-widget')).toContainText('Worked', { timeout: 10000 });
+    });
+
+    test('error state when the report has no gate option', async ({ page }) => {
+        const badSwift = swiftHtml.replace(/Gate Attendance:My User: tester - Gates/g, 'Advising:Semester Hours')
+                                  .replace(/Gate Attendance:My User: tester - HRSystem/g, 'Advising:Other');
+        await setupAuto(page, { swift: badSwift });
+        await expect(page.locator('#gius-att-widget')).toContainText("Couldn't load attendance", { timeout: 30000 });
+        await expect(page.locator('#gius-att-retry')).toBeVisible();
+    });
 });

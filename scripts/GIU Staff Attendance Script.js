@@ -6612,9 +6612,28 @@
                 }
             }
 
+            function homeShowError(host) {
+                host.innerHTML = `<div class="gius-att-head">Attendance</div>
+                    <div class="gius-att-empty">Couldn't load attendance. <button type="button" id="gius-att-retry" class="gius-att-toggle gius-btn">Retry</button></div>`;
+                const r = host.querySelector("#gius-att-retry");
+                if (r) r.addEventListener("click", bootHome);
+            }
+
             function bootHome() {
                 if (!isHomePage()) return;
-                // implemented in later tasks
+                homeInjectStyles();
+
+                const cache = loadHomeCache();
+                if (cache) renderHomeWidget(cache.summary, { stale: true });
+
+                fetchReportViaIframe().then(function (rows) {
+                    const summary = computeCurrentMonthSummary(rows);
+                    saveHomeCache(summary);
+                    renderHomeWidget(summary);
+                }).catch(function () {
+                    if (cache) return; // keep the stale render
+                    homeShowError(homeEnsureHost());
+                });
             }
 
             window.__giuAttHome = {
