@@ -16,12 +16,13 @@ const timetableEmptyHtml = fix('timetable-empty.html');
 const timetableSameDayHtml = fix('timetable-sameday.html');
 
 // Route Home + timetable to fixtures, inject script, return the API hook.
-async function setup(page, { timetable = timetableHtml } = {}) {
+async function setup(page, { timetable = timetableHtml, beforeScript } = {}) {
     page.on('pageerror', err => console.error('PAGE ERROR:', err.message));
     await page.route('**/Home.aspx', route => route.fulfill({ contentType: 'text/html; charset=utf-8', body: homeHtml }));
     await page.route('**/ViewTimeTable_m.aspx', route => route.fulfill({ contentType: 'text/html; charset=utf-8', body: timetable }));
     await page.goto(HOME_URL, { waitUntil: 'domcontentloaded' });
     await page.evaluate(() => localStorage.clear());
+    if (beforeScript) await page.evaluate(beforeScript);
     await page.evaluate(scriptSrc);
 }
 
@@ -196,6 +197,23 @@ test.describe('GIU Proctoring Reminder', () => {
         expect(isAfterTargetList).toBe(true);
         // no "Own" badge is rendered (script shows only the user's own schedule)
         await expect(page.locator('#gius-pr-widget')).not.toContainText('Own');
+    });
+
+    test('widget renders below attendance widget when both are on Home', async ({ page }) => {
+        await setup(page, {
+            beforeScript: () => {
+                const target = document.getElementById('MainContent_div_grid');
+                const attendance = document.createElement('div');
+                attendance.id = 'gius-att-widget';
+                attendance.textContent = 'Attendance';
+                target.insertAdjacentElement('afterend', attendance);
+            },
+        });
+        await expect(page.locator('#gius-pr-widget')).toBeVisible({ timeout: 5000 });
+        const proctorAfterAttendance = await page.evaluate(() =>
+            document.getElementById('gius-att-widget')?.nextElementSibling?.id === 'gius-pr-widget'
+        );
+        expect(proctorAfterAttendance).toBe(true);
     });
 
     test('next block shows all duties on the next session day, end time, and conditional control room', async ({ page }) => {
