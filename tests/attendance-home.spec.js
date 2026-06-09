@@ -100,4 +100,16 @@ test.describe('GIU Attendance Home Summary', () => {
         const empty = await page.evaluate(() => window.__giuAttHome.computeCurrentMonthSummary([]).empty);
         expect(empty).toBe(true);
     });
+
+    test('fetchReportViaIframe loads, executes, and returns rows', async ({ page }) => {
+        await setup(page);
+        const n = await page.evaluate(async () => {
+            const rows = await window.__giuAttHome.fetchReportViaIframe();
+            return rows.length;
+        });
+        expect(n).toBe(4);
+        // iframe is cleaned up
+        const iframes = await page.evaluate(() => document.querySelectorAll('iframe[data-gius-att]').length);
+        expect(iframes).toBe(0);
+    });
 });

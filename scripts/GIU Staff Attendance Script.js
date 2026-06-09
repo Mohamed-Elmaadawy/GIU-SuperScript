@@ -6416,6 +6416,70 @@
                 return { label: current.label, stats: stats };
             }
 
+            function loadHomeCache() {
+                try {
+                    const raw = JSON.parse(localStorage.getItem(HOME_CACHE_KEY));
+                    if (!raw || !raw.summary) return null;
+                    return raw;
+                } catch (e) { return null; }
+            }
+            function saveHomeCache(summary) {
+                try {
+                    localStorage.setItem(HOME_CACHE_KEY, JSON.stringify({ summary: summary, fetchedAt: Date.now() }));
+                } catch (e) { /* quota */ }
+            }
+
+            function fetchReportViaIframe(timeoutMs) {
+                const limit = timeoutMs || HOME_IFRAME_TIMEOUT_MS;
+                return new Promise(function (resolve, reject) {
+                    const iframe = document.createElement("iframe");
+                    iframe.setAttribute("data-gius-att", "1");
+                    iframe.style.cssText = "position:absolute;left:-9999px;top:-9999px;width:0;height:0;border:0;";
+                    iframe.src = REPORT_URL;
+
+                    let done = false;
+                    const started = Date.now();
+                    const cleanup = function () { try { iframe.remove(); } catch (e) {} };
+                    const finish = function (fn, arg) { if (done) return; done = true; clearInterval(poll); cleanup(); fn(arg); };
+
+                    let executed = false;
+                    const poll = setInterval(function () {
+                        if (Date.now() - started > limit) { finish(reject, new Error("home-iframe-timeout")); return; }
+                        let doc;
+                        try { doc = iframe.contentDocument; } catch (e) { return; } // not ready / cross-origin
+                        if (!doc) return;
+
+                        if (!executed) {
+                            const sel = doc.getElementById("MainContent_DDL_SwiftReportsList");
+                            const btn = doc.getElementById("MainContent_B_ExecuteReport");
+                            if (!sel || !btn) return; // page still loading
+                            const opt = pickGateOption(sel);
+                            if (!opt) { finish(reject, new Error("home-no-gate-report")); return; }
+                            const win = iframe.contentWindow;
+                            if (win && win.jQuery) {
+                                try { win.jQuery(sel).val(opt.value).trigger("chosen:updated").trigger("change"); }
+                                catch (e) { sel.value = opt.value; }
+                            } else {
+                                sel.value = opt.value;
+                                sel.dispatchEvent(new Event("change", { bubbles: true }));
+                            }
+                            btn.click();
+                            executed = true;
+                            return;
+                        }
+
+                        const table = doc.getElementById("MainContent_DG_SwiftReport");
+                        if (!table) return;
+                        const rows = getAttendanceRows(doc);
+                        if (!rows.length) return; // grid present but not parsed yet
+                        finish(resolve, rows);
+                    }, 250);
+
+                    iframe.addEventListener("error", function () { finish(reject, new Error("home-iframe-error")); });
+                    document.body.appendChild(iframe);
+                });
+            }
+
             function bootHome() {
                 if (!isHomePage()) return;
                 // implemented in later tasks
@@ -6426,6 +6490,9 @@
                 getAttendanceRows,
                 pickGateOption,
                 computeCurrentMonthSummary,
+                fetchReportViaIframe,
+                loadHomeCache,
+                saveHomeCache,
             };
 
             try {
