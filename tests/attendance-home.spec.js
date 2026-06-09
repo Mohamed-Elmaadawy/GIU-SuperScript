@@ -89,7 +89,7 @@ test.describe('GIU Attendance Home Summary', () => {
         expect(iframes).toBe(0);
     });
 
-    test('renderHomeWidget shows worked/required, balance, and present/absent', async ({ page }) => {
+    test('renderHomeWidget shows balance, coverage, and present/absent', async ({ page }) => {
         await setup(page);
         await page.evaluate(() => {
             const api = window.__giuAttHome;
@@ -103,7 +103,8 @@ test.describe('GIU Attendance Home Summary', () => {
             api.renderHomeWidget(s);
         });
         await expect(page.locator('#gius-att-widget')).toBeVisible();
-        await expect(page.locator('#gius-att-widget')).toContainText('Worked');
+        await expect(page.locator('#gius-att-widget')).toContainText('Current balance');
+        await expect(page.locator('#gius-att-widget')).toContainText('covered');
         await expect(page.locator('#gius-att-widget')).toContainText('Present');
         await expect(page.locator('.gius-att-balance')).toBeVisible();
         // mounted under the Target List
@@ -143,12 +144,93 @@ test.describe('GIU Attendance Home Summary', () => {
         await page.locator('#gius-att-toggle-absent').click();
         await expect(page.locator('#gius-att-absent')).toHaveClass(/gius-att-expanded/);
         await expect(page.locator('#gius-att-absent')).toContainText('17 Dec');
+        await expect(page.locator('[data-gius-home-absent-action="holiday"]').first()).toBeVisible();
+        await expect(page.locator('[data-gius-home-absent-action="annual"]').first()).toBeVisible();
+        await expect(page.locator('[data-gius-home-absent-action="compensation"]').first()).toBeVisible();
+    });
+
+    test('home absent actions save holiday and annual leave entries', async ({ page }) => {
+        await setup(page);
+        await page.evaluate(() => {
+            const api = window.__giuAttHome;
+            api.setHomeRowsForTest([
+                { date: '2030-12-11', firstIn: '8:00:00 AM', lastOut: '4:00:00 PM', duration: '08:00:00' },
+            ]);
+            api.renderHomeWidget({
+                label: 'Dec 2030',
+                stats: {
+                    balanceHM: '24:00:00',
+                    isPositiveOrZero: false,
+                    progressPercent: 40,
+                    progressColor: 'red',
+                    presentDays: 2,
+                    absentDays: 2,
+                    absentDayDetails: ['2030-12-17', '2030-12-18'],
+                },
+            });
+        });
+
+        await page.locator('#gius-att-toggle-absent').click();
+        await page.locator('[data-date="2030-12-17"][data-gius-home-absent-action="holiday"]').click();
+
+        await page.evaluate(() => {
+            window.__giuAttHome.renderHomeWidget({
+                label: 'Dec 2030',
+                stats: {
+                    balanceHM: '24:00:00',
+                    isPositiveOrZero: false,
+                    progressPercent: 40,
+                    progressColor: 'red',
+                    presentDays: 2,
+                    absentDays: 2,
+                    absentDayDetails: ['2030-12-17', '2030-12-18'],
+                },
+            });
+        });
+        await page.locator('#gius-att-toggle-absent').click();
+        await page.locator('[data-date="2030-12-18"][data-gius-home-absent-action="annual"]').click();
+
+        const holidays = await page.evaluate(() => JSON.parse(localStorage.getItem('giuHolidayListV2') || '[]'));
+        expect(holidays).toContainEqual({ type: 'single', category: 'holiday', date: '2030-12-17' });
+        expect(holidays).toContainEqual({ type: 'single', category: 'annual', date: '2030-12-18' });
+    });
+
+    test('home absent compensation action saves a valid compensation leave', async ({ page }) => {
+        await setup(page);
+        await page.evaluate(() => {
+            localStorage.setItem('selectedDay', 'Sat');
+            const api = window.__giuAttHome;
+            api.setHomeRowsForTest([
+                { date: '2026-05-16', firstIn: '8:00:00 AM', lastOut: '4:00:00 PM', duration: '08:00:00' },
+            ]);
+            api.renderHomeWidget({
+                label: '2026-05-11 -> 2026-06-10',
+                stats: {
+                    balanceHM: '8:24:00',
+                    isPositiveOrZero: false,
+                    progressPercent: 80,
+                    progressColor: 'amber',
+                    presentDays: 1,
+                    absentDays: 1,
+                    absentDayDetails: ['2026-05-18'],
+                },
+            });
+        });
+
+        await page.locator('#gius-att-toggle-absent').click();
+        await page.locator('[data-date="2026-05-18"][data-gius-home-absent-action="compensation"]').click();
+
+        const leaves = await page.evaluate(() => JSON.parse(localStorage.getItem('giuCompensationLeavesV1') || '[]'));
+        expect(leaves).toContainEqual({
+            date: '2026-05-18',
+            reason: 'From home absent day quick action',
+        });
     });
 
     test('end-to-end: widget renders after the iframe fetch', async ({ page }) => {
         await setupAuto(page);
         await expect(page.locator('#gius-att-widget')).toBeVisible({ timeout: 10000 });
-        await expect(page.locator('#gius-att-widget')).toContainText('Worked', { timeout: 10000 });
+        await expect(page.locator('#gius-att-widget')).toContainText('Current balance', { timeout: 10000 });
     });
 
     test('error state when the report never loads', async ({ page }) => {

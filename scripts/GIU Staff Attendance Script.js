@@ -5372,18 +5372,16 @@
 
             // Shared add-as-X handler for absent-day quick actions.
             // Adds a holiday entry (category-flexible) after dedup + sort + undo snapshot.
-            function addAbsentHolidayEntry(date, category, undoLabel, alertMessages) {
+            function saveAbsentHolidayEntry(date, category, undoLabel, alertMessages) {
                 const currentHolidays = getStoredHolidays();
                 const newEntry = normalizeHolidayEntry({ type: "single", category, date });
                 if (!newEntry) {
-                    alert(alertMessages.invalid);
-                    return;
+                    return { ok: false, message: alertMessages.invalid };
                 }
 
                 const newKey = holidayEntryToKey(newEntry);
                 if (currentHolidays.some(item => holidayEntryToKey(item) === newKey)) {
-                    alert(alertMessages.exists);
-                    return;
+                    return { ok: false, message: alertMessages.exists };
                 }
 
                 currentHolidays.push(newEntry);
@@ -5394,7 +5392,50 @@
                 });
                 saveUndoSnapshot("holidays", undoLabel);
                 setStoredHolidays(currentHolidays);
+                return { ok: true };
+            }
+
+            function addAbsentHolidayEntry(date, category, undoLabel, alertMessages) {
+                const result = saveAbsentHolidayEntry(date, category, undoLabel, alertMessages);
+                if (!result.ok) {
+                    alert(result.message);
+                    return;
+                }
                 renderEnhancedUI();
+            }
+
+            function saveAbsentCompensationEntry(date, periods, selectedDayOffFullName, reason, undoLabel) {
+                const normalizedDate = normalizeYMD(date);
+                if (!normalizedDate) {
+                    return { ok: false, message: "Invalid date format." };
+                }
+
+                const currentLeaves = getStoredCompensationLeaves();
+                if (currentLeaves.some(function (item) { return normalizeYMD(item.date) === normalizedDate; })) {
+                    return { ok: false, message: "A compensation leave already exists for this date." };
+                }
+
+                const validation = validateCompensationLeaveDate(
+                    normalizedDate,
+                    selectedDayOffFullName,
+                    periods,
+                    currentLeaves,
+                    getStoredHolidays(),
+                    getStoredRamadan(),
+                    getStoredOverrides(),
+                    getStoredExamPeriod()
+                );
+                if (!validation.ok) {
+                    return validation;
+                }
+
+                const entry = { date: normalizedDate };
+                const cleanReason = typeof reason === "string" ? reason.trim() : "";
+                if (cleanReason) entry.reason = cleanReason;
+
+                saveUndoSnapshot("compensation", undoLabel);
+                setStoredCompensationLeaves(currentLeaves.concat([entry]));
+                return { ok: true };
             }
 
             function createAbsentDayQuickActions(date) {
@@ -5438,30 +5479,17 @@
                 const addCompBtn = createUiButton("Compensation", "giu-absent-holiday-btn", stopProp(function () {
                     const selectedDayOffFullName = getSelectedDayOffFullName(getSelectedDayOffCode());
                     const periods = groupRowsByPayrollPeriod(getAttendanceRows());
-                    const currentLeaves = getStoredCompensationLeaves();
-                    if (currentLeaves.some(item => item.date === date)) {
-                        alert("A compensation leave already exists for this date.");
-                        return;
-                    }
-
-                    const validation = validateCompensationLeaveDate(
+                    const result = saveAbsentCompensationEntry(
                         date,
-                        selectedDayOffFullName,
                         periods,
-                        currentLeaves,
-                        getStoredHolidays(),
-                        getStoredRamadan(),
-                        getStoredOverrides(),
-                        getStoredExamPeriod()
+                        selectedDayOffFullName,
+                        "From absent day quick action",
+                        "Add compensation from absent quick action"
                     );
-                    if (!validation.ok) {
-                        alert(validation.message);
+                    if (!result.ok) {
+                        alert(result.message);
                         return;
                     }
-
-                    const updatedLeaves = currentLeaves.concat([{ date, reason: "From absent day quick action" }]);
-                    saveUndoSnapshot("compensation", "Add compensation from absent quick action");
-                    setStoredCompensationLeaves(updatedLeaves);
                     renderEnhancedUI();
                 }));
 
@@ -6407,6 +6435,8 @@
                 return { label: current.label, stats: stats };
             }
 
+            let homeLastRows = [];
+
             function loadHomeCache() {
                 try {
                     const raw = JSON.parse(localStorage.getItem(HOME_CACHE_KEY));
@@ -6483,6 +6513,89 @@
                 return d.toLocaleString("en-GB", { weekday: "short", day: "numeric", month: "short" });
             }
 
+            function homeBalanceText(stats) {
+                const balance = String((stats && stats.balanceHM) || "0:00:00");
+                if (/^0+:00(?::00)?$/.test(balance)) return "On track";
+                return balance + (stats && stats.isPositiveOrZero ? " extra" : " missing");
+            }
+
+            function homeRenderFromRows(rows) {
+                homeLastRows = Array.isArray(rows) ? rows : [];
+                const summary = computeCurrentMonthSummary(homeLastRows);
+                saveHomeCache(summary);
+                renderHomeWidget(summary);
+            }
+
+            function homeRefreshAfterQuickAction() {
+                if (homeLastRows.length) {
+                    homeRenderFromRows(homeLastRows);
+                    return;
+                }
+
+                fetchReportViaIframe().then(homeRenderFromRows).catch(function () {
+                    const cache = loadHomeCache();
+                    if (cache && cache.summary) {
+                        renderHomeWidget(cache.summary, { stale: true });
+                    } else {
+                        homeShowError(homeEnsureHost());
+                    }
+                });
+            }
+
+            function homeAddAbsentHolidayEntry(date, category) {
+                const isAnnual = category === "annual";
+                const result = saveAbsentHolidayEntry(
+                    date,
+                    isAnnual ? "annual" : "holiday",
+                    isAnnual ? "Add annual leave from home absent quick action" : "Add holiday from home absent quick action",
+                    {
+                        invalid: isAnnual ? "Invalid date. Could not create annual leave." : "Invalid date. Could not create holiday.",
+                        exists: isAnnual ? "This date is already saved as annual leave." : "This date is already saved as a holiday."
+                    }
+                );
+                if (!result.ok) {
+                    alert(result.message);
+                    return;
+                }
+                homeRefreshAfterQuickAction();
+            }
+
+            function homeAddAbsentCompensationEntry(date) {
+                const periods = groupRowsByPayrollPeriod(homeLastRows);
+                const selectedDayOffFullName = getSelectedDayOffFullName(getSelectedDayOffCode());
+                const result = saveAbsentCompensationEntry(
+                    date,
+                    periods,
+                    selectedDayOffFullName,
+                    "From home absent day quick action",
+                    "Add compensation from home absent quick action"
+                );
+                if (!result.ok) {
+                    alert(result.message);
+                    return;
+                }
+                homeRefreshAfterQuickAction();
+            }
+
+            function homeAttachAbsentActions(host) {
+                Array.from(host.querySelectorAll("[data-gius-home-absent-action]")).forEach(function (button) {
+                    button.addEventListener("click", function (event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+
+                        const action = button.getAttribute("data-gius-home-absent-action") || "";
+                        const date = button.getAttribute("data-date") || "";
+                        if (action === "holiday") {
+                            homeAddAbsentHolidayEntry(date, "holiday");
+                        } else if (action === "annual") {
+                            homeAddAbsentHolidayEntry(date, "annual");
+                        } else if (action === "compensation") {
+                            homeAddAbsentCompensationEntry(date);
+                        }
+                    });
+                });
+            }
+
             function homeInjectStyles() {
                 if (document.getElementById("gius-att-style")) return;
                 const css = `
@@ -6494,7 +6607,8 @@
                     .gius-att-stale{color:#b8860b;font-weight:600;font-size:12px;}
                     .gius-att-card{background:#f8f9fa;border:1px solid #e9ecef;border-left:4px solid #ffc107;
                         border-radius:12px;padding:14px;margin-bottom:12px;}
-                    .gius-att-worked{font-size:17px;font-weight:700;margin-bottom:8px;}
+                    .gius-att-status{display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+                        font-size:17px;font-weight:700;margin-bottom:8px;}
                     .gius-att-balance{display:inline-block;font-size:13px;font-weight:700;padding:3px 10px;
                         border-radius:999px;}
                     .gius-att-bal-green{background:#dcfce7;color:#166534;}
@@ -6511,15 +6625,25 @@
                     .gius-att-expand{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease-out;}
                     .gius-att-expand.gius-att-expanded{grid-template-rows:1fr;}
                     .gius-att-expand-inner{overflow:hidden;}
-                    .gius-att-absent-list{margin-top:6px;display:flex;flex-direction:column;gap:4px;font-size:13px;}
-                    .gius-att-absent-list div{background:#f5f5fa;border-radius:6px;padding:4px 8px;}
+                    .gius-att-absent-list{margin-top:6px;display:flex;flex-direction:column;gap:6px;font-size:13px;}
+                    .gius-att-absent-row{background:#f5f5fa;border-radius:6px;padding:6px 8px;
+                        display:flex;align-items:center;justify-content:space-between;gap:8px;}
+                    .gius-att-absent-date{font-weight:700;}
+                    .gius-att-actions{display:inline-flex;align-items:center;justify-content:flex-end;
+                        flex-wrap:wrap;gap:5px;}
+                    .gius-att-action{font:inherit;font-size:12px;font-weight:700;line-height:1;
+                        border:1px solid #d7dce2;background:#fff;color:#272c33;border-radius:6px;
+                        padding:5px 7px;cursor:pointer;}
+                    .gius-att-action:hover{background:#fff8e1;border-color:#f0c247;}
                     .gius-att-link{display:inline-block;margin-top:10px;font-size:13px;font-weight:600;color:#272c33;}
                     .gius-att-empty{font-size:13px;opacity:.85;}
                     html.gius-dark .gius-att-widget{background:#1e1e2e;color:#cdd6f4;box-shadow:0 2px 10px rgba(0,0,0,.45);}
                     html.gius-dark .gius-att-card{background:#181825;border-color:#313244;border-left-color:#f9e2af;}
                     html.gius-dark .gius-att-bar{background:#313244;}
                     html.gius-dark .gius-att-meta,html.gius-dark .gius-att-toggle,html.gius-dark .gius-att-link{color:#cdd6f4;}
-                    html.gius-dark .gius-att-absent-list div{background:#11111b;}
+                    html.gius-dark .gius-att-absent-row{background:#11111b;}
+                    html.gius-dark .gius-att-action{background:#181825;border-color:#313244;color:#cdd6f4;}
+                    html.gius-dark .gius-att-action:hover{background:#2a2410;border-color:#f9e2af;}
                     html.gius-dark .gius-att-bal-green{background:#14351f;color:#a6e3a1;}
                     html.gius-dark .gius-att-bal-amber{background:#2a2410;color:#f9e2af;}
                     html.gius-dark .gius-att-bal-red{background:#3a1414;color:#f38ba8;}`;
@@ -6545,13 +6669,24 @@
                     : st.progressColor === "amber" ? "gius-att-bal-amber" : "gius-att-bal-red";
                 const barClass = st.progressColor === "green" ? "gius-att-bar-green"
                     : st.progressColor === "amber" ? "gius-att-bar-amber" : "gius-att-bar-red";
+                const progressPercent = Math.max(0, Math.min(100, st.progressPercent));
 
                 const absentBlock = st.absentDays > 0 ? `
                     <button type="button" id="gius-att-toggle-absent" class="gius-att-toggle gius-btn">Absent days (${st.absentDays})</button>
                     <div id="gius-att-absent" class="gius-att-expand">
                         <div class="gius-att-expand-inner">
                             <div class="gius-att-absent-list">
-                                ${(st.absentDayDetails || []).map(function (d) { return `<div>${homeFmtDate(d)}</div>`; }).join("")}
+                                ${(st.absentDayDetails || []).map(function (d) {
+                                    const date = homeEsc(d);
+                                    return `<div class="gius-att-absent-row">
+                                        <span class="gius-att-absent-date">${homeFmtDate(d)}</span>
+                                        <span class="gius-att-actions">
+                                            <button type="button" class="gius-att-action gius-btn" data-date="${date}" data-gius-home-absent-action="holiday">Holiday</button>
+                                            <button type="button" class="gius-att-action gius-btn" data-date="${date}" data-gius-home-absent-action="annual">Annual</button>
+                                            <button type="button" class="gius-att-action gius-btn" data-date="${date}" data-gius-home-absent-action="compensation">Comp</button>
+                                        </span>
+                                    </div>`;
+                                }).join("")}
                             </div>
                         </div>
                     </div>` : "";
@@ -6559,10 +6694,10 @@
                 host.innerHTML = `
                     <div class="gius-att-head">This Payroll Month${opts.stale ? ' · <span class="gius-att-stale">offline</span>' : ""}</div>
                     <div class="gius-att-card">
-                        <div class="gius-att-worked">Worked ${homeEsc(st.actualHM)} / ${homeEsc(st.requiredHM)}
-                            <span class="gius-att-balance ${balClass}">${homeEsc(st.balanceHM)} ${homeEsc(st.label)}</span></div>
-                        <div class="gius-att-bar"><div class="gius-att-bar-fill ${barClass}" style="width:${Math.max(0, Math.min(100, st.progressPercent))}%"></div></div>
-                        <div class="gius-att-meta">Present ${st.presentDays} · Absent ${st.absentDays} · ${homeEsc(summary.label || "")}</div>
+                        <div class="gius-att-status">Current balance
+                            <span class="gius-att-balance ${balClass}">${homeEsc(homeBalanceText(st))}</span></div>
+                        <div class="gius-att-bar"><div class="gius-att-bar-fill ${barClass}" style="width:${progressPercent}%"></div></div>
+                        <div class="gius-att-meta">${progressPercent}% covered &middot; Present ${st.presentDays} &middot; Absent ${st.absentDays} &middot; ${homeEsc(summary.label || "")}</div>
                     </div>
                     ${absentBlock}
                     <a class="gius-att-link" href="${REPORT_DATA_URL}">View full report →</a>`;
@@ -6575,6 +6710,7 @@
                         toggle.classList.toggle("gius-att-toggle-open", open);
                     });
                 }
+                homeAttachAbsentActions(host);
             }
 
             function homeShowError(host) {
@@ -6591,11 +6727,7 @@
                 const cache = loadHomeCache();
                 if (cache) renderHomeWidget(cache.summary, { stale: true });
 
-                fetchReportViaIframe().then(function (rows) {
-                    const summary = computeCurrentMonthSummary(rows);
-                    saveHomeCache(summary);
-                    renderHomeWidget(summary);
-                }).catch(function () {
+                fetchReportViaIframe().then(homeRenderFromRows).catch(function () {
                     if (cache) return; // keep the stale render
                     homeShowError(homeEnsureHost());
                 });
@@ -6609,6 +6741,7 @@
                 loadHomeCache,
                 saveHomeCache,
                 renderHomeWidget,
+                setHomeRowsForTest: function (rows) { homeLastRows = Array.isArray(rows) ? rows : []; },
             };
 
             try {
