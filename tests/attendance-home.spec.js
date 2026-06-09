@@ -112,4 +112,52 @@ test.describe('GIU Attendance Home Summary', () => {
         const iframes = await page.evaluate(() => document.querySelectorAll('iframe[data-gius-att]').length);
         expect(iframes).toBe(0);
     });
+
+    test('renderHomeWidget shows worked/required, balance, and present/absent', async ({ page }) => {
+        await setup(page);
+        await page.evaluate(() => {
+            const api = window.__giuAttHome;
+            const doc = new DOMParser().parseFromString(`
+                <table id="MainContent_DG_SwiftReport">
+                  <tr><td>Serial</td><td>Day</td><td>FirstIn</td><td>LastOut</td><td>Duration</td></tr>
+                  <tr><td>1</td><td>2030-12-11</td><td>8:00:00 AM</td><td>4:00:00 PM</td><td>08:00:00</td></tr>
+                  <tr><td>2</td><td>2030-12-14</td><td>8:00:00 AM</td><td>4:00:00 PM</td><td>08:00:00</td></tr>
+                </table>`, 'text/html');
+            const s = api.computeCurrentMonthSummary(api.getAttendanceRows(doc));
+            api.renderHomeWidget(s);
+        });
+        await expect(page.locator('#gius-att-widget')).toBeVisible();
+        await expect(page.locator('#gius-att-widget')).toContainText('Worked');
+        await expect(page.locator('#gius-att-widget')).toContainText('Present');
+        await expect(page.locator('.gius-att-balance')).toBeVisible();
+        // mounted under the Target List
+        const after = await page.evaluate(() =>
+            document.getElementById('MainContent_div_grid').nextElementSibling?.id === 'gius-att-widget');
+        expect(after).toBe(true);
+    });
+
+    test('renderHomeWidget empty state', async ({ page }) => {
+        await setup(page);
+        await page.evaluate(() => window.__giuAttHome.renderHomeWidget({ empty: true }));
+        await expect(page.locator('#gius-att-widget')).toContainText('No attendance records');
+    });
+
+    test('absent days toggle expands the list', async ({ page }) => {
+        await setup(page);
+        await page.evaluate(() => {
+            const api = window.__giuAttHome;
+            api.renderHomeWidget({
+                label: 'Dec 2030',
+                stats: {
+                    actualHM: '16:00:00', requiredHM: '40:00:00', balanceHM: '24:00:00',
+                    isPositiveOrZero: false, label: 'Missing', progressPercent: 40, progressColor: 'red',
+                    presentDays: 2, absentDays: 2, absentDayDetails: ['2030-12-17', '2030-12-18'],
+                },
+            });
+        });
+        await expect(page.locator('#gius-att-toggle-absent')).toBeVisible();
+        await page.locator('#gius-att-toggle-absent').click();
+        await expect(page.locator('#gius-att-absent')).toHaveClass(/gius-att-expanded/);
+        await expect(page.locator('#gius-att-absent')).toContainText('17 Dec');
+    });
 });

@@ -6485,6 +6485,133 @@
                 });
             }
 
+            function homeMountPoint() {
+                const target = document.getElementById("MainContent_div_grid");
+                if (target) return { mode: "after", node: target };
+                const fb = document.querySelector(".page-content") ||
+                           document.querySelector("[id*=MainContent]") || document.body;
+                return { mode: "prepend", node: fb };
+            }
+
+            function homeEnsureHost() {
+                let host = document.getElementById("gius-att-widget");
+                if (host) return host;
+                host = document.createElement("div");
+                host.id = "gius-att-widget";
+                host.className = "gius-att-widget";
+                const mp = homeMountPoint();
+                if (mp.mode === "after") mp.node.insertAdjacentElement("afterend", host);
+                else mp.node.prepend(host);
+                return host;
+            }
+
+            function homeEsc(s) {
+                return String(s).replace(/[&<>"]/g, function (c) {
+                    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+                });
+            }
+
+            function homeFmtDate(ymd) {
+                const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(ymd));
+                if (!m) return homeEsc(ymd);
+                const d = new Date(+m[1], +m[2] - 1, +m[3]);
+                return d.toLocaleString("en-GB", { weekday: "short", day: "numeric", month: "short" });
+            }
+
+            function homeInjectStyles() {
+                if (document.getElementById("gius-att-style")) return;
+                const css = `
+                    .gius-att-widget{font-family:inherit;display:block;width:100%;box-sizing:border-box;
+                        margin:28px 0;border-radius:12px;padding:16px 18px;background:#fff;color:#1e1e2e;
+                        box-shadow:0 2px 10px rgba(0,0,0,.12);}
+                    .gius-att-widget *{box-sizing:border-box;}
+                    .gius-att-head{font-weight:700;font-size:16px;margin-bottom:12px;}
+                    .gius-att-stale{color:#b8860b;font-weight:600;font-size:12px;}
+                    .gius-att-card{background:#f8f9fa;border:1px solid #e9ecef;border-left:4px solid #ffc107;
+                        border-radius:12px;padding:14px;margin-bottom:12px;}
+                    .gius-att-worked{font-size:17px;font-weight:700;margin-bottom:8px;}
+                    .gius-att-balance{display:inline-block;font-size:13px;font-weight:700;padding:3px 10px;
+                        border-radius:999px;}
+                    .gius-att-bal-green{background:#dcfce7;color:#166534;}
+                    .gius-att-bal-amber{background:#fff8e1;color:#8a6500;}
+                    .gius-att-bal-red{background:#fee2e2;color:#991b1b;}
+                    .gius-att-bar{height:8px;border-radius:6px;background:#e9ecef;overflow:hidden;margin:10px 0 8px;}
+                    .gius-att-bar-fill{height:100%;border-radius:6px;}
+                    .gius-att-bar-green{background:#16a34a;} .gius-att-bar-amber{background:#ffc107;} .gius-att-bar-red{background:#dc2626;}
+                    .gius-att-meta{font-size:13px;color:#272c33;}
+                    .gius-att-toggle{margin-top:6px;font-size:13px;font-weight:700;background:transparent;border:none;
+                        color:#272c33;cursor:pointer;padding:4px 0;}
+                    .gius-att-toggle::before{content:"\\25B8";display:inline-block;margin-right:6px;transition:transform .3s ease-out;}
+                    .gius-att-toggle-open::before{transform:rotate(90deg);}
+                    .gius-att-expand{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease-out;}
+                    .gius-att-expand.gius-att-expanded{grid-template-rows:1fr;}
+                    .gius-att-expand-inner{overflow:hidden;}
+                    .gius-att-absent-list{margin-top:6px;display:flex;flex-direction:column;gap:4px;font-size:13px;}
+                    .gius-att-absent-list div{background:#f5f5fa;border-radius:6px;padding:4px 8px;}
+                    .gius-att-link{display:inline-block;margin-top:10px;font-size:13px;font-weight:600;color:#272c33;}
+                    .gius-att-empty{font-size:13px;opacity:.85;}
+                    html.gius-dark .gius-att-widget{background:#1e1e2e;color:#cdd6f4;box-shadow:0 2px 10px rgba(0,0,0,.45);}
+                    html.gius-dark .gius-att-card{background:#181825;border-color:#313244;border-left-color:#f9e2af;}
+                    html.gius-dark .gius-att-bar{background:#313244;}
+                    html.gius-dark .gius-att-meta,html.gius-dark .gius-att-toggle,html.gius-dark .gius-att-link{color:#cdd6f4;}
+                    html.gius-dark .gius-att-absent-list div{background:#11111b;}
+                    html.gius-dark .gius-att-bal-green{background:#14351f;color:#a6e3a1;}
+                    html.gius-dark .gius-att-bal-amber{background:#2a2410;color:#f9e2af;}
+                    html.gius-dark .gius-att-bal-red{background:#3a1414;color:#f38ba8;}`;
+                const style = document.createElement("style");
+                style.id = "gius-att-style";
+                style.textContent = css;
+                document.head.appendChild(style);
+            }
+
+            function renderHomeWidget(summary, opts) {
+                opts = opts || {};
+                homeInjectStyles();
+                const host = homeEnsureHost();
+
+                if (!summary || summary.empty) {
+                    host.innerHTML = `<div class="gius-att-head">Attendance</div>
+                        <div class="gius-att-empty">No attendance records yet. <a class="gius-att-link" href="${REPORT_URL}">View full report</a></div>`;
+                    return;
+                }
+
+                const st = summary.stats;
+                const balClass = st.progressColor === "green" ? "gius-att-bal-green"
+                    : st.progressColor === "amber" ? "gius-att-bal-amber" : "gius-att-bal-red";
+                const barClass = st.progressColor === "green" ? "gius-att-bar-green"
+                    : st.progressColor === "amber" ? "gius-att-bar-amber" : "gius-att-bar-red";
+
+                const absentBlock = st.absentDays > 0 ? `
+                    <button type="button" id="gius-att-toggle-absent" class="gius-att-toggle gius-btn">Absent days (${st.absentDays})</button>
+                    <div id="gius-att-absent" class="gius-att-expand">
+                        <div class="gius-att-expand-inner">
+                            <div class="gius-att-absent-list">
+                                ${(st.absentDayDetails || []).map(function (d) { return `<div>${homeFmtDate(d)}</div>`; }).join("")}
+                            </div>
+                        </div>
+                    </div>` : "";
+
+                host.innerHTML = `
+                    <div class="gius-att-head">This Payroll Month${opts.stale ? ' · <span class="gius-att-stale">offline</span>' : ""}</div>
+                    <div class="gius-att-card">
+                        <div class="gius-att-worked">Worked ${homeEsc(st.actualHM)} / ${homeEsc(st.requiredHM)}
+                            <span class="gius-att-balance ${balClass}">${homeEsc(st.balanceHM)} ${homeEsc(st.label)}</span></div>
+                        <div class="gius-att-bar"><div class="gius-att-bar-fill ${barClass}" style="width:${Math.max(0, Math.min(100, st.progressPercent))}%"></div></div>
+                        <div class="gius-att-meta">Present ${st.presentDays} · Absent ${st.absentDays} · ${homeEsc(summary.label || "")}</div>
+                    </div>
+                    ${absentBlock}
+                    <a class="gius-att-link" href="${REPORT_URL}">View full report →</a>`;
+
+                const toggle = host.querySelector("#gius-att-toggle-absent");
+                if (toggle) {
+                    toggle.addEventListener("click", function () {
+                        const el = host.querySelector("#gius-att-absent");
+                        const open = el.classList.toggle("gius-att-expanded");
+                        toggle.classList.toggle("gius-att-toggle-open", open);
+                    });
+                }
+            }
+
             function bootHome() {
                 if (!isHomePage()) return;
                 // implemented in later tasks
@@ -6498,6 +6625,7 @@
                 fetchReportViaIframe,
                 loadHomeCache,
                 saveHomeCache,
+                renderHomeWidget,
             };
 
             try {
