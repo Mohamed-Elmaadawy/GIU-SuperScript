@@ -17,6 +17,7 @@
     const TIMETABLE_URL = 'https://portal.giu-uni.de/GIUb/INTStaff/ViewTimeTable_m.aspx';
     const TTL_MS = 6 * 60 * 60 * 1000; // 6h
     const FETCH_TIMEOUT_MS = 15000;
+    const HOME_BOOT_DELAY_MS = 800;
 
     let allExpanded = false; // "Remaining exams" open state, persisted across re-renders
     let lastRendered = null; // last session list rendered (for re-render after toggle)
@@ -274,18 +275,34 @@
 
     function ensureHost() {
         let host = document.getElementById('gius-pr-widget');
-        if (host) return host;
-        host = document.createElement('div');
-        host.id = 'gius-pr-widget';
-        host.className = 'gius-pr-widget';
+        if (!host) {
+            host = document.createElement('div');
+            host.id = 'gius-pr-widget';
+            host.className = 'gius-pr-widget';
+        }
+
+        // Prefer the attendance widget when present so Next Proctoring stays below it.
+        const attendance = document.getElementById('gius-att-widget');
+        if (attendance) {
+            if (attendance.nextElementSibling !== host) {
+                attendance.insertAdjacentElement('afterend', host);
+            }
+            return host;
+        }
+
         // Render directly under the "Target List" block, spanning the page width.
         const target = document.getElementById('MainContent_div_grid');
         if (target) {
-            target.insertAdjacentElement('afterend', host);
+            if (target.nextElementSibling !== host) {
+                target.insertAdjacentElement('afterend', host);
+            }
         } else {
-            (document.querySelector('.page-content') ||
-             document.querySelector('[id*=MainContent]') ||
-             document.body).prepend(host);
+            const fallback = document.querySelector('.page-content') ||
+                document.querySelector('[id*=MainContent]') ||
+                document.body;
+            if (fallback.firstElementChild !== host) {
+                fallback.prepend(host);
+            }
         }
         return host;
     }
@@ -478,7 +495,7 @@
         }
     }
 
-    boot();
+    setTimeout(boot, HOME_BOOT_DELAY_MS);
 
     // ── test hook (extended as functions are added) ──
     window.__giuProctorReminder = {
