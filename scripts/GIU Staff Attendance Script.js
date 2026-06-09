@@ -2886,7 +2886,7 @@
                         return formatHolidayEntry(h).indexOf(df) !== -1;
                     });
                 };
-                let pagination = createPagination("holidays", getFiltered());
+                const pagination = createPagination("holidays", getFiltered());
                 const selectAll = table.querySelector(".giu-select-all");
 
                 const bulkBtn = createUiButton("Remove Selected", "giu-remove-holiday-btn", function () {
