@@ -241,44 +241,8 @@ https://portal.giu-uni.de/GIUb/INTStaff/ManageGroupGrade_m.aspx
 
 ---
 
-### 6. GIU Proctor Schedule Aggregator
 
-**File:** `GIU Proctor Schedule Aggregator.js` | **Version:** 1.9 | **Author:** Mo.Elmaadawy
-
-Aggregates all proctor exam assignments across every department into a single searchable dashboard. Scrapes the Proctor Exchange page in the background and presents a unified, filterable table with cover-proctor awareness.
-
-**Target page:**
-```
-https://portal.giu-uni.de/GIUb/INTStaff/ProctorExchange_m.aspx
-```
-
-**Features:**
-
-- **Full-portal scrape** — fetches all departments and all proctors concurrently (up to 20 parallel requests)
-- **Cache** — results saved to `localStorage`; reopening loads instantly without re-scraping
-- **CSV upload** — load a previously exported schedule instead of scraping
-- **CSV export** — download the full aggregated schedule as a CSV file
-- **Searchable filters** — live-search by proctor name, department, exam hall, or exam name
-- **Cover-proctor view** — when filtering by your name, rows where you are covering someone else are highlighted in indigo and rendered from your perspective
-- **Covered-row highlight** — rows where someone else is covering your exam are highlighted in amber
-- **Co-proctor expand** — click any row to see all other proctors assigned to the same hall and time slot
-- **Covering badge** — each proctor cell shows who they are covering, if applicable
-- **Pause / Resume** — pause an in-progress scrape and resume later
-- **Progress indicator** — live count of scraped entities and unique exams found
-
-**Usage:**
-
-1. Navigate to the Proctor Exchange page (link above)
-2. Click **Fetch Schedules** to start scraping all departments
-3. Use the filter inputs to search by proctor name, department, hall, or exam
-4. Filter by your own name to see both your assigned exams and any exams you are covering for others
-5. Click any row to expand and see all co-proctors in that slot
-6. Click **Export CSV** to save the full schedule locally
-7. On future visits, the cached schedule loads automatically — click **Fetch Schedules** to refresh
-
----
-
-### 7. GIU Student Attendance Group Report
+### 6. GIU Student Attendance Group Report
 
 **File:** `GIU Student Attendance Group Report.js` | **Version:** 1.1 | **Author:** Mo.Elmaadawy
 
@@ -313,7 +277,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendances
 
 ---
 
-### 8. GIU Proctoring Reminder
+### 7. GIU Proctoring Reminder
 
 **File:** `GIU Proctoring Reminder.js` | **Version:** 1.0 | **Author:** Mo.Elmaadawy
 
@@ -365,15 +329,3 @@ https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 
 ---
 
-## Authors
-
-| Script | Authors |
-|---|---|
-| GIU Dark Mode | Mo.Elmaadawy |
-| GIU Staff Enhanced Attendance | Mo.Elmaadawy |
-| GIU Notification Batch Send | Mo.Elmaadawy |
-| GIU Upload Grades | Ahmed Sherif, Mo.Elmaadawy |
-| GIU Manage Group Grades | Mo.Elmaadawy |
-| GIU Proctor Schedule Aggregator | Mo.Elmaadawy |
-| GIU Student Attendance Group Report | Mo.Elmaadawy |
-| GIU Proctoring Reminder | Mo.Elmaadawy |
