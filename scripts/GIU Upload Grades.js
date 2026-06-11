@@ -2,7 +2,7 @@
 // @name        GIU Upload Grades
 // @description Upload/download grades per group + batch all groups via fetch chain.
 // @include     https://portal.giu-uni.de/*
-// @namespace   ramin0
+// @namespace   Cyn0
 // @version     2.3
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Upload%20Grades.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Upload%20Grades.js

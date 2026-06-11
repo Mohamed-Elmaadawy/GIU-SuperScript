@@ -2,7 +2,7 @@
 // @name        GIU Proctoring Reminder
 // @description Shows your next proctoring session on the portal home page and exports reminders to calendar/email
 // @match       https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
-// @namespace   ramin0
+// @namespace   Cyn0
 // @version     1.0
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Proctoring%20Reminder.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Proctoring%20Reminder.js
