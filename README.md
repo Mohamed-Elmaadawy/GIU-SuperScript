@@ -120,7 +120,7 @@ https://portal.giu-uni.de/*
 
 ### 2. GIU Staff Enhanced Attendance
 
-**File:** `GIU Staff Attendance Script.js` | **Version:** 3.1.3 | **Author:** Mo.Elmaadawy
+**File:** `GIU Staff Attendance Script.js` | **Version:** 3.1.4 | **Author:** Mo.Elmaadawy
 
 A full attendance management dashboard injected above the Swift Report attendance table. Tracks your hours, leave balance, and exceptions — all stored locally in your browser.
 
