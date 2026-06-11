@@ -7,7 +7,7 @@ const HOME_URL = 'https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx';
 
 const fix = name => fs.readFileSync(path.join(__dirname, 'fixtures', name), 'utf8');
 const scriptSrc = fs.readFileSync(
-    path.join(__dirname, '..', 'scripts', 'GIU Teaching Load.js'),
+    path.join(__dirname, '..', 'scripts', 'individual', 'GIU Teaching Load.js'),
     'utf8'
 );
 const homeHtml         = fix('home.html');
