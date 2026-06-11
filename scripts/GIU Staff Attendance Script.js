@@ -9,8 +9,9 @@
 // @include     https://portal.giu-uni.de/*
 // @include     https://portal.guc/*
 // @namespace   ramin0
-// @updateURL   https://j.mp/ramin0-GUC_Staff
 // @version     3.1.1
+// @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Staff%20Attendance%20Script.js
+// @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Staff%20Attendance%20Script.js
 // @run-at      document-idle
 // ==/UserScript==
 
