@@ -1,0 +1,1107 @@
+<!DOCTYPE html><html><head><title>
+	GIU-PortalAdmin
+</title><meta http-equiv="X-UA-Compatible" content="IE=10,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"><link href="../../LIB/CSS/Custom.css" rel="stylesheet"><link href="../../LIB/FRAMEWORKS/Bootstrap/bootstrap.min.css" rel="stylesheet"><link href="../../LIB/CSS/font-awesome.min.css" rel="stylesheet"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"><link href="../../LIB/CSS/Administrator.css" rel="stylesheet">
+
+    <script src="../../LIB/SCRIPTS/core/jquery-1.11.2.min.js"></script>
+
+
+    <script type="text/javascript">
+
+        $(window).load(function () {
+
+            $(".loader").fadeOut();
+
+        });
+        //alert('MasterPage');
+
+        function LoadPage() {
+            $(".loader").fadeIn();
+        }
+
+        function stopLoad() {
+            $(".loader").fadeOut();
+        }
+
+
+    </script>
+
+    <style>
+        .loader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url('../../LIB/IMG/Preloader_8.gif') 50% 50% no-repeat rgb(249,249,249);
+            opacity: .8;
+        }
+
+        .menu-title-Hidden {
+            margin-top: -50px !important;
+            padding-top: 0px !important;
+            border-bottom: 0px !important;
+            color: #272c33 !important;
+            z-index: -1 !important;
+            min-width: 150px !important;
+            max-width: 200px !important;
+            font-size: 0px !important;
+        }
+
+        .mm-hide {
+            display: none !important;
+        }
+    </style>
+
+    <link href="../../LIB/CSS/Custom.css" rel="stylesheet"><link href="../../LIB/CSS/chosen/chosen.min.css" rel="stylesheet">
+</head>
+<body style="">
+    <div class="loader" style="display: none;"></div>
+
+    <form method="post" action="./SearchAcademicScheduled_001_m.aspx" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="BOfgQ3isYZ0VhqKPlDbxYw2ES425JRH0CHvIVr3wBPD/lXp1oZWVXy2Fldo0jUUFjMFQcafCap/PwgsXLIUjhdsanYaYx5v9Dvfm0hdU4sNc+x5bw9DamAhoS3WL7Z6ld5V+F6gSUR4zcDvmTWc2jZEI/uzJ1dkmo7hu9FXxEbVhQmdDBOsZXVspvhay0BABreYudjNAkfAnIqHDk1f9LsjH26VGgdBjPz0ird6YzFG5gf3sfs6j39jRNxYkqcr9bardEdiq6ayUmJYlySRrRljw55FBXSwrCWAEn/aSFgrCsHszCmljJ69hUH6nINt3svrmqzTlCexSggEwdNfSoVwuBcjD6fK8io+rrQPqZNm9IIGfTjIriMARl+vlXh+L5TlV7D6Q/X3bzzjWIXEd7m9ecV4FKHfFB5v+wFN2JU1xjKbM7MXnd95uT6TmcoKcAiIe8nHC59QgSy983Q46NuTNIXAkYsjyc30GCJTZLAh1F7Rvj84IKyAGEcFiXYyFJlpduaIFh6SMsTvjP6VgaPWGCSIPYPebqoA93nbMBYoHQAZNGXzvVxD1ES1bs4YCkMBO665HiI07BEm0ICMrZrskpQIQ4tqcErM8Yv/bVH4Ex0ItdMELudhgH5y1Txpd5/R+n/PFQJ7+zpx8YaSux68gtp7XqbCHwgjqmAB3MP5uNjeAgQYmAs23qDxPxBrrV+Rv/HJKNr7y0/o4a68X757byrpc0idWR9x/WDhjd27zbhZAdghmgvzUaLGjaT2HHUdaqajFJ7OVRo5N7m2HL5iFIx6G8QuRkURd0I/dUqap1HXXod5qH+9dvhUyRqxm0MykAYxXsO52ZQqB3suCATDN/J8/JjE2xkh2CYuBgA5WqyQbPDQcng9eTL1YxgF2m/ZcOZZjSiyv6TRntdNIaqMrlOXW0NdSCeQLSu4m2vkjq3evrFzQ7g2wYCTghHoNDHceW6/uhmytB680frU4z5yQPZM1mXyegq9R+Jz4Gq3QWhS69m7KAx5K2Ls9dnTcc09p6v1kJZtzAk/Vng2CCjUha6pOtEdn3vUiWGc4vptDi75a1pIWY0CWQH3iOQSXb4TSagVFNqOT9G0ML181WR+SqWT6Fk5BnU4QsDI+0pXzatRmEJVJcfSoZsO+aVzv02kPrMXeEwr9T5NhHqc58SQv9aApM2EejhyuDvHO6yr59pG3V14VKMqrYOh9aRgFl+twPbd29pVZzY/IfOhhRx9cu/Dz052AH72MuRhHl9ZH4qmUMZ1G20Ue08qXsxDwwiBM6T5HZTIzD8EXQdR7hB7UElnm04tiH4tDOkvXjIt3dmwdxcebpmR5hzQa/D3G4K566cgFfoH+NaOx0e7kSQEbF6QTCtccWRqj1ABqg5ai7dVqoyu2Zbaol8PzoLMolalUsNR+FXSEX2parejY42+Y0SrQRHx7oHglG5A+KB1R14dO5cwOeb0UrwMBI+CZf84+mMETxfBdnAHmQT4n1z9tBUdTeo9zJ2P4/z5t+98KFWtiYY11IIn0ulyC/HZgCfkc2kHF8YpBkqaTZb4n4kySsSl98jmfbE1pYQQ8gmoYSyLvZBWRiR6bnD0XYedDH5UOQ11omAMJodyPALVu7Rv/GWFJZK7Mtfx49NOxHD6mUEYSPuhW36T6lqY8ONpYtvxxCPgRvuK1cgA6XBEEZFWHA0i/KGj1TUTow5EoP3QCXlL+bMVLOQRTQcqMkSmklDHSyc0ojoQFG8+y6s2IlRY9rip/rKImYVRLU47GxlHIFQPx9BIfqrCTyV8GNl7FCHFnYPb97g3PevKzgBDemWtDvruFREQW5xTl4uZWBgXwT8KgBOtyIFU3vlYIsTbHGxsml7hJ30kcZ+U9k8cAAVIiUIJovhzIUa6d+GiftouUDQ04Z7gH7PRDQH8u4cGIg2Kua9ranFU6CRsYfH3bVv5S/IKTf4kpjja25s7hUl5W+paX4YZm5QJAGU2TRffl3gm5Wnc+xt3Dks+k5TVRgAq304L2gyFOqgjNYt/ChzZ0llrEeQZJ3HzPmrCdm+tIk3ZXVLyU3v873gm29Rix7CezrSJe1++t1jGnetrMpxnkZBZ9wjkZH0UfDHe5s8aqDMTUXkgk/LFBlHM7rbKG7/YUeQ2fZPJIbe6AYHOY+rhT7OsbIEogw4azk7ZnninzwD30GTAHfnhDIWvaYED3bB8EIEWqxlTNCqaI642Iv9Blz2YU0LGJUygFzeaMYvdfJ085c3onpJK6ZTzxNYJjGd4R1V5ANajy5u3/dDRnFubK+dhypql5F1wnSSJ9G7AzVYbaKVS0CB3yyGezkadQguOqK67lCLRzqUP0sy3S5gSrU++U+vPcv1xa7Gx6xG51pAzSq9IceyS73pvyyJ5lfI/DwXxre9V5Yy31jSEnCIYKMoAXVeOscGoB67qgMeYL9gxiuKmzMNrvY5+XO8IS1a8hBgxUBXxX1ntl1v/mMqLKGGTMRt8t7ZP8xP3YF57N4kHq4/HCdUKKZCf+HxAGYTKdbrqoVYPSqE9BsCautUZzUe1ERPfI9L+CpQNkmWvrxuX8ZYQ5mN1nL3mBP49rI/ubU3iEeicijk8PQYP/zCTR7lFo2AhsaJohhsfCDFpuCyUuDXr4cJ8O93xXRmS2DgozvQ7eX2Y5Hahh6+4sQvnXohCgV1v6/q9VZQwZAmlGOox1mEyipRv2D1UXrIG+sVePqmkCp2d6DzbCWayGMEgx2muPgYjyQYxJxe6vJSZi7QQ9CfWprs27bjCoAgpM/4i7QMb1MzZfINeYoQKdvyRNxcJoa4BfRKqaUPqu2sNiNaGtiSmsoQU3sX7EmT8Ciyd03kQOeGxGvaDW1yQsEsxsUTO+H8tDokmZpXcyesgJeB76oB0vLawxaM6aiU5UI8JYKpyvGJWf6BahDDThtgd8HUuYFnyJlDLV3FZRYmSGCoKeo1ATFekziGs+CgBZCKMmZ5TV31KaftgVU1OKbfdXrI8g+cEoqFdbkhJSZBcqU+mm1GN0+3LMlZMR/sI/Gli9LBfw1zFtkuNBcc7ucn1ixiW1NfAtwXDzXibGpDGonGw3HoKnKpTvabzJcpTmZ7HkvawsMcpuU5AWHFwwpXYvk+DOtFYk14uWgpuml9fpYsjndqSOLN9xWxwNi6VEqwK35ad4i5ZM/gF57XY0qMOFQ/suAZomU/seYz+bD4cCGgU33g46kW7zfUDYsq8WoDXYlY6YzopqbIsgd2qRPxv/uQ0IK118RQZnntLnSted8GhkaXpsnIY4mDoU37C2SZQO4fK4Blw2d0Z9FEuyVAUwW8dso/jXQg5uoqHqhb6c+NaQN+tNfG3AQhYc8t2JEJFo6wQTW1TsTbbOqoWVY8uazoyZq/NchYdvyn6DjHwsJhaasSERmHIF98eshf1qKs8BE19+TnAh2P7W18pba5lm17LDrButff9IWFDbRI6j0tBwRTWBxqONG2pb/CbQ7QrC5CjrJkqIz4QGDkAAkfxpffgxSDv2iMVEYj17OugPwbEQpdl3Tmrsp6zUAlKKD2Tvd1r+Ozu3r86jViF/O4SkyKEcYiWzydpkRo5CQKvIW5LnT5/8i1c66kjJWyPSmWNf/BfBjATr9BxdbCBeGUD3Z3i+dkoNqH4DBW+OVvywplprzJU6MUskF+QZDz9JGgkY6tBw7GqZg7aOt50NGZde4jAUzuYBatHOHF7fNNkpsHg8rUfdC4w14akkAIdWp3/AJKJwH8X0gsEoqDSb3QaJ8N/8/MPl+47RJvvd4LWJHAns2no5mq7Gv5YQYN86OVYQeUWAEy8v0umVF50joFQMmeFHQTSB7UyMtwo+gtO42IuwiiHMKIcow2uiES0tHvEOoFG3pQ1vnQT6NfGzDISdWy47LC7EJANioxHUg3XlumlMoQz2YeJUZ1LZKKHPlLCpX8AiIK/2a+yLT/yORT6Ptl4UtfskjXUiL7eOghY1qXoqM5E+/PSQfhTP166ZEw8zCZtQrhYXb7Rm/8OCKyrIwt/OClxlgEqEbd7bUrcXigXrYnQx026oqEuZBTCpVrjJQoNzzWbcBjvRphSSsczD27je5wJeBOGkE8XGSTSz6g8p01JrHNmSt9FRxShif0jXPo52RFnkeBaYfU8OOLfSZiyNAFLsnMhOs/tUKLwNvLWVR7KENCpYQ9LDcy0Cp+kr7658ukDWYxI3INzPKf+p8FCAC1pCQTYDi6du79FbC8LspZfMIcsZfCCUdIGLzecst2LLjch0Wm7yZ8OdF41sHo1udX5QvSKpv6nPd2oMEWmBfvjKcE8nnbizidYpYGsEfJCG/N2iEf2G8FFsPiC77Sj8w5m4qyLY080wINgP0jUI+wADDHqBEJ3f/NKd46iHk6ewQsEdFz6k4hauLgwiccpfAebeNwC4KKoZw59Go+6mtMY/jYZBaQY2XqG3jkuVX5qUTH7kjzGoSe+it1xX2xLfJIrrWPkjPWx4L0T+dXg8oNGXLcr/h13LVL0ag9vg6/Cnh82+d0XjjRDl040CvoKMHsbzwWtzdzSldJNeCYyabXL7+zWS6W5C2BO3nzDaguUQeAXENZRaZeGum29YgK1c9xodf78YJm/bzIc7+FMk0rdDEiIJ7qBgX9BewifyQTdeAd2R9CNHnpkj9fm2znQcvuIa8E4OH76e5LErVV2icwa6oRilVsZeDVRVT330JJJwljkj1xzs2XRW/Yfq+NDEHulinx+GuTgrY0QO8eZRvASiFY3x5CHF+0LeGsdrf3bE7VOv0ke1HwVrlkgb6p6rylwHEw4BiHwwjX6Vnrz69fDEn9/c72y+87Stme/2OBJdst3YdmODe/u+AZU4TN4AlOE9x1dhNisNLr1d05X0C1fz2T3Ea83PKOHDIT+Epx+q1L3hZjC+wOrsZDuab3M4iFoT/jPJOQPB7NCuW8iHwr3v9u+AVuaM3kRkJbnSDiL58HBpza4RFu+QBLQ2ZaJR5lGzOv6tqa6YUFsA0TXvavi2azwPOgBXHEWAdXKHIFNyRlLYTH6r6D8twDhLt3zW3wBS+zpY3u30HVqBVs3payLTOlf2oc7KcDbQPuS95qyFfzkXKyoPf4WYy2Le0Ej51cBJ3TORVGt5IZsiXzFM/i+OU10CRxypEwDLH8fK3L5whab/X5KnVJE9jk6wHQHn2TIToYeK0Psamr/AYrk738v3J4pccf/myo2ufo62v+02IqWO40qVfHApoE1R3bzY/X/iSe3ESOpw/cGwYf8VeTmbnPWDviP6ciBYdoRtWu3+3DH7ssn1so9ty6MsC8FLuAmFhXOXvkae2px9qU4+FCczRMPA0A6wMm6A2H2gAScs8dArMqZ9WZ9QuhPOyBWA9Z+U5+ydTjXaarsKpAdV0qgRnzj4Yo+A9kVpWCH7gGcNgzKCzQcRrH7KAEaqdjNzmvbXUnJku2HzwhxaL2k6Z9Tu5iSQko+gJsmDSB+uvLsm40gHZE42GOIZfIQqRgrh/kuKCp30gVdqZ6NAkHhTpTMJrXbDK0hCVGqc0KmcpuRorGHnmKn19OTVn2V0iP3GkvcfKsCSX7TwA9hwJBqRVQQ7hqO4TGwpkvBlAGlqC3CJcINY1dtttsHOMBcuFqQE4Z7dtmx8w6TDoFMams5AU34khj3DNZN3MlF4stoGwHB0AtOkie4ccoVP5+NOOHF6VgS64qa7YAuEreR7hUSnZfx8RyYHW5Vn+ItU4I/vl+/iaw196F9QXcPoONxJvRzy/10gHCVO9MqqbDuE4hn5ZmDd68mhysYDSGBbHTy+khtTsynk0jA1t+MESvBtnKAj/JAmSq4/s5UxZmu3iRT0AZMIfHBS3vy4+m+k4ToF4BRg2qdK/lQt+59GmiKw06zAJDLowxo/DhBtASsrgZebXKk3PwpEjkUnr6SV4kGAResMMgiEBpLO1h499C5xDfXdxDPd+Z4vdmRgpgh9VO63tgVK5oQakmFF9hZEA3LFTy7lHF8AfXuI/X4pDBaFmaL+dlVSfEh27qZcP7pf4rcNe6Ezj9owTa+jXY/24G66KIIbL1Z0NyIuAOuDUbk=">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=pynGkmcFUV13He1Qd6_TZJobxqUGLyczMgJN4MwQ37uULo-nvJJZsF-Dw7sdaTNU2zi9GZrdLibIfYeCDR4K2g2&amp;t=637454140939909757" type="text/javascript"></script>
+
+
+<script src="/ScriptResource.axd?d=D9drwtSJ4hBA6O8UhT6CQrw3Thjllk55aG-MMuTSami9JudYpVRN92LTUHl-V0GKhArtmRgpDL4fqJokZ5kDsdBUIfgoLumuL9IArD6AgtopARTr8SE9j-aVmBhqcBis29llvYWzmet7klKwDa9FJ8mJA90JjktfY8oft-o3z1I1&amp;t=2fe674eb" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+</script>
+
+<script src="/ScriptResource.axd?d=JnUc-DEDOM5KzzVKtsL1tWmSFQaIUeIr3h4RWI_3az3M6ppZu2rRm23eRdBxZbgZLvVV0Cu8OhJ6_DXC5EIAyjkyVgaTPavz23rOVrXSNySUWsH1Qb-_9I6bB8mHD-AtbZqAmX6K9z4gLUtN5RD4_A8D52fFtLqUBHwDDffzwsdJ0wYJWAC8NUymGlKFLhD-0&amp;t=2fe674eb" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="DF084810">
+	<input type="hidden" name="__SCROLLPOSITIONX" id="__SCROLLPOSITIONX" value="0">
+	<input type="hidden" name="__SCROLLPOSITIONY" id="__SCROLLPOSITIONY" value="133">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="aE5rFhn3XhUJMJ3Tdwf5XfXBg2flUZz7jB3dP5/mPbXUKfXPa0eU7hmU5RV/swQCNnNfTdvW+9n2LdpgzHLfECxKW7revUdoBAhwZtOUJLSZ0bIMs7NRYzlwZEpyKPfDUxEbOIlVNlvgR8uUJu+Vhw==">
+</div>
+
+
+        <div>
+
+            <!-- Left Panel -->
+
+            <aside id="left-panel" class="left-panel d-print-none">
+                <nav class="navbar navbar-expand-sm navbar-default">
+
+                    <div class="navbar-header">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <a href="Home.aspx" id="lnk_logoHome" class="navbar-brand">
+                            <img src="../../LIB/IMGLOGO/GIU_600x159.jpg" alt="Logo"></a>
+                        <a class="navbar-brand hidden" href="Home.aspx">
+                            <img src="images/logo2.png" alt="Logo"></a>
+                    </div>
+
+                    <div id="main-menu" class="main-menu collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active" style="border-bottom: 1px solid #ffc107;">
+                                <a href="Home.aspx" id="lnk_home"><i class="fa fa-th-large fa-2x" style="color: #ffc107 !important"></i><span style="font-size: 20px; font-weight: 700; padding: 10px">HOME</span> </a>
+                            </li>
+                            <li class="active" style="border-bottom: 1px solid #ffc107;">
+                                <a href="../EXT/SwiftReports_m.aspx" id="lnk_SwiftReports_m"><i class="fa fa-bar-chart fa-2x" style="color: #ffc107 !important"></i><span style="font-size: 20px; font-weight: 700; padding: 10px">Reports</span> </a>
+                            </li>
+
+                            <li class="active" style="border-bottom: 1px solid #ffc107;">
+                                <a href="../../INT/STAFF/GraduationAdminPortal/faculty-select.aspx" id="lnk_Graduation" target="_blank"><i class="fa fa-graduation-cap fa-2x" style="color: #ffc107 !important"></i><span style="font-size: 20px; font-weight: 700; padding: 10px">Graduation Portal</span> </a>
+                            </li>
+                            <h3 class="menu-title" style="border-bottom: 0px solid #ffc107; padding-top: 0px;"><i class="fa fa-th-list fa-2x" style="color: #ffc107 !important"></i><span style="padding: 10px">Menu Items</span></h3>
+                            <div class="p-3" style="border-bottom: 1px solid #ffc107; padding-top: 0px !important;">
+                                <input type="text" id="search-input" placeholder="Menu Search..." class="form-control">
+                            </div>
+                            <!-- /.menu-title -->
+
+                        </ul>
+                    </div>
+
+
+                    <div class="main-menu collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+
+
+                            <h3 class="menu-title menu-title-Hidden">Menu Items</h3>
+                            <li class="menu-item-has-children dropdown">
+                                <a href="Console.aspx" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-calendar"></i>Attendance</a>
+                                <ul class="sub-menu children dropdown-menu">
+                                    <li><i class="fa fa-calendar"></i><a href="ClassAttendance_ManageStudentAttendancesH003.aspx" id="lnk_ClassAttendance_ManageStudentAttendancesH003">Manage Student Attendances</a></li>
+                                    <li><i class="fa fa-bar-chart"></i><a href="StudentAttendanceReport_m.aspx" id="lnk_StudentAttendanceReport_m">StudentAttendanceReport</a></li>
+
+                                    <li><i class="fa fa-plus-square"></i></li>
+                                    <li><i class="fa fa-edit"></i></li>
+                                    <li><i class="fa fa-list"></i></li>
+                                    <li><i class="fa fa-list"></i></li>
+                                    <li><i class="fa fa-list"></i></li>
+                                    <li><i class="fa fa-list"></i></li>
+                                    <li><i class="fa fa-list"></i></li>
+
+                                </ul>
+                            </li>
+
+
+
+                        </ul>
+
+
+
+                    </div>
+
+                    <div class="main-menu collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <h3 class="menu-title menu-title-Hidden">Menu Items</h3>
+                            <li class="menu-item-has-children dropdown">
+                                <a href="Console.aspx" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-calendar"></i>Scheduling</a>
+                                <ul class="sub-menu children dropdown-menu">
+
+                                    <li><i class="fa fa-calendar"></i><a href="../EXT/StaffGroupLinkRequest_m.aspx" id="lnk_StaffGroupLinkRequest_m">Staff Link Request</a></li>
+                                    <li><i class="fa fa-calendar"></i></li>
+
+                                    <li><i class="fa fa-calendar"></i><a href="../EXT/GroupsSchedule_b.aspx" id="lnk_GroupsSchedule_b">Groups Schedule</a></li>
+                                    <li><i class="fa fa-calendar"></i></li>
+                                    <li><i class="fa fa-calendar"></i></li>
+                                    <li><i class="fa fa-calendar"></i><a href="../EXT/RoomSchedule_m.aspx" id="lnk_RoomSchedule_m">Room Schedule</a></li>
+                                    <li><i class="fa fa-calendar"></i></li>
+
+                                    <li><i class="fa fa-calendar"></i></li>
+                                    <li><i class="fa fa-calendar"></i></li>
+                                    <li><i class="fa fa-calendar"></i></li>
+                                    <li><i class="fa fa-calendar"></i></li>
+                                    <li><i class="fa fa-calendar"></i></li>
+                                    <li><i class="fa fa-calendar"></i></li>
+                                    <li><i class="fa fa-calendar"></i></li>
+                                    <li><i class="fa fa-calendar"></i></li>
+                                    <li><i class="fa fa-calendar"></i></li>
+                                    <li><i class="fa fa-calendar"></i></li>
+                                    <li><i class="fa fa-calendar"></i></li>
+                                    <li><i class="fa fa-calendar"></i></li>
+                                    <li><i class="fa fa-calendar"></i></li>
+                                    <li><i class="fa fa-calendar"></i></li>
+                                    <li><i class="fa fa-calendar"></i></li>
+                                    <li><i class="fa fa-calendar"></i></li>
+                                    <li><i class="fa fa-plus-square"></i><a href="AddExtraSession_m.aspx" id="lnk_AddExtraSession_m">Reserve Room</a></li>
+                                    <li><i class="fa fa-plus-square"></i></li>
+                                    <li><i class="fa fa-calendar"></i><a href="SearchAcademicScheduled_001_m.aspx" id="lnk_SearchAcademicScheduled_001_m">Course/Staff Schedules</a></li>
+                                    <li><i class="fa fa-calendar"></i></li>
+                                    <li><i class="fa fa-calendar"></i></li>
+
+
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="main-menu collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <h3 class="menu-title menu-title-Hidden">Menu Items</h3>
+                            <li class="menu-item-has-children dropdown">
+                                <a href="Console.aspx" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-book"></i>Courses</a>
+                                <ul class="sub-menu children dropdown-menu">
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-book"></i><a href="NotificationSystem_SendEmail_m.aspx" id="lnk_NotificationSystem_SendEmail_m">Notification System</a></li>
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-book"></i></li>
+                                    <!-- -->
+                                    <li><i class="fa fa-book"></i><a href="../EXT/ViewEvaluationSummary_m.aspx" id="lnk_ViewEvaluationSummary_m">Evaluation Summary</a></li>
+
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-book"></i></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="main-menu collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <h3 class="menu-title menu-title-Hidden">Menu Items</h3>
+                            <li class="menu-item-has-children dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-lock"></i>Advising</a>
+                                <ul class="sub-menu children dropdown-menu">
+
+
+                                    <li><i class="fa fa-edit"></i><a href="../EXT/AdvisingList_m.aspx" id="lnk_AdvisingList_m">Advising List</a></li>
+                                    <li><i class="fa fa-calendar"></i><a href="ManageAdviseScheduleV2.aspx" id="lnk_ManageAdviseScheduleV2">Manage Advise Schedule[V2]</a></li>
+                                    <li><i class="fa fa-file"></i></li>
+                                    <li><i class="fa fa-file"></i></li>
+                                    <li><i class="fa fa-file"></i><a href="../EXT/AddUsers_m.aspx" id="lnk_AddUsers_m">Add Users</a></li>
+                                    <li><i class="fa fa-file"></i><a href="../EXT/OpenTicket_m.aspx" id="lnk_OpenTicket_m">Open Tickect</a></li>
+                                    <li><i class="fa fa-file"></i><a href="../EXT/MonitorTicket2.aspx" id="lnk_MonitorTicket2">Monitor Tickect</a></li>
+                                    <li><i class="fa fa-file"></i><a href="../EXT/Memo_Advising.aspx" id="Memo_Advising">Memo Advising</a></li>
+                                    <li><i class="fa fa-file"></i><a href="../EXT/Memo_Advising_approve.aspx" id="Memo_Advising_approve">Memo Advising approve</a></li>
+                                    <li><i class="fa fa-file"></i><a href="../EXT/Memo_Advising_Review.aspx" id="Memo_Advising_Review">Memo Advising Review</a></li>
+
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="main-menu collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <h3 class="menu-title menu-title-Hidden">Menu Items</h3>
+                            <li class="menu-item-has-children dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-eye"></i>Proctoring</a>
+                                <ul class="sub-menu children dropdown-menu">
+                                    <li><i class="fa fa-users"></i></li>
+                                    <li><i class="fa fa-user"></i></li>
+                                    <li><i class="fa fa-user"></i></li>
+                                    <li><i class="fa fa-laptop"></i><a href="ViewTimeTable_m.aspx" id="lnk_ViewTimeTable_m">Proctoring Schedule</a></li>
+                                    <li><i class="fa fa-laptop"></i><a href="ProctorExchange_m.aspx" id="lnk_ProctorExchange_m">Proctoring Exchange</a></li>
+                                    <li><i class="fa fa-exchange"></i></li>
+                                    <li><i class="fa fa-th"></i></li>
+                                    <li><i class="fa fa-calendar-o"></i></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="main-menu collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <h3 class="menu-title menu-title-Hidden">Menu Items</h3>
+                            <li class="menu-item-has-children dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-barcode"></i>Preparations of Exams</a>
+                                <ul class="sub-menu children dropdown-menu">
+                                    <li><i class="fa fa-ticket"></i></li>
+                                    <li><i class="fa fa-plus-square"></i></li>
+                                    <li><i class="fa fa-cog"></i></li>
+                                    <li><i class="fa fa-envelope"></i></li>
+                                    <li><i class="fa fa-th"></i></li>
+                                    <li><i class="fa fa-print"></i></li>
+                                    <li><i class="fa fa-cog"></i></li>
+                                    <li><i class="fa fa-print"></i></li>
+                                    <li><i class="fa fa-envelope"></i></li>
+                                    <li><i class="fa fa-edit"></i></li>
+                                    <li><i class="fa fa-cog"></i></li>
+                                    <li><i class="fa fa-edit"></i></li>
+                                    <li><i class="fa fa-edit"></i></li>
+
+                                    <li><i class="fa fa-edit"></i></li>
+
+                                    <li><i class="fa fa-edit"></i></li>
+
+                                    <li><i class="fa fa-edit"></i></li>
+                                    <li><i class="fa fa-edit"></i></li>
+                                    <li><i class="fa fa-edit"></i></li>
+
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="main-menu collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <h3 class="menu-title menu-title-Hidden">Menu Items</h3>
+                            <li class="menu-item-has-children dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-columns"></i>Preparations of Results</a>
+                                <ul class="sub-menu children dropdown-menu">
+
+                                    <li><i class="fa fa-envelope"></i></li>
+                                    <li><i class="fa fa-laptop"></i></li>
+                                    <li><i class="fa fa-laptop"></i></li>
+                                    <li><i class="fa fa-laptop"></i></li>
+                                    <li><i class="fa fa-retweet"></i></li>
+                                    <li><i class="fa fa-print"></i></li>
+                                    <li><i class="fa fa-print"></i></li>
+                                    <li><i class="fa fa-laptop"></i></li>
+                                    <li><i class="fa fa-cog"></i></li>
+                                    <li><i class="fa fa-laptop"></i><a href="FacultyProcessMap_m.aspx" id="lnk_FacultyProcessMap_m">Course Result Preparation</a></li>
+                                    <li><i class="fa fa-laptop"></i></li>
+                                    <li><i class="fa fa-print"></i></li>
+                                    <li><i class="fa fa-edit"></i></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="main-menu collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <h3 class="menu-title menu-title-Hidden">Menu Items</h3>
+                            <li class="menu-item-has-children dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-print"></i>Grading</a>
+                                <ul class="sub-menu children dropdown-menu">
+                                    <li><i class="fa fa-edit"></i><a href="ManageCourseEvalMethod_m.aspx" id="lnk_ManageCourseEvalMethod_m">Manage Evaluation Methods</a></li>
+                                    
+                                    <li><i class="fa fa-edit"></i><a href="ManageGroupGrade_m.aspx" id="lnk_ManageGroupGrade_m">Manage Group Grade</a></li>
+                                    <li><i class="fa fa-edit"></i></li>
+                                    <li><i class="fa fa-edit"></i></li>
+
+                                    <li><i class="fa fa-edit"></i><a href="ManageGrade_m.aspx" id="lnk_ManageGrade_m">Manage Grade</a></li>
+                                    <li><i class="fa fa-edit"></i></li>
+                                    <li><i class="fa fa-edit"></i></li>
+                                    <li><i class="fa fa-edit"></i></li>
+
+                                    <li><i class="fa fa-edit"></i></li>
+
+                                    <li><i class="fa fa-edit"></i></li>
+                                    
+
+                                    <li><i class="fa fa-print"></i><a href="StudentAffairs_EnrolledTranscript_b.aspx" id="lnk_StudentAffairs_EnrolledTranscript_b" target="_blank">Enrolled Transcript[ECTS]</a></li>
+                                    <li><i class="fa fa-edit"></i></li>
+                                    <li><i class="fa fa-edit"></i><a href="../EXT/EvaluationDeadlinesUpload_m.aspx" id="lnk_EvaluationDeadlinesUpload_m">Evaluation Deadlines Upload</a></li>
+                                    <li><i class="fa fa-edit"></i><a href="../EXT/ManageUploadedGrades_m.aspx" id="lnk_ManageUploadedGrades_m">Manage Uploaded Grades</a></li>
+                                    <li><i class="fa fa-edit"></i></li>
+                                    <li><i class="fa fa-edit"></i></li>
+                                    <li><i class="fa fa-edit"></i></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="main-menu collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <h3 class="menu-title menu-title-Hidden">Menu Items</h3>
+                            <li class="menu-item-has-children dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-users"></i>Student Data</a>
+                                <ul class="sub-menu children dropdown-menu">
+                                    <li><i class="fa fa-th"></i></li>
+                                    <li><i class="fa fa-th"></i><a href="../EXT/StudentHistory_m.aspx" id="lnk_StudentHistory_m">Student History</a></li>
+                                    
+                                    <li><i class="fa fa-bar-chart"></i></li>
+                                    <li><i class="fa fa-bar-chart"></i></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="main-menu collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <h3 class="menu-title menu-title-Hidden">Menu Items</h3>
+                            <li class="menu-item-has-children dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-print"></i>Student Affairs</a>
+                                <ul class="sub-menu children dropdown-menu">
+
+                                    <li><i class="fa fa-print"></i></li>
+                                    <li><i class="fa fa-edit"></i></li>
+                                    <li><i class="fa fa-edit"></i></li>
+                                    <li><i class="fa fa-refresh"></i></li>
+                                    <li><i class="fa fa-refresh"></i></li>
+                                    <li><i class="fa fa-refresh"></i></li>
+                                    <li><i class="fa fa-refresh"></i></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="main-menu collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <h3 class="menu-title menu-title-Hidden">Menu Items</h3>
+                            <li class="menu-item-has-children dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-file-o"></i>Finance</a>
+                                <ul class="sub-menu children dropdown-menu">
+                                    <li><i class="fa fa-plus"></i></li>
+                                    <li><i class="fa fa-repeat"></i></li>
+                                    <li><i class="fa fa-refresh"></i></li>
+                                    <li><i class="fa fa-refresh"></i></li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="main-menu collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <h3 class="menu-title menu-title-Hidden">Menu Items</h3>
+                            <li class="menu-item-has-children dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-file-o"></i>Military</a>
+                                <ul class="sub-menu children dropdown-menu">
+                                    <li><i class="fa fa-repeat"></i></li>
+                                    <li><i class="fa fa-plus"></i></li>
+                                    <li><i class="fa fa-repeat"></i></li>
+                                    <li><i class="fa fa-repeat"></i></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="main-menu collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <h3 class="menu-title menu-title-Hidden">Menu Items</h3>
+                            <li class="menu-item-has-children dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-file-o"></i>Reservation</a>
+                                <ul class="sub-menu children dropdown-menu">
+                                    <li><i class="fa fa-repeat"></i></li>
+                                    <li><i class="fa fa-repeat"></i></li>
+                                    <li><i class="fa fa-repeat"></i></li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="main-menu collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <h3 class="menu-title menu-title-Hidden">Menu Items</h3>
+                            <li class="menu-item-has-children dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-file-o"></i>Quality Reports</a>
+                                <ul class="sub-menu children dropdown-menu">
+                                    <li><i class="fa fa-print"></i><a href="CourseResultAnalysis_m.aspx" id="lnk_CourseResultAnalysis_m">Course Result Analysis</a></li>
+                                    <li><i class="fa fa-print"></i><a href="ViewCourseEvaluationSummaryAdminNew_m.aspx" id="lnk_ViewCourseEvaluationSummaryAdminNew_m">Course Evaluation Summary</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="main-menu collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <h3 class="menu-title menu-title-Hidden">Menu Items</h3>
+                            <li class="menu-item-has-children dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-print"></i>HR</a>
+                                <ul class="sub-menu children dropdown-menu">
+
+                                    <li><i class="fa fa-print"></i></li>
+                                    <li><i class="fa fa-print"></i></li>
+                                    <li><i class="fa fa-print"></i></li>
+                                    <li><i class="fa fa-print"></i></li>
+                                    <li><i class="fa fa-print"></i></li>
+                                    <li><i class="fa fa-print"></i></li>
+                                    <li><i class="fa fa-print"></i></li>
+                                    <li><i class="fa fa-calendar"></i></li>
+                                    <li><i class="fa fa-print"></i></li>
+                                    <li><i class="fa fa-print"></i><a href="../EXT/ManageStaffInfo.aspx" id="lnk_ManageStaffInfo">Manage Staff Info</a></li>
+                                    <li><i class="fa fa-print"></i></li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="main-menu collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <h3 class="menu-title menu-title-Hidden">Menu Items</h3>
+                            <li class="menu-item-has-children dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-file-o"></i>Summer</a>
+                                <ul class="sub-menu children dropdown-menu">
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-book"></i></li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="main-menu collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <h3 class="menu-title menu-title-Hidden">Menu Items</h3>
+                            <li class="menu-item-has-children dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-file-o"></i>Summer Language</a>
+                                <ul class="sub-menu children dropdown-menu">
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-book"></i></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="main-menu collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <h3 class="menu-title menu-title-Hidden">Menu Items</h3>
+                            <li class="menu-item-has-children dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-file-o"></i>Thesis</a>
+                                <ul class="sub-menu children dropdown-menu">
+                                    <li><i class="fa fa-book"></i><a href="ManageThesis_m.aspx" id="lnk_ManageThesis_m">Manage Thesis</a></li>
+                                    <li><i class="fa fa-check-square-o"></i></li>
+                                    <li><i class="fa fa-bar-chart"></i></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="main-menu collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <h3 class="menu-title menu-title-Hidden">Menu Items</h3>
+                            <li class="menu-item-has-children dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-file-o"></i>Electives</a>
+                                <ul class="sub-menu children dropdown-menu">
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-check-square-o"></i></li>
+                                    <li><i class="fa fa-minus-circle"></i></li>
+                                    <li><i class="fa fa-edit"></i></li>
+                                    <li><i class="fa fa-bar-chart"></i></li>
+                                    <li><i class="fa fa-print"></i></li>
+                                    <li><i class="fa fa-file-o"></i></li>
+
+                                    
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+
+
+                    <div class="main-menu collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <h3 class="menu-title menu-title-Hidden">Menu Items</h3>
+                            <li class="menu-item-has-children dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-file-o"></i>Semester Exchange</a>
+                                <ul class="sub-menu children dropdown-menu">
+
+                                    <li><i class="fa fa-check-square-o"></i></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    <div class="main-menu collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <h3 class="menu-title menu-title-Hidden">Menu Items</h3>
+                            <li class="menu-item-has-children dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-file-o"></i>Mentoring</a>
+                                <ul class="sub-menu children dropdown-menu">
+
+                                    <li><i class="fa fa-check-square-o"></i></li>
+                                    <li><i class="fa fa-check-square-o"></i></li>
+                                    <li><i class="fa fa-check-square-o"></i></li>
+                                    <li><i class="fa fa-check-square-o"></i></li>
+                                    <li><i class="fa fa-check-square-o"></i></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="main-menu collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <h3 class="menu-title menu-title-Hidden">Menu Items</h3>
+                            <li class="menu-item-has-children dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-file-o"></i>Internship</a>
+                                <ul class="sub-menu children dropdown-menu">
+
+                                    <li><i class="fa fa-check-square-o"></i></li>
+                                    <li><i class="fa fa-check-square-o"></i></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+
+
+                    <div class="main-menu collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <h3 class="menu-title menu-title-Hidden">Menu Items</h3>
+                            <li class="menu-item-has-children dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-lock"></i>Admins Section</a>
+                                <ul class="sub-menu children dropdown-menu">
+
+                                    <li><i class="fa fa-lock"></i></li>
+                                    <li><i class="fa fa-cogs"></i></li>
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-cog"></i></li>
+                                    <li><i class="fa fa-cogs"></i></li>
+                                    <li><i class="fa fa-credit-card"></i></li>
+                                    <li><i class="fa fa-credit-card"></i></li>
+
+
+                                    <li><i class="fa fa-cog"></i></li>
+                                    <li><i class="fa fa-print"></i></li>
+                                    <li><i class="fa fa-print"></i></li>
+                                    <li><i class="fa fa-print"></i></li>
+                                    <li><i class="fa fa-money"></i></li>
+                                    <li><i class="fa fa-users"></i></li>
+
+                                    <li><i class="fa fa-edit"></i></li>
+                                    <li><i class="fa fa-edit"></i></li>
+                                    <li><i class="fa fa-edit"></i></li>
+                                    <li><i class="fa fa-edit"></i></li>
+                                    <li><i class="fa fa-cog"></i></li>
+
+                                    <li><i class="fa fa-cog"></i></li>
+                                    <li><i class="fa fa-cog"></i></li>
+
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-book"></i></li>
+                                    <li><i class="fa fa-book"></i></li>
+
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    <!-- /.navbar-collapse -->
+                </nav>
+            </aside>
+            <!-- /#left-panel -->
+
+            <!-- Left Panel -->
+
+            <!-- Right Panel -->
+
+            <div id="right-panel" class="right-panel ">
+
+                <!-- Header-->
+                <header id="header" class="header d-print-none">
+
+                    <div class="header-menu">
+
+                        <div class="col-sm-7">
+                            <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                            <div class="header-left">
+
+                                <span id="lbl_UserRole" class="text-dark"><i class="fa fa-info-circle"></i>&nbsp; You see This Page Based On Role:&nbsp; <b><span id="spn_UserRole">Academic</span></b></span>
+
+                                
+
+                                <div class="dropdown for-notification" style="display: none;">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-bell"></i>
+                                        <span class="count bg-danger">0</span>
+                                    </button>
+                                    <div class="dropdown-menu  bg-light" aria-labelledby="notification">
+                                        <p class="red">You have 0 Notification</p>
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="dropdown for-message" style="display: none;">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="message" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-envelope"></i>
+                                        <span class="count bg-primary">0</span>
+                                    </button>
+                                    <div class="dropdown-menu  bg-light" aria-labelledby="message">
+                                        <p class="red">You have 0 Mails</p>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-5">
+                            <div class="user-area dropdown float-right">
+
+
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-user"></i>
+                                    <p>
+                                        <span id="lbl_Account">mohamed.elmaadawy</span>
+                                    </p>
+                                </a>
+
+                                <div class="user-menu dropdown-menu bg-light">
+
+
+                                    <a id="lnkb_SignOut" class="nav-link" href="javascript:__doPostBack('ctl00$lnkb_SignOut','')"><i class="fa fa-power -off"></i>Logout</a>
+                                </div>
+                            </div>
+
+                            <div class="language-select dropdown" id="language-select">
+                                <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="language" aria-haspopup="true" aria-expanded="true">
+                                    <i class="flag-icon flag-icon-us"></i>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="language">
+                                    <div class="dropdown-item">
+                                        <span class="flag-icon flag-icon-fr"></span>
+                                    </div>
+                                    <div class="dropdown-item">
+                                        <i class="flag-icon flag-icon-es"></i>
+                                    </div>
+                                    <div class="dropdown-item">
+                                        <i class="flag-icon flag-icon-us"></i>
+                                    </div>
+                                    <div class="dropdown-item">
+                                        <i class="flag-icon flag-icon-it"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </header>
+                <!-- /header -->
+                <!-- Header-->
+
+                <div class="breadcrumbs" style="display: none">
+                    <div class="col-sm-4">
+                        <div class="page-header float-left">
+                            <div class="page-title">
+                                <h1>....</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="page-header float-right">
+                            <div class="page-title">
+                                <ol class="breadcrumb text-right">
+                                    <li class="active">....</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content mt-3">
+
+                    <div class="col-sm-12 col-md-12 col-lg-12 d-print-none">
+                        
+
+                        
+                    </div>
+
+
+
+                    <div class="col-sm-12 col-md-12 col-lg-12 d-print-none">
+                        <div class="alert alert-secondary text-center">
+                            <h2>
+                                <span id="lbl_PageTitle">View All Course/Staff Schedules (Compensation)</span></h2>
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="col-sm-12">
+
+                        <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$scripManager', 'form1', [], [], [], 90, 'ctl00');
+//]]>
+</script>
+
+
+                        
+
+    <style type="text/css">BODY {
+	FONT-SIZE: 12px; FONT-FAMILY: Helvetica
+}
+TABLE {
+	FONT-SIZE: 12px; FONT-FAMILY: Helvetica
+}
+TR {
+	FONT-SIZE: 12px; FONT-FAMILY: Helvetica
+}
+TD {
+	FONT-SIZE: 12px; FONT-FAMILY: Helvetica
+}
+TH {
+	FONT-SIZE: 12px; FONT-FAMILY: Helvetica
+}
+TABLE.schedule {
+	BORDER-TOP: #999 0px solid; BORDER-RIGHT: #999 0px solid; BORDER-BOTTOM: #999 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: #999 1px solid; PADDING-RIGHT: 0px
+}
+TABLE.schedule TH {
+	BORDER-TOP: #999 0px solid; BORDER-RIGHT: #999 0px solid; BORDER-BOTTOM: #999 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: #999 1px solid; PADDING-RIGHT: 0px
+}
+TABLE.schedule TD {
+	BORDER-TOP: #999 0px solid; BORDER-RIGHT: #999 0px solid; BORDER-BOTTOM: #999 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: #999 1px solid; PADDING-RIGHT: 0px
+}
+TABLE.schedule {
+	BORDER-LEFT-WIDTH: 0px; BORDER-RIGHT-WIDTH: 1px; WIDTH: 80%; BORDER-BOTTOM-WIDTH: 0px; BORDER-SPACING: 0; BORDER-TOP-WIDTH: 1px
+}
+TABLE.schedule TH {
+	BACKGROUND: #f5f5f5
+}
+TABLE.schedule TD {
+	VERTICAL-ALIGN: top
+}
+TABLE.schedule TH:first-child {
+	WIDTH: 10%
+}
+TABLE.schedule TR {
+	HEIGHT: 90px
+}
+TABLE.schedule TD .slot {
+	CURSOR: crosshair; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN-TOP: -20px; PADDING-RIGHT: 10px
+}
+TABLE.schedule TD .slot DT {
+	FONT-SIZE: 10px; TEXT-TRANSFORM: uppercase; FONT-WEIGHT: bold; COLOR: #999; FONT-STYLE: italic
+}
+TABLE.schedule TD .slot DD {
+	PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px
+}
+.icon_link {
+	TEXT-DECORATION: none; FONT-FAMILY: Comic Sans MS; FONT-WEIGHT: bold; COLOR: red; MARGIN-RIGHT: 2px
+}
+.add_link {
+	FONT-SIZE: 18px; COLOR: black
+}
+.msgLbl {
+	FONT-WEIGHT: bold; COLOR: red
+}
+.active-staff {
+	BACKGROUND: yellow
+}
+.active-course {
+	BACKGROUND: red
+}
+.filter-box {
+	WIDTH: 100px
+}
+.select-box {
+	WIDTH: 300px
+}
+</style>
+
+    <table class="table03">
+        <tbody><tr>
+            <td class="td02">
+                <center>
+      <p>&nbsp;</p>
+      <table class="Width460pxPaddingCenter" border="0">
+        <tbody><tr>
+          <td>
+            <h2></h2>
+            <p>Usage Guide Lines (Searching and/or Adding 
+            Course(s)): 
+            </p><ul>
+              <li>To add courses (if needed): please Click 
+              the <span class="add_link icon_link">+</span> 
+              symbol next to <b>Courses</b><br>Note that filtering is optional, you can use 
+              it to find quickly a course by typing a part from its name or code 
+              into the white box provided. 
+              </li><li>To add instructor or TA, Click the <span class="add_link icon_link">+</span> symbol 
+              next to <b>Staff</b> (if needed), also you 
+              can use the provided filter to quickly find the instructor 
+              </li><li>If you change your mind, simply click 
+              <span class=" icon_link">x</span> symbol 
+              preceding the filter to remove this choice 
+              </li><li>Finally, Click on Show Schedule to View 
+              all selected courses and instructor’s scheduled slots <br>e.g., to view slots of course A taught by 
+              staff X and slots of course B taught by staff Y, add the courses A 
+              and B, and staff members X and Y 
+              </li><li>Move your mouse cursor over any slot to 
+              see all slots for that course and all slots assigned to that 
+              instructor. Courses will be highlighted in <span class="active-course">red</span> while the 
+              instructor’s will be in <span class="active-staff">yellow</span> </li></ul>
+            <p></p>
+            <p>Filtering tips: 
+            </p><ul>
+              <li>To select a specific course by code, 
+              simply enter its code in the filter and immediately the Courses 
+              list will be updated 
+              </li><li>This system filters are case 
+              insensitive<br>e.g., if you typed: CSEN 202 
+              is just like typing csen 202 
+              </li><li>Wildcard symbol: <b>(.*)</b> 
+              </li><li>Protip: you can use regular 
+              expressions</li></ul>
+            <p></p>
+            <p></p>
+            <p>Courses: <a class="icon_link add_link" href="javascript: generate_dropdown(courses, '#courses_list', 'course[]')">+</a></p>
+            <div id="courses_list" class="to_add"></div>
+            <p>Staff: <a class="icon_link add_link" href="javascript: generate_dropdown(tas, '#teaching_assistants', 'ta[]')">+</a></p>
+            <div id="teaching_assistants"></div>
+            <p><input type="submit" name="ctl00$MainContent$B_ShowSchedule" value="Show Schedule" id="MainContent_B_ShowSchedule" style="Z-INDEX: 0"><br></p></td></tr></tbody></table>
+      <p>&nbsp;</p>
+      <p></p><table id="MainContent_schedule" class="schedule">
+	<tbody><tr>
+		<th>
+												&nbsp;</th><th>
+												1<sup>st</sup> First</th><th>
+												2<sup>nd</sup> Second</th><th>
+												3<sup>rd</sup> Third</th><th>
+												4<sup>th</sup> Fourth</th><th>
+												5<sup>th</sup> Fifth</th><th>
+												6<sup>th</sup> Sixth</th><th>
+												7<sup>th</sup> Seventh</th><th>
+												8<sup>th</sup> Eighth</th>
+	</tr><tr>
+		<th>
+											Saturday</th><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+	</tr><tr>
+		<th>
+										Sunday</th><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+	</tr><tr>
+		<th>
+										Monday</th><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+	</tr><tr>
+		<th>
+										Tuesday</th><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+	</tr><tr>
+		<th>
+										Wednesday</th><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+	</tr><tr>
+		<th>
+										Thursday</th><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+	</tr><tr>
+		<th>
+										Friday</th><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+	</tr>
+</tbody></table><p></p></center>
+            </td>
+        </tr>
+    </tbody></table>
+    <script src="../JS/jquery-1.10.2.min.js"></script>
+    <script src="../JS/home.js"></script>
+    
+
+
+                    </div>
+
+
+
+
+                </div>
+                <!-- .content -->
+            </div>
+            <!-- /#right-panel -->
+
+            <!-- Right Panel -->
+
+
+        </div>
+    
+<script type="text/javascript">var courses = [{'id': '3206', 'value': 'AD 1001: Elective - Theme: Smart Architecture'}, {'id': '3204', 'value': 'AD 1090: Advanced Architectural Design Studio II'}, {'id': '3209', 'value': 'AD 1099: Research proposal and Seminar'}, {'id': '2963', 'value': 'AD 601: Architectural Design Studio VI'}, {'id': '2964', 'value': 'AD 602: Architectural Design Working Drawings II'}, {'id': '2965', 'value': 'AD 603: Conservation and Restoration'}, {'id': '2966', 'value': 'AD 604: Housing'}, {'id': '2967', 'value': 'AD 605: Project Management and Building Economics'}, {'id': '13', 'value': 'AE 101: Introduction to Academic English'}, {'id': '2750', 'value': 'ARCH 202: Design Studio II'}, {'id': '2751', 'value': 'ARCH 203: Descriptive Geometry'}, {'id': '2752', 'value': 'ARCH 204: Architectonics II'}, {'id': '2753', 'value': 'ARCH 205: 3D Modeling'}, {'id': '2754', 'value': 'ARCH 206: History II'}, {'id': '2824', 'value': 'ARCH 213: Design Studio IV'}, {'id': '2825', 'value': 'ARCH 214: Theories of Architecture II'}, {'id': '2826', 'value': 'ARCH 215: Ecology and Environmental Design'}, {'id': '2827', 'value': 'ARCH 216: Architectonics IV'}, {'id': '2828', 'value': 'ARCH 217: CAD II'}, {'id': '2829', 'value': 'ARCH 218: Structure II'}, {'id': '2962', 'value': 'ARCH 601: CAD IV'}, {'id': '2888', 'value': 'ARCH 609: Cairo Waterfronts'}, {'id': '3096', 'value': 'ARCH 610: BIM and Beyond : Digital Delivery in Building Technology'}, {'id': '3097', 'value': 'ARCH 611: Pixels & Places: Reimagining Urban Spaces through Gamification and VR'}, {'id': '3166', 'value': 'ARCH 613: Design with Nature: Crafting outdoor Living Spaces'}, {'id': '3026', 'value': 'ARCH 700: Bachelor Thesis'}, {'id': '3089', 'value': 'ARCH 802: Professional Practice:Legislations and Contracts'}, {'id': '3090', 'value': 'ARCH 803: Business Ethics and Workplace Readiness'}, {'id': '14', 'value': 'AS 101: English for Academic Purposes'}, {'id': '3102', 'value': 'BINF 1001: Advanced Data Management & Mining'}, {'id': '3103', 'value': 'BINF 1002: Digital Innovation and Entrepreneurship'}, {'id': '3104', 'value': 'BINF 1003: Advanced IT Project Management'}, {'id': '3105', 'value': 'BINF 1004: Advanced Research Methodology for BI'}, {'id': '3075', 'value': 'BINF 401: Digital Marketing'}, {'id': '3076', 'value': 'BINF 402: Digital Transformation'}, {'id': '3184', 'value': 'BINF 601: IT Project Management'}, {'id': '3185', 'value': 'BINF 602: Business Intelligence and Analytics'}, {'id': '2611', 'value': 'BIOLp 204: Cellular and Molecular Biology'}, {'id': '2596', 'value': 'BIOLt 204: Cellular and Molecular Biology'}, {'id': '3190', 'value': 'BIOM 601: Ergonomics'}, {'id': '2973', 'value': 'BIOT  801: Intellectual Property Management and IP Contract Law'}, {'id': '3112', 'value': 'BIOT 1001: Bioethics and Biotechnology'}, {'id': '3113', 'value': 'BIOT 1002: Biosafety'}, {'id': '3114', 'value': 'BIOT 1003: Vaccine and Sera Process Technology'}, {'id': '3115', 'value': 'BIOT 1004: Nutrigenomics'}, {'id': '3116', 'value': 'BIOT 1005: Systems Biology'}, {'id': '3117', 'value': 'BIOT 1006: Master Thesis Preparatory Courses'}, {'id': '2675', 'value': 'BIOT 305: Statistics'}, {'id': '2846', 'value': 'BIOT 601: Bioinformatics'}, {'id': '2847', 'value': 'BIOT 602: Industrial Biotechnology & Bioprocess Technology'}, {'id': '2850', 'value': 'BIOT 603: Downstream Processing'}, {'id': '2861', 'value': 'BIOT 700: Bachelor Thesis'}, {'id': '2614', 'value': 'BIOTp 201: Medical Sciences'}, {'id': '2758', 'value': 'BIOTp 401: Biochemistry'}, {'id': '2760', 'value': 'BIOTp 403: Immunology'}, {'id': '2849', 'value': 'BIOTp 604: Clinical Biochemistry'}, {'id': '2852', 'value': 'BIOTp 605: Cell Culture Technology'}, {'id': '2854', 'value': 'BIOTp 606: Cosmetics Biotechnology'}, {'id': '3168', 'value': 'BIOTp 607: Drug Discovery & Development'}, {'id': '2598', 'value': 'BIOTt 201: Medical Sciences'}, {'id': '2757', 'value': 'BIOTt 401: Biochemistry'}, {'id': '2759', 'value': 'BIOTt 403: Immunology'}, {'id': '2848', 'value': 'BIOTt 604: Clinical Biochemistry'}, {'id': '2851', 'value': 'BIOTt 605: Cell Culture Technology'}, {'id': '2853', 'value': 'BIOTt 606: Cosmetics Biotechnology'}, {'id': '3167', 'value': 'BIOTt 607: Drug Discovery & Development'}, {'id': '2577', 'value': 'BSAD 406: Macroeconomics'}, {'id': '2578', 'value': 'BSAD 407: Principles of Corporate Finance'}, {'id': '2579', 'value': 'BSAD 408: Innovation Management'}, {'id': '2580', 'value': 'BSAD 409: Applied Statistics'}, {'id': '2581', 'value': 'BSAD 410: Managing Organizations'}, {'id': '2699', 'value': 'BSAD 601: Company Taxation'}, {'id': '2700', 'value': 'BSAD 602: Information Management'}, {'id': '2743', 'value': 'BSAD 603: Project management'}, {'id': '2776', 'value': 'BSAD 604: Project management'}, {'id': '2808', 'value': 'BSAD 700: Bachelor Thesis'}, {'id': '2782', 'value': 'BSAD 701: Business Simulation'}, {'id': '2703', 'value': 'BSDM 601: Market Research'}, {'id': '2704', 'value': 'BSDM 602: Communication Strategies and Consumer Behavior'}, {'id': '2705', 'value': 'BSDM 603: Product and Distribution Management'}, {'id': '2712', 'value': 'BSEN 601: Managing SMEs'}, {'id': '2713', 'value': 'BSEN 602: Business Management and Entrepreneurship'}, {'id': '2714', 'value': 'BSEN 603: SMEs Production Management and Marketing'}, {'id': '2715', 'value': 'BSFA 601: Financial Markets, Institutions and Investments'}, {'id': '2707', 'value': 'BSFA 602: Financial Analysis and Evaluation'}, {'id': '2708', 'value': 'BSFA 603: Corporate Finance'}, {'id': '2701', 'value': 'BSIB 601: Strategic Management'}, {'id': '2702', 'value': 'BSIB 602: Applied International Sustainability Management'}, {'id': '2716', 'value': 'BSIB 603: International Marketing'}, {'id': '2878', 'value': 'BSIN 102: Programming I for Business Informatics'}, {'id': '2959', 'value': 'BSIN 103: Business Process Management'}, {'id': '2960', 'value': 'BSIN 104: Math II for Business Informatics'}, {'id': '2961', 'value': 'BSIN 105: Programming II for Business Informatics'}, {'id': '2709', 'value': 'BSSC 601: Auditing and Accountability'}, {'id': '2710', 'value': 'BSSC 602: Distribution and Transportation Management'}, {'id': '2711', 'value': 'BSSC 603: Production and Supply Chain Management'}, {'id': '2994', 'value': 'BTGN 601: Research Methodology'}, {'id': '2933', 'value': 'BUAD 1001: Advanced Research Methodology'}, {'id': '3101', 'value': 'BUAD 1002: Industry Global Competitiveness'}, {'id': '2938', 'value': 'BUAD 1003: Advanced Sustainability Management'}, {'id': '2942', 'value': 'BUAD 1004: Current Issues in Marketing'}, {'id': '2943', 'value': 'BUAD 1005: Brand Management'}, {'id': '2947', 'value': 'BUAD 1006: Financial Modeling'}, {'id': '2948', 'value': 'BUAD 1007: Digital Accounting'}, {'id': '3072', 'value': 'BUAD 405: Applied Econometrics'}, {'id': '3073', 'value': 'BUAD 406: Human Resources Management for BI'}, {'id': '3074', 'value': 'BUAD 407: Innovation Management for BI'}, {'id': '3179', 'value': 'BUAD 524: Business Law and Technology Governance'}, {'id': '3176', 'value': 'BUAD 618: Real Estate Finance & Investments'}, {'id': '3177', 'value': 'BUAD 619: Digital Transformation of Real Estate Management'}, {'id': '3178', 'value': 'BUAD 620: Marketing and Sales in Real Estate'}, {'id': '3170', 'value': 'BUAD 624: Financial Derivatives'}, {'id': '3171', 'value': 'BUAD 625: Fixed Income Securities'}, {'id': '3172', 'value': 'BUAD 626: Investment Banking'}, {'id': '3173', 'value': 'BUAD 627: Intermediate Macroeconomics'}, {'id': '3200', 'value': 'BUAD 705: Business Simulation'}, {'id': '2949', 'value': 'BUAD 912: Supply Chain Finance'}, {'id': '2430', 'value': 'CHEMp 102: Chemistry Practical'}, {'id': '2610', 'value': 'CHEMp 203: Organic Chemistry'}, {'id': '2595', 'value': 'CHEMt 203: Organic Chemistry'}, {'id': '2486', 'value': 'CNET 101: Computer Networks'}, {'id': '101', 'value': 'CPS 402: Communication & Presentation Skills (A2)'}, {'id': '2490', 'value': 'CSBA 201: Computer Science II'}, {'id': '2480', 'value': 'CSEN 204: Computer Science II'}, {'id': '2615', 'value': 'CSEN 406: Software  Engineering'}, {'id': '2438', 'value': 'CSIS 101: Introduction to Computer Science I'}, {'id': '2487', 'value': 'CSIS 102: Theoretical Computer Science'}, {'id': '2485', 'value': 'CSIS 201: Programming II'}, {'id': '2488', 'value': 'CSMR 101: Computer Organization'}, {'id': '15', 'value': 'DE 101: German 1'}, {'id': '33', 'value': 'DE 202: German 2'}, {'id': '64', 'value': 'DE 303: German 3'}, {'id': '73', 'value': 'DE 404: German 4'}, {'id': '3118', 'value': 'DESN 1001: General Design Project Review'}, {'id': '3119', 'value': 'DESN 1002: Master Thesis Preparatory Courses'}, {'id': '3194', 'value': 'DMES 201: Digital Media Design Essentials'}, {'id': '3195', 'value': 'DMES 202: Digital Storytelling'}, {'id': '3196', 'value': 'DMES 203: Creative Coding'}, {'id': '3197', 'value': 'DMES 204: Basic Typography and Layout'}, {'id': '3199', 'value': 'DMES 206: Basics of 2D Animation'}, {'id': '2483', 'value': 'DRAW 101: Technical Drawing'}, {'id': '2982', 'value': 'DSFD 201: Jewelry Design Workshop I'}, {'id': '2983', 'value': 'DSFD 401: Jewelry Design Workshop III'}, {'id': '2984', 'value': 'DSFD 601: Jewelry Design Workshop V'}, {'id': '2772', 'value': 'DSGN 601: General Studies: Ethic and Law'}, {'id': '2809', 'value': 'DSGN 700: Bachelor Thesis'}, {'id': '2831', 'value': 'DSGN 701: Design Concept'}, {'id': '2496', 'value': 'DSTH 101: Design Theory I (Art & Design History)'}, {'id': '2997', 'value': 'ECON 201: Principles of Economics'}, {'id': '2482', 'value': 'ELCT 101: Electrical Engineering I'}, {'id': '2566', 'value': 'ELCT 403: Electric Machines and Drives'}, {'id': '2908', 'value': 'ELEC 1001: AI-Based Intelligent Control Systems'}, {'id': '2905', 'value': 'ELEC 1002: Power System Operation and Planning'}, {'id': '3033', 'value': 'ELEC 1005: Computational Intelligence'}, {'id': '2981', 'value': 'ELEC 905: Advanced Electrical Energy Systems'}, {'id': '2742', 'value': 'ENAU 601: Automation/Control Engineering Project'}, {'id': '2767', 'value': 'ENAU 602: Computer-Controlled Systems'}, {'id': '2833', 'value': 'ENAU 603: Special Electric Machines'}, {'id': '2738', 'value': 'ENEP 601: Electric Power Systems Project'}, {'id': '2739', 'value': 'ENEP 602: Electric Power Systems II'}, {'id': '2741', 'value': 'ENEP 604: Power Electronics II'}, {'id': '3032', 'value': 'ENGN 1001: Smart Sensors and Actuators'}, {'id': '2516', 'value': 'ENGN 109: Engineering Design I'}, {'id': '2893', 'value': 'ENGN 1099: Master Thesis Preparatory Project'}, {'id': '2834', 'value': 'ENGN 401: Electronics II'}, {'id': '2601', 'value': 'ENGN 415: Microcontroller'}, {'id': '3091', 'value': 'ENGN 601: Introduction to AI'}, {'id': '2806', 'value': 'ENGN 700: Bachelor Thesis'}, {'id': '2784', 'value': 'ENGN 701: Research Methodology'}, {'id': '2563', 'value': 'ENME 405: Mechanics II'}, {'id': '2564', 'value': 'ENME 406: Mechanics of materials'}, {'id': '2569', 'value': 'ENME 407: Classic Control Engineering'}, {'id': '2570', 'value': 'ENME 408: Control System Lab'}, {'id': '2727', 'value': 'ENME 601: Mechatronics Engineering Project'}, {'id': '2735', 'value': 'ENMF 601: Quality Control'}, {'id': '2736', 'value': 'ENMF 602: Production Operations Management'}, {'id': '2728', 'value': 'ENMR 601: Vehicle Dynamics'}, {'id': '2729', 'value': 'ENMR 602: Signal and Image Processing'}, {'id': '2730', 'value': 'ENMR 603: Vehicle Powertrain'}, {'id': '2765', 'value': 'ENMR 604: Fluid Mechanics and Thermodynamics'}, {'id': '2731', 'value': 'ENRB 601: Industrial Robots'}, {'id': '2732', 'value': 'ENRB 602: Parallel Kinematics & Kinetics'}, {'id': '2733', 'value': 'ENRB 603: Industrial Automation & PLC Programming'}, {'id': '2766', 'value': 'ENRB 604: Facility Design'}, {'id': '2583', 'value': 'FAPR 406: Design Short Term Project I'}, {'id': '2582', 'value': 'FASD 405: Main Collection Project I (Concept, Prototyping)'}, {'id': '2584', 'value': 'FASD 407: Fashion Technology III: CAD/Fashion II, Portfolio, Technical Drawing'}, {'id': '2585', 'value': 'FASD 408: CAD-Pattern I, 3D Prototyping'}, {'id': '2771', 'value': 'FASD 601: Fashion Management and Marketing'}, {'id': '2770', 'value': 'FASD 602: Design Short Term Project II'}, {'id': '2769', 'value': 'FASD 603: Main Collection Project III'}, {'id': '2494', 'value': 'FDDS 101: Design Basics I (Fashion Design)'}, {'id': '2495', 'value': 'FDFT 101: Fashion Technology I'}, {'id': '2491', 'value': 'FINA 201: Financial Accounting II'}, {'id': '3120', 'value': 'FJDS 1001: Design Project- FD'}, {'id': '2492', 'value': 'HRMG 101: Human Resources Management'}, {'id': '2830', 'value': 'HUMA 801: Business Ethics'}, {'id': '3207', 'value': 'IA 1001: Elective - Theme: Smart Interior Architecture'}, {'id': '3205', 'value': 'IA 1090: Advanced Interior Architecture Studio II'}, {'id': '3208', 'value': 'IA 1099: Research proposal and Seminar'}, {'id': '2968', 'value': 'IA 601: Interior Architecture Studio VI'}, {'id': '2969', 'value': 'IA 602: Interior Architecture Working Drawings II'}, {'id': '2970', 'value': 'IA 603: Furniture Design'}, {'id': '2971', 'value': 'IA 604: Light Design'}, {'id': '2972', 'value': 'IA 605: Project Management and Interior Design Economics'}, {'id': '2718', 'value': 'ICS 602: Big Data and NoSQL'}, {'id': '2719', 'value': 'ICS 603: Advanced Machine Learning'}, {'id': '2720', 'value': 'ICS 604: Introduction to Image Processing and Computer Vision'}, {'id': '2721', 'value': 'ICS 605: Network Security'}, {'id': '2722', 'value': 'ICS 606: Business Continuity and Risk Management'}, {'id': '2723', 'value': 'ICS 607: Ethical Hacking and Penetration Testing'}, {'id': '2724', 'value': 'ICS 608: Software Cloud Computing'}, {'id': '2725', 'value': 'ICS 609: Software Mobile Development'}, {'id': '2764', 'value': 'ICS 610: Software Project II'}, {'id': '3086', 'value': 'ICS 611: 3D Design'}, {'id': '3087', 'value': 'ICS 612: Mobile Development'}, {'id': '3088', 'value': 'ICS 613: Media Informatics Project'}, {'id': '2497', 'value': 'IDDS 101: Design Basics I (Industrial Design)'}, {'id': '2498', 'value': 'IDDS 201: Design Basics II (Industrial Design)'}, {'id': '2586', 'value': 'IDDS 403: Design Main Project I: Design, Presentation & Documentation'}, {'id': '2588', 'value': 'IDDS 405: Material/Sustainable Manufacturing'}, {'id': '2589', 'value': 'IDDS 406: CAD 3D Modeling'}, {'id': '2775', 'value': 'IDDS 601: Universal Design Thinking and Intercultural Competence'}, {'id': '2774', 'value': 'IDDS 602: Design Short Term Project II'}, {'id': '2773', 'value': 'IDDS 603: Design Main Project III: Business Management'}, {'id': '3121', 'value': 'IDES 1001: Design Project- ID'}, {'id': '2587', 'value': 'IDPR 404: Design Short Term Project I'}, {'id': '3053', 'value': 'INCS 1001: Seminar - Selected Major-specific Topics'}, {'id': '2929', 'value': 'INCS 1002: Research Project II'}, {'id': '2912', 'value': 'INCS 1003: Analytics in the Cloud'}, {'id': '2913', 'value': 'INCS 1004: Statistical Modeling for Data Science Applications'}, {'id': '2916', 'value': 'INCS 1005: Social-Legal & Ethical issues in IT Security'}, {'id': '2917', 'value': 'INCS 1006: Secure Systems Engineering'}, {'id': '3106', 'value': 'INCS 1007: Software Game Development'}, {'id': '3107', 'value': 'INCS 1008: Software Engineering Studio'}, {'id': '2924', 'value': 'INCS 1009: Advanced Game Development and AI in Gaming'}, {'id': '2925', 'value': 'INCS 1010: Digital Video and Sound Processing'}, {'id': '3094', 'value': 'INCS 402: Analysis & Design of Algorithms'}, {'id': '2573', 'value': 'INCS 406: Distributed &Web-based Systems'}, {'id': '2574', 'value': 'INCS 407: Information Security'}, {'id': '2575', 'value': 'INCS 408: Introduction to Data Science'}, {'id': '2576', 'value': 'INCS 409: Introduction to Media Informatics'}, {'id': '3077', 'value': 'INCS 410: Cloud Computing'}, {'id': '3180', 'value': 'INCS 614: Cybersecurity'}, {'id': '3181', 'value': 'INCS 615: Big Data and NoSQL'}, {'id': '3182', 'value': 'INCS 616: Business Continuity and Risk Management'}, {'id': '3183', 'value': 'INCS 617: Software Engineering'}, {'id': '2807', 'value': 'INCS 700: Bachelor Thesis'}, {'id': '2927', 'value': 'INCS 902: Research Project I'}, {'id': '2992', 'value': 'INGN 601: Research Methodology'}, {'id': '2493', 'value': 'LAWS 101: Introduction to Law'}, {'id': '2437', 'value': 'MATH 101: Mathematics & Statistics I'}, {'id': '2429', 'value': 'MATH 103: Mathematics I'}, {'id': '3023', 'value': 'MATH 108: Math I for Business Informatics'}, {'id': '3100', 'value': 'MATH 109: Mathematics I'}, {'id': '2479', 'value': 'MATH 203: Mathematics II'}, {'id': '2484', 'value': 'MATH 204: Mathematics II'}, {'id': '2489', 'value': 'MATH 205: Mathematics II Business & Economics'}, {'id': '2665', 'value': 'MATH 302: Mathematics II'}, {'id': '3084', 'value': 'MATH 401: Biostatistics'}, {'id': '2571', 'value': 'MATH 403: Mathematics IV'}, {'id': '2896', 'value': 'MECH 1001: Automotive Electronics'}, {'id': '2899', 'value': 'MECH 1002: Industrial Robots II'}, {'id': '2902', 'value': 'MECH 1003: Robotics in manufacturing'}, {'id': '3211', 'value': 'MECH 1005: Manufacturing Ergonomics'}, {'id': '3092', 'value': 'MECH 613: CAD/CAM/CAE in Mechanical Engineering'}, {'id': '3210', 'value': 'MECH 907: Autonomous Vehicle Systems'}, {'id': '2763', 'value': 'MGMT 401: Introduction to Management and Economics'}, {'id': '2560', 'value': 'NETW 401: Signals and Systems'}, {'id': '2565', 'value': 'NETW 402: Modelling & Simulation of dynamic systems'}, {'id': '3108', 'value': 'PHEN 1001: Sustainability and Environmental Impact in the Pharmaceutical Industry'}, {'id': '3110', 'value': 'PHEN 1002: Quality by Design and Advanced Quality Management'}, {'id': '3111', 'value': 'PHEN 1007: Special Topics in Pharmaceutical Engineering II'}, {'id': '3109', 'value': 'PHEN 1099: Master Thesis Preparatory Project'}, {'id': '2667', 'value': 'PHEN 303: Fundamentals of Electrical Engineering'}, {'id': '2745', 'value': 'PHEN 401: Fluid Mechanics'}, {'id': '2746', 'value': 'PHEN 402: Chemical Reaction Engineering'}, {'id': '2748', 'value': 'PHEN 403: Introduction to Process Engineering'}, {'id': '2749', 'value': 'PHEN 405: Sensors,Metrology and Instrumentation Systems'}, {'id': '2839', 'value': 'PHEN 601: Pharmaceutical Process Validation'}, {'id': '2840', 'value': 'PHEN 602: Industrial Automation & PLC Programming'}, {'id': '2841', 'value': 'PHEN 603: Water & Air Systems'}, {'id': '2842', 'value': 'PHEN 604: Digitalization in Pharmaceutical Industry'}, {'id': '2843', 'value': 'PHEN 605: Industrial Planning & Project Management'}, {'id': '2844', 'value': 'PHEN 606: Pharmaceutical Processing Technology II'}, {'id': '3093', 'value': 'PHEN 608: Cosmetics Technology'}, {'id': '2886', 'value': 'PHEN 700: Bachelor Thesis'}, {'id': '2612', 'value': 'PHENp 201: Organic Chemistry and Biochemistry'}, {'id': '2613', 'value': 'PHENp 203: Principles of Physical Pharmacy,Drug Formulation & Dosage Forms'}, {'id': '2755', 'value': 'PHENp 404: Applied Microbiology'}, {'id': '2590', 'value': 'PHENt 201: Organic Chemistry and Biochemistry'}, {'id': '2594', 'value': 'PHENt 203: Principles of Physical Pharmacy,Drug Formulation & Dosage Forms'}, {'id': '2747', 'value': 'PHENt 404: Applied Microbiology'}, {'id': '2993', 'value': 'PHGN 601: Research Methodology'}, {'id': '2985', 'value': 'PHTH 213: Anatomy II'}, {'id': '2986', 'value': 'PHTH 214: Physiology II'}, {'id': '2989', 'value': 'PHTH 217: Tests & Measurements I'}, {'id': '2990', 'value': 'PHTH 218: Ethics & Law'}, {'id': '2991', 'value': 'PHTH 219: kinesiology'}, {'id': '3019', 'value': 'PHTH 221: First Aid in Hygienic Issue for PT'}, {'id': '3095', 'value': 'PHTH 222: Psychology and Therapeutic Communication'}, {'id': '3078', 'value': 'PHTH 401: Neuroanatomy'}, {'id': '3079', 'value': 'PHTH 402: Neurophysiology'}, {'id': '3080', 'value': 'PHTH 403: Biomechanics II'}, {'id': '3081', 'value': 'PHTH 404: Therapeutic exercise II'}, {'id': '3082', 'value': 'PHTH 405: Electrotherapy II'}, {'id': '3083', 'value': 'PHTH 406: Hydrotherapy'}, {'id': '3085', 'value': 'PHTH 408: Exercise physiology'}, {'id': '2432', 'value': 'PHYS 101: Physics'}, {'id': '2481', 'value': 'PHYS 102: Physics Lab'}, {'id': '2616', 'value': 'PHYSp 203: Physics'}, {'id': '2593', 'value': 'PHYSt 203: Physics'}, {'id': '3186', 'value': 'PTOR 601: Traumatology'}, {'id': '3187', 'value': 'PTOR 602: Physical Therapy for Traumatology'}, {'id': '3188', 'value': 'PTOR 603: Orthopedic diseases and Surgeries'}, {'id': '3189', 'value': 'PTOR 604: Physical Therapy for Orthopedic diseases and Surgeries'}, {'id': '3191', 'value': 'PTOR 605: Physical Therapy for Sport Injury'}, {'id': '3192', 'value': 'PTSR 601: General Surgery & Oncology'}, {'id': '3193', 'value': 'PTSR 602: Physical Therapy for General Surgery & Oncology'}, {'id': '34', 'value': 'RPW 401: Research Paper Writing (A2)'}, {'id': '16', 'value': 'SM 101: Scientific Methods'}], tas = [{'id': '11522', 'value': 'Abdalla Yasser Fathy Amin abdallah'}, {'id': '11718', 'value': 'Abdallah Mohamed Osman Mohamed'}, {'id': '11755', 'value': 'Abdelfattah Tawfiq Nasr Elshiekh'}, {'id': '10808', 'value': 'Abdelmageed Mohamed Othman '}, {'id': '11566', 'value': 'Abdelrahman Ahmed Abdelraouf Ahmed Elkarety'}, {'id': '11457', 'value': 'Abdelrahman Amr Samir Abdel Aziz Hussein Ismail'}, {'id': '10848', 'value': 'AbdEl-Rahman Gamal Ali AbdEl-Hameed'}, {'id': '11682', 'value': 'Abdelrahman Khaled Ali Yassin Ahmed'}, {'id': '11317', 'value': 'Abdelrahman Khaled Sayed Ismail'}, {'id': '11320', 'value': 'Abdelrahman Mostafa Ibrahim Abdelfattah Eladawy'}, {'id': '11558', 'value': 'Abdelrahman Sabri AbdelKader Telib'}, {'id': '11631', 'value': 'Abdullah Ehab Talaat Youssef Ahmed '}, {'id': '11519', 'value': 'Abeer Samir Khalifa Abdallah'}, {'id': '11477', 'value': 'Adham Essam Eldeen Abdelmageed Ragab'}, {'id': '11318', 'value': 'Adham Ossama Fathy Abdelnaby'}, {'id': '11365', 'value': 'Afaf Ahmed Mohamed Sayed Badway'}, {'id': '11650', 'value': 'Ahmed Abdel Nasser Abdel Hallem Amin'}, {'id': '11697', 'value': 'Ahmed Abdelkareem Abdelaziz  Sanad Elgendy'}, {'id': '10401', 'value': 'Ahmed Alaa Saad Ramadan'}, {'id': '11598', 'value': 'Ahmed AlaaEldin Osman Abu Elela Abdelaziz'}, {'id': '11512', 'value': 'Ahmed Attia Mohamed Elsheshtawy'}, {'id': '10963', 'value': 'Ahmed Galal AbdEl-fattah Sabry'}, {'id': '10437', 'value': 'Ahmed Galal Selim'}, {'id': '10978', 'value': 'Ahmed Hamdy Abdelwahab Ahmed'}, {'id': '11710', 'value': 'Ahmed Hassaballah Ali Hassaballah'}, {'id': '11156', 'value': 'Ahmed Hazem Hussien Abbas'}, {'id': '11297', 'value': 'Ahmed Ibrahim Ahmed Othman'}, {'id': '11015', 'value': 'Ahmed Kamel Elsayed Ibrahim Marie'}, {'id': '11193', 'value': 'Ahmed Karam Salah Hamed'}, {'id': '11482', 'value': 'Ahmed Khairy Abdullah Hussein'}, {'id': '11155', 'value': 'Ahmed Khaled Mohamed Sayed Elnager'}, {'id': '11316', 'value': 'Ahmed Maher Abdelbassier Abdelaal'}, {'id': '10737', 'value': 'Ahmed Maher Eltair'}, {'id': '11100', 'value': 'Ahmed Maher Eltair'}, {'id': '11732', 'value': 'Ahmed Mamdouh Mahmoud Elsayed Mohamed Bakry Elsedfy'}, {'id': '10851', 'value': 'Ahmed Mohamed Elsaid Mohamed'}, {'id': '10905', 'value': 'Ahmed Mohamed Maghawry ElSayed'}, {'id': '11630', 'value': 'Ahmed Mostafa Ahmed Abdelzaher'}, {'id': '11441', 'value': 'Ahmed Ramy Fathy Mahrous'}, {'id': '11096', 'value': 'Ahmed Roshdy Elaraby Gaber'}, {'id': '11489', 'value': 'Ahmed Sameeh Abdelrady Hassan'}, {'id': '11216', 'value': 'Ahmed Sami Abdelrahman Mohamed'}, {'id': '11695', 'value': 'Ahmed Shauki Mohammed Bshena'}, {'id': '10500', 'value': 'Ahmed Sherif Talaat Abdelsamie Yehia'}, {'id': '11740', 'value': 'Ahmed Taha Sayed Hassan'}, {'id': '11474', 'value': 'Aisha Ashraf Aly Emam  Ayyad'}, {'id': '11532', 'value': 'Alaa Ahmed Elsayed Kharoba'}, {'id': '10959', 'value': 'Alaa Essam Saeed AbdelGafar'}, {'id': '11694', 'value': 'Alaa Hesham Mahmoud Mohammed Soliman'}, {'id': '10507', 'value': 'Alaa Osama Mahmoud Abdelsalam'}, {'id': '11698', 'value': 'Alaaeldin Abdelsattar Khaireldin Mohamed Khaireldin'}, {'id': '11133', 'value': 'Ali ElDeen Hamdy Ali Abbas Mansour'}, {'id': '11708', 'value': 'Alia Ahmed Diaaeldeen Badawy Abdellatif'}, {'id': '11498', 'value': 'Aliaa Ibrahim Abdelgawad Ahmed ElSharawy'}, {'id': '10995', 'value': 'Alshaimaa Alsayed Ali Elfaioumy'}, {'id': '11570', 'value': 'Alshaimaa Mohamed Sobhy Ahmed'}, {'id': '10240', 'value': 'Aly Said Fouad Mohamed'}, {'id': '10815', 'value': 'Amal Abdelkarim Aboulhassan Mohamed'}, {'id': '11165', 'value': 'Amal Aly Abdelnaby Mohamed Mostafa'}, {'id': '11714', 'value': 'Amal Ibrahim Kamal Ahmed'}, {'id': '10377', 'value': 'Amal Walied Abdelazeem Yassien'}, {'id': '10906', 'value': 'Amany Hussein Hassan Mohamed Abou El-Naga'}, {'id': '10238', 'value': 'Amany Mohamed Shaker El Sayed Mohamed  Sanad'}, {'id': '11150', 'value': 'Amina Mohamed Ali Ghaith'}, {'id': '10701', 'value': 'Amir Haytham Muhammad Salama'}, {'id': '10142', 'value': 'Amira Ashraf Aziz'}, {'id': '11516', 'value': 'Amira Essam Abdelkader Abdelaziz'}, {'id': '10660', 'value': 'Amira Mohamed Gaber Kasem'}, {'id': '10351', 'value': 'Amira Tarek Ibrahim Metwally'}, {'id': '11242', 'value': 'Amira Wael Amir Labib'}, {'id': '10328', 'value': 'Amr Desouky '}, {'id': '10540', 'value': 'Amr Fathy Mohamed Abdelfattah'}, {'id': '10329', 'value': 'Amr Hassan Abdelmoneim Abdelhamid Nounou'}, {'id': '11361', 'value': 'Amr Hussein Tawfiq Hassan Elalfy'}, {'id': '11524', 'value': 'Amr Khaled Mahmoud Abdelhalim Mansy'}, {'id': '10962', 'value': 'Amr Samir Hussien Hassan'}, {'id': '10603', 'value': 'Anas Youssry Abdalhameid Alhowaily'}, {'id': '11717', 'value': 'Ann Michel Yacoub Mikhaeel'}, {'id': '11338', 'value': 'Ansam Aly Mahmoud Seif'}, {'id': '10643', 'value': 'Antony Nosehy -'}, {'id': '10324', 'value': 'Ashraf Abdelhameed Elhossieny Zaher'}, {'id': '11680', 'value': 'Ashrakat Mohamed Elamir Mohamed Kamal Soliman'}, {'id': '11440', 'value': 'Asmaa Mohamed Abdel Rahman Abdel Fattah'}, {'id': '10829', 'value': 'Assem Galal Ahmed Mohamed'}, {'id': '11610', 'value': 'Aya Abdelhamid Abdelaziz Ibrahim Elsherif'}, {'id': '11231', 'value': 'Aya AbdElHamid AbdElHamid Arafa'}, {'id': '10919', 'value': 'Aya Ahmed Bakr Mohamed Mahmoud ElBasaty'}, {'id': '10344', 'value': 'Aya Emam Ahmed Abdel Rahman'}, {'id': '11352', 'value': 'Aya Khaled Mohamed Tawfik Kandel'}, {'id': '11521', 'value': 'Aya Mohamed Abdelqawy Elsayed Youssef'}, {'id': '10398', 'value': 'Aya Mohamed Ali Elseoudi'}, {'id': '10873', 'value': 'Ayatallah Mohamed Ibrahim'}, {'id': '11162', 'value': 'Ayatullah Amr Sayed Kamel'}, {'id': '10474', 'value': 'Ayatullah Mohamed Ahmed Salem'}, {'id': '11484', 'value': 'Ayman Abdullah Abdelazeem Ahmed Elfeky'}, {'id': '10811', 'value': 'Ayman Hassaan Ahmed Mahmoud'}, {'id': '10798', 'value': 'Ayman Hassan Ahmed Mahmoud Ali'}, {'id': '10662', 'value': 'Basant Magdy Mohamed Ahmed Elsaqa'}, {'id': '11230', 'value': 'Bassant Wessameldin Salaheldin AbdElAziz'}, {'id': '10517', 'value': 'Batol Ashraf ElAbd Ali'}, {'id': '11366', 'value': 'Carla Dimitri Furio'}, {'id': '10326', 'value': 'Caroline Nabil Samy Sabty'}, {'id': '10369', 'value': 'Christine Adel Tawfik Yacoub'}, {'id': '10838', 'value': 'Christine George Maher Wahba'}, {'id': '10895', 'value': 'Dalia Magdy Fathy Ibrahim'}, {'id': '10987', 'value': 'Dalia Sabry Saleh Ahmed'}, {'id': '10624', 'value': 'Dania Nezar Sheikhani'}, {'id': '10588', 'value': 'Danny Giebitz Giebitz'}, {'id': '11546', 'value': 'Demiana Amgad Farag Yakoob'}, {'id': '11684', 'value': 'Dina Amr Mohamed Fathy Abdallah'}, {'id': '10627', 'value': 'Dina Khaled Elkhouly'}, {'id': '11224', 'value': 'Dina Mohamed Hosam Gabr'}, {'id': '10345', 'value': 'Dina Mohamed Mahmoud Mohamed'}, {'id': '10120', 'value': 'Dina Mohammad  Galal'}, {'id': '11568', 'value': 'Dina Samir Shawky Abdel Sadek'}, {'id': '11728', 'value': 'Doaa Hamdy Mohamed Shakshak'}, {'id': '11453', 'value': 'Doaa Hatem Abbas Afify'}, {'id': '10366', 'value': 'Doaa Mohamed Sadik Elsayed'}, {'id': '11563', 'value': 'Doaa Mostafa Ali Elsakout'}, {'id': '11632', 'value': 'Doha Korany Abdallah Khalil'}, {'id': '10591', 'value': 'Donia Ali Mohamed Abdelrahman Ali'}, {'id': '10116', 'value': 'Donia Ibrahim Abdel Fattah Ahmed'}, {'id': '11177', 'value': 'Donia Ramy Mossad'}, {'id': '10920', 'value': 'Duha BadrElDin Hassan Ahmed Awad'}, {'id': '11450', 'value': 'Eckhard Rocholl '}, {'id': '10332', 'value': 'Ehab Ahmed Ahmed  Nossier'}, {'id': '10220', 'value': 'Elsaid Abdelsamie Kelany Mohamed Elpagoury'}, {'id': '6240', 'value': 'Eman Ahmed Hamdy Azab'}, {'id': '11481', 'value': 'Eman Ahmed Shawky Ali  Mohamed'}, {'id': '11730', 'value': 'Eman Mohammed Hamed Elmarakby'}, {'id': '11343', 'value': 'Eman Ramadan Farag Basher'}, {'id': '11468', 'value': 'Esraa Maarouf Thabet Mohamed Ahmed'}, {'id': '10893', 'value': 'Esraa Mohamed Ahmed Hassan'}, {'id': '11508', 'value': 'Esraa Mohammed Khalil Mohammed'}, {'id': '10009', 'value': 'Fahima Shafey Ibrahim Mahmoud'}, {'id': '10830', 'value': 'Faisal Diaa-eldeen Hammad'}, {'id': '11012', 'value': 'Farah Ehab Ahmed Awad'}, {'id': '11145', 'value': 'Farah Helal Hassan Helal Hassan'}, {'id': '11534', 'value': 'Farah Hisham SalahEldin Aly Kamel'}, {'id': '11614', 'value': 'Fares Yasser Hassan Mohamed El-Sharkawy'}, {'id': '10444', 'value': 'Farid Mohamed Kamel Tawfik'}, {'id': '11173', 'value': 'Farida Hatem Salah Gado'}, {'id': '11564', 'value': 'Farida Nasser Saadeldin Ahmed Ali'}, {'id': '11099', 'value': 'Farida Waheed Mahmoud Mekheimar'}, {'id': '11313', 'value': 'Fatma Mohamed Mostafa Abdelhadi'}, {'id': '11325', 'value': 'Fayrouz Adel Roshdy Tageldin'}, {'id': '11656', 'value': 'Fouad Akram Elhamy Allam'}, {'id': '11688', 'value': 'Galal Ahmed Mahmoud Galal Abdelhamid'}, {'id': '11454', 'value': 'Gannatullah Asaad Abdallah Mohamed'}, {'id': '11609', 'value': 'Genenyar Tarek Said Mohamed Mohamed ElTayeb'}, {'id': '10844', 'value': 'George Maher Fouad Basta'}, {'id': '11371', 'value': 'Ghadir Saied Mohamed Elhousseiny Eltokhy'}, {'id': '11738', 'value': 'Habiba Elsayed Abdelazim Amin'}, {'id': '11548', 'value': 'Habiba Emad Mohamed Kamhawy'}, {'id': '11526', 'value': 'Habiba Hesham Mostafa Hamdy Youssef'}, {'id': '10944', 'value': 'Habiba Sayed Idris Ibrahim'}, {'id': '10639', 'value': 'Hadeer Fouad Mohamed Amin'}, {'id': '10903', 'value': 'Hadeer Samir Rashed Mohamed Nouh'}, {'id': '11699', 'value': 'Hadir Ahmed Abdelazim Attia Mehran'}, {'id': '11506', 'value': 'Hagar Ahmed Elsayed'}, {'id': '11028', 'value': 'Hagar Khaled Selim Mohamed Faggal'}, {'id': '10960', 'value': 'Hagar Yousry Sayed Rady'}, {'id': '11604', 'value': 'Hams Hosam Ahmed Tawfik Ali'}, {'id': '11219', 'value': 'Hamsa Abulnasser Hosny Aly Shaalan'}, {'id': '11581', 'value': 'Hana Alaaeldin Abbas Saleh'}, {'id': '11005', 'value': 'Hana Amr Moharam Menessi'}, {'id': '10131', 'value': 'Hana Ashraf Akil Ezzat Ali'}, {'id': '11518', 'value': 'Hana Mohamed Ahmed  Mohamed Gohar'}, {'id': '10857', 'value': 'Hana Mohamed Ahmed Kamal El-Din'}, {'id': '11535', 'value': 'Hana Waleed Abdel-Hay Abdel-Wahed'}, {'id': '10271', 'value': 'Hans . Breitinger'}, {'id': '171', 'value': 'Hans-Georg . Breitinger'}, {'id': '11691', 'value': 'Hassan Moataz Elsayed Mohamed Moghazi'}, {'id': '11255', 'value': 'Hassan Mohamed Nasr Aly'}, {'id': '11210', 'value': 'Hassan Saber Hassan Saber'}, {'id': '11545', 'value': 'Hassan Usama Mohamed Mahmoud Abdelqader'}, {'id': '23', 'value': 'Haytham Osman Ismail'}, {'id': '11488', 'value': 'Hazem Samy Hegazy Mohamed Mohamed'}, {'id': '11704', 'value': 'Hebatullah Ashraf Alieldin Ibrahim Megahed'}, {'id': '10435', 'value': 'Hend Ismail Morsy Ahmed'}, {'id': '11492', 'value': 'Hend Reda Saad Sakr'}, {'id': '11523', 'value': 'Hisham Mohamed Abdelhafez Hafez Abdou'}, {'id': '11711', 'value': 'Hossam Mohamed Elsaed Mohamed Saad'}, {'id': '10503', 'value': 'Hossam Mohammad Mounir AbdelMoati Mostafa'}, {'id': '11192', 'value': 'Hossam Mohammed Hassan'}, {'id': '11146', 'value': 'Ibrahim Hesham Mohamed  Hussien'}, {'id': '11500', 'value': 'Iman Soliman Awaad'}, {'id': '10133', 'value': 'Ingy Mohamed Hassan Khamis'}, {'id': '11158', 'value': 'Ismail Medhat Salah Ibrahim Awas'}, {'id': '11160', 'value': 'Jana Ramadan AbdelKader Khalil'}, {'id': '11511', 'value': 'Jana Walaa AbdelZaher Mohamed'}, {'id': '11438', 'value': 'Jane Fayez Abdou Marzouk'}, {'id': '11241', 'value': 'Jessica Ehab Ayad bassily'}, {'id': '11689', 'value': 'John Aram Naguib Selim Naguib'}, {'id': '10890', 'value': 'John Fayez Wanis Zaki'}, {'id': '10320', 'value': 'Jose Louis Iparraguirre'}, {'id': '11445', 'value': 'Jowayreyah Khaled Bassim Ali'}, {'id': '10915', 'value': 'Julia Amir Elhami Nasr Arsanious'}, {'id': '10525', 'value': 'Kareem Mahmoud Mohamed Mohamed Hassan'}, {'id': '11677', 'value': 'Karim Hatem Hassan Ahmed'}, {'id': '11201', 'value': 'Karim Kamal Ahmed Mohamed Osman'}, {'id': '10928', 'value': 'Karim Raafat AbdEL-Raheem Ibrahim'}, {'id': '10287', 'value': 'Kegham Djeghalian .'}, {'id': '11701', 'value': 'Kesmat Mohamed Elsayed Abdelaziz'}, {'id': '11505', 'value': 'Khadega Hatem Hossam Hassan'}, {'id': '11628', 'value': 'Khadija Hossam El-Din Hassan AbdelFattah'}, {'id': '11326', 'value': 'Khaled Ehab Attia Hussein'}, {'id': '10229', 'value': 'Khaled Ibrahim Tolba'}, {'id': '10408', 'value': 'Laila Mohamed Bilal Mohamed Saeed Hatahet'}, {'id': '11459', 'value': 'Laila Mohamed Elkhiat'}, {'id': '11332', 'value': 'Laila Yehia Mohamed Abdelrehim Elgindi'}, {'id': '11024', 'value': 'Lamia Ahmed Shihata'}, {'id': '10618', 'value': 'Lamiaa Abdelrahman Abdelrahman Elkaialy'}, {'id': '10395', 'value': 'Lamis Mohamed Abdullah Ahmed'}, {'id': '11502', 'value': 'Lara Ahmed Mamdouh Shehata Ali'}, {'id': '10522', 'value': 'Lina  Fayed Fayed'}, {'id': '10174', 'value': 'Lina Nasser Ahmed Hegazy'}, {'id': '10664', 'value': 'Liyan Nabil Ahmed Abdelhaleem'}, {'id': '11180', 'value': 'Lma Haitham Magdy'}, {'id': '11164', 'value': 'Lobna Tamer Mohamed Monir Atia'}, {'id': '11129', 'value': 'Lobna Tarek Abo Serre'}, {'id': '10717', 'value': 'Lubna Hassan Ahmed Omar'}, {'id': '11703', 'value': 'Lubna Hassan Ahmed Omar'}, {'id': '11154', 'value': 'Madonna Ehab Farouk Faragallah Mina'}, {'id': '11084', 'value': 'Magdy Mohamed Aly Shabana'}, {'id': '10463', 'value': 'Maged Mahmoud Mohamed Ibrahim'}, {'id': '11370', 'value': 'Maggie Ehab Maher Shafik Shamaa'}, {'id': '10946', 'value': 'Maggie Mashaly '}, {'id': '10135', 'value': 'Maha Ahmed Mohamed  Rashad Mohamed Khalifa'}, {'id': '10335', 'value': 'Maha Hosny Ahmed Elgewely'}, {'id': '11573', 'value': 'Mahmoud Ahmed Shawky'}, {'id': '11707', 'value': 'Mahmoud Ali Abdellatif Elazab'}, {'id': '10587', 'value': 'Mahmoud Atef Labib Salem Abo Elnaga'}, {'id': '10753', 'value': 'Mahmoud Ebraheem Hassan Ebraheem'}, {'id': '10955', 'value': 'Mahmoud Elhussien Ibraheem El-Khameesy'}, {'id': '11152', 'value': 'Mahmoud Ibrahim Elsayed Aly Mahmoud'}, {'id': '11476', 'value': 'Mahmoud Mourad Abdelfattah Hassan'}, {'id': '11344', 'value': 'Mahmoud Moustafa ElSayed Mohamed ElGizawy'}, {'id': '11554', 'value': 'Mahmoud Ramadan Mahmoud Barakat'}, {'id': '11345', 'value': 'Mahmoud Samir Nader Elalfi'}, {'id': '10897', 'value': 'Mahmoud Tarek Mohamed Ali Ahmed'}, {'id': '11178', 'value': 'Mai Khaled Mohamed Ali ElAkrat'}, {'id': '11577', 'value': 'Mai Mamdouh Mounir Ahmed Kamal'}, {'id': '11724', 'value': 'Maiar Mohamed Nabil Abdulbasir'}, {'id': '10896', 'value': 'Maie Ibrahim Arafa Younes'}, {'id': '10651', 'value': 'Malak  Khaled Eissa'}, {'id': '11464', 'value': 'Malak Bassem Samir Elsayed'}, {'id': '11190', 'value': 'Malak Khaled  ElDiek'}, {'id': '11709', 'value': 'Malak Mohamed Mohamed Ali Abouelenin'}, {'id': '11444', 'value': 'Malak Sameh Soliman Tolba'}, {'id': '11700', 'value': 'Maram Bakry Mohyi Sulaiman AlQanawi'}, {'id': '10374', 'value': 'Maretchia Ghattas Fakhry Ghattas'}, {'id': '11010', 'value': 'Maria Jose Nicholls Jimenez'}, {'id': '11132', 'value': 'Maria Nagy Kamal Boutros'}, {'id': '10501', 'value': 'Mariam Abubakr Sadek Abdelfattah Kottb'}, {'id': '10171', 'value': 'Mariam Ahmed Sayed Ali'}, {'id': '10820', 'value': 'Mariam Ali Bashandy'}, {'id': '11509', 'value': 'Mariam Ali Mohamed Mohamed Ebeid'}, {'id': '10619', 'value': 'Mariam Aly Hassan Soliman'}, {'id': '11153', 'value': 'Mariam Amr Ali Mahfouz'}, {'id': '11136', 'value': 'Mariam Anwar Ahmed Yakout  Al Abasiry'}, {'id': '11543', 'value': 'Mariam Ashraf Mohamed Mohamed Elsarta'}, {'id': '10110', 'value': 'Mariam Ayad Michael Shenouda'}, {'id': '11465', 'value': 'Mariam Fouad Abdelaziz Abdelrahman'}, {'id': '11527', 'value': 'Mariam Girgis Meguid Magdi'}, {'id': '11372', 'value': 'Mariam Hazem ElSayed Hassan'}, {'id': '10634', 'value': 'Mariam Hussein Abdelhamid'}, {'id': '10865', 'value': 'Mariam Khaled Ahmed Ibrahim'}, {'id': '11215', 'value': 'Mariam Khaled Saad Ali'}, {'id': '11442', 'value': 'Mariam Khalid Abdulatif Mohamed'}, {'id': '11159', 'value': 'Mariam Mamdouh Hussein Sayed'}, {'id': '11531', 'value': 'Mariam Mohamed Abdelmonem Ahmed Elwaraky'}, {'id': '11466', 'value': 'Mariam Mohamed Elsayed Elbadwy'}, {'id': '11414', 'value': 'Mariam Mohamed Mahmoud Abdelfattah'}, {'id': '11530', 'value': 'Mariam Mohsen Mahmoud Mostafa'}, {'id': '11525', 'value': 'Mariam Reda Samuel'}, {'id': '11690', 'value': 'Mariam Tamer Elmahdy Mohamed'}, {'id': '10592', 'value': 'Mariam Tarek Atef Abdelhamid'}, {'id': '11266', 'value': 'Mariam Yasser Atef Mohammed Farag'}, {'id': '11130', 'value': 'Marian Feniar Aziz Youssef'}, {'id': '11029', 'value': 'Marie Michele Julia Akoury'}, {'id': '10384', 'value': 'Marium Ali Abdelgany Elagamy'}, {'id': '10872', 'value': 'Mark Robert Emeel Fouad'}, {'id': '11126', 'value': 'Marly  Essam Ghaleb  Sieffen'}, {'id': '10370', 'value': 'Marwa Ahmed Mohamed El-gengihy'}, {'id': '10644', 'value': 'Marwa Hisham Loutfy Zamzam'}, {'id': '2613', 'value': 'Marwa Mohamed Abdelsabour'}, {'id': '11285', 'value': 'Marwa Saeed Hany'}, {'id': '11353', 'value': 'Marwan Ashraf Ali Ahmed Farag'}, {'id': '11605', 'value': 'Maryam Ayman Fath Abdelatty Saad'}, {'id': '11007', 'value': 'Maryam Mahmoud GamalElDin ElSharkawy'}, {'id': '11439', 'value': 'Maryam Mohamed Ihab Saad'}, {'id': '11194', 'value': 'Maryam Osama Muhammad AboHashem Ezzat'}, {'id': '10929', 'value': 'May Magdy Ahmed Hussien'}, {'id': '11128', 'value': 'May Sobhi Ali Elsayed Mohamed'}, {'id': '11209', 'value': 'Mayar  Ayman Rabei Abdelkader'}, {'id': '11185', 'value': 'Mayar Adel Mohamed Dawoud'}, {'id': '10610', 'value': 'Mayar Hisham Ibrahim AlDesouky'}, {'id': '11347', 'value': 'Mayar Mohammed Azab Amin Azab'}, {'id': '11197', 'value': 'Mayar Sayed Soliman Abdeldayem'}, {'id': '11673', 'value': 'Md Shams Tabrize Pathan'}, {'id': '11319', 'value': 'Menatallah Ali Moharam Abdelkhaleq Abdelraouf'}, {'id': '10378', 'value': 'Menna allah Desouky Ahmed Hammad'}, {'id': '11702', 'value': 'Menna Shrief Abdallah Ebrahim'}, {'id': '10397', 'value': 'Mennatalah Saeed Saad Hany'}, {'id': '10650', 'value': 'Mennatallah Alaa Mostafa Hamouda'}, {'id': '11147', 'value': 'Mennatallah Khaled Mohamed ElMoatassem'}, {'id': '11705', 'value': 'Mennatallah Magdy Alsayed Akl Salem'}, {'id': '10425', 'value': 'Mennatallah Mohammed Aboalkassem'}, {'id': '11139', 'value': 'Mennatuallah Mostafa Mohamed Abdelaziz Singergy'}, {'id': '11569', 'value': 'Mennatullah Mahmoud Mahmoud Ahmed Zaid'}, {'id': '10638', 'value': 'Merna Said Mohamed AbdelKader'}, {'id': '10747', 'value': 'Milad Michel Ghantous'}, {'id': '11469', 'value': 'Mina Adel Fayek Saleeb Mikhail'}, {'id': '11497', 'value': 'Mina Mark Atef Fekry'}, {'id': '10630', 'value': 'Mina Mehanny Habib'}, {'id': '11572', 'value': 'Mina Mehanny Habib'}, {'id': '11713', 'value': 'Minnah Tarek Mokhtar Elmeligy Behellaq'}, {'id': '10015', 'value': 'Mira Wael Mohamed Elshafei'}, {'id': '10337', 'value': 'Mireille . Daaboul'}, {'id': '11443', 'value': 'Mirna Elsayed AbdelRahman Elsayed'}, {'id': '10118', 'value': 'Miroslaw .  Leczek'}, {'id': '11507', 'value': 'Moamen Alaa Mostafa Attia'}, {'id': '10874', 'value': 'Moaz Ahmed AlNaser'}, {'id': '10921', 'value': 'Moaz Mohamed Hassanin Fouda'}, {'id': '11737', 'value': 'Mohab Mohamed Kamal  Shehab'}, {'id': '11348', 'value': 'Mohamed Abd El-Khalek El-Hayes'}, {'id': '11473', 'value': 'Mohamed Abdelaziz Mohamed  Abdelbar'}, {'id': '11483', 'value': 'Mohamed Adel Mohamed Ahmed Abdelrahman'}, {'id': '10695', 'value': 'Mohamed Ahmed Madboly'}, {'id': '11494', 'value': 'Mohamed Ahmed Mahmoud Abdel Satar'}, {'id': '11358', 'value': 'Mohamed Ahmed Mohamed  ElGanzoury'}, {'id': '11223', 'value': 'Mohamed Amr Anis Ibrahim'}, {'id': '11211', 'value': 'Mohamed Ashraf Mohamed El Maadawy'}, {'id': '11665', 'value': 'Mohamed Ashraf Mohamed Selima'}, {'id': '10270', 'value': 'Mohamed Ayman Ahmed Raafat Ali Awad'}, {'id': '11267', 'value': 'Mohamed Emam Mohamed Abdul Galil'}, {'id': '10731', 'value': 'Mohamed Gasser Gawdat Galal'}, {'id': '11716', 'value': 'Mohamed Haitham Abdellatif Elazab Moussa'}, {'id': '10740', 'value': 'Mohamed Hamed Ali Fahmy'}, {'id': '11276', 'value': 'Mohamed Hamed Fahmy'}, {'id': '10281', 'value': 'Mohamed Hisham Darweesh'}, {'id': '11503', 'value': 'Mohamed Ibrahem Mohamed ElDagla'}, {'id': '11615', 'value': 'Mohamed Ibrahim Fekry Ahmed Abo-Elhassan'}, {'id': '10807', 'value': 'Mohamed Khaled Kadry El-Sayed El-Sayed'}, {'id': '10850', 'value': 'Mohamed Magdy AbdEl-Fattah Ghazy'}, {'id': '11550', 'value': 'Mohamed Medhat Helal Mohamed Abdallah'}, {'id': '10157', 'value': 'Mohamed Mohamed Ayman Ahmed Kamel'}, {'id': '11282', 'value': 'Mohamed Samy Ahmed ElSayed Moussa'}, {'id': '10950', 'value': 'Mohamed Tarek ElHawary'}, {'id': '11323', 'value': 'Mohamed Wael Elsayed Ahmed'}, {'id': '11495', 'value': 'Mohamed Yasser Mohamed Hosny'}, {'id': '10178', 'value': 'Mohammad Yasin Hamada'}, {'id': '10355', 'value': 'Mohammed Abdelmordy Mohammed Khalefa'}, {'id': '10606', 'value': 'Moheb Saad Zaghloul Fawzi Mekhaiel'}, {'id': '11286', 'value': 'Mona Ahmed Hassan Rady'}, {'id': '11663', 'value': 'Mona Ahmed Mahmoud Mohamed'}, {'id': '11491', 'value': 'Monya Gamal Mahmoud Hussein'}, {'id': '11458', 'value': 'Mostafa Ahmed Abdelrahman Ibrahim'}, {'id': '11513', 'value': 'Mostafa Mahmoud Abdel Moamen Mahmoud Attallah'}, {'id': '11017', 'value': 'Mostafa Shokry AbdElSalam Mokadem'}, {'id': '10992', 'value': 'Muhammad Abdulraouf Muhammad Othman'}, {'id': '10103', 'value': 'Mustafa Mustafa Mohamed El Agamy'}, {'id': '10273', 'value': 'Nabila . Hamdy'}, {'id': '11565', 'value': 'Nabila Ahmed Ali Mohamed Hafez'}, {'id': '10327', 'value': 'Nada Ahmed Hamed Sharaf'}, {'id': '10533', 'value': 'Nada Ahmed Ibrahim Soliman'}, {'id': '11552', 'value': 'Nada Ahmed Soliman Elsherif'}, {'id': '11240', 'value': 'Nada Aiman Mohamed Farid'}, {'id': '11574', 'value': 'Nada Ashraf Mohamed Ahmed'}, {'id': '11447', 'value': 'Nada Hussein Fahim Hashem'}, {'id': '11337', 'value': 'Nada Magdy Mahmoud Hafez'}, {'id': '11556', 'value': 'Nada Mohamed Abdelhamid Neamtallah'}, {'id': '11048', 'value': 'Nada Mohamed Saied Shoaib'}, {'id': '11557', 'value': 'Nada Tarek Mohamed Ahmed'}, {'id': '11436', 'value': 'Nada Wael Mohamed Yousry Sayed Ahmed Zoier'}, {'id': '11148', 'value': 'Nadeen Alaa El-Din Ahmed Ali'}, {'id': '11446', 'value': 'Nadeen Emadeldin Mohamed Omar'}, {'id': '10609', 'value': 'Nadeen Hesham Asar Mohamed Khafagy'}, {'id': '11212', 'value': 'Nadeen Serag Gamal Eldin AbdElhameed'}, {'id': '11584', 'value': 'Naeem Amr Ibrahim Hamdy Tawfik'}, {'id': '10907', 'value': 'Nagwa Ibrahim Mohamed Mohamed'}, {'id': '10341', 'value': 'Naiyera Hassan Abdu Mohamed'}, {'id': '11608', 'value': 'Nayera Hamdy Mahmoud Ahmed Elhakim'}, {'id': '11449', 'value': 'Nelli Szabo '}, {'id': '10129', 'value': 'Nermien Medhat Alphonse Aziz'}, {'id': '11022', 'value': 'Nesma Ahmed Hussein Mahmoud Fadda'}, {'id': '11634', 'value': 'Nihal Saif Al Islam Saeed Al Sabbagh'}, {'id': '11681', 'value': 'Nils Von Berg'}, {'id': '11349', 'value': 'Nirvana Saeed Abdelfattah'}, {'id': '10250', 'value': 'Noha Adel Ahmed Shouman'}, {'id': '11359', 'value': 'Noha Fouad ElHadary Ahmed'}, {'id': '11314', 'value': 'Noha Hesham Abdelkader Ghazy'}, {'id': '11575', 'value': 'Noha Nabeel Abbassy'}, {'id': '10996', 'value': 'Noor Magdy AbdEl-Fattah Mahmoud'}, {'id': '10331', 'value': 'Noran Ali Elsayed Mahmoud Eldebecky'}, {'id': '11712', 'value': 'Noran Samir Hamed Mohamed Abdelrahem'}, {'id': '10924', 'value': 'Nouh Walid Nouh Mohamed'}, {'id': '11460', 'value': 'Nour Aldin Gaser Yousri Aly'}, {'id': '11549', 'value': 'Nour Mahmoud Hassouna'}, {'id': '10527', 'value': 'Nour Mohamed Zaki Hasan Massoud'}, {'id': '11607', 'value': 'Nouran Gaber Tawfik Abdelaziz Alkarmouty'}, {'id': '11011', 'value': 'Nouran Hany Mohamed AbdelAziz Kassim'}, {'id': '10816', 'value': 'Nouran Khaled Mohamed Mohsen'}, {'id': '11547', 'value': 'Nouran Yahia Ali Bayoumy'}, {'id': '11123', 'value': 'Nourhan Abdelsalam Elsayed Hamdi'}, {'id': '11243', 'value': 'Nourhan Ahmed Abdelfattah Abdelmaged'}, {'id': '11191', 'value': 'Nourhan Ashraf Abbas Zaytoon '}, {'id': '10387', 'value': 'Nourhan Hisham Said Fahmy'}, {'id': '10513', 'value': 'Nourhan Ismail Abdel Aal Mohamed Ahmed'}, {'id': '11138', 'value': 'Nourhan Kamal Mohamed Abdelkader Ahmed Marei'}, {'id': '10139', 'value': 'Nourhan Mahmoud Helmy  Abdellatif Eltahan'}, {'id': '10514', 'value': 'Nourhan Moustafa Abdel Aziz Mohamed Moustafa'}, {'id': '10819', 'value': 'Omaima Abdulsalam Abdullah'}, {'id': '10631', 'value': 'Omar Ahmed Abdelaal Mostafa'}, {'id': '11603', 'value': 'Omar Alaa Eldin Ahmed Abdelrahman'}, {'id': '11727', 'value': 'Omar Gasser Gawdat Galal'}, {'id': '11743', 'value': 'Omar Ihab Mohamed Elsayed Mohamed'}, {'id': '11039', 'value': 'Omar Khaled Hemeda Abdelghany'}, {'id': '10284', 'value': 'Omar Mahmoud Mabrouk Mahmoud'}, {'id': '10993', 'value': 'Omar Mohamed Ahmed Salah'}, {'id': '10112', 'value': 'Omar Mohamed Galal Eldin Soliman'}, {'id': '11176', 'value': 'Omar Mohamed Rashad Amin Mohamed Aly'}, {'id': '10927', 'value': 'Omnia Mustafa Mohamed Mustafa'}, {'id': '11167', 'value': 'Passant Mohamed Mohamed  Khalil '}, {'id': '11739', 'value': 'Pillara Mohamed Abdel Moniem Mouad Mouftah'}, {'id': '10452', 'value': 'Raghda  Mohamed Mamdouh Elebrashi	'}, {'id': '10862', 'value': 'Rahma Amin El-Sayed Mohamed Awad'}, {'id': '11560', 'value': 'Rahmatallah Hossam Farouk Hassan'}, {'id': '11131', 'value': 'Ramy Amir Shawkey Shenouda'}, {'id': '10809', 'value': 'Rana  Ahmed Youness'}, {'id': '11696', 'value': 'Rana Magdy Elsharabasy Hassanain'}, {'id': '11020', 'value': 'Rania Mohamed Hathout'}, {'id': '4168', 'value': 'Rania Mohammed Hathout'}, {'id': '11378', 'value': 'Rania Reffat Ali  Ahmed'}, {'id': '10810', 'value': 'Rasha Aly AbdElGalil Radwan'}, {'id': '11357', 'value': 'Rasha Kamal ElSayed Fahmy Elbohkiry'}, {'id': '11452', 'value': 'Rawan Amgad Ahmed Ahmed'}, {'id': '10417', 'value': 'Rawan Diaa Mohamed Shafi Abdalaziz Algafi'}, {'id': '11613', 'value': 'Rawan Mohamed Saad Zaghloul Mohamed'}, {'id': '10359', 'value': 'Rawda Ahmed Hafez Aboalfetoh'}, {'id': '10577', 'value': 'Reem Abdelhalim Hafez Elhanafi'}, {'id': '10353', 'value': 'Reem Abdelhamid Ibrahim Mousa Mostafa'}, {'id': '11437', 'value': 'Reem Ahmed Hussien Abdelhalim'}, {'id': '11537', 'value': 'Reem Hesham Abdelfattah Hassan'}, {'id': '11470', 'value': 'Rehab Talaat Sayed Talaat Abdelhameed'}, {'id': '10530', 'value': 'Riccardo Falletta  -'}, {'id': '10916', 'value': 'Ritan Sayed Ibrahim Essawy Mushaly'}, {'id': '11184', 'value': 'Roba Maged Reda Askar'}, {'id': '11475', 'value': 'Rodayna Mohamed Mostafa'}, {'id': '10175', 'value': 'Rokia Abdelfattah Ibraheem'}, {'id': '11233', 'value': 'Rowan Saeed Mohamed Mashaal'}, {'id': '11559', 'value': 'Saja Tareq Tawfiq Mohamed Saadoun'}, {'id': '10725', 'value': 'Saleh Abdallah Mohammed Farhoud'}, {'id': '10766', 'value': 'Salma Abo Bakr Abdelaziz Abo Zaid'}, {'id': '11629', 'value': 'Salma Ashraf Sobhy Sedeek'}, {'id': '10663', 'value': 'Salma Essam Hassan Abdelrahman'}, {'id': '10424', 'value': 'Salma Ihab Mohamed Elsayed Elnaggar'}, {'id': '10595', 'value': 'Salma Magdeldin ElSayed Mohamed '}, {'id': '10137', 'value': 'Salma Maher Mohamed Elsherif'}, {'id': '11501', 'value': 'Salma Mahfouz Zeidan Attia Allah'}, {'id': '10936', 'value': 'Salma Mohamed AbdEl-Khaleq Mohamed El-Gohary'}, {'id': '11582', 'value': 'Salma Mohamed Ali Abdallah'}, {'id': '11504', 'value': 'Salma Tarek Shafey Mohamed'}, {'id': '11746', 'value': 'Salma Yasser Tosson Mohamed Helmy'}, {'id': '11448', 'value': 'Sama Amir Bassiouny ElMadany'}, {'id': '11693', 'value': 'Sama Sayed Mahmoud Sayed Barakat'}, {'id': '11367', 'value': 'Samaa Mohamed Mahmoud Mohamed Hassan'}, {'id': '11021', 'value': 'Samar Mansour Mohamed'}, {'id': '11472', 'value': 'Samar Saber Ahmed  Ali'}, {'id': '11321', 'value': 'Sameh Mohamed Reda Reyad Ahmed'}, {'id': '11142', 'value': 'Sanaria Essam Ali'}, {'id': '10724', 'value': 'Sandra Gamil Metry Habil'}, {'id': '10390', 'value': 'Sandra Ibrahim Mikhael Ibrahim'}, {'id': '11748', 'value': 'Sandra Medhat Alfy Abadir'}, {'id': '10845', 'value': 'Sandro - Grispan'}, {'id': '10388', 'value': 'Sara Ahmed Mohamed Abdelfattah  Mohamed Wahba'}, {'id': '11664', 'value': 'Sara Alaa Abdelzaher Mohamed Tohfa'}, {'id': '11163', 'value': 'Sara Ibrahim Hamed Abdelrazek'}, {'id': '10860', 'value': 'Sara Mohamed AbdEl-Aal Mohamed Eissa'}, {'id': '11726', 'value': 'Sara Yasser Ahmed Ahmed Ghaith'}, {'id': '10123', 'value': 'Sarah Abdelhalim Elsayed Abdelrahman'}, {'id': '11171', 'value': 'Sarah Hany  Gaber'}, {'id': '11179', 'value': 'Sarah Hossameldin Mostafa Ramadan'}, {'id': '10759', 'value': 'Sarah Hussien Mohamed Hussien'}, {'id': '10659', 'value': 'Seba Hazem Abouyoussef'}, {'id': '10563', 'value': 'Seif Allah Salah Zinhom Ahmed'}, {'id': '10656', 'value': 'Seif Tarek Ibrahim Mohamed'}, {'id': '11616', 'value': 'Seleem Wael Adel Abdelmoneim Mohamed'}, {'id': '11510', 'value': 'Shaden Hatem Farouk El shennawy'}, {'id': '11467', 'value': 'Shahd Ahmed Mohamed Abdelrahman'}, {'id': '11555', 'value': 'Shahd Ali Mohamed Abdelrahman Ali'}, {'id': '10739', 'value': 'Shahir Ashraf Wagdy Aziz'}, {'id': '10942', 'value': 'Shahira Youssef Mikhail'}, {'id': '11307', 'value': 'Shaimaa Masry Hussein Masry'}, {'id': '10352', 'value': 'Shaza Hany Abdelkhalek Mansour'}, {'id': '11157', 'value': 'Shehab Hesham Hussein'}, {'id': '11719', 'value': 'Shery Kadry Falts'}, {'id': '11455', 'value': 'Shorouk Ehab Tohamy Abdeltawab'}, {'id': '18', 'value': 'Slim . Abdennadher'}, {'id': '11754', 'value': 'Soha Ahmed Elsayed Hamed Abutaleb'}, {'id': '5445', 'value': 'Soha Elsaeed Abdelghany'}, {'id': '11515', 'value': 'Soha Elsaeed Abdelghany Saeed'}, {'id': '11580', 'value': 'Soha Rafek Ibrahim Afifi'}, {'id': '11493', 'value': 'Sohaila Ahmed Hamdy Elmaadawy'}, {'id': '11213', 'value': 'Sohaila Mohamed Hashem Mohamed Elnadi'}, {'id': '11061', 'value': 'Somaya Wail Ismail'}, {'id': '11520', 'value': 'Suzan Saad Eldien Mohamed Fayek Hanafy'}, {'id': '10114', 'value': 'Taha Saad Aldin Taha Mahmoud Al Banna'}, {'id': '11062', 'value': 'Tarek Safwat Aly'}, {'id': '11049', 'value': 'Tarek Safwat Aly Mohamed'}, {'id': '11478', 'value': 'Tasneem Alaa Eldien Mohamed Barakat'}, {'id': '11479', 'value': 'Tasneem Khaled Fouad Abdelghany'}, {'id': '10657', 'value': 'Thomas Hill -'}, {'id': '11463', 'value': 'Toka Alsayed Abdelsattar Alsayed'}, {'id': '11471', 'value': 'Toka Essam Ibrahim Abdallah Youssef'}, {'id': '10529', 'value': 'Toka Mahmoud Ahmed Mohamed Ibrahim'}, {'id': '11095', 'value': 'Toka Mohamed Abdelgaber'}, {'id': '11127', 'value': 'Toqa Talaat Ahmed Mansour'}, {'id': '10806', 'value': 'Verena Essam Shehata Faragalla Fam'}, {'id': '11485', 'value': 'Yahia Khaled Amin Ali Mohamed Hassanin'}, {'id': '10843', 'value': 'Yahia Zakaria Farid'}, {'id': '10141', 'value': 'Yara Aboubakr Mahmoud'}, {'id': '10407', 'value': 'Yara Mohamed Zaky Mohamed'}, {'id': '11416', 'value': 'Yara Samir Qotb Suliman'}, {'id': '10617', 'value': 'Yasmin Hesham Hassan Shehata'}, {'id': '11258', 'value': 'Yasmin Mohamed Abdullah Abdelrahman'}, {'id': '10596', 'value': 'Yasmin Moustafa Hassan Aly Aloush'}, {'id': '10163', 'value': 'Yasmine Abdalla  Zaghloul'}, {'id': '11486', 'value': 'Yasmine Hany Ahmed Ibrahim Attia'}, {'id': '11683', 'value': 'Yasmine Hesham Taha Aly Bekeat'}, {'id': '11141', 'value': 'Yasmine Khaled Hanafy Mohamed'}, {'id': '11567', 'value': 'Yassin Ahmed Galal El Damasy'}, {'id': '10837', 'value': 'Yassin Ahmed Mohamed Mohamed Eldeib'}, {'id': '11334', 'value': 'Yathreb Sayed Abd ElHakim Khalil Ali'}, {'id': '10943', 'value': 'Yomna Amr Mohamed Hassan Youssef'}, {'id': '10358', 'value': 'Yomna Ehab Nouh Eissa'}, {'id': '11679', 'value': 'Yomna Mahmoud Elsayed Elsayed'}, {'id': '11121', 'value': 'Yomna Mohamed Samir Mostafa Morsy'}, {'id': '11514', 'value': 'Yousef Ibrahim Helmy Muhammed Elsayed'}, {'id': '11517', 'value': 'Youssef Abo Elnasr Youssef Hassan'}, {'id': '10952', 'value': 'Youssef Ehab Mahfouz Hafez'}, {'id': '11627', 'value': 'Youssef Raafat Gomaa Hamed'}, {'id': '10623', 'value': 'Zeina Amr Hosny Zaki Mohamed Abdel Hadi'}, {'id': '10640', 'value': 'Ziad Mohamed El-Azizi'}, {'id': '10658', 'value': 'Zyad Mostafa Mohamed Mahrous'}];</script>
+<script type="text/javascript">
+//<![CDATA[
+
+theForm.oldSubmit = theForm.submit;
+theForm.submit = WebForm_SaveScrollPositionSubmit;
+
+theForm.oldOnSubmit = theForm.onsubmit;
+theForm.onsubmit = WebForm_SaveScrollPositionOnSubmit;
+
+theForm.oldOnLoad = window.onload;
+window.onload = WebForm_RestoreScrollPosition;
+//]]>
+</script>
+</form>
+
+    
+    <script src="../../LIB/SCRIPTS/core/popper.min.js"></script>
+    <script src="../../LIB/SCRIPTS/plugins/plugins.js"></script>
+
+
+    <script src="../../LIB/SCRIPTS/plugins/chosen/chosen.jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+    <script>
+
+
+        jQuery(document).ready(function () {
+            jQuery(".standardSelect").chosen({
+                disable_search_threshold: 10,
+                no_results_text: "Oops, nothing found!",
+                width: "100%"
+            });
+
+            $('#MainContent_ddlDepartmentStaff_chosen').removeClass('chosen-container-single-nosearch');
+
+            $('.chosen-search-input').removeAttr('readonly');
+
+
+            //MainContent_grd
+
+            //$("#output").pivotUI($("#MainContent_grd"))
+
+        });
+    </script>
+
+
+    <script>
+
+
+        $(document).ready(function () {
+            $('#search-input').on('input', function () {
+                var searchQuery = $(this).val();
+                var myControls = searchMenu(searchQuery);
+                if (myControls.length > 0) {
+
+                    $('.sub-menu li').each(function () {
+                        var navbar = $(this).closest('ul').parents().closest('.navbar-nav');
+                        $(navbar).addClass("mm-hide");
+                        //$(navbar).css('background-color', 'blue');
+                        $(navbar).find('a').attr("aria-expanded", "false");
+                        $(navbar).parent().find('.menu-item-has-children').removeClass("show");
+                        $(navbar).find('.sub-menu').removeClass("show");
+
+
+
+                    });
+
+                    $.each(myControls, function (index, controlElement) {
+                        // 'index' is the numerical index of the current element in the array
+                        // 'controlElement' is the actual DOM element or jQuery object at that index
+                        //$(controlElement).css('background-color', 'lightblue');
+                        $(controlElement).removeClass("mm-hide");
+                        $(controlElement).find('a').attr("aria-expanded", "true");
+                        $(controlElement).parent().find('.menu-item-has-children').addClass("show");
+                        $(controlElement).find('.sub-menu').addClass("show");
+                    });
+                }
+                else {
+                    $('.sub-menu li').each(function () {
+                        var navbar = $(this).closest('ul').parents().closest('.navbar-nav');
+                        $(navbar).removeClass("mm-hide");
+                        //$(navbar).css('background-color', 'red');
+                        $(navbar).find('a').attr("aria-expanded", "false");
+                        $(navbar).parent().find('.menu-item-has-children').removeClass("show");
+                        $(navbar).find('.sub-menu').removeClass("show");
+                    });
+                }
+            });
+        });
+
+
+        function searchMenu(query) {
+            const myControls = [];
+
+            // Loop through all menu items
+            $('.sub-menu li').each(function () {
+                // Get the text content of the menu item
+                var text = $(this).text().toLowerCase();
+                if (query.length > 0) {
+                    // If the text content contains the search query, show the menu item
+                    if (text.indexOf(query.toLowerCase()) >= 0) {
+                        var control = $(this).closest('ul').parents().closest('.navbar-nav');
+                        if (!myControls.includes(control)) {
+                            myControls.push(control);
+                        }
+                        $(this).show();
+                    } else {
+
+                        $(this).hide();
+                    }
+                }
+                else {
+                    myControls.splice(0, myControls.length);
+                }
+            });
+            return myControls;
+        }
+
+    </script>
+    
+
+
+
+</body></html>
