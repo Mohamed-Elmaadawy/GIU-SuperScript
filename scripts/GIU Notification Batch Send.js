@@ -3,7 +3,7 @@
 // @description Send emails to multiple tutorial groups at once on the GIU portal
 // @match       https://portal.giu-uni.de/GIUb/INTStaff/NotificationSystem_SendEmail_m.aspx
 // @namespace   Cyn0
-// @version     1.3
+// @version     1.4
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Notification%20Batch%20Send.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Notification%20Batch%20Send.js
 // @author      Mo.Elmaadawy
