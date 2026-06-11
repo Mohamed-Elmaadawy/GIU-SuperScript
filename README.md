@@ -348,7 +348,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/ProctorExchange_m.aspx
 
 ### 8. GIU Proctoring Reminder
 
-**File:** `GIU Proctoring Reminder.js` | **Version:** 1.1 | **Author:** Mo.Elmaadawy
+**File:** `GIU Proctoring Reminder.js` | **Version:** 1.1.1 | **Author:** Mo.Elmaadawy
 
 Shows your next proctoring session on the portal home page and exports reminders to `.ics`, Google Calendar, or email. Fetches your timetable in the background, caches it for 6 hours, and renders a full-width widget directly under the **Target List** block.
 
@@ -390,7 +390,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 
 ### 9. GIU Teaching Load
 
-**File:** `GIU Teaching Load.js` | **Version:** 1.1 | **Author:** Mo.Elmaadawy
+**File:** `GIU Teaching Load.js` | **Version:** 1.1.1 | **Author:** Mo.Elmaadawy
 
 Shows your teaching schedule on the portal Home page — today's sessions highlighted
 at the top, plus your full week in an expandable list. Each session shows the period

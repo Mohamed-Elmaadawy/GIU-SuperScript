@@ -143,12 +143,12 @@ test.describe('GIU Teaching Load', () => {
         expect(res.hasTs).toBe(true);
     });
 
-    test('isStale false for fresh, true for >6h old', async ({ page }) => {
+    test('isStale false for fresh, true for >7d old', async ({ page }) => {
         await setup(page);
         const res = await page.evaluate(() => {
             const api = window.__giuTeachingLoad;
             const now = Date.now();
-            return { fresh: api.isStale(now), old: api.isStale(now - 7 * 60 * 60 * 1000) };
+            return { fresh: api.isStale(now - 6 * 60 * 60 * 1000), old: api.isStale(now - 8 * 24 * 60 * 60 * 1000) };
         });
         expect(res.fresh).toBe(false);
         expect(res.old).toBe(true);

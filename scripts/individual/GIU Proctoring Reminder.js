@@ -3,7 +3,7 @@
 // @description Shows your next proctoring session on the portal home page and exports reminders to calendar/email
 // @match       https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 // @namespace   Cyn0
-// @version     1.1
+// @version     1.1.1
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Proctoring%20Reminder.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Proctoring%20Reminder.js
 // @author      Mo.Elmaadawy
@@ -482,7 +482,9 @@
     async function boot() {
         injectStyles();
         const cache = loadCache();
-        if (cache) render(cache.sessions, { stale: isStale(cache.fetchedAt) });
+        const fresh = !!(cache && !isStale(cache.fetchedAt));
+        if (cache) render(cache.sessions, { stale: !fresh });
+        if (fresh) return; // TTL gates the timetable download, not just the badge
         try {
             const sessions = await fetchTimetable();
             saveCache(sessions);
