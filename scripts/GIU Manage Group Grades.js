@@ -3,7 +3,7 @@
 // @description Upload and download grades CSV on the Manage Group Grade page.
 // @match       https://portal.giu-uni.de/GIUb/INTStaff/ManageGroupGrade_m.aspx
 // @namespace   Cyn0
-// @version     1.4
+// @version     1.5
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Manage%20Group%20Grades.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Manage%20Group%20Grades.js
 // @author      Mo.Elmaadawy
