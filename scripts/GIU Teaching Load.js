@@ -25,6 +25,7 @@
     const NOTIFICATION_URL = 'https://portal.giu-uni.de/GIUb/INTStaff/NotificationSystem_SendEmail_m.aspx';
     const SCHEDULE_URL = 'https://portal.giu-uni.de/GIUb/INTStaff/SearchAcademicScheduled_001_m.aspx';
     const CACHE_KEY = 'giuTeachingLoadV1';
+    // TODO: name cache has no TTL; clear it if a fresh schedule fetch starts failing to find the staff id.
     const NAME_CACHE_KEY = 'giuTeachingLoadNameV1';
     const TTL_MS = 6 * 60 * 60 * 1000;       // 6h
     const IFRAME_TIMEOUT_MS = 20000;
@@ -284,21 +285,15 @@
         return host;
     }
 
-    function sessionCardHTML(s) {
-        return `<div class="gius-tl-card">
+    function sessionHTML(s, cls) {
+        return `<div class="${cls}">
             <div class="gius-tl-slot">${esc(s.slot)}</div>
             <div class="gius-tl-tutorial">${esc(s.tutorial)}</div>
             ${s.location ? `<div class="gius-tl-loc">${esc(s.location)}</div>` : ''}
         </div>`;
     }
-
-    function sessionRowHTML(s) {
-        return `<div class="gius-tl-row">
-            <div class="gius-tl-slot">${esc(s.slot)}</div>
-            <div class="gius-tl-tutorial">${esc(s.tutorial)}</div>
-            ${s.location ? `<div class="gius-tl-loc">${esc(s.location)}</div>` : ''}
-        </div>`;
-    }
+    function sessionCardHTML(s) { return sessionHTML(s, 'gius-tl-card'); }
+    function sessionRowHTML(s) { return sessionHTML(s, 'gius-tl-row'); }
 
     function renderView(view, opts) {
         if (!opts) opts = {};

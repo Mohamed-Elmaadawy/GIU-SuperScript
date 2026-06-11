@@ -104,7 +104,7 @@ test.describe('GIU Teaching Load', () => {
                 { day: 'Sunday',   slot: 'b', tutorial: 't2', location: 'l2' },
                 { day: 'Monday',   slot: 'c', tutorial: 't3', location: 'l3' },
             ];
-            // Force "today" = Sunday (weekday index 0 in the script's WEEK order).
+            // Force "today" = Sunday (WEEK index 1 — Saturday is index 0).
             return api.splitByDay(sessions, 'Sunday');
         });
         expect(r.today.map(s => s.tutorial)).toEqual(['t2']);
@@ -244,6 +244,21 @@ test.describe('GIU Teaching Load', () => {
         await setup(page, { notification: homeHtml }); // name resolve fails (no dropdown)
         await expect(page.locator('#gius-tl-widget')).toContainText("Couldn't load schedule", { timeout: 8000 });
         await expect(page.locator('#gius-tl-retry')).toBeVisible();
+    });
+
+    test('renderView escapes portal-derived HTML in tutorial and location', async ({ page }) => {
+        await setup(page);
+        await expect(page.locator('#gius-tl-widget')).toBeVisible({ timeout: 6000 });
+        await page.evaluate(() => {
+            window.__giuTeachingLoad._renderView({
+                today: [{ day: 'X', slot: '<b>', tutorial: '<img onerror=x>', location: '"&' }],
+                rest: [],
+            });
+        });
+        const html = await page.evaluate(() => document.querySelector('.gius-tl-card').innerHTML);
+        expect(html).not.toContain('<img');
+        expect(html).toContain('&lt;img');
+        expect(html).toContain('&amp;');
     });
 });
 
