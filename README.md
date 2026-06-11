@@ -22,6 +22,13 @@ For suggestions, bug reports, or feature requests, send an email to [mohamed.elm
 
 ### Step 2 — Install a Script
 
+Choose **one** install mode:
+
+- **Recommended:** install `GIU SuperScript.js` for the all-in-one bundle, then install `GIU Dark Mode.js` separately if you want dark mode.
+- **Alternative:** install individual scripts one by one.
+
+Do **not** install `GIU SuperScript.js` and the old individual feature scripts at the same time. They match the same portal pages and will create duplicate widgets, duplicate buttons, and duplicate handlers. `GIU Dark Mode.js` is the only script that intentionally stays separate.
+
 **Option A — Paste the script manually:**
 
 1. Open Tampermonkey → click the extension icon → **Dashboard**
@@ -50,6 +57,32 @@ Every script carries `@updateURL` and `@downloadURL` pointing at this repo, so T
 ---
 
 ## Scripts
+
+### GIU SuperScript — All-in-one bundle
+
+**File:** `GIU SuperScript.js` | **Version:** 1.0.0 | **Author:** Mo.Elmaadawy
+
+The all-in-one userscript that bundles every feature script below except Dark Mode. It also adds a **Control Center** card on the portal Home page where you can turn bundled modules on or off.
+
+**Target pages:**
+```
+https://portal.giu-uni.de/*
+```
+
+**Bundled modules:**
+
+- Staff Enhanced Attendance
+- Notification Batch Send
+- Upload Grades
+- Manage Group Grades
+- Student Attendance Group Report
+- Proctoring Reminder
+- Proctor Schedule Aggregator
+- Teaching Load
+
+**Important:** install this **OR** the individual feature scripts, never both. Keep `GIU Dark Mode.js` separate because it needs to run at `document-start` to prevent flash-of-unstyled-content.
+
+---
 
 ### 1. GIU Dark Mode
 
@@ -284,7 +317,36 @@ https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendances
 
 ---
 
-### 7. GIU Proctoring Reminder
+### 7. GIU Proctor Schedule Aggregator
+
+**File:** `GIU Proctor Schedule Aggregator.js` | **Version:** 2.1 | **Author:** Mo.Elmaadawy
+
+Aggregates all proctor exam assignments across departments into one searchable dashboard on the Proctor Exchange page.
+
+**Target page:**
+```
+https://portal.giu-uni.de/GIUb/INTStaff/ProctorExchange_m.aspx
+```
+
+**Features:**
+
+- **One dashboard** — fetches and combines proctor schedules across departments
+- **Fetch controls** — start, pause, and resume long schedule scrapes
+- **Filters and sorting** — inspect schedules by staff, course, date, hall, and role
+- **Cache** — stores the latest scraped result in `localStorage`
+- **Import / Export** — move cached schedule data through CSV/file workflows
+- **Session warning** — flags expired sessions and asks you to reload when needed
+
+**Usage:**
+
+1. Navigate to the Proctor Exchange page
+2. Click **View All Proctor Schedules**
+3. Click **Fetch** to scrape schedules, or use cached/imported data
+4. Filter, sort, and export the combined view as needed
+
+---
+
+### 8. GIU Proctoring Reminder
 
 **File:** `GIU Proctoring Reminder.js` | **Version:** 1.1 | **Author:** Mo.Elmaadawy
 
@@ -326,7 +388,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 |---|---|
 | ![Empty state light](screenshots/proctoring-reminder-empty.png) | ![Empty state dark](screenshots/proctoring-reminder-empty-dark.png) |
 
-### 8. GIU Teaching Load
+### 9. GIU Teaching Load
 
 **File:** `GIU Teaching Load.js` | **Version:** 1.1 | **Author:** Mo.Elmaadawy
 
