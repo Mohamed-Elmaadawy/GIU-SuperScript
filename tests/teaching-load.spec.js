@@ -95,7 +95,7 @@ test.describe('GIU Teaching Load', () => {
         expect(n).toBe(0);
     });
 
-    test('splitByDay returns today first and rest-of-week after today', async ({ page }) => {
+    test('splitByDay returns today + the whole week grouped by day', async ({ page }) => {
         await setup(page);
         const r = await page.evaluate(() => {
             const api = window.__giuTeachingLoad;
@@ -108,9 +108,26 @@ test.describe('GIU Teaching Load', () => {
             return api.splitByDay(sessions, 'Sunday');
         });
         expect(r.today.map(s => s.tutorial)).toEqual(['t2']);
-        // rest = days strictly after today in the teaching week → Monday only (Saturday is before)
-        expect(r.rest.map(d => d.day)).toEqual(['Monday']);
-        expect(r.rest[0].sessions.map(s => s.tutorial)).toEqual(['t3']);
+        // rest = every teaching day with sessions, in WEEK order (incl. past days + today).
+        expect(r.rest.map(d => d.day)).toEqual(['Saturday', 'Sunday', 'Monday']);
+        expect(r.rest.flatMap(d => d.sessions.map(s => s.tutorial))).toEqual(['t1', 't2', 't3']);
+    });
+
+    test('displayTutorial swaps the course code for its full name, keeps the group', async ({ page }) => {
+        await setup(page);
+        const r = await page.evaluate(() => {
+            const api = window.__giuTeachingLoad;
+            return [
+                api.displayTutorial('INCS 406 - 4INF20 (Practical)'),
+                api.displayTutorial('MATH 203 - 4CSE1'),
+                api.displayTutorial('ZZZ 999 - 1ABC'),   // unknown code passes through
+                api.displayTutorial('No Dashes Here'),    // no group suffix passes through
+            ];
+        });
+        expect(r[0]).toBe('Distributed &Web-based Systems - 4INF20 (Practical)');
+        expect(r[1]).toBe('Mathematics II - 4CSE1');
+        expect(r[2]).toBe('ZZZ 999 - 1ABC');
+        expect(r[3]).toBe('No Dashes Here');
     });
 
     test('saveCache then loadCache round-trips sessions + timestamp', async ({ page }) => {
@@ -255,7 +272,7 @@ test.describe('GIU Teaching Load', () => {
                 rest: [],
             });
         });
-        const html = await page.evaluate(() => document.querySelector('.gius-tl-card').innerHTML);
+        const html = await page.evaluate(() => document.querySelector('.gius-tl-item').innerHTML);
         expect(html).not.toContain('<img');
         expect(html).toContain('&lt;img');
         expect(html).toContain('&amp;');
