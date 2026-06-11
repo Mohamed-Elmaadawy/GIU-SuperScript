@@ -328,6 +328,10 @@ at the top, plus your full week in an expandable list. Each session shows the pe
 slot, the course, and the room. Fetches your schedule in the background via a hidden
 iframe and caches it for 6 hours.
 
+| Light | Dark (with GIU Dark Mode) |
+|---|---|
+| ![Teaching Load light](screenshots/teaching-load.png) | ![Teaching Load dark](screenshots/teaching-load-dark.png) |
+
 **Target page:**
 ```
 https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
