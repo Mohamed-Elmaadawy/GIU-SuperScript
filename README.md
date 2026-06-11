@@ -46,7 +46,7 @@ After saving, go to the target page listed for each script below. A new panel or
 
 ### 1. GIU Dark Mode
 
-**File:** `GIU Dark Mode.js` | **Version:** 2.7 | **Author:** Mo.Elmaadawy
+**File:** `GIU Dark Mode.js` | **Version:** 2.8 | **Author:** Mo.Elmaadawy
 
 A portal-wide dark mode toggle using the Catppuccin Mocha palette. Applies clean, layered dark colors to every portal page — including all co-scripts — without inverting images or breaking portal styling.
 
@@ -80,7 +80,7 @@ https://portal.giu-uni.de/*
 
 ### 2. GIU Staff Enhanced Attendance
 
-**File:** `GIU Staff Attendance Script.js` | **Version:** 3.1.1 | **Author:** Mo.Elmaadawy
+**File:** `GIU Staff Attendance Script.js` | **Version:** 3.1.3 | **Author:** Mo.Elmaadawy
 
 A full attendance management dashboard injected above the Swift Report attendance table. Tracks your hours, leave balance, and exceptions — all stored locally in your browser.
 
@@ -122,7 +122,7 @@ https://portal.giu-uni.de/GIUb/EXT/SwiftReports_m.aspx?swiftreportid=866&execute
 
 ### 3. GIU Notification Batch Send
 
-**File:** `GIU Notification Batch Send.js` | **Version:** 1.3 | **Author:** Mo.Elmaadawy
+**File:** `GIU Notification Batch Send.js` | **Version:** 1.4 | **Author:** Mo.Elmaadawy
 
 Sends the same email notification to multiple tutorial groups in sequence. Write subject and body once — the script steps through each selected group using a localStorage queue and page reloads.
 
@@ -157,7 +157,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/NotificationSystem_SendEmail_m.aspx
 
 ### 4. GIU Upload Grades
 
-**File:** `GIU Upload Grades.js` | **Version:** 2.3 | **Authors:** Ahmed Sherif, Mo.Elmaadawy
+**File:** `GIU Upload Grades.js` | **Version:** 2.4 | **Authors:** Ahmed Sherif, Mo.Elmaadawy
 
 Batch grade download and upload across all student groups on the Manage Uploaded Grades page. Runs entirely in the background via fetch — no page reloads between groups.
 
@@ -213,7 +213,7 @@ Grades are matched by student ID `(XXXXXXXX)` prefix — safe against row reorde
 
 ### 5. GIU Manage Group Grades
 
-**File:** `GIU Manage Group Grades.js` | **Version:** 1.4 | **Author:** Mo.Elmaadawy
+**File:** `GIU Manage Group Grades.js` | **Version:** 1.5 | **Author:** Mo.Elmaadawy
 
 CSV upload/download buttons on the Manage Group Grade page (per-group grade entry, separate from the uploaded grades flow). The panel only appears after you have selected a season, course, group, and evaluation method — i.e., when the student grade table is actually visible.
 
@@ -244,7 +244,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/ManageGroupGrade_m.aspx
 
 ### 6. GIU Student Attendance Group Report
 
-**File:** `GIU Student Attendance Group Report.js` | **Version:** 1.1 | **Author:** Mo.Elmaadawy
+**File:** `GIU Student Attendance Report.js` | **Version:** 1.3 | **Author:** Mo.Elmaadawy
 
 Auto-scrapes all session attendance for the selected group and displays an absence-level summary panel above the student table. Runs entirely in the background via parallel fetch requests — no page reloads.
 
@@ -279,7 +279,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendances
 
 ### 7. GIU Proctoring Reminder
 
-**File:** `GIU Proctoring Reminder.js` | **Version:** 1.0 | **Author:** Mo.Elmaadawy
+**File:** `GIU Proctoring Reminder.js` | **Version:** 1.1 | **Author:** Mo.Elmaadawy
 
 Shows your next proctoring session on the portal home page and exports reminders to `.ics`, Google Calendar, or email. Fetches your timetable in the background, caches it for 6 hours, and renders a full-width widget directly under the **Target List** block.
 
@@ -321,7 +321,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 
 ### 8. GIU Teaching Load
 
-**File:** `GIU Teaching Load.js` | **Version:** 1.0 | **Author:** Mo.Elmaadawy
+**File:** `GIU Teaching Load.js` | **Version:** 1.1 | **Author:** Mo.Elmaadawy
 
 Shows your teaching schedule on the portal Home page — today's sessions highlighted
 at the top, plus your full week in an expandable list. Each session shows the period
