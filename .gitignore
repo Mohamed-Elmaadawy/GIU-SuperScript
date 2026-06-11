@@ -1,11 +1,13 @@
 # Ignore everything
 *
 
-# Tampermonkey scripts (direct .js files only, no subdirs)
+# Tampermonkey scripts (bundle + dark mode in scripts/, standalones in scripts/individual/)
 !scripts/
 !scripts/*.js
+!scripts/individual/
+!scripts/individual/*.js
 scripts/scrape-courses.js
-scripts/GIU Proctor Schedule Aggregator.js
+scripts/individual/GIU Proctor Schedule Aggregator.js
 
 
 # Tests
