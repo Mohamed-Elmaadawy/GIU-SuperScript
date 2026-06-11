@@ -323,9 +323,10 @@ https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 
 **File:** `GIU Teaching Load.js` | **Version:** 1.0 | **Author:** Mo.Elmaadawy
 
-Shows your teaching schedule on the portal Home page — today's sessions first
-(slot, tutorial, location), with the rest of the week in an expandable list.
-Fetches your schedule in the background via a hidden iframe and caches it for 6 hours.
+Shows your teaching schedule on the portal Home page — today's sessions highlighted
+at the top, plus your full week in an expandable list. Each session shows the period
+slot, the course, and the room. Fetches your schedule in the background via a hidden
+iframe and caches it for 6 hours.
 
 **Target page:**
 ```
@@ -334,9 +335,15 @@ https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 
 **Features:**
 
-- **Auto** — derives your own name from the notification page; no configuration
-- **Today first** — today's sessions shown prominently at the top
-- **Rest of week** — remaining teaching days (today → end of week) in an expandable list
+- **Auto** — derives your own name from the notification page and looks it up in the
+  schedule directory; no configuration
+- **Today highlighted** — today's sessions shown prominently at the top
+- **Full week** — every teaching day grouped into a per-day card; sessions laid out
+  as side-by-side tiles, in one expandable list
+- **Course names** — shows the full course name instead of the raw code
+  (e.g. *Distributed & Web-based Systems* instead of `INCS 406`)
+- **Slot & room emphasis** — the period slot is a badge and the room is shown with a
+  pin marker so the where/when stands out at a glance
 - **Dark-mode aware** — matches the GIU Dark Mode palette when active
 - **6-hour cache** — schedule cached in `localStorage`; stale data shown with an
   "offline cache" label until refresh
@@ -345,7 +352,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 
 1. Navigate to the GIU staff portal Home page
 2. The widget appears at the top automatically
-3. Click **Rest of week** to expand the remaining days
+3. Click **All sessions** to expand the full week, grouped by day
 
 ---
 
