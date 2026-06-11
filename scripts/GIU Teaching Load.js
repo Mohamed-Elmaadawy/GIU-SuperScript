@@ -2,7 +2,7 @@
 // @name        GIU Teaching Load
 // @description Shows your teaching schedule on the portal home page — today first, rest of the week expandable
 // @match       https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
-// @namespace   ramin0
+// @namespace   Cyn0
 // @version     1.0
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Teaching%20Load.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Teaching%20Load.js

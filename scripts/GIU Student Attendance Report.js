@@ -2,7 +2,7 @@
     // @name        GIU Student Attendance Report
     // @description Auto-scrapes all sessions for a group and shows absence level report above the student table
     // @match       https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx*
-    // @namespace   ramin0
+    // @namespace   Cyn0
     // @version     1.2
     // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Student%20Attendance%20Report.js
     // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Student%20Attendance%20Report.js
