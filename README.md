@@ -86,7 +86,7 @@ https://portal.giu-uni.de/*
 
 ### 1. GIU Dark Mode
 
-**File:** `GIU Dark Mode.js` | **Version:** 2.8 | **Author:** Mo.Elmaadawy
+**File:** `GIU Dark Mode.js` | **Version:** 2.8.1 | **Author:** Mo.Elmaadawy
 
 A portal-wide dark mode toggle using the Catppuccin Mocha palette. Applies clean, layered dark colors to every portal page — including all co-scripts — without inverting images or breaking portal styling.
 
