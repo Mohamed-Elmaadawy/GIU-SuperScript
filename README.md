@@ -40,6 +40,13 @@ For suggestions, bug reports, or feature requests, send an email to [mohamed.elm
 
 After saving, go to the target page listed for each script below. A new panel or toolbar should appear automatically. No page refresh needed if you were already on the page — navigate away and back once.
 
+### Step 4 — Auto-updates
+
+Every script carries `@updateURL` and `@downloadURL` pointing at this repo, so Tampermonkey **checks for new versions and updates them automatically** — you don't need to re-paste when a script changes.
+
+- Updates trigger only when the repo's `@version` is higher than your installed copy. Tampermonkey checks periodically (configurable in **Settings → check interval**), or you can force it now via **Dashboard → Utilities → "Check for userscript updates"**.
+- **Manually-pasted copies (Option A) don't auto-update** until they know the update URL. To enable it, reinstall the script once so the `@updateURL`/`@downloadURL` headers are registered — the simplest way is to open the raw `.js` file on GitHub (the **Raw** button) and let Tampermonkey prompt to install. After that one reinstall, all future versions arrive automatically.
+
 ---
 
 ## Scripts
