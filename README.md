@@ -319,6 +319,34 @@ https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 |---|---|
 | ![Empty state light](screenshots/proctoring-reminder-empty.png) | ![Empty state dark](screenshots/proctoring-reminder-empty-dark.png) |
 
+### 8. GIU Teaching Load
+
+**File:** `GIU Teaching Load.js` | **Version:** 1.0 | **Author:** Mo.Elmaadawy
+
+Shows your teaching schedule on the portal Home page — today's sessions first
+(slot, tutorial, location), with the rest of the week in an expandable list.
+Fetches your schedule in the background via a hidden iframe and caches it for 6 hours.
+
+**Target page:**
+```
+https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
+```
+
+**Features:**
+
+- **Auto** — derives your own name from the notification page; no configuration
+- **Today first** — today's sessions shown prominently at the top
+- **Rest of week** — remaining teaching days (today → end of week) in an expandable list
+- **Dark-mode aware** — matches the GIU Dark Mode palette when active
+- **6-hour cache** — schedule cached in `localStorage`; stale data shown with an
+  "offline cache" label until refresh
+
+**Usage:**
+
+1. Navigate to the GIU staff portal Home page
+2. The widget appears at the top automatically
+3. Click **Rest of week** to expand the remaining days
+
 ---
 
 ## Requirements
