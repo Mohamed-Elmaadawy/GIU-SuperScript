@@ -20,16 +20,20 @@
     //  0. CONFIG — per-feature toggles
     //     Defaults below; user overrides persisted in localStorage 'gius-features'.
     // ═══════════════════════════════════════════════════════════════════════════
+    // Conservative defaults: only the three everyday features start enabled.
+    // Everything else is opt-in via the Control Center on Home.
     const FEATURE_DEFAULTS = {
         staffAttendance:   true,
         uploadGrades:      true,
-        teachingLoad:      true,
-        proctorReminder:   true,
-        proctorAggregator: true,
+        teachingLoad:      false,
+        proctorReminder:   false,
+        proctorAggregator: false,
         notificationBatch: true,
-        manageGroupGrades: true,
-        studentAttendance: true,
+        manageGroupGrades: false,
+        studentAttendance: false,
     };
+
+    const ONBOARDING_KEY = 'gius-onboarded-v1';
 
     const FEATURE_LABELS = {
         staffAttendance:   'Staff Attendance',
@@ -11975,6 +11979,12 @@
             .gius-feature-btn:disabled{opacity:.45;cursor:not-allowed;text-decoration:none;}
             .gius-feature-details{display:none;}
             .gius-feature-panel.gius-feature-open .gius-feature-details{display:block;}
+            .gius-feature-onboard{margin:0 15px 12px;padding:10px 12px;border-left:3px solid #1B59C6;
+                background:#f5f7ff;border-radius:0 8px 8px 0;font-size:12.5px;line-height:1.45;color:#374151;}
+            .gius-feature-onboard-title{font-weight:700;font-size:13px;margin-bottom:4px;}
+            .gius-feature-onboard .gius-feature-btn{margin-top:8px;font-weight:700;color:#1B59C6;}
+            html.gius-dark .gius-feature-onboard{background:#181825;border-left-color:#89b4fa;color:#cdd6f4;}
+            html.gius-dark .gius-feature-onboard .gius-feature-btn{color:#89b4fa;}
             .gius-feature-toggle-list{margin:0 15px 10px;padding:10px 0 0;border-top:1px solid #eeeeee;}
             .gius-feature-panel.gius-feature-open .gius-feature-toggle-list{display:block;}
             .gius-feature-row{display:flex;align-items:center;justify-content:space-between;gap:10px;
@@ -12109,15 +12119,16 @@
                         </small>
                     </div>
                     <div class="gius-feature-details">
+                        <div id="gius-feature-onboard-slot"></div>
                         <div class="gius-feature-toggle-list">${rows}</div>
                         <div class="gius-feature-actions">
                             <span class="guc-footer-link gius-feature-status" id="gius-feature-status">
                                 <span id="gius-feature-count">${enabledCount}</span>/${totalCount} modules on. Changes apply after reload.
                             </span>
-                            <button type="button" class="guc-footer-link gius-feature-btn" id="gius-feature-reload" disabled>
+                            <button type="button" class="guc-footer-link gius-feature-btn gius-btn" id="gius-feature-reload" disabled>
                                 <i class="fa fa-refresh text-success"></i> Reload
                             </button>
-                            <button type="button" class="guc-footer-link gius-feature-btn" id="gius-feature-reset">
+                            <button type="button" class="guc-footer-link gius-feature-btn gius-btn" id="gius-feature-reset">
                                 <i class="fa fa-undo text-success"></i> Reset
                             </button>
                         </div>
@@ -12128,11 +12139,35 @@
             placePanel(panel);
             mirrorNativeCard(panel);
 
+            // ── First-run onboarding: auto-open the panel with a welcome note. ──
+            // Dismissed by "Got it" or by touching any toggle; never shown again.
+            let onboarded = true;
+            try { onboarded = localStorage.getItem(ONBOARDING_KEY) === '1'; } catch {}
+            const markOnboarded = () => {
+                try { localStorage.setItem(ONBOARDING_KEY, '1'); } catch {}
+                const note = panel.querySelector('#gius-feature-onboard');
+                if (note) note.remove();
+            };
+            if (!onboarded) {
+                panel.classList.add('gius-feature-open');
+                panel.querySelector('#gius-feature-onboard-slot').innerHTML = `
+                    <div class="gius-feature-onboard" id="gius-feature-onboard">
+                        <div class="gius-feature-onboard-title">Welcome to GIU SuperScript</div>
+                        All 8 portal enhancements are managed from this Control Center.
+                        To keep things light, only <b>Staff Attendance</b>, <b>Upload Grades</b> and
+                        <b>Notification Batch</b> start enabled &mdash; switch on anything else you need below.
+                        Changes apply after a reload.
+                        <br><button type="button" class="gius-feature-btn gius-btn" id="gius-feature-onboard-done">Got it</button>
+                    </div>`;
+                panel.querySelector('#gius-feature-onboard-done').addEventListener('click', markOnboarded);
+            }
+
             const status = panel.querySelector('#gius-feature-status');
             const reloadBtn = panel.querySelector('#gius-feature-reload');
             const countEl = panel.querySelector('#gius-feature-count');
             panel.querySelectorAll('input[data-feature-id]').forEach(input => {
                 input.addEventListener('change', () => {
+                    markOnboarded(); // interacting with toggles counts as onboarded
                     const next = loadFeatureToggles();
                     next[input.dataset.featureId] = input.checked;
                     saveFeatureToggles(next);
