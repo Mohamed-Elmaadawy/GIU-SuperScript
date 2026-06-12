@@ -177,8 +177,8 @@
             bubble = document.createElement('div');
             bubble.className = 'gius-tips-bubble';
             document.body.append(clickLayer, cutout, bubble);
-            window.addEventListener('scroll', schedulePosition, true);
-            window.addEventListener('resize', schedulePosition);
+            window.addEventListener('scroll', schedulePosition, { capture: true, passive: true });
+            window.addEventListener('resize', schedulePosition, { passive: true });
             document.addEventListener('keydown', onKey, true);
         }
 
