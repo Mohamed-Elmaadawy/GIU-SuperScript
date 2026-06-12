@@ -8068,14 +8068,45 @@
                 }
             }
 
-            // Boot as soon as the Home grid anchor exists. The standalone script used a
-            // fixed setTimeout(boot, 800) — that delay is the "slow to appear" lag. At
-            // document-idle the grid is usually already present, so waitFor fires boot now.
-            let booted = false;
-            const bootOnce = () => { if (!booted) { booted = true; boot(); } };
-            S.waitFor('#MainContent_div_grid', bootOnce, { timeout: HOME_BOOT_DELAY_MS * 4 });
-            // Fallback: if the anchor never shows, still boot so the page-content placement runs.
-            setTimeout(bootOnce, HOME_BOOT_DELAY_MS * 4);
+            // ── Schedule page: auto-fill the staff name and show the schedule. ──
+            // Same mechanism the hidden-iframe fetch uses (tas lookup + ta[] submit),
+            // run against the live page. After the postback reload the schedule table
+            // exists, so parseScheduleDoc() is non-empty and we do nothing (no loop).
+            function isSchedulePage() {
+                return /SearchAcademicScheduled_001_m\.aspx$/i.test(location.pathname || '');
+            }
+
+            async function autoFillSchedulePage() {
+                if (parseScheduleDoc(document).length) return; // already submitted
+                let name;
+                try { name = await fetchFullName(); } catch { return; }
+                const win = (typeof unsafeWindow !== 'undefined') ? unsafeWindow : window;
+                const started = Date.now();
+                const poll = setInterval(() => {
+                    if (Date.now() - started > 15000 || parseScheduleDoc(document).length) {
+                        clearInterval(poll);
+                        return;
+                    }
+                    const id = findStaffId(win, name);
+                    if (id) {
+                        clearInterval(poll);
+                        try { submitStaff(win, id); } catch { /* leave page as-is */ }
+                    }
+                }, 300);
+            }
+
+            if (isSchedulePage()) {
+                autoFillSchedulePage();
+            } else {
+                // Boot as soon as the Home grid anchor exists. The standalone script used a
+                // fixed setTimeout(boot, 800) — that delay is the "slow to appear" lag. At
+                // document-idle the grid is usually already present, so waitFor fires boot now.
+                let booted = false;
+                const bootOnce = () => { if (!booted) { booted = true; boot(); } };
+                S.waitFor('#MainContent_div_grid', bootOnce, { timeout: HOME_BOOT_DELAY_MS * 4 });
+                // Fallback: if the anchor never shows, still boot so the page-content placement runs.
+                setTimeout(bootOnce, HOME_BOOT_DELAY_MS * 4);
+            }
 
             // ── test hook (extended as functions are added) ──
             window.__giuTeachingLoad = {
@@ -11958,7 +11989,7 @@
         { id: 'staffAttendance',   test: (p) => /SwiftReports_m\.aspx$/i.test(p) || /\/home\.aspx$/i.test(p) },
         { id: 'uploadGrades',      test: (p) => /\/ManageUploadedGrades_m\.aspx$/i.test(p) },
         // Home widgets (ordered):
-        { id: 'teachingLoad',      test: (p) => /\/Home\.aspx$/i.test(p) },
+        { id: 'teachingLoad',      test: (p) => /\/Home\.aspx$/i.test(p) || /SearchAcademicScheduled_001_m\.aspx$/i.test(p) },
         { id: 'proctorReminder',   test: (p) => /\/Home\.aspx$/i.test(p) },
         // Page-specific:
         { id: 'proctorAggregator', test: (p) => /\/ProctorExchange_m\.aspx$/i.test(p) },
