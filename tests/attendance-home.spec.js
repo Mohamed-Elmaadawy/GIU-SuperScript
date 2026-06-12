@@ -53,7 +53,8 @@ test.describe('GIU Attendance Home Summary', () => {
                   <tr><td>4</td><td>2030-12-16</td><td>8:00:00 AM</td><td>4:00:00 PM</td><td>08:00:00</td></tr>
                 </table>`, 'text/html');
             const rows = window.__giuAttHome.getAttendanceRows(doc);
-            const s = window.__giuAttHome.computeCurrentMonthSummary(rows);
+            // todayYmd inside the fixture's payroll period (2030-12-11 → 2031-01-10)
+            const s = window.__giuAttHome.computeCurrentMonthSummary(rows, '2030-12-20');
             return {
                 empty: !!s.empty,
                 label: s.label,
@@ -75,6 +76,21 @@ test.describe('GIU Attendance Home Summary', () => {
         await setup(page);
         const empty = await page.evaluate(() => window.__giuAttHome.computeCurrentMonthSummary([]).empty);
         expect(empty).toBe(true);
+    });
+
+    test('computeCurrentMonthSummary falls back to today\'s period when data lags a period flip', async ({ page }) => {
+        await setup(page);
+        const r = await page.evaluate(() => {
+            // Rows only in the 2030-12 period, but "today" is in the next period:
+            // must NOT show last month — must return the (empty) current period.
+            const rows = [
+                { date: '2030-12-14', firstIn: '8:00:00 AM', lastOut: '4:00:00 PM', duration: '08:00:00' },
+            ];
+            const s = window.__giuAttHome.computeCurrentMonthSummary(rows, '2031-01-12');
+            return { label: s.label, presentDays: s.stats.presentDays };
+        });
+        expect(r.label).toBe('2031-01-11 → 2031-02-10');
+        expect(r.presentDays).toBe(0);
     });
 
     test('fetchReportViaIframe loads, executes, and returns rows', async ({ page }) => {
@@ -99,7 +115,7 @@ test.describe('GIU Attendance Home Summary', () => {
                   <tr><td>1</td><td>2030-12-11</td><td>8:00:00 AM</td><td>4:00:00 PM</td><td>08:00:00</td></tr>
                   <tr><td>2</td><td>2030-12-14</td><td>8:00:00 AM</td><td>4:00:00 PM</td><td>08:00:00</td></tr>
                 </table>`, 'text/html');
-            const s = api.computeCurrentMonthSummary(api.getAttendanceRows(doc));
+            const s = api.computeCurrentMonthSummary(api.getAttendanceRows(doc), '2030-12-20');
             api.renderHomeWidget(s);
         });
         await expect(page.locator('#gius-att-widget')).toBeVisible();

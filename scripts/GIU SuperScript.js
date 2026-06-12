@@ -6529,12 +6529,23 @@
                 maybeStartOnboardingGuide();
             }
 
-            function computeCurrentMonthSummary(rows) {
+            function computeCurrentMonthSummary(rows, todayYmd) {
                 const periods = groupRowsByPayrollPeriod(rows || []);
                 if (!periods.length) return { empty: true };
-                const current = periods[periods.length - 1];
-                const stats = buildPeriodStats(current.rows, current.start, current.end);
-                return { label: current.label, stats: stats };
+                // Pick the period containing TODAY, not the latest period with data:
+                // the gate report lags ~a day, so right after a period flip (the 11th)
+                // the newest rows still belong to the previous payroll month and the
+                // widget would show last month's absences.
+                const todayKey = getPayrollPeriodKey(todayYmd || getTodayLocalYMD());
+                const current = periods.find(function (p) { return p.key === todayKey; });
+                if (current) {
+                    return { label: current.label, stats: buildPeriodStats(current.rows, current.start, current.end) };
+                }
+                const bounds = getPayrollPeriodBounds(todayKey);
+                return {
+                    label: getPayrollPeriodLabel(todayKey),
+                    stats: buildPeriodStats([], bounds.start, bounds.end),
+                };
             }
 
             let homeLastRows = [];
@@ -11945,13 +11956,14 @@
         Shared.injectStyle('gius-feature-toggle-styles', `
             .gius-feature-panel{font-family:inherit;display:block;width:100%;box-sizing:border-box;}
             .gius-feature-panel *{box-sizing:border-box;}
-            .gius-feature-panel .card{margin-bottom:30px;}
             .gius-feature-panel-col{float:none;}
-            /* min-height matches the native Events Reservation card (2-line title = 110px). */
-            .gius-feature-panel .card-header.card-header-icon{text-align:left;min-height:110px;}
-            .gius-feature-panel .card-header.card-header-icon .card-icon{float:right;margin-left:12px;margin-right:0;}
-            .gius-feature-panel .card-title{clear:none;margin-right:72px;}
-            .gius-feature-open-wrap{display:block;margin-right:72px;}
+            /* Mirrored native card: icon right, text left. All margins/paddings are
+               copied (left/right swapped) from the live Events Reservation card at
+               mount — see mirrorNativeCard() — so portal style changes carry over. */
+            .gius-feature-panel .card-header.card-header-icon{text-align:left;}
+            .gius-feature-panel .card-header.card-header-icon .card-icon{float:right;}
+            .gius-feature-panel .card-title{clear:none;}
+            .gius-feature-open-wrap{display:block;}
             .gius-feature-panel .card-icon a{display:inline-flex;align-items:center;justify-content:center;color:#fff;}
             .gius-feature-open-link{white-space:normal;line-height:1.25;max-width:100%;}
             .gius-feature-count{display:inline;}
@@ -12029,6 +12041,38 @@
             else fallback.prepend(panel);
         }
 
+        // Copy the live Events Reservation card's computed box metrics onto the
+        // Control Center card with left/right SWAPPED (the layout is mirrored:
+        // icon right, text left). No hard-coded sizes — if the portal restyles
+        // its cards, the Control Center follows on the next load.
+        function mirrorNativeCard(panel) {
+            const ev = document.getElementById('MainContent_div_events_reservation');
+            if (!ev) return;
+            const pairs = [
+                [ev.querySelector('.card'),        panel.querySelector('.card')],
+                [ev.querySelector('.card-header'), panel.querySelector('.card-header')],
+                [ev.querySelector('.card-icon'),   panel.querySelector('.card-icon')],
+                [ev.querySelector('.card-title'),  panel.querySelector('.card-title')],
+            ];
+            for (const [src, dst] of pairs) {
+                if (!src || !dst) continue;
+                const cs = getComputedStyle(src);
+                dst.style.marginTop     = cs.marginTop;
+                dst.style.marginBottom  = cs.marginBottom;
+                dst.style.marginLeft    = cs.marginRight;   // swapped
+                dst.style.marginRight   = cs.marginLeft;    // swapped
+                dst.style.paddingTop    = cs.paddingTop;
+                dst.style.paddingBottom = cs.paddingBottom;
+                dst.style.paddingLeft   = cs.paddingRight;  // swapped
+                dst.style.paddingRight  = cs.paddingLeft;   // swapped
+            }
+            const evHeader = ev.querySelector('.card-header');
+            const ccHeader = panel.querySelector('.card-header');
+            if (evHeader && ccHeader) {
+                ccHeader.style.minHeight = getComputedStyle(evHeader).height;
+            }
+        }
+
         function mount() {
             if (document.getElementById('gius-feature-panel')) return;
             const panel = document.createElement('section');
@@ -12081,6 +12125,7 @@
             `;
 
             placePanel(panel);
+            mirrorNativeCard(panel);
 
             const status = panel.querySelector('#gius-feature-status');
             const reloadBtn = panel.querySelector('#gius-feature-reload');
