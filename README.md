@@ -284,7 +284,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/ManageGroupGrade_m.aspx
 
 ### 6. GIU Student Attendance Group Report
 
-**File:** `GIU Student Attendance Report.js` | **Version:** 1.3 | **Author:** Mo.Elmaadawy
+**File:** `GIU Student Attendance Report.js` | **Version:** 1.3.1 | **Author:** Mo.Elmaadawy
 
 Auto-scrapes all session attendance for the selected group and displays an absence-level summary panel above the student table. Runs entirely in the background via parallel fetch requests — no page reloads.
 
@@ -319,7 +319,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendances
 
 ### 7. GIU Proctor Schedule Aggregator
 
-**File:** `GIU Proctor Schedule Aggregator.js` | **Version:** 2.1 | **Author:** Mo.Elmaadawy
+**File:** `GIU Proctor Schedule Aggregator.js` | **Version:** 2.1.1 | **Author:** Mo.Elmaadawy
 
 Aggregates all proctor exam assignments across departments into one searchable dashboard on the Proctor Exchange page.
 
@@ -390,7 +390,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 
 ### 9. GIU Teaching Load
 
-**File:** `GIU Teaching Load.js` | **Version:** 1.1.1 | **Author:** Mo.Elmaadawy
+**File:** `GIU Teaching Load.js` | **Version:** 1.1.2 | **Author:** Mo.Elmaadawy
 
 Shows your teaching schedule on the portal Home page — today's sessions highlighted
 at the top, plus your full week in an expandable list. Each session shows the period

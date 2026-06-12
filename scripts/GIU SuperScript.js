@@ -7753,7 +7753,8 @@
                     html.gius-dark .gius-tl-today-head{color:#cdd6f4;}
                     html.gius-dark .gius-tl-card{background:#11111b;box-shadow:none;}
                     html.gius-dark .gius-tl-slot{color:#f9e2af;background:#2a2410;}
-                    html.gius-dark .gius-tl-tutorial{color:#bac2de;}
+                    html.gius-dark .gius-tl-tutorial{color:#cdd6f4;}
+                    html.gius-dark .gius-tl-empty{color:#cdd6f4;opacity:1;}
                     html.gius-dark .gius-tl-loc{color:#f9e2af;}
                     html.gius-dark .gius-tl-item{background:#181825;}
                     html.gius-dark .gius-tl-day-head{color:#cdd6f4;}
@@ -7989,7 +7990,7 @@
 
                 const restCount = view.rest.reduce((n, d) => n + d.sessions.length, 0);
                 const restHTML = view.rest.length ? `
-                    <button type="button" class="gius-tl-toggle${restExpanded ? ' gius-tl-toggle-open' : ''}"
+                    <button type="button" class="gius-tl-toggle gius-btn${restExpanded ? ' gius-tl-toggle-open' : ''}"
                         aria-expanded="${restExpanded}" aria-controls="gius-tl-rest">All sessions (${restCount})</button>
                     <div id="gius-tl-rest" class="gius-tl-expand-wrapper${restExpanded ? ' gius-tl-expanded' : ''}">
                         <div class="gius-tl-expand-inner">
@@ -7998,7 +7999,7 @@
                     </div>` : '';
 
                 host.innerHTML = `<div class="gius-tl-head">Teaching Load${opts.stale ? ' · <span class="gius-tl-stale">offline cache</span>' : ''}
-                        <button type="button" class="gius-tl-refresh" title="Refresh schedule (cached up to 7 days)">⟳</button></div>
+                        <button type="button" class="gius-tl-refresh gius-btn" title="Refresh schedule (cached up to 7 days)">⟳</button></div>
                     <div class="gius-tl-today">
                         <div class="gius-tl-today-head">Today</div>
                         ${todayHTML}
@@ -8035,7 +8036,7 @@
             function showError(host) {
                 host.innerHTML = `<div class="gius-tl-head">Teaching Load</div>
                     <div class="gius-tl-empty">Couldn't load schedule.
-                        <button type="button" id="gius-tl-retry" class="gius-tl-toggle">Retry</button></div>`;
+                        <button type="button" id="gius-tl-retry" class="gius-tl-toggle gius-btn">Retry</button></div>`;
                 const btn = host.querySelector('#gius-tl-retry');
                 if (btn) btn.addEventListener('click', boot);
             }
@@ -9144,9 +9145,9 @@
                     html.gius-dark .gius-proctor-table tbody tr:nth-child(even) { background: #181825 !important; }
                     html.gius-dark .gius-proctor-table tbody tr:hover { background: #1e3a6e !important; }
                     html.gius-dark .gius-proctor-table td { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-proctor-table td.muted { color: #585b70 !important; }
+                    html.gius-dark .gius-proctor-table td.muted { color: #9399b2 !important; }
                     html.gius-dark .gius-progress-wrap { background: #313244 !important; }
-                    html.gius-dark .gius-progress-label { color: #a6adc8 !important; }
+                    html.gius-dark .gius-progress-label { color: #cdd6f4 !important; }
                     html.gius-dark .gius-filter-select, html.gius-dark .gius-filter-input {
                         background: #313244 !important; color: #cdd6f4 !important;
                         border-color: #45475a !important;
@@ -9159,9 +9160,9 @@
                         background: #313244 !important; border-color: #45475a !important;
                         color: #cdd6f4 !important;
                     }
-                    html.gius-dark .gius-page-info  { color: #a6adc8 !important; }
+                    html.gius-dark .gius-page-info  { color: #cdd6f4 !important; }
                     html.gius-dark .gius-page-num   { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-page-size-label { color: #a6adc8 !important; }
+                    html.gius-dark .gius-page-size-label { color: #cdd6f4 !important; }
                     html.gius-dark .gius-page-size-select {
                         background: #313244 !important; color: #cdd6f4 !important; border-color: #45475a !important;
                     }
@@ -9171,7 +9172,7 @@
                     html.gius-dark .gius-page-btn:hover:not(:disabled) { background: #45475a !important; }
                     html.gius-dark .gius-table-section { border-color: #45475a !important; }
                     html.gius-dark .gius-table-footer { border-top-color: #45475a !important; }
-                    html.gius-dark .gius-empty-state p { color: #a6adc8 !important; }
+                    html.gius-dark .gius-empty-state p { color: #cdd6f4 !important; }
                     html.gius-dark .gius-chip {
                         background: #1a2a4a !important; color: #89b4fa !important;
                         border-color: #1e3a6e !important;
@@ -11542,7 +11543,7 @@
         .gius-att-adjusted { font-size: 12px; margin-top: 6px; font-weight: 700; color: #4338ca; }
         html.gius-dark .gius-att-missing-section { border-top-color: #4338ca !important; }
         html.gius-dark .gius-att-miss-grp { border-color: #45475a !important; }
-        html.gius-dark tr.gius-att-detail-row td button.gius-att-miss-btn { border-left-color: #45475a !important; color: #6c7086 !important; background: transparent !important; }
+        html.gius-dark tr.gius-att-detail-row td button.gius-att-miss-btn { border-left-color: #45475a !important; color: #9399b2 !important; background: transparent !important; }
         html.gius-dark tr.gius-att-detail-row td button.gius-att-miss-btn:not(.active):hover { background: #313244 !important; color: #cdd6f4 !important; }
         html.gius-dark tr.gius-att-detail-row td button.gius-att-miss-btn.active[data-val="attended"] { background: #166534 !important; color: #86efac !important; }
         html.gius-dark tr.gius-att-detail-row td button.gius-att-miss-btn.active[data-val="absent"]   { background: #7f1d1d !important; color: #fca5a5 !important; }
@@ -11554,7 +11555,7 @@
         html.gius-dark .gius-att-body   { color: #cdd6f4 !important; }
         html.gius-dark .gius-att-progress-bar  { background: #313244 !important; }
         html.gius-dark .gius-att-progress-fill { background: #89b4fa !important; }
-        html.gius-dark .gius-att-progress-text { color: #a6adc8 !important; }
+        html.gius-dark .gius-att-progress-text { color: #cdd6f4 !important; }
         html.gius-dark .gius-att-error { background: #45475a !important; color: #f38ba8 !important; border-color: transparent !important; }
         html.gius-dark .gius-att-stat  { color: #cdd6f4 !important; }
         html.gius-dark .gius-att-atrisk-title { color: #cdd6f4 !important; }
@@ -11576,7 +11577,7 @@
             display: inline-flex; align-items: center; gap: 4px;
         }
         .gius-att-fetch-btn:hover { background: #e6ac00; }
-        html.gius-dark .gius-att-idle-text { color: #a6adc8 !important; }
+        html.gius-dark .gius-att-idle-text { color: #cdd6f4 !important; }
         `;
                 document.head.appendChild(style);
             }
@@ -11995,7 +11996,7 @@
             html.gius-dark .gius-feature-details{background:#1e1e2e;}
             html.gius-dark .gius-feature-toggle-list{border-top-color:#313244;}
             html.gius-dark .gius-feature-row{border-bottom-color:#313244;}
-            html.gius-dark .gius-feature-status{color:#a6adc8;}
+            html.gius-dark .gius-feature-status{color:#cdd6f4;}
             html.gius-dark .gius-feature-status.gius-feature-dirty{color:#f9e2af;}
         `);
 
