@@ -207,11 +207,11 @@
             if (!document.contains(active.el)) { advance(false); return; }
             const r = active.el.getBoundingClientRect();
             const pad = 6;
+            const bw = bubble.offsetWidth, bh = bubble.offsetHeight;
             cutout.style.top    = (r.top - pad) + 'px';
             cutout.style.left   = (r.left - pad) + 'px';
             cutout.style.width  = (r.width + pad * 2) + 'px';
             cutout.style.height = (r.height + pad * 2) + 'px';
-            const bw = bubble.offsetWidth, bh = bubble.offsetHeight;
             let top = r.bottom + pad + 12;
             if (top + bh > window.innerHeight - 8) top = Math.max(8, r.top - pad - bh - 12);
             const left = Math.min(Math.max(8, r.left), Math.max(8, window.innerWidth - bw - 8));
