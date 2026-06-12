@@ -390,7 +390,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 
 ### 9. GIU Teaching Load
 
-**File:** `GIU Teaching Load.js` | **Version:** 1.1.2 | **Author:** Mo.Elmaadawy
+**File:** `GIU Teaching Load.js` | **Version:** 1.1.3 | **Author:** Mo.Elmaadawy
 
 Shows your teaching schedule on the portal Home page — today's sessions highlighted
 at the top, plus your full week in an expandable list. Each session shows the period
