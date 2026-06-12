@@ -5,7 +5,7 @@
 // @icon        data:image/png;base64,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
 // @namespace   Cyn0
 // @match       https://portal.giu-uni.de/*
-// @version     1.0.7
+// @version     1.0.8
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @run-at      document-idle
@@ -8807,6 +8807,7 @@
             };
         },
         proctorAggregator(S) {
+        
             const CACHE_KEY = 'giuProctorScheduleV1';
             const MAX_CONCURRENT = 20;
             const PAGE_URL = 'https://portal.giu-uni.de/GIUb/INTStaff/ProctorExchange_m.aspx';
@@ -8818,7 +8819,9 @@
             function normalizeRow(r) {
                 const p = stripTitle(r.proctor);
                 const c = stripTitle(r.coverName);
-                return (p !== r.proctor || c !== r.coverName) ? { ...r, proctor: p, coverName: c } : r;
+                const patched = (p !== r.proctor || c !== r.coverName) ? { ...r, proctor: p, coverName: c } : r;
+                if (patched.slotKey) return patched;
+                return { ...patched, slotKey: (patched.dateKey || '') + '|' + (patched.timeSort || patched.startTime || '') };
             }
         
             // ── Cache ─────────────────────────────────────────────────────────────────
@@ -9013,6 +9016,8 @@
                     const endRaw = tds[3].textContent.trim();
                     const coverName = stripTitle(tds[4].textContent);
                     const { courseCode, examName, program } = parseExamString(examRaw);
+                    const dateKey = parseDateKey(startRaw);
+                    const timeSort = new Date(startRaw).toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
                     rows.push({
                         proctor: proctor.name,
                         department: proctor.deptLabel,
@@ -9020,10 +9025,11 @@
                         courseCode,
                         program,
                         hall,
-                        dateKey: parseDateKey(startRaw),
+                        dateKey,
                         date: formatDate(startRaw),
                         startTime: formatTime(startRaw),
-                        timeSort: new Date(startRaw).toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' }),
+                        timeSort,
+                        slotKey: dateKey + '|' + timeSort,
                         endTime: formatTime(endRaw),
                         coverName,
                     });
@@ -9075,7 +9081,7 @@
                     try {
                         const rows = await fetchProctorSchedule(proctor);
                         allRows.push(...rows);
-                        rows.forEach(r => uniqueExams.add(`${r.examName}|${r.dateKey}|${r.hall}`));
+                        rows.forEach(r => uniqueExams.add(`${r.examName}|${r.slotKey}|${r.hall}`));
                         stats.exams = uniqueExams.size;
                     } catch (e) {
                         if (e.message === 'SESSION_EXPIRED') { aborted = true; cb.onError('SESSION_EXPIRED'); throw e; }
@@ -9394,6 +9400,35 @@
                         border-top-color: #4338ca !important; border-left-color: #818cf8 !important;
                     }
                     html.gius-dark .gius-coproctor-label { color: #a5b4fc !important; }
+        
+                    /* ── Dropdown search ── */
+                    .gius-dd-wrap   { position: relative; display: inline-block; }
+                    .gius-dd-panel  {
+                        position: absolute; top: calc(100% + 2px); left: 0; z-index: 99999;
+                        background: #fff; border: 1px solid #d1d5db; border-radius: 6px;
+                        box-shadow: 0 4px 12px rgba(0,0,0,.12); min-width: 100%;
+                        max-height: 220px; overflow-y: auto; display: none;
+                    }
+                    .gius-dd-item   {
+                        padding: 6px 10px; font-size: 13px; cursor: pointer;
+                        white-space: nowrap; font-family: 'Open Sans', sans-serif;
+                    }
+                    .gius-dd-item:hover, .gius-dd-item.gius-dd-hi { background: #eff6ff; color: #1d4ed8; }
+                    .gius-dd-fuzzy  { color: #6b7280; font-style: italic; }
+                    .gius-dd-fuzzy-mark { font-size: 10px; margin-right: 4px; color: #9ca3af; }
+                    .gius-dd-empty  { padding: 6px 10px; font-size: 12px; color: #9ca3af;
+                                      font-family: 'Open Sans', sans-serif; }
+                    html.gius-dark .gius-dd-panel  {
+                        background: #313244 !important; border-color: #45475a !important;
+                        box-shadow: 0 4px 12px rgba(0,0,0,.4) !important;
+                    }
+                    html.gius-dark .gius-dd-item:hover,
+                    html.gius-dark .gius-dd-item.gius-dd-hi  {
+                        background: #45475a !important; color: #cdd6f4 !important;
+                    }
+                    html.gius-dark .gius-dd-fuzzy  { color: #6c7086 !important; }
+                    html.gius-dark .gius-dd-fuzzy-mark { color: #585b70 !important; }
+                    html.gius-dark .gius-dd-empty  { color: #6c7086 !important; }
                 `;
                 document.head.appendChild(s);
             }
@@ -9424,18 +9459,156 @@
                 return [...new Set(rows.map(r => r[key]).filter(Boolean))].sort();
             }
         
-            function repopulateDatalist(id, values) {
-                const dl = document.getElementById(id);
-                if (!dl) return;
-                dl.innerHTML = values.map(v => `<option value="${escHtml(v)}"></option>`).join('');
-            }
-        
             function escHtml(s) {
                 return String(s)
                     .replace(/&/g, '&amp;')
                     .replace(/</g, '&lt;')
                     .replace(/>/g, '&gt;')
                     .replace(/"/g, '&quot;');
+            }
+        
+            // ── Fuzzy search ─────────────────────────────────────────────────────────
+        
+            function editDistance(a, b) {
+                const m = a.length, n = b.length;
+                if (!m) return n; if (!n) return m;
+                const row = Array.from({ length: n + 1 }, (_, i) => i);
+                for (let i = 1; i <= m; i++) {
+                    let diag = row[0];
+                    row[0] = i;
+                    for (let j = 1; j <= n; j++) {
+                        const saved = row[j];
+                        row[j] = a[i-1] === b[j-1] ? diag
+                            : 1 + Math.min(row[j], row[j-1], diag);
+                        diag = saved;
+                    }
+                }
+                return row[n];
+            }
+        
+            // Returns true if query matches text via substring OR per-word edit distance.
+            // Rooms and dates: pass useFuzzy=false to use exact substring only.
+            function fuzzyMatch(query, text, useFuzzy = true) {
+                if (!query) return true;
+                if (text.includes(query)) return true;
+                if (!useFuzzy || query.length < 3) return false;
+                const threshold = Math.ceil(query.length / 4);
+                return text.split(/\s+/).some(word =>
+                    word.length >= query.length - threshold &&
+                    editDistance(query, word) <= threshold
+                );
+            }
+        
+            // Rank options array for dropdown: exact substring matches first, fuzzy-only after.
+            // Returns [{value, fuzzy}] where fuzzy=true means no substring match.
+            function rankOptions(query, options) {
+                if (!query) return options.map(v => ({ value: v, fuzzy: false }));
+                const q = query.toLowerCase();
+                const exact = [], fuzzyOnly = [];
+                for (const v of options) {
+                    const lo = v.toLowerCase();
+                    if (lo.includes(q)) {
+                        exact.push({ value: v, fuzzy: false });
+                    } else if (fuzzyMatch(q, lo)) {
+                        fuzzyOnly.push({ value: v, fuzzy: true });
+                    }
+                }
+                return [...exact, ...fuzzyOnly];
+            }
+        
+            // ── Dropdown component ────────────────────────────────────────────────────
+        
+            const _dropdownOptions = { day: [], exam: [], proctor: [], room: [], department: [] };
+        
+            function makeDropdown(inputId, getOptions) {
+                const inp = document.getElementById(inputId);
+                if (!inp) return;
+        
+                const wrap = document.createElement('span');
+                wrap.className = 'gius-dd-wrap';
+                inp.parentNode.insertBefore(wrap, inp);
+                wrap.appendChild(inp);
+        
+                const panel = document.createElement('ul');
+                panel.className = 'gius-dd-panel';
+                panel.style.minWidth = inp.offsetWidth + 'px';
+                wrap.appendChild(panel);
+        
+                let activeIdx = -1;
+                let rendered = [];
+        
+                function open(items) {
+                    rendered = items;
+                    activeIdx = -1;
+                    if (!items.length) {
+                        panel.innerHTML = `<li class="gius-dd-empty">No matches</li>`;
+                    } else {
+                        panel.innerHTML = items.map((item, i) =>
+                            item.fuzzy
+                                ? `<li class="gius-dd-item gius-dd-fuzzy" data-i="${i}"><span class="gius-dd-fuzzy-mark">~</span>${escHtml(item.value)}</li>`
+                                : `<li class="gius-dd-item" data-i="${i}">${escHtml(item.value)}</li>`
+                        ).join('');
+                    }
+                    panel.style.display = 'block';
+                    panel.style.minWidth = inp.offsetWidth + 'px';
+                }
+        
+                function close() { panel.style.display = 'none'; activeIdx = -1; rendered = []; }
+        
+                function highlight(idx) {
+                    panel.querySelectorAll('.gius-dd-item').forEach((el, i) =>
+                        el.classList.toggle('gius-dd-hi', i === idx)
+                    );
+                    const el = panel.querySelectorAll('.gius-dd-item')[idx];
+                    if (el) el.scrollIntoView({ block: 'nearest' });
+                }
+        
+                function select(val) {
+                    inp.value = val;
+                    inp.dispatchEvent(new Event('input', { bubbles: true }));
+                    close();
+                }
+        
+                inp.addEventListener('input', () => {
+                    const q = inp.value.trim().toLowerCase();
+                    if (!q) { close(); return; }
+                    const items = rankOptions(q, getOptions());
+                    if (!items.length) { close(); return; }
+                    open(items);
+                });
+        
+                inp.addEventListener('keydown', e => {
+                    if (panel.style.display === 'none') return;
+                    const items = panel.querySelectorAll('.gius-dd-item');
+                    if (e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        activeIdx = Math.min(activeIdx + 1, items.length - 1);
+                        highlight(activeIdx);
+                    } else if (e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        activeIdx = Math.max(activeIdx - 1, 0);
+                        highlight(activeIdx);
+                    } else if (e.key === 'Enter' && activeIdx >= 0) {
+                        e.preventDefault();
+                        const item = rendered[activeIdx];
+                        if (item) select(item.value);
+                    } else if (e.key === 'Escape') {
+                        e.preventDefault();
+                        close();
+                    }
+                });
+        
+                panel.addEventListener('mousedown', e => {
+                    const li = e.target.closest('[data-i]');
+                    if (!li) return;
+                    e.preventDefault();
+                    const item = rendered[parseInt(li.dataset.i, 10)];
+                    if (item) select(item.value);
+                });
+        
+                document.addEventListener('click', e => {
+                    if (!wrap.contains(e.target)) close();
+                });
             }
         
             // ── Panel skeleton ────────────────────────────────────────────────────────
@@ -9479,16 +9652,11 @@
                         </div>
                         <div class="gius-filter-bar" id="gius-filter-bar" style="display:none">
                             <input class="gius-filter-input" id="gius-f-search"     type="text" placeholder="Search all columns&hellip;" />
-                            <input class="gius-filter-input" id="gius-f-day"        type="text" placeholder="All Days"        list="gius-dl-day" />
-                            <datalist id="gius-dl-day"></datalist>
-                            <input class="gius-filter-input" id="gius-f-exam"       type="text" placeholder="All Exams"       list="gius-dl-exam" />
-                            <datalist id="gius-dl-exam"></datalist>
-                            <input class="gius-filter-input" id="gius-f-proctor"    type="text" placeholder="All Proctors"    list="gius-dl-proctor" />
-                            <datalist id="gius-dl-proctor"></datalist>
-                            <input class="gius-filter-input" id="gius-f-room"       type="text" placeholder="All Rooms"       list="gius-dl-room" />
-                            <datalist id="gius-dl-room"></datalist>
-                            <input class="gius-filter-input" id="gius-f-department" type="text" placeholder="All Departments" list="gius-dl-department" />
-                            <datalist id="gius-dl-department"></datalist>
+                            <input class="gius-filter-input" id="gius-f-day"        type="text" placeholder="All Days" />
+                            <input class="gius-filter-input" id="gius-f-exam"       type="text" placeholder="All Exams" />
+                            <input class="gius-filter-input" id="gius-f-proctor"    type="text" placeholder="All Proctors" />
+                            <input class="gius-filter-input" id="gius-f-room"       type="text" placeholder="All Rooms" />
+                            <input class="gius-filter-input" id="gius-f-department" type="text" placeholder="All Departments" />
                             <button type="button" class="gius-btn gius-btn-muted gius-btn-sm" id="gius-f-clear" style="display:none">&#x2715; Clear all</button>
                         </div>
                         <div class="gius-chip-row" id="gius-chip-row"></div>
@@ -9538,13 +9706,15 @@
         
             function rowPassesBaseFilters(r, { search, dayQ, examQ, roomQ, deptQ }) {
                 if (dayQ && !r.date.toLowerCase().includes(dayQ)) return false;
-                if (examQ && !r.examName.toLowerCase().includes(examQ)) return false;
+                if (examQ && !fuzzyMatch(examQ, r.examName.toLowerCase())) return false;
                 if (roomQ && !r.hall.toLowerCase().includes(roomQ)) return false;
-                if (deptQ && !r.department.toLowerCase().includes(deptQ)) return false;
+                if (deptQ && !fuzzyMatch(deptQ, r.department.toLowerCase())) return false;
                 if (search) {
-                    const hay = [r.proctor, r.examName, r.courseCode, r.program, r.hall, r.date, r.department, r.coverName]
-                        .join(' ').toLowerCase();
-                    if (!hay.includes(search)) return false;
+                    const proctor  = fuzzyMatch(search, r.proctor.toLowerCase());
+                    const cover    = r.coverName && fuzzyMatch(search, r.coverName.toLowerCase());
+                    const examText = fuzzyMatch(search, (r.program + ' ' + r.examName + ' ' + r.courseCode).toLowerCase());
+                    const exact    = [r.hall, r.date, r.department].join(' ').toLowerCase().includes(search);
+                    if (!proctor && !cover && !examText && !exact) return false;
                 }
                 return true;
             }
@@ -9555,8 +9725,8 @@
                 const rows = _allRows.flatMap(r => {
                     if (!rowPassesBaseFilters(r, q)) return [];
                     if (q.proctorQ) {
-                        const matchProctor = r.proctor.toLowerCase().includes(q.proctorQ);
-                        const matchCover = r.coverName.toLowerCase().includes(q.proctorQ);
+                        const matchProctor = fuzzyMatch(q.proctorQ, r.proctor.toLowerCase());
+                        const matchCover   = r.coverName && fuzzyMatch(q.proctorQ, r.coverName.toLowerCase());
                         if (!matchProctor && !matchCover) return [];
                         if (!matchProctor && matchCover)  return [{ ...r, _coverView: true }];
                     }
@@ -9583,7 +9753,7 @@
                 const map = new Map();
                 rows.forEach(r => {
                     if (r.coverName) {
-                        map.set(`${r.coverName}|${r.hall}|${r.dateKey}|${r.examName}`, r.proctor);
+                        map.set(`${r.coverName}|${r.hall}|${r.slotKey}|${r.examName}`, r.proctor);
                     }
                 });
                 return map;
@@ -9620,7 +9790,7 @@
                     </tr>
                 `;
                     }
-                    const coveringFor = coveringMap.get(`${r.proctor}|${r.hall}|${r.dateKey}|${r.examName}`) || '';
+                    const coveringFor = coveringMap.get(`${r.proctor}|${r.hall}|${r.slotKey}|${r.examName}`) || '';
                     return `
                     <tr class="gius-row-in gius-data-row${r.coverName ? ' gius-covered-row' : ''}" data-idx="${start + i}" style="animation-delay:${Math.min(i, 30) * 12}ms">
                         <td>${escHtml(r.proctor)}${coveringFor ? `<span class="gius-covering-badge">&#x21AA; Covering: ${escHtml(coveringFor)}</span>` : ''}</td>
@@ -9697,11 +9867,11 @@
             }
         
             function updateFilterOptions() {
-                repopulateDatalist('gius-dl-day',        uniqueSorted(_allRows, 'date'));
-                repopulateDatalist('gius-dl-exam',       uniqueSorted(_allRows, 'examName'));
-                repopulateDatalist('gius-dl-proctor',    [...new Set([..._allRows.map(r => r.proctor), ..._allRows.map(r => r.coverName)].filter(Boolean))].sort());
-                repopulateDatalist('gius-dl-room',       uniqueSorted(_allRows, 'hall'));
-                repopulateDatalist('gius-dl-department', uniqueSorted(_allRows, 'department'));
+                _dropdownOptions.day        = uniqueSorted(_allRows, 'date');
+                _dropdownOptions.exam       = uniqueSorted(_allRows, 'examName');
+                _dropdownOptions.proctor    = [...new Set([..._allRows.map(r => r.proctor), ..._allRows.map(r => r.coverName)].filter(Boolean))].sort();
+                _dropdownOptions.room       = uniqueSorted(_allRows, 'hall');
+                _dropdownOptions.department = uniqueSorted(_allRows, 'department');
             }
         
             function updateSortIcons() {
@@ -9719,7 +9889,7 @@
                 const q = buildFilterQuery();
                 const rows = _allRows.filter(r => {
                     if (!rowPassesBaseFilters(r, q)) return false;
-                    if (q.proctorQ && !r.proctor.toLowerCase().includes(q.proctorQ) && !r.coverName.toLowerCase().includes(q.proctorQ)) return false;
+                    if (q.proctorQ && !fuzzyMatch(q.proctorQ, r.proctor.toLowerCase()) && !(r.coverName && fuzzyMatch(q.proctorQ, r.coverName.toLowerCase()))) return false;
                     return true;
                 });
         
@@ -9808,7 +9978,7 @@
                     isActingCover = true;
                     coProctors = _allRows.filter(r =>
                         r.hall     === row.hall &&
-                        r.dateKey  === row.dateKey &&
+                        r.slotKey  === row.slotKey &&
                         r.examName === row.examName
                     );
                     if (!coProctors.length) {
@@ -9821,7 +9991,7 @@
                     coProctors = _allRows.filter(r =>
                         r.proctor  === row.coverName &&
                         r.hall     === row.hall &&
-                        r.dateKey  === row.dateKey &&
+                        r.slotKey  === row.slotKey &&
                         r.examName === row.examName
                     );
                     if (!coProctors.length) {
@@ -9831,7 +10001,7 @@
                     coProctors = _allRows.filter(r =>
                         r !== row &&
                         r.hall     === row.hall &&
-                        r.dateKey  === row.dateKey &&
+                        r.slotKey  === row.slotKey &&
                         r.examName === row.examName
                     );
                     if (!isActingCover) isActingCover = coProctors.some(r => r.coverName === row.proctor);
@@ -9881,6 +10051,12 @@
                 bindFilter('gius-f-proctor',    'proctor');
                 bindFilter('gius-f-room',       'room');
                 bindFilter('gius-f-department', 'department');
+        
+                makeDropdown('gius-f-day',        () => _dropdownOptions.day);
+                makeDropdown('gius-f-exam',       () => _dropdownOptions.exam);
+                makeDropdown('gius-f-proctor',    () => _dropdownOptions.proctor);
+                makeDropdown('gius-f-room',       () => _dropdownOptions.room);
+                makeDropdown('gius-f-department', () => _dropdownOptions.department);
         
                 // Clear all
                 document.getElementById('gius-f-clear')?.addEventListener('click', () => {
@@ -10087,8 +10263,6 @@
                 btn.addEventListener('click', openPanel);
                 const td = row.querySelector('td') || row;
                 td.appendChild(btn);
-                Tips.show({ id: 'proctorAggregator', el: btn, title: 'Proctor Schedules',
-                    text: 'Opens an aggregated view of proctor schedules across departments, with search and filters.' });
             }
         
             function init() {
