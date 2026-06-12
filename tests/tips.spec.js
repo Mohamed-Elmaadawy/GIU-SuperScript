@@ -101,7 +101,7 @@ test.describe('Tips engine', () => {
         await showTip(page, 'tipB');
         await page.click('.gius-tips-got');
         await expect.poll(() => page.evaluate(() => window.__giusTips._activeId())).toBe('tipB');
-        const seen = await page.evaluate(() => JSON.parse(localStorage.getItem('gius-tips-v1')));
+        const seen = await page.evaluate(() => JSON.parse(localStorage.getItem('gius-tips-v1') || '{}'));
         expect(seen.tipA).toBe(1);
         expect(seen.tipB).toBeUndefined();
     });
@@ -156,7 +156,7 @@ test.describe('Tips engine', () => {
         await page.click('.gius-tips-skip');
         const r = await page.evaluate(() => ({
             cutout: !!document.querySelector('.gius-tips-cutout'),
-            wildcard: JSON.parse(localStorage.getItem('gius-tips-v1'))['*'],
+            wildcard: JSON.parse(localStorage.getItem('gius-tips-v1') || '{}')['*'],
         }));
         expect(r.cutout).toBe(false);
         expect(r.wildcard).toBe(1);
