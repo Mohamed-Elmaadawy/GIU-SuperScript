@@ -60,7 +60,7 @@ Every script carries `@updateURL` and `@downloadURL` pointing at this repo, so T
 
 ### GIU SuperScript — All-in-one bundle
 
-**File:** `GIU SuperScript.js` | **Version:** 1.0.17 | **Author:** Mo.Elmaadawy
+**File:** `GIU SuperScript.js` | **Version:** 1.0.18 | **Author:** Mo.Elmaadawy
 
 The all-in-one userscript that bundles every feature script below except Dark Mode. It also adds a **Control Center** card on the portal Home page where you can turn bundled modules on or off.
 
@@ -319,7 +319,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendances
 
 ### 7. GIU Proctor Schedule Aggregator
 
-**File:** `GIU Proctor Schedule Aggregator.js` | **Version:** 2.2.10 | **Author:** Mo.Elmaadawy
+**File:** `GIU Proctor Schedule Aggregator.js` | **Version:** 2.2.11 | **Author:** Mo.Elmaadawy
 
 Aggregates all proctor exam assignments across departments into one searchable dashboard on the Proctor Exchange page.
 
