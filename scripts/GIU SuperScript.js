@@ -11940,6 +11940,19 @@
     //     teachingLoad + proctorReminder both match Home.aspx; ordering here
     //     fixes the race the two standalone scripts had.
     // ═══════════════════════════════════════════════════════════════════════════
+    // Control Center: each feature name links to the page the feature lives on
+    // (Home widgets link to their portal source pages).
+    const FEATURE_PAGES = {
+        staffAttendance:   'https://portal.giu-uni.de/GIUb/EXT/SwiftReports_m.aspx?swiftreportid=866&executereport=1',
+        uploadGrades:      'https://portal.giu-uni.de/GIUb/EXT/ManageUploadedGrades_m.aspx',
+        teachingLoad:      'https://portal.giu-uni.de/GIUb/INTStaff/SearchAcademicScheduled_001_m.aspx',
+        proctorReminder:   'https://portal.giu-uni.de/GIUb/INTStaff/ViewTimeTable_m.aspx',
+        proctorAggregator: 'https://portal.giu-uni.de/GIUb/INTStaff/ProctorExchange_m.aspx',
+        notificationBatch: 'https://portal.giu-uni.de/GIUb/INTStaff/NotificationSystem_SendEmail_m.aspx',
+        manageGroupGrades: 'https://portal.giu-uni.de/GIUb/INTStaff/ManageGroupGrade_m.aspx',
+        studentAttendance: 'https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx',
+    };
+
     const ROUTES = [
         // Page-gated here; module keeps its own internal page checks as second layer.
         { id: 'staffAttendance',   test: (p) => /SwiftReports_m\.aspx$/i.test(p) || /\/home\.aspx$/i.test(p) },
@@ -11984,6 +11997,9 @@
                 min-height:34px;padding:6px 0;border-bottom:1px solid #f0f1f4;}
             .gius-feature-row:last-child{border-bottom:none;}
             .gius-feature-label{font-size:13px;font-weight:700;color:#374151;}
+            a.gius-feature-page-link{text-decoration:none;cursor:pointer;}
+            a.gius-feature-page-link:hover{text-decoration:underline;color:#1B59C6;}
+            html.gius-dark a.gius-feature-page-link:hover{color:#89b4fa;}
             .gius-feature-switch{position:relative;display:inline-flex;width:38px;height:22px;flex:0 0 auto;}
             .gius-feature-switch input{opacity:0;width:0;height:0;}
             .gius-feature-slider{position:absolute;inset:0;border-radius:999px;background:#d1d5db;
@@ -12083,14 +12099,22 @@
             panel.id = 'gius-feature-panel';
             panel.className = 'gius-feature-panel';
 
-            const rows = Object.keys(FEATURE_DEFAULTS).map(id => `
-                <label class="gius-feature-row">
-                    <span class="gius-feature-label">${Shared.escapeHtml(FEATURE_LABELS[id] || id)}</span>
-                    <span class="gius-feature-switch" title="${Shared.escapeHtml(FEATURE_LABELS[id] || id)}">
+            const rows = Object.keys(FEATURE_DEFAULTS).map(id => {
+                const name = Shared.escapeHtml(FEATURE_LABELS[id] || id);
+                const page = FEATURE_PAGES[id];
+                const label = page
+                    ? `<a class="gius-feature-label gius-feature-page-link" href="${Shared.escapeHtml(page)}"
+                          title="Open ${name} page">${name}</a>`
+                    : `<span class="gius-feature-label">${name}</span>`;
+                return `
+                <div class="gius-feature-row">
+                    ${label}
+                    <label class="gius-feature-switch" title="${name}">
                         <input type="checkbox" data-feature-id="${Shared.escapeHtml(id)}" ${FEATURES[id] ? 'checked' : ''}>
                         <span class="gius-feature-slider"></span>
-                    </span>
-                </label>`).join('');
+                    </label>
+                </div>`;
+            }).join('');
             const enabledCount = Object.keys(FEATURE_DEFAULTS).filter(id => FEATURES[id]).length;
             const totalCount = Object.keys(FEATURE_DEFAULTS).length;
 
