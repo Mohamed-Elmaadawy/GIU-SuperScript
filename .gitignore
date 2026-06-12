@@ -42,3 +42,4 @@ scripts/dark-shot.js
 scripts/tl-fill-shot.js
 scripts/cc-links-check.js
 scripts/capture-exchange.js
+scripts/test-take-live.js
