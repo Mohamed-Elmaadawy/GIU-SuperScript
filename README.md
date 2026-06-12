@@ -60,7 +60,7 @@ Every script carries `@updateURL` and `@downloadURL` pointing at this repo, so T
 
 ### GIU SuperScript — All-in-one bundle
 
-**File:** `GIU SuperScript.js` | **Version:** 1.0.11 | **Author:** Mo.Elmaadawy
+**File:** `GIU SuperScript.js` | **Version:** 1.0.12 | **Author:** Mo.Elmaadawy
 
 The all-in-one userscript that bundles every feature script below except Dark Mode. It also adds a **Control Center** card on the portal Home page where you can turn bundled modules on or off.
 
@@ -319,7 +319,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendances
 
 ### 7. GIU Proctor Schedule Aggregator
 
-**File:** `GIU Proctor Schedule Aggregator.js` | **Version:** 2.2.4 | **Author:** Mo.Elmaadawy
+**File:** `GIU Proctor Schedule Aggregator.js` | **Version:** 2.2.5 | **Author:** Mo.Elmaadawy
 
 Aggregates all proctor exam assignments across departments into one searchable dashboard on the Proctor Exchange page.
 
@@ -332,7 +332,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/ProctorExchange_m.aspx
 
 - **One dashboard** — fetches and combines proctor schedules across departments
 - **Fetch controls** — start, pause, and resume long schedule scrapes
-- **Fetch by department** — scope a fetch to a single department (or all) via the header selector; it mirrors and pre-selects whatever you picked in the portal's own dropdown
+- **Fetch by department** — type a department in the header box (typo-tolerant, with live suggestions) to scope a fetch to it, or leave it blank for all; it mirrors and pre-fills whatever you picked in the portal's own dropdown
 - **Filters and sorting** — inspect schedules by staff, course, date, hall, and role
 - **Typo-tolerant search** — fuzzy matching with live dropdown suggestions on every filter
 - **Take (Proctoring Exchange)** — take over a colleague's exam directly from the dashboard, with the portal's own confirmation step replicated in a modal; re-checks the live cover first so you never take one already gone
