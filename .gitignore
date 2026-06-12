@@ -27,6 +27,7 @@ tests/fixtures/proctor-response.html
 # Root files
 !README.md
 !.gitignore
+.env
 .gitignore
 scripts/dump-mainpage.js
 scripts/measure-home-cards.js
@@ -40,3 +41,4 @@ docs/
 scripts/dark-shot.js
 scripts/tl-fill-shot.js
 scripts/cc-links-check.js
+scripts/capture-exchange.js

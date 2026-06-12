@@ -60,7 +60,7 @@ Every script carries `@updateURL` and `@downloadURL` pointing at this repo, so T
 
 ### GIU SuperScript — All-in-one bundle
 
-**File:** `GIU SuperScript.js` | **Version:** 1.0.7 | **Author:** Mo.Elmaadawy
+**File:** `GIU SuperScript.js` | **Version:** 1.0.8 | **Author:** Mo.Elmaadawy
 
 The all-in-one userscript that bundles every feature script below except Dark Mode. It also adds a **Control Center** card on the portal Home page where you can turn bundled modules on or off.
 
@@ -319,7 +319,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendances
 
 ### 7. GIU Proctor Schedule Aggregator
 
-**File:** `GIU Proctor Schedule Aggregator.js` | **Version:** 2.1.1 | **Author:** Mo.Elmaadawy
+**File:** `GIU Proctor Schedule Aggregator.js` | **Version:** 2.2.1 | **Author:** Mo.Elmaadawy
 
 Aggregates all proctor exam assignments across departments into one searchable dashboard on the Proctor Exchange page.
 
@@ -333,6 +333,8 @@ https://portal.giu-uni.de/GIUb/INTStaff/ProctorExchange_m.aspx
 - **One dashboard** — fetches and combines proctor schedules across departments
 - **Fetch controls** — start, pause, and resume long schedule scrapes
 - **Filters and sorting** — inspect schedules by staff, course, date, hall, and role
+- **Typo-tolerant search** — fuzzy matching with live dropdown suggestions on every filter
+- **Take (Proctoring Exchange)** — take over a colleague's exam directly from the dashboard, with the portal's own confirmation step replicated in a modal
 - **Cache** — stores the latest scraped result in `localStorage`
 - **Import / Export** — move cached schedule data through CSV/file workflows
 - **Session warning** — flags expired sessions and asks you to reload when needed
@@ -343,6 +345,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/ProctorExchange_m.aspx
 2. Click **View All Proctor Schedules**
 3. Click **Fetch** to scrape schedules, or use cached/imported data
 4. Filter, sort, and export the combined view as needed
+5. Click **Take** on any row to replace that proctor — tick the confirmation checkbox and proceed, exactly like the portal's own exchange flow
 
 ---
 
