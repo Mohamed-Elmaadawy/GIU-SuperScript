@@ -6989,6 +6989,8 @@
                     });
                 }
                 homeAttachAbsentActions(host);
+                Tips.show({ id: 'staffAttendance', el: host, title: 'Attendance — This Payroll Month',
+                    text: 'Your live attendance balance for the current payroll month. Expand absent days to file holiday, annual or compensation requests, or open the full report below.' });
             }
 
             function homeShowError(host) {
@@ -7737,8 +7739,10 @@
         
                 const anchor = pageEvalEl?.closest('tr') ?? pageEvalEl?.closest('div') ?? document.querySelector(SEL.group);
                 anchor?.insertAdjacentElement('afterend', card);
+                Tips.show({ id: 'uploadGrades', el: card, title: 'Grades Toolbar',
+                    text: 'Upload grades from a CSV or download the current sheet, with instant grade statistics.' });
             }
-        
+
             // ── State B toolbar: per-group upload/download ────────────────────────────
         
             function injectPerGroupToolbar(table) {
@@ -7812,8 +7816,10 @@
                 const _afterPipe = crntText.split('||')[1];
                 const maxGradePerGroup = (_afterPipe != null && _afterPipe !== '') ? parseFloat(_afterPipe) : null;
                 renderGroupStats(card, computeStats(initialGrades, maxGradePerGroup));
+                Tips.show({ id: 'uploadGrades', el: card, title: 'Grades Toolbar',
+                    text: 'Upload grades from a CSV or download the current sheet, with instant grade statistics.' });
             }
-        
+
             // ── Entry point ──────────────────────────────────────────────────────────
         
             function init() {
@@ -8196,6 +8202,8 @@
                         }
                     });
                 }
+                Tips.show({ id: 'teachingLoad', el: host, title: 'Teaching Load',
+                    text: "Today's teaching sessions at a glance — expand to see the whole week. Cached for 7 days; hit ⟳ after a schedule change." });
             }
 
             function showError(host) {
@@ -8626,6 +8634,8 @@
                             <div class="gius-pr-empty-title">You're all caught up</div>
                             <div class="gius-pr-empty-sub">No proctoring scheduled${opts.stale ? ' · offline cache' : ''}.</div>
                         </div>`;
+                    Tips.show({ id: 'proctorReminder', el: host, title: 'Next Proctoring',
+                        text: 'Shows your upcoming proctoring duties from the timetable. Export any duty as .ics, Google Calendar, or an email reminder.' });
                     return;
                 }
 
@@ -8690,6 +8700,8 @@
 
                 host._sessions = upcoming;
                 wireExports(host);
+                Tips.show({ id: 'proctorReminder', el: host, title: 'Next Proctoring',
+                    text: 'Shows your upcoming proctoring duties from the timetable. Export any duty as .ics, Google Calendar, or an email reminder.' });
             }
 
             function injectStyles() {
@@ -10075,8 +10087,10 @@
                 btn.addEventListener('click', openPanel);
                 const td = row.querySelector('td') || row;
                 td.appendChild(btn);
+                Tips.show({ id: 'proctorAggregator', el: btn, title: 'Proctor Schedules',
+                    text: 'Opens an aggregated view of proctor schedules across departments, with search and filters.' });
             }
-        
+
             function init() {
                 injectStyles();
                 injectTrigger();
@@ -10787,8 +10801,10 @@
         
                 const anchor = getInjectionAnchor();
                 if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(card, anchor);
+                Tips.show({ id: 'notificationBatch', el: card, title: 'Batch Notification',
+                    text: 'Email several tutorial groups in one go — same message for all, or per-group subjects and bodies.' });
             }
-        
+
             // ── Progress view ─────────────────────────────────────────────────────────────
         
             function renderProgress(queue) {
@@ -11274,6 +11290,8 @@
                 (labelEl ?? table).insertAdjacentElement('afterend', panel);
 
                 renderStats(body);
+                Tips.show({ id: 'manageGroupGrades', el: panel, title: 'Group Grades Tools',
+                    text: 'CSV upload and download plus live statistics for the visible grade table.' });
 
                 return panel;
             }
@@ -12032,9 +12050,11 @@
                 injectStyles();
                 const panel = buildPanel(groupLabel);
                 anchor.parentElement.insertBefore(panel, anchor);
+                Tips.show({ id: 'studentAttendance', el: panel, title: 'Group Attendance Report',
+                    text: 'Scans every session for this group and flags students near the absence limit. Click a student to see their absent sessions.' });
                 return panel;
             }
-    
+
             async function runScrape(signal, panel, sessions, groupId, formState, cacheKey, groupLabel, preloadedSessionId, overridesKey) {
                 const worker = async (session) => {
                     let result;
@@ -12347,6 +12367,8 @@
 
             placePanel(panel);
             mirrorNativeCard(panel);
+            Tips.show({ id: 'controlCenter', el: panel, title: 'Control Center',
+                text: 'All SuperScript features are managed from this card. Only three start enabled — open it and switch on what you need. Changes apply after a reload.' });
 
             const status = panel.querySelector('#gius-feature-status');
             const reloadBtn = panel.querySelector('#gius-feature-reload');
