@@ -114,6 +114,168 @@
     };
 
     // ═══════════════════════════════════════════════════════════════════════════
+    //  1.5 TIPS — first-use spotlight walkthrough.
+    //      A feature calls Tips.show({id, el, title, text}) right after it
+    //      renders UI; each widget is spotlighted once, ever (localStorage
+    //      'gius-tips-v1'; '*' = user skipped all tips).
+    // ═══════════════════════════════════════════════════════════════════════════
+    const Tips = (() => {
+        const KEY = 'gius-tips-v1';
+
+        // The reverted welcome-note experiment left this key on some installs.
+        try { localStorage.removeItem('gius-onboarded-v1'); } catch { /* ignore */ }
+
+        function loadSeen() {
+            try { return JSON.parse(localStorage.getItem(KEY) || '{}') || {}; }
+            catch { return {}; }
+        }
+        function saveSeen(map) {
+            try { localStorage.setItem(KEY, JSON.stringify(map)); } catch { /* ignore */ }
+        }
+        const isSeen      = id => { const m = loadSeen(); return m['*'] === 1 || m[id] === 1; };
+        const markSeen    = id => { const m = loadSeen(); m[id] = 1; saveSeen(m); };
+        const markAllSeen = () => { const m = loadSeen(); m['*'] = 1; saveSeen(m); };
+
+        let queue = [];                 // pending steps {id, el, title, text}
+        let active = null;              // step currently on screen
+        let cutout = null, bubble = null, clickLayer = null;
+        let rafId = null;
+
+        function injectStyles() {
+            Shared.injectStyle('gius-tips-style', `
+                .gius-tips-click{position:fixed;inset:0;z-index:2147483600;}
+                .gius-tips-cutout{position:fixed;z-index:2147483601;border-radius:10px;pointer-events:none;
+                    box-shadow:0 0 0 9999px rgba(0,0,0,.55);
+                    transition:top .22s ease,left .22s ease,width .22s ease,height .22s ease;}
+                .gius-tips-bubble{position:fixed;z-index:2147483602;max-width:330px;min-width:240px;
+                    background:#ffffff;color:#272c33;border-radius:10px;padding:14px 16px;
+                    box-shadow:0 8px 28px rgba(0,0,0,.35);font-family:'Open Sans',Arial,Helvetica,sans-serif;
+                    font-size:13px;line-height:1.5;}
+                .gius-tips-title{font-weight:700;font-size:14.5px;margin-bottom:4px;}
+                .gius-tips-actions{display:flex;align-items:center;justify-content:space-between;
+                    gap:10px;margin-top:12px;}
+                .gius-tips-got{border:0;background:#1B59C6;color:#fff;border-radius:6px;
+                    padding:6px 14px;font-weight:700;font-size:12.5px;cursor:pointer;}
+                .gius-tips-skip{border:0;background:none;color:#6c757d;font-size:12px;
+                    cursor:pointer;padding:6px 0;text-decoration:underline;}
+                html.gius-dark .gius-tips-bubble{background:#1e1e2e;color:#cdd6f4;
+                    box-shadow:0 8px 28px rgba(0,0,0,.6);}
+                html.gius-dark .gius-tips-title{color:#cdd6f4;}
+                html.gius-dark .gius-tips-got{background:#89b4fa;color:#11111b;}
+                html.gius-dark .gius-tips-skip{color:#9399b2;}
+            `);
+        }
+
+        function buildOverlay() {
+            if (cutout) return;
+            injectStyles();
+            clickLayer = document.createElement('div');
+            clickLayer.className = 'gius-tips-click';
+            clickLayer.addEventListener('click', dismiss);
+            cutout = document.createElement('div');
+            cutout.className = 'gius-tips-cutout';
+            bubble = document.createElement('div');
+            bubble.className = 'gius-tips-bubble';
+            document.body.append(clickLayer, cutout, bubble);
+            window.addEventListener('scroll', schedulePosition, true);
+            window.addEventListener('resize', schedulePosition);
+            document.addEventListener('keydown', onKey, true);
+        }
+
+        function teardown() {
+            if (!cutout) return;
+            window.removeEventListener('scroll', schedulePosition, true);
+            window.removeEventListener('resize', schedulePosition);
+            document.removeEventListener('keydown', onKey, true);
+            if (rafId !== null) cancelAnimationFrame(rafId);
+            rafId = null;
+            clickLayer.remove(); cutout.remove(); bubble.remove();
+            clickLayer = cutout = bubble = null;
+        }
+
+        function onKey(e) {
+            if (e.key === 'Escape') { e.stopPropagation(); dismiss(); }
+        }
+
+        function schedulePosition() {
+            if (rafId !== null) return;
+            rafId = requestAnimationFrame(() => { rafId = null; position(); });
+        }
+
+        function position() {
+            if (!active || !cutout) return;
+            if (!document.contains(active.el)) { advance(false); return; }
+            const r = active.el.getBoundingClientRect();
+            const pad = 6;
+            cutout.style.top    = (r.top - pad) + 'px';
+            cutout.style.left   = (r.left - pad) + 'px';
+            cutout.style.width  = (r.width + pad * 2) + 'px';
+            cutout.style.height = (r.height + pad * 2) + 'px';
+            const bw = bubble.offsetWidth, bh = bubble.offsetHeight;
+            let top = r.bottom + pad + 12;
+            if (top + bh > window.innerHeight - 8) top = Math.max(8, r.top - pad - bh - 12);
+            const left = Math.min(Math.max(8, r.left), Math.max(8, window.innerWidth - bw - 8));
+            bubble.style.top = top + 'px';
+            bubble.style.left = left + 'px';
+        }
+
+        function renderBubble() {
+            bubble.innerHTML = `
+                <div class="gius-tips-title"></div>
+                <div class="gius-tips-text"></div>
+                <div class="gius-tips-actions">
+                    <button type="button" class="gius-tips-skip gius-btn">Skip all tips</button>
+                    <button type="button" class="gius-tips-got gius-btn">Got it</button>
+                </div>`;
+            bubble.querySelector('.gius-tips-title').textContent = active.title || '';
+            bubble.querySelector('.gius-tips-text').textContent = active.text || '';
+            bubble.querySelector('.gius-tips-got').addEventListener('click', dismiss);
+            bubble.querySelector('.gius-tips-skip').addEventListener('click', () => {
+                markAllSeen(); queue = []; active = null; teardown();
+            });
+        }
+
+        // mark=true → user dismissed the active tip; mark=false → its anchor
+        // vanished (postback re-render), so it stays unseen for next time.
+        function advance(mark) {
+            if (active && mark) markSeen(active.id);
+            active = queue.shift() || null;
+            while (active && (!document.contains(active.el) || isSeen(active.id))) {
+                active = queue.shift() || null;
+            }
+            if (!active) { teardown(); return; }
+            buildOverlay();
+            renderBubble();
+            try { active.el.scrollIntoView({ block: 'center' }); } catch { /* ignore */ }
+            position();
+        }
+
+        function dismiss() { advance(true); }
+
+        function show(step) {
+            try {
+                if (!step || !step.el || !step.id || isSeen(step.id)) return;
+                if (active && active.id === step.id) return;
+                if (queue.some(s => s.id === step.id)) return;
+                // The Control Center explains the whole bundle — always first in line.
+                if (step.id === 'controlCenter') queue.unshift(step);
+                else queue.push(step);
+                if (!active) advance(false);
+            } catch (e) { Shared.warn('Tips', 'show failed:', e); }
+        }
+
+        return {
+            show, isSeen, markSeen, markAllSeen, loadSeen,
+            _queueIds: () => queue.map(s => s.id),
+            _activeId: () => (active ? active.id : null),
+            _resetSeen: () => { try { localStorage.removeItem(KEY); } catch { /* ignore */ } },
+        };
+    })();
+
+    // Test hook — kept in production like the per-module hooks.
+    try { window.__giusTips = Tips; } catch { /* ignore */ }
+
+    // ═══════════════════════════════════════════════════════════════════════════
     //  2. FEATURE MODULES — one per feature. STUBS for now (Phase 1).
     //     Each will receive Shared and own its full body once folded in.
     // ═══════════════════════════════════════════════════════════════════════════
