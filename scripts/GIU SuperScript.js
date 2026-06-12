@@ -5,7 +5,7 @@
 // @icon        data:image/png;base64,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
 // @namespace   Cyn0
 // @match       https://portal.giu-uni.de/*
-// @version     1.0.11
+// @version     1.0.12
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @run-at      document-idle
@@ -9253,14 +9253,17 @@
                     .gius-proctor-hdr-btns {
                         display: flex; gap: 6px; align-items: center;
                     }
-                    .gius-fetch-dept-select {
-                        height: 26px; max-width: 180px; padding: 0 6px;
+                    .gius-fetch-dept-input {
+                        height: 26px; width: 220px; padding: 0 8px;
                         font-size: 12px; font-weight: 600;
                         border: 1px solid #d1d5db; border-radius: 6px;
-                        background: #fff; color: #374151; cursor: pointer;
+                        background: #fff; color: #374151;
                         font-family: 'Open Sans', Arial, sans-serif;
+                        text-overflow: ellipsis;
                     }
-                    html.gius-dark .gius-fetch-dept-select {
+                    .gius-fetch-dept-input:focus { outline: 2px solid #60a5fa; outline-offset: 1px; border-color: #1B59C6; }
+                    .gius-fetch-dept-input.gius-fetch-dept-error { border-color: #dc2626; outline-color: #f87171; }
+                    html.gius-dark .gius-fetch-dept-input {
                         background: #313244 !important; border-color: #45475a !important; color: #cdd6f4 !important;
                     }
                     .gius-proctor-body {
@@ -9625,27 +9628,50 @@
             let _panelEl = null;
             let _scraping = false;
             let _fetchScope = null;
+            let _fetchDeptList = []; // [{ value, label }] from the portal dropdown
         
-            // Read the header department selector → { value, label } or null for all
-            function readFetchScope() {
-                const sel = document.getElementById('gius-fetch-dept');
-                if (!sel || !sel.value) return null;
-                return { value: sel.value, label: sel.options[sel.selectedIndex].text.trim() };
+            // Resolve the typed department text → { value, label } | null (all) | { error }
+            function resolveFetchScope() {
+                const inp = document.getElementById('gius-fetch-dept');
+                if (!inp) return null;
+                const text = inp.value.trim();
+                if (!text) return null; // blank = all departments
+                const lo = text.toLowerCase();
+                // Exact (case-insensitive), then substring
+                let hit = _fetchDeptList.find(d => d.label.toLowerCase() === lo)
+                       || _fetchDeptList.find(d => d.label.toLowerCase().includes(lo));
+                // Then typo-tolerant: closest full-label edit distance within a budget
+                if (!hit) {
+                    let best = null, bestD = Infinity;
+                    for (const d of _fetchDeptList) {
+                        const dist = editDistance(lo, d.label.toLowerCase());
+                        if (dist < bestD) { bestD = dist; best = d; }
+                    }
+                    if (best && bestD <= Math.ceil(lo.length / 4)) hit = best;
+                }
+                return hit ? { value: hit.value, label: hit.label } : { error: text };
             }
         
-            // Fill the header selector from the portal's own department dropdown, and
-            // pre-select whatever is currently chosen there (so the portal's selection
+            function flagFetchDeptError() {
+                const inp = document.getElementById('gius-fetch-dept');
+                if (!inp) return;
+                inp.classList.add('gius-fetch-dept-error');
+                inp.title = 'No matching department — clear the box to fetch all';
+                inp.focus();
+            }
+        
+            // Read the portal's department dropdown into _fetchDeptList, and seed the
+            // input with whatever is currently selected there (so the portal's choice
             // becomes an explicit, visible scope instead of a silent one).
             function populateFetchDept() {
-                const sel = document.getElementById('gius-fetch-dept');
+                const inp = document.getElementById('gius-fetch-dept');
                 const portal = document.getElementById('MainContent_acdmcDpLst');
-                if (!sel || !portal) return;
-                const selected = portal.value;
-                sel.innerHTML = '<option value="">All Departments</option>' +
-                    Array.from(portal.options)
-                        .filter(o => o.value !== '')
-                        .map(o => `<option value="${escHtml(o.value)}"${o.value === selected ? ' selected' : ''}>${escHtml(o.text.trim())}</option>`)
-                        .join('');
+                if (!inp || !portal) return;
+                _fetchDeptList = Array.from(portal.options)
+                    .filter(o => o.value !== '')
+                    .map(o => ({ value: o.value, label: o.text.trim() }));
+                const selected = _fetchDeptList.find(d => d.value === portal.value);
+                if (selected && !inp.value) inp.value = selected.label;
             }
         
             function setAllRows(rows) {
@@ -9828,9 +9854,7 @@
                         </div>
                         <div class="gius-proctor-hdr-btns">
                             <span id="gius-proctor-warn" style="display:none"></span>
-                            <select class="gius-fetch-dept-select" id="gius-fetch-dept" title="Scope the fetch — pick one department or all">
-                                <option value="">All Departments</option>
-                            </select>
+                            <input class="gius-fetch-dept-input" id="gius-fetch-dept" type="text" placeholder="All Departments" title="Scope the fetch — type a department, or leave blank for all" autocomplete="off" />
                             <button type="button" class="gius-btn gius-btn-outline gius-btn-sm" id="gius-proctor-upload" title="Load rows from a previously exported CSV">
                                 <i class="fa fa-upload"></i> Upload CSV
                             </button>
@@ -10397,6 +10421,9 @@
                 makeDropdown('gius-f-proctor',    () => _dropdownOptions.proctor);
                 makeDropdown('gius-f-room',       () => _dropdownOptions.room);
                 makeDropdown('gius-f-department', () => _dropdownOptions.department);
+                makeDropdown('gius-fetch-dept',   () => _fetchDeptList.map(d => d.label));
+                document.getElementById('gius-fetch-dept')
+                    ?.addEventListener('input', e => e.target.classList.remove('gius-fetch-dept-error'));
         
                 // Clear all
                 document.getElementById('gius-f-clear')?.addEventListener('click', () => {
@@ -10418,9 +10445,11 @@
         
                 // First-run fetch button
                 document.getElementById('gius-start-fetch')?.addEventListener('click', () => {
+                    const scope = resolveFetchScope();
+                    if (scope && scope.error) { flagFetchDeptError(); return; }
                     const emptyState = document.getElementById('gius-empty-state');
                     if (emptyState) emptyState.style.display = 'none';
-                    startScrape(readFetchScope());
+                    startScrape(scope);
                 });
         
                 // Close
@@ -10432,11 +10461,13 @@
                 // Refresh — re-fetch using the currently selected scope
                 document.getElementById('gius-proctor-refresh')?.addEventListener('click', () => {
                     if (_scraping) return;
+                    const scope = resolveFetchScope();
+                    if (scope && scope.error) { flagFetchDeptError(); return; }
                     _paused = false;
                     clearCache();
                     setAllRows([]);
                     _filters = { search: '', day: '', exam: '', proctor: '', room: '', department: '' };
-                    startScrape(readFetchScope());
+                    startScrape(scope);
                 });
         
                 // Co-proctor row expansion (event delegation on tbody)
