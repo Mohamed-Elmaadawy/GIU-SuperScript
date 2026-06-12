@@ -5,7 +5,7 @@
 // @icon        data:image/png;base64,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
 // @namespace   Cyn0
 // @match       https://portal.giu-uni.de/*
-// @version     1.0.7
+// @version     1.0.8
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @run-at      document-idle
@@ -9037,6 +9037,89 @@
                 return rows;
             }
         
+            // ── Proctoring Exchange (Take) ────────────────────────────────────────────
+            // Replicates the portal's own flow: dept select → proctor click → exam click
+            // (arms the form: server fills prctrIdHdn/cvrStfIdHdn and renders the confirm
+            // widget) → final POST with rplcChk=on + setBtn. Everything is resolved fresh
+            // at take-time by name/slot matching, so cached and CSV rows work too.
+        
+            function deptValueForLabel(label) {
+                const deptEl = document.getElementById('MainContent_acdmcDpLst');
+                if (!deptEl) return '';
+                const want = (label || '').trim().toLowerCase();
+                const opt = Array.from(deptEl.options).find(o => o.text.trim().toLowerCase() === want);
+                return opt ? opt.value : '';
+            }
+        
+            async function prepareExchange(row) {
+                // Step 1 — select the department
+                const deptValue = deptValueForLabel(row.department);
+                if (!deptValue) throw new Error(`Department "${row.department}" not found on this page.`);
+                const deptDoc = await doPostback(
+                    'ctl00$MainContent$acdmcDpLst',
+                    { 'ctl00$MainContent$acdmcDpLst': deptValue }
+                );
+        
+                // Step 2 — click the proctor name (matched by title-stripped name)
+                const wantName = stripTitle(row.proctor).toLowerCase();
+                const proctorLink = Array.from(deptDoc.querySelectorAll('#MainContent_dprtmntDg a')).find(a =>
+                    stripTitle(a.textContent.trim()).toLowerCase() === wantName
+                );
+                if (!proctorLink) throw new Error(`Proctor "${row.proctor}" not found in ${row.department}.`);
+                const proctorTarget = ((proctorLink.getAttribute('href') || '').match(/__doPostBack\('([^']+)'/) || [])[1];
+                if (!proctorTarget) throw new Error('Could not read the proctor link.');
+                const schedDoc = await doPostback(
+                    proctorTarget,
+                    { 'ctl00$MainContent$acdmcDpLst': deptValue },
+                    extractFormState(deptDoc)
+                );
+        
+                // Step 3 — click the exam row (matched by date+time slot and hall)
+                const examEntry = Array.from(schedDoc.querySelectorAll('#MainContent_schdlDg tr')).slice(1).map(tr => {
+                    const tds = tr.querySelectorAll('td');
+                    if (tds.length < 5) return null;
+                    const startRaw = tds[2].textContent.trim();
+                    const slotKey = parseDateKey(startRaw) + '|' +
+                        new Date(startRaw).toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
+                    return { a: tds[0].querySelector('a'), slotKey, hall: tds[1].textContent.trim() };
+                }).find(x => x && x.slotKey === row.slotKey && x.hall === row.hall);
+                if (!examEntry || !examEntry.a) throw new Error("This exam is no longer on the proctor's schedule. Refresh the data.");
+                const examTarget = ((examEntry.a.getAttribute('href') || '').match(/__doPostBack\('([^']+)'/) || [])[1];
+                if (!examTarget) throw new Error('Could not read the exam link.');
+                const confirmDoc = await doPostback(
+                    examTarget,
+                    {
+                        'ctl00$MainContent$acdmcDpLst': deptValue,
+                        'ctl00$MainContent$prctrIdHdn': '',
+                        'ctl00$MainContent$cvrStfIdHdn': '',
+                    },
+                    extractFormState(schedDoc)
+                );
+        
+                // Server fills the hidden ids and renders the confirm widget when armed
+                const getEl = id => confirmDoc.getElementById(id);
+                const prctrId  = (getEl('MainContent_prctrIdHdn')  || {}).value || '';
+                const cvrStfId = (getEl('MainContent_cvrStfIdHdn') || {}).value || '';
+                const nm = (getEl('MainContent_nmLbl')?.textContent || row.proctor).trim();
+                const tm = (getEl('MainContent_tmLbl')?.textContent || `${row.date} ${row.startTime} ${row.hall}`).trim();
+                if (!prctrId || !getEl('MainContent_setBtn')) {
+                    const msg = (getEl('MainContent_msgLbl')?.textContent || '').trim();
+                    throw new Error(msg || 'The portal did not offer a replacement for this exam.');
+                }
+                return { deptValue, prctrId, cvrStfId, nm, tm, state: extractFormState(confirmDoc) };
+            }
+        
+            async function executeExchange(prep) {
+                const doc = await doPostback('', {
+                    'ctl00$MainContent$acdmcDpLst': prep.deptValue,
+                    'ctl00$MainContent$prctrIdHdn': prep.prctrId,
+                    'ctl00$MainContent$cvrStfIdHdn': prep.cvrStfId,
+                    'ctl00$MainContent$rplcChk': 'on',
+                    'ctl00$MainContent$setBtn': 'Proceed With Replacement',
+                }, prep.state);
+                return (doc.getElementById('MainContent_msgLbl')?.textContent || '').trim();
+            }
+        
             // ── Scrape orchestrator ───────────────────────────────────────────────────
         
             async function scrapeAll(cb) {
@@ -9429,6 +9512,78 @@
                     html.gius-dark .gius-dd-fuzzy  { color: #6c7086 !important; }
                     html.gius-dark .gius-dd-fuzzy-mark { color: #585b70 !important; }
                     html.gius-dark .gius-dd-empty  { color: #6c7086 !important; }
+        
+                    .gius-take-th { width: 1%; }
+                    .gius-take-btn { white-space: nowrap; }
+                    .gius-taken-badge {
+                        display: inline-flex; align-items: center; gap: 4px;
+                        background: #dcfce7; color: #166534;
+                        border: 1px solid #bbf7d0; border-radius: 999px;
+                        padding: 2px 10px; font-size: 12px; font-weight: 700;
+                        font-family: 'Open Sans', sans-serif; white-space: nowrap;
+                    }
+                    html.gius-dark .gius-taken-badge {
+                        background: #052e16 !important; color: #4ade80 !important;
+                        border-color: #14532d !important;
+                    }
+        
+                    .gius-ex-overlay {
+                        position: fixed; inset: 0; z-index: 2147483646;
+                        background: rgba(17, 24, 39, 0.55);
+                        display: flex; align-items: center; justify-content: center;
+                        animation: giusSlideDown 0.15s ease both;
+                    }
+                    .gius-ex-modal {
+                        background: #fff; border-radius: 10px; width: 420px; max-width: 92vw;
+                        box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+                        font-family: 'Open Sans', Arial, sans-serif;
+                        overflow: hidden;
+                    }
+                    .gius-ex-hdr {
+                        display: flex; align-items: center; justify-content: space-between;
+                        background: #272c33; color: #fff;
+                        padding: 10px 14px; font-size: 14px; font-weight: 700;
+                    }
+                    .gius-ex-close {
+                        background: none; border: none; color: #fff; font-size: 15px;
+                        cursor: pointer; opacity: 0.7; padding: 2px 6px;
+                    }
+                    .gius-ex-close:hover { opacity: 1; }
+                    .gius-ex-body { padding: 18px 16px; }
+                    .gius-ex-loading {
+                        display: flex; align-items: center; gap: 10px;
+                        color: #6b7280; font-size: 14px; padding: 10px 0;
+                    }
+                    .gius-ex-spinner {
+                        width: 18px; height: 18px; border-radius: 50%;
+                        border: 3px solid #e5e7eb; border-top-color: #1B59C6;
+                        animation: giusSpin 0.8s linear infinite; flex-shrink: 0;
+                    }
+                    .gius-ex-text { font-size: 14px; color: #111827; margin: 0 0 8px; line-height: 1.6; }
+                    .gius-ex-exam { font-size: 13px; color: #6b7280; margin: 0 0 14px; }
+                    .gius-ex-check {
+                        display: flex; align-items: flex-start; gap: 8px;
+                        font-size: 13px; color: #374151; cursor: pointer;
+                        margin: 0 0 16px; line-height: 1.5;
+                    }
+                    .gius-ex-check input { margin-top: 3px; cursor: pointer; }
+                    .gius-ex-actions { display: flex; justify-content: flex-end; gap: 8px; }
+                    .gius-ex-result {
+                        display: flex; align-items: flex-start; gap: 8px;
+                        font-size: 14px; margin: 0 0 16px; line-height: 1.5;
+                    }
+                    .gius-ex-result .fa { margin-top: 2px; }
+                    .gius-ex-ok  { color: #166534; }
+                    .gius-ex-err { color: #b91c1c; }
+                    html.gius-dark .gius-ex-modal { background: #1e1e2e !important; }
+                    html.gius-dark .gius-ex-hdr { background: #11111b !important; }
+                    html.gius-dark .gius-ex-text { color: #cdd6f4 !important; }
+                    html.gius-dark .gius-ex-exam { color: #9399b2 !important; }
+                    html.gius-dark .gius-ex-check { color: #bac2de !important; }
+                    html.gius-dark .gius-ex-loading { color: #9399b2 !important; }
+                    html.gius-dark .gius-ex-spinner { border-color: #313244 !important; border-top-color: #89b4fa !important; }
+                    html.gius-dark .gius-ex-ok  { color: #4ade80 !important; }
+                    html.gius-dark .gius-ex-err { color: #f87171 !important; }
                 `;
                 document.head.appendChild(s);
             }
@@ -9678,6 +9833,7 @@
                                             <th data-col="time">Time <span class="gius-sort-icon" data-col="time">&#x25B2;</span></th>
                                             <th data-col="department">Department <span class="gius-sort-icon" data-col="department">&#x25B2;</span></th>
                                             <th data-col="coverName">Cover <span class="gius-sort-icon" data-col="coverName">&#x25B2;</span></th>
+                                            <th class="gius-take-th">Take</th>
                                         </tr>
                                     </thead>
                                     <tbody id="gius-tbody"></tbody>
@@ -9787,6 +9943,7 @@
                         <td>${escHtml(r.startTime)} &ndash; ${escHtml(r.endTime)}</td>
                         <td>${escHtml(r.department)}</td>
                         <td class="muted">—</td>
+                        <td class="muted">—</td>
                     </tr>
                 `;
                     }
@@ -9800,6 +9957,9 @@
                         <td>${escHtml(r.startTime)} &ndash; ${escHtml(r.endTime)}</td>
                         <td>${escHtml(r.department)}</td>
                         <td class="${r.coverName ? '' : 'muted'}">${escHtml(r.coverName || '—')}</td>
+                        <td>${r.coverName === 'You'
+                            ? '<span class="gius-taken-badge"><i class="fa fa-check"></i> Taken</span>'
+                            : `<button type="button" class="gius-btn gius-btn-outline gius-btn-sm gius-take-btn" data-idx="${start + i}" title="Replace this proctor for this exam"><i class="fa fa-exchange"></i> Take</button>`}</td>
                     </tr>
                 `;
                 }).join('');
@@ -10018,8 +10178,122 @@
                 }).join('');
                 const label = (isActingCover && !row._coverView) ? 'Covering for:' : 'Co-proctors:';
                 const icon = (isActingCover && !row._coverView) ? 'fa-exchange' : 'fa-users';
-                cpRow.innerHTML = `<td colspan="7"><span class="gius-coproctor-label"><i class="fa ${icon}"></i> ${label}</span><ul class="gius-coproctor-list">${cpItems}</ul></td>`;
+                cpRow.innerHTML = `<td colspan="8"><span class="gius-coproctor-label"><i class="fa ${icon}"></i> ${label}</span><ul class="gius-coproctor-list">${cpItems}</ul></td>`;
                 tr.insertAdjacentElement('afterend', cpRow);
+            }
+        
+            // ── Exchange modal ────────────────────────────────────────────────────────
+        
+            function closeExchangeModal() {
+                document.getElementById('gius-ex-overlay')?.remove();
+                document.removeEventListener('keydown', onExchangeEsc);
+            }
+        
+            function onExchangeEsc(e) {
+                if (e.key === 'Escape') closeExchangeModal();
+            }
+        
+            function openExchangeModal(row) {
+                closeExchangeModal();
+                const overlay = document.createElement('div');
+                overlay.id = 'gius-ex-overlay';
+                overlay.className = 'gius-ex-overlay';
+                overlay.innerHTML = `
+                    <div class="gius-ex-modal" role="dialog" aria-modal="true">
+                        <div class="gius-ex-hdr">
+                            <span><i class="fa fa-exchange"></i> Proctoring Exchange</span>
+                            <button type="button" class="gius-ex-close" id="gius-ex-close" title="Close">&#x2715;</button>
+                        </div>
+                        <div class="gius-ex-body" id="gius-ex-body">
+                            <div class="gius-ex-loading">
+                                <span class="gius-ex-spinner"></span>
+                                Contacting the portal&hellip;
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(overlay);
+                document.addEventListener('keydown', onExchangeEsc);
+                overlay.addEventListener('click', e => { if (e.target === overlay) closeExchangeModal(); });
+                document.getElementById('gius-ex-close')?.addEventListener('click', closeExchangeModal);
+        
+                const body = document.getElementById('gius-ex-body');
+        
+                prepareExchange(row).then(prep => {
+                    if (!document.getElementById('gius-ex-body')) return; // modal closed meanwhile
+                    body.innerHTML = `
+                        <p class="gius-ex-text">I would like to replace<br>
+                            <b>${escHtml(prep.nm)}</b><br>
+                            during the session on <b>${escHtml(prep.tm)}</b>.</p>
+                        <p class="gius-ex-exam">${escHtml(row.program || row.courseCode)} &ndash; ${escHtml(row.examName)}</p>
+                        <label class="gius-ex-check">
+                            <input type="checkbox" id="gius-ex-sure" />
+                            I am sure, I want to replace my colleague during this session.
+                        </label>
+                        <div class="gius-ex-actions">
+                            <button type="button" class="gius-btn gius-btn-muted" id="gius-ex-cancel">Cancel</button>
+                            <button type="button" class="gius-btn gius-btn-primary" id="gius-ex-go" disabled>
+                                <i class="fa fa-check"></i> Proceed With Replacement
+                            </button>
+                        </div>
+                    `;
+                    const sure = document.getElementById('gius-ex-sure');
+                    const go = document.getElementById('gius-ex-go');
+                    sure?.addEventListener('change', () => { go.disabled = !sure.checked; });
+                    document.getElementById('gius-ex-cancel')?.addEventListener('click', closeExchangeModal);
+                    go?.addEventListener('click', () => {
+                        go.disabled = true;
+                        body.innerHTML = `
+                            <div class="gius-ex-loading">
+                                <span class="gius-ex-spinner"></span>
+                                Processing replacement&hellip;
+                            </div>
+                        `;
+                        executeExchange(prep).then(msg => {
+                            const ok = /success/i.test(msg);
+                            if (!document.getElementById('gius-ex-body')) return;
+                            body.innerHTML = `
+                                <p class="gius-ex-result ${ok ? 'gius-ex-ok' : 'gius-ex-err'}">
+                                    <i class="fa ${ok ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                                    ${escHtml(msg || 'No response message from the portal.')}
+                                </p>
+                                <div class="gius-ex-actions">
+                                    <button type="button" class="gius-btn gius-btn-primary" id="gius-ex-done">Close</button>
+                                </div>
+                            `;
+                            document.getElementById('gius-ex-done')?.addEventListener('click', closeExchangeModal);
+                            if (ok) markRowTaken(row);
+                        }).catch(err => showExchangeError(err));
+                    });
+                }).catch(err => showExchangeError(err));
+        
+                function showExchangeError(err) {
+                    if (!document.getElementById('gius-ex-body')) return;
+                    const msg = err && err.message === 'SESSION_EXPIRED'
+                        ? 'Your portal session has expired — reload the page and log in again.'
+                        : (err && err.message) || 'Something went wrong.';
+                    body.innerHTML = `
+                        <p class="gius-ex-result gius-ex-err">
+                            <i class="fa fa-exclamation-circle"></i> ${escHtml(msg)}
+                        </p>
+                        <div class="gius-ex-actions">
+                            <button type="button" class="gius-btn gius-btn-muted" id="gius-ex-done">Close</button>
+                        </div>
+                    `;
+                    document.getElementById('gius-ex-done')?.addEventListener('click', closeExchangeModal);
+                }
+            }
+        
+            function markRowTaken(row) {
+                _allRows.forEach(r => {
+                    if (r.proctor === row.proctor && r.slotKey === row.slotKey &&
+                        r.hall === row.hall && r.examName === row.examName) {
+                        r.coverName = 'You';
+                    }
+                });
+                saveCache(_allRows);
+                updateFilterOptions();
+                applyFiltersAndSort();
             }
         
             // ── Panel wiring ──────────────────────────────────────────────────────────
@@ -10102,6 +10376,13 @@
                 // Co-proctor row expansion (event delegation on tbody)
                 const tbody = panel.querySelector('#gius-tbody');
                 tbody?.addEventListener('click', e => {
+                    const takeBtn = e.target.closest('.gius-take-btn');
+                    if (takeBtn) {
+                        e.stopPropagation();
+                        const tIdx = parseInt(takeBtn.dataset.idx, 10);
+                        if (!isNaN(tIdx) && _renderedRows[tIdx]) openExchangeModal(_renderedRows[tIdx]);
+                        return;
+                    }
                     const tr = e.target.closest('tr.gius-data-row');
                     if (!tr) return;
                     const idx = parseInt(tr.dataset.idx, 10);
