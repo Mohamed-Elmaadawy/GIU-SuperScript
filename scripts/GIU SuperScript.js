@@ -7742,7 +7742,7 @@
                 Tips.show({ id: 'uploadGrades', el: card, title: 'Grades Toolbar',
                     text: 'Upload grades from a CSV or download the current sheet, with instant grade statistics.' });
             }
-
+        
             // ── State B toolbar: per-group upload/download ────────────────────────────
         
             function injectPerGroupToolbar(table) {
@@ -7819,7 +7819,7 @@
                 Tips.show({ id: 'uploadGrades', el: card, title: 'Grades Toolbar',
                     text: 'Upload grades from a CSV or download the current sheet, with instant grade statistics.' });
             }
-
+        
             // ── Entry point ──────────────────────────────────────────────────────────
         
             function init() {
@@ -10090,7 +10090,7 @@
                 Tips.show({ id: 'proctorAggregator', el: btn, title: 'Proctor Schedules',
                     text: 'Opens an aggregated view of proctor schedules across departments, with search and filters.' });
             }
-
+        
             function init() {
                 injectStyles();
                 injectTrigger();
@@ -10804,7 +10804,7 @@
                 Tips.show({ id: 'notificationBatch', el: card, title: 'Batch Notification',
                     text: 'Email several tutorial groups in one go — same message for all, or per-group subjects and bodies.' });
             }
-
+        
             // ── Progress view ─────────────────────────────────────────────────────────────
         
             function renderProgress(queue) {
@@ -12054,7 +12054,7 @@
                     text: 'Scans every session for this group and flags students near the absence limit. Click a student to see their absent sessions.' });
                 return panel;
             }
-
+    
             async function runScrape(signal, panel, sessions, groupId, formState, cacheKey, groupLabel, preloadedSessionId, overridesKey) {
                 const worker = async (session) => {
                     let result;
