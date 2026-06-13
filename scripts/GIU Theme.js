@@ -14,17 +14,36 @@
 (function () {
     'use strict';
 
-    const STORAGE_KEY = 'gius-dark-mode';
+    const STORAGE_KEY = 'gius-theme';
+    const LEGACY_KEY  = 'gius-dark-mode';
+    const MODES = ['off', 'light', 'slate', 'plum'];
+    const DARK_MODES = ['slate', 'plum'];
 
-    function isDarkEnabled() {
-        try { return localStorage.getItem(STORAGE_KEY) === '1'; }
-        catch { return false; }
+    let currentMode = 'off';
+
+    function readStoredMode() {
+        try {
+            const v = localStorage.getItem(STORAGE_KEY);
+            if (MODES.includes(v)) return v;
+            const legacy = localStorage.getItem(LEGACY_KEY);
+            const migrated = legacy === '1' ? 'slate' : 'off';
+            try { localStorage.setItem(STORAGE_KEY, migrated); } catch { /* ignore */ }
+            return migrated;
+        } catch { return 'off'; }
     }
 
-    function saveDark(on) {
-        try { localStorage.setItem(STORAGE_KEY, on ? '1' : '0'); }
-        catch { /* ignore */ }
+    function saveMode(mode) {
+        try { localStorage.setItem(STORAGE_KEY, mode); } catch { /* ignore */ }
     }
+
+    // Temporary stubs — real bodies come in Tasks 5 & 6
+    function applyMode(/* mode */) {}      // real body in Task 5
+    function updatePicker() {}             // real body in Task 6
+    function setMode(mode) { currentMode = mode; saveMode(mode); }  // extended in Task 5
+
+    // Shims so injectToggle/toggleDark keep running without errors until Task 6 replaces them
+    function isDarkEnabled() { return DARK_MODES.includes(currentMode); }
+    function saveDark(on) { saveMode(on ? 'slate' : 'off'); }
 
     function injectStyles() {
         if (document.getElementById('gius-dm-styles')) return;
@@ -510,14 +529,19 @@
         document.body.appendChild(tab);
     }
 
-    // Apply class + styles immediately before first paint (document-start)
-    if (isDarkEnabled()) {
-        document.documentElement.classList.add('gius-dark');
-    }
-    injectStyles();
+    // Resolve current mode from storage (class + styles wired in Task 5)
+    currentMode = readStoredMode();
 
     document.addEventListener('DOMContentLoaded', injectToggle);
     // Fallback for pages where DOMContentLoaded fires differently (ASP.NET postbacks, home page)
     window.addEventListener('load', injectToggle);
+
+    window.__giuTheme = {
+        MODES,
+        getMode: () => currentMode,
+        readStoredMode,
+        setMode,
+        applyMode,
+    };
 
 })();
