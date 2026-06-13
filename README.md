@@ -60,7 +60,7 @@ Every script carries `@updateURL` and `@downloadURL` pointing at this repo, so T
 
 ### GIU SuperScript — All-in-one bundle
 
-**File:** `GIU SuperScript.js` | **Version:** 1.1.0 | **Author:** Mo.Elmaadawy
+**File:** `GIU SuperScript.js` | **Version:** 1.1.1 | **Author:** Mo.Elmaadawy
 
 The all-in-one userscript that bundles every feature script below except Dark Mode. It also adds a **Control Center** card on the portal Home page where you can turn bundled modules on or off.
 
@@ -120,7 +120,7 @@ https://portal.giu-uni.de/*
 
 ### 2. GIU Staff Enhanced Attendance
 
-**File:** `GIU Staff Attendance Script.js` | **Version:** 3.1.5 | **Author:** Mo.Elmaadawy
+**File:** `GIU Staff Attendance Script.js` | **Version:** 3.1.6 | **Author:** Mo.Elmaadawy
 
 A full attendance management dashboard injected above the Swift Report attendance table. Tracks your hours, leave balance, and exceptions — all stored locally in your browser.
 
