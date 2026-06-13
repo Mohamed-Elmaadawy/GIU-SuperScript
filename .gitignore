@@ -28,7 +28,6 @@ tests/fixtures/proctor-response.html
 !README.md
 !.gitignore
 .env
-.gitignore
 scripts/dump-mainpage.js
 scripts/measure-home-cards.js
 scripts/crawl-portal.js
