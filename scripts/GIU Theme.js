@@ -38,10 +38,29 @@
         try { localStorage.setItem(STORAGE_KEY, mode); } catch { /* ignore */ }
     }
 
-    // Temporary stubs — real bodies come in Tasks 5 & 6
-    function applyMode(/* mode */) {}      // real body in Task 5
+    function applyMode(mode) {
+        const root = document.documentElement;
+        if (mode === 'off') {
+            root.removeAttribute('data-gius-theme');
+            root.classList.remove('gius-dark');
+            const s = document.getElementById('gius-dm-styles');
+            if (s) s.remove();
+            return;
+        }
+        injectStyles();
+        root.setAttribute('data-gius-theme', mode);
+        root.classList.toggle('gius-dark', DARK_MODES.includes(mode));
+    }
+
     function updatePicker() {}             // real body in Task 6
-    function setMode(mode) { currentMode = mode; saveMode(mode); }  // extended in Task 5
+
+    function setMode(mode) {
+        if (!MODES.includes(mode)) mode = 'off';
+        currentMode = mode;
+        saveMode(mode);
+        applyMode(mode);
+        updatePicker();   // stub until Task 6 — safe no-op
+    }
 
     // Shims so injectToggle/toggleDark keep running without errors until Task 6 replaces them
     function isDarkEnabled() { return DARK_MODES.includes(currentMode); }
@@ -451,8 +470,9 @@
         document.body.appendChild(tab);
     }
 
-    // Resolve current mode from storage (class + styles wired in Task 5)
+    // Resolve current mode from storage and apply pre-paint (no FOUC)
     currentMode = readStoredMode();
+    applyMode(currentMode);
 
     document.addEventListener('DOMContentLoaded', injectToggle);
     // Fallback for pages where DOMContentLoaded fires differently (ASP.NET postbacks, home page)

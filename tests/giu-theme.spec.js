@@ -54,3 +54,44 @@ test.describe('theme state + migration', () => {
     expect(await page.evaluate(() => window.__giuTheme.getMode())).toBe('plum');
   });
 });
+
+test.describe('applyMode side effects', () => {
+  test('slate sets data-gius-theme + gius-dark class + injects style', async ({ page }) => {
+    await setup(page, { storage: { 'gius-theme': 'slate' } });
+    const r = await page.evaluate(() => ({
+      attr: document.documentElement.getAttribute('data-gius-theme'),
+      dark: document.documentElement.classList.contains('gius-dark'),
+      style: !!document.getElementById('gius-dm-styles'),
+    }));
+    expect(r).toEqual({ attr: 'slate', dark: true, style: true });
+  });
+
+  test('light sets attr but NOT gius-dark (co-scripts stay light)', async ({ page }) => {
+    await setup(page, { storage: { 'gius-theme': 'light' } });
+    const r = await page.evaluate(() => ({
+      attr: document.documentElement.getAttribute('data-gius-theme'),
+      dark: document.documentElement.classList.contains('gius-dark'),
+    }));
+    expect(r).toEqual({ attr: 'light', dark: false });
+  });
+
+  test('off removes attr, class, and the style element', async ({ page }) => {
+    await setup(page, { storage: { 'gius-theme': 'slate' } });
+    await page.evaluate(() => window.__giuTheme.setMode('off'));
+    const r = await page.evaluate(() => ({
+      attr: document.documentElement.getAttribute('data-gius-theme'),
+      dark: document.documentElement.classList.contains('gius-dark'),
+      style: !!document.getElementById('gius-dm-styles'),
+      stored: localStorage.getItem('gius-theme'),
+    }));
+    expect(r).toEqual({ attr: null, dark: false, style: false, stored: 'off' });
+  });
+
+  test('setMode plum applies hot-pink accent variable', async ({ page }) => {
+    await setup(page, { storage: { 'gius-theme': 'slate' } });
+    await page.evaluate(() => window.__giuTheme.setMode('plum'));
+    const accent = await page.evaluate(() =>
+      getComputedStyle(document.documentElement).getPropertyValue('--gp-accent').trim());
+    expect(accent).toBe('#ff6fae');
+  });
+});
