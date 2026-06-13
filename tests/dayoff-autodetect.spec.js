@@ -101,21 +101,23 @@ test.describe('detectDayOffCode', () => {
         expect(r.occ).toBeGreaterThanOrEqual(3);
     });
 
-    test('not confident: two zero-attendance weekdays', async ({ page }) => {
+    test('two equally-absent weekdays -> picks the earliest in week order (Sat→Thu)', async ({ page }) => {
         await setup(page);
+        // Drop Mondays too: Sun and Mon both fully absent -> tie -> Sun (earlier than Mon).
         const rows = weeksWithSundayOff().filter(row => new Date(row.date + 'T00:00:00Z').getUTCDay() !== 1);
         const r = await detect(page, rows);
-        expect(r).toBe(null);
+        expect(r && r.code).toBe('Sun');
     });
 
-    test('not confident: only one week of data', async ({ page }) => {
+    test('one week of data still picks the most-absent weekday', async ({ page }) => {
         await setup(page);
         const rows = weeksWithSundayOff().filter(row => row.date < '2026-06-13');
         const r = await detect(page, rows);
-        expect(r).toBe(null);
+        expect(r && r.code).toBe('Sun');
+        expect(r.occ).toBe(1);
     });
 
-    test('not confident: works every weekday', async ({ page }) => {
+    test('no absences anywhere (worked every weekday) -> null', async ({ page }) => {
         await setup(page);
         const rows = weeksWithSundayOff();
         ['2026-06-07', '2026-06-14', '2026-06-21', '2026-06-28', '2026-07-05', '2026-07-12'].forEach(sun => {
@@ -182,10 +184,14 @@ test.describe('maybeAutoFillDayOff', () => {
         expect(r.selectedDay).toBe(null);
     });
 
-    test('not confident -> returns warn, no persist', async ({ page }) => {
+    test('no absences -> returns warn, no persist', async ({ page }) => {
         await setup(page);
-        const oneWeek = weeksWithSundayOff().filter(row => row.date < '2026-06-13');
-        const r = await run(page, oneWeek);
+        // Worked every weekday incl. Sundays -> no absences -> detect null -> warn.
+        const rows = weeksWithSundayOff();
+        ['2026-06-07', '2026-06-14', '2026-06-21', '2026-06-28', '2026-07-05', '2026-07-12'].forEach(sun => {
+            rows.push({ date: sun, firstIn: '8:00:00 AM', lastOut: '4:00:00 PM', duration: '08:00:00' });
+        });
+        const r = await run(page, rows);
         expect(r.result).toEqual({ status: 'warn' });
         expect(r.selectedDay).toBe(null);
     });
@@ -251,9 +257,12 @@ test.describe('Report page day-off banner', () => {
         await page.evaluate(scriptSrc);
     }
 
-    test('warning banner shows when day off is unset and not detectable', async ({ page }) => {
+    test('warning banner shows when day off is unset (auto-fill suppressed)', async ({ page }) => {
         await setupReport(page);
-        await page.evaluate(() => window.__giuAttHome.renderEnhancedUI());
+        await page.evaluate(() => {
+            window.__giuAttHome.setDayOffAutoState({ status: 'undone' }); // suppress auto-fill -> warn
+            window.__giuAttHome.renderEnhancedUI();
+        });
         await expect(page.locator('.giu-dayoff-notice.warn')).toBeVisible();
         await expect(page.locator('.giu-dayoff-notice.warn')).toContainText('Set your weekly');
     });
@@ -316,7 +325,10 @@ test.describe('day-off fixes', () => {
         await page.evaluate(() => localStorage.clear());
         await page.evaluate(() => { window.__giuAttDisableAutoRun = true; });
         await page.evaluate(scriptSrc);
-        await page.evaluate(() => window.__giuAttHome.renderEnhancedUI());
+        await page.evaluate(() => {
+            window.__giuAttHome.setDayOffAutoState({ status: 'undone' }); // keep unconfigured (no auto-fill)
+            window.__giuAttHome.renderEnhancedUI();
+        });
         const val = await page.locator('#giu-dayoff-effective-date').inputValue();
         expect(val).toBe('2030-12-11');
     });
