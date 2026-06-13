@@ -52,219 +52,139 @@
         const style = document.createElement('style');
         style.id = 'gius-dm-styles';
         style.textContent = `
-            /* ── Main layout (Sufee-Admin Bootstrap template) ── */
-            html.gius-dark body,
-            html.gius-dark #page-wrapper,
-            html.gius-dark .right-panel,
-            html.gius-dark .container,
-            html.gius-dark .container-fluid,
-            html.gius-dark .content {
-                background-color: #1e1e2e !important;
-                color: #cdd6f4 !important;
+            /* ── Shared tokens (all on-modes) ── */
+            html[data-gius-theme] {
+              --gp-radius: 6px;
+              --gp-font: system-ui, 'Segoe UI', Roboto, Arial, sans-serif;
+              --gp-pad: 12px;
+              --gp-gap: 8px;
+            }
+            /* ── Slate (default dark) ── */
+            html[data-gius-theme="slate"] {
+              --gp-bg:#0d1117; --gp-card:#161b22; --gp-deep:#010409; --gp-surface:#21262d;
+              --gp-border:#30363d; --gp-text:#e6edf3; --gp-muted:#8b949e;
+              --gp-accent:#ffc107; --gp-accent-fg:#1a1a1a; --gp-focus:#58a6ff;
+              --gp-success-bg:#0d3321; --gp-success-fg:#a6e3a1; --gp-error-bg:#3d0000; --gp-error-fg:#f38ba8;
+              --gp-info-bg:#1a2a4a; --gp-info-fg:#89b4fa;
+            }
+            /* ── Plum (Girls) ── */
+            html[data-gius-theme="plum"] {
+              --gp-bg:#1a1320; --gp-card:#241829; --gp-deep:#0f0b14; --gp-surface:#2d1f34;
+              --gp-border:#3a2942; --gp-text:#f3e4f0; --gp-muted:#b596ad;
+              --gp-accent:#ff6fae; --gp-accent-fg:#1a1320; --gp-focus:#ff6fae;
+              --gp-success-bg:#16331f; --gp-success-fg:#9fe6b4; --gp-error-bg:#4a0d22; --gp-error-fg:#ff9db5;
+              --gp-info-bg:#2a1f4a; --gp-info-fg:#c4a9ff;
+            }
+            /* ── Light ── */
+            html[data-gius-theme="light"] {
+              --gp-bg:#f6f8fa; --gp-card:#ffffff; --gp-deep:#eaeef2; --gp-surface:#ffffff;
+              --gp-border:#d0d7de; --gp-text:#1f2328; --gp-muted:#656d76;
+              --gp-accent:#ffc107; --gp-accent-fg:#1a1a1a; --gp-focus:#0969da;
+              --gp-success-bg:#dafbe1; --gp-success-fg:#1a7f37; --gp-error-bg:#ffebe9; --gp-error-fg:#cf222e;
+              --gp-info-bg:#ddf4ff; --gp-info-fg:#0969da;
             }
 
-            /* ── Page title bar (light gray strip at top of content) ── */
-            html.gius-dark .page-header,
-            html.gius-dark .page-title,
-            html.gius-dark .header,
-            html.gius-dark .breadcrumbs,
-            html.gius-dark .alert-secondary {
-                background-color: #181825 !important;
-                color: #cdd6f4 !important;
-                border-color: #45475a !important;
+            html[data-gius-theme] body,
+            html[data-gius-theme] #page-wrapper,
+            html[data-gius-theme] .right-panel,
+            html[data-gius-theme] .container,
+            html[data-gius-theme] .container-fluid,
+            html[data-gius-theme] .content {
+              background-color: var(--gp-bg) !important; color: var(--gp-text) !important;
+            }
+            html[data-gius-theme] .page-header,
+            html[data-gius-theme] .page-title,
+            html[data-gius-theme] .header,
+            html[data-gius-theme] .breadcrumbs,
+            html[data-gius-theme] .alert-secondary {
+              background-color: var(--gp-card) !important; color: var(--gp-text) !important; border-color: var(--gp-border) !important;
+            }
+            html[data-gius-theme] h1, html[data-gius-theme] h2, html[data-gius-theme] h3,
+            html[data-gius-theme] h4, html[data-gius-theme] h5, html[data-gius-theme] h6 { color: var(--gp-text) !important; }
+            html[data-gius-theme] .right-panel p,
+            html[data-gius-theme] .right-panel label,
+            html[data-gius-theme] .right-panel li,
+            html[data-gius-theme] .right-panel span:not([class*="badge"]) { color: var(--gp-text) !important; }
+            html[data-gius-theme] ::placeholder { color: var(--gp-muted) !important; opacity: 1 !important; }
+
+            html[data-gius-theme] table { border-color: var(--gp-border) !important; }
+            html[data-gius-theme] thead, html[data-gius-theme] tbody, html[data-gius-theme] tfoot,
+            html[data-gius-theme] tr { background-color: var(--gp-bg) !important; }
+            html[data-gius-theme] tbody tr:nth-child(even) { background-color: var(--gp-card) !important; }
+            html[data-gius-theme] thead tr { background-color: var(--gp-deep) !important; }
+            html[data-gius-theme] td, html[data-gius-theme] th {
+              background-color: inherit !important; color: var(--gp-text) !important; border-color: var(--gp-border) !important;
             }
 
-            /* ── General text (scoped to content area — keeps sidebar native colors) ── */
-            html.gius-dark h1, html.gius-dark h2, html.gius-dark h3,
-            html.gius-dark h4, html.gius-dark h5, html.gius-dark h6 {
-                color: #cdd6f4 !important;
+            html[data-gius-theme] .form-control,
+            html[data-gius-theme] input[type="text"], html[data-gius-theme] input[type="email"],
+            html[data-gius-theme] input[type="password"], html[data-gius-theme] input[type="search"],
+            html[data-gius-theme] input[type="number"], html[data-gius-theme] input[type="date"],
+            html[data-gius-theme] textarea {
+              background-color: var(--gp-surface) !important; color: var(--gp-text) !important; border-color: var(--gp-border) !important;
             }
-            html.gius-dark .right-panel p,
-            html.gius-dark .right-panel label,
-            html.gius-dark .right-panel li,
-            html.gius-dark .right-panel span:not([class*="badge"]) {
-                color: #cdd6f4 !important;
+            html[data-gius-theme] select:not([class*="giug-"]):not([class*="gius-"]) {
+              background-color: var(--gp-surface) !important; color: var(--gp-text) !important; border-color: var(--gp-border) !important;
             }
-
-            /* ── Input placeholder text ── */
-            html.gius-dark ::placeholder {
-                color: #6c7086 !important;
-                opacity: 1 !important;
+            html[data-gius-theme] .form-control:focus, html[data-gius-theme] input:focus,
+            html[data-gius-theme] select:focus, html[data-gius-theme] textarea:focus {
+              border-color: var(--gp-focus) !important; outline-color: var(--gp-focus) !important;
             }
 
-            /* ── Tables ── */
-            html.gius-dark table { border-color: #45475a !important; }
-            html.gius-dark thead, html.gius-dark tbody, html.gius-dark tfoot,
-            html.gius-dark tr { background-color: #1e1e2e !important; }
-            html.gius-dark tbody tr:nth-child(even) { background-color: #181825 !important; }
-            html.gius-dark thead tr { background-color: #11111b !important; }
-            html.gius-dark td, html.gius-dark th {
-                background-color: inherit !important;
-                color: #cdd6f4 !important;
-                border-color: #45475a !important;
+            html[data-gius-theme] input[type="submit"], html[data-gius-theme] input[type="button"],
+            html[data-gius-theme] button:not(#gius-dm-toggle):not(#gius-theme-pop):not([class*="giug-btn"]):not([class*="gius-btn"]) {
+              background-color: var(--gp-surface) !important; color: var(--gp-text) !important; border-color: var(--gp-border) !important;
             }
 
-            /* ── Form inputs ── */
-            html.gius-dark .form-control,
-            html.gius-dark input[type="text"],
-            html.gius-dark input[type="email"],
-            html.gius-dark input[type="password"],
-            html.gius-dark input[type="search"],
-            html.gius-dark input[type="number"],
-            html.gius-dark input[type="date"],
-            html.gius-dark textarea {
-                background-color: #313244 !important;
-                color: #cdd6f4 !important;
-                border-color: #45475a !important;
+            html[data-gius-theme] .panel, html[data-gius-theme] .panel-default, html[data-gius-theme] .panel-body,
+            html[data-gius-theme] .card, html[data-gius-theme] .card-body, html[data-gius-theme] .thumbnail,
+            html[data-gius-theme] a.thumbnail {
+              background-color: var(--gp-card) !important; border-color: var(--gp-border) !important; color: var(--gp-text) !important;
             }
-            html.gius-dark select:not([class*="giug-"]):not([class*="gius-"]) {
-                background-color: #313244 !important;
-                color: #cdd6f4 !important;
-                border-color: #45475a !important;
-            }
-            html.gius-dark .form-control:focus,
-            html.gius-dark input:focus,
-            html.gius-dark select:focus,
-            html.gius-dark textarea:focus {
-                border-color: #89b4fa !important;
-                outline-color: #89b4fa !important;
+            html[data-gius-theme] .panel-heading, html[data-gius-theme] .card-header,
+            html[data-gius-theme] .card-footer {
+              background-color: var(--gp-deep) !important; border-color: var(--gp-border) !important; color: var(--gp-text) !important;
             }
 
-            /* ── Native portal buttons (not GIUS custom buttons) ── */
-            html.gius-dark input[type="submit"],
-            html.gius-dark input[type="button"],
-            html.gius-dark button:not(#gius-dm-toggle):not([class*="giug-btn"]):not([class*="gius-btn"]) {
-                background-color: #45475a !important;
-                color: #cdd6f4 !important;
-                border-color: #585b70 !important;
+            html[data-gius-theme] .card-stats, html[data-gius-theme] .card-header-icon, html[data-gius-theme] .card-header-dark {
+              background: var(--gp-card) !important; color: var(--gp-text) !important;
+            }
+            html[data-gius-theme] .card-icon { background: var(--gp-deep) !important; }
+
+            html[data-gius-theme] .navbar-nav > li > a, html[data-gius-theme] .navbar-text { color: var(--gp-text) !important; }
+
+            html[data-gius-theme] .nav-tabs { border-color: var(--gp-border) !important; }
+            html[data-gius-theme] .nav-tabs .nav-link, html[data-gius-theme] .nav-tabs > li > a { color: var(--gp-text) !important; }
+            html[data-gius-theme] .nav-tabs .nav-link.active, html[data-gius-theme] .nav-tabs > li.active > a,
+            html[data-gius-theme] .nav-tabs > li.active > a:focus, html[data-gius-theme] .nav-tabs > li.active > a:hover {
+              background-color: var(--gp-bg) !important; border-color: var(--gp-border) var(--gp-border) var(--gp-bg) !important; color: var(--gp-text) !important;
             }
 
-            /* ── Bootstrap 3 panels + Bootstrap 4 cards + thumbnails ── */
-            html.gius-dark .panel,
-            html.gius-dark .panel-default,
-            html.gius-dark .panel-body,
-            html.gius-dark .card,
-            html.gius-dark .card-body,
-            html.gius-dark .thumbnail,
-            html.gius-dark a.thumbnail {
-                background-color: #181825 !important;
-                border-color: transparent !important;
-                color: #cdd6f4 !important;
+            html[data-gius-theme] .right-panel .dropdown-menu, html[data-gius-theme] .content .dropdown-menu {
+              background-color: var(--gp-surface) !important; border-color: var(--gp-border) !important;
             }
-            html.gius-dark .panel-heading,
-            html.gius-dark .card-header {
-                background-color: #11111b !important;
-                border-color: transparent !important;
-                color: #cdd6f4 !important;
-            }
-            html.gius-dark .card-footer {
-                background-color: #11111b !important;
-                border-color: transparent !important;
-                color: #cdd6f4 !important;
+            html[data-gius-theme] .right-panel .dropdown-menu > li > a { color: var(--gp-text) !important; }
+            html[data-gius-theme] .right-panel .dropdown-menu > li > a:hover,
+            html[data-gius-theme] .right-panel .dropdown-menu > .active > a {
+              background-color: var(--gp-border) !important; color: var(--gp-text) !important;
             }
 
-            /* ── Material Dashboard card-stats (no card-body — header IS the card) ── */
-            html.gius-dark .card-stats,
-            html.gius-dark .card-header-icon,
-            html.gius-dark .card-header-dark {
-                background: #181825 !important;
-                color: #cdd6f4 !important;
-            }
-            html.gius-dark .card-icon {
-                background: #11111b !important;
+            html[data-gius-theme] aside.left-panel .sub-menu, html[data-gius-theme] aside.left-panel .dropdown-menu,
+            html[data-gius-theme] #left-panel .sub-menu, html[data-gius-theme] #left-panel .dropdown-menu {
+              background-color: #272c33 !important; background: #272c33 !important;
             }
 
-            /* ── Top info bar (role/username strip above content) ── */
-            html.gius-dark .navbar-nav > li > a,
-            html.gius-dark .navbar-text {
-                color: #cdd6f4 !important;
-            }
-
-            /* ── Nav tabs ── */
-            html.gius-dark .nav-tabs {
-                border-color: #45475a !important;
-            }
-            html.gius-dark .nav-tabs .nav-link,
-            html.gius-dark .nav-tabs > li > a {
-                color: #cdd6f4 !important;
-            }
-            html.gius-dark .nav-tabs .nav-link.active,
-            html.gius-dark .nav-tabs > li.active > a,
-            html.gius-dark .nav-tabs > li.active > a:focus,
-            html.gius-dark .nav-tabs > li.active > a:hover {
-                background-color: #1e1e2e !important;
-                border-color: #45475a #45475a #1e1e2e !important;
-                color: #cdd6f4 !important;
-            }
-
-            /* ── Bootstrap dropdowns (content area only — sidebar excluded) ── */
-            html.gius-dark .right-panel .dropdown-menu,
-            html.gius-dark .content .dropdown-menu {
-                background-color: #313244 !important;
-                border-color: #45475a !important;
-            }
-            html.gius-dark .right-panel .dropdown-menu > li > a { color: #cdd6f4 !important; }
-            html.gius-dark .right-panel .dropdown-menu > li > a:hover,
-            html.gius-dark .right-panel .dropdown-menu > .active > a {
-                background-color: #45475a !important;
-                color: #cdd6f4 !important;
-            }
-
-            /* ── Sidebar sub-menus: lock to native sidebar color ── */
-            html.gius-dark aside.left-panel .sub-menu,
-            html.gius-dark aside.left-panel .dropdown-menu,
-            html.gius-dark #left-panel .sub-menu,
-            html.gius-dark #left-panel .dropdown-menu {
-                background-color: #272c33 !important;
-                background: #272c33 !important;
-            }
-
-            /* ── Wells ── */
-            html.gius-dark .well {
-                background-color: #11111b !important;
-                border-color: #45475a !important;
-                color: #cdd6f4 !important;
-            }
-
-            /* ── Modals ── */
-            html.gius-dark .modal-content {
-                background-color: #1e1e2e !important;
-                border-color: #45475a !important;
-            }
-            html.gius-dark .modal-header {
-                background-color: #181825 !important;
-                border-color: #45475a !important;
-                color: #cdd6f4 !important;
-            }
-            html.gius-dark .modal-body { color: #cdd6f4 !important; }
-            html.gius-dark .modal-footer {
-                background-color: #181825 !important;
-                border-color: #45475a !important;
-            }
-
-            /* ── Breadcrumbs ── */
-            html.gius-dark .breadcrumb {
-                background-color: #181825 !important;
-                border-color: #45475a !important;
-            }
-            html.gius-dark .breadcrumb > li { color: #cdd6f4 !important; }
-
-            /* ── Chosen.js select widget (used in portal dropdowns) ── */
-            html.gius-dark .chosen-container .chosen-single,
-            html.gius-dark .chosen-container-multi .chosen-choices {
-                background: #313244 !important;
-                color: #cdd6f4 !important;
-                border-color: #45475a !important;
-            }
-            html.gius-dark .chosen-container .chosen-drop {
-                background: #313244 !important;
-                border-color: #45475a !important;
-            }
-            html.gius-dark .chosen-results li {
-                color: #cdd6f4 !important;
-                background: #313244 !important;
-            }
-            html.gius-dark .chosen-results li.highlighted { background: #45475a !important; }
+            html[data-gius-theme] .well { background-color: var(--gp-deep) !important; border-color: var(--gp-border) !important; color: var(--gp-text) !important; }
+            html[data-gius-theme] .modal-content { background-color: var(--gp-bg) !important; border-color: var(--gp-border) !important; }
+            html[data-gius-theme] .modal-header { background-color: var(--gp-card) !important; border-color: var(--gp-border) !important; color: var(--gp-text) !important; }
+            html[data-gius-theme] .modal-body { color: var(--gp-text) !important; }
+            html[data-gius-theme] .modal-footer { background-color: var(--gp-card) !important; border-color: var(--gp-border) !important; }
+            html[data-gius-theme] .breadcrumb { background-color: var(--gp-card) !important; border-color: var(--gp-border) !important; }
+            html[data-gius-theme] .breadcrumb > li { color: var(--gp-text) !important; }
+            html[data-gius-theme] .chosen-container .chosen-single, html[data-gius-theme] .chosen-container-multi .chosen-choices { background: var(--gp-surface) !important; color: var(--gp-text) !important; border-color: var(--gp-border) !important; }
+            html[data-gius-theme] .chosen-container .chosen-drop { background: var(--gp-surface) !important; border-color: var(--gp-border) !important; }
+            html[data-gius-theme] .chosen-results li { color: var(--gp-text) !important; background: var(--gp-surface) !important; }
+            html[data-gius-theme] .chosen-results li.highlighted { background: var(--gp-border) !important; }
 
             /* ── GIUS notification panel: group list + labels + inputs ── */
             html.gius-dark .gius-group-list {
