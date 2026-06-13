@@ -195,6 +195,7 @@ test.describe('Home widget day-off note', () => {
     test('applied note renders with the detected day and an Adjust button', async ({ page }) => {
         await setup(page);
         await page.evaluate(() => {
+            localStorage.setItem('selectedDay', 'Sun'); // applied state coexists with a set day off
             window.__giuAttHome.setDayOffAutoState({ status: 'applied', code: 'Sun', occ: 6, acknowledged: false });
             window.__giuAttHome.renderHomeWidget({
                 label: 'Dec 2030',
@@ -212,6 +213,7 @@ test.describe('Home widget day-off note', () => {
     test('acknowledged applied state hides the note', async ({ page }) => {
         await setup(page);
         await page.evaluate(() => {
+            localStorage.setItem('selectedDay', 'Sun');
             window.__giuAttHome.setDayOffAutoState({ status: 'applied', code: 'Sun', occ: 6, acknowledged: true });
             window.__giuAttHome.renderHomeWidget({
                 label: 'Dec 2030',
@@ -317,5 +319,23 @@ test.describe('day-off fixes', () => {
         await page.evaluate(() => window.__giuAttHome.renderEnhancedUI());
         const val = await page.locator('#giu-dayoff-effective-date').inputValue();
         expect(val).toBe('2030-12-11');
+    });
+});
+
+test.describe('day-off remove regression', () => {
+    // Bug: after REMOVING the day off, the Home warn note stayed hidden because the cached
+    // summary had dayOffWarn:false (computed while configured). Warn must derive from live
+    // config, so an unconfigured day off always warns regardless of the cached flag.
+    test('Home warn note reappears when day off removed even if cache says dayOffWarn:false', async ({ page }) => {
+        await setup(page); // localStorage cleared → unconfigured
+        await page.evaluate(() => {
+            window.__giuAttHome.renderHomeWidget({
+                label: 'Dec 2030', dayOffWarn: false, // stale flag from when it was configured
+                stats: { balanceHM: '0:00:00', isPositiveOrZero: true, progressPercent: 100,
+                    progressColor: 'green', presentDays: 18, absentDays: 0, absentDayDetails: [] },
+            });
+        });
+        await expect(page.locator('.gius-att-dayoff.warn')).toBeVisible();
+        await expect(page.locator('.gius-att-card.gius-att-muted')).toBeVisible();
     });
 });
