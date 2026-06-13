@@ -6542,6 +6542,8 @@
             function computeCurrentMonthSummary(rows, todayYmd) {
                 const periods = groupRowsByPayrollPeriod(rows || []);
                 if (!periods.length) return { empty: true };
+                const auto = maybeAutoFillDayOff(periods);
+                const dayOffWarn = !!(auto && auto.status === "warn");
                 // Pick the period containing TODAY, not the latest period with data:
                 // the gate report lags ~a day, so right after a period flip (the 11th)
                 // the newest rows still belong to the previous payroll month and the
@@ -6549,11 +6551,12 @@
                 const todayKey = getPayrollPeriodKey(todayYmd || getTodayLocalYMD());
                 const current = periods.find(function (p) { return p.key === todayKey; });
                 if (current) {
-                    return { label: current.label, stats: buildPeriodStats(current.rows, current.start, current.end) };
+                    return { label: current.label, dayOffWarn: dayOffWarn, stats: buildPeriodStats(current.rows, current.start, current.end) };
                 }
                 const bounds = getPayrollPeriodBounds(todayKey);
                 return {
                     label: getPayrollPeriodLabel(todayKey),
+                    dayOffWarn: dayOffWarn,
                     stats: buildPeriodStats([], bounds.start, bounds.end),
                 };
             }
@@ -6769,11 +6772,59 @@
                     html.gius-dark .gius-att-action:hover{background:#2a2410;border-color:#f9e2af;}
                     html.gius-dark .gius-att-bal-green{background:#14351f;color:#a6e3a1;}
                     html.gius-dark .gius-att-bal-amber{background:#2a2410;color:#f9e2af;}
-                    html.gius-dark .gius-att-bal-red{background:#3a1414;color:#f38ba8;}`;
+                    html.gius-dark .gius-att-bal-red{background:#3a1414;color:#f38ba8;}
+                    .gius-att-dayoff{display:flex;align-items:center;gap:9px;flex-wrap:wrap;
+                        border-radius:8px;padding:9px 12px;margin:0 0 12px;font-size:13.5px;
+                        line-height:1.45;border-left:3px solid;}
+                    .gius-att-dayoff .ico{font-size:16px;flex:0 0 auto;}
+                    .gius-att-dayoff .txt{flex:1 1 auto;min-width:140px;}
+                    .gius-att-dayoff .txt strong{font-weight:800;}
+                    .gius-att-dayoff-btn{font:inherit;font-size:12.5px;font-weight:700;line-height:1;
+                        cursor:pointer;border-radius:6px;padding:7px 11px;border:1px solid transparent;
+                        flex:0 0 auto;}
+                    .gius-att-dayoff.applied{background:#ecfdf5;border-left-color:#16a34a;color:#065f46;}
+                    .gius-att-dayoff.applied .gius-att-dayoff-btn{background:#16a34a;color:#fff;}
+                    .gius-att-dayoff.warn{background:#fff8e1;border-left-color:#f59e0b;color:#8a6500;}
+                    .gius-att-dayoff.warn .gius-att-dayoff-btn{background:#b45309;color:#fff;}
+                    html.gius-dark .gius-att-dayoff.applied{background:#14351f;border-left-color:#a6e3a1;color:#a6e3a1;}
+                    html.gius-dark .gius-att-dayoff.applied .gius-att-dayoff-btn{background:#a6e3a1;color:#11271a;}
+                    html.gius-dark .gius-att-dayoff.warn{background:#2a2410;border-left-color:#f9e2af;color:#f9e2af;}
+                    html.gius-dark .gius-att-dayoff.warn .gius-att-dayoff-btn{background:#f9e2af;color:#2a2410;}
+                    .gius-att-card.gius-att-muted{opacity:.45;filter:grayscale(.6);}`;
                 const style = document.createElement("style");
                 style.id = "gius-att-style";
                 style.textContent = css;
                 document.head.appendChild(style);
+            }
+
+            // Build the day-off note element for the Home widget, or null if none is due.
+            // applied (not acknowledged) → green note + "Adjust in report"; warn → amber note
+            // + "Open report". Both buttons carry gius-btn so GIU Dark Mode leaves them styled.
+            function buildDayOffNoteForHome(summary) {
+                const state = getDayOffAutoState();
+                let cls = "";
+                let html = "";
+                if (summary && summary.dayOffWarn) {
+                    cls = "warn";
+                    html = `<span class="ico">&#9888;</span>
+                        <span class="txt">Set your weekly day off to see correct attendance.</span>
+                        <button type="button" class="gius-att-dayoff-btn gius-btn">Open report &rarr;</button>`;
+                } else if (state && state.status === "applied" && !state.acknowledged) {
+                    cls = "applied";
+                    const full = getSelectedDayOffFullName(state.code) || state.code;
+                    html = `<span class="ico">&#10003;</span>
+                        <span class="txt">Day off auto-set to <strong>${homeEsc(full)}</strong>.</span>
+                        <button type="button" class="gius-att-dayoff-btn gius-btn">Adjust in report &rarr;</button>`;
+                } else {
+                    return null;
+                }
+                const el = document.createElement("div");
+                el.className = "gius-att-dayoff " + cls;
+                el.innerHTML = html;
+                el.querySelector(".gius-att-dayoff-btn").addEventListener("click", function () {
+                    window.location.href = REPORT_DATA_URL;
+                });
+                return el;
             }
 
             function renderHomeWidget(summary, opts) {
@@ -6824,6 +6875,18 @@
                     </div>
                     ${absentBlock}
                     <a class="gius-att-link" href="${REPORT_DATA_URL}">View full report →</a>`;
+
+                const dayOffNote = buildDayOffNoteForHome(summary);
+                if (dayOffNote) {
+                    const head = host.querySelector(".gius-att-head");
+                    if (head && head.nextSibling) head.parentNode.insertBefore(dayOffNote, head.nextSibling);
+                    else host.insertBefore(dayOffNote, host.firstChild);
+                }
+                // Grey the (wrong) numbers while the day off is unset — never trust a miscalc.
+                if (summary && summary.dayOffWarn) {
+                    const card = host.querySelector(".gius-att-card");
+                    if (card) card.classList.add("gius-att-muted");
+                }
 
                 const toggle = host.querySelector("#gius-att-toggle-absent");
                 if (toggle) {
