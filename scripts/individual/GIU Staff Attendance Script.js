@@ -5,7 +5,7 @@
 // @icon        data:image/png;base64,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
 // @include     https://portal.giu-uni.de/*
 // @namespace   Cyn0
-// @version     3.1.5
+// @version     3.1.6
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @run-at      document-idle
@@ -88,7 +88,8 @@
                 tableFilters: "giuTableFiltersV1",
                 sectionState: "giuSectionStateV1",
                 onboardingCompleted: "giuOnboardingCompletedV1",
-                onboardingState: "giuOnboardingStateV1"
+                onboardingState: "giuOnboardingStateV1",
+                dayOffAutoState: "giuDayOffAutoStateV1"
             };
 
             const PAGINATION_DEFAULT_PAGE_SIZE = 10;
@@ -347,6 +348,30 @@
 
             function getSelectedDayOffCode() {
                 return localStorage.getItem(STORAGE_KEYS.selectedDay) || "";
+            }
+
+            function isDayOffConfigured() {
+                return getSelectedDayOffCode() !== "" || getStoredDayOffSchedule().length > 0;
+            }
+
+            // Ephemeral auto-detect UI state (like getOnboardingState, not stored domain data).
+            function getDayOffAutoState() {
+                try {
+                    const raw = localStorage.getItem(STORAGE_KEYS.dayOffAutoState);
+                    const parsed = raw ? JSON.parse(raw) : null;
+                    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return null;
+                    return parsed;
+                } catch {
+                    return null;
+                }
+            }
+
+            function setDayOffAutoState(state) {
+                if (!state || typeof state !== "object") {
+                    localStorage.removeItem(STORAGE_KEYS.dayOffAutoState);
+                    return;
+                }
+                localStorage.setItem(STORAGE_KEYS.dayOffAutoState, JSON.stringify(state));
             }
 
             function isAuditModeEnabled() {
@@ -1284,6 +1309,37 @@
                         height: 3px;
                         background: #ffc107;
                     }
+
+                    .giu-dayoff-notice {
+                        display: flex; align-items: flex-start; gap: 10px; flex-wrap: wrap;
+                        border-radius: 8px; padding: 11px 12px; margin: 0 0 14px;
+                        border-left: 4px solid; font-size: 13.5px; line-height: 1.45;
+                    }
+                    .giu-dayoff-notice .ico { font-size: 16px; line-height: 1.3; flex: 0 0 auto; }
+                    .giu-dayoff-notice .body { flex: 1 1 240px; min-width: 200px; }
+                    .giu-dayoff-notice .body strong { font-weight: 800; }
+                    .giu-dayoff-notice .sub { display: block; font-size: 12px; opacity: .85; margin-top: 2px; }
+                    .giu-dayoff-notice .acts { display: inline-flex; gap: 7px; flex-wrap: wrap; align-items: center; }
+                    .giu-dayoff-notice .gius-btn {
+                        font: inherit; font-size: 12.5px; font-weight: 700; line-height: 1; cursor: pointer;
+                        border-radius: 6px; padding: 7px 11px; border: 1px solid transparent;
+                    }
+                    .giu-dayoff-notice .dn-primary { background: #272c33; color: #fff; }
+                    .giu-dayoff-notice .dn-ghost { background: transparent; }
+                    .giu-dayoff-notice .dn-x {
+                        font: inherit; font-size: 15px; font-weight: 700; line-height: 1; cursor: pointer;
+                        background: transparent; border: none; opacity: .6; padding: 2px 4px;
+                    }
+                    .giu-dayoff-notice .dn-x:hover { opacity: 1; }
+                    .giu-dayoff-notice.applied { background: #ecfdf5; border-left-color: #16a34a; color: #065f46; }
+                    .giu-dayoff-notice.applied .dn-ghost { color: #065f46; border-color: #a7d8c1; }
+                    .giu-dayoff-notice.warn { background: #fff8e1; border-left-color: #f59e0b; color: #8a6500; }
+                    .giu-dayoff-notice.warn .dn-primary { background: #b45309; }
+                    html.gius-dark .giu-dayoff-notice.applied { background: #14351f; border-left-color: #a6e3a1; color: #a6e3a1; }
+                    html.gius-dark .giu-dayoff-notice.applied .dn-primary { background: #a6e3a1; color: #11271a; }
+                    html.gius-dark .giu-dayoff-notice.applied .dn-ghost { color: #a6e3a1; border-color: #3a6b4d; }
+                    html.gius-dark .giu-dayoff-notice.warn { background: #2a2410; border-left-color: #f9e2af; color: #f9e2af; }
+                    html.gius-dark .giu-dayoff-notice.warn .dn-primary { background: #f9e2af; color: #2a2410; }
 
                     .giu-config-title,
                     .giu-attendance-section-title {
@@ -4977,6 +5033,93 @@
                 };
             }
 
+            // Detect the staff member's weekly day off from attendance history.
+            // The day off is the single weekday that is consistently ZERO-attendance
+            // across the data window while the rest of the week is worked. Returns
+            // { code, fullName, occ } when confident, else null. Pure: reads only the
+            // passed periods + stored holidays.
+            const DAYOFF_WEEKDAYS = [
+                { code: "Sat", name: "Saturday" },
+                { code: "Sun", name: "Sunday" },
+                { code: "Mon", name: "Monday" },
+                { code: "Tue", name: "Tuesday" },
+                { code: "Wed", name: "Wednesday" },
+                { code: "Thu", name: "Thursday" }
+            ];
+            const DAYOFF_MIN_OCCURRENCES = 3;
+
+            function detectDayOffCode(periods) {
+                const rows = (periods || []).flatMap(function (p) { return (p && p.rows) || []; });
+                const attendedByDate = new Map();
+                let minDate = null;
+                let maxDate = null;
+                rows.forEach(function (row) {
+                    const ymd = normalizeYMD(row && row.date ? row.date : "");
+                    if (!ymd) return;
+                    if (!minDate || ymd < minDate) minDate = ymd;
+                    if (!maxDate || ymd > maxDate) maxDate = ymd;
+                    if (hasValidLastOut(row.lastOut)) attendedByDate.set(ymd, true);
+                });
+                if (!minDate || !maxDate) return null;
+
+                const holidays = getStoredHolidays();
+                const nameToTally = new Map(); // dayName -> { occ, att }
+                eachYmdInRange(minDate, maxDate, function (ymd) {
+                    const dayName = formatDateToDayName(ymd);
+                    if (!dayName || isFixedNonWorkingDay(dayName)) return; // skip Friday
+                    if (isDateHoliday(ymd, holidays)) return;              // skip holidays
+                    const tally = nameToTally.get(dayName) || { occ: 0, att: 0 };
+                    tally.occ += 1;
+                    if (attendedByDate.get(ymd)) tally.att += 1;
+                    nameToTally.set(dayName, tally);
+                });
+
+                const candidates = [];
+                let workedWeekdayCount = 0;
+                DAYOFF_WEEKDAYS.forEach(function (wd) {
+                    const tally = nameToTally.get(wd.name);
+                    if (!tally) return;
+                    if (tally.att > 0) workedWeekdayCount += 1;
+                    if (tally.att === 0 && tally.occ >= DAYOFF_MIN_OCCURRENCES) {
+                        candidates.push({ code: wd.code, fullName: wd.name, occ: tally.occ });
+                    }
+                });
+
+                // Confident only when exactly one zero-attendance weekday exists AND the
+                // person clearly works a normal week (>= 2 other weekdays attended).
+                if (candidates.length !== 1 || workedWeekdayCount < 2) return null;
+                return candidates[0];
+            }
+
+            // Decide what to do about an unconfigured day off, given the loaded periods.
+            // Returns one of:
+            //   { status: 'applied', code, fullName, occ }  — auto-filled selectedDay
+            //   { status: 'warn' }                          — unset and not confidently detectable
+            //   null                                         — already configured / previously undone
+            // Must run BEFORE buildPeriodStats so rendered numbers use the new day off.
+            function maybeAutoFillDayOff(periods) {
+                if (isDayOffConfigured()) return null;
+                const state = getDayOffAutoState();
+                if (state && state.status === "undone") return { status: "warn" };
+
+                const detected = detectDayOffCode(periods);
+                if (!detected) return { status: "warn" };
+
+                localStorage.setItem(STORAGE_KEYS.selectedDay, detected.code);
+                setDayOffAutoState({
+                    status: "applied",
+                    code: detected.code,
+                    occ: detected.occ,
+                    acknowledged: false
+                });
+                return {
+                    status: "applied",
+                    code: detected.code,
+                    fullName: detected.fullName,
+                    occ: detected.occ
+                };
+            }
+
             function buildPeriodStats(periodRows, periodStart, periodEnd) {
                 const acc = createPeriodStatsAccumulator();
                 const today = getTodayLocalYMD();
@@ -6377,6 +6520,70 @@
                 return panel;
             }
 
+            // Build the report-page day-off banner, or null if none is due.
+            // Mirrors the Home note but with full controls (Change / Undo / ×).
+            // `autoResult` is the return of maybeAutoFillDayOff for this render.
+            function buildDayOffNoticeForReport(autoResult, onRerender) {
+                const state = getDayOffAutoState();
+                const notice = document.createElement("div");
+
+                if (autoResult && autoResult.status === "warn") {
+                    notice.className = "giu-dayoff-notice warn";
+                    notice.innerHTML = `<span class="ico">&#9888;</span>
+                        <span class="body">Set your weekly <strong>day off</strong> — attendance is being miscalculated until you do.
+                            <span class="sub">Couldn't auto-detect it from your records.</span></span>
+                        <span class="acts"><button type="button" class="gius-btn dn-primary dn-set">Set day off</button></span>`;
+                    notice.querySelector(".dn-set").addEventListener("click", function () {
+                        expandConfigAndScrollToDayOff();
+                    });
+                    return notice;
+                }
+
+                if (state && state.status === "applied" && !state.acknowledged) {
+                    notice.className = "giu-dayoff-notice applied";
+                    const full = getSelectedDayOffFullName(state.code) || state.code;
+                    const occ = state.occ || 0;
+                    notice.innerHTML = `<span class="ico">&#10003;</span>
+                        <span class="body">Day off set to <strong>${escapeHtmlAttr(full)}</strong> — detected from your attendance.
+                            <span class="sub">0 check-ins on ${occ} ${escapeHtmlAttr(full)}s; you worked every other weekday.</span></span>
+                        <span class="acts">
+                            <button type="button" class="gius-btn dn-primary dn-change">Change</button>
+                            <button type="button" class="gius-btn dn-ghost dn-undo">Undo</button>
+                        </span>
+                        <button type="button" class="dn-x" title="Dismiss">&times;</button>`;
+                    notice.querySelector(".dn-change").addEventListener("click", function () {
+                        expandConfigAndScrollToDayOff();
+                    });
+                    notice.querySelector(".dn-undo").addEventListener("click", function () {
+                        localStorage.removeItem(STORAGE_KEYS.selectedDay);
+                        setDayOffAutoState({ status: "undone" });
+                        if (typeof onRerender === "function") onRerender();
+                    });
+                    notice.querySelector(".dn-x").addEventListener("click", function () {
+                        setDayOffAutoState(Object.assign({}, getDayOffAutoState(), { acknowledged: true }));
+                        notice.remove();
+                    });
+                    return notice;
+                }
+
+                return null;
+            }
+
+            // Expand the config panel (reusing the existing onboarding helper, which knows the
+            // real .giu-collapsible-header selector) and bring the Day Off selector into view.
+            function expandConfigAndScrollToDayOff() {
+                expandSettingsPanelForGuide();
+                const sel = document.getElementById("giu-day-select");
+                if (sel) sel.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+
+            // Minimal attribute-safe escaper for day names (a-z only in practice).
+            function escapeHtmlAttr(s) {
+                return String(s).replace(/[&<>"']/g, function (c) {
+                    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+                });
+            }
+
             function renderEnhancedUI() {
                 if (!isTargetReportPage()) return;
                 applyMonthlyAnnualLeaveAccrual();
@@ -6400,6 +6607,8 @@
 
                 const periods = groupRowsByPayrollPeriod(getAttendanceRows());
 
+                const dayOffAuto = maybeAutoFillDayOff(periods);
+
                 // Day-off dropdown changes are staged; only "Apply from" persists schedule changes.
                 const noopDayChange = function () {};
                 const configPanel = createConfigPanel(
@@ -6420,6 +6629,9 @@
 
                 container.appendChild(configPanel);
 
+                const dayOffNotice = buildDayOffNoticeForReport(dayOffAuto, renderEnhancedUI);
+                if (dayOffNotice) container.insertBefore(dayOffNotice, container.firstChild);
+
                 reportTable.parentNode.insertBefore(container, reportTable);
                 window.scrollTo({ top: renderState.scrollY, behavior: "auto" });
 
@@ -6430,6 +6642,8 @@
             function computeCurrentMonthSummary(rows, todayYmd) {
                 const periods = groupRowsByPayrollPeriod(rows || []);
                 if (!periods.length) return { empty: true };
+                const auto = maybeAutoFillDayOff(periods);
+                const dayOffWarn = !!(auto && auto.status === "warn");
                 // Pick the period containing TODAY, not the latest period with data:
                 // the gate report lags ~a day, so right after a period flip (the 11th)
                 // the newest rows still belong to the previous payroll month and the
@@ -6437,11 +6651,12 @@
                 const todayKey = getPayrollPeriodKey(todayYmd || getTodayLocalYMD());
                 const current = periods.find(function (p) { return p.key === todayKey; });
                 if (current) {
-                    return { label: current.label, stats: buildPeriodStats(current.rows, current.start, current.end) };
+                    return { label: current.label, dayOffWarn: dayOffWarn, stats: buildPeriodStats(current.rows, current.start, current.end) };
                 }
                 const bounds = getPayrollPeriodBounds(todayKey);
                 return {
                     label: getPayrollPeriodLabel(todayKey),
+                    dayOffWarn: dayOffWarn,
                     stats: buildPeriodStats([], bounds.start, bounds.end),
                 };
             }
@@ -6657,11 +6872,59 @@
                     html.gius-dark .gius-att-action:hover{background:#2a2410;border-color:#f9e2af;}
                     html.gius-dark .gius-att-bal-green{background:#14351f;color:#a6e3a1;}
                     html.gius-dark .gius-att-bal-amber{background:#2a2410;color:#f9e2af;}
-                    html.gius-dark .gius-att-bal-red{background:#3a1414;color:#f38ba8;}`;
+                    html.gius-dark .gius-att-bal-red{background:#3a1414;color:#f38ba8;}
+                    .gius-att-dayoff{display:flex;align-items:center;gap:9px;flex-wrap:wrap;
+                        border-radius:8px;padding:9px 12px;margin:0 0 12px;font-size:13.5px;
+                        line-height:1.45;border-left:3px solid;}
+                    .gius-att-dayoff .ico{font-size:16px;flex:0 0 auto;}
+                    .gius-att-dayoff .txt{flex:1 1 auto;min-width:140px;}
+                    .gius-att-dayoff .txt strong{font-weight:800;}
+                    .gius-att-dayoff-btn{font:inherit;font-size:12.5px;font-weight:700;line-height:1;
+                        cursor:pointer;border-radius:6px;padding:7px 11px;border:1px solid transparent;
+                        flex:0 0 auto;}
+                    .gius-att-dayoff.applied{background:#ecfdf5;border-left-color:#16a34a;color:#065f46;}
+                    .gius-att-dayoff.applied .gius-att-dayoff-btn{background:#16a34a;color:#fff;}
+                    .gius-att-dayoff.warn{background:#fff8e1;border-left-color:#f59e0b;color:#8a6500;}
+                    .gius-att-dayoff.warn .gius-att-dayoff-btn{background:#b45309;color:#fff;}
+                    html.gius-dark .gius-att-dayoff.applied{background:#14351f;border-left-color:#a6e3a1;color:#a6e3a1;}
+                    html.gius-dark .gius-att-dayoff.applied .gius-att-dayoff-btn{background:#a6e3a1;color:#11271a;}
+                    html.gius-dark .gius-att-dayoff.warn{background:#2a2410;border-left-color:#f9e2af;color:#f9e2af;}
+                    html.gius-dark .gius-att-dayoff.warn .gius-att-dayoff-btn{background:#f9e2af;color:#2a2410;}
+                    .gius-att-card.gius-att-muted{opacity:.45;filter:grayscale(.6);}`;
                 const style = document.createElement("style");
                 style.id = "gius-att-style";
                 style.textContent = css;
                 document.head.appendChild(style);
+            }
+
+            // Build the day-off note element for the Home widget, or null if none is due.
+            // applied (not acknowledged) → green note + "Adjust in report"; warn → amber note
+            // + "Open report". Both buttons carry gius-btn so GIU Dark Mode leaves them styled.
+            function buildDayOffNoteForHome(summary) {
+                const state = getDayOffAutoState();
+                let cls = "";
+                let html = "";
+                if (summary && summary.dayOffWarn) {
+                    cls = "warn";
+                    html = `<span class="ico">&#9888;</span>
+                        <span class="txt">Set your weekly day off to see correct attendance.</span>
+                        <button type="button" class="gius-att-dayoff-btn gius-btn">Open report &rarr;</button>`;
+                } else if (state && state.status === "applied" && !state.acknowledged) {
+                    cls = "applied";
+                    const full = getSelectedDayOffFullName(state.code) || state.code;
+                    html = `<span class="ico">&#10003;</span>
+                        <span class="txt">Day off auto-set to <strong>${homeEsc(full)}</strong>.</span>
+                        <button type="button" class="gius-att-dayoff-btn gius-btn">Adjust in report &rarr;</button>`;
+                } else {
+                    return null;
+                }
+                const el = document.createElement("div");
+                el.className = "gius-att-dayoff " + cls;
+                el.innerHTML = html;
+                el.querySelector(".gius-att-dayoff-btn").addEventListener("click", function () {
+                    window.location.href = REPORT_DATA_URL;
+                });
+                return el;
             }
 
             function renderHomeWidget(summary, opts) {
@@ -6713,6 +6976,18 @@
                     ${absentBlock}
                     <a class="gius-att-link" href="${REPORT_DATA_URL}">View full report →</a>`;
 
+                const dayOffNote = buildDayOffNoteForHome(summary);
+                if (dayOffNote) {
+                    const head = host.querySelector(".gius-att-head");
+                    if (head && head.nextSibling) head.parentNode.insertBefore(dayOffNote, head.nextSibling);
+                    else host.insertBefore(dayOffNote, host.firstChild);
+                }
+                // Grey the (wrong) numbers while the day off is unset — never trust a miscalc.
+                if (summary && summary.dayOffWarn) {
+                    const card = host.querySelector(".gius-att-card");
+                    if (card) card.classList.add("gius-att-muted");
+                }
+
                 const toggle = host.querySelector("#gius-att-toggle-absent");
                 if (toggle) {
                     toggle.addEventListener("click", function () {
@@ -6762,6 +7037,13 @@
                 saveHomeCache,
                 renderHomeWidget,
                 setHomeRowsForTest: function (rows) { homeLastRows = Array.isArray(rows) ? rows : []; },
+                isDayOffConfigured,
+                getDayOffAutoState,
+                setDayOffAutoState,
+                groupRowsByPayrollPeriod,
+                detectDayOffCode,
+                maybeAutoFillDayOff,
+                renderEnhancedUI,
             };
 
             try {
