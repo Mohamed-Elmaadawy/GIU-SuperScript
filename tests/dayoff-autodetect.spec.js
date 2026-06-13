@@ -190,3 +190,49 @@ test.describe('maybeAutoFillDayOff', () => {
         expect(r.selectedDay).toBe(null);
     });
 });
+
+test.describe('Home widget day-off note', () => {
+    test('applied note renders with the detected day and an Adjust button', async ({ page }) => {
+        await setup(page);
+        await page.evaluate(() => {
+            window.__giuAttHome.setDayOffAutoState({ status: 'applied', code: 'Sun', occ: 6, acknowledged: false });
+            window.__giuAttHome.renderHomeWidget({
+                label: 'Dec 2030',
+                stats: { balanceHM: '0:00:00', isPositiveOrZero: true, progressPercent: 100,
+                    progressColor: 'green', presentDays: 18, absentDays: 0, absentDayDetails: [] },
+            });
+        });
+        await expect(page.locator('.gius-att-dayoff.applied')).toBeVisible();
+        await expect(page.locator('.gius-att-dayoff.applied')).toContainText('Sunday');
+        const btn = page.locator('.gius-att-dayoff.applied .gius-att-dayoff-btn');
+        await expect(btn).toBeVisible();
+        await expect(btn).toHaveClass(/gius-btn/);
+    });
+
+    test('acknowledged applied state hides the note', async ({ page }) => {
+        await setup(page);
+        await page.evaluate(() => {
+            window.__giuAttHome.setDayOffAutoState({ status: 'applied', code: 'Sun', occ: 6, acknowledged: true });
+            window.__giuAttHome.renderHomeWidget({
+                label: 'Dec 2030',
+                stats: { balanceHM: '0:00:00', isPositiveOrZero: true, progressPercent: 100,
+                    progressColor: 'green', presentDays: 18, absentDays: 0, absentDayDetails: [] },
+            });
+        });
+        await expect(page.locator('.gius-att-dayoff')).toHaveCount(0);
+    });
+
+    test('warn note renders + greys numbers when summary flags dayOffWarn', async ({ page }) => {
+        await setup(page);
+        await page.evaluate(() => {
+            window.__giuAttHome.renderHomeWidget({
+                label: 'Dec 2030', dayOffWarn: true,
+                stats: { balanceHM: '0:00:00', isPositiveOrZero: true, progressPercent: 100,
+                    progressColor: 'green', presentDays: 18, absentDays: 0, absentDayDetails: [] },
+            });
+        });
+        await expect(page.locator('.gius-att-dayoff.warn')).toBeVisible();
+        await expect(page.locator('.gius-att-dayoff.warn .gius-att-dayoff-btn')).toContainText('Open report');
+        await expect(page.locator('.gius-att-card.gius-att-muted')).toBeVisible();
+    });
+});
