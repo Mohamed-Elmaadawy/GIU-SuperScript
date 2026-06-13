@@ -286,3 +286,36 @@ test.describe('Report page day-off banner', () => {
         await expect(page.locator('.giu-dayoff-notice')).toHaveCount(0);
     });
 });
+
+test.describe('day-off fixes', () => {
+    // Bug: Home warn note lingered after the day off was set because dayOffWarn was
+    // baked into the cached summary. It must be gated on live isDayOffConfigured().
+    test('Home warn note hidden once a day off is configured (stale dayOffWarn ignored)', async ({ page }) => {
+        await setup(page);
+        await page.evaluate(() => {
+            localStorage.setItem('selectedDay', 'Sat'); // configured
+            window.__giuAttHome.renderHomeWidget({
+                label: 'Dec 2030', dayOffWarn: true,
+                stats: { balanceHM: '0:00:00', isPositiveOrZero: true, progressPercent: 100,
+                    progressColor: 'green', presentDays: 18, absentDays: 0, absentDayDetails: [] },
+            });
+        });
+        await expect(page.locator('.gius-att-dayoff.warn')).toHaveCount(0);
+        await expect(page.locator('.gius-att-card.gius-att-muted')).toHaveCount(0);
+    });
+
+    // Improvement: with no day off set, "Apply from" defaults to the earliest attendance
+    // row (att-swift fixture earliest = 2030-12-11) instead of today.
+    test('Apply-from defaults to earliest attendance date when day off unset', async ({ page }) => {
+        const SWIFT_URL = 'https://portal.giu-uni.de/GIUb/EXT/SwiftReports_m.aspx?swiftreportid=866&executereport=1';
+        page.on('pageerror', err => console.error('PAGE ERROR:', err.message));
+        await page.route('**/SwiftReports_m.aspx**', r => r.fulfill({ contentType: 'text/html; charset=utf-8', body: swiftHtml }));
+        await page.goto(SWIFT_URL, { waitUntil: 'domcontentloaded' });
+        await page.evaluate(() => localStorage.clear());
+        await page.evaluate(() => { window.__giuAttDisableAutoRun = true; });
+        await page.evaluate(scriptSrc);
+        await page.evaluate(() => window.__giuAttHome.renderEnhancedUI());
+        const val = await page.locator('#giu-dayoff-effective-date').inputValue();
+        expect(val).toBe('2030-12-11');
+    });
+});
