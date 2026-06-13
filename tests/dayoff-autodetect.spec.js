@@ -50,4 +50,16 @@ test.describe('day-off auto-state helpers', () => {
         expect(r.initial).toBe(null);
         expect(r.stored).toEqual({ status: 'applied', code: 'Sun', occ: 6, acknowledged: false });
     });
+
+    test('setDayOffAutoState clears the key when passed a non-object', async ({ page }) => {
+        await setup(page);
+        const after = await page.evaluate(() => {
+            const api = window.__giuAttHome;
+            api.setDayOffAutoState({ status: 'applied', code: 'Sun', occ: 6, acknowledged: false });
+            api.setDayOffAutoState(null);
+            return { state: api.getDayOffAutoState(), raw: localStorage.getItem('giuDayOffAutoStateV1') };
+        });
+        expect(after.state).toBe(null);
+        expect(after.raw).toBe(null);
+    });
 });

@@ -354,11 +354,13 @@
                 return getSelectedDayOffCode() !== "" || getStoredDayOffSchedule().length > 0;
             }
 
+            // Ephemeral auto-detect UI state (like getOnboardingState, not stored domain data).
             function getDayOffAutoState() {
                 try {
                     const raw = localStorage.getItem(STORAGE_KEYS.dayOffAutoState);
                     const parsed = raw ? JSON.parse(raw) : null;
-                    return parsed && typeof parsed === "object" ? parsed : null;
+                    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return null;
+                    return parsed;
                 } catch {
                     return null;
                 }
