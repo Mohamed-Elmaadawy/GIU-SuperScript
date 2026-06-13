@@ -36,7 +36,12 @@ test.describe('theme state + migration', () => {
 
   test('migrates legacy gius-dark-mode=0 to off', async ({ page }) => {
     await setup(page, { storage: { 'gius-dark-mode': '0' } });
-    expect(await page.evaluate(() => window.__giuTheme.getMode())).toBe('off');
+    const r = await page.evaluate(() => ({
+      mode: window.__giuTheme.getMode(),
+      stored: localStorage.getItem('gius-theme'),
+    }));
+    expect(r.mode).toBe('off');
+    expect(r.stored).toBe('off');
   });
 
   test('no storage at all defaults to off', async ({ page }) => {
