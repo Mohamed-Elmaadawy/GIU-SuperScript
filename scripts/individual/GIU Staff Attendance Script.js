@@ -5060,6 +5060,35 @@
                 return candidates[0];
             }
 
+            // Decide what to do about an unconfigured day off, given the loaded periods.
+            // Returns one of:
+            //   { status: 'applied', code, fullName, occ }  — auto-filled selectedDay
+            //   { status: 'warn' }                          — unset and not confidently detectable
+            //   null                                         — already configured / previously undone
+            // Must run BEFORE buildPeriodStats so rendered numbers use the new day off.
+            function maybeAutoFillDayOff(periods) {
+                if (isDayOffConfigured()) return null;
+                const state = getDayOffAutoState();
+                if (state && state.status === "undone") return { status: "warn" };
+
+                const detected = detectDayOffCode(periods);
+                if (!detected) return { status: "warn" };
+
+                localStorage.setItem(STORAGE_KEYS.selectedDay, detected.code);
+                setDayOffAutoState({
+                    status: "applied",
+                    code: detected.code,
+                    occ: detected.occ,
+                    acknowledged: false
+                });
+                return {
+                    status: "applied",
+                    code: detected.code,
+                    fullName: detected.fullName,
+                    occ: detected.occ
+                };
+            }
+
             function buildPeriodStats(periodRows, periodStart, periodEnd) {
                 const acc = createPeriodStatsAccumulator();
                 const today = getTodayLocalYMD();
@@ -6850,6 +6879,7 @@
                 setDayOffAutoState,
                 groupRowsByPayrollPeriod,
                 detectDayOffCode,
+                maybeAutoFillDayOff,
             };
 
             try {

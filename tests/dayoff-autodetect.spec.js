@@ -131,3 +131,62 @@ test.describe('detectDayOffCode', () => {
         expect(r && r.code).toBe('Sun');
     });
 });
+
+test.describe('maybeAutoFillDayOff', () => {
+    function weeksWithSundayOff() {
+        const rows = [];
+        const starts = ['2026-06-06', '2026-06-13', '2026-06-20', '2026-06-27', '2026-07-04', '2026-07-11'];
+        const present = { 0: false, 1: true, 2: true, 3: true, 4: true, 6: true };
+        starts.forEach(sat => {
+            const base = new Date(sat + 'T00:00:00Z');
+            for (let i = 0; i < 7; i++) {
+                const d = new Date(base.getTime()); d.setUTCDate(d.getUTCDate() - 1 + i);
+                const dow = d.getUTCDay();
+                if (dow === 5 || !present[dow]) continue;
+                rows.push({ date: d.toISOString().slice(0, 10), firstIn: '8:00:00 AM', lastOut: '4:00:00 PM', duration: '08:00:00' });
+            }
+        });
+        return rows;
+    }
+    const run = (page, rows) => page.evaluate((rs) => {
+        const periods = window.__giuAttHome.groupRowsByPayrollPeriod(rs);
+        const result = window.__giuAttHome.maybeAutoFillDayOff(periods);
+        return {
+            result,
+            selectedDay: localStorage.getItem('selectedDay'),
+            state: window.__giuAttHome.getDayOffAutoState(),
+        };
+    }, rows);
+
+    test('confident -> persists selectedDay and applied state', async ({ page }) => {
+        await setup(page);
+        const r = await run(page, weeksWithSundayOff());
+        expect(r.result).toEqual({ status: 'applied', code: 'Sun', fullName: 'Sunday', occ: expect.any(Number) });
+        expect(r.selectedDay).toBe('Sun');
+        expect(r.state).toMatchObject({ status: 'applied', code: 'Sun', acknowledged: false });
+    });
+
+    test('does nothing when day off already configured', async ({ page }) => {
+        await setup(page);
+        await page.evaluate(() => localStorage.setItem('selectedDay', 'Fri'));
+        const r = await run(page, weeksWithSundayOff());
+        expect(r.result).toBe(null);
+        expect(r.selectedDay).toBe('Fri');
+    });
+
+    test('undone state blocks re-fill but still warns', async ({ page }) => {
+        await setup(page);
+        await page.evaluate(() => window.__giuAttHome.setDayOffAutoState({ status: 'undone' }));
+        const r = await run(page, weeksWithSundayOff());
+        expect(r.result).toEqual({ status: 'warn' });
+        expect(r.selectedDay).toBe(null);
+    });
+
+    test('not confident -> returns warn, no persist', async ({ page }) => {
+        await setup(page);
+        const oneWeek = weeksWithSundayOff().filter(row => row.date < '2026-06-13');
+        const r = await run(page, oneWeek);
+        expect(r.result).toEqual({ status: 'warn' });
+        expect(r.selectedDay).toBe(null);
+    });
+});
