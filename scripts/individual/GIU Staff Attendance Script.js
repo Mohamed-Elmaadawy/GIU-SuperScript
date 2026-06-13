@@ -88,7 +88,8 @@
                 tableFilters: "giuTableFiltersV1",
                 sectionState: "giuSectionStateV1",
                 onboardingCompleted: "giuOnboardingCompletedV1",
-                onboardingState: "giuOnboardingStateV1"
+                onboardingState: "giuOnboardingStateV1",
+                dayOffAutoState: "giuDayOffAutoStateV1"
             };
 
             const PAGINATION_DEFAULT_PAGE_SIZE = 10;
@@ -347,6 +348,28 @@
 
             function getSelectedDayOffCode() {
                 return localStorage.getItem(STORAGE_KEYS.selectedDay) || "";
+            }
+
+            function isDayOffConfigured() {
+                return getSelectedDayOffCode() !== "" || getStoredDayOffSchedule().length > 0;
+            }
+
+            function getDayOffAutoState() {
+                try {
+                    const raw = localStorage.getItem(STORAGE_KEYS.dayOffAutoState);
+                    const parsed = raw ? JSON.parse(raw) : null;
+                    return parsed && typeof parsed === "object" ? parsed : null;
+                } catch {
+                    return null;
+                }
+            }
+
+            function setDayOffAutoState(state) {
+                if (!state || typeof state !== "object") {
+                    localStorage.removeItem(STORAGE_KEYS.dayOffAutoState);
+                    return;
+                }
+                localStorage.setItem(STORAGE_KEYS.dayOffAutoState, JSON.stringify(state));
             }
 
             function isAuditModeEnabled() {
@@ -6762,6 +6785,9 @@
                 saveHomeCache,
                 renderHomeWidget,
                 setHomeRowsForTest: function (rows) { homeLastRows = Array.isArray(rows) ? rows : []; },
+                isDayOffConfigured,
+                getDayOffAutoState,
+                setDayOffAutoState,
             };
 
             try {
