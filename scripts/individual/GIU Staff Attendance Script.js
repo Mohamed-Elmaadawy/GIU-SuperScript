@@ -5002,6 +5002,64 @@
                 };
             }
 
+            // Detect the staff member's weekly day off from attendance history.
+            // The day off is the single weekday that is consistently ZERO-attendance
+            // across the data window while the rest of the week is worked. Returns
+            // { code, fullName, occ } when confident, else null. Pure: reads only the
+            // passed periods + stored holidays.
+            const DAYOFF_WEEKDAYS = [
+                { code: "Sat", name: "Saturday" },
+                { code: "Sun", name: "Sunday" },
+                { code: "Mon", name: "Monday" },
+                { code: "Tue", name: "Tuesday" },
+                { code: "Wed", name: "Wednesday" },
+                { code: "Thu", name: "Thursday" }
+            ];
+            const DAYOFF_MIN_OCCURRENCES = 3;
+
+            function detectDayOffCode(periods) {
+                const rows = (periods || []).flatMap(function (p) { return (p && p.rows) || []; });
+                const attendedByDate = new Map();
+                let minDate = null;
+                let maxDate = null;
+                rows.forEach(function (row) {
+                    const ymd = normalizeYMD(row && row.date ? row.date : "");
+                    if (!ymd) return;
+                    if (!minDate || ymd < minDate) minDate = ymd;
+                    if (!maxDate || ymd > maxDate) maxDate = ymd;
+                    if (hasValidLastOut(row.lastOut)) attendedByDate.set(ymd, true);
+                });
+                if (!minDate || !maxDate) return null;
+
+                const holidays = getStoredHolidays();
+                const nameToTally = new Map(); // dayName -> { occ, att }
+                eachYmdInRange(minDate, maxDate, function (ymd) {
+                    const dayName = formatDateToDayName(ymd);
+                    if (!dayName || isFixedNonWorkingDay(dayName)) return; // skip Friday
+                    if (isDateHoliday(ymd, holidays)) return;              // skip holidays
+                    const tally = nameToTally.get(dayName) || { occ: 0, att: 0 };
+                    tally.occ += 1;
+                    if (attendedByDate.get(ymd)) tally.att += 1;
+                    nameToTally.set(dayName, tally);
+                });
+
+                const candidates = [];
+                let workedWeekdayCount = 0;
+                DAYOFF_WEEKDAYS.forEach(function (wd) {
+                    const tally = nameToTally.get(wd.name);
+                    if (!tally) return;
+                    if (tally.att > 0) workedWeekdayCount += 1;
+                    if (tally.att === 0 && tally.occ >= DAYOFF_MIN_OCCURRENCES) {
+                        candidates.push({ code: wd.code, fullName: wd.name, occ: tally.occ });
+                    }
+                });
+
+                // Confident only when exactly one zero-attendance weekday exists AND the
+                // person clearly works a normal week (>= 2 other weekdays attended).
+                if (candidates.length !== 1 || workedWeekdayCount < 2) return null;
+                return candidates[0];
+            }
+
             function buildPeriodStats(periodRows, periodStart, periodEnd) {
                 const acc = createPeriodStatsAccumulator();
                 const today = getTodayLocalYMD();
@@ -6790,6 +6848,8 @@
                 isDayOffConfigured,
                 getDayOffAutoState,
                 setDayOffAutoState,
+                groupRowsByPayrollPeriod,
+                detectDayOffCode,
             };
 
             try {
