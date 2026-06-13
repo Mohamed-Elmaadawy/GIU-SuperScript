@@ -1310,6 +1310,37 @@
                         background: #ffc107;
                     }
 
+                    .giu-dayoff-notice {
+                        display: flex; align-items: flex-start; gap: 10px; flex-wrap: wrap;
+                        border-radius: 8px; padding: 11px 12px; margin: 0 0 14px;
+                        border-left: 4px solid; font-size: 13.5px; line-height: 1.45;
+                    }
+                    .giu-dayoff-notice .ico { font-size: 16px; line-height: 1.3; flex: 0 0 auto; }
+                    .giu-dayoff-notice .body { flex: 1 1 240px; min-width: 200px; }
+                    .giu-dayoff-notice .body strong { font-weight: 800; }
+                    .giu-dayoff-notice .sub { display: block; font-size: 12px; opacity: .85; margin-top: 2px; }
+                    .giu-dayoff-notice .acts { display: inline-flex; gap: 7px; flex-wrap: wrap; align-items: center; }
+                    .giu-dayoff-notice .gius-btn {
+                        font: inherit; font-size: 12.5px; font-weight: 700; line-height: 1; cursor: pointer;
+                        border-radius: 6px; padding: 7px 11px; border: 1px solid transparent;
+                    }
+                    .giu-dayoff-notice .dn-primary { background: #272c33; color: #fff; }
+                    .giu-dayoff-notice .dn-ghost { background: transparent; }
+                    .giu-dayoff-notice .dn-x {
+                        font: inherit; font-size: 15px; font-weight: 700; line-height: 1; cursor: pointer;
+                        background: transparent; border: none; opacity: .6; padding: 2px 4px;
+                    }
+                    .giu-dayoff-notice .dn-x:hover { opacity: 1; }
+                    .giu-dayoff-notice.applied { background: #ecfdf5; border-left-color: #16a34a; color: #065f46; }
+                    .giu-dayoff-notice.applied .dn-ghost { color: #065f46; border-color: #a7d8c1; }
+                    .giu-dayoff-notice.warn { background: #fff8e1; border-left-color: #f59e0b; color: #8a6500; }
+                    .giu-dayoff-notice.warn .dn-primary { background: #b45309; }
+                    html.gius-dark .giu-dayoff-notice.applied { background: #14351f; border-left-color: #a6e3a1; color: #a6e3a1; }
+                    html.gius-dark .giu-dayoff-notice.applied .dn-primary { background: #a6e3a1; color: #11271a; }
+                    html.gius-dark .giu-dayoff-notice.applied .dn-ghost { color: #a6e3a1; border-color: #3a6b4d; }
+                    html.gius-dark .giu-dayoff-notice.warn { background: #2a2410; border-left-color: #f9e2af; color: #f9e2af; }
+                    html.gius-dark .giu-dayoff-notice.warn .dn-primary { background: #f9e2af; color: #2a2410; }
+
                     .giu-config-title,
                     .giu-attendance-section-title {
                         font-size: 16px;
@@ -6489,6 +6520,70 @@
                 return panel;
             }
 
+            // Build the report-page day-off banner, or null if none is due.
+            // Mirrors the Home note but with full controls (Change / Undo / ×).
+            // `autoResult` is the return of maybeAutoFillDayOff for this render.
+            function buildDayOffNoticeForReport(autoResult, onRerender) {
+                const state = getDayOffAutoState();
+                const notice = document.createElement("div");
+
+                if (autoResult && autoResult.status === "warn") {
+                    notice.className = "giu-dayoff-notice warn";
+                    notice.innerHTML = `<span class="ico">&#9888;</span>
+                        <span class="body">Set your weekly <strong>day off</strong> — attendance is being miscalculated until you do.
+                            <span class="sub">Couldn't auto-detect it from your records.</span></span>
+                        <span class="acts"><button type="button" class="gius-btn dn-primary dn-set">Set day off</button></span>`;
+                    notice.querySelector(".dn-set").addEventListener("click", function () {
+                        expandConfigAndScrollToDayOff();
+                    });
+                    return notice;
+                }
+
+                if (state && state.status === "applied" && !state.acknowledged) {
+                    notice.className = "giu-dayoff-notice applied";
+                    const full = getSelectedDayOffFullName(state.code) || state.code;
+                    const occ = state.occ || 0;
+                    notice.innerHTML = `<span class="ico">&#10003;</span>
+                        <span class="body">Day off set to <strong>${escapeHtmlAttr(full)}</strong> — detected from your attendance.
+                            <span class="sub">0 check-ins on ${occ} ${escapeHtmlAttr(full)}s; you worked every other weekday.</span></span>
+                        <span class="acts">
+                            <button type="button" class="gius-btn dn-primary dn-change">Change</button>
+                            <button type="button" class="gius-btn dn-ghost dn-undo">Undo</button>
+                        </span>
+                        <button type="button" class="dn-x" title="Dismiss">&times;</button>`;
+                    notice.querySelector(".dn-change").addEventListener("click", function () {
+                        expandConfigAndScrollToDayOff();
+                    });
+                    notice.querySelector(".dn-undo").addEventListener("click", function () {
+                        localStorage.removeItem(STORAGE_KEYS.selectedDay);
+                        setDayOffAutoState({ status: "undone" });
+                        if (typeof onRerender === "function") onRerender();
+                    });
+                    notice.querySelector(".dn-x").addEventListener("click", function () {
+                        setDayOffAutoState(Object.assign({}, getDayOffAutoState(), { acknowledged: true }));
+                        notice.remove();
+                    });
+                    return notice;
+                }
+
+                return null;
+            }
+
+            // Expand the config panel (reusing the existing onboarding helper, which knows the
+            // real .giu-collapsible-header selector) and bring the Day Off selector into view.
+            function expandConfigAndScrollToDayOff() {
+                expandSettingsPanelForGuide();
+                const sel = document.getElementById("giu-day-select");
+                if (sel) sel.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+
+            // Minimal attribute-safe escaper for day names (a-z only in practice).
+            function escapeHtmlAttr(s) {
+                return String(s).replace(/[&<>"']/g, function (c) {
+                    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+                });
+            }
+
             function renderEnhancedUI() {
                 if (!isTargetReportPage()) return;
                 applyMonthlyAnnualLeaveAccrual();
@@ -6512,6 +6607,8 @@
 
                 const periods = groupRowsByPayrollPeriod(getAttendanceRows());
 
+                const dayOffAuto = maybeAutoFillDayOff(periods);
+
                 // Day-off dropdown changes are staged; only "Apply from" persists schedule changes.
                 const noopDayChange = function () {};
                 const configPanel = createConfigPanel(
@@ -6531,6 +6628,9 @@
                 }
 
                 container.appendChild(configPanel);
+
+                const dayOffNotice = buildDayOffNoticeForReport(dayOffAuto, renderEnhancedUI);
+                if (dayOffNotice) container.insertBefore(dayOffNotice, container.firstChild);
 
                 reportTable.parentNode.insertBefore(container, reportTable);
                 window.scrollTo({ top: renderState.scrollY, behavior: "auto" });
@@ -6943,6 +7043,7 @@
                 groupRowsByPayrollPeriod,
                 detectDayOffCode,
                 maybeAutoFillDayOff,
+                renderEnhancedUI,
             };
 
             try {

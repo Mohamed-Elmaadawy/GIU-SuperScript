@@ -236,3 +236,53 @@ test.describe('Home widget day-off note', () => {
         await expect(page.locator('.gius-att-card.gius-att-muted')).toBeVisible();
     });
 });
+
+test.describe('Report page day-off banner', () => {
+    const SWIFT_URL = 'https://portal.giu-uni.de/GIUb/EXT/SwiftReports_m.aspx?swiftreportid=866&executereport=1';
+
+    async function setupReport(page) {
+        page.on('pageerror', err => console.error('PAGE ERROR:', err.message));
+        await page.route('**/SwiftReports_m.aspx**', r => r.fulfill({ contentType: 'text/html; charset=utf-8', body: swiftHtml }));
+        await page.goto(SWIFT_URL, { waitUntil: 'domcontentloaded' });
+        await page.evaluate(() => localStorage.clear());
+        await page.evaluate(() => { window.__giuAttDisableAutoRun = true; });
+        await page.evaluate(scriptSrc);
+    }
+
+    test('warning banner shows when day off is unset and not detectable', async ({ page }) => {
+        await setupReport(page);
+        await page.evaluate(() => window.__giuAttHome.renderEnhancedUI());
+        await expect(page.locator('.giu-dayoff-notice.warn')).toBeVisible();
+        await expect(page.locator('.giu-dayoff-notice.warn')).toContainText('Set your weekly');
+    });
+
+    test('Undo button clears selectedDay and sets undone state', async ({ page }) => {
+        await setupReport(page);
+        await page.evaluate(() => {
+            localStorage.setItem('selectedDay', 'Sun');
+            window.__giuAttHome.setDayOffAutoState({ status: 'applied', code: 'Sun', occ: 6, acknowledged: false });
+            window.__giuAttHome.renderEnhancedUI();
+        });
+        await expect(page.locator('.giu-dayoff-notice.applied')).toBeVisible();
+        await page.locator('.giu-dayoff-notice.applied .dn-undo').dispatchEvent('click');
+        const after = await page.evaluate(() => ({
+            day: localStorage.getItem('selectedDay'),
+            state: window.__giuAttHome.getDayOffAutoState(),
+        }));
+        expect(after.day).toBe(null);
+        expect(after.state).toEqual({ status: 'undone' });
+    });
+
+    test('dismiss (x) sets acknowledged and hides banner on re-render', async ({ page }) => {
+        await setupReport(page);
+        await page.evaluate(() => {
+            localStorage.setItem('selectedDay', 'Sun');
+            window.__giuAttHome.setDayOffAutoState({ status: 'applied', code: 'Sun', occ: 6, acknowledged: false });
+            window.__giuAttHome.renderEnhancedUI();
+        });
+        await page.locator('.giu-dayoff-notice.applied .dn-x').dispatchEvent('click');
+        const state = await page.evaluate(() => window.__giuAttHome.getDayOffAutoState());
+        expect(state.acknowledged).toBe(true);
+        await expect(page.locator('.giu-dayoff-notice')).toHaveCount(0);
+    });
+});
