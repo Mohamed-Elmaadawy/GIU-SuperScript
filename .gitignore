@@ -43,3 +43,5 @@ scripts/tl-fill-shot.js
 scripts/cc-links-check.js
 scripts/capture-exchange.js
 scripts/test-take-live.js
+
+scripts/dayoff-verify-shot.js
