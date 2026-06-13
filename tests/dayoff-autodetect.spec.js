@@ -63,3 +63,71 @@ test.describe('day-off auto-state helpers', () => {
         expect(after.raw).toBe(null);
     });
 });
+
+test.describe('detectDayOffCode', () => {
+    // Helper: build periods from flat rows the way the script does.
+    const detect = (page, rows, holidays = []) => page.evaluate((args) => {
+        if (args.holidays.length) localStorage.setItem('giuHolidayListV2', JSON.stringify(args.holidays));
+        const periods = window.__giuAttHome.groupRowsByPayrollPeriod(args.rows);
+        return window.__giuAttHome.detectDayOffCode(periods);
+    }, { rows, holidays });
+
+    // Build 6 full weeks of attendance with one weekday always absent.
+    // 2026-06-06 is a Saturday. Weekdays present: Sat,Mon,Tue,Wed,Thu; Sun always off; Fri skipped.
+    function weeksWithSundayOff() {
+        const rows = [];
+        const starts = ['2026-06-06', '2026-06-13', '2026-06-20', '2026-06-27', '2026-07-04', '2026-07-11'];
+        const present = { 0: false, 1: true, 2: true, 3: true, 4: true, 6: true }; // 0=Sun off, 5=Fri skip
+        starts.forEach(sat => {
+            const base = new Date(sat + 'T00:00:00Z');
+            for (let i = 0; i < 7; i++) {
+                const d = new Date(base.getTime()); d.setUTCDate(d.getUTCDate() - 1 + i); // Fri..Thu around Sat
+                const dow = d.getUTCDay();
+                if (dow === 5) continue;           // skip Friday (fixed off)
+                if (!present[dow]) continue;       // Sunday absent
+                const ymd = d.toISOString().slice(0, 10);
+                rows.push({ date: ymd, firstIn: '8:00:00 AM', lastOut: '4:00:00 PM', duration: '08:00:00' });
+            }
+        });
+        return rows;
+    }
+
+    test('confident: one zero-attendance weekday across 6 weeks', async ({ page }) => {
+        await setup(page);
+        const r = await detect(page, weeksWithSundayOff());
+        expect(r).not.toBe(null);
+        expect(r.code).toBe('Sun');
+        expect(r.fullName).toBe('Sunday');
+        expect(r.occ).toBeGreaterThanOrEqual(3);
+    });
+
+    test('not confident: two zero-attendance weekdays', async ({ page }) => {
+        await setup(page);
+        const rows = weeksWithSundayOff().filter(row => new Date(row.date + 'T00:00:00Z').getUTCDay() !== 1);
+        const r = await detect(page, rows);
+        expect(r).toBe(null);
+    });
+
+    test('not confident: only one week of data', async ({ page }) => {
+        await setup(page);
+        const rows = weeksWithSundayOff().filter(row => row.date < '2026-06-13');
+        const r = await detect(page, rows);
+        expect(r).toBe(null);
+    });
+
+    test('not confident: works every weekday', async ({ page }) => {
+        await setup(page);
+        const rows = weeksWithSundayOff();
+        ['2026-06-07', '2026-06-14', '2026-06-21', '2026-06-28', '2026-07-05', '2026-07-12'].forEach(sun => {
+            rows.push({ date: sun, firstIn: '8:00:00 AM', lastOut: '4:00:00 PM', duration: '08:00:00' });
+        });
+        const r = await detect(page, rows);
+        expect(r).toBe(null);
+    });
+
+    test('holiday on the off-day does not break detection', async ({ page }) => {
+        await setup(page);
+        const r = await detect(page, weeksWithSundayOff(), [{ type: 'single', category: 'holiday', date: '2026-06-21' }]);
+        expect(r && r.code).toBe('Sun');
+    });
+});
