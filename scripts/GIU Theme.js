@@ -27,7 +27,9 @@
             if (MODES.includes(v)) return v;
             const legacy = localStorage.getItem(LEGACY_KEY);
             const migrated = legacy === '1' ? 'slate' : 'off';
-            try { localStorage.setItem(STORAGE_KEY, migrated); } catch { /* ignore */ }
+            if (legacy !== null) {
+                try { localStorage.setItem(STORAGE_KEY, migrated); } catch { /* ignore */ }
+            }
             return migrated;
         } catch { return 'off'; }
     }
@@ -43,7 +45,7 @@
 
     // Shims so injectToggle/toggleDark keep running without errors until Task 6 replaces them
     function isDarkEnabled() { return DARK_MODES.includes(currentMode); }
-    function saveDark(on) { saveMode(on ? 'slate' : 'off'); }
+    function saveDark(on) { setMode(on ? 'slate' : 'off'); }
 
     function injectStyles() {
         if (document.getElementById('gius-dm-styles')) return;
