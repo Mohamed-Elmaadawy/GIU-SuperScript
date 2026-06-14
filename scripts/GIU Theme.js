@@ -85,6 +85,7 @@
         const pop = document.createElement('div');
         pop.id = 'gius-theme-pop';
         pop.setAttribute('role', 'radiogroup');
+        pop.setAttribute('aria-label', 'Theme');
         pop.style.cssText = `
             position:fixed; right:34px; top:50%; transform:translateY(-50%); z-index:2147483647;
             display:none; flex-direction:column; gap:2px; padding:6px;
@@ -108,7 +109,7 @@
             row.addEventListener('mouseleave', () => {
                 row.style.background = row.getAttribute('aria-checked') === 'true' ? '#21262d' : 'transparent';
             });
-            row.addEventListener('click', () => { setMode(mode); closePop(); });
+            row.addEventListener('click', (e) => { e.stopPropagation(); setMode(mode); closePop(); });
             pop.appendChild(row);
         });
 
@@ -132,7 +133,7 @@
         currentMode = mode;
         saveMode(mode);
         applyMode(mode);
-        updatePicker();   // stub until Task 6 — safe no-op
+        updatePicker();
     }
 
     function injectStyles() {
@@ -491,8 +492,8 @@
     applyMode(currentMode);
 
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', buildPicker);
-        window.addEventListener('load', buildPicker);
+        document.addEventListener('DOMContentLoaded', buildPicker, { once: true });
+        window.addEventListener('load', buildPicker, { once: true });
     } else {
         buildPicker();
     }
