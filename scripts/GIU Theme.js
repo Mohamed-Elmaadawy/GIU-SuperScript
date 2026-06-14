@@ -276,213 +276,72 @@
             html[data-gius-theme] .chosen-results li.highlighted { background: var(--gp-border) !important; }
 
             /* ── GIUS notification panel: group list + labels + inputs ── */
-            html.gius-dark .gius-group-list {
-                background: #181825 !important;
-                border-color: #45475a !important;
-                scrollbar-color: #585b70 #181825 !important;
-            }
-            html.gius-dark .gius-group-list::-webkit-scrollbar-track { background: #181825 !important; }
-            html.gius-dark .gius-group-list::-webkit-scrollbar-thumb { background: #585b70 !important; }
-            html.gius-dark .gius-group-row:hover { background: #313244 !important; }
-            html.gius-dark .gius-group-row label,
-            html.gius-dark .gius-toggle-label { color: #cdd6f4 !important; }
-            html.gius-dark .gius-section-label,
-            html.gius-dark .gius-field-label,
-            html.gius-dark .gius-empty-msg { color: #a6adc8 !important; }
-            html.gius-dark .gius-divider { background: #45475a !important; }
-            html.gius-dark .gius-input {
-                background: #313244 !important;
-                color: #cdd6f4 !important;
-                border-color: #45475a !important;
-            }
-            html.gius-dark .gius-card-category { color: rgba(205,214,244,0.7) !important; }
+            html.gius-dark .gius-group-list { background: var(--gp-card) !important; border-color: var(--gp-border) !important; scrollbar-color: var(--gp-border) var(--gp-card) !important; }
+            html.gius-dark .gius-group-list::-webkit-scrollbar-track { background: var(--gp-card) !important; }
+            html.gius-dark .gius-group-list::-webkit-scrollbar-thumb { background: var(--gp-border) !important; }
+            html.gius-dark .gius-group-row:hover { background: var(--gp-surface) !important; }
+            html.gius-dark .gius-group-row label, html.gius-dark .gius-toggle-label { color: var(--gp-text) !important; }
+            html.gius-dark .gius-section-label, html.gius-dark .gius-field-label, html.gius-dark .gius-empty-msg { color: var(--gp-muted) !important; }
+            html.gius-dark .gius-divider { background: var(--gp-border) !important; }
+            html.gius-dark .gius-input { background: var(--gp-surface) !important; color: var(--gp-text) !important; border-color: var(--gp-border) !important; }
+            html.gius-dark .gius-card-category { color: var(--gp-muted) !important; }
 
             /* ── GIUS injected cards (white bg in light mode) ── */
-            html.gius-dark .giug-card, html.gius-dark .gius-card {
-                background-color: #181825 !important;
-                border-color: transparent !important;
-            }
-            html.gius-dark .giug-card-body, html.gius-dark .gius-card-body {
-                background-color: #181825 !important;
-                color: #cdd6f4 !important;
-            }
-            html.gius-dark .giug-select, html.gius-dark .gius-select {
-                background-color: #313244 !important;
-                color: #cdd6f4 !important;
-                border-color: #45475a !important;
-            }
-            html.gius-dark .giug-btn-success, html.gius-dark .giug-btn-outline,
-            html.gius-dark .gius-btn-success, html.gius-dark .gius-btn-outline {
-                background-color: #313244 !important;
-                border-color: #45475a !important;
-                color: #cdd6f4 !important;
-            }
-            html.gius-dark .giug-btn-success:not(:disabled):hover,
-            html.gius-dark .giug-btn-outline:not(:disabled):hover {
-                background-color: #45475a !important;
-            }
-            html.gius-dark .giug-alert, html.gius-dark .gius-alert {
-                background-color: #181825 !important;
-                border-color: #45475a !important;
-                color: #cdd6f4 !important;
-            }
-            html.gius-dark .giug-alert-info, html.gius-dark .gius-alert-info {
-                background-color: #1a2a4a !important;
-                color: #89b4fa !important;
-                border-color: #1e3a6e !important;
-            }
-            html.gius-dark .giug-alert-error, html.gius-dark .gius-alert-error {
-                background-color: #3d0000 !important;
-                color: #f38ba8 !important;
-                border-color: #5a0000 !important;
-            }
+            html.gius-dark .giug-card, html.gius-dark .gius-card { background-color: var(--gp-card) !important; border-color: var(--gp-border) !important; }
+            html.gius-dark .giug-card-body, html.gius-dark .gius-card-body { background-color: var(--gp-card) !important; color: var(--gp-text) !important; }
+            html.gius-dark .giug-select, html.gius-dark .gius-select { background-color: var(--gp-surface) !important; color: var(--gp-text) !important; border-color: var(--gp-border) !important; }
+            html.gius-dark .giug-btn-success, html.gius-dark .giug-btn-outline, html.gius-dark .gius-btn-success, html.gius-dark .gius-btn-outline { background-color: var(--gp-surface) !important; border-color: var(--gp-border) !important; color: var(--gp-text) !important; }
+            html.gius-dark .giug-btn-success:not(:disabled):hover, html.gius-dark .giug-btn-outline:not(:disabled):hover { background-color: var(--gp-border) !important; }
+            html.gius-dark .giug-alert, html.gius-dark .gius-alert { background-color: var(--gp-card) !important; border-color: var(--gp-border) !important; color: var(--gp-text) !important; }
+            html.gius-dark .giug-alert-info, html.gius-dark .gius-alert-info { background-color: var(--gp-info-bg) !important; color: var(--gp-info-fg) !important; border-color: var(--gp-info-bg) !important; }
+            html.gius-dark .giug-alert-error, html.gius-dark .gius-alert-error { background-color: var(--gp-error-bg) !important; color: var(--gp-error-fg) !important; border-color: var(--gp-error-bg) !important; }
 
             /* ── GIU Upload Grades: stats table (not covered by generic rules) ── */
-            html.gius-dark .giug-stats-table td {
-                background: #181825 !important;
-                color: #cdd6f4 !important;
-                border-color: #45475a !important;
-            }
-            html.gius-dark .giug-stats-table th {
-                background: #11111b !important;
-                color: #cdd6f4 !important;
-                border-color: #45475a !important;
-            }
-            html.gius-dark .giug-stat-num,
-            html.gius-dark .giug-stats-label { color: #cdd6f4 !important; }
-            html.gius-dark .giug-stats-section { border-color: #45475a !important; }
-            html.gius-dark .giug-stat {
-                background: #11111b !important;
-                border-color: #45475a !important;
-            }
-            html.gius-dark .giug-stat-key { color: #a6adc8 !important; }
-            html.gius-dark .giug-stat-val { color: #cdd6f4 !important; }
+            html.gius-dark .giug-stats-table td { background: var(--gp-card) !important; color: var(--gp-text) !important; border-color: var(--gp-border) !important; }
+            html.gius-dark .giug-stats-table th { background: var(--gp-deep) !important; color: var(--gp-text) !important; border-color: var(--gp-border) !important; }
+            html.gius-dark .giug-stat-num, html.gius-dark .giug-stats-label { color: var(--gp-text) !important; }
+            html.gius-dark .giug-stats-section { border-color: var(--gp-border) !important; }
+            html.gius-dark .giug-stat { background: var(--gp-deep) !important; border-color: var(--gp-border) !important; }
+            html.gius-dark .giug-stat-key { color: var(--gp-muted) !important; }
+            html.gius-dark .giug-stat-val { color: var(--gp-text) !important; }
 
             /* ── GIU Manage Group Grades (.gmgg-*) ── */
-            html.gius-dark .gmgg-panel {
-                background: #181825 !important;
-                border-color: transparent !important;
-            }
-            html.gius-dark .gmgg-panel-body { color: #cdd6f4 !important; }
-            html.gius-dark .gmgg-btn-upload,
-            html.gius-dark .gmgg-btn-download {
-                background: #313244 !important;
-                border-color: #45475a !important;
-                color: #cdd6f4 !important;
-            }
-            html.gius-dark .gmgg-btn-upload:not(:disabled):hover,
-            html.gius-dark .gmgg-btn-download:not(:disabled):hover {
-                background: #45475a !important;
-            }
-            html.gius-dark .gmgg-feedback-success {
-                background: #0d3321 !important;
-                color: #a6e3a1 !important;
-                border-color: #1e4d33 !important;
-            }
-            html.gius-dark .gmgg-feedback-error {
-                background: #3d0000 !important;
-                color: #f38ba8 !important;
-                border-color: #5a0000 !important;
-            }
-            html.gius-dark .gmgg-stats {
-                background: #11111b !important;
-                border-color: #45475a !important;
-            }
-            html.gius-dark .gmgg-stat-row {
-                background: #11111b !important;
-                border-color: #45475a !important;
-            }
-            html.gius-dark .gmgg-stats-title,
-            html.gius-dark .gmgg-stat-val { color: #cdd6f4 !important; }
-            html.gius-dark .gmgg-stat-label { color: #a6adc8 !important; }
+            html.gius-dark .gmgg-panel { background: var(--gp-card) !important; border-color: var(--gp-border) !important; }
+            html.gius-dark .gmgg-panel-body { color: var(--gp-text) !important; }
+            html.gius-dark .gmgg-btn-upload, html.gius-dark .gmgg-btn-download { background: var(--gp-surface) !important; border-color: var(--gp-border) !important; color: var(--gp-text) !important; }
+            html.gius-dark .gmgg-btn-upload:not(:disabled):hover, html.gius-dark .gmgg-btn-download:not(:disabled):hover { background: var(--gp-border) !important; }
+            html.gius-dark .gmgg-feedback-success { background: var(--gp-success-bg) !important; color: var(--gp-success-fg) !important; border-color: var(--gp-success-bg) !important; }
+            html.gius-dark .gmgg-feedback-error { background: var(--gp-error-bg) !important; color: var(--gp-error-fg) !important; border-color: var(--gp-error-bg) !important; }
+            html.gius-dark .gmgg-stats, html.gius-dark .gmgg-stat-row { background: var(--gp-deep) !important; border-color: var(--gp-border) !important; }
+            html.gius-dark .gmgg-stats-title, html.gius-dark .gmgg-stat-val { color: var(--gp-text) !important; }
+            html.gius-dark .gmgg-stat-label { color: var(--gp-muted) !important; }
 
             /* ── GIU Attendance Script (.giu-*) ── */
-            html.gius-dark .giu-attendance-wrap {
-                --giu-color-text: #cdd6f4;
-                --giu-color-muted: #a6adc8;
-                --giu-color-border: #45475a;
-                --giu-color-surface: #313244;
-                color: #cdd6f4 !important;
-            }
-            html.gius-dark .giu-config-panel,
-            html.gius-dark .giu-summary-panel,
-            html.gius-dark .giu-summary-card {
-                background: #181825 !important;
-                border-color: transparent !important;
-            }
-            html.gius-dark .giu-summary-body { background: #181825 !important; }
-            html.gius-dark .giu-config-title,
-            html.gius-dark .giu-attendance-section-title,
-            html.gius-dark .giu-holiday-title { color: #cdd6f4 !important; }
-            html.gius-dark .giu-holiday-table {
-                background: #181825 !important;
-                border-color: #45475a !important;
-            }
-            html.gius-dark .giu-holiday-table th {
-                background: #11111b !important;
-                color: #cdd6f4 !important;
-                border-color: #45475a !important;
-            }
-            html.gius-dark .giu-holiday-table td {
-                background: #181825 !important;
-                color: #cdd6f4 !important;
-                border-color: #45475a !important;
-            }
-            html.gius-dark .giu-holiday-empty,
-            html.gius-dark .giu-pagination {
-                background: #181825 !important;
-                border-color: #45475a !important;
-                color: #cdd6f4 !important;
-            }
-            html.gius-dark .giu-pagination-btn {
-                background: #313244 !important;
-                border-color: #45475a !important;
-                color: #cdd6f4 !important;
-            }
-            html.gius-dark .giu-pagination-btn:hover:not(:disabled) {
-                background: #45475a !important;
-            }
-            html.gius-dark .giu-pagination-size select,
-            html.gius-dark .giu-dayoff-row select,
-            html.gius-dark .giu-dayoff-row input,
-            html.gius-dark .giu-holiday-controls select,
-            html.gius-dark .giu-holiday-controls input {
-                background: #313244 !important;
-                color: #cdd6f4 !important;
-                border-color: #45475a !important;
-            }
-            html.gius-dark .giu-stat-row {
-                background: #11111b !important;
-                border-color: #45475a !important;
-            }
-            html.gius-dark .giu-stat-label { color: #a6adc8 !important; }
-            html.gius-dark .giu-stat-value { color: #cdd6f4 !important; }
-            html.gius-dark .giu-progress-wrap {
-                background: #11111b !important;
-                border-color: #45475a !important;
-            }
-            html.gius-dark .giu-summary-toggle-hint {
-                background: #313244 !important;
-                border-color: #45475a !important;
-                color: #cdd6f4 !important;
-            }
-            html.gius-dark .giu-dayoff-row { border-color: #45475a !important; }
-            html.gius-dark .giu-dayoff-row label { color: #cdd6f4 !important; }
-            html.gius-dark .giu-config-divider { background: #45475a !important; }
-            html.gius-dark .giu-balance-positive { background: #0d3321 !important; border-color: #1e4d33 !important; }
-            html.gius-dark .giu-balance-negative { background: #3d0000 !important; border-color: #5a0000 !important; }
-            html.gius-dark .giu-tag-positive { background: #1e4d33 !important; color: #a6e3a1 !important; }
-            html.gius-dark .giu-tag-negative { background: #5a0000 !important; color: #f38ba8 !important; }
-            html.gius-dark .giu-remove-holiday-btn {
-                background: #3d0000 !important;
-                border-color: #5a0000 !important;
-                color: #f38ba8 !important;
-            }
-            html.gius-dark .giu-dayoff-badge {
-                background: #3d2a00 !important;
-                border-color: #ffc107 !important;
-                color: #ffc107 !important;
-            }
+            html.gius-dark .giu-attendance-wrap { --giu-color-text: var(--gp-text); --giu-color-muted: var(--gp-muted); --giu-color-border: var(--gp-border); --giu-color-surface: var(--gp-surface); color: var(--gp-text) !important; }
+            html.gius-dark .giu-config-panel, html.gius-dark .giu-summary-panel, html.gius-dark .giu-summary-card { background: var(--gp-card) !important; border-color: var(--gp-border) !important; }
+            html.gius-dark .giu-summary-body { background: var(--gp-card) !important; }
+            html.gius-dark .giu-config-title, html.gius-dark .giu-attendance-section-title, html.gius-dark .giu-holiday-title { color: var(--gp-text) !important; }
+            html.gius-dark .giu-holiday-table { background: var(--gp-card) !important; border-color: var(--gp-border) !important; }
+            html.gius-dark .giu-holiday-table th { background: var(--gp-deep) !important; color: var(--gp-text) !important; border-color: var(--gp-border) !important; }
+            html.gius-dark .giu-holiday-table td { background: var(--gp-card) !important; color: var(--gp-text) !important; border-color: var(--gp-border) !important; }
+            html.gius-dark .giu-holiday-empty, html.gius-dark .giu-pagination { background: var(--gp-card) !important; border-color: var(--gp-border) !important; color: var(--gp-text) !important; }
+            html.gius-dark .giu-pagination-btn { background: var(--gp-surface) !important; border-color: var(--gp-border) !important; color: var(--gp-text) !important; }
+            html.gius-dark .giu-pagination-btn:hover:not(:disabled) { background: var(--gp-border) !important; }
+            html.gius-dark .giu-pagination-size select, html.gius-dark .giu-dayoff-row select, html.gius-dark .giu-dayoff-row input, html.gius-dark .giu-holiday-controls select, html.gius-dark .giu-holiday-controls input { background: var(--gp-surface) !important; color: var(--gp-text) !important; border-color: var(--gp-border) !important; }
+            html.gius-dark .giu-stat-row { background: var(--gp-deep) !important; border-color: var(--gp-border) !important; }
+            html.gius-dark .giu-stat-label { color: var(--gp-muted) !important; }
+            html.gius-dark .giu-stat-value { color: var(--gp-text) !important; }
+            html.gius-dark .giu-progress-wrap { background: var(--gp-deep) !important; border-color: var(--gp-border) !important; }
+            html.gius-dark .giu-summary-toggle-hint { background: var(--gp-surface) !important; border-color: var(--gp-border) !important; color: var(--gp-text) !important; }
+            html.gius-dark .giu-dayoff-row { border-color: var(--gp-border) !important; }
+            html.gius-dark .giu-dayoff-row label { color: var(--gp-text) !important; }
+            html.gius-dark .giu-config-divider { background: var(--gp-border) !important; }
+            html.gius-dark .giu-balance-positive { background: var(--gp-success-bg) !important; border-color: var(--gp-success-bg) !important; }
+            html.gius-dark .giu-balance-negative { background: var(--gp-error-bg) !important; border-color: var(--gp-error-bg) !important; }
+            html.gius-dark .giu-tag-positive { background: var(--gp-success-bg) !important; color: var(--gp-success-fg) !important; }
+            html.gius-dark .giu-tag-negative { background: var(--gp-error-bg) !important; color: var(--gp-error-fg) !important; }
+            html.gius-dark .giu-remove-holiday-btn { background: var(--gp-error-bg) !important; border-color: var(--gp-error-bg) !important; color: var(--gp-error-fg) !important; }
+            html.gius-dark .giu-dayoff-badge { background: var(--gp-success-bg) !important; border-color: var(--gp-accent) !important; color: var(--gp-accent) !important; }
         `;
         document.documentElement.appendChild(style);
     }
