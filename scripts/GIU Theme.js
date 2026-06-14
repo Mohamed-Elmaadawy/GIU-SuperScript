@@ -52,7 +52,80 @@
         root.classList.toggle('gius-dark', DARK_MODES.includes(mode));
     }
 
-    function updatePicker() {}             // real body in Task 6
+    const MODE_META = {
+        off:   { label: 'Off',   icon: '⊘', swatch: 'transparent' },
+        light: { label: 'Light', icon: '☀',  swatch: '#f6f8fa' },
+        slate: { label: 'Slate', icon: '◐',  swatch: '#0d1117' },
+        plum:  { label: 'Plum',  icon: '❀',  swatch: '#1a1320' },
+    };
+
+    function updatePicker() {
+        const tab = document.getElementById('gius-dm-toggle');
+        if (tab) tab.textContent = MODE_META[currentMode].icon + ' ' + MODE_META[currentMode].label.toUpperCase();
+        const pop = document.getElementById('gius-theme-pop');
+        if (pop) pop.querySelectorAll('[data-mode]').forEach(row => {
+            row.setAttribute('aria-checked', row.getAttribute('data-mode') === currentMode ? 'true' : 'false');
+        });
+    }
+
+    function buildPicker() {
+        if (document.getElementById('gius-dm-toggle')) return;
+        if (!document.body) return;
+
+        const tab = document.createElement('button');
+        tab.id = 'gius-dm-toggle';
+        tab.setAttribute('title', 'Theme');
+        tab.style.cssText = `
+            position:fixed; right:0; top:50%; transform:translateY(-50%); z-index:2147483647;
+            background:#ffc107; color:#1a1a1a; border:none; border-radius:6px 0 0 6px;
+            padding:10px 5px; cursor:pointer; writing-mode:vertical-rl; text-orientation:mixed;
+            font-family:'Open Sans',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1px;
+            box-shadow:-2px 0 8px rgba(0,0,0,0.2); user-select:none;`;
+
+        const pop = document.createElement('div');
+        pop.id = 'gius-theme-pop';
+        pop.setAttribute('role', 'radiogroup');
+        pop.style.cssText = `
+            position:fixed; right:34px; top:50%; transform:translateY(-50%); z-index:2147483647;
+            display:none; flex-direction:column; gap:2px; padding:6px;
+            background:#161b22; border:1px solid #30363d; border-radius:8px;
+            box-shadow:-4px 0 16px rgba(0,0,0,0.35); font-family:'Open Sans',Arial,sans-serif;`;
+
+        MODES.forEach(mode => {
+            const m = MODE_META[mode];
+            const row = document.createElement('button');
+            row.className = 'gius-btn';
+            row.setAttribute('data-mode', mode);
+            row.setAttribute('role', 'radio');
+            row.style.cssText = `
+                display:flex; align-items:center; gap:8px; padding:7px 10px; min-width:120px;
+                background:transparent; border:none; border-radius:5px; cursor:pointer;
+                color:#e6edf3; font-size:12px; text-align:left;`;
+            row.innerHTML =
+                `<span style="width:14px;height:14px;border-radius:3px;border:1px solid #30363d;background:${m.swatch};"></span>` +
+                `<span>${m.label}</span>`;
+            row.addEventListener('mouseenter', () => { row.style.background = '#21262d'; });
+            row.addEventListener('mouseleave', () => {
+                row.style.background = row.getAttribute('aria-checked') === 'true' ? '#21262d' : 'transparent';
+            });
+            row.addEventListener('click', () => { setMode(mode); closePop(); });
+            pop.appendChild(row);
+        });
+
+        function openPop() { pop.style.display = 'flex'; updatePicker(); }
+        function closePop() { pop.style.display = 'none'; }
+        tab.addEventListener('click', e => {
+            e.stopPropagation();
+            pop.style.display === 'flex' ? closePop() : openPop();
+        });
+        document.addEventListener('click', e => {
+            if (!pop.contains(e.target) && e.target !== tab) closePop();
+        });
+
+        document.body.appendChild(tab);
+        document.body.appendChild(pop);
+        updatePicker();
+    }
 
     function setMode(mode) {
         if (!MODES.includes(mode)) mode = 'off';
@@ -61,10 +134,6 @@
         applyMode(mode);
         updatePicker();   // stub until Task 6 — safe no-op
     }
-
-    // Shims so injectToggle/toggleDark keep running without errors until Task 6 replaces them
-    function isDarkEnabled() { return DARK_MODES.includes(currentMode); }
-    function saveDark(on) { setMode(on ? 'slate' : 'off'); }
 
     function injectStyles() {
         if (document.getElementById('gius-dm-styles')) return;
@@ -417,66 +486,16 @@
         document.documentElement.appendChild(style);
     }
 
-    function updateTabLabel(tab, on) {
-        tab.textContent = on ? '☀️ LIGHT' : '🌙 DARK';
-    }
-
-    function toggleDark(tab) {
-        const on = document.documentElement.classList.toggle('gius-dark');
-        saveDark(on);
-        injectStyles();
-        updateTabLabel(tab, on);
-    }
-
-    function injectToggle() {
-        if (document.getElementById('gius-dm-toggle')) return;
-        if (!document.body) return;
-
-        const tab = document.createElement('button');
-        tab.id = 'gius-dm-toggle';
-        tab.setAttribute('title', 'Toggle dark mode');
-        tab.style.cssText = `
-            position: fixed;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 2147483647;
-            background: #ffc107;
-            color: #1a1a1a;
-            border: none;
-            border-radius: 6px 0 0 6px;
-            padding: 10px 5px;
-            cursor: pointer;
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            font-family: 'Open Sans', Arial, sans-serif;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            box-shadow: -2px 0 8px rgba(0,0,0,0.2);
-            transition: background 0.2s ease;
-            user-select: none;
-        `;
-
-        updateTabLabel(tab, isDarkEnabled());
-
-        tab.addEventListener('mouseenter', function () { tab.style.background = '#e6ac00'; });
-        tab.addEventListener('mouseleave', function () { tab.style.background = '#ffc107'; });
-        tab.addEventListener('click', function () { toggleDark(tab); });
-
-        document.body.appendChild(tab);
-    }
-
     // Resolve current mode from storage and apply pre-paint (no FOUC)
     currentMode = readStoredMode();
     applyMode(currentMode);
 
-    document.addEventListener('DOMContentLoaded', injectToggle);
-    // Fallback for pages where DOMContentLoaded fires differently (ASP.NET postbacks, home page)
-    window.addEventListener('load', injectToggle);
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', buildPicker);
+        window.addEventListener('load', buildPicker);
+    } else {
+        buildPicker();
+    }
 
     window.__giuTheme = {
         MODES,

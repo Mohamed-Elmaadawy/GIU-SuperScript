@@ -95,3 +95,39 @@ test.describe('applyMode side effects', () => {
     expect(accent).toBe('#ff6fae');
   });
 });
+
+test.describe('picker UI', () => {
+  test('tab exists and popover hidden until clicked', async ({ page }) => {
+    await setup(page, { storage: { 'gius-theme': 'slate' } });
+    await page.waitForSelector('#gius-dm-toggle');
+    expect(await page.isVisible('#gius-theme-pop')).toBe(false);
+    await page.click('#gius-dm-toggle');
+    expect(await page.isVisible('#gius-theme-pop')).toBe(true);
+  });
+
+  test('popover has all four mode rows', async ({ page }) => {
+    await setup(page, { storage: { 'gius-theme': 'slate' } });
+    await page.click('#gius-dm-toggle');
+    const modes = await page.$$eval('#gius-theme-pop [data-mode]', els => els.map(e => e.getAttribute('data-mode')));
+    expect(modes).toEqual(['off', 'light', 'slate', 'plum']);
+  });
+
+  test('clicking a row applies + persists that mode', async ({ page }) => {
+    await setup(page, { storage: { 'gius-theme': 'slate' } });
+    await page.click('#gius-dm-toggle');
+    await page.click('#gius-theme-pop [data-mode="plum"]');
+    const r = await page.evaluate(() => ({
+      mode: window.__giuTheme.getMode(),
+      attr: document.documentElement.getAttribute('data-gius-theme'),
+      stored: localStorage.getItem('gius-theme'),
+    }));
+    expect(r).toEqual({ mode: 'plum', attr: 'plum', stored: 'plum' });
+  });
+
+  test('active row marked aria-checked', async ({ page }) => {
+    await setup(page, { storage: { 'gius-theme': 'light' } });
+    await page.click('#gius-dm-toggle');
+    const checked = await page.getAttribute('#gius-theme-pop [data-mode="light"]', 'aria-checked');
+    expect(checked).toBe('true');
+  });
+});
