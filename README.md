@@ -24,10 +24,10 @@ For suggestions, bug reports, or feature requests, send an email to [mohamed.elm
 
 Choose **one** install mode:
 
-- **Recommended:** install `GIU SuperScript.js` for the all-in-one bundle, then install `GIU Dark Mode.js` separately if you want dark mode.
+- **Recommended:** install `GIU SuperScript.js` for the all-in-one bundle, then install `GIU Theme.js` separately if you want theming.
 - **Alternative:** install individual scripts one by one.
 
-Do **not** install `GIU SuperScript.js` and the old individual feature scripts at the same time. They match the same portal pages and will create duplicate widgets, duplicate buttons, and duplicate handlers. `GIU Dark Mode.js` is the only script that intentionally stays separate.
+Do **not** install `GIU SuperScript.js` and the old individual feature scripts at the same time. They match the same portal pages and will create duplicate widgets, duplicate buttons, and duplicate handlers. `GIU Theme.js` is the only script that intentionally stays separate.
 
 **Option A — Paste the script manually:**
 
@@ -62,7 +62,7 @@ Every script carries `@updateURL` and `@downloadURL` pointing at this repo, so T
 
 **File:** `GIU SuperScript.js` | **Version:** 1.1.4 | **Author:** Mo.Elmaadawy
 
-The all-in-one userscript that bundles every feature script below except Dark Mode. It also adds a **Control Center** card on the portal Home page where you can turn bundled modules on or off.
+The all-in-one userscript that bundles every feature script below except GIU Theme. It also adds a **Control Center** card on the portal Home page where you can turn bundled modules on or off.
 
 **Target pages:**
 ```
@@ -80,15 +80,19 @@ https://portal.giu-uni.de/*
 - Proctor Schedule Aggregator
 - Teaching Load
 
-**Important:** install this **OR** the individual feature scripts, never both. Keep `GIU Dark Mode.js` separate because it needs to run at `document-start` to prevent flash-of-unstyled-content.
+**Important:** install this **OR** the individual feature scripts, never both. Keep `GIU Theme.js` separate because it needs to run at `document-start` to prevent flash-of-unstyled-content.
 
 ---
 
-### 1. GIU Dark Mode
+### 1. GIU Theme
 
-**File:** `GIU Dark Mode.js` | **Version:** 2.8.1 | **Author:** Mo.Elmaadawy
+**File:** `GIU Theme.js` | **Version:** 1.0 | **Author:** Mo.Elmaadawy
 
-A portal-wide dark mode toggle using the Catppuccin Mocha palette. Applies clean, layered dark colors to every portal page — including all co-scripts — without inverting images or breaking portal styling.
+A portal-wide theming engine. Choose from four modes via an expanding side-tab picker fixed to the right edge of every portal page: **Off** (native portal, untouched), **Light**, **Slate** (default dark, GitHub-neutral greys), and **Plum** (pink/feminine accent palette). Each on-mode recolours the portal and the injected SuperScript widgets to a matching palette. Built entirely on CSS variables; runs at `document-start` so there is no flash of unstyled content. (A fuller structural reskin — typography, spacing, restyled components — is planned for a later release.)
+
+> **Reinstall notice:** this script replaces the old "GIU Dark Mode" script. If you had `GIU Dark Mode.js` installed, please remove it and install `GIU Theme.js` once from the link below — the old auto-update URL no longer exists so Tampermonkey cannot migrate you automatically. After that one install, all future updates arrive automatically. Like its predecessor, `GIU Theme.js` must be installed **separately** from `GIU SuperScript.js` (it needs `document-start`; SuperScript runs later).
+
+**Install:** [GIU Theme.js (raw)](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Theme.js)
 
 **Target page:**
 ```
@@ -97,24 +101,13 @@ https://portal.giu-uni.de/*
 
 **Features:**
 
-- **One-click toggle** — fixed yellow tab on the right edge of every portal page
-- **Persists across pages** — preference saved in `localStorage`, applies before first paint (no flash)
-- **Catppuccin Mocha palette** — page `#1e1e2e`, cards `#181825`, headers `#11111b`, inputs `#313244`
-- **Depth hierarchy** — cards darker than the page background for natural layering
-- **No visible borders** — transparent borders throughout; depth communicated through shade, not outlines
-- **Full co-script coverage** — correctly styles all other GIU SuperScript panels and components
+- **Four modes** — Off / Light / Slate / Plum, selected via an expanding side-tab picker on the right edge of every page
+- **Persists across pages** — preference saved in `localStorage`, applied before first paint (no flash of unstyled content)
+- **CSS variable architecture** — all colour tokens defined once; switching modes swaps the token set instantly
+- **Full co-script coverage** — all other GIU SuperScript panels and widgets inherit the active theme palette automatically
+- **Legacy migration** — if you had "GIU Dark Mode" set to on, the script migrates your preference to Slate mode automatically
 
-| Light | Dark |
-|---|---|
-| ![Light mode](screenshots/dark-mode-home-light.png) | ![Dark mode](screenshots/dark-mode-home-dark.png) |
-
-| Light | Dark |
-|---|---|
-| ![Notification light](screenshots/dark-mode-notification-light.png) | ![Notification dark](screenshots/dark-mode-notification-dark.png) |
-
-| Light | Dark |
-|---|---|
-| ![Upload grades light](screenshots/dark-mode-upload-grades-light.png) | ![Upload grades dark](screenshots/dark-mode-upload-grades-dark.png) |
+<!-- TODO: replace with Slate/Plum/Light screenshots after live capture -->
 
 ---
 
@@ -145,7 +138,7 @@ https://portal.giu-uni.de/GIUb/EXT/SwiftReports_m.aspx?swiftreportid=866&execute
 - **Import / Export** — full settings backup and restore as JSON
 - **Onboarding guide** — first-time spotlight walkthrough for all features
 - **Auto record pruning** — cleans records older than 2 payroll months
-- **Home-page summary** — a current-payroll-month card (worked vs required, balance, present/absent, absent-day list) on the portal Home page, in the Proctoring Reminder style; dark-mode aware.
+- **Home-page summary** — a current-payroll-month card (worked vs required, balance, present/absent, absent-day list) on the portal Home page, in the Proctoring Reminder style; theme-aware.
 
 ![Attendance Dashboard](screenshots/attendance.gif)
 
@@ -356,7 +349,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/ProctorExchange_m.aspx
 
 Shows your next proctoring session on the portal home page and exports reminders to `.ics`, Google Calendar, or email. Fetches your timetable in the background, caches it for 6 hours, and renders a full-width widget directly under the **Target List** block.
 
-| Light | Dark (with GIU Dark Mode) |
+| Light | Dark (with GIU Theme) |
 |---|---|
 | ![Proctoring Reminder light](screenshots/proctoring-reminder.png) | ![Proctoring Reminder dark](screenshots/proctoring-reminder-dark.png) |
 
@@ -371,7 +364,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 - **All duties on that day** — if you have more than one duty on the next session's day, every one is shown
 - **Control room** — shown only for supervisor duties (where it's relevant)
 - **Covering badge** — cover duties (exams you took from a colleague) are tagged "Covering"; your own duties are shown plain
-- **Dark-mode aware** — when the GIU Dark Mode script is active (`html.gius-dark`), the widget switches to a matching Catppuccin Mocha palette automatically
+- **Theme-aware** — when GIU Theme is active, the widget switches to a matching palette automatically
 - **Hall-first titles** — each session title leads with the course code and **hall** (where you need to be); the exam name sits on the detail line
 - **Remaining exams** — expand (animated slide) to see the exams left *after* the next session's day, each labelled Supervising/Proctoring with its full start–end time (12-hour AM/PM)
 - **Export per session** — **Download event** (`.ics`), open in **Google Calendar**, or send a reminder **Email** for any individual session
@@ -401,7 +394,7 @@ at the top, plus your full week in an expandable list. Each session shows the pe
 slot, the course, and the room. Fetches your schedule in the background via a hidden
 iframe and caches it for 6 hours.
 
-| Light | Dark (with GIU Dark Mode) |
+| Light | Dark (with GIU Theme) |
 |---|---|
 | ![Teaching Load light](screenshots/teaching-load.png) | ![Teaching Load dark](screenshots/teaching-load-dark.png) |
 
@@ -421,7 +414,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
   (e.g. *Distributed & Web-based Systems* instead of `INCS 406`)
 - **Slot & room emphasis** — the period slot is a badge and the room is shown with a
   pin marker so the where/when stands out at a glance
-- **Dark-mode aware** — matches the GIU Dark Mode palette when active
+- **Theme-aware** — matches the active GIU Theme palette automatically
 - **6-hour cache** — schedule cached in `localStorage`; stale data shown with an
   "offline cache" label until refresh
 
