@@ -385,16 +385,16 @@
             html[data-gius-theme] aside.left-panel .dropdown-menu, html[data-gius-theme] #left-panel .dropdown-menu {
               background: var(--gp-card) !important;
             }
-            html[data-gius-theme] aside.left-panel .sub-menu a, html[data-gius-theme] #left-panel .sub-menu a {
+            html[data-gius-theme] aside.left-panel .sub-menu a, html[data-gius-theme] #left-panel .sub-menu a,
+            html[data-gius-theme] aside.left-panel .dropdown-menu a, html[data-gius-theme] #left-panel .dropdown-menu a {
               color: var(--gp-muted) !important;
             }
             /* ── Phase 1: topbar ── */
             html[data-gius-theme] .navbar, html[data-gius-theme] header.header {
-              background: var(--gp-card) !important; border-bottom: 1px solid var(--gp-border) !important;
+              background-color: var(--gp-card) !important; border-bottom: 1px solid var(--gp-border) !important;
             }
 
             /* ── Phase 1: tables ── */
-            html[data-gius-theme] table { border-radius: var(--gp-radius) !important; overflow: hidden !important; border-collapse: separate !important; border-spacing: 0 !important; }
             html[data-gius-theme] thead tr th { text-transform: uppercase !important; font-size: 11px !important; letter-spacing: .4px !important; color: var(--gp-muted) !important; }
             html[data-gius-theme] tbody tr:hover td { background-color: var(--gp-surface) !important; }
             html[data-gius-theme] td, html[data-gius-theme] th { padding: 8px 10px !important; }
@@ -424,9 +424,6 @@
             }
 
             /* ── Phase 1: cards/panels ── */
-            html[data-gius-theme] .panel, html[data-gius-theme] .card, html[data-gius-theme] .card-stats {
-              overflow: hidden !important;
-            }
             html[data-gius-theme] .panel-body, html[data-gius-theme] .card-body { padding: var(--gp-pad) !important; }
             html[data-gius-theme] .panel-heading, html[data-gius-theme] .card-header {
               padding: 10px var(--gp-pad) !important; font-weight: 600 !important;
