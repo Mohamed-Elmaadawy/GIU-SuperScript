@@ -88,7 +88,7 @@ https://portal.giu-uni.de/*
 
 **File:** `GIU Theme.js` | **Version:** 1.0 | **Author:** Mo.Elmaadawy
 
-A portal-wide theming and full CSS reskin engine. Choose from four modes via an expanding side-tab picker fixed to the right edge of every portal page: **Off** (native portal, untouched), **Light**, **Slate** (default dark, GitHub-neutral greys), and **Plum** (pink/feminine accent palette). All on-modes also apply a comprehensive CSS reskin — improved typography, spacing, rounded components, and restyled sidebar, nav, tables, forms, and cards — so the portal looks polished in every theme. Built entirely on CSS variables; runs at `document-start` so there is no flash of unstyled content.
+A portal-wide theming engine. Choose from four modes via an expanding side-tab picker fixed to the right edge of every portal page: **Off** (native portal, untouched), **Light**, **Slate** (default dark, GitHub-neutral greys), and **Plum** (pink/feminine accent palette). Each on-mode recolours the portal and the injected SuperScript widgets to a matching palette. Built entirely on CSS variables; runs at `document-start` so there is no flash of unstyled content. (A fuller structural reskin — typography, spacing, restyled components — is planned for a later release.)
 
 > **Reinstall notice:** this script replaces the old "GIU Dark Mode" script. If you had `GIU Dark Mode.js` installed, please remove it and install `GIU Theme.js` once from the link below — the old auto-update URL no longer exists so Tampermonkey cannot migrate you automatically. After that one install, all future updates arrive automatically. Like its predecessor, `GIU Theme.js` must be installed **separately** from `GIU SuperScript.js` (it needs `document-start`; SuperScript runs later).
 
@@ -103,7 +103,6 @@ https://portal.giu-uni.de/*
 
 - **Four modes** — Off / Light / Slate / Plum, selected via an expanding side-tab picker on the right edge of every page
 - **Persists across pages** — preference saved in `localStorage`, applied before first paint (no flash of unstyled content)
-- **Full CSS reskin** — active in all on-modes: improved typography, spacing, rounded components, restyled sidebar/nav/tables/forms/cards
 - **CSS variable architecture** — all colour tokens defined once; switching modes swaps the token set instantly
 - **Full co-script coverage** — all other GIU SuperScript panels and widgets inherit the active theme palette automatically
 - **Legacy migration** — if you had "GIU Dark Mode" set to on, the script migrates your preference to Slate mode automatically
