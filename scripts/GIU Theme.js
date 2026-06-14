@@ -146,7 +146,6 @@
               --gp-radius: 6px;
               --gp-font: system-ui, 'Segoe UI', Roboto, Arial, sans-serif;
               --gp-pad: 12px;
-              --gp-gap: 8px;
             }
             /* ── Slate (default dark) ── */
             html[data-gius-theme="slate"] {
@@ -227,7 +226,7 @@
             }
 
             html[data-gius-theme] input[type="submit"], html[data-gius-theme] input[type="button"],
-            html[data-gius-theme] button:not(#gius-dm-toggle):not(#gius-theme-pop):not([class*="giug-btn"]):not([class*="gius-btn"]) {
+            html[data-gius-theme] button:not(#gius-dm-toggle):not([class*="giug-btn"]):not([class*="gius-btn"]) {
               background-color: var(--gp-surface) !important; color: var(--gp-text) !important; border-color: var(--gp-border) !important;
             }
 
@@ -439,7 +438,6 @@
 
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', buildPicker, { once: true });
-        window.addEventListener('load', buildPicker, { once: true });
     } else {
         buildPicker();
     }
