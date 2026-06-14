@@ -155,6 +155,8 @@
               --gp-accent:#ffc107; --gp-accent-fg:#1a1a1a; --gp-focus:#58a6ff;
               --gp-success-bg:#0d3321; --gp-success-fg:#a6e3a1; --gp-error-bg:#3d0000; --gp-error-fg:#f38ba8;
               --gp-info-bg:#1a2a4a; --gp-info-fg:#89b4fa;
+              --gp-info-border:#1e3a6e; --gp-error-border:#5a0000; --gp-success-border:#1e4d33;
+              --gp-warning-bg:#3d2a00; --gp-warning-fg:#ffc107;
             }
             /* ── Plum (Girls) ── */
             html[data-gius-theme="plum"] {
@@ -163,6 +165,8 @@
               --gp-accent:#ff6fae; --gp-accent-fg:#1a1320; --gp-focus:#ff6fae;
               --gp-success-bg:#16331f; --gp-success-fg:#9fe6b4; --gp-error-bg:#4a0d22; --gp-error-fg:#ff9db5;
               --gp-info-bg:#2a1f4a; --gp-info-fg:#c4a9ff;
+              --gp-info-border:#3a2a5e; --gp-error-border:#6a2235; --gp-success-border:#1f5a33;
+              --gp-warning-bg:#3a2a12; --gp-warning-fg:#ffc107;
             }
             /* ── Light ── */
             html[data-gius-theme="light"] {
@@ -171,6 +175,8 @@
               --gp-accent:#ffc107; --gp-accent-fg:#1a1a1a; --gp-focus:#0969da;
               --gp-success-bg:#dafbe1; --gp-success-fg:#1a7f37; --gp-error-bg:#ffebe9; --gp-error-fg:#cf222e;
               --gp-info-bg:#ddf4ff; --gp-info-fg:#0969da;
+              --gp-info-border:#54aeff; --gp-error-border:#ff8182; --gp-success-border:#4ac26b;
+              --gp-warning-bg:#fff8c5; --gp-warning-fg:#9a6700;
             }
 
             html[data-gius-theme] body,
@@ -276,9 +282,9 @@
             html[data-gius-theme] .chosen-results li.highlighted { background: var(--gp-border) !important; }
 
             /* ── GIUS notification panel: group list + labels + inputs ── */
-            html.gius-dark .gius-group-list { background: var(--gp-card) !important; border-color: var(--gp-border) !important; scrollbar-color: var(--gp-border) var(--gp-card) !important; }
+            html.gius-dark .gius-group-list { background: var(--gp-card) !important; border-color: var(--gp-border) !important; scrollbar-color: var(--gp-muted) var(--gp-card) !important; }
             html.gius-dark .gius-group-list::-webkit-scrollbar-track { background: var(--gp-card) !important; }
-            html.gius-dark .gius-group-list::-webkit-scrollbar-thumb { background: var(--gp-border) !important; }
+            html.gius-dark .gius-group-list::-webkit-scrollbar-thumb { background: var(--gp-muted) !important; }
             html.gius-dark .gius-group-row:hover { background: var(--gp-surface) !important; }
             html.gius-dark .gius-group-row label, html.gius-dark .gius-toggle-label { color: var(--gp-text) !important; }
             html.gius-dark .gius-section-label, html.gius-dark .gius-field-label, html.gius-dark .gius-empty-msg { color: var(--gp-muted) !important; }
@@ -287,14 +293,14 @@
             html.gius-dark .gius-card-category { color: var(--gp-muted) !important; }
 
             /* ── GIUS injected cards (white bg in light mode) ── */
-            html.gius-dark .giug-card, html.gius-dark .gius-card { background-color: var(--gp-card) !important; border-color: var(--gp-border) !important; }
+            html.gius-dark .giug-card, html.gius-dark .gius-card { background-color: var(--gp-card) !important; border-color: transparent !important; }
             html.gius-dark .giug-card-body, html.gius-dark .gius-card-body { background-color: var(--gp-card) !important; color: var(--gp-text) !important; }
             html.gius-dark .giug-select, html.gius-dark .gius-select { background-color: var(--gp-surface) !important; color: var(--gp-text) !important; border-color: var(--gp-border) !important; }
             html.gius-dark .giug-btn-success, html.gius-dark .giug-btn-outline, html.gius-dark .gius-btn-success, html.gius-dark .gius-btn-outline { background-color: var(--gp-surface) !important; border-color: var(--gp-border) !important; color: var(--gp-text) !important; }
             html.gius-dark .giug-btn-success:not(:disabled):hover, html.gius-dark .giug-btn-outline:not(:disabled):hover { background-color: var(--gp-border) !important; }
             html.gius-dark .giug-alert, html.gius-dark .gius-alert { background-color: var(--gp-card) !important; border-color: var(--gp-border) !important; color: var(--gp-text) !important; }
-            html.gius-dark .giug-alert-info, html.gius-dark .gius-alert-info { background-color: var(--gp-info-bg) !important; color: var(--gp-info-fg) !important; border-color: var(--gp-info-bg) !important; }
-            html.gius-dark .giug-alert-error, html.gius-dark .gius-alert-error { background-color: var(--gp-error-bg) !important; color: var(--gp-error-fg) !important; border-color: var(--gp-error-bg) !important; }
+            html.gius-dark .giug-alert-info, html.gius-dark .gius-alert-info { background-color: var(--gp-info-bg) !important; color: var(--gp-info-fg) !important; border-color: var(--gp-info-border) !important; }
+            html.gius-dark .giug-alert-error, html.gius-dark .gius-alert-error { background-color: var(--gp-error-bg) !important; color: var(--gp-error-fg) !important; border-color: var(--gp-error-border) !important; }
 
             /* ── GIU Upload Grades: stats table (not covered by generic rules) ── */
             html.gius-dark .giug-stats-table td { background: var(--gp-card) !important; color: var(--gp-text) !important; border-color: var(--gp-border) !important; }
@@ -310,8 +316,8 @@
             html.gius-dark .gmgg-panel-body { color: var(--gp-text) !important; }
             html.gius-dark .gmgg-btn-upload, html.gius-dark .gmgg-btn-download { background: var(--gp-surface) !important; border-color: var(--gp-border) !important; color: var(--gp-text) !important; }
             html.gius-dark .gmgg-btn-upload:not(:disabled):hover, html.gius-dark .gmgg-btn-download:not(:disabled):hover { background: var(--gp-border) !important; }
-            html.gius-dark .gmgg-feedback-success { background: var(--gp-success-bg) !important; color: var(--gp-success-fg) !important; border-color: var(--gp-success-bg) !important; }
-            html.gius-dark .gmgg-feedback-error { background: var(--gp-error-bg) !important; color: var(--gp-error-fg) !important; border-color: var(--gp-error-bg) !important; }
+            html.gius-dark .gmgg-feedback-success { background: var(--gp-success-bg) !important; color: var(--gp-success-fg) !important; border-color: var(--gp-success-border) !important; }
+            html.gius-dark .gmgg-feedback-error { background: var(--gp-error-bg) !important; color: var(--gp-error-fg) !important; border-color: var(--gp-error-border) !important; }
             html.gius-dark .gmgg-stats, html.gius-dark .gmgg-stat-row { background: var(--gp-deep) !important; border-color: var(--gp-border) !important; }
             html.gius-dark .gmgg-stats-title, html.gius-dark .gmgg-stat-val { color: var(--gp-text) !important; }
             html.gius-dark .gmgg-stat-label { color: var(--gp-muted) !important; }
@@ -336,12 +342,12 @@
             html.gius-dark .giu-dayoff-row { border-color: var(--gp-border) !important; }
             html.gius-dark .giu-dayoff-row label { color: var(--gp-text) !important; }
             html.gius-dark .giu-config-divider { background: var(--gp-border) !important; }
-            html.gius-dark .giu-balance-positive { background: var(--gp-success-bg) !important; border-color: var(--gp-success-bg) !important; }
-            html.gius-dark .giu-balance-negative { background: var(--gp-error-bg) !important; border-color: var(--gp-error-bg) !important; }
-            html.gius-dark .giu-tag-positive { background: var(--gp-success-bg) !important; color: var(--gp-success-fg) !important; }
-            html.gius-dark .giu-tag-negative { background: var(--gp-error-bg) !important; color: var(--gp-error-fg) !important; }
-            html.gius-dark .giu-remove-holiday-btn { background: var(--gp-error-bg) !important; border-color: var(--gp-error-bg) !important; color: var(--gp-error-fg) !important; }
-            html.gius-dark .giu-dayoff-badge { background: var(--gp-success-bg) !important; border-color: var(--gp-accent) !important; color: var(--gp-accent) !important; }
+            html.gius-dark .giu-balance-positive { background: var(--gp-success-bg) !important; border-color: var(--gp-success-border) !important; }
+            html.gius-dark .giu-balance-negative { background: var(--gp-error-bg) !important; border-color: var(--gp-error-border) !important; }
+            html.gius-dark .giu-tag-positive { background: var(--gp-success-border) !important; color: var(--gp-success-fg) !important; }
+            html.gius-dark .giu-tag-negative { background: var(--gp-error-border) !important; color: var(--gp-error-fg) !important; }
+            html.gius-dark .giu-remove-holiday-btn { background: var(--gp-error-bg) !important; border-color: var(--gp-error-border) !important; color: var(--gp-error-fg) !important; }
+            html.gius-dark .giu-dayoff-badge { background: var(--gp-warning-bg) !important; border-color: var(--gp-warning-fg) !important; color: var(--gp-warning-fg) !important; }
         `;
         document.documentElement.appendChild(style);
     }
