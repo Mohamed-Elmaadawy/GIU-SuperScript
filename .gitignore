@@ -1,14 +1,17 @@
 # Ignore everything
 *
 
-# Tampermonkey scripts (bundle + dark mode in scripts/, standalones in scripts/individual/)
+# Shipped userscripts (bundle + theme in scripts/, standalones in scripts/individual/)
 !scripts/
 !scripts/*.js
 !scripts/individual/
 !scripts/individual/*.js
-scripts/scrape-courses.js
-scripts/individual/GIU Proctor Schedule Aggregator.js
 
+# Local-only dev / scraper / screenshot tooling — never tracked
+scripts/dev/
+
+# Aggregator standalone kept untracked
+scripts/individual/GIU Proctor Schedule Aggregator.js
 
 # Tests
 !tests/
@@ -28,19 +31,6 @@ tests/fixtures/proctor-response.html
 !README.md
 !.gitignore
 .env
-scripts/dump-mainpage.js
-scripts/measure-home-cards.js
-scripts/crawl-portal.js
-scripts/map-portal.js
-scripts/probe-attendance.js
-scripts/explore-attendance-report.js
 
 # Docs
 docs/
-scripts/dark-shot.js
-scripts/tl-fill-shot.js
-scripts/cc-links-check.js
-scripts/capture-exchange.js
-scripts/test-take-live.js
-
-scripts/dayoff-verify-shot.js
