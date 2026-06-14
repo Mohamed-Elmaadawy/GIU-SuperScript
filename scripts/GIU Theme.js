@@ -343,91 +343,11 @@
             html.gius-dark .giu-remove-holiday-btn { background: var(--gp-error-bg) !important; border-color: var(--gp-error-border) !important; color: var(--gp-error-fg) !important; }
             html.gius-dark .giu-dayoff-badge { background: var(--gp-warning-bg) !important; border-color: var(--gp-warning-fg) !important; color: var(--gp-warning-fg) !important; }
 
-            /* ── Phase 1: global tokens ── */
-            html[data-gius-theme] body, html[data-gius-theme] .right-panel,
-            html[data-gius-theme] .content, html[data-gius-theme] button,
-            html[data-gius-theme] input, html[data-gius-theme] select, html[data-gius-theme] textarea {
-              font-family: var(--gp-font) !important;
+            /* ── Sidebar sub-menus: keep native portal color (Phase 1 reskin deferred) ── */
+            html[data-gius-theme] aside.left-panel .sub-menu, html[data-gius-theme] aside.left-panel .dropdown-menu,
+            html[data-gius-theme] #left-panel .sub-menu, html[data-gius-theme] #left-panel .dropdown-menu {
+              background-color: #272c33 !important; background: #272c33 !important;
             }
-            html[data-gius-theme] .panel, html[data-gius-theme] .card, html[data-gius-theme] .well,
-            html[data-gius-theme] .thumbnail, html[data-gius-theme] .card-stats, html[data-gius-theme] .modal-content,
-            html[data-gius-theme] .form-control, html[data-gius-theme] input[type="text"],
-            html[data-gius-theme] input[type="email"], html[data-gius-theme] input[type="password"],
-            html[data-gius-theme] input[type="search"], html[data-gius-theme] input[type="number"],
-            html[data-gius-theme] input[type="date"], html[data-gius-theme] textarea,
-            html[data-gius-theme] select:not([class*="giug-"]):not([class*="gius-"]),
-            html[data-gius-theme] input[type="submit"], html[data-gius-theme] input[type="button"],
-            html[data-gius-theme] button:not(#gius-dm-toggle):not([class*="giug-btn"]):not([class*="gius-btn"]) {
-              border-radius: var(--gp-radius) !important;
-            }
-
-            /* ── Phase 1: sidebar ── */
-            html[data-gius-theme] aside.left-panel, html[data-gius-theme] #left-panel {
-              background: var(--gp-deep) !important; border-right: 1px solid var(--gp-border) !important;
-            }
-            html[data-gius-theme] aside.left-panel .nav > li > a,
-            html[data-gius-theme] #left-panel .nav > li > a {
-              color: var(--gp-muted) !important; border-left: 2px solid transparent !important;
-            }
-            html[data-gius-theme] aside.left-panel .nav > li > a:hover,
-            html[data-gius-theme] #left-panel .nav > li > a:hover {
-              color: var(--gp-text) !important; background: var(--gp-card) !important;
-            }
-            html[data-gius-theme] aside.left-panel .nav > li.active > a,
-            html[data-gius-theme] #left-panel .nav > li.active > a,
-            html[data-gius-theme] aside.left-panel .nav > li > a.active,
-            html[data-gius-theme] #left-panel .nav > li > a.active {
-              color: var(--gp-text) !important; background: var(--gp-card) !important;
-              border-left: 2px solid var(--gp-accent) !important;
-            }
-            html[data-gius-theme] aside.left-panel .sub-menu, html[data-gius-theme] #left-panel .sub-menu,
-            html[data-gius-theme] aside.left-panel .dropdown-menu, html[data-gius-theme] #left-panel .dropdown-menu {
-              background: var(--gp-card) !important;
-            }
-            html[data-gius-theme] aside.left-panel .sub-menu a, html[data-gius-theme] #left-panel .sub-menu a,
-            html[data-gius-theme] aside.left-panel .dropdown-menu a, html[data-gius-theme] #left-panel .dropdown-menu a {
-              color: var(--gp-muted) !important;
-            }
-            /* ── Phase 1: topbar ── */
-            html[data-gius-theme] .navbar, html[data-gius-theme] header.header {
-              background-color: var(--gp-card) !important; border-bottom: 1px solid var(--gp-border) !important;
-            }
-
-            /* ── Phase 1: tables ── */
-            html[data-gius-theme] thead tr th { text-transform: uppercase !important; font-size: 11px !important; letter-spacing: .4px !important; color: var(--gp-muted) !important; }
-            html[data-gius-theme] tbody tr:hover td { background-color: var(--gp-surface) !important; }
-            html[data-gius-theme] td, html[data-gius-theme] th { padding: 8px 10px !important; }
-
-            /* ── Phase 1: native buttons ── */
-            html[data-gius-theme] input[type="submit"], html[data-gius-theme] input[type="button"],
-            html[data-gius-theme] button:not(#gius-dm-toggle):not([class*="giug-btn"]):not([class*="gius-btn"]) {
-              padding: 6px 14px !important; font-weight: 600 !important; transition: background-color .15s ease !important;
-            }
-            html[data-gius-theme] input[type="submit"]:hover, html[data-gius-theme] input[type="button"]:hover,
-            html[data-gius-theme] button:not(#gius-dm-toggle):not([class*="giug-btn"]):not([class*="gius-btn"]):hover {
-              background-color: var(--gp-border) !important;
-            }
-            html[data-gius-theme] .btn-primary, html[data-gius-theme] input[type="submit"].btn-primary {
-              background: var(--gp-accent) !important; color: var(--gp-accent-fg) !important; border-color: var(--gp-accent) !important;
-            }
-            /* ── Phase 1: inputs ── */
-            html[data-gius-theme] .form-control, html[data-gius-theme] input[type="text"],
-            html[data-gius-theme] input[type="email"], html[data-gius-theme] input[type="password"],
-            html[data-gius-theme] input[type="search"], html[data-gius-theme] input[type="number"],
-            html[data-gius-theme] input[type="date"], html[data-gius-theme] textarea {
-              padding: 7px 10px !important;
-            }
-            html[data-gius-theme] .form-control:focus, html[data-gius-theme] input:focus,
-            html[data-gius-theme] select:focus, html[data-gius-theme] textarea:focus {
-              box-shadow: 0 0 0 2px color-mix(in srgb, var(--gp-focus) 35%, transparent) !important;
-            }
-
-            /* ── Phase 1: cards/panels ── */
-            html[data-gius-theme] .panel-body, html[data-gius-theme] .card-body { padding: var(--gp-pad) !important; }
-            html[data-gius-theme] .panel-heading, html[data-gius-theme] .card-header {
-              padding: 10px var(--gp-pad) !important; font-weight: 600 !important;
-            }
-            html[data-gius-theme] .panel { margin-bottom: 14px !important; }
         `;
         document.documentElement.appendChild(style);
     }
