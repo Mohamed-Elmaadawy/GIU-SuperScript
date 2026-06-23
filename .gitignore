@@ -13,15 +13,7 @@ scripts/dev/
 # Aggregator standalone kept untracked
 scripts/individual/GIU Proctor Schedule Aggregator.js
 
-# Tests
-!tests/
-!tests/**
-
-# Aggregator test files (kept untracked)
-tests/proctor-aggregator.spec.js
-tests/fixtures/dept-response.html
-tests/fixtures/exchange-page.html
-tests/fixtures/proctor-response.html
+# Tests — local-only, not tracked (covered by the global * ignore)
 
 # README screenshots
 !screenshots/
