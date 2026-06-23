@@ -5,7 +5,7 @@
 // @icon        data:image/png;base64,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
 // @include     https://portal.giu-uni.de/*
 // @namespace   Cyn0
-// @version     3.1.9
+// @version     3.1.10
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @run-at      document-idle
@@ -84,6 +84,7 @@
                 auditMode: "giuAuditModeV1",
                 annualLeaveBalance: "giuAnnualLeaveBalanceV1",
                 annualLeaveAccrualPeriod: "giuAnnualLeaveAccrualPeriodV1",
+                annualLeaveAccrualRate: "giuAnnualLeaveAccrualRateV1",
                 paginationState: "giuPaginationStateV1",
                 tableFilters: "giuTableFiltersV1",
                 sectionState: "giuSectionStateV1",
@@ -101,6 +102,8 @@
             const AUDIT_MODE_KEY = STORAGE_KEYS.auditMode;
             const ANNUAL_LEAVE_BALANCE_KEY = STORAGE_KEYS.annualLeaveBalance;
             const ANNUAL_LEAVE_ACCRUAL_PERIOD_KEY = STORAGE_KEYS.annualLeaveAccrualPeriod;
+            const ANNUAL_LEAVE_ACCRUAL_RATE_KEY = STORAGE_KEYS.annualLeaveAccrualRate;
+            const ANNUAL_LEAVE_ACCRUAL_RATE_DEFAULT = 2.5;
             const LAST_ACTION_KEYS = {
                 holidays: "giuLastActionHolidayV1",
                 compensation: "giuLastActionCompensationV1",
@@ -603,6 +606,26 @@
                 localStorage.setItem(ANNUAL_LEAVE_BALANCE_KEY, String(safe));
             }
 
+            // Monthly annual-leave accrual rate (days added per payroll period).
+            // Defaults to 2.5 when unset or invalid; never negative.
+            function getStoredAnnualLeaveAccrualRate() {
+                try {
+                    const raw = localStorage.getItem(ANNUAL_LEAVE_ACCRUAL_RATE_KEY);
+                    if (raw == null || raw === "") return ANNUAL_LEAVE_ACCRUAL_RATE_DEFAULT;
+                    const n = Number(raw);
+                    if (!Number.isFinite(n) || n < 0) return ANNUAL_LEAVE_ACCRUAL_RATE_DEFAULT;
+                    return n;
+                } catch {
+                    return ANNUAL_LEAVE_ACCRUAL_RATE_DEFAULT;
+                }
+            }
+
+            function setStoredAnnualLeaveAccrualRate(value) {
+                const n = Number(value);
+                const safe = Number.isFinite(n) && n >= 0 ? n : ANNUAL_LEAVE_ACCRUAL_RATE_DEFAULT;
+                localStorage.setItem(ANNUAL_LEAVE_ACCRUAL_RATE_KEY, String(safe));
+            }
+
             // ───────────────────────────────────────────────────────────────────────
             //  Record retention
             //  Records older than 2 payroll months are auto-removed. The cutoff
@@ -799,7 +822,7 @@
 
                 const periodsPassed = currIdx - lastIdx;
                 const currentBalance = getStoredAnnualLeaveBalance();
-                const updatedBalance = currentBalance + periodsPassed * 2;
+                const updatedBalance = currentBalance + periodsPassed * getStoredAnnualLeaveAccrualRate();
                 setStoredAnnualLeaveBalance(updatedBalance);
                 localStorage.setItem(ANNUAL_LEAVE_ACCRUAL_PERIOD_KEY, currentPeriodKey);
             }
@@ -2759,6 +2782,51 @@
                 input.select();
             }
 
+            // Multi-field sibling of createInlineModalPrompt. `fields` is an array of
+            // { label, value }. onConfirm receives an array of the entered string
+            // values (same order as `fields`); return false to keep the modal open.
+            function createInlineModalForm(title, fields, onConfirm) {
+                const layer = document.createElement("div");
+                layer.style.cssText = "position:fixed;inset:0;background:rgba(15,23,42,0.45);display:flex;align-items:center;justify-content:center;z-index:2147483646;";
+                const modal = document.createElement("div");
+                modal.style.cssText = "width:min(420px,92vw);background:#fff;border:1px solid #d1d5db;border-radius:8px;padding:12px;display:grid;gap:10px;";
+                const h = document.createElement("div");
+                h.style.cssText = "font-size:14px;font-weight:700;color:#1f2937;";
+                h.textContent = title;
+                modal.appendChild(h);
+
+                const inputs = (fields || []).map(function (field) {
+                    const label = document.createElement("label");
+                    label.style.cssText = "display:grid;gap:4px;font-size:12.5px;font-weight:600;color:#374151;";
+                    const labelText = document.createElement("span");
+                    labelText.textContent = field.label;
+                    const input = document.createElement("input");
+                    input.type = "text";
+                    input.value = String(field.value == null ? "" : field.value);
+                    input.style.cssText = "height:34px;padding:0 10px;border:1px solid #9ca3af;border-radius:6px;font-weight:400;";
+                    label.appendChild(labelText);
+                    label.appendChild(input);
+                    modal.appendChild(label);
+                    return input;
+                });
+
+                const actions = document.createElement("div");
+                actions.style.cssText = "display:flex;justify-content:flex-end;gap:8px;";
+                const cancel = createUiButton("Cancel", "giu-settings-action-btn", function () {
+                    if (layer.parentNode) layer.parentNode.removeChild(layer);
+                });
+                const ok = createUiButton("Save", "giu-add-holiday-btn", function () {
+                    const keep = onConfirm(inputs.map(function (i) { return i.value; }));
+                    if (keep !== false && layer.parentNode) layer.parentNode.removeChild(layer);
+                });
+                actions.appendChild(cancel);
+                actions.appendChild(ok);
+                modal.appendChild(actions);
+                layer.appendChild(modal);
+                document.body.appendChild(layer);
+                if (inputs[0]) { inputs[0].focus(); inputs[0].select(); }
+            }
+
             function wrapSettingsSection(sectionKey, title, bodyNode, defaultExpanded) {
                 const wrap = document.createElement("div");
                 wrap.className = "giu-settings-subsection";
@@ -3522,6 +3590,7 @@
                 const annualUsed = computeAnnualUsedDays(getStoredHolidays());
                 const annualTotal = getStoredAnnualLeaveBalance();
                 const annualRemain = annualTotal - annualUsed;
+                const annualRate = getStoredAnnualLeaveAccrualRate();
 
                 const annualRow = document.createElement("div");
                 annualRow.style.display = "flex";
@@ -3536,18 +3605,29 @@
                     <span class="giu-annual-balance-badge ${annualRemain >= 0 ? "giu-annual-balance-positive" : "giu-annual-balance-negative"}">
                         Remaining: ${annualRemain} day(s)
                     </span>
+                    <span class="giu-annual-balance-badge giu-annual-balance-positive">
+                        Accrual: ${annualRate} day(s)/mo
+                    </span>
                 `;
 
                 const editAnnualBalanceBtn = createUiButton("Edit", "giu-edit-annual-btn", function () {
-                    createInlineModalPrompt("Edit annual leave remaining balance (days)", String(annualRemain), function (value) {
-                        const parsed = Number(value);
-                        if (!Number.isFinite(parsed)) {
-                            alert("Please enter a valid number.");
+                    createInlineModalForm("Edit annual leave", [
+                        { label: "Remaining balance (days)", value: String(annualRemain) },
+                        { label: "Accrual rate (days / month)", value: String(annualRate) }
+                    ], function (values) {
+                        const parsedRemaining = Number(values[0]);
+                        const parsedRate = Number(values[1]);
+                        if (!Number.isFinite(parsedRemaining)) {
+                            alert("Please enter a valid remaining balance.");
                             return false;
                         }
-                        const desiredRemaining = parsed;
-                        const desiredTotal = Math.max(0, desiredRemaining + annualUsed);
+                        if (!Number.isFinite(parsedRate) || parsedRate < 0) {
+                            alert("Please enter a valid accrual rate (0 or more).");
+                            return false;
+                        }
+                        const desiredTotal = Math.max(0, parsedRemaining + annualUsed);
                         setStoredAnnualLeaveBalance(desiredTotal);
+                        setStoredAnnualLeaveAccrualRate(parsedRate);
                         renderEnhancedUI();
                         return true;
                     });
@@ -4998,7 +5078,9 @@
                 const compensationBalanceSeconds = acc.compensationEarnedSeconds - acc.compensationUsedSeconds;
                 const balanceHMS = secondsToHMS(balanceSeconds);
                 const progressPercent = acc.requiredSeconds > 0
-                    ? Math.min(100, Math.round((acc.actualSeconds / acc.requiredSeconds) * 100))
+                    ? (acc.actualSeconds >= acc.requiredSeconds
+                        ? 100
+                        : Math.floor((acc.actualSeconds / acc.requiredSeconds) * 100))
                     : 100;
                 const progressGapSeconds = Math.max(0, acc.requiredSeconds - acc.actualSeconds);
                 const progressColor = progressPercent >= 100
@@ -7051,6 +7133,11 @@
                 detectDayOffCode,
                 maybeAutoFillDayOff,
                 renderEnhancedUI,
+                getStoredAnnualLeaveBalance,
+                setStoredAnnualLeaveBalance,
+                getStoredAnnualLeaveAccrualRate,
+                setStoredAnnualLeaveAccrualRate,
+                applyMonthlyAnnualLeaveAccrual,
             };
 
             try {
