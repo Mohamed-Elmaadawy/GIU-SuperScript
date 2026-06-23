@@ -78,6 +78,34 @@ test.describe('GIU Attendance Home Summary', () => {
         expect(empty).toBe(true);
     });
 
+    test('progressPercent never rounds up to 100% while balance is still Missing', async ({ page }) => {
+        await setup(page);
+        // 5 present days; total worked is 0:06:55 short of required (8h24m/day).
+        // Old code Math.round(99.7%) → 100% + green bar, contradicting the "missing" badge.
+        const r = await page.evaluate(() => {
+            const rows = [
+                { date: '2030-12-11', firstIn: '8:00:00 AM', lastOut: '4:24:00 PM', duration: '08:24:00' },
+                { date: '2030-12-14', firstIn: '8:00:00 AM', lastOut: '4:24:00 PM', duration: '08:24:00' },
+                { date: '2030-12-15', firstIn: '8:00:00 AM', lastOut: '4:24:00 PM', duration: '08:24:00' },
+                { date: '2030-12-16', firstIn: '8:00:00 AM', lastOut: '4:24:00 PM', duration: '08:24:00' },
+                { date: '2030-12-17', firstIn: '8:00:00 AM', lastOut: '4:17:05 PM', duration: '08:17:05' },
+            ];
+            const s = window.__giuAttHome.computeCurrentMonthSummary(rows, '2030-12-20');
+            return {
+                presentDays: s.stats.presentDays,
+                balanceLabel: s.stats.label,
+                isPositiveOrZero: s.stats.isPositiveOrZero,
+                progressPercent: s.stats.progressPercent,
+                progressColor: s.stats.progressColor,
+            };
+        });
+        expect(r.presentDays).toBe(5);
+        expect(r.balanceLabel).toBe('Missing');
+        expect(r.isPositiveOrZero).toBe(false);
+        expect(r.progressPercent).toBeLessThan(100);
+        expect(r.progressColor).not.toBe('green');
+    });
+
     test('computeCurrentMonthSummary falls back to today\'s period when data lags a period flip', async ({ page }) => {
         await setup(page);
         const r = await page.evaluate(() => {
@@ -265,5 +293,67 @@ test.describe('GIU Attendance Home Summary', () => {
         await page.evaluate(() => document.documentElement.classList.add('gius-dark'));
         const dark = await page.evaluate(() => getComputedStyle(document.getElementById('gius-att-widget')).backgroundColor);
         expect(dark).toBe('rgb(30, 30, 46)');
+    });
+
+    test('annual leave accrual rate defaults to 2.5 and persists / validates custom values', async ({ page }) => {
+        await setup(page);
+        const r = await page.evaluate(() => {
+            const H = window.__giuAttHome;
+            localStorage.clear();
+            const def = H.getStoredAnnualLeaveAccrualRate();
+            H.setStoredAnnualLeaveAccrualRate(1.75);
+            const custom = H.getStoredAnnualLeaveAccrualRate();
+            H.setStoredAnnualLeaveAccrualRate(-4);          // negative → fallback
+            const negFallback = H.getStoredAnnualLeaveAccrualRate();
+            localStorage.setItem('giuAnnualLeaveAccrualRateV1', 'abc'); // junk → fallback
+            const invalidFallback = H.getStoredAnnualLeaveAccrualRate();
+            return { def, custom, negFallback, invalidFallback };
+        });
+        expect(r.def).toBe(2.5);
+        expect(r.custom).toBe(1.75);
+        expect(r.negFallback).toBe(2.5);
+        expect(r.invalidFallback).toBe(2.5);
+    });
+
+    test('monthly accrual adds the configured rate per elapsed period (future-only)', async ({ page }) => {
+        await setup(page);
+        const r = await page.evaluate(() => {
+            const H = window.__giuAttHome;
+            const KEY = 'giuAnnualLeaveAccrualPeriodV1';
+            // Roll the accrual marker back exactly one payroll period so a single
+            // period has "passed" on the next call.
+            const rollBackOnePeriod = () => {
+                const cur = localStorage.getItem(KEY);
+                const [y, m] = cur.split('-').map(Number);
+                const prevIdx = y * 12 + (m - 1) - 1;
+                const prevKey = Math.floor(prevIdx / 12) + '-' + String((prevIdx % 12) + 1).padStart(2, '0');
+                localStorage.setItem(KEY, prevKey);
+            };
+
+            localStorage.clear();
+            H.applyMonthlyAnnualLeaveAccrual();   // first call: init marker, no accrual
+
+            rollBackOnePeriod();
+            H.setStoredAnnualLeaveBalance(10);
+            H.setStoredAnnualLeaveAccrualRate(2.5);
+            H.applyMonthlyAnnualLeaveAccrual();
+            const afterDefault = H.getStoredAnnualLeaveBalance();
+
+            rollBackOnePeriod();
+            H.setStoredAnnualLeaveBalance(10);
+            H.setStoredAnnualLeaveAccrualRate(3);
+            H.applyMonthlyAnnualLeaveAccrual();
+            const afterCustom = H.getStoredAnnualLeaveBalance();
+
+            // Same period twice → no double accrual (future-only).
+            const beforeRepeat = H.getStoredAnnualLeaveBalance();
+            H.applyMonthlyAnnualLeaveAccrual();
+            const afterRepeat = H.getStoredAnnualLeaveBalance();
+
+            return { afterDefault, afterCustom, beforeRepeat, afterRepeat };
+        });
+        expect(r.afterDefault).toBeCloseTo(12.5, 5);
+        expect(r.afterCustom).toBeCloseTo(13, 5);
+        expect(r.afterRepeat).toBe(r.beforeRepeat);
     });
 });
