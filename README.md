@@ -60,7 +60,7 @@ Every script carries `@updateURL` and `@downloadURL` pointing at this repo, so T
 
 ### GIU SuperScript — All-in-one bundle
 
-**File:** `GIU SuperScript.js` | **Version:** 1.1.10 | **Author:** Mo.Elmaadawy
+**File:** `GIU SuperScript.js` | **Version:** 1.1.11 | **Author:** Mo.Elmaadawy
 
 The all-in-one userscript that bundles every feature script below except GIU Theme. It also adds a **Control Center** card on the portal Home page where you can turn bundled modules on or off.
 
@@ -155,7 +155,7 @@ https://portal.giu-uni.de/GIUb/EXT/SwiftReports_m.aspx?swiftreportid=866&execute
 
 ### 3. GIU Notification Batch Send
 
-**File:** `GIU Notification Batch Send.js` | **Version:** 1.4 | **Author:** Mo.Elmaadawy
+**File:** `GIU Notification Batch Send.js` | **Version:** 1.4.1 | **Author:** Mo.Elmaadawy
 
 Sends the same email notification to multiple tutorial groups in sequence. Write subject and body once — the script steps through each selected group using a localStorage queue and page reloads.
 
@@ -387,7 +387,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 
 ### 9. GIU Teaching Load
 
-**File:** `GIU Teaching Load.js` | **Version:** 1.1.3 | **Author:** Mo.Elmaadawy
+**File:** `GIU Teaching Load.js` | **Version:** 1.1.4 | **Author:** Mo.Elmaadawy
 
 Shows your teaching schedule on the portal Home page — today's sessions highlighted
 at the top, plus your full week in an expandable list. Each session shows the period
