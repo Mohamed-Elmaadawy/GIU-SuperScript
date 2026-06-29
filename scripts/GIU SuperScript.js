@@ -5,7 +5,7 @@
 // @icon        data:image/png;base64,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
 // @namespace   Cyn0
 // @match       https://portal.giu-uni.de/*
-// @version     1.1.6
+// @version     1.1.7
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @run-at      document-idle
@@ -7198,6 +7198,8 @@
                     .gius-att-bar-ghost{background:#dc2626;} .gius-att-bar-close{background:#f59e0b;} .gius-att-bar-ontime{background:#16a34a;}
                     .gius-att-bar-workaholic{background:#ea580c;} .gius-att-bar-grass{background:#65a30d;} .gius-att-bar-slave{background:#a21caf;}
                     .gius-att-tierwrap{margin-top:10px;}
+                    .gius-att-quip{margin-top:6px;font-size:12.5px;font-style:italic;color:#6b7280;}
+                    html.gius-dark .gius-att-quip{color:#9399b2;}
                     .gius-att-tier{display:inline-block;font-size:12px;font-weight:800;padding:3px 9px;border-radius:999px;}
                     .gius-att-tier-ghost{background:#fee2e2;color:#991b1b;} .gius-att-tier-close{background:#fff3da;color:#92600a;}
                     .gius-att-tier-ontime{background:#dcfce7;color:#166534;} .gius-att-tier-workaholic{background:#ffedd5;color:#9a3412;}
@@ -7322,9 +7324,52 @@
                     ontime: "✅ Right On Time", workaholic: "💪 Workaholic",
                     grass: "🌱 Touch Grass", slave: "⛓️ Officially a Slave"
                 };
+                const TIER_QUIPS = {
+                    ghost: [
+                        "The gate scanner forgot what you look like.",
+                        "Attendance: purely theoretical.",
+                        "Clocking in is apparently optional for you.",
+                        "Payroll wants a word. Several, actually."
+                    ],
+                    close: [
+                        "One decent day and you're square.",
+                        "Almost balanced — finish the job.",
+                        "Just shy of safe. Keep going.",
+                        "A short shift from peace of mind."
+                    ],
+                    ontime: [
+                        "Balanced. Zen master of the clock-in.",
+                        "Exactly enough. Chef's kiss attendance.",
+                        "Right on the money — no more, no less."
+                    ],
+                    workaholic: [
+                        "Banking hours like it's a personality.",
+                        "Someone tell you weekends exist?",
+                        "The overtime is overtiming."
+                    ],
+                    grass: [
+                        "You've earned a sunset. Go look at one.",
+                        "Touch grass — the real kind, outdoors.",
+                        "Hours: surplus. Vitamin D: deficit."
+                    ],
+                    slave: [
+                        "GIU should be paying rent in your life.",
+                        "At this point, bring a sleeping bag.",
+                        "Officially married to the gate scanner."
+                    ]
+                };
                 const barClass = "gius-att-bar-" + tier;
                 const tierClass = "gius-att-tier-" + tier;
                 const tierName = TIER_NAMES[tier];
+                // One quip per day, pseudo-random but STABLE all day (not per reload):
+                // hash today's date (+ tier) → index. Same date ⟹ same quip; tiers differ.
+                const quipList = TIER_QUIPS[tier];
+                const quipKey = String(getTodayLocalYMD()) + "|" + tier;
+                let quipHash = 0;
+                for (let i = 0; i < quipKey.length; i++) {
+                    quipHash = (Math.imul(quipHash, 31) + quipKey.charCodeAt(i)) | 0;
+                }
+                const tierQuip = quipList[Math.abs(quipHash) % quipList.length];
 
                 const absentBlock = st.absentDays > 0 ? `
                     <button type="button" id="gius-att-toggle-absent" class="gius-att-toggle gius-btn">Absent days (${st.absentDays})</button>
@@ -7354,6 +7399,7 @@
                         <div class="gius-att-bar"><div class="gius-att-bar-fill ${barClass}" style="width:${barWidth}%"></div></div>
                         <div class="gius-att-meta">${pctRaw}% covered &middot; Present ${st.presentDays} &middot; Absent ${st.absentDays} &middot; ${homeEsc(summary.label || "")}</div>
                         <div class="gius-att-tierwrap"><span class="gius-att-tier ${tierClass}">${tierName}</span></div>
+                        <div class="gius-att-quip">${homeEsc(tierQuip)}</div>
                     </div>
                     ${absentBlock}
                     <a class="gius-att-link" href="${REPORT_DATA_URL}">View full report →</a>`;
