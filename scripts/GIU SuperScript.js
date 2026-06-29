@@ -7347,7 +7347,7 @@
                 const TIER_NAMES = {
                     ghost: "👻 Ghosting GIU", close: "😅 Cutting It Close",
                     ontime: "✅ Right On Time", workaholic: "💪 Workaholic",
-                    grass: "🌱 Touch Grass", slave: "⛓️ Officially a Slave"
+                    grass: "🌱 Touch Grass", slave: "⛏️ Officially a Slave"
                 };
                 const TIER_ORDER = ["ghost", "close", "ontime", "workaholic", "grass", "slave"];
                 const TIER_CONDS = {
