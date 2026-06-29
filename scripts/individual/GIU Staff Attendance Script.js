@@ -5,7 +5,7 @@
 // @icon        data:image/png;base64,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
 // @include     https://portal.giu-uni.de/*
 // @namespace   Cyn0
-// @version     3.1.15
+// @version     3.1.16
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @run-at      document-idle
@@ -49,7 +49,7 @@
             const REPORT_URL = "https://portal.giu-uni.de/GIUb/EXT/SwiftReports_m.aspx";
             const SWIFT_REPORT_ID = 866; // user's "Gate Attendance ... Gates" SwiftReport id (see README target page)
             const REPORT_DATA_URL = REPORT_URL + "?swiftreportid=" + SWIFT_REPORT_ID + "&executereport=1";
-            const HOME_CACHE_KEY = "giuAttendanceHomeV1";
+            const HOME_CACHE_KEY = "giuAttendanceHomeV2"; // V2: summary gained `tier` + cache now stores rows for live recompute (drops V1)
             const HOME_IFRAME_TIMEOUT_MS = 15000;
             const HOME_REFRESH_TTL_MS = 10 * 60 * 1000;  // skip refresh if cache newer than 10 min
             const HOME_REFRESH_DELAY_MS = 2500;          // let Home paint before hidden-iframe refresh
@@ -5089,6 +5089,23 @@
                         ? "amber"
                         : "red";
 
+                // Home-widget tier — computed here so the breakpoints live with the math and
+                // never drift from the view (single source for Home + any future surface).
+                // Below 100%: amber gap → "close", else "ghost". At/above 100%: escalate by
+                // EXTRA hours banked (balanceSeconds), +2h / +5h / +10h breakpoints.
+                let tier;
+                if (progressPercentRaw < 100) {
+                    tier = progressColor === "amber" ? "close" : "ghost";
+                } else if (balanceSeconds < 2 * 3600) {
+                    tier = "ontime";
+                } else if (balanceSeconds < 5 * 3600) {
+                    tier = "workaholic";
+                } else if (balanceSeconds < 10 * 3600) {
+                    tier = "grass";
+                } else {
+                    tier = "slave";
+                }
+
                 const formatSeconds = function (totalSeconds) {
                     const hms = secondsToHMS(totalSeconds);
                     return formatHMS(hms.hours, hms.minutes, hms.seconds);
@@ -5118,12 +5135,12 @@
                     actualHM: formatSeconds(acc.actualSeconds),
                     requiredHM: formatSeconds(acc.requiredSeconds),
                     balanceHM: formatHMS(balanceHMS.hours, balanceHMS.minutes, balanceHMS.seconds),
-                    balanceShort: balanceHMS.hours + ":" + String(balanceHMS.minutes).padStart(2, "0"),
                     isPositiveOrZero: balanceSeconds >= 0,
                     label: balanceSeconds >= 0 ? "Extra" : "Missing",
                     progressPercent,
                     progressPercentRaw,
-                    progressColor
+                    progressColor,
+                    tier
                 };
             }
 
@@ -5463,7 +5480,7 @@
                 const valueWrap = document.createElement("div");
                 valueWrap.className = "giu-stat-value";
                 valueWrap.innerHTML = `
-                    ${stats.balanceShort}
+                    ${stats.balanceHM}
                     <span class="giu-balance-tag ${stats.isPositiveOrZero ? "giu-tag-positive" : "giu-tag-negative"}">
                         ${stats.label}
                     </span>
@@ -6756,9 +6773,13 @@
                     return raw;
                 } catch { return null; }
             }
-            function saveHomeCache(summary) {
+            function saveHomeCache(summary, rows) {
                 try {
-                    localStorage.setItem(HOME_CACHE_KEY, JSON.stringify({ summary: summary, fetchedAt: Date.now() }));
+                    localStorage.setItem(HOME_CACHE_KEY, JSON.stringify({
+                        summary: summary,
+                        rows: Array.isArray(rows) ? rows : null, // kept so Home can recompute when settings change
+                        fetchedAt: Date.now()
+                    }));
                 } catch { /* quota */ }
             }
 
@@ -6771,6 +6792,7 @@
                     iframe.src = REPORT_DATA_URL;
 
                     let done = false;
+                    let lastCount = -1;
                     const started = Date.now();
                     const cleanup = function () { try { iframe.remove(); } catch {} };
                     const finish = function (fn, arg) { if (done) return; done = true; clearInterval(poll); cleanup(); fn(arg); };
@@ -6780,10 +6802,20 @@
                         let doc;
                         try { doc = iframe.contentDocument; } catch { return; }
                         if (!doc) return;
+                        // Don't read while the document is still PARSING ("loading"): a mid-parse
+                        // read can grab a half-built grid (e.g. the first 13 of 31 rows) and render
+                        // wrong numbers on Home while the full Report page is correct — the
+                        // Home/Report mismatch users reported. "interactive" (DOMContentLoaded) is
+                        // enough: the full table is in the DOM. We do NOT wait for "complete" —
+                        // that blocks on slow subresources (images/css) and can hang the widget.
+                        if (doc.readyState === "loading") return;
                         const table = doc.getElementById("MainContent_DG_SwiftReport");
                         if (!table) return;
                         const rows = getAttendanceRows(doc);
                         if (!rows.length) return;
+                        // Insurance: only trust a row count that holds steady across two
+                        // consecutive polls, so any late append can't be read half-finished.
+                        if (rows.length !== lastCount) { lastCount = rows.length; return; }
                         finish(resolve, rows);
                     }, 250);
 
@@ -6834,7 +6866,7 @@
             function homeRenderFromRows(rows) {
                 homeLastRows = Array.isArray(rows) ? rows : [];
                 const summary = computeCurrentMonthSummary(homeLastRows);
-                saveHomeCache(summary);
+                saveHomeCache(summary, homeLastRows);
                 renderHomeWidget(summary);
             }
 
@@ -7068,15 +7100,12 @@
                 const pctRaw = Math.max(0, typeof st.progressPercentRaw === "number"
                     ? st.progressPercentRaw : st.progressPercent);
                 const barWidth = Math.min(100, pctRaw);
-                // Below 100%: amber/red by gap. At/above 100%: escalate by EXTRA hours
-                // banked (actual − required), not by %. green → teal(+2h) → blue(+5h) → purple(+10h).
-                const extraSeconds = (st.actualSeconds || 0) - (st.requiredSeconds || 0);
-                let tier;
-                if (pctRaw < 100) tier = st.progressColor === "amber" ? "close" : "ghost";
-                else if (extraSeconds < 2 * 3600) tier = "ontime";
-                else if (extraSeconds < 5 * 3600) tier = "workaholic";
-                else if (extraSeconds < 10 * 3600) tier = "grass";
-                else tier = "slave";
+                // Tier key computed once in finalizePeriodStats (single source — breakpoints live
+                // with the math, not the view, so Home never drifts from the stats engine).
+                // Fallback for summaries cached by an older version (no `tier` field): a missing
+                // tier must NOT reach TIER_QUIPS[tier]/.length below — that threw and left the
+                // widget blank. The fresh iframe fetch overwrites this with the real tier.
+                const tier = st.tier || "ontime";
                 const TIER_NAMES = {
                     ghost: "👻 Ghosting GIU", close: "😅 Cutting It Close",
                     ontime: "✅ Right On Time", workaholic: "💪 Workaholic",
@@ -7248,6 +7277,11 @@
                 if (r) r.addEventListener("click", bootHome);
             }
 
+            function homeShowLoading(host) {
+                host.innerHTML = `<div class="gius-att-head">This Payroll Month</div>
+                    <div class="gius-att-empty">Loading attendance…</div>`;
+            }
+
             function bootHome() {
                 if (!isHomePage()) return;
                 homeInjectStyles();
@@ -7255,8 +7289,19 @@
                 const cache = loadHomeCache();
                 const fresh = !!(cache && cache.fetchedAt &&
                     (Date.now() - cache.fetchedAt) < HOME_REFRESH_TTL_MS);
-                if (cache) renderHomeWidget(cache.summary, { stale: !fresh });
-                if (fresh) return; // recent enough — skip the report iframe entirely
+                if (cache) {
+                    // Recompute from the cached rows so settings changed on the report page
+                    // (compensation, overrides, holidays, day-off, ramadan, exam) reflect
+                    // immediately — the stored summary alone goes stale against localStorage
+                    // even when the rows are current. Falls back to the summary for old caches.
+                    const summary = Array.isArray(cache.rows)
+                        ? computeCurrentMonthSummary(cache.rows)
+                        : cache.summary;
+                    renderHomeWidget(summary, { stale: !fresh });
+                } else {
+                    homeShowLoading(homeEnsureHost()); // no cache → show a spinner, not a blank card
+                }
+                if (fresh) return; // gate rows recent enough — skip the report iframe entirely
 
                 const refresh = function () {
                     fetchReportViaIframe().then(homeRenderFromRows).catch(function () {
@@ -7272,6 +7317,7 @@
 
             window.__giuAttHome = {
                 isHomePage,
+                bootHome,
                 getAttendanceRows,
                 computeCurrentMonthSummary,
                 fetchReportViaIframe,
