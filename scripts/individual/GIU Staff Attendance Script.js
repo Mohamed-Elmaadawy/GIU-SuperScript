@@ -5,7 +5,7 @@
 // @icon        data:image/png;base64,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
 // @include     https://portal.giu-uni.de/*
 // @namespace   Cyn0
-// @version     3.1.12
+// @version     3.1.13
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @run-at      document-idle
@@ -6933,7 +6933,32 @@
                     .gius-att-tierwrap{margin-top:10px;}
                     .gius-att-quip{margin-top:6px;font-size:12.5px;font-style:italic;color:#6b7280;}
                     html.gius-dark .gius-att-quip{color:#9399b2;}
-                    .gius-att-tier{display:inline-block;font-size:12px;font-weight:800;padding:3px 9px;border-radius:999px;}
+                    .gius-att-tier{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:800;padding:3px 9px;border-radius:999px;}
+                    .gius-att-tier-btn{cursor:pointer;border:none;font-family:inherit;transition:filter .12s,transform .12s;}
+                    .gius-att-tier-btn:hover{filter:brightness(.96);transform:translateY(-1px);}
+                    .gius-att-tier-btn::after{content:"i";font-size:9px;font-weight:900;line-height:1;width:13px;height:13px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1.5px solid currentColor;opacity:.7;}
+                    .gius-att-tier-seen::after{display:none;}
+                    .gius-att-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:2147483600;background:rgba(0,0,0,.45);padding:20px;opacity:0;transition:opacity .15s;}
+                    .gius-att-modal.open{display:flex;opacity:1;}
+                    .gius-att-sheet{width:100%;max-width:420px;max-height:85vh;overflow:auto;background:#fff;color:#1e1e2e;border-radius:14px;padding:18px;box-shadow:0 18px 50px rgba(0,0,0,.35);}
+                    .gius-att-sheet-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;}
+                    .gius-att-sheet-title{font-weight:800;font-size:16px;}
+                    .gius-att-sheet-sub{font-size:12.5px;color:#6b7280;margin-bottom:14px;}
+                    .gius-att-x{border:none;background:transparent;font-size:20px;line-height:1;cursor:pointer;color:inherit;padding:4px;}
+                    .gius-att-trow{display:flex;align-items:flex-start;gap:11px;padding:11px;border-radius:10px;margin-bottom:8px;border:1px solid #eef0f3;}
+                    .gius-att-trow.cur{background:#f6f8fa;border-color:#d0d7de;}
+                    .gius-att-dot{flex:0 0 auto;width:14px;height:14px;border-radius:50%;margin-top:3px;}
+                    .gius-att-dot-ghost{background:#dc2626;} .gius-att-dot-close{background:#f59e0b;} .gius-att-dot-ontime{background:#16a34a;}
+                    .gius-att-dot-workaholic{background:#ea580c;} .gius-att-dot-grass{background:#65a30d;} .gius-att-dot-slave{background:#a21caf;}
+                    .gius-att-trow-main{flex:1 1 auto;min-width:0;}
+                    .gius-att-trow-name{font-weight:800;font-size:13.5px;display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
+                    .gius-att-trow-cur{font-size:10.5px;font-weight:800;letter-spacing:.4px;padding:1px 6px;border-radius:999px;background:#1e1e2e;color:#fff;}
+                    .gius-att-trow-cond{font-size:12px;color:#6b7280;margin-top:2px;}
+                    html.gius-dark .gius-att-sheet{background:#1e1e2e;color:#cdd6f4;}
+                    html.gius-dark .gius-att-sheet-sub,html.gius-dark .gius-att-trow-cond{color:#9399b2;}
+                    html.gius-dark .gius-att-trow{border-color:#2a2a3a;}
+                    html.gius-dark .gius-att-trow.cur{background:#181825;border-color:#3a3a4d;}
+                    html.gius-dark .gius-att-trow-cur{background:#cdd6f4;color:#1e1e2e;}
                     .gius-att-tier-ghost{background:#fee2e2;color:#991b1b;} .gius-att-tier-close{background:#fff3da;color:#92600a;}
                     .gius-att-tier-ontime{background:#dcfce7;color:#166534;} .gius-att-tier-workaholic{background:#ffedd5;color:#9a3412;}
                     .gius-att-tier-grass{background:#ecfccb;color:#3f6212;} .gius-att-tier-slave{background:#fae8ff;color:#86198f;}
@@ -7057,6 +7082,15 @@
                     ontime: "✅ Right On Time", workaholic: "💪 Workaholic",
                     grass: "🌱 Touch Grass", slave: "⛓️ Officially a Slave"
                 };
+                const TIER_ORDER = ["ghost", "close", "ontime", "workaholic", "grass", "slave"];
+                const TIER_CONDS = {
+                    ghost: "Behind by more than 3 hours",
+                    close: "Behind by up to 3 hours",
+                    ontime: "100% covered, under +2h extra",
+                    workaholic: "+2 to +5 hours extra",
+                    grass: "+5 to +10 hours extra",
+                    slave: "+10 hours extra or more"
+                };
                 const TIER_QUIPS = {
                     ghost: [
                         "The gate scanner forgot what you look like.",
@@ -7094,6 +7128,9 @@
                 const barClass = "gius-att-bar-" + tier;
                 const tierClass = "gius-att-tier-" + tier;
                 const tierName = TIER_NAMES[tier];
+                // Hide the "i" hint once the user has opened the tier popup at least once.
+                let tierHintSeen = false;
+                try { tierHintSeen = localStorage.getItem("giuAttTierHintSeen") === "1"; } catch (e) {}
                 // One quip per day, pseudo-random but STABLE all day (not per reload):
                 // hash today's date (+ tier) → index. Same date ⟹ same quip; tiers differ.
                 const quipList = TIER_QUIPS[tier];
@@ -7131,7 +7168,7 @@
                             <span class="gius-att-balance ${tierClass}">${homeEsc(homeBalanceText(st))}</span></div>
                         <div class="gius-att-bar"><div class="gius-att-bar-fill ${barClass}" style="width:${barWidth}%"></div></div>
                         <div class="gius-att-meta">${pctRaw}% covered &middot; Present ${st.presentDays} &middot; Absent ${st.absentDays} &middot; ${homeEsc(summary.label || "")}</div>
-                        <div class="gius-att-tierwrap"><span class="gius-att-tier ${tierClass}">${tierName}</span></div>
+                        <div class="gius-att-tierwrap"><button type="button" class="gius-att-tier gius-att-tier-btn ${tierClass} gius-btn${tierHintSeen ? " gius-att-tier-seen" : ""}" id="gius-att-tier-btn" title="See all tiers">${tierName}</button></div>
                         <div class="gius-att-quip">${homeEsc(tierQuip)}</div>
                     </div>
                     ${absentBlock}
@@ -7158,7 +7195,50 @@
                         toggle.classList.toggle("gius-att-toggle-open", open);
                     });
                 }
+                const tierBtn = host.querySelector("#gius-att-tier-btn");
+                if (tierBtn) {
+                    tierBtn.addEventListener("click", function () {
+                        try { localStorage.setItem("giuAttTierHintSeen", "1"); } catch (e) {}
+                        tierBtn.classList.add("gius-att-tier-seen");
+                        homeOpenTierModal(tier, TIER_NAMES, TIER_CONDS, TIER_ORDER);
+                    });
+                }
                 homeAttachAbsentActions(host);
+            }
+
+            // Tier legend popup: lists every tier with its colour + condition, current one flagged.
+            function homeOpenTierModal(currentTier, names, conds, order) {
+                const existing = document.getElementById("gius-att-modal");
+                if (existing) existing.remove();
+                const modal = document.createElement("div");
+                modal.id = "gius-att-modal";
+                modal.className = "gius-att-modal";
+                const rows = order.map(function (t) {
+                    const cur = t === currentTier;
+                    return `<div class="gius-att-trow${cur ? " cur" : ""}">
+                        <span class="gius-att-dot gius-att-dot-${t}"></span>
+                        <div class="gius-att-trow-main">
+                            <div class="gius-att-trow-name"><span class="gius-att-tier gius-att-tier-${t}">${names[t]}</span>${cur ? '<span class="gius-att-trow-cur">YOU</span>' : ""}</div>
+                            <div class="gius-att-trow-cond">${homeEsc(conds[t])}</div>
+                        </div></div>`;
+                }).join("");
+                modal.innerHTML = `<div class="gius-att-sheet" role="dialog" aria-modal="true">
+                    <div class="gius-att-sheet-head">
+                        <div class="gius-att-sheet-title">Attendance tiers</div>
+                        <button type="button" class="gius-att-x gius-btn" aria-label="Close">&times;</button>
+                    </div>
+                    ${rows}</div>`;
+                document.body.appendChild(modal);
+                requestAnimationFrame(function () { modal.classList.add("open"); });
+                const onKey = function (e) { if (e.key === "Escape") close(); };
+                function close() {
+                    modal.classList.remove("open");
+                    document.removeEventListener("keydown", onKey);
+                    setTimeout(function () { try { modal.remove(); } catch (e) {} }, 160);
+                }
+                modal.querySelector(".gius-att-x").addEventListener("click", close);
+                modal.addEventListener("click", function (e) { if (e.target === modal) close(); });
+                document.addEventListener("keydown", onKey);
             }
 
             function homeShowError(host) {
