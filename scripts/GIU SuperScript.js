@@ -9425,8 +9425,47 @@
             const CACHE_KEY = 'giuUnenteredSessionsV1';
             const MAX_CHECKS_PER_LOAD = 8;
 
+            // ── Option-text parser ────────────────────────────────────────────
+            // Dropdown text format (verbatim from the live portal):
+            //   "{Season} {Year}  - {Term} - {CourseCode} - {CourseName} - {Group} @{YYYY.MM.DD} - {Type}  - Slot{N} - {Duration}"
+            // Quirks: DOUBLE space between the year and the following dash, and
+            // DOUBLE space between the session type and the following dash;
+            // single spaces around every other dash. CourseCode is two tokens
+            // ("INCS 406"), hence (\S+\s\S+) — a single \S+ would grab only "INCS".
+            const OPTION_RE = /^(.+?)\s{2}-\s(\S+)\s-\s(\S+\s\S+)\s-\s(.+?)\s-\s(.+?)\s@(\d{4})\.(\d{2})\.(\d{2})\s-\s(Regular|On Hold)\s{2}-\sSlot(\d+)\s-\s(.+)$/;
+
+            function parseSessionOption(text, value) {
+                if (!value || value === '0') return null; // "[Choose Attendance Session]" placeholder
+                const m = OPTION_RE.exec(String(text || '').trim());
+                if (!m) return null; // unknown format → skip, never crash
+                return {
+                    sessionId: String(value),
+                    seasonYear: m[1],
+                    termCode: m[2],
+                    courseCode: m[3],
+                    courseName: m[4],
+                    groupCode: m[5],
+                    date: `${m[6]}-${m[7]}-${m[8]}`,
+                    type: m[9],
+                    slot: m[10],
+                    duration: m[11],
+                };
+            }
+
+            function parseSessionOptions(doc) {
+                const sel = doc.getElementById('MainContent_DDL_Sessions');
+                if (!sel) return [];
+                const out = [];
+                for (const opt of sel.querySelectorAll('option')) {
+                    const parsed = parseSessionOption(opt.textContent, opt.getAttribute('value'));
+                    if (parsed) out.push(parsed);
+                }
+                return out;
+            }
+
             // ── test hook (extended as functions are added) ──
-            window.__giuUnenteredSessions = { SOURCE_URL, CACHE_KEY, MAX_CHECKS_PER_LOAD };
+            window.__giuUnenteredSessions = { SOURCE_URL, CACHE_KEY, MAX_CHECKS_PER_LOAD,
+                parseSessionOption, parseSessionOptions };
         },
         proctorAggregator(S) {
         
