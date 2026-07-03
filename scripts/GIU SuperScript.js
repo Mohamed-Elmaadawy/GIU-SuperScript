@@ -9496,10 +9496,68 @@
                 });
             }
 
+            // ── ASP.NET WebForms helpers (same proven pattern as proctorAggregator;
+            //    doPostback closes over SOURCE_URL, matching codebase convention) ──
+            function extractFormState(doc) {
+                const get = id => (doc.getElementById(id) || {}).value || '';
+                return {
+                    __VIEWSTATE: get('__VIEWSTATE'),
+                    __VIEWSTATEGENERATOR: get('__VIEWSTATEGENERATOR'),
+                    __EVENTVALIDATION: get('__EVENTVALIDATION'),
+                };
+            }
+
+            async function doPostback(eventTarget, extraFields, baseState) {
+                const body = new URLSearchParams({
+                    __EVENTTARGET: eventTarget,
+                    __EVENTARGUMENT: '',
+                    __LASTFOCUS: '',
+                    __VIEWSTATE: baseState.__VIEWSTATE,
+                    __VIEWSTATEGENERATOR: baseState.__VIEWSTATEGENERATOR,
+                    __EVENTVALIDATION: baseState.__EVENTVALIDATION,
+                    ...extraFields,
+                });
+                const resp = await fetch(SOURCE_URL, {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: body.toString(),
+                });
+                if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+                const html = await resp.text();
+                if (html.includes('Login_m.aspx') || html.includes('id="LoginPage"')) {
+                    throw new Error('SESSION_EXPIRED');
+                }
+                return new DOMParser().parseFromString(html, 'text/html');
+            }
+
+            // Phase 1 — one GET of the source page; returns its parsed document
+            // (the dropdown is already fully populated across all groups).
+            async function fetchSourcePage() {
+                const resp = await fetch(SOURCE_URL, { credentials: 'include' });
+                if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+                const html = await resp.text();
+                if (html.includes('Login_m.aspx') || html.includes('id="LoginPage"')) {
+                    throw new Error('SESSION_EXPIRED');
+                }
+                return new DOMParser().parseFromString(html, 'text/html');
+            }
+
+            // Currently selected group value — must ride along on every postback
+            // so the server-side group filter isn't accidentally reset. The doc
+            // comes from DOMParser, so read the markup's selected attribute.
+            function extractGroupValue(doc) {
+                const sel = doc.getElementById('MainContent_DDL_StudentGroup');
+                if (!sel) return '';
+                const chosen = sel.querySelector('option[selected]') || sel.querySelector('option');
+                return chosen ? (chosen.getAttribute('value') || '') : '';
+            }
+
             // ── test hook (extended as functions are added) ──
             window.__giuUnenteredSessions = { SOURCE_URL, CACHE_KEY, MAX_CHECKS_PER_LOAD,
                 parseSessionOption, parseSessionOptions,
-                localDateStr, isSameLocalDay, daysAgoOf, filterCandidates };
+                localDateStr, isSameLocalDay, daysAgoOf, filterCandidates,
+                extractFormState, doPostback, fetchSourcePage, extractGroupValue };
         },
         proctorAggregator(S) {
         
