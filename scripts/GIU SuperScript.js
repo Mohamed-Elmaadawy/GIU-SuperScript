@@ -40,7 +40,7 @@
         uploadGrades:      'Upload Grades',
         teachingLoad:      'Teaching Load',
         proctorReminder:   'Proctor Reminder',
-        unenteredSessions: 'Unentered Sessions',
+        unenteredSessions: 'Not Entered Sessions',
         proctorAggregator: 'Proctor Exchange',
         notificationBatch: 'Notification Batch',
         manageGroupGrades: 'Manage Group Grades',
@@ -9416,7 +9416,7 @@
                 _rerender: () => { if (lastRendered) render(lastRendered); },
             };
         },
-        // ═══ Unentered Sessions — Home widget listing Regular sessions 1–21 days ═══
+        // ═══ Not Entered Sessions — Home widget listing Regular sessions 1–21 days ═══
         //     past whose attendance was never entered on the source page (that page
         //     is unreachable from the staff network; Home.aspx is reachable, so all
         //     source-page traffic happens via background fetch() from Home).
@@ -9742,7 +9742,7 @@
                 injectStyles();
                 const host = ensureHost();
                 host.innerHTML = `
-                    <div class="gius-us-head">Unentered Sessions
+                    <div class="gius-us-head">Not Entered Sessions
                         <span class="gius-us-badge">${rows.length}</span></div>
                     <div class="gius-us-sub">Regular sessions, 1–21 days past, attendance not yet entered.</div>
                     <div class="gius-us-list">
