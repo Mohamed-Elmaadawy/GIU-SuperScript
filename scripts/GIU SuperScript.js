@@ -9476,10 +9476,14 @@
             }
 
             // Whole local days between a session date and now (midnight-to-midnight).
+            // Both midnights are diffed as UTC instants (Date.UTC), NOT via the local
+            // Date constructor — a local-Date diff assumes every calendar day is exactly
+            // 86,400,000ms, which is false across a DST transition (e.g. Egypt's
+            // spring-forward) and would silently under/over-count by a day.
             function daysAgoOf(dateYmd, now = new Date()) {
                 const [y, m, d] = dateYmd.split('-').map(Number);
-                const sessionMidnight = new Date(y, m - 1, d).getTime();
-                const todayMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+                const sessionMidnight = Date.UTC(y, m - 1, d);
+                const todayMidnight = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
                 return Math.floor((todayMidnight - sessionMidnight) / 86400000);
             }
 
