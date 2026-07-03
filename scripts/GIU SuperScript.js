@@ -9652,13 +9652,119 @@
                 }
             }
 
+            // ── UI ────────────────────────────────────────────────────────────
+            // Escape portal-derived text before putting it into innerHTML.
+            function esc(s) {
+                return String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+            }
+
+            function fmtDate(ymd) {
+                const [y, m, d] = ymd.split('-').map(Number);
+                return new Date(y, m - 1, d).toLocaleDateString('en-GB',
+                    { day: 'numeric', month: 'short', year: 'numeric' });
+            }
+
+            function injectStyles() {
+                S.injectStyle('gius-us-style', `
+                    .gius-us-widget{font-family:inherit;display:block;width:100%;box-sizing:border-box;
+                        margin:28px 0;border-radius:12px;padding:16px 18px;
+                        background:#ffffff;color:#1e1e2e;box-shadow:0 2px 10px rgba(0,0,0,.12);}
+                    .gius-us-widget *{box-sizing:border-box;}
+                    .gius-us-head{font-weight:700;font-size:16px;margin-bottom:4px;}
+                    .gius-us-badge{display:inline-block;vertical-align:middle;line-height:1;font-size:11px;font-weight:700;
+                        padding:3px 9px;border-radius:999px;margin-left:6px;white-space:nowrap;
+                        background:#fff8e1;color:#8a6500;border:1px solid #ffc107;}
+                    .gius-us-sub{font-size:13px;opacity:.75;margin-bottom:12px;}
+                    .gius-us-list{display:flex;flex-direction:column;gap:8px;}
+                    .gius-us-row{display:flex;align-items:center;justify-content:space-between;gap:12px;
+                        background:#f5f5fa;border-radius:8px;padding:10px 12px;
+                        color:inherit;text-decoration:none;}
+                    .gius-us-row:hover{background:#eceef5;}
+                    .gius-us-title{font-weight:600;margin-bottom:4px;}
+                    .gius-us-meta{font-size:13px;opacity:.85;}
+                    .gius-us-ago{font-size:13px;font-weight:700;color:#8a6500;white-space:nowrap;}
+
+                    /* Dark mode — reacts live to the GIU Theme script's html.gius-dark class. */
+                    html.gius-dark .gius-us-widget{background:#1e1e2e;color:#cdd6f4;box-shadow:0 2px 10px rgba(0,0,0,.45);}
+                    html.gius-dark .gius-us-badge{background:#2a2410;color:#f9e2af;border-color:#f9e2af;}
+                    html.gius-dark .gius-us-row{background:#181825;}
+                    html.gius-dark .gius-us-row:hover{background:#232334;}
+                    html.gius-dark .gius-us-ago{color:#f9e2af;}`);
+            }
+
+            // Insertion priority: after Next Proctoring, else Teaching Load, else
+            // the attendance widget, else the Target List grid, else page top.
+            function ensureHost() {
+                let host = document.getElementById('gius-us-widget');
+                if (!host) {
+                    host = document.createElement('div');
+                    host.id = 'gius-us-widget';
+                    host.className = 'gius-us-widget';
+                }
+                const proctorReminder = document.getElementById('gius-pr-widget');
+                if (proctorReminder) {
+                    if (proctorReminder.nextElementSibling !== host) proctorReminder.insertAdjacentElement('afterend', host);
+                    return host;
+                }
+                const teachingLoad = document.getElementById('gius-tl-widget');
+                if (teachingLoad) {
+                    if (teachingLoad.nextElementSibling !== host) teachingLoad.insertAdjacentElement('afterend', host);
+                    return host;
+                }
+                const attendance = document.getElementById('gius-att-widget');
+                if (attendance) {
+                    if (attendance.nextElementSibling !== host) attendance.insertAdjacentElement('afterend', host);
+                    return host;
+                }
+                const target = document.getElementById('MainContent_div_grid');
+                if (target) {
+                    if (target.nextElementSibling !== host) target.insertAdjacentElement('afterend', host);
+                } else {
+                    const fallback = document.querySelector('.page-content') ||
+                        document.querySelector('[id*=MainContent]') ||
+                        document.body;
+                    if (fallback.firstElementChild !== host) fallback.prepend(host);
+                }
+                return host;
+            }
+
+            function render(cache) {
+                const now = new Date();
+                const rows = Object.values(cache.candidates)
+                    .filter(c => c.status === 'unentered')
+                    .sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
+                const existing = document.getElementById('gius-us-widget');
+                if (!rows.length) {
+                    // Empty state: the widget does not exist in the DOM at all.
+                    if (existing) existing.remove();
+                    return;
+                }
+                injectStyles();
+                const host = ensureHost();
+                host.innerHTML = `
+                    <div class="gius-us-head">Unentered Sessions
+                        <span class="gius-us-badge">${rows.length}</span></div>
+                    <div class="gius-us-sub">Regular sessions, 1–21 days past, attendance not yet entered.</div>
+                    <div class="gius-us-list">
+                        ${rows.map(c => `
+                            <a class="gius-us-row" href="${SOURCE_URL}" target="_blank" rel="noopener">
+                                <div class="gius-us-row-main">
+                                    <div class="gius-us-title">${esc(c.courseName)}</div>
+                                    <div class="gius-us-meta">${esc(c.groupCode)} · ${esc(fmtDate(c.date))} · Slot${esc(c.slot)}</div>
+                                </div>
+                                <div class="gius-us-ago">${daysAgoOf(c.date, now)} days ago</div>
+                            </a>`).join('')}
+                    </div>`;
+            }
+
             // ── test hook (extended as functions are added) ──
             window.__giuUnenteredSessions = { SOURCE_URL, CACHE_KEY, MAX_CHECKS_PER_LOAD,
                 parseSessionOption, parseSessionOptions,
                 localDateStr, isSameLocalDay, daysAgoOf, filterCandidates,
                 extractFormState, doPostback, fetchSourcePage, extractGroupValue,
                 loadCache, saveCache, mergeCandidates, selectChecksToRun,
-                readAttendanceStatus, runChecks };
+                readAttendanceStatus, runChecks,
+                esc, fmtDate, injectStyles, ensureHost, render };
         },
         proctorAggregator(S) {
         
