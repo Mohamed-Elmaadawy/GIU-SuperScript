@@ -5,7 +5,7 @@
 // @icon        data:image/png;base64,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
 // @include     https://portal.giu-uni.de/*
 // @namespace   Cyn0
-// @version     3.1.17
+// @version     3.1.20
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @run-at      document-idle
@@ -5064,16 +5064,18 @@
 
                 // Home-widget tier — computed here so the breakpoints live with the math and
                 // never drift from the view (single source for Home + any future surface).
-                // Below 100%: amber gap → "close", else "ghost". At/above 100%: escalate by
-                // EXTRA hours banked (balanceSeconds), +2h / +5h / +10h breakpoints.
+                // Below 100%: gap ≤3h → "close", ≤10h → "deduct", else "ghost". At/above
+                // 100%: escalate by EXTRA hours banked (balanceSeconds), +3h/+8h/+15h.
                 let tier;
                 if (progressPercentRaw < 100) {
-                    tier = progressColor === "amber" ? "close" : "ghost";
-                } else if (balanceSeconds < 2 * 3600) {
+                    tier = progressGapSeconds <= 3 * 3600 ? "close"
+                        : progressGapSeconds <= 10 * 3600 ? "deduct"
+                        : "ghost";
+                } else if (balanceSeconds < 3 * 3600) {
                     tier = "ontime";
-                } else if (balanceSeconds < 5 * 3600) {
+                } else if (balanceSeconds < 8 * 3600) {
                     tier = "workaholic";
-                } else if (balanceSeconds < 10 * 3600) {
+                } else if (balanceSeconds < 15 * 3600) {
                     tier = "grass";
                 } else {
                     tier = "slave";
@@ -6830,6 +6832,34 @@
                 return d.toLocaleString("en-GB", { weekday: "short", day: "numeric", month: "short" });
             }
 
+            // Reads the logged-in user's first name off the Home page's account label
+            // (id ends in "lbl_Account", text like "firstname.lastname") for the tier
+            // popup's "current tier" badge. Falls back to "YOU" if the label is missing
+            // or unparseable (e.g. modal opened on a non-Home page).
+            function homeGetUserFirstName() {
+                try {
+                    const el = document.querySelector('[id*="lbl_Account"]');
+                    const raw = el && el.textContent && el.textContent.trim();
+                    const first = raw && raw.split(".")[0];
+                    if (!first) return null;
+                    return first.charAt(0).toUpperCase() + first.slice(1).toLowerCase();
+                } catch {
+                    return null;
+                }
+            }
+
+            // Picks a stable-per-day item from `list`: hash today's date + `keySuffix" →
+            // index. Same date ⟹ same pick (no per-reload flicker); different suffixes
+            // (e.g. tier name vs tier+"-cond") diverge so two lists don't sync up.
+            function homeDailyPick(list, keySuffix) {
+                const key = String(getTodayLocalYMD()) + "|" + keySuffix;
+                let hash = 0;
+                for (let i = 0; i < key.length; i++) {
+                    hash = (Math.imul(hash, 31) + key.charCodeAt(i)) | 0;
+                }
+                return list[Math.abs(hash) % list.length];
+            }
+
             function homeBalanceText(stats) {
                 const balance = String((stats && stats.balanceHM) || "0:00:00");
                 if (/^0+:00(?::00)?$/.test(balance)) return "On track";
@@ -6930,7 +6960,7 @@
                         border-radius:999px;}
                     .gius-att-bar{height:8px;border-radius:6px;background:#e9ecef;overflow:hidden;margin:10px 0 8px;}
                     .gius-att-bar-fill{height:100%;border-radius:6px;}
-                    .gius-att-bar-ghost{background:#dc2626;} .gius-att-bar-close{background:#f59e0b;} .gius-att-bar-ontime{background:#16a34a;}
+                    .gius-att-bar-ghost{background:#64748b;} .gius-att-bar-deduct{background:#e11d48;} .gius-att-bar-close{background:#f59e0b;} .gius-att-bar-ontime{background:#16a34a;}
                     .gius-att-bar-workaholic{background:#ea580c;} .gius-att-bar-grass{background:#65a30d;} .gius-att-bar-slave{background:#a21caf;}
                     .gius-att-tierwrap{margin-top:10px;}
                     .gius-att-quip{margin-top:6px;font-size:12.5px;font-style:italic;color:#6b7280;}
@@ -6949,7 +6979,7 @@
                     .gius-att-trow{display:flex;align-items:flex-start;gap:11px;padding:11px;border-radius:10px;margin-bottom:8px;border:1px solid #eef0f3;}
                     .gius-att-trow.cur{background:#f6f8fa;border-color:#d0d7de;}
                     .gius-att-dot{flex:0 0 auto;width:14px;height:14px;border-radius:50%;margin-top:3px;}
-                    .gius-att-dot-ghost{background:#dc2626;} .gius-att-dot-close{background:#f59e0b;} .gius-att-dot-ontime{background:#16a34a;}
+                    .gius-att-dot-ghost{background:#64748b;} .gius-att-dot-deduct{background:#e11d48;} .gius-att-dot-close{background:#f59e0b;} .gius-att-dot-ontime{background:#16a34a;}
                     .gius-att-dot-workaholic{background:#ea580c;} .gius-att-dot-grass{background:#65a30d;} .gius-att-dot-slave{background:#a21caf;}
                     .gius-att-trow-main{flex:1 1 auto;min-width:0;}
                     .gius-att-trow-name{font-weight:800;font-size:13.5px;display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
@@ -6960,10 +6990,10 @@
                     html.gius-dark .gius-att-trow{border-color:#2a2a3a;}
                     html.gius-dark .gius-att-trow.cur{background:#181825;border-color:#3a3a4d;}
                     html.gius-dark .gius-att-trow-cur{background:#cdd6f4;color:#1e1e2e;}
-                    .gius-att-tier-ghost{background:#fee2e2;color:#991b1b;} .gius-att-tier-close{background:#fff3da;color:#92600a;}
+                    .gius-att-tier-ghost{background:#e2e8f0;color:#334155;} .gius-att-tier-deduct{background:#ffe4e6;color:#9f1239;} .gius-att-tier-close{background:#fff3da;color:#92600a;}
                     .gius-att-tier-ontime{background:#dcfce7;color:#166534;} .gius-att-tier-workaholic{background:#ffedd5;color:#9a3412;}
                     .gius-att-tier-grass{background:#ecfccb;color:#3f6212;} .gius-att-tier-slave{background:#fae8ff;color:#86198f;}
-                    html.gius-dark .gius-att-tier-ghost{background:#3a1414;color:#f38ba8;} html.gius-dark .gius-att-tier-close{background:#3a2c10;color:#f9d77e;}
+                    html.gius-dark .gius-att-tier-ghost{background:#2a3040;color:#b6c2d9;} html.gius-dark .gius-att-tier-deduct{background:#3a1220;color:#f7a8c0;} html.gius-dark .gius-att-tier-close{background:#3a2c10;color:#f9d77e;}
                     html.gius-dark .gius-att-tier-ontime{background:#14351f;color:#a6e3a1;} html.gius-dark .gius-att-tier-workaholic{background:#3a1f10;color:#fdba74;}
                     html.gius-dark .gius-att-tier-grass{background:#1f2d0a;color:#bef264;} html.gius-dark .gius-att-tier-slave{background:#2e1230;color:#f0abfc;}
                     .gius-att-meta{font-size:13px;color:#272c33;}
@@ -7073,18 +7103,20 @@
                 // widget blank. The fresh iframe fetch overwrites this with the real tier.
                 const tier = st.tier || "ontime";
                 const TIER_NAMES = {
-                    ghost: "👻 Ghosting GIU", close: "😅 Cutting It Close",
+                    ghost: "👻 Ghosting GIU", deduct: "💸 Salary Deduction",
+                    close: "😅 Cutting It Close",
                     ontime: "✅ Right On Time", workaholic: "💪 Workaholic",
                     grass: "🌱 Get a Life", slave: "⛏️ Officially a Slave"
                 };
-                const TIER_ORDER = ["ghost", "close", "ontime", "workaholic", "grass", "slave"];
+                const TIER_ORDER = ["ghost", "deduct", "close", "ontime", "workaholic", "grass", "slave"];
                 const TIER_CONDS = {
-                    ghost: "Behind by more than 3 hours",
+                    ghost: "Behind by more than 10 hours",
+                    deduct: "Behind by 3 to 10 hours",
                     close: "Behind by up to 3 hours",
-                    ontime: "100% covered, under +2h extra",
-                    workaholic: "+2 to +5 hours extra",
-                    grass: "+5 to +10 hours extra",
-                    slave: "+10 hours extra or more"
+                    ontime: "100% covered, under +3h extra",
+                    workaholic: "+3 to +8 hours extra",
+                    grass: "+8 to +15 hours extra",
+                    slave: "+15 hours extra or more"
                 };
                 const TIER_QUIPS = {
                     ghost: [
@@ -7092,6 +7124,12 @@
                         "Attendance: purely theoretical.",
                         "Clocking in is apparently optional for you.",
                         "Payroll wants a word. Several, actually."
+                    ],
+                    deduct: [
+                        "That paycheck is about to shrink.",
+                        "Payroll is sharpening the red pen.",
+                        "Your salary filed a missing-hours report.",
+                        "Deduction letter loading…"
                     ],
                     close: [
                         "One decent day and you're square.",
@@ -7110,9 +7148,10 @@
                         "The overtime is overtiming."
                     ],
                     grass: [
-                        "You've earned a sunset. Go look at one.",
-                        "Touch grass — the real kind, outdoors.",
-                        "Hours: surplus. Vitamin D: deficit."
+                        "Sunlight: theoretical concept for you.",
+                        "You've banked a small vacation.",
+                        "Nobody asked for this much dedication.",
+                        "Diminishing returns on effort."
                     ],
                     slave: [
                         "GIU should be paying rent in your life.",
@@ -7125,16 +7164,9 @@
                 const tierName = TIER_NAMES[tier];
                 // Hide the "i" hint once the user has opened the tier popup at least once.
                 let tierHintSeen = false;
-                try { tierHintSeen = localStorage.getItem("giuAttTierHintSeen") === "1"; } catch (e) {}
-                // One quip per day, pseudo-random but STABLE all day (not per reload):
-                // hash today's date (+ tier) → index. Same date ⟹ same quip; tiers differ.
-                const quipList = TIER_QUIPS[tier];
-                const quipKey = String(getTodayLocalYMD()) + "|" + tier;
-                let quipHash = 0;
-                for (let i = 0; i < quipKey.length; i++) {
-                    quipHash = (Math.imul(quipHash, 31) + quipKey.charCodeAt(i)) | 0;
-                }
-                const tierQuip = quipList[Math.abs(quipHash) % quipList.length];
+                try { tierHintSeen = localStorage.getItem("giuAttTierHintSeen") === "1"; } catch {}
+                // One quip per day, pseudo-random but STABLE all day (not per reload).
+                const tierQuip = homeDailyPick(TIER_QUIPS[tier], tier);
 
                 const absentBlock = st.absentDays > 0 ? `
                     <button type="button" id="gius-att-toggle-absent" class="gius-att-toggle gius-btn">Absent days (${st.absentDays})</button>
@@ -7193,7 +7225,7 @@
                 const tierBtn = host.querySelector("#gius-att-tier-btn");
                 if (tierBtn) {
                     tierBtn.addEventListener("click", function () {
-                        try { localStorage.setItem("giuAttTierHintSeen", "1"); } catch (e) {}
+                        try { localStorage.setItem("giuAttTierHintSeen", "1"); } catch {}
                         tierBtn.classList.add("gius-att-tier-seen");
                         homeOpenTierModal(tier, TIER_NAMES, TIER_CONDS, TIER_ORDER);
                     });
@@ -7208,12 +7240,13 @@
                 const modal = document.createElement("div");
                 modal.id = "gius-att-modal";
                 modal.className = "gius-att-modal";
+                const userLabel = homeEsc(homeGetUserFirstName() || "YOU");
                 const rows = order.map(function (t) {
                     const cur = t === currentTier;
                     return `<div class="gius-att-trow${cur ? " cur" : ""}">
                         <span class="gius-att-dot gius-att-dot-${t}"></span>
                         <div class="gius-att-trow-main">
-                            <div class="gius-att-trow-name"><span class="gius-att-tier gius-att-tier-${t}">${names[t]}</span>${cur ? '<span class="gius-att-trow-cur">YOU</span>' : ""}</div>
+                            <div class="gius-att-trow-name"><span class="gius-att-tier gius-att-tier-${t}">${names[t]}</span>${cur ? `<span class="gius-att-trow-cur">${userLabel}</span>` : ""}</div>
                             <div class="gius-att-trow-cond">${homeEsc(conds[t])}</div>
                         </div></div>`;
                 }).join("");
@@ -7229,7 +7262,7 @@
                 function close() {
                     modal.classList.remove("open");
                     document.removeEventListener("keydown", onKey);
-                    setTimeout(function () { try { modal.remove(); } catch (e) {} }, 160);
+                    setTimeout(function () { try { modal.remove(); } catch {} }, 160);
                 }
                 modal.querySelector(".gius-att-x").addEventListener("click", close);
                 modal.addEventListener("click", function (e) { if (e.target === modal) close(); });
