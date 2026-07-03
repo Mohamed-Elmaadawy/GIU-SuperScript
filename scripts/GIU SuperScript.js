@@ -9757,6 +9757,50 @@
                     </div>`;
             }
 
+            // ── Boot ──────────────────────────────────────────────────────────
+            async function boot() {
+                const todayStr = localDateStr();
+                let cache = loadCache();
+                render(cache); // paint whatever was cached before touching the network
+
+                let checkIds = selectChecksToRun(cache, todayStr);
+                const needEnumeration = !isSameLocalDay(cache.lastEnumeratedISO, todayStr);
+                if (!needEnumeration && !checkIds.length) return; // nothing to do today
+
+                // One GET serves both phases: enumeration (when stale) and the
+                // fresh viewstate + group value every postback chain starts from.
+                let doc;
+                try {
+                    doc = await fetchSourcePage();
+                } catch (e) {
+                    // Unreachable / expired session: keep showing the cached view,
+                    // surface nothing new this load.
+                    S.warn('unenteredSessions', 'source page fetch failed:', e && e.message);
+                    return;
+                }
+
+                if (needEnumeration) {
+                    const fresh = filterCandidates(parseSessionOptions(doc));
+                    cache = mergeCandidates(cache, fresh, new Date().toISOString());
+                    saveCache(cache);
+                    checkIds = selectChecksToRun(cache, todayStr);
+                    render(cache);
+                }
+
+                if (checkIds.length) {
+                    try {
+                        await runChecks(cache, checkIds, extractFormState(doc), extractGroupValue(doc));
+                    } catch (e) {
+                        // SESSION_EXPIRED mid-chain: stop silently — unchecked
+                        // candidates keep lastCheckedISO null and stay queued.
+                        if (!e || e.message !== 'SESSION_EXPIRED') {
+                            S.warn('unenteredSessions', 'verification chain failed:', e && e.message);
+                        }
+                    }
+                    render(cache);
+                }
+            }
+
             // ── test hook (extended as functions are added) ──
             window.__giuUnenteredSessions = { SOURCE_URL, CACHE_KEY, MAX_CHECKS_PER_LOAD,
                 parseSessionOption, parseSessionOptions,
@@ -9764,7 +9808,18 @@
                 extractFormState, doPostback, fetchSourcePage, extractGroupValue,
                 loadCache, saveCache, mergeCandidates, selectChecksToRun,
                 readAttendanceStatus, runChecks,
-                esc, fmtDate, injectStyles, ensureHost, render };
+                esc, fmtDate, injectStyles, ensureHost, render, boot };
+
+            // Boot as soon as the Home grid anchor exists (same trigger as the
+            // other Home widgets); the guard lets Playwright drive boot() by hand.
+            let booted = false;
+            const bootOnce = () => { if (!booted) { booted = true; boot(); } };
+            if (!window.__giuUsDisableAutoRun) {
+                S.waitFor('#MainContent_div_grid', bootOnce, { timeout: 12800 });
+                // Fallback: if the anchor never shows, still boot so the
+                // page-content placement path runs.
+                setTimeout(bootOnce, 12800);
+            }
         },
         proctorAggregator(S) {
         
