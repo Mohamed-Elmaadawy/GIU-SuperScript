@@ -9591,8 +9591,11 @@
             // Which sessionIds get a Phase-2 postback this load: never-checked
             // first (oldest date first), then stale unentered/unknown rechecks
             // (oldest first), capped at MAX_CHECKS_PER_LOAD. "entered" is final —
-            // never rechecked. Leftovers stay queued for a future load.
-            function selectChecksToRun(cache, todayStr) {
+            // never rechecked, force or not. Leftovers stay queued for a future
+            // load. force=true (manual refresh) ignores the same-day gate so an
+            // outstanding candidate can be rechecked immediately instead of
+            // waiting until tomorrow.
+            function selectChecksToRun(cache, todayStr, force = false) {
                 const entries = Object.entries(cache.candidates);
                 const byDate = (a, b) => (a[1].date < b[1].date ? -1 : a[1].date > b[1].date ? 1 : 0);
                 const neverChecked = entries
@@ -9601,7 +9604,7 @@
                 const staleRecheck = entries
                     .filter(([, c]) => c.lastCheckedISO &&
                         (c.status === 'unentered' || c.status === 'unknown') &&
-                        !isSameLocalDay(c.lastCheckedISO, todayStr))
+                        (force || !isSameLocalDay(c.lastCheckedISO, todayStr)))
                     .sort(byDate);
                 return neverChecked.concat(staleRecheck)
                     .slice(0, MAX_CHECKS_PER_LOAD)
@@ -9661,7 +9664,14 @@
             function fmtDate(ymd) {
                 const [y, m, d] = ymd.split('-').map(Number);
                 return new Date(y, m - 1, d).toLocaleDateString('en-GB',
-                    { day: 'numeric', month: 'short', year: 'numeric' });
+                    { weekday: 'short', day: 'numeric', month: 'short' });
+            }
+
+            // Display-only: drop the trailing session-type word portal group
+            // codes always carry ("4INF P002 Practical" -> "4INF P002") — the
+            // type is redundant with the slot chip and just adds noise.
+            function stripGroupType(groupCode) {
+                return String(groupCode).replace(/\s+(Practical|Tutorial|Lecture)$/i, '');
             }
 
             function injectStyles() {
@@ -9670,25 +9680,40 @@
                         margin:28px 0;border-radius:12px;padding:16px 18px;
                         background:#ffffff;color:#1e1e2e;box-shadow:0 2px 10px rgba(0,0,0,.12);}
                     .gius-us-widget *{box-sizing:border-box;}
-                    .gius-us-head{font-weight:700;font-size:16px;margin-bottom:4px;}
+                    .gius-us-head{font-weight:700;font-size:16px;margin-bottom:4px;
+                        display:flex;align-items:center;gap:8px;}
                     .gius-us-badge{display:inline-block;vertical-align:middle;line-height:1;font-size:11px;font-weight:700;
-                        padding:3px 9px;border-radius:999px;margin-left:6px;white-space:nowrap;
+                        padding:3px 9px;border-radius:999px;white-space:nowrap;
                         background:#fff8e1;color:#8a6500;border:1px solid #ffc107;}
+                    .gius-us-refresh{margin-left:auto;border:none;background:transparent;cursor:pointer;
+                        font-size:15px;line-height:1;color:inherit;opacity:.55;padding:2px 4px;}
+                    .gius-us-refresh:hover{opacity:1;}
+                    .gius-us-refresh:disabled{opacity:.3;cursor:wait;}
+                    .gius-us-refresh.gius-us-spinning{animation:gius-us-spin .8s linear infinite;}
+                    @keyframes gius-us-spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
                     .gius-us-sub{font-size:13px;opacity:.75;margin-bottom:12px;}
                     .gius-us-list{display:flex;flex-direction:column;gap:8px;}
                     .gius-us-row{display:flex;align-items:center;justify-content:space-between;gap:12px;
-                        background:#f5f5fa;border-radius:8px;padding:10px 12px;
-                        color:inherit;text-decoration:none;}
+                        background:#f5f5fa;border:1px solid #e9ecef;border-left:4px solid #ffc107;
+                        border-radius:8px;padding:10px 12px;color:inherit;text-decoration:none;}
                     .gius-us-row:hover{background:#eceef5;}
-                    .gius-us-title{font-weight:600;margin-bottom:4px;}
-                    .gius-us-meta{font-size:13px;opacity:.85;}
-                    .gius-us-ago{font-size:13px;font-weight:700;color:#8a6500;white-space:nowrap;}
+                    .gius-us-primary{display:flex;align-items:center;gap:8px;margin-bottom:3px;}
+                    .gius-us-slot{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.02em;
+                        color:#7a5b00;background:#fff3cd;border-radius:6px;padding:3px 8px;flex:0 0 auto;}
+                    .gius-us-when{font-size:14px;font-weight:700;color:#272c33;
+                        white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+                    .gius-us-course{font-size:12.5px;opacity:.72;color:#3a3f47;
+                        white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+                    .gius-us-ago{font-size:12px;font-weight:700;color:#8a6500;white-space:nowrap;opacity:.8;flex-shrink:0;}
 
                     /* Dark mode — reacts live to the GIU Theme script's html.gius-dark class. */
                     html.gius-dark .gius-us-widget{background:#1e1e2e;color:#cdd6f4;box-shadow:0 2px 10px rgba(0,0,0,.45);}
                     html.gius-dark .gius-us-badge{background:#2a2410;color:#f9e2af;border-color:#f9e2af;}
-                    html.gius-dark .gius-us-row{background:#181825;}
+                    html.gius-dark .gius-us-row{background:#181825;border-color:#313244;border-left-color:#f9e2af;}
                     html.gius-dark .gius-us-row:hover{background:#232334;}
+                    html.gius-dark .gius-us-slot{color:#f9e2af;background:#2a2410;}
+                    html.gius-dark .gius-us-when{color:#cdd6f4;}
+                    html.gius-dark .gius-us-course{color:#a6adc8;}
                     html.gius-dark .gius-us-ago{color:#f9e2af;}`);
             }
 
@@ -9728,6 +9753,12 @@
                 return host;
             }
 
+            // True while a manual (force) refresh triggered via the ⟳ button is
+            // in flight — read by render() on every rebuild so the button stays
+            // disabled/spinning through boot()'s own internal re-renders, not
+            // just the one that fires immediately on click.
+            let refreshing = false;
+
             function render(cache) {
                 const now = new Date();
                 const rows = Object.values(cache.candidates)
@@ -9739,32 +9770,63 @@
                     if (existing) existing.remove();
                     return;
                 }
+                const queued = Object.values(cache.candidates)
+                    .filter(c => c.status === 'unknown').length;
+                const queuedText = !queued ? '' :
+                    ` · ${queued === 1 ? '1 more queued' : queued + ' more queued'}`;
                 injectStyles();
                 const host = ensureHost();
                 host.innerHTML = `
                     <div class="gius-us-head">Not Entered Sessions
-                        <span class="gius-us-badge">${rows.length}</span></div>
-                    <div class="gius-us-sub">Regular sessions, 1–21 days past, attendance not yet entered.</div>
+                        <span class="gius-us-badge">${rows.length}</span>
+                        <button type="button" id="gius-us-refresh-btn"
+                            class="gius-us-refresh${refreshing ? ' gius-us-spinning' : ''}"
+                            title="Recheck now"${refreshing ? ' disabled' : ''}>⟳</button></div>
+                    <div class="gius-us-sub">Regular sessions, 1–21 days past, attendance not yet entered${queuedText}.</div>
                     <div class="gius-us-list">
                         ${rows.map(c => `
                             <a class="gius-us-row" href="${SOURCE_URL}" target="_blank" rel="noopener">
-                                <div class="gius-us-row-main">
-                                    <div class="gius-us-title">${esc(c.courseName)}</div>
-                                    <div class="gius-us-meta">${esc(c.groupCode)} · ${esc(fmtDate(c.date))} · Slot${esc(c.slot)}</div>
+                                <div class="gius-us-main">
+                                    <div class="gius-us-primary">
+                                        <span class="gius-us-slot">Slot ${esc(c.slot)}</span>
+                                        <span class="gius-us-when">${esc(stripGroupType(c.groupCode))} · ${esc(fmtDate(c.date))}</span>
+                                    </div>
+                                    <div class="gius-us-course">${esc(c.courseName)}</div>
                                 </div>
                                 <div class="gius-us-ago">${daysAgoOf(c.date, now)} days ago</div>
                             </a>`).join('')}
                     </div>`;
+                const refreshBtn = host.querySelector('#gius-us-refresh-btn');
+                if (refreshBtn) refreshBtn.addEventListener('click', triggerRefresh);
+            }
+
+            // Manual refresh: repaint immediately so the spinner shows without
+            // waiting on the network, force a full recheck (bypassing the
+            // same-day gate), then repaint again once settled either way.
+            async function triggerRefresh() {
+                if (refreshing) return;
+                refreshing = true;
+                render(loadCache());
+                try {
+                    await boot({ force: true });
+                } finally {
+                    refreshing = false;
+                    render(loadCache());
+                }
             }
 
             // ── Boot ──────────────────────────────────────────────────────────
-            async function boot() {
+            // opts.force (manual refresh, see triggerRefresh above) always
+            // re-enumerates and ignores the same-day recheck gate, but never
+            // touches the "entered is final" rule — that stays true either way.
+            async function boot(opts = {}) {
+                const force = !!opts.force;
                 const todayStr = localDateStr();
                 let cache = loadCache();
                 render(cache); // paint whatever was cached before touching the network
 
-                let checkIds = selectChecksToRun(cache, todayStr);
-                const needEnumeration = !isSameLocalDay(cache.lastEnumeratedISO, todayStr);
+                let checkIds = selectChecksToRun(cache, todayStr, force);
+                const needEnumeration = force || !isSameLocalDay(cache.lastEnumeratedISO, todayStr);
                 if (!needEnumeration && !checkIds.length) return; // nothing to do today
 
                 // One GET serves both phases: enumeration (when stale) and the
@@ -9783,7 +9845,7 @@
                     const fresh = filterCandidates(parseSessionOptions(doc));
                     cache = mergeCandidates(cache, fresh, new Date().toISOString());
                     saveCache(cache);
-                    checkIds = selectChecksToRun(cache, todayStr);
+                    checkIds = selectChecksToRun(cache, todayStr, force);
                     render(cache);
                 }
 
@@ -9807,7 +9869,7 @@
                 extractFormState, doPostback, fetchSourcePage, extractGroupValue,
                 loadCache, saveCache, mergeCandidates, selectChecksToRun,
                 readAttendanceStatus, runChecks,
-                esc, fmtDate, injectStyles, ensureHost, render, boot };
+                esc, fmtDate, stripGroupType, injectStyles, ensureHost, render, boot, triggerRefresh };
 
             // Boot as soon as the Home grid anchor exists (same trigger as the
             // other Home widgets); the guard lets Playwright drive boot() by hand.
