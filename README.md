@@ -433,6 +433,10 @@ https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 
 Shows any **Regular** (not "On Hold") attendance session that's 1–21 days overdue with no attendance entered yet, right on the portal Home page — useful when the Manage Student Attendances page itself is unreachable from your network. Enumerates your sessions with a single background request, then checks up to 8 candidates per page load, caching results in `localStorage` with a daily refresh.
 
+| Light | Dark (with GIU Theme) |
+|---|---|
+| ![Not Entered Sessions light](screenshots/not-entered-sessions.png) | ![Not Entered Sessions dark](screenshots/not-entered-sessions-dark.png) |
+
 **Target page:**
 ```
 https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
