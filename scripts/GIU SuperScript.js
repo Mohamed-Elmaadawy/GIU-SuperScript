@@ -9463,9 +9463,39 @@
                 return out;
             }
 
+            // ── Local-date helpers ────────────────────────────────────────────
+            function localDateStr(d = new Date()) {
+                return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+            }
+
+            // ISO timestamps are stored in UTC; comparisons are on the LOCAL day.
+            function isSameLocalDay(iso, todayStr) {
+                if (!iso) return false;
+                const d = new Date(iso);
+                return !isNaN(d.getTime()) && localDateStr(d) === todayStr;
+            }
+
+            // Whole local days between a session date and now (midnight-to-midnight).
+            function daysAgoOf(dateYmd, now = new Date()) {
+                const [y, m, d] = dateYmd.split('-').map(Number);
+                const sessionMidnight = new Date(y, m - 1, d).getTime();
+                const todayMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+                return Math.floor((todayMidnight - sessionMidnight) / 86400000);
+            }
+
+            // Candidates = Regular sessions dated 1–21 days strictly in the past.
+            function filterCandidates(sessions, now = new Date()) {
+                return sessions.filter(s => {
+                    if (s.type !== 'Regular') return false;
+                    const ago = daysAgoOf(s.date, now);
+                    return ago >= 1 && ago <= 21;
+                });
+            }
+
             // ── test hook (extended as functions are added) ──
             window.__giuUnenteredSessions = { SOURCE_URL, CACHE_KEY, MAX_CHECKS_PER_LOAD,
-                parseSessionOption, parseSessionOptions };
+                parseSessionOption, parseSessionOptions,
+                localDateStr, isSameLocalDay, daysAgoOf, filterCandidates };
         },
         proctorAggregator(S) {
         
