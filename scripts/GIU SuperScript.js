@@ -9625,13 +9625,40 @@
                 return 'unentered';
             }
 
+            // ── Phase 2 — chained verification postbacks (sequential: each POST
+            //    needs the PREVIOUS response's fresh viewstate). Error policy:
+            //    SESSION_EXPIRED → rethrow, aborting the whole chain (remaining
+            //    ids keep lastCheckedISO null so they stay queued); any other
+            //    error → mark that one candidate "unknown" and keep going. ──
+            async function runChecks(cache, sessionIds, baseState, groupValue) {
+                let state = baseState;
+                for (const sessionId of sessionIds) {
+                    const cand = cache.candidates[sessionId];
+                    if (!cand) continue;
+                    try {
+                        const doc = await doPostback('ctl00$MainContent$DDL_Sessions', {
+                            'ctl00$MainContent$DDL_Sessions': sessionId,
+                            'ctl00$MainContent$DDL_StudentGroup': groupValue,
+                        }, state);
+                        state = extractFormState(doc); // thread fresh viewstate forward
+                        cand.status = readAttendanceStatus(doc);
+                        cand.lastCheckedISO = new Date().toISOString();
+                    } catch (e) {
+                        if (e && e.message === 'SESSION_EXPIRED') throw e;
+                        cand.status = 'unknown';
+                        cand.lastCheckedISO = new Date().toISOString();
+                    }
+                    saveCache(cache); // persist progress after every candidate
+                }
+            }
+
             // ── test hook (extended as functions are added) ──
             window.__giuUnenteredSessions = { SOURCE_URL, CACHE_KEY, MAX_CHECKS_PER_LOAD,
                 parseSessionOption, parseSessionOptions,
                 localDateStr, isSameLocalDay, daysAgoOf, filterCandidates,
                 extractFormState, doPostback, fetchSourcePage, extractGroupValue,
                 loadCache, saveCache, mergeCandidates, selectChecksToRun,
-                readAttendanceStatus };
+                readAttendanceStatus, runChecks };
         },
         proctorAggregator(S) {
         
