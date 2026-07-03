@@ -9791,11 +9791,10 @@
                     try {
                         await runChecks(cache, checkIds, extractFormState(doc), extractGroupValue(doc));
                     } catch (e) {
-                        // SESSION_EXPIRED mid-chain: stop silently — unchecked
-                        // candidates keep lastCheckedISO null and stay queued.
-                        if (!e || e.message !== 'SESSION_EXPIRED') {
-                            S.warn('unenteredSessions', 'verification chain failed:', e && e.message);
-                        }
+                        // SESSION_EXPIRED mid-chain (or any other propagated error):
+                        // stop and log — unchecked candidates keep lastCheckedISO
+                        // null and stay queued for the next load's chain.
+                        S.warn('unenteredSessions', 'verification chain failed:', e && e.message);
                     }
                     render(cache);
                 }
