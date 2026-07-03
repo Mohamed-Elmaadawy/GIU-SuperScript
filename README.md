@@ -15,7 +15,7 @@ For suggestions, bug reports, or feature requests, send an email to [mohamed.elm
 ### Step 1 — Install Tampermonkey
 
 | Browser | Link |
-|---|---|
+| --- | --- |
 | Chrome / Edge / Brave | [Tampermonkey on Chrome Web Store](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) |
 | Firefox | [Tampermonkey on Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/) |
 | Safari | [Tampermonkey on App Store](https://apps.apple.com/us/app/tampermonkey/id1482490089) |
@@ -65,7 +65,8 @@ Every script carries `@updateURL` and `@downloadURL` pointing at this repo, so T
 The all-in-one userscript that bundles every feature script below except GIU Theme. It also adds a **Control Center** card on the portal Home page where you can turn bundled modules on or off.
 
 **Target pages:**
-```
+
+```text
 https://portal.giu-uni.de/*
 ```
 
@@ -96,7 +97,8 @@ A portal-wide theming engine. Choose from four modes via an expanding side-tab p
 **Install:** [GIU Theme.js (raw)](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Theme.js)
 
 **Target page:**
-```
+
+```text
 https://portal.giu-uni.de/*
 ```
 
@@ -119,7 +121,8 @@ https://portal.giu-uni.de/*
 A full attendance management dashboard injected above the Swift Report attendance table. Tracks your hours, leave balance, and exceptions — all stored locally in your browser.
 
 **Target page:**
-```
+
+```text
 https://portal.giu-uni.de/GIUb/EXT/SwiftReports_m.aspx?swiftreportid=866&executereport=1
 ```
 
@@ -161,7 +164,8 @@ https://portal.giu-uni.de/GIUb/EXT/SwiftReports_m.aspx?swiftreportid=866&execute
 Sends the same email notification to multiple tutorial groups in sequence. Write subject and body once — the script steps through each selected group using a localStorage queue and page reloads.
 
 **Target page:**
-```
+
+```text
 https://portal.giu-uni.de/GIUb/INTStaff/NotificationSystem_SendEmail_m.aspx
 ```
 
@@ -196,7 +200,8 @@ https://portal.giu-uni.de/GIUb/INTStaff/NotificationSystem_SendEmail_m.aspx
 Batch grade download and upload across all student groups on the Manage Uploaded Grades page. Runs entirely in the background via fetch — no page reloads between groups.
 
 **Target page:**
-```
+
+```text
 https://portal.giu-uni.de/GIUb/EXT/ManageUploadedGrades_m.aspx
 ```
 
@@ -216,6 +221,7 @@ A toolbar is injected with a custom evaluation method picker. Selecting from it 
 - **Download CSV** — exports current group's grades as a CSV file
 
 **CSV format:**
+
 ```csv
 Name,Group,Grade
 (12345678) Ahmed Mohamed,INCS 406 - 4INF2 (Practical),85
@@ -229,17 +235,20 @@ Grades are matched by student ID `(XXXXXXXX)` prefix — safe against row reorde
 **Usage:**
 
 *Batch Download:*
+
 1. Navigate to the Manage Uploaded Grades page
 2. Select course and group from the dropdowns
 3. Pick the evaluation method from the toolbar's eval picker
 4. Click **Batch Download** — a combined CSV downloads when all groups finish
 
 *Batch Upload:*
+
 1. Complete steps 1–3 above
 2. Click **Load CSV** and pick your filled-in grades file
 3. Click **Batch Upload** — grades upload group by group; progress shown in the toolbar
 
 *Single group:*
+
 1. Navigate to the grade table for your group (via the page dropdowns)
 2. Use **Upload CSV** to fill grades from a file, or **Download CSV** to export
 
@@ -252,7 +261,8 @@ Grades are matched by student ID `(XXXXXXXX)` prefix — safe against row reorde
 CSV upload/download buttons on the Manage Group Grade page (per-group grade entry, separate from the uploaded grades flow). The panel only appears after you have selected a season, course, group, and evaluation method — i.e., when the student grade table is actually visible.
 
 **Target page:**
-```
+
+```text
 https://portal.giu-uni.de/GIUb/INTStaff/ManageGroupGrade_m.aspx
 ```
 
@@ -275,7 +285,6 @@ https://portal.giu-uni.de/GIUb/INTStaff/ManageGroupGrade_m.aspx
 
 ---
 
-
 ### 6. GIU Student Attendance Group Report
 
 **File:** `GIU Student Attendance Report.js` | **Version:** 1.3.1 | **Author:** Mo.Elmaadawy
@@ -283,7 +292,8 @@ https://portal.giu-uni.de/GIUb/INTStaff/ManageGroupGrade_m.aspx
 Auto-scrapes all session attendance for the selected group and displays an absence-level summary panel above the student table. Runs entirely in the background via parallel fetch requests — no page reloads.
 
 **Target page:**
-```
+
+```text
 https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx
 ```
 
@@ -318,7 +328,8 @@ https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendances
 Aggregates all proctor exam assignments across departments into one searchable dashboard on the Proctor Exchange page.
 
 **Target page:**
-```
+
+```text
 https://portal.giu-uni.de/GIUb/INTStaff/ProctorExchange_m.aspx
 ```
 
@@ -350,12 +361,13 @@ https://portal.giu-uni.de/GIUb/INTStaff/ProctorExchange_m.aspx
 
 Shows your next proctoring session on the portal home page and exports reminders to `.ics`, Google Calendar, or email. Fetches your timetable in the background, caches it for 6 hours, and renders a full-width widget directly under the **Target List** block.
 
-| Light | Dark (with GIU Theme) |
-|---|---|
+| Light                                                             | Dark (with GIU Theme)                                                 |
+| ----------------------------------------------------------------- | --------------------------------------------------------------------- |
 | ![Proctoring Reminder light](screenshots/proctoring-reminder.png) | ![Proctoring Reminder dark](screenshots/proctoring-reminder-dark.png) |
 
 **Target page:**
-```
+
+```text
 https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 ```
 
@@ -382,8 +394,8 @@ https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 
 **Empty state** (no upcoming proctoring):
 
-| Light | Dark |
-|---|---|
+| Light                                                           | Dark                                                                |
+| --------------------------------------------------------------- | ------------------------------------------------------------------- |
 | ![Empty state light](screenshots/proctoring-reminder-empty.png) | ![Empty state dark](screenshots/proctoring-reminder-empty-dark.png) |
 
 ### 9. GIU Teaching Load
@@ -395,12 +407,13 @@ at the top, plus your full week in an expandable list. Each session shows the pe
 slot, the course, and the room. Fetches your schedule in the background via a hidden
 iframe and caches it for 6 hours.
 
-| Light | Dark (with GIU Theme) |
-|---|---|
+| Light                                                 | Dark (with GIU Theme)                                     |
+| ----------------------------------------------------- | --------------------------------------------------------- |
 | ![Teaching Load light](screenshots/teaching-load.png) | ![Teaching Load dark](screenshots/teaching-load-dark.png) |
 
 **Target page:**
-```
+
+```text
 https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 ```
 
@@ -433,12 +446,13 @@ https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 
 Shows any **Regular** (not "On Hold") attendance session that's 1–21 days overdue with no attendance entered yet, right on the portal Home page — useful when the Manage Student Attendances page itself is unreachable from your network. Enumerates your sessions with a single background request, then checks up to 8 candidates per page load, caching results in `localStorage` with a daily refresh.
 
-| Light | Dark (with GIU Theme) |
-|---|---|
+| Light                                                               | Dark (with GIU Theme)                                                   |
+| ------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | ![Not Entered Sessions light](screenshots/not-entered-sessions.png) | ![Not Entered Sessions dark](screenshots/not-entered-sessions-dark.png) |
 
 **Target page:**
-```
+
+```text
 https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 ```
 
@@ -467,4 +481,3 @@ https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 - Active GIU staff portal session (must be logged in)
 
 ---
-
