@@ -9608,12 +9608,30 @@
                     .map(([id]) => id);
             }
 
+            // ── Attendance-grid status ────────────────────────────────────────
+            // The doc comes from DOMParser over raw response HTML: a checkbox is
+            // "checked" iff the markup carries the checked ATTRIBUTE — use
+            // hasAttribute('checked'), never the live .checked property (that
+            // reflects user interaction, not server-rendered markup).
+            function readAttendanceStatus(doc) {
+                const grid = doc.getElementById('MainContent_DG_StudentAttendance');
+                if (!grid) return 'unknown';
+                const boxes = grid.querySelectorAll(
+                    'input[type="checkbox"][id^="MainContent_DG_StudentAttendance_CB_Attended_"]');
+                if (!boxes.length) return 'unknown'; // grid present but no rows → can't judge
+                for (const box of boxes) {
+                    if (box.hasAttribute('checked')) return 'entered';
+                }
+                return 'unentered';
+            }
+
             // ── test hook (extended as functions are added) ──
             window.__giuUnenteredSessions = { SOURCE_URL, CACHE_KEY, MAX_CHECKS_PER_LOAD,
                 parseSessionOption, parseSessionOptions,
                 localDateStr, isSameLocalDay, daysAgoOf, filterCandidates,
                 extractFormState, doPostback, fetchSourcePage, extractGroupValue,
-                loadCache, saveCache, mergeCandidates, selectChecksToRun };
+                loadCache, saveCache, mergeCandidates, selectChecksToRun,
+                readAttendanceStatus };
         },
         proctorAggregator(S) {
         
