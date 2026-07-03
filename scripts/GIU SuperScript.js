@@ -9553,11 +9553,67 @@
                 return chosen ? (chosen.getAttribute('value') || '') : '';
             }
 
+            // ── Cache (localStorage, key giuUnenteredSessionsV1) ──────────────
+            function loadCache() {
+                try {
+                    const raw = JSON.parse(localStorage.getItem(CACHE_KEY));
+                    if (raw && typeof raw === 'object' && raw.candidates && typeof raw.candidates === 'object') {
+                        return { candidates: raw.candidates, lastEnumeratedISO: raw.lastEnumeratedISO || null };
+                    }
+                } catch { /* corrupt JSON → fresh cache */ }
+                return { candidates: {}, lastEnumeratedISO: null };
+            }
+
+            function saveCache(cache) {
+                localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
+            }
+
+            // Rebuild the candidate map from a fresh enumeration: refresh metadata,
+            // keep prior status/lastCheckedISO for sessions still offered, drop the
+            // rest. Brand-new candidates start unknown / never-checked.
+            function mergeCandidates(cache, freshCandidates, nowISO) {
+                const next = { candidates: {}, lastEnumeratedISO: nowISO };
+                for (const c of freshCandidates) {
+                    const prev = cache.candidates[c.sessionId];
+                    next.candidates[c.sessionId] = {
+                        courseCode: c.courseCode,
+                        courseName: c.courseName,
+                        groupCode: c.groupCode,
+                        date: c.date,
+                        slot: c.slot,
+                        status: prev ? prev.status : 'unknown',
+                        lastCheckedISO: prev ? prev.lastCheckedISO : null,
+                    };
+                }
+                return next;
+            }
+
+            // Which sessionIds get a Phase-2 postback this load: never-checked
+            // first (oldest date first), then stale unentered/unknown rechecks
+            // (oldest first), capped at MAX_CHECKS_PER_LOAD. "entered" is final —
+            // never rechecked. Leftovers stay queued for a future load.
+            function selectChecksToRun(cache, todayStr) {
+                const entries = Object.entries(cache.candidates);
+                const byDate = (a, b) => (a[1].date < b[1].date ? -1 : a[1].date > b[1].date ? 1 : 0);
+                const neverChecked = entries
+                    .filter(([, c]) => !c.lastCheckedISO)
+                    .sort(byDate);
+                const staleRecheck = entries
+                    .filter(([, c]) => c.lastCheckedISO &&
+                        (c.status === 'unentered' || c.status === 'unknown') &&
+                        !isSameLocalDay(c.lastCheckedISO, todayStr))
+                    .sort(byDate);
+                return neverChecked.concat(staleRecheck)
+                    .slice(0, MAX_CHECKS_PER_LOAD)
+                    .map(([id]) => id);
+            }
+
             // ── test hook (extended as functions are added) ──
             window.__giuUnenteredSessions = { SOURCE_URL, CACHE_KEY, MAX_CHECKS_PER_LOAD,
                 parseSessionOption, parseSessionOptions,
                 localDateStr, isSameLocalDay, daysAgoOf, filterCandidates,
-                extractFormState, doPostback, fetchSourcePage, extractGroupValue };
+                extractFormState, doPostback, fetchSourcePage, extractGroupValue,
+                loadCache, saveCache, mergeCandidates, selectChecksToRun };
         },
         proctorAggregator(S) {
         
