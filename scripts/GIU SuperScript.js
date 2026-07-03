@@ -7426,9 +7426,9 @@
                 // widget blank. The fresh iframe fetch overwrites this with the real tier.
                 const tier = st.tier || "ontime";
                 const TIER_NAMES = {
-                    ghost: "👻 Ghosting GIU", deduct: "💸 Salary Deduction",
+                    ghost: "👻 Ghosting GIU", deduct: "💸 Paycheck Hit",
                     close: "😅 Cutting It Close",
-                    ontime: "✅ Right On Time", workaholic: "💪 Workaholic",
+                    ontime: "✅ Perfectly Mid", workaholic: "💪 Workaholic",
                     grass: "🌱 Get a Life", slave: "⛏️ Officially a Slave"
                 };
                 const TIER_ORDER = ["ghost", "deduct", "close", "ontime", "workaholic", "grass", "slave"];
