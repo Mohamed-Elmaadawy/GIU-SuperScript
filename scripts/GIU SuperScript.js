@@ -7056,6 +7056,7 @@
             }
 
             let homeLastRows = [];
+            let homeFetchInFlight = false; // guards the manual refresh button and the auto-refresh path from overlapping
 
             function loadHomeCache() {
                 try {
@@ -7268,6 +7269,10 @@
                     .gius-att-widget *{box-sizing:border-box;}
                     .gius-att-head{font-weight:700;font-size:16px;margin-bottom:12px;}
                     .gius-att-stale{color:#b8860b;font-weight:600;font-size:12px;}
+                    .gius-att-refresh{float:right;border:none;background:transparent;cursor:pointer;
+                        font-size:15px;line-height:1;color:inherit;opacity:.55;padding:2px 4px;}
+                    .gius-att-refresh:hover{opacity:1;}
+                    .gius-att-refresh:disabled{opacity:.3;cursor:wait;}
                     .gius-att-card{background:#f8f9fa;border:1px solid #e9ecef;border-left:4px solid #ffc107;
                         border-radius:12px;padding:14px;margin-bottom:12px;}
                     .gius-att-status{display:flex;align-items:center;gap:8px;flex-wrap:wrap;
@@ -7512,7 +7517,8 @@
                     </div>` : "";
 
                 host.innerHTML = `
-                    <div class="gius-att-head">This Payroll Month${opts.stale ? ' · <span class="gius-att-stale">offline</span>' : ""}</div>
+                    <div class="gius-att-head">This Payroll Month${opts.stale ? ' · <span class="gius-att-stale">offline</span>' : ""}
+                        <button type="button" class="gius-att-refresh gius-btn" title="Refresh now"${homeFetchInFlight ? " disabled" : ""}>⟳</button></div>
                     <div class="gius-att-card">
                         <div class="gius-att-status">Current balance
                             <span class="gius-att-balance ${tierClass}">${homeEsc(homeBalanceText(st))}</span></div>
@@ -7551,6 +7557,21 @@
                         try { localStorage.setItem("giuAttTierHintSeen", "1"); } catch {}
                         tierBtn.classList.add("gius-att-tier-seen");
                         homeOpenTierModal(tier, TIER_NAMES, TIER_CONDS, TIER_ORDER);
+                    });
+                }
+                const refreshBtn = host.querySelector(".gius-att-refresh");
+                if (refreshBtn) {
+                    refreshBtn.addEventListener("click", function () {
+                        if (homeFetchInFlight) return;
+                        homeFetchInFlight = true;
+                        refreshBtn.disabled = true;
+                        fetchReportViaIframe().then(function (rows) {
+                            homeFetchInFlight = false;
+                            homeRenderFromRows(rows);
+                        }).catch(function () {
+                            homeFetchInFlight = false;
+                            refreshBtn.disabled = false;
+                        });
                     });
                 }
                 homeAttachAbsentActions(host);
@@ -7628,7 +7649,13 @@
                 if (fresh) return; // gate rows recent enough — skip the report iframe entirely
 
                 const refresh = function () {
-                    fetchReportViaIframe().then(homeRenderFromRows).catch(function () {
+                    if (homeFetchInFlight) return;
+                    homeFetchInFlight = true;
+                    fetchReportViaIframe().then(function (rows) {
+                        homeFetchInFlight = false;
+                        homeRenderFromRows(rows);
+                    }).catch(function () {
+                        homeFetchInFlight = false;
                         if (cache) return; // keep the stale render
                         homeShowError(homeEnsureHost());
                     });
