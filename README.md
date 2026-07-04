@@ -442,7 +442,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 
 ### 10. GIU Not Entered Sessions
 
-**File:** `GIU Not Entered Sessions.js` | **Version:** 1.0.0 | **Author:** Mo.Elmaadawy
+**File:** `GIU Not Entered Sessions.js` | **Version:** 1.0.1 | **Author:** Mo.Elmaadawy
 
 Shows any **Regular** (not "On Hold") attendance session that's 1–21 days overdue with no attendance entered yet, right on the portal Home page — useful when the Manage Student Attendances page itself is unreachable from your network. Enumerates your sessions with a single background request, then checks up to 8 candidates per page load, caching results in `localStorage` with a daily refresh.
 
