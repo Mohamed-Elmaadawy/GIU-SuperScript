@@ -3,7 +3,7 @@
 // @description Shows a Home-page widget listing Regular attendance sessions 1-21 days overdue with no attendance entered yet
 // @match       https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 // @namespace   Cyn0
-// @version     1.0.1
+// @version     1.0.2
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Not%20Entered%20Sessions.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Not%20Entered%20Sessions.js
 // @author      Mo.Elmaadawy
@@ -55,12 +55,14 @@ function unenteredSessions(S) {
 
             // ── Option-text parser ────────────────────────────────────────────
             // Dropdown text format (verbatim from the live portal):
-            //   "{Season} {Year}  - {Term} - {CourseCode} - {CourseName} - {Group} @{YYYY.MM.DD} - {Type}  - Slot{N} - {Duration}"
-            // Quirks: DOUBLE space between the year and the following dash, and
-            // DOUBLE space between the session type and the following dash;
-            // single spaces around every other dash. CourseCode is two tokens
+            //   "{Season} {Year}[ Round {N}] - {Term} - {CourseCode} - {CourseName} - {Group} @{YYYY.MM.DD} - {Type}  - Slot{N} - {Duration}"
+            // Quirks: DOUBLE space between the session type and the following
+            // dash; single space around every other dash, INCLUDING the one after
+            // the season/year segment — Round-based terms (e.g. Summer) append
+            // " Round {N}" there with only a single space before the dash, so
+            // that boundary must NOT require \s{2}. CourseCode is two tokens
             // ("INCS 406"), hence (\S+\s\S+) — a single \S+ would grab only "INCS".
-            const OPTION_RE = /^(.+?)\s{2}-\s(\S+)\s-\s(\S+\s\S+)\s-\s(.+?)\s-\s(.+?)\s@(\d{4})\.(\d{2})\.(\d{2})\s-\s(Regular|On Hold)\s{2}-\sSlot(\d+)\s-\s(.+)$/;
+            const OPTION_RE = /^(.+?)\s+-\s(\S+)\s-\s(\S+\s\S+)\s-\s(.+?)\s-\s(.+?)\s@(\d{4})\.(\d{2})\.(\d{2})\s-\s(Regular|On Hold)\s{2}-\sSlot(\d+)\s-\s(.+)$/;
 
             function parseSessionOption(text, value) {
                 if (!value || value === '0') return null; // "[Choose Attendance Session]" placeholder
