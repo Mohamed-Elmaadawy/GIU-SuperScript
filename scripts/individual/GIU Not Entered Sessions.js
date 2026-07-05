@@ -2,8 +2,9 @@
 // @name        GIU Not Entered Sessions
 // @description Shows a Home-page widget listing Regular attendance sessions 1-21 days overdue with no attendance entered yet
 // @match       https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
+// @match       https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx
 // @namespace   Cyn0
-// @version     1.0.2
+// @version     1.1.0
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Not%20Entered%20Sessions.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Not%20Entered%20Sessions.js
 // @author      Mo.Elmaadawy
@@ -415,7 +416,7 @@ function unenteredSessions(S) {
                     <div class="gius-us-sub">Regular sessions, 1–21 days past, attendance not yet entered${queuedText}.</div>
                     <div class="gius-us-list">
                         ${rows.map(c => `
-                            <a class="gius-us-row" href="${SOURCE_URL}" target="_blank" rel="noopener">
+                            <a class="gius-us-row" href="${SOURCE_URL}?gius_session=${encodeURIComponent(c.sessionId)}" target="_blank" rel="noopener">
                                 <div class="gius-us-main">
                                     <div class="gius-us-primary">
                                         <span class="gius-us-slot">Slot ${esc(c.slot)}</span>
@@ -513,5 +514,27 @@ function unenteredSessions(S) {
             }
         }
 
-    unenteredSessions(S);
+    if (/\/Home\.aspx$/i.test(location.pathname)) {
+        unenteredSessions(S);
+    }
+
+    // ═══ Deep-link: auto-select session when arriving from a widget click
+    //     (?gius_session={id}). Sessions dropdown isn't group-filtered
+    //     (confirmed live), so selecting it alone and letting its native
+    //     onchange fire the portal's own __doPostBack is enough. ──
+    try {
+        if (/\/ClassAttendance_ManageStudentAttendancesH003\.aspx/i.test(location.pathname)) {
+            const sessionId = new URLSearchParams(location.search).get('gius_session');
+            const sel = document.getElementById('MainContent_DDL_Sessions');
+            if (sessionId && sel && sel.value !== sessionId) {
+                const opt = Array.from(sel.options).find(o => o.value === sessionId);
+                if (opt) {
+                    sel.value = sessionId;
+                    sel.dispatchEvent(new Event('change', { bubbles: true }));
+                }
+            }
+        }
+    } catch (e) {
+        S.warn('sessionDeepLink', 'crashed:', e);
+    }
 })();

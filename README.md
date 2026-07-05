@@ -60,7 +60,7 @@ Every script carries `@updateURL` and `@downloadURL` pointing at this repo, so T
 
 ### GIU SuperScript — All-in-one bundle
 
-**File:** `GIU SuperScript.js` | **Version:** 1.2.4 | **Author:** Mo.Elmaadawy
+**File:** `GIU SuperScript.js` | **Version:** 1.3.0 | **Author:** Mo.Elmaadawy
 
 The all-in-one userscript that bundles every feature script below except GIU Theme. It also adds a **Control Center** card on the portal Home page where you can turn bundled modules on or off.
 
@@ -442,7 +442,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 
 ### 10. GIU Not Entered Sessions
 
-**File:** `GIU Not Entered Sessions.js` | **Version:** 1.0.2 | **Author:** Mo.Elmaadawy
+**File:** `GIU Not Entered Sessions.js` | **Version:** 1.1.0 | **Author:** Mo.Elmaadawy
 
 Shows any **Regular** (not "On Hold") attendance session that's 1–21 days overdue with no attendance entered yet, right on the portal Home page — useful when the Manage Student Attendances page itself is unreachable from your network. Enumerates your sessions with a single background request, then checks up to 8 candidates per page load, caching results in `localStorage` with a daily refresh.
 
@@ -450,16 +450,18 @@ Shows any **Regular** (not "On Hold") attendance session that's 1–21 days over
 | ------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | ![Not Entered Sessions light](screenshots/not-entered-sessions.png) | ![Not Entered Sessions dark](screenshots/not-entered-sessions-dark.png) |
 
-**Target page:**
+**Target pages:**
 
 ```text
 https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
+https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx
 ```
 
 **Features:**
 
 - **Overdue detection** — flags Regular sessions 1–21 days past their date with no attendance saved; On Hold sessions are ignored
 - **Course names, not codes** — each row shows the full course name, group, date, and slot
+- **One-click deep link** — clicking a row opens the attendance page with that exact session auto-selected (no manual dropdown hunting)
 - **Oldest first** — sorted so the longest-overdue sessions surface at the top
 - **Capped, cached checks** — verifies up to 8 sessions per page load, prioritizing never-checked sessions first, then stale rechecks; already-entered sessions are never rechecked
 - **Zero clutter when clear** — if nothing's unentered, the widget doesn't render at all
