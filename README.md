@@ -60,7 +60,7 @@ Every script carries `@updateURL` and `@downloadURL` pointing at this repo, so T
 
 ### GIU SuperScript — All-in-one bundle
 
-**File:** `GIU SuperScript.js` | **Version:** 1.2.0 | **Author:** Mo.Elmaadawy
+**File:** `GIU SuperScript.js` | **Version:** 1.2.2 | **Author:** Mo.Elmaadawy
 
 The all-in-one userscript that bundles every feature script below except GIU Theme. It also adds a **Control Center** card on the portal Home page where you can turn bundled modules on or off.
 
@@ -442,7 +442,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 
 ### 10. GIU Not Entered Sessions
 
-**File:** `GIU Not Entered Sessions.js` | **Version:** 1.0.1 | **Author:** Mo.Elmaadawy
+**File:** `GIU Not Entered Sessions.js` | **Version:** 1.0.2 | **Author:** Mo.Elmaadawy
 
 Shows any **Regular** (not "On Hold") attendance session that's 1–21 days overdue with no attendance entered yet, right on the portal Home page — useful when the Manage Student Attendances page itself is unreachable from your network. Enumerates your sessions with a single background request, then checks up to 8 candidates per page load, caching results in `localStorage` with a daily refresh.
 
