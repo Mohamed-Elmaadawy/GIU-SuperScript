@@ -6,7 +6,7 @@
 // @include     https://portal.giu-uni.de/*
 // @include     https://portal.giu-berlin.de/*
 // @namespace   Cyn0
-// @version     3.2.0
+// @version     3.2.1
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @run-at      document-idle
