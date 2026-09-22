@@ -2,11 +2,50 @@
 
 Guidance for AI agents (Codex, Claude, etc.) working in this repo.
 
+## ⚠ Build pipeline — READ THIS FIRST
+
+**Two shipped userscripts are GENERATED. Never edit them directly.**
+
+| Generated output (do NOT edit) | Built from |
+| --- | --- |
+| `scripts/GIU SuperScript.js` | `src/bundle.template.js` + `src/shared/core.js` + `src/features/*.js` + `src/meta/manifest.json` |
+| `scripts/individual/GIU Not Entered Sessions.js` | `src/standalone.template.js` + the same `src/` sources |
+
+`npm run build` (`node scripts/build/build.js`) regenerates both from `src/`.
+Any edit made straight to those two files is **silently discarded** on the next
+build — this repo has already lost three commits that way.
+
+**The workflow for changing either of them:**
+
+1. Edit the matching file under `src/` (feature bodies live in `src/features/`,
+   cross-script utilities in `src/shared/core.js`, userscript header rows and
+   `@version` in `src/meta/manifest.json`).
+2. Run `npm run build`.
+3. `node --check` the regenerated output.
+4. Commit **both** the `src/` change and the regenerated `scripts/` output.
+
+Other notes:
+
+- `src/bundle.template.js` is deliberately **not valid JS** — it carries
+  placeholder markers such as `/*__CORE_WARN__*/` that only become legal after
+  substitution. ESLint ignores `src/**` for exactly this reason.
+- `scripts/build/extract-once.js` is a spent one-time migration. It refuses to
+  run once `src/meta/manifest.json` exists. Do not revive it.
+- **`scripts/individual/GIU Staff Attendance Script.js` is HAND-MAINTAINED**, as
+  are the other scripts in `scripts/individual/` apart from
+  `GIU Not Entered Sessions.js`. They are not generated and not linted into
+  agreement with the bundle — when you change the bundle's `staffAttendance`
+  logic in `src/bundle.template.js`, you must **mirror the same change by hand**
+  into the standalone, and bump its own `@version`.
+
+---
+
 ## Project conventions
 - Userscripts (Tampermonkey, `// ==UserScript==` headers): the all-in-one bundle `scripts/GIU SuperScript.js` and `scripts/GIU Theme.js` live in `scripts/`; the 8 standalone feature scripts live in `scripts/individual/`.
-- Version bumps: bump `@version` by **patch** (`0.0.1`), never minor. Sync the version in `README.md`. Auto-update only triggers when the new version is higher.
+- Version bumps: bump `@version` by **patch** (`0.0.1`), never minor. Sync the version in `README.md`. Auto-update only triggers when the new version is higher. The bundle's `@version` lives in `src/meta/manifest.json`, not in the generated file.
 - Commits: do **not** add an AI co-author trailer.
 - After editing any userscript, run `node --check "scripts/<file>.js"`.
+- Lint with `npm run lint` (`eslint .`). It must exit 0.
 
 ---
 
@@ -27,14 +66,25 @@ All 8 individual userscripts are folded into `scripts/GIU SuperScript.js`. The n
 - `ROUTES[]` — `{id, test(pathname)}`. **Order matters**: `teachingLoad` before `proctorReminder` (both Home.aspx).
 - `bootstrap` — loop ROUTES → `if(!FEATURES[id])skip` → `if(!test(path))skip` → `try{ fn(Shared) }catch{ warn }`. One feature crashing must not kill the rest.
 
-### Fold pattern (per feature)
+### Fold pattern (per feature) — historical; all folds are done
+> **All edits below now happen in `src/bundle.template.js`, never in the generated
+> `scripts/GIU SuperScript.js`.** See "⚠ Build pipeline" at the top of this file.
+> This section is kept because it still describes how a feature is *shaped* when
+> re-syncing one from its hand-maintained standalone.
+
 1. Read source `scripts/individual/GIU <Name>.js`.
-2. Replace its stub `name(S){ S.log(...) }` in `Features` with the full body as a module function.
+2. Replace its stub `name(S){ S.log(...) }` in `Features` (in `src/bundle.template.js`) with the full body as a module function.
 3. Drop the source's outer IIFE wrapper, its own path-check, and its outer try/catch (the bootstrap already handles path + isolation).
 4. Keep everything else **VERBATIM** — styles, helpers as inner closures, test hooks (`window.__giuTeachingLoad`, etc.). Low-risk = minimal changes.
 5. Optional util swap only where obvious (e.g. own style-injector → `S.injectStyle`).
-6. `node --check "scripts/GIU SuperScript.js"` after every fold.
+6. `npm run build`, then `node --check "scripts/GIU SuperScript.js"` after every fold. Commit the `src/` change and the regenerated output together.
 7. Hand to the user for browser verification with explicit pass criteria. **Wait for "pass" before the next fold.**
+
+### Re-syncing the other direction (bundle → standalone)
+`scripts/individual/GIU Staff Attendance Script.js` is hand-maintained and mirrors
+the bundle's `staffAttendance` body. There is no tooling that keeps the two in
+step, so a change to one must be applied **by hand** to the other, with its own
+patch `@version` bump and a matching `**Version:**` line in `README.md`.
 
 ### Progress — all 8 folded & verified working
 `manageGroupGrades`, `teachingLoad`, `proctorReminder`, `notificationBatch`, `studentAttendance`, `uploadGrades`, `staffAttendance`, `proctorAggregator`. Standalone sources remain in `scripts/individual/` for diffing/re-folds.

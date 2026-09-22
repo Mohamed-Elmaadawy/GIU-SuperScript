@@ -4,13 +4,34 @@
 const fs = require('fs');
 const path = require('path');
 const { extractBlock } = require('./extract-block');
-const { parseHeader, renderHeader } = require('./headers');
+const { parseHeader } = require('./headers');
 
 const ROOT = path.join(__dirname, '..', '..');
 const BUNDLE_PATH = path.join(ROOT, 'scripts', 'GIU SuperScript.js');
 const STANDALONE_PATH = path.join(ROOT, 'scripts', 'individual', 'GIU Not Entered Sessions.js');
+const MANIFEST_PATH = path.join(ROOT, 'src', 'meta', 'manifest.json');
+
+// This is a ONE-TIME migration, kept only as provenance for how src/ was first
+// carved out of the two generated userscripts. It has NOT been maintained since:
+// it emits only four core helpers (no portalUrl / isBerlinHost), writes no
+// /*__CORE_PORTALURL__*/ or /*__CORE_ISBERLINHOST__*/ markers, hardcodes the
+// standalone @version, and omits the `bootstrap` field build.js now reads.
+// Re-running it would overwrite src/ with a template whose unreplaced markers
+// land inside an object literal — a syntax error in the shipped bundle. Refuse.
+function assertNotAlreadyMigrated() {
+    if (!fs.existsSync(MANIFEST_PATH)) return;
+    console.error('extract-once: refusing to run — src/meta/manifest.json already exists.');
+    console.error('  The one-time src/ extraction has already happened, and this script is');
+    console.error('  stale relative to the current build (missing core helpers and markers,');
+    console.error('  hardcoded standalone version, no `bootstrap` field). Running it would');
+    console.error('  overwrite src/ and produce a broken bundle.');
+    console.error('  To change the shipped scripts: edit src/, then run `npm run build`.');
+    process.exit(1);
+}
 
 function main() {
+    assertNotAlreadyMigrated();
+
     const bundleSrc = fs.readFileSync(BUNDLE_PATH, 'utf8');
     const standaloneSrc = fs.readFileSync(STANDALONE_PATH, 'utf8');
 

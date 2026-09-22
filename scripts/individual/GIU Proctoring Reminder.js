@@ -4,7 +4,7 @@
 // @match       https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 // @match       https://portal.giu-berlin.de/GIUb/INTStaff/Home.aspx
 // @namespace   Cyn0
-// @version     1.1.2
+// @version     1.1.3
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Proctoring%20Reminder.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Proctoring%20Reminder.js
 // @author      Mo.Elmaadawy
@@ -17,7 +17,7 @@
     'use strict';
 
     const CACHE_KEY = 'giuProctorTimetableV1';
-    const TIMETABLE_URL = 'https://portal.giu-uni.de/GIUb/INTStaff/ViewTimeTable_m.aspx';
+    const TIMETABLE_URL = location.origin + '/GIUb/INTStaff/ViewTimeTable_m.aspx';
     const TTL_MS = 6 * 60 * 60 * 1000; // 6h
     const FETCH_TIMEOUT_MS = 15000;
     const HOME_BOOT_DELAY_MS = 800;
