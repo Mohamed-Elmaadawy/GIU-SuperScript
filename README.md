@@ -85,7 +85,7 @@ https://portal.giu-berlin.de/*
 
 **On the GIU Berlin portal** (`portal.giu-berlin.de`) only four modules run:
 
-- Staff Attendance
+- Staff Enhanced Attendance
 - Upload Grades
 - Proctoring Reminder
 - Proctor Schedule Aggregator
@@ -93,11 +93,11 @@ https://portal.giu-berlin.de/*
 The other five are hidden there because their portal pages are not available on
 the Berlin deployment.
 
-Staff Attendance on Berlin reads its data from the **Cairo** portal, because
-Berlin's own attendance report page returns a server error. Log into
+Staff Enhanced Attendance on Berlin reads its data from the **Cairo** portal,
+because Berlin's own attendance report page returns a server error. Log into
 `portal.giu-uni.de` in the same browser so the widget can reach it.
 
-Set your campus under **Staff Attendance → Settings → Branch**. This controls
+Set your campus under **Staff Enhanced Attendance → Settings → Branch**. This controls
 which weekday counts as the fixed non-working day — Friday for Cairo, Sunday for
 Berlin. Set it to Berlin even while viewing the Cairo portal if you are Berlin
 staff, because the setting follows the person, not the site.
@@ -108,7 +108,7 @@ staff, because the setting follows the person, not the site.
 
 ### 1. GIU Theme
 
-**File:** `GIU Theme.js` | **Version:** 1.0 | **Author:** Mo.Elmaadawy
+**File:** `GIU Theme.js` | **Version:** 1.0.1 | **Author:** Mo.Elmaadawy
 
 A portal-wide theming engine. Choose from four modes via an expanding side-tab picker fixed to the right edge of every portal page: **Off** (native portal, untouched), **Light**, **Slate** (default dark, GitHub-neutral greys), and **Plum** (pink/feminine accent palette). Each on-mode recolours the portal and the injected SuperScript widgets to a matching palette. Built entirely on CSS variables; runs at `document-start` so there is no flash of unstyled content. (A fuller structural reskin — typography, spacing, restyled components — is planned for a later release.)
 
@@ -136,7 +136,7 @@ https://portal.giu-uni.de/*
 
 ### 2. GIU Staff Enhanced Attendance
 
-**File:** `GIU Staff Attendance Script.js` | **Version:** 3.2.0 | **Author:** Mo.Elmaadawy
+**File:** `GIU Staff Attendance Script.js` | **Version:** 3.2.1 | **Author:** Mo.Elmaadawy
 
 A full attendance management dashboard injected above the Swift Report attendance table. Tracks your hours, leave balance, and exceptions — all stored locally in your browser.
 
@@ -215,7 +215,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/NotificationSystem_SendEmail_m.aspx
 
 ### 4. GIU Upload Grades
 
-**File:** `GIU Upload Grades.js` | **Version:** 2.4 | **Authors:** Ahmed Sherif, Mo.Elmaadawy
+**File:** `GIU Upload Grades.js` | **Version:** 2.4.1 | **Authors:** Ahmed Sherif, Mo.Elmaadawy
 
 Batch grade download and upload across all student groups on the Manage Uploaded Grades page. Runs entirely in the background via fetch — no page reloads between groups.
 
@@ -343,7 +343,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendances
 
 ### 7. GIU Proctor Schedule Aggregator
 
-**File:** `GIU Proctor Schedule Aggregator.js` | **Version:** 2.2.13 | **Author:** Mo.Elmaadawy
+**File:** `GIU Proctor Schedule Aggregator.js` | **Version:** 2.2.14 | **Author:** Mo.Elmaadawy
 
 Aggregates all proctor exam assignments across departments into one searchable dashboard on the Proctor Exchange page.
 
@@ -377,7 +377,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/ProctorExchange_m.aspx
 
 ### 8. GIU Proctoring Reminder
 
-**File:** `GIU Proctoring Reminder.js` | **Version:** 1.1.1 | **Author:** Mo.Elmaadawy
+**File:** `GIU Proctoring Reminder.js` | **Version:** 1.1.2 | **Author:** Mo.Elmaadawy
 
 Shows your next proctoring session on the portal home page and exports reminders to `.ics`, Google Calendar, or email. Fetches your timetable in the background, caches it for 6 hours, and renders a full-width widget directly under the **Target List** block.
 
