@@ -31,7 +31,7 @@
         },
         {
           "raw": "// @version     ",
-          "value": "2.0.0"
+          "value": "1.3.0"
         },
         {
           "raw": "// @updateURL    ",
@@ -69,12 +69,16 @@
           "value": "https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx"
         },
         {
+          "raw": "// @match       ",
+          "value": "https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx"
+        },
+        {
           "raw": "// @namespace   ",
           "value": "Cyn0"
         },
         {
           "raw": "// @version     ",
-          "value": "1.0.1"
+          "value": "1.1.0"
         },
         {
           "raw": "// @updateURL    ",
@@ -102,7 +106,8 @@
         }
       ],
       "eol": "\r\n",
-      "feature": "unenteredSessions"
+      "feature": "unenteredSessions",
+      "bootstrap": "src/features/unenteredSessions.standalone.js"
     }
   }
 }

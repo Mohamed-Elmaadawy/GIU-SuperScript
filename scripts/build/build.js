@@ -76,7 +76,14 @@ function buildStandalone(name, manifest) {
     // (hand-written); the final normalization pass below reconciles both.
     out = out.replace('/*__HEADER_ROWS__*/', buildHeader(target, manifest).split(target.eol).slice(1, -1).join(target.eol));
     out = out.replace('/*__CORE__*/', stripExports(readSrc('src/shared/core.js')).trim());
-    out = out.replace('/*__FEATURE__*/', stripExports(readSrc(`src/features/${target.feature}.js`)).trim() + `\n\n    ${target.feature}(S);`);
+    // Trim only trailing whitespace here — the bootstrap file's own leading
+    // indentation (it sits outside the feature function, at the template's
+    // top level) is significant and must survive verbatim; a plain .trim()
+    // would also eat that leading indent.
+    const bootstrap = target.bootstrap
+        ? readSrc(target.bootstrap).replace(/\s+$/, '')
+        : `${target.feature}(S);`;
+    out = out.replace('/*__FEATURE__*/', stripExports(readSrc(`src/features/${target.feature}.js`)).trim() + `\n\n${bootstrap}`);
     // Final normalization: standalone.template.js's own literal lines are LF,
     // but the header/core/feature content spliced in above is CRLF (native
     // to every real source file in this repo) — without this, the output
