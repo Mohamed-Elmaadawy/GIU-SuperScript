@@ -54,7 +54,7 @@ function isBerlinHost() { return /(^|\.)giu-berlin\.de$/i.test(location.hostname
     const S = { waitFor, escapeHtml, injectStyle, warn, portalUrl, isBerlinHost };
 
 function unenteredSessions(S) {
-            const SOURCE_URL = 'https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx';
+            const SOURCE_URL = S.portalUrl('/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx');
             const CACHE_KEY = 'giuUnenteredSessionsV1';
             const MAX_CHECKS_PER_LOAD = 8;
 
