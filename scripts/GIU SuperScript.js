@@ -436,6 +436,23 @@
 
             function branchConfig() { return BRANCH_CONFIG[getBranch()]; }
 
+            // Index 0 = Sunday, matching Date#getUTCDay().
+            const WEEKDAY_TABLE = [
+                { code: "Sun", name: "Sunday" },
+                { code: "Mon", name: "Monday" },
+                { code: "Tue", name: "Tuesday" },
+                { code: "Wed", name: "Wednesday" },
+                { code: "Thu", name: "Thursday" },
+                { code: "Fri", name: "Friday" },
+                { code: "Sat", name: "Saturday" },
+            ];
+
+            function fixedOffDay() { return branchConfig().fixedOffDay; }
+
+            function fixedOffIndex() {
+                return WEEKDAY_TABLE.findIndex(function (w) { return w.name === fixedOffDay(); });
+            }
+
             const PAGINATION_DEFAULT_PAGE_SIZE = 10;
             const PAGINATION_PAGE_SIZE_OPTIONS = [5, 10, 25, 50, 100];
             const UNDO_STACK_LIMIT = 5;
@@ -685,7 +702,7 @@
             }
 
             function isFixedNonWorkingDay(dayName) {
-                return dayName === "Friday";
+                return dayName === fixedOffDay();
             }
 
             // ═══════════════════════════════════════════════════════════
@@ -5108,18 +5125,21 @@
                 return `${dateObj.getUTCFullYear()}-${pad2(dateObj.getUTCMonth() + 1)}-${pad2(dateObj.getUTCDate())}`;
             }
 
-            // Compensation week is Saturday -> Friday.
+            // Compensation week ends on the branch's fixed off-day.
+            // Cairo: Sat -> Fri (identical to the previous hardcoded behaviour).
+            // Berlin: Mon -> Sun.
             function getCompensationWeekBounds(dateStr) {
                 const normalized = normalizeYMD(dateStr);
                 if (!normalized) return null;
                 const source = new Date(`${normalized}T00:00:00Z`);
                 if (Number.isNaN(source.getTime())) return null;
 
-                const day = source.getUTCDay(); // 0=Sun ... 6=Sat
-                const daysSinceSaturday = (day + 1) % 7; // Sat=0, Sun=1, ..., Fri=6
+                const weekStartIndex = (fixedOffIndex() + 1) % 7; // day after the off-day
+                const day = source.getUTCDay();                    // 0=Sun ... 6=Sat
+                const daysSinceStart = (day - weekStartIndex + 7) % 7;
 
                 const startDate = new Date(source.getTime());
-                startDate.setUTCDate(startDate.getUTCDate() - daysSinceSaturday);
+                startDate.setUTCDate(startDate.getUTCDate() - daysSinceStart);
 
                 const endDate = new Date(startDate.getTime());
                 endDate.setUTCDate(endDate.getUTCDate() + 6);
@@ -5533,19 +5553,23 @@
                 };
             }
 
-            // Detect the staff member's weekly day off: the weekday (Sat–Thu; Friday is the
-            // fixed off-day, holidays excluded) with the MOST absences (days with no check-in)
-            // across the whole loaded table. Returns { code, fullName, occ } where occ = that
-            // weekday's absence count, or null when there are no rows or no absences at all.
-            // Ties resolve to the earliest weekday (Sat→Thu).
-            const DAYOFF_WEEKDAYS = [
-                { code: "Sat", name: "Saturday" },
-                { code: "Sun", name: "Sunday" },
-                { code: "Mon", name: "Monday" },
-                { code: "Tue", name: "Tuesday" },
-                { code: "Wed", name: "Wednesday" },
-                { code: "Thu", name: "Thursday" }
-            ];
+            // Detect the staff member's weekly day off: the weekday (the branch's fixed
+            // off-day excluded, holidays excluded) with the MOST absences (days with no
+            // check-in) across the whole loaded table. Returns { code, fullName, occ }
+            // where occ = that weekday's absence count, or null when there are no rows
+            // or no absences at all. Ties resolve to the earliest weekday (the day after
+            // the branch's fixed off-day onward).
+            //
+            // The six selectable weekly day-off candidates: every weekday except the
+            // branch's fixed off-day, ordered starting from the day AFTER it.
+            // Cairo (Friday off) -> Sat, Sun, Mon, Tue, Wed, Thu — identical to the
+            // hardcoded list this replaced. Berlin (Sunday off) -> Mon .. Sat.
+            function dayOffWeekdays() {
+                const off = fixedOffIndex();
+                const out = [];
+                for (let i = 1; i <= 6; i++) out.push(WEEKDAY_TABLE[(off + i) % 7]);
+                return out;
+            }
 
             function detectDayOffCode(periods) {
                 const rows = (periods || []).flatMap(function (p) { return (p && p.rows) || []; });
@@ -5565,16 +5589,16 @@
                 const absentByName = new Map(); // dayName -> absence count
                 eachYmdInRange(minDate, maxDate, function (ymd) {
                     const dayName = formatDateToDayName(ymd);
-                    if (!dayName || isFixedNonWorkingDay(dayName)) return; // skip Friday
+                    if (!dayName || isFixedNonWorkingDay(dayName)) return; // skip the fixed off-day
                     if (isDateHoliday(ymd, holidays)) return;              // skip holidays
                     if (attendedByDate.get(ymd)) return;                   // attended → not absent
                     absentByName.set(dayName, (absentByName.get(dayName) || 0) + 1);
                 });
 
                 // Day off = weekday with the most absences (>= 1). Strict ">" keeps the first
-                // weekday in week order on ties (Sat→Thu).
+                // weekday in week order on ties (the day after the branch's fixed off-day onward).
                 let best = null;
-                DAYOFF_WEEKDAYS.forEach(function (wd) {
+                dayOffWeekdays().forEach(function (wd) {
                     const absent = absentByName.get(wd.name) || 0;
                     if (absent >= 1 && (!best || absent > best.occ)) {
                         best = { code: wd.code, fullName: wd.name, occ: absent };
@@ -7796,6 +7820,9 @@
                     reportOrigin: () => REPORT_ORIGIN,
                     exportSnapshot: exportSettingsSnapshot,
                     importSnapshot: importSettingsSnapshot,
+                    dayOffWeekdays: dayOffWeekdays,
+                    isFixedNonWorking: isFixedNonWorkingDay,
+                    compWeek: getCompensationWeekBounds,
                 };
             } catch { /* ignore */ }
 
