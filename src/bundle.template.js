@@ -106,6 +106,25 @@
         /*__CORE_ISBERLINHOST__*/,
     };
 
+    // Features whose source page actually works on the GIU Berlin deployment.
+    // Berlin's SwiftReports_m.aspx returns HTTP 500 (server-side SQL defect), so
+    // staffAttendance is present here but sources its data from Cairo — see the
+    // REPORT_ORIGIN constant inside the module.
+    const BERLIN_FEATURES = new Set([
+        'staffAttendance', 'uploadGrades', 'proctorReminder', 'proctorAggregator',
+    ]);
+
+    function featureAvailableHere(id) {
+        return !Shared.isBerlinHost() || BERLIN_FEATURES.has(id);
+    }
+
+    try {
+        window.__giusHostGate = {
+            available: () => Object.keys(FEATURE_DEFAULTS).filter(featureAvailableHere),
+            isBerlin: () => Shared.isBerlinHost(),
+        };
+    } catch { /* ignore */ }
+
     // ═══════════════════════════════════════════════════════════════════════════
     //  1.5 TIPS — first-use spotlight walkthrough.
     //      A feature calls Tips.show({id, el, title, text}) right after it
@@ -13736,6 +13755,7 @@
     const path = location.pathname;
     renderHomeFeatureToggles();
     for (const route of ROUTES) {
+        if (!featureAvailableHere(route.id)) continue;  // unsupported on this portal host
         if (!FEATURES[route.id]) continue;       // user toggled off
         if (!route.test(path)) continue;         // wrong page
         const fn = Features[route.id];
