@@ -13626,18 +13626,23 @@
             panel.className = 'gius-feature-panel';
 
             const byCategory = new Map();
-            for (const id of Object.keys(FEATURE_DEFAULTS)) {
+            for (const id of Object.keys(FEATURE_DEFAULTS).filter(featureAvailableHere)) {
                 const cat = FEATURE_CATEGORIES[id] || 'Other';
                 if (!byCategory.has(cat)) byCategory.set(cat, []);
                 byCategory.get(cat).push(id);
             }
-            const cats = [...byCategory.keys()].sort((a, b) => {
+            const cats = [...byCategory.keys()]
+                .filter(cat => byCategory.get(cat).length > 0)
+                .sort((a, b) => {
                 const ia = CATEGORY_ORDER.indexOf(a), ib = CATEGORY_ORDER.indexOf(b);
                 return (ia === -1 ? CATEGORY_ORDER.length : ia) - (ib === -1 ? CATEGORY_ORDER.length : ib);
             });
             const rows = cats.map(cat => {
                 const catRows = byCategory.get(cat).map(id => {
-                    const name = Shared.escapeHtml(FEATURE_LABELS[id] || id);
+                    const rawLabel = (id === 'staffAttendance' && Shared.isBerlinHost())
+                        ? 'Staff Attendance (Berlin)'
+                        : (FEATURE_LABELS[id] || id);
+                    const name = Shared.escapeHtml(rawLabel);
                     const page = FEATURE_PAGES[id];
                     const label = page
                         ? `<a class="gius-feature-label gius-feature-page-link" href="${Shared.escapeHtml(page)}"
@@ -13662,8 +13667,9 @@
                     ${catRows}
                 </div>`;
             }).join('');
-            const enabledCount = Object.keys(FEATURE_DEFAULTS).filter(id => FEATURES[id]).length;
-            const totalCount = Object.keys(FEATURE_DEFAULTS).length;
+            const visibleIds = Object.keys(FEATURE_DEFAULTS).filter(featureAvailableHere);
+            const enabledCount = visibleIds.filter(id => FEATURES[id]).length;
+            const totalCount = visibleIds.length;
 
             panel.innerHTML = `
                 <div class="card card-stats">
@@ -13726,7 +13732,7 @@
                     const next = loadFeatureToggles();
                     next[input.dataset.featureId] = input.checked;
                     saveFeatureToggles(next);
-                    countEl.textContent = Object.keys(FEATURE_DEFAULTS).filter(id => next[id]).length;
+                    countEl.textContent = visibleIds.filter(id => next[id]).length;
                     status.textContent = 'Saved. Reload to apply.';
                     status.classList.add('gius-feature-dirty');
                     reloadBtn.disabled = false;
