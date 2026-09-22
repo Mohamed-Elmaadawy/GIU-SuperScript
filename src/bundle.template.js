@@ -325,7 +325,11 @@
 
             const PAGE_PATH = "/GIUb/EXT/SwiftReports_m.aspx";
             const HOME_PATH = "/giub/intstaff/home.aspx";
-            const REPORT_URL = "https://portal.giu-uni.de/GIUb/EXT/SwiftReports_m.aspx";
+            // Pinned to Cairo on BOTH branches: Berlin's SwiftReports_m.aspx returns
+            // HTTP 500 ("Incorrect syntax near '='.") — a server-side SQL defect that
+            // no client change can work around.
+            const REPORT_ORIGIN = "https://portal.giu-uni.de";
+            const REPORT_URL = REPORT_ORIGIN + "/GIUb/EXT/SwiftReports_m.aspx";
             const SWIFT_REPORT_ID = 866; // user's "Gate Attendance ... Gates" SwiftReport id (see README target page)
             const REPORT_DATA_URL = REPORT_URL + "?swiftreportid=" + SWIFT_REPORT_ID + "&executereport=1";
             const HOME_CACHE_KEY = "giuAttendanceHomeV2"; // V2: summary gained `tier` + cache now stores rows for live recompute (drops V1)
@@ -369,8 +373,32 @@
                 sectionState: "giuSectionStateV1",
                 onboardingCompleted: "giuOnboardingCompletedV1",
                 onboardingState: "giuOnboardingStateV1",
-                dayOffAutoState: "giuDayOffAutoStateV1"
+                dayOffAutoState: "giuDayOffAutoStateV1",
+                branch: "giuBranchV1"
             };
+
+            // Cairo and Berlin differ by exactly two facts. Branch is an explicit
+            // setting, NOT derived from location.hostname: a Berlin staff member
+            // reads their attendance report on the Cairo host (Berlin's own
+            // SwiftReports_m.aspx returns HTTP 500), so the host says "cairo"
+            // while the Sunday weekend rule must still apply.
+            const BRANCH_CONFIG = {
+                cairo:  { fixedOffDay: "Friday", reportOrigin: "https://portal.giu-uni.de" },
+                berlin: { fixedOffDay: "Sunday", reportOrigin: "https://portal.giu-uni.de" },
+            };
+
+            function getBranch() {
+                const saved = localStorage.getItem(STORAGE_KEYS.branch);
+                if (saved === "cairo" || saved === "berlin") return saved;
+                return S.isBerlinHost() ? "berlin" : "cairo";
+            }
+
+            function setBranch(value) {
+                if (value !== "cairo" && value !== "berlin") return;
+                localStorage.setItem(STORAGE_KEYS.branch, value);
+            }
+
+            function branchConfig() { return BRANCH_CONFIG[getBranch()]; }
 
             const PAGINATION_DEFAULT_PAGE_SIZE = 10;
             const PAGINATION_PAGE_SIZE_OPTIONS = [5, 10, 25, 50, 100];
@@ -730,6 +758,7 @@
 
             function exportSettingsSnapshot() {
                 return {
+                    branch: getBranch(),
                     selectedDay: getSelectedDayOffCode(),
                     dayOffSchedule: getStoredDayOffSchedule(),
                     holidays: getStoredHolidays(),
@@ -752,6 +781,10 @@
                     notes: []
                 };
 
+                if (snapshot.branch === "cairo" || snapshot.branch === "berlin") {
+                    setBranch(snapshot.branch);
+                    report.accepted += 1;
+                }
                 if (typeof snapshot.selectedDay === "string") {
                     localStorage.setItem(STORAGE_KEYS.selectedDay, snapshot.selectedDay);
                     report.accepted += 1;
@@ -3787,6 +3820,41 @@
                 return conflictBox;
             }
 
+            function createBranchControl() {
+                const wrap = document.createElement("div");
+                wrap.className = "giu-settings-subsection-body";
+                const hint = document.createElement("div");
+                hint.style.marginBottom = "8px";
+                hint.style.opacity = "0.75";
+                hint.textContent = "Which campus your working week follows. Set this to Berlin "
+                    + "even while viewing the Cairo portal if you are Berlin staff.";
+                wrap.appendChild(hint);
+
+                const current = getBranch();
+                [
+                    { value: "cairo",  label: "Cairo (Friday off)" },
+                    { value: "berlin", label: "Berlin (Sunday off)" }
+                ].forEach(function (opt) {
+                    const lbl = document.createElement("label");
+                    lbl.style.marginRight = "18px";
+                    lbl.style.cursor = "pointer";
+                    const input = document.createElement("input");
+                    input.type = "radio";
+                    input.name = "gius-branch";
+                    input.value = opt.value;
+                    input.checked = current === opt.value;
+                    input.addEventListener("change", function () {
+                        if (!input.checked) return;
+                        setBranch(opt.value);
+                        renderEnhancedUI();
+                    });
+                    lbl.appendChild(input);
+                    lbl.appendChild(document.createTextNode(" " + opt.label));
+                    wrap.appendChild(lbl);
+                });
+                return wrap;
+            }
+
             function createDayOffScheduleTable() {
                 const scheduleTableWrap = document.createElement("div");
                 scheduleTableWrap.className = "giu-holiday-table-wrap";
@@ -4165,6 +4233,10 @@
 
             function createConfigPanel(selectedDayCode, selectedDayFullName, periods, onDayChange, initialExpanded) {
                 const { panel, bodyWrap, bodyInner } = createConfigPanelHeader(initialExpanded);
+
+                // Mounted first: every other section's meaning (weekend day, report
+                // origin) depends on which branch is selected.
+                bodyInner.appendChild(wrapSettingsSection("branch", "Branch", createBranchControl(), true));
 
                 // Default the "Apply from" date to the earliest attendance row so a first-time
                 // manual day-off set applies retroactively over the loaded data, not just today.
@@ -7679,6 +7751,17 @@
                 setStoredAnnualLeaveAccrualRate,
                 applyMonthlyAnnualLeaveAccrual,
             };
+
+            try {
+                window.__giuBranch = {
+                    get: getBranch,
+                    set: setBranch,
+                    fixedOffDay: () => branchConfig().fixedOffDay,
+                    reportOrigin: () => REPORT_ORIGIN,
+                    exportSnapshot: exportSettingsSnapshot,
+                    importSnapshot: importSettingsSnapshot,
+                };
+            } catch { /* ignore */ }
 
             try {
                 // window.__giuAttDisableAutoRun lets tests inject the script and drive
@@ -13450,7 +13533,8 @@
     // Control Center: each feature name links to the page the feature lives on
     // (Home widgets link to their portal source pages).
     const FEATURE_PAGES = {
-        staffAttendance:   Shared.portalUrl('/GIUb/EXT/SwiftReports_m.aspx?swiftreportid=866&executereport=1'),
+        // Pinned absolute (not Shared.portalUrl): the report is not reachable on Berlin.
+        staffAttendance:   'https://portal.giu-uni.de/GIUb/EXT/SwiftReports_m.aspx?swiftreportid=866&executereport=1',
         uploadGrades:      Shared.portalUrl('/GIUb/EXT/ManageUploadedGrades_m.aspx'),
         teachingLoad:      Shared.portalUrl('/GIUb/INTStaff/SearchAcademicScheduled_001_m.aspx'),
         proctorReminder:   Shared.portalUrl('/GIUb/INTStaff/ViewTimeTable_m.aspx'),
