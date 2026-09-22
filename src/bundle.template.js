@@ -98,6 +98,12 @@
         },
 
         /*__CORE_WARN__*/,
+
+        // Absolute URL on whichever portal host the script is running on.
+        /*__CORE_PORTALURL__*/,
+
+        // True on the GIU Berlin deployment.
+        /*__CORE_ISBERLINHOST__*/,
     };
 
     // ═══════════════════════════════════════════════════════════════════════════

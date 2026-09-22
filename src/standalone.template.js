@@ -7,7 +7,7 @@
 
 /*__CORE__*/
 
-    const S = { waitFor, escapeHtml, injectStyle, warn };
+    const S = { waitFor, escapeHtml, injectStyle, warn, portalUrl, isBerlinHost };
 
 /*__FEATURE__*/
 })();

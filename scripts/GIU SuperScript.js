@@ -133,6 +133,12 @@
         },
 
         warn(feature, ...args) { console.warn(`[GIU-SS:${feature}]`, ...args); },
+
+        // Absolute URL on whichever portal host the script is running on.
+        portalUrl(path) { return location.origin + path; },
+
+        // True on the GIU Berlin deployment.
+        isBerlinHost() { return /(^|\.)giu-berlin\.de$/i.test(location.hostname); },
     };
 
     // ═══════════════════════════════════════════════════════════════════════════
