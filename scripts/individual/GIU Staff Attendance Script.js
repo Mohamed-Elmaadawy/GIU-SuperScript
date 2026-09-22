@@ -499,6 +499,7 @@
 
             function exportSettingsSnapshot() {
                 return {
+                    branch: getBranch(),
                     selectedDay: getSelectedDayOffCode(),
                     dayOffSchedule: getStoredDayOffSchedule(),
                     holidays: getStoredHolidays(),
@@ -521,6 +522,10 @@
                     notes: []
                 };
 
+                if (snapshot.branch === "cairo" || snapshot.branch === "berlin") {
+                    setBranch(snapshot.branch);
+                    report.accepted += 1;
+                }
                 if (typeof snapshot.selectedDay === "string") {
                     localStorage.setItem(STORAGE_KEYS.selectedDay, snapshot.selectedDay);
                     report.accepted += 1;
@@ -3905,8 +3910,47 @@
                 return examSection;
             }
 
+            function createBranchControl() {
+                const wrap = document.createElement("div");
+                wrap.className = "giu-settings-subsection-body";
+                const hint = document.createElement("div");
+                hint.style.marginBottom = "8px";
+                hint.style.opacity = "0.75";
+                hint.textContent = "Which campus your working week follows. Set this to Berlin "
+                    + "even while viewing the Cairo portal if you are Berlin staff.";
+                wrap.appendChild(hint);
+
+                const current = getBranch();
+                [
+                    { value: "cairo",  label: `Cairo (${BRANCH_CONFIG.cairo.fixedOffDay} off)` },
+                    { value: "berlin", label: `Berlin (${BRANCH_CONFIG.berlin.fixedOffDay} off)` }
+                ].forEach(function (opt) {
+                    const lbl = document.createElement("label");
+                    lbl.style.marginRight = "18px";
+                    lbl.style.cursor = "pointer";
+                    const input = document.createElement("input");
+                    input.type = "radio";
+                    input.name = "gius-branch";
+                    input.value = opt.value;
+                    input.checked = current === opt.value;
+                    input.addEventListener("change", function () {
+                        if (!input.checked) return;
+                        setBranch(opt.value);
+                        renderEnhancedUI();
+                    });
+                    lbl.appendChild(input);
+                    lbl.appendChild(document.createTextNode(" " + opt.label));
+                    wrap.appendChild(lbl);
+                });
+                return wrap;
+            }
+
             function createConfigPanel(selectedDayCode, selectedDayFullName, periods, onDayChange, initialExpanded) {
                 const { panel, bodyWrap, bodyInner } = createConfigPanelHeader(initialExpanded);
+
+                // Mounted first: every other section's meaning (weekend day, report
+                // origin) depends on which branch is selected.
+                bodyInner.appendChild(wrapSettingsSection("branch", "Branch", createBranchControl(), true));
 
                 // Default the "Apply from" date to the earliest attendance row so a first-time
                 // manual day-off set applies retroactively over the loaded data, not just today.
