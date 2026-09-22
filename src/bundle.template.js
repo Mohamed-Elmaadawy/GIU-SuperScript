@@ -8478,8 +8478,8 @@
                 // window.tas = [{ id, value:<fullName> }, ...] — all 546 staff — is read directly to map name -> id.
             };
 
-            const NOTIFICATION_URL = 'https://portal.giu-uni.de/GIUb/INTStaff/NotificationSystem_SendEmail_m.aspx';
-            const SCHEDULE_URL = 'https://portal.giu-uni.de/GIUb/INTStaff/SearchAcademicScheduled_001_m.aspx';
+            const NOTIFICATION_URL = S.portalUrl('/GIUb/INTStaff/NotificationSystem_SendEmail_m.aspx');
+            const SCHEDULE_URL = S.portalUrl('/GIUb/INTStaff/SearchAcademicScheduled_001_m.aspx');
             const CACHE_KEY = 'giuTeachingLoadV1';
             // TODO: name cache has no TTL; clear it if a fresh schedule fetch starts failing to find the staff id.
             const NAME_CACHE_KEY = 'giuTeachingLoadNameV1';
@@ -8921,7 +8921,7 @@
         // ── proctorReminder (from GIU Proctoring Reminder v1.1) ───────────────
         proctorReminder(S) {
             const CACHE_KEY = 'giuProctorTimetableV1';
-            const TIMETABLE_URL = 'https://portal.giu-uni.de/GIUb/INTStaff/ViewTimeTable_m.aspx';
+            const TIMETABLE_URL = S.portalUrl('/GIUb/INTStaff/ViewTimeTable_m.aspx');
             const TTL_MS = 6 * 60 * 60 * 1000; // 6h
             const FETCH_TIMEOUT_MS = 15000;
             const HOME_BOOT_DELAY_MS = 800;
@@ -9443,7 +9443,7 @@
         
             const CACHE_KEY = 'giuProctorScheduleV1';
             const MAX_CONCURRENT = 20;
-            const PAGE_URL = 'https://portal.giu-uni.de/GIUb/INTStaff/ProctorExchange_m.aspx';
+            const PAGE_URL = S.portalUrl('/GIUb/INTStaff/ProctorExchange_m.aspx');
         
             // ── Normalisation ─────────────────────────────────────────────────────────
         
@@ -12604,7 +12604,7 @@
             checkTableVisibility();
         },
         studentAttendance(S) {
-            const PAGE_URL       = 'https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx';
+            const PAGE_URL       = S.portalUrl('/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx');
             const CACHE_PREFIX   = 'giuAttendanceGroupV1_';
             const CACHE_TTL_MS   = Infinity;
             const MAX_CONCURRENT = 5;
@@ -13431,15 +13431,15 @@
     // Control Center: each feature name links to the page the feature lives on
     // (Home widgets link to their portal source pages).
     const FEATURE_PAGES = {
-        staffAttendance:   'https://portal.giu-uni.de/GIUb/EXT/SwiftReports_m.aspx?swiftreportid=866&executereport=1',
-        uploadGrades:      'https://portal.giu-uni.de/GIUb/EXT/ManageUploadedGrades_m.aspx',
-        teachingLoad:      'https://portal.giu-uni.de/GIUb/INTStaff/SearchAcademicScheduled_001_m.aspx',
-        proctorReminder:   'https://portal.giu-uni.de/GIUb/INTStaff/ViewTimeTable_m.aspx',
-        unenteredSessions: 'https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx',
-        proctorAggregator: 'https://portal.giu-uni.de/GIUb/INTStaff/ProctorExchange_m.aspx',
-        notificationBatch: 'https://portal.giu-uni.de/GIUb/INTStaff/NotificationSystem_SendEmail_m.aspx',
-        manageGroupGrades: 'https://portal.giu-uni.de/GIUb/INTStaff/ManageGroupGrade_m.aspx',
-        studentAttendance: 'https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx',
+        staffAttendance:   Shared.portalUrl('/GIUb/EXT/SwiftReports_m.aspx?swiftreportid=866&executereport=1'),
+        uploadGrades:      Shared.portalUrl('/GIUb/EXT/ManageUploadedGrades_m.aspx'),
+        teachingLoad:      Shared.portalUrl('/GIUb/INTStaff/SearchAcademicScheduled_001_m.aspx'),
+        proctorReminder:   Shared.portalUrl('/GIUb/INTStaff/ViewTimeTable_m.aspx'),
+        unenteredSessions: Shared.portalUrl('/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx'),
+        proctorAggregator: Shared.portalUrl('/GIUb/INTStaff/ProctorExchange_m.aspx'),
+        notificationBatch: Shared.portalUrl('/GIUb/INTStaff/NotificationSystem_SendEmail_m.aspx'),
+        manageGroupGrades: Shared.portalUrl('/GIUb/INTStaff/ManageGroupGrade_m.aspx'),
+        studentAttendance: Shared.portalUrl('/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx'),
     };
 
     const ROUTES = [
