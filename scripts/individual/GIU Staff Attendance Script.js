@@ -47,7 +47,11 @@
 
             const PAGE_PATH = "/GIUb/EXT/SwiftReports_m.aspx";
             const HOME_PATH = "/giub/intstaff/home.aspx";
-            const REPORT_URL = "https://portal.giu-uni.de/GIUb/EXT/SwiftReports_m.aspx";
+            // Pinned to Cairo on BOTH branches: Berlin's SwiftReports_m.aspx returns
+            // HTTP 500 ("Incorrect syntax near '='.") — a server-side SQL defect that
+            // no client change can work around.
+            const REPORT_ORIGIN = "https://portal.giu-uni.de";
+            const REPORT_URL = REPORT_ORIGIN + "/GIUb/EXT/SwiftReports_m.aspx";
             const SWIFT_REPORT_ID = 866; // user's "Gate Attendance ... Gates" SwiftReport id (see README target page)
             const REPORT_DATA_URL = REPORT_URL + "?swiftreportid=" + SWIFT_REPORT_ID + "&executereport=1";
             const HOME_CACHE_KEY = "giuAttendanceHomeV2"; // V2: summary gained `tier` + cache now stores rows for live recompute (drops V1)
@@ -91,8 +95,51 @@
                 sectionState: "giuSectionStateV1",
                 onboardingCompleted: "giuOnboardingCompletedV1",
                 onboardingState: "giuOnboardingStateV1",
-                dayOffAutoState: "giuDayOffAutoStateV1"
+                dayOffAutoState: "giuDayOffAutoStateV1",
+                branch: "giuBranchV1"
             };
+
+            function isBerlinHost() { return /(^|\.)giu-berlin\.de$/i.test(location.hostname); }
+
+            // Cairo and Berlin differ by exactly two facts. Branch is an explicit
+            // setting, NOT derived from location.hostname: a Berlin staff member
+            // reads their attendance report on the Cairo host (Berlin's own
+            // SwiftReports_m.aspx returns HTTP 500), so the host says "cairo"
+            // while the Sunday weekend rule must still apply.
+            const BRANCH_CONFIG = {
+                cairo:  { fixedOffDay: "Friday", reportOrigin: "https://portal.giu-uni.de" },
+                berlin: { fixedOffDay: "Sunday", reportOrigin: "https://portal.giu-uni.de" },
+            };
+
+            function getBranch() {
+                const saved = localStorage.getItem(STORAGE_KEYS.branch);
+                if (saved === "cairo" || saved === "berlin") return saved;
+                return isBerlinHost() ? "berlin" : "cairo";
+            }
+
+            function setBranch(value) {
+                if (value !== "cairo" && value !== "berlin") return;
+                localStorage.setItem(STORAGE_KEYS.branch, value);
+            }
+
+            function branchConfig() { return BRANCH_CONFIG[getBranch()]; }
+
+            // Index 0 = Sunday, matching Date#getUTCDay().
+            const WEEKDAY_TABLE = [
+                { code: "Sun", name: "Sunday" },
+                { code: "Mon", name: "Monday" },
+                { code: "Tue", name: "Tuesday" },
+                { code: "Wed", name: "Wednesday" },
+                { code: "Thu", name: "Thursday" },
+                { code: "Fri", name: "Friday" },
+                { code: "Sat", name: "Saturday" },
+            ];
+
+            function fixedOffDay() { return branchConfig().fixedOffDay; }
+
+            function fixedOffIndex() {
+                return WEEKDAY_TABLE.findIndex(function (w) { return w.name === fixedOffDay(); });
+            }
 
             const PAGINATION_DEFAULT_PAGE_SIZE = 10;
             const PAGINATION_PAGE_SIZE_OPTIONS = [5, 10, 25, 50, 100];
@@ -343,7 +390,7 @@
             }
 
             function isFixedNonWorkingDay(dayName) {
-                return dayName === "Friday";
+                return dayName === fixedOffDay();
             }
 
             // ═══════════════════════════════════════════════════════════
@@ -4174,7 +4221,7 @@
                 const dayName = formatDateToDayName(normalizedDate);
                 const effectiveDayOff = getDayOffFullNameForDate(normalizedDate, getSelectedDayOffCode());
                 if (isFixedNonWorkingDay(dayName)) {
-                    return { ok: false, message: "Compensation leave cannot be applied on Friday." };
+                    return { ok: false, message: `Compensation leave cannot be applied on ${fixedOffDay()}.` };
                 }
                 if (effectiveDayOff && dayName === effectiveDayOff) {
                     return { ok: false, message: "Compensation leave cannot be applied on your weekly day off." };
@@ -4483,7 +4530,7 @@
                 section.appendChild(title);
 
                 section.appendChild(createUiDescription(
-                    "If you work on your selected weekly day off (not Friday), you can take replacement compensation days within the same payroll month (11→10).",
+                    `If you work on your selected weekly day off (not ${fixedOffDay()}), you can take replacement compensation days within the same payroll month (11→10).`,
                     "font-size:11px;color:#6b7280;margin:0 0 8px;line-height:1.4;"
                 ));
 
@@ -4695,18 +4742,21 @@
                 return `${dateObj.getUTCFullYear()}-${pad2(dateObj.getUTCMonth() + 1)}-${pad2(dateObj.getUTCDate())}`;
             }
 
-            // Compensation week is Saturday -> Friday.
+            // Compensation week ends on the branch's fixed off-day.
+            // Cairo: Sat -> Fri (identical to the previous hardcoded behaviour).
+            // Berlin: Mon -> Sun.
             function getCompensationWeekBounds(dateStr) {
                 const normalized = normalizeYMD(dateStr);
                 if (!normalized) return null;
                 const source = new Date(`${normalized}T00:00:00Z`);
                 if (Number.isNaN(source.getTime())) return null;
 
-                const day = source.getUTCDay(); // 0=Sun ... 6=Sat
-                const daysSinceSaturday = (day + 1) % 7; // Sat=0, Sun=1, ..., Fri=6
+                const weekStartIndex = (fixedOffIndex() + 1) % 7; // day after the off-day
+                const day = source.getUTCDay();                    // 0=Sun ... 6=Sat
+                const daysSinceStart = (day - weekStartIndex + 7) % 7;
 
                 const startDate = new Date(source.getTime());
-                startDate.setUTCDate(startDate.getUTCDate() - daysSinceSaturday);
+                startDate.setUTCDate(startDate.getUTCDate() - daysSinceStart);
 
                 const endDate = new Date(startDate.getTime());
                 endDate.setUTCDate(endDate.getUTCDate() + 6);
@@ -5024,7 +5074,7 @@
                     return { status: "Holiday", reason: "Excluded by holiday settings." };
                 }
                 if (flags.fixedOffMatch) {
-                    return { status: "Friday", reason: "Fixed non-working day." };
+                    return { status: fixedOffDay(), reason: "Fixed non-working day." };
                 }
                 if (flags.dayOffMatch) {
                     if (workedSeconds > 0) {
@@ -5120,19 +5170,23 @@
                 };
             }
 
-            // Detect the staff member's weekly day off: the weekday (Sat–Thu; Friday is the
-            // fixed off-day, holidays excluded) with the MOST absences (days with no check-in)
-            // across the whole loaded table. Returns { code, fullName, occ } where occ = that
-            // weekday's absence count, or null when there are no rows or no absences at all.
-            // Ties resolve to the earliest weekday (Sat→Thu).
-            const DAYOFF_WEEKDAYS = [
-                { code: "Sat", name: "Saturday" },
-                { code: "Sun", name: "Sunday" },
-                { code: "Mon", name: "Monday" },
-                { code: "Tue", name: "Tuesday" },
-                { code: "Wed", name: "Wednesday" },
-                { code: "Thu", name: "Thursday" }
-            ];
+            // Detect the staff member's weekly day off: the weekday (the branch's fixed
+            // off-day excluded, holidays excluded) with the MOST absences (days with no
+            // check-in) across the whole loaded table. Returns { code, fullName, occ }
+            // where occ = that weekday's absence count, or null when there are no rows
+            // or no absences at all. Ties resolve to the earliest weekday (the day after
+            // the branch's fixed off-day onward).
+            //
+            // The six selectable weekly day-off candidates: every weekday except the
+            // branch's fixed off-day, ordered starting from the day AFTER it.
+            // Cairo (Friday off) -> Sat, Sun, Mon, Tue, Wed, Thu — identical to the
+            // hardcoded list this replaced. Berlin (Sunday off) -> Mon .. Sat.
+            function dayOffWeekdays() {
+                const off = fixedOffIndex();
+                const out = [];
+                for (let i = 1; i <= 6; i++) out.push(WEEKDAY_TABLE[(off + i) % 7]);
+                return out;
+            }
 
             function detectDayOffCode(periods) {
                 const rows = (periods || []).flatMap(function (p) { return (p && p.rows) || []; });
@@ -5152,16 +5206,16 @@
                 const absentByName = new Map(); // dayName -> absence count
                 eachYmdInRange(minDate, maxDate, function (ymd) {
                     const dayName = formatDateToDayName(ymd);
-                    if (!dayName || isFixedNonWorkingDay(dayName)) return; // skip Friday
+                    if (!dayName || isFixedNonWorkingDay(dayName)) return; // skip the fixed off-day
                     if (isDateHoliday(ymd, holidays)) return;              // skip holidays
                     if (attendedByDate.get(ymd)) return;                   // attended → not absent
                     absentByName.set(dayName, (absentByName.get(dayName) || 0) + 1);
                 });
 
                 // Day off = weekday with the most absences (>= 1). Strict ">" keeps the first
-                // weekday in week order on ties (Sat→Thu).
+                // weekday in week order on ties (the day after the branch's fixed off-day onward).
                 let best = null;
-                DAYOFF_WEEKDAYS.forEach(function (wd) {
+                dayOffWeekdays().forEach(function (wd) {
                     const absent = absentByName.get(wd.name) || 0;
                     if (absent >= 1 && (!best || absent > best.occ)) {
                         best = { code: wd.code, fullName: wd.name, occ: absent };
@@ -6023,7 +6077,7 @@
                     {
                         selector: "#giu-comp-leave-date",
                         title: "Compensations",
-                        description: "Earn by working effective day off (not Friday), earn cap = 1/week. Use allowed multiple/week if payroll-month balance supports.",
+                        description: `Earn by working effective day off (not ${fixedOffDay()}), earn cap = 1/week. Use allowed multiple/week if payroll-month balance supports.`,
                         beforeShow: function () { expandSettingsPanelForGuide(); expandAllSettingsSubsectionsForGuide(); }
                     },
                     {
