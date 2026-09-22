@@ -82,7 +82,7 @@ function buildStandalone(name, manifest) {
     // would also eat that leading indent.
     const bootstrap = target.bootstrap
         ? readSrc(target.bootstrap).replace(/\s+$/, '')
-        : `${target.feature}(S);`;
+        : `    ${target.feature}(S);`;
     out = out.replace('/*__FEATURE__*/', stripExports(readSrc(`src/features/${target.feature}.js`)).trim() + `\n\n${bootstrap}`);
     // Final normalization: standalone.template.js's own literal lines are LF,
     // but the header/core/feature content spliced in above is CRLF (native
