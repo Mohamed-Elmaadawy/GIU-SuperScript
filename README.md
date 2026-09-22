@@ -60,7 +60,7 @@ Every script carries `@updateURL` and `@downloadURL` pointing at this repo, so T
 
 ### GIU SuperScript — All-in-one bundle
 
-**File:** `GIU SuperScript.js` | **Version:** 1.3.0 | **Author:** Mo.Elmaadawy
+**File:** `GIU SuperScript.js` | **Version:** 1.3.1 | **Author:** Mo.Elmaadawy
 
 The all-in-one userscript that bundles every feature script below except GIU Theme. It also adds a **Control Center** card on the portal Home page where you can turn bundled modules on or off.
 
@@ -68,6 +68,7 @@ The all-in-one userscript that bundles every feature script below except GIU The
 
 ```text
 https://portal.giu-uni.de/*
+https://portal.giu-berlin.de/*
 ```
 
 **Bundled modules:**
@@ -81,6 +82,25 @@ https://portal.giu-uni.de/*
 - Proctor Schedule Aggregator
 - Teaching Load
 - Not Entered Sessions
+
+**On the GIU Berlin portal** (`portal.giu-berlin.de`) only four modules run:
+
+- Staff Attendance
+- Upload Grades
+- Proctoring Reminder
+- Proctor Schedule Aggregator
+
+The other five are hidden there because their portal pages are not available on
+the Berlin deployment.
+
+Staff Attendance on Berlin reads its data from the **Cairo** portal, because
+Berlin's own attendance report page returns a server error. Log into
+`portal.giu-uni.de` in the same browser so the widget can reach it.
+
+Set your campus under **Staff Attendance → Settings → Branch**. This controls
+which weekday counts as the fixed non-working day — Friday for Cairo, Sunday for
+Berlin. Set it to Berlin even while viewing the Cairo portal if you are Berlin
+staff, because the setting follows the person, not the site.
 
 **Important:** install this **OR** the individual feature scripts, never both. Keep `GIU Theme.js` separate because it needs to run at `document-start` to prevent flash-of-unstyled-content.
 
@@ -442,7 +462,7 @@ https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 
 ### 10. GIU Not Entered Sessions
 
-**File:** `GIU Not Entered Sessions.js` | **Version:** 1.1.0 | **Author:** Mo.Elmaadawy
+**File:** `GIU Not Entered Sessions.js` | **Version:** 1.1.1 | **Author:** Mo.Elmaadawy
 
 Shows any **Regular** (not "On Hold") attendance session that's 1–21 days overdue with no attendance entered yet, right on the portal Home page — useful when the Manage Student Attendances page itself is unreachable from your network. Enumerates your sessions with a single background request, then checks up to 8 candidates per page load, caching results in `localStorage` with a daily refresh.
 

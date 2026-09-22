@@ -4,7 +4,7 @@
 // @match       https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 // @match       https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx
 // @namespace   Cyn0
-// @version     1.1.0
+// @version     1.1.1
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Not%20Entered%20Sessions.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Not%20Entered%20Sessions.js
 // @author      Mo.Elmaadawy

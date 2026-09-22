@@ -6,7 +6,7 @@
 // @namespace   Cyn0
 // @match       https://portal.giu-uni.de/*
 // @match       https://portal.giu-berlin.de/*
-// @version     1.3.0
+// @version     1.3.1
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @run-at      document-idle
