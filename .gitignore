@@ -26,3 +26,29 @@ scripts/individual/GIU Proctor Schedule Aggregator.js
 
 # Docs
 docs/
+
+# ── Build pipeline sources ──────────────────────────────────────────────
+# Tracked so a fresh clone can run `npm run build` and regenerate the
+# userscripts in scripts/. These are the inputs; the generated scripts are
+# committed alongside them.
+!src/
+!src/**
+!scripts/build/
+!scripts/build/*.js
+!package.json
+!package-lock.json
+!playwright.config.js
+!eslint.config.mjs
+!AGENTS.md
+
+# ── Deliberately NOT tracked ────────────────────────────────────────────
+# tests/: fixtures are real portal page captures containing ~1193 staff
+#   names. This repo is public — those must not be published. Tests remain
+#   local-only until the fixtures are scrubbed of third-party data.
+# .env / auth.json: live portal credentials.
+tests/
+.env
+auth.json
+node_modules/
+scripts/dev/
+test-results/
