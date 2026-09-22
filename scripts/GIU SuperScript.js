@@ -3885,8 +3885,8 @@
 
                 const current = getBranch();
                 [
-                    { value: "cairo",  label: "Cairo (Friday off)" },
-                    { value: "berlin", label: "Berlin (Sunday off)" }
+                    { value: "cairo",  label: `Cairo (${BRANCH_CONFIG.cairo.fixedOffDay} off)` },
+                    { value: "berlin", label: `Berlin (${BRANCH_CONFIG.berlin.fixedOffDay} off)` }
                 ].forEach(function (opt) {
                     const lbl = document.createElement("label");
                     lbl.style.marginRight = "18px";
@@ -4604,7 +4604,7 @@
                 const dayName = formatDateToDayName(normalizedDate);
                 const effectiveDayOff = getDayOffFullNameForDate(normalizedDate, getSelectedDayOffCode());
                 if (isFixedNonWorkingDay(dayName)) {
-                    return { ok: false, message: "Compensation leave cannot be applied on Friday." };
+                    return { ok: false, message: `Compensation leave cannot be applied on ${fixedOffDay()}.` };
                 }
                 if (effectiveDayOff && dayName === effectiveDayOff) {
                     return { ok: false, message: "Compensation leave cannot be applied on your weekly day off." };
@@ -4913,7 +4913,7 @@
                 section.appendChild(title);
 
                 section.appendChild(createUiDescription(
-                    "If you work on your selected weekly day off (not Friday), you can take replacement compensation days within the same payroll month (11→10).",
+                    `If you work on your selected weekly day off (not ${fixedOffDay()}), you can take replacement compensation days within the same payroll month (11→10).`,
                     "font-size:11px;color:#6b7280;margin:0 0 8px;line-height:1.4;"
                 ));
 
@@ -5457,7 +5457,7 @@
                     return { status: "Holiday", reason: "Excluded by holiday settings." };
                 }
                 if (flags.fixedOffMatch) {
-                    return { status: "Friday", reason: "Fixed non-working day." };
+                    return { status: fixedOffDay(), reason: "Fixed non-working day." };
                 }
                 if (flags.dayOffMatch) {
                     if (workedSeconds > 0) {
@@ -6460,7 +6460,7 @@
                     {
                         selector: "#giu-comp-leave-date",
                         title: "Compensations",
-                        description: "Earn by working effective day off (not Friday), earn cap = 1/week. Use allowed multiple/week if payroll-month balance supports.",
+                        description: `Earn by working effective day off (not ${fixedOffDay()}), earn cap = 1/week. Use allowed multiple/week if payroll-month balance supports.`,
                         beforeShow: function () { expandSettingsPanelForGuide(); expandAllSettingsSubsectionsForGuide(); }
                     },
                     {
@@ -8765,8 +8765,19 @@
                 }
             }
 
-            // Teaching week order (GIU runs Saturday→Thursday; Friday is the weekend).
-            const WEEK = ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+            // Teaching week order: the branch's weekend sorts last.
+            // Cairo (Friday weekend): Saturday → Friday, identical to the previous
+            // hardcoded array. Berlin (Sunday weekend): Monday → Sunday.
+            // teachingLoad is a separate module with no access to staffAttendance's
+            // branch setting, so it derives from the host, not the person: teaching
+            // load is always about the schedule on the host you are viewing.
+            const WEEK = (function () {
+                const names = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                const offIndex = S.isBerlinHost() ? 0 : 5; // Sunday : Friday
+                const out = [];
+                for (let i = 1; i <= 7; i++) out.push(names[(offIndex + i) % 7]);
+                return out;
+            })();
 
             function todayWeekdayName() {
                 return ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][new Date().getDay()];
@@ -9075,6 +9086,7 @@
             window.__giuTeachingLoad = {
                 SEL, parseFullName, readNameFromDoc, fetchFullName,
                 parseScheduleDoc, splitByDay, todayWeekdayName, WEEK, displayTutorial,
+                week: () => WEEK.slice(),
                 saveCache, loadCache, isStale,
                 fetchScheduleViaIframe, findStaffId, submitStaff,
                 renderView, ensureHost,
