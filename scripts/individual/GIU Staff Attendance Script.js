@@ -6,7 +6,7 @@
 // @include     https://portal.giu-uni.de/*
 // @include     https://portal.giu-berlin.de/*
 // @namespace   Cyn0
-// @version     3.2.1
+// @version     3.2.2
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @run-at      document-idle
@@ -107,8 +107,8 @@
             // SwiftReports_m.aspx returns HTTP 500), so the host says "cairo"
             // while the Sunday weekend rule must still apply.
             const BRANCH_CONFIG = {
-                cairo:  { fixedOffDay: "Friday", reportOrigin: "https://portal.giu-uni.de" },
-                berlin: { fixedOffDay: "Sunday", reportOrigin: "https://portal.giu-uni.de" },
+                cairo:  { fixedOffDay: "Friday" },
+                berlin: { fixedOffDay: "Sunday" },
             };
 
             function getBranch() {
@@ -485,16 +485,15 @@
                 return getSelectedDayOffFullName(getDayOffCodeForDate(date, fallbackCode));
             }
 
+            // Resolves a day-off code to its full weekday name, restricted to the
+            // branch's six SELECTABLE day-off candidates (dayOffWeekdays()) — the
+            // branch's own fixed off-day must stay unresolvable, because a falsy
+            // return is what normalizeDayOffScheduleEntry uses to reject an entry.
+            // Cairo yields exactly the Sat/Sun/Mon/Tue/Wed/Thu map this replaced;
+            // Berlin yields Mon..Sat, so a Berlin Friday day-off finally resolves.
             function getSelectedDayOffFullName(code) {
-                const map = {
-                    Sat: "Saturday",
-                    Sun: "Sunday",
-                    Mon: "Monday",
-                    Tue: "Tuesday",
-                    Wed: "Wednesday",
-                    Thu: "Thursday"
-                };
-                return map[code] || "";
+                const match = dayOffWeekdays().find(function (wd) { return wd.code === code; });
+                return match ? match.name : "";
             }
 
             function exportSettingsSnapshot() {
@@ -3193,15 +3192,13 @@
 
                 const dayLabel = createUiLabel("giu-day-select", "Day Off");
 
-                const select = createUiSelect("giu-day-select", [
-                    { value: "", label: "---" },
-                    { value: "Sat", label: "Saturday" },
-                    { value: "Sun", label: "Sunday" },
-                    { value: "Mon", label: "Monday" },
-                    { value: "Tue", label: "Tuesday" },
-                    { value: "Wed", label: "Wednesday" },
-                    { value: "Thu", label: "Thursday" }
-                ], selectedDayCode);
+                // Options come from the branch-aware source of truth, never a literal
+                // list: the six selectable candidates must match exactly what
+                // detectDayOffCode can produce and what getSelectedDayOffFullName will
+                // resolve, or the control renders blank for a legitimately detected day.
+                const select = createUiSelect("giu-day-select", [{ value: "", label: "---" }].concat(
+                    dayOffWeekdays().map(function (wd) { return { value: wd.code, label: wd.name }; })
+                ), selectedDayCode);
 
                 const scheduleLabel = createUiLabel("giu-dayoff-effective-date", "Apply from");
                 const defaultEffective = (!isDayOffConfigured() && defaultEffectiveDate) ? defaultEffectiveDate : getTodayLocalYMD();
@@ -7401,9 +7398,27 @@
                     <div class="gius-att-empty">Loading attendance…</div>`;
             }
 
+            // Berlin origin only: the attendance report is served exclusively by the
+            // Cairo portal (Berlin's own SwiftReports_m.aspx returns HTTP 500), and
+            // REPORT_DATA_URL is therefore cross-origin here. Reading it would need
+            // grants this phase deliberately does not take, so point the user at Cairo
+            // instead of spinning the hidden iframe for its full timeout and then
+            // showing a permanent "Couldn't load attendance" card.
+            function homeShowCairoLink(host) {
+                host.innerHTML = `<div class="gius-att-head">Attendance</div>
+                    <div class="gius-att-empty"><a class="gius-att-link" href="${REPORT_DATA_URL}" target="_blank" rel="noopener">Attendance reports live on the Cairo portal →</a></div>`;
+            }
+
             function bootHome() {
                 if (!isHomePage()) return;
                 homeInjectStyles();
+
+                // On the Berlin host the report iframe can never be read (cross-origin),
+                // and Berlin localStorage holds no cache to fall back on — so skip the
+                // iframe entirely and render the Cairo pointer card. Host-derived, NOT
+                // branch-derived: this is about where the page is served from, whereas
+                // getBranch() is about which weekend rule the person follows.
+                if (isBerlinHost()) { homeShowCairoLink(homeEnsureHost()); return; }
 
                 const cache = loadHomeCache();
                 const fresh = !!(cache && cache.fetchedAt &&
