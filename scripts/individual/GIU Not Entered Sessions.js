@@ -4,7 +4,7 @@
 // @match       https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 // @match       https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx
 // @namespace   Cyn0
-// @version     1.1.1
+// @version     1.1.2
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Not%20Entered%20Sessions.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Not%20Entered%20Sessions.js
 // @author      Mo.Elmaadawy
@@ -49,9 +49,7 @@ function warn(feature, ...args) { console.warn(`[GIU-SS:${feature}]`, ...args); 
 
 function portalUrl(path) { return location.origin + path; }
 
-function isBerlinHost() { return /(^|\.)giu-berlin\.de$/i.test(location.hostname); }
-
-    const S = { waitFor, escapeHtml, injectStyle, warn, portalUrl, isBerlinHost };
+    const S = { waitFor, escapeHtml, injectStyle, warn, portalUrl };
 
 function unenteredSessions(S) {
             const SOURCE_URL = S.portalUrl('/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx');

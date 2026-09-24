@@ -30,12 +30,8 @@
           "value": "https://portal.giu-uni.de/*"
         },
         {
-          "raw": "// @match       ",
-          "value": "https://portal.giu-berlin.de/*"
-        },
-        {
           "raw": "// @version     ",
-          "value": "1.3.2"
+          "value": "1.3.3"
         },
         {
           "raw": "// @updateURL    ",
@@ -82,7 +78,7 @@
         },
         {
           "raw": "// @version     ",
-          "value": "1.1.1"
+          "value": "1.1.2"
         },
         {
           "raw": "// @updateURL    ",

@@ -101,29 +101,7 @@
 
         // Absolute URL on whichever portal host the script is running on.
         /*__CORE_PORTALURL__*/,
-
-        // True on the GIU Berlin deployment.
-        /*__CORE_ISBERLINHOST__*/,
     };
-
-    // Features whose source page actually works on the GIU Berlin deployment.
-    // Berlin's SwiftReports_m.aspx returns HTTP 500 (server-side SQL defect), so
-    // staffAttendance is present here but sources its data from Cairo — see the
-    // REPORT_ORIGIN constant inside the module.
-    const BERLIN_FEATURES = new Set([
-        'staffAttendance', 'uploadGrades', 'proctorReminder', 'proctorAggregator',
-    ]);
-
-    function featureAvailableHere(id) {
-        return !Shared.isBerlinHost() || BERLIN_FEATURES.has(id);
-    }
-
-    try {
-        window.__giusHostGate = {
-            available: () => Object.keys(FEATURE_DEFAULTS).filter(featureAvailableHere),
-            isBerlin: () => Shared.isBerlinHost(),
-        };
-    } catch { /* ignore */ }
 
     // ═══════════════════════════════════════════════════════════════════════════
     //  1.5 TIPS — first-use spotlight walkthrough.
@@ -390,7 +368,10 @@
             function getBranch() {
                 const saved = localStorage.getItem(STORAGE_KEYS.branch);
                 if (saved === "cairo" || saved === "berlin") return saved;
-                return S.isBerlinHost() ? "berlin" : "cairo";
+                // This suite runs on the Cairo portal only. A Berlin staff member
+                // reads their attendance here too (Berlin's own report page 500s)
+                // and switches this setting by hand.
+                return "cairo";
             }
 
             function setBranch(value) {
@@ -7716,21 +7697,9 @@
             // grants this phase deliberately does not take, so point the user at Cairo
             // instead of spinning the hidden iframe for its full timeout and then
             // showing a permanent "Couldn't load attendance" card.
-            function homeShowCairoLink(host) {
-                host.innerHTML = `<div class="gius-att-head">Attendance</div>
-                    <div class="gius-att-empty"><a class="gius-att-link" href="${REPORT_DATA_URL}" target="_blank" rel="noopener">Attendance reports live on the Cairo portal →</a></div>`;
-            }
-
             function bootHome() {
                 if (!isHomePage()) return;
                 homeInjectStyles();
-
-                // On the Berlin host the report iframe can never be read (cross-origin),
-                // and Berlin localStorage holds no cache to fall back on — so skip the
-                // iframe entirely and render the Cairo pointer card. Host-derived, NOT
-                // branch-derived: this is about where the page is served from, whereas
-                // getBranch() is about which weekend rule the person follows.
-                if (S.isBerlinHost()) { homeShowCairoLink(homeEnsureHost()); return; }
 
                 const cache = loadHomeCache();
                 const fresh = !!(cache && cache.fetchedAt &&
@@ -8746,19 +8715,8 @@
                 }
             }
 
-            // Teaching week order: the branch's weekend sorts last.
-            // Cairo (Friday weekend): Saturday → Friday, identical to the previous
-            // hardcoded array. Berlin (Sunday weekend): Monday → Sunday.
-            // teachingLoad is a separate module with no access to staffAttendance's
-            // branch setting, so it derives from the host, not the person: teaching
-            // load is always about the schedule on the host you are viewing.
-            const WEEK = (function () {
-                const names = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-                const offIndex = S.isBerlinHost() ? 0 : 5; // Sunday : Friday
-                const out = [];
-                for (let i = 1; i <= 7; i++) out.push(names[(offIndex + i) % 7]);
-                return out;
-            })();
+            // Teaching week order (GIU runs Saturday→Thursday; Friday is the weekend).
+            const WEEK = ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 
             function todayWeekdayName() {
                 return ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][new Date().getDay()];
@@ -13766,23 +13724,18 @@
             panel.className = 'gius-feature-panel';
 
             const byCategory = new Map();
-            for (const id of Object.keys(FEATURE_DEFAULTS).filter(featureAvailableHere)) {
+            for (const id of Object.keys(FEATURE_DEFAULTS)) {
                 const cat = FEATURE_CATEGORIES[id] || 'Other';
                 if (!byCategory.has(cat)) byCategory.set(cat, []);
                 byCategory.get(cat).push(id);
             }
-            const cats = [...byCategory.keys()]
-                .filter(cat => byCategory.get(cat).length > 0)
-                .sort((a, b) => {
+            const cats = [...byCategory.keys()].sort((a, b) => {
                 const ia = CATEGORY_ORDER.indexOf(a), ib = CATEGORY_ORDER.indexOf(b);
                 return (ia === -1 ? CATEGORY_ORDER.length : ia) - (ib === -1 ? CATEGORY_ORDER.length : ib);
             });
             const rows = cats.map(cat => {
                 const catRows = byCategory.get(cat).map(id => {
-                    const rawLabel = (id === 'staffAttendance' && Shared.isBerlinHost())
-                        ? 'Staff Attendance (Berlin)'
-                        : (FEATURE_LABELS[id] || id);
-                    const name = Shared.escapeHtml(rawLabel);
+                    const name = Shared.escapeHtml(FEATURE_LABELS[id] || id);
                     const page = FEATURE_PAGES[id];
                     const label = page
                         ? `<a class="gius-feature-label gius-feature-page-link" href="${Shared.escapeHtml(page)}"
@@ -13807,9 +13760,8 @@
                     ${catRows}
                 </div>`;
             }).join('');
-            const visibleIds = Object.keys(FEATURE_DEFAULTS).filter(featureAvailableHere);
-            const enabledCount = visibleIds.filter(id => FEATURES[id]).length;
-            const totalCount = visibleIds.length;
+            const enabledCount = Object.keys(FEATURE_DEFAULTS).filter(id => FEATURES[id]).length;
+            const totalCount = Object.keys(FEATURE_DEFAULTS).length;
 
             panel.innerHTML = `
                 <div class="card card-stats">
@@ -13872,7 +13824,7 @@
                     const next = loadFeatureToggles();
                     next[input.dataset.featureId] = input.checked;
                     saveFeatureToggles(next);
-                    countEl.textContent = visibleIds.filter(id => next[id]).length;
+                    countEl.textContent = Object.keys(FEATURE_DEFAULTS).filter(id => next[id]).length;
                     status.textContent = 'Saved. Reload to apply.';
                     status.classList.add('gius-feature-dirty');
                     reloadBtn.disabled = false;
@@ -13901,7 +13853,6 @@
     const path = location.pathname;
     renderHomeFeatureToggles();
     for (const route of ROUTES) {
-        if (!featureAvailableHere(route.id)) continue;  // unsupported on this portal host
         if (!FEATURES[route.id]) continue;       // user toggled off
         if (!route.test(path)) continue;         // wrong page
         const fn = Features[route.id];

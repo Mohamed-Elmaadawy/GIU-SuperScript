@@ -49,7 +49,6 @@ function buildBundle(manifest) {
     out = out.replace('/*__CORE_INJECTSTYLE__*/', toMethodForm(extractBlock(core, 'function injectStyle(')));
     out = out.replace('/*__CORE_WARN__*/', toMethodForm(extractBlock(core, 'function warn(')));
     out = out.replace('/*__CORE_PORTALURL__*/', toMethodForm(extractBlock(core, 'function portalUrl(')));
-    out = out.replace('/*__CORE_ISBERLINHOST__*/', toMethodForm(extractBlock(core, 'function isBerlinHost(')));
 
     const feature = stripExports(readSrc('src/features/unenteredSessions.js'));
     // The bundle wants the method-shorthand form ("unenteredSessions(S) {...}"),

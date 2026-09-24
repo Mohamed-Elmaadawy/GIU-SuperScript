@@ -31,6 +31,4 @@ function warn(feature, ...args) { console.warn(`[GIU-SS:${feature}]`, ...args); 
 
 function portalUrl(path) { return location.origin + path; }
 
-function isBerlinHost() { return /(^|\.)giu-berlin\.de$/i.test(location.hostname); }
-
-module.exports = { waitFor, escapeHtml, injectStyle, warn, portalUrl, isBerlinHost };
+module.exports = { waitFor, escapeHtml, injectStyle, warn, portalUrl };
