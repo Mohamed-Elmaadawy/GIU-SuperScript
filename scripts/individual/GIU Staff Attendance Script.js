@@ -5,7 +5,7 @@
 // @icon        data:image/png;base64,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
 // @include     https://portal.giu-uni.de/*
 // @namespace   Cyn0
-// @version     3.2.3
+// @version     3.2.4
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @run-at      document-idle
@@ -95,7 +95,8 @@
                 onboardingCompleted: "giuOnboardingCompletedV1",
                 onboardingState: "giuOnboardingStateV1",
                 dayOffAutoState: "giuDayOffAutoStateV1",
-                branch: "giuBranchV1"
+                branch: "giuBranchV1",
+                branchStart: "giuBranchStartV1"
             };
 
             // Cairo and Berlin differ by exactly two facts. Branch is an explicit
@@ -122,6 +123,35 @@
             }
 
             function branchConfig() { return BRANCH_CONFIG[getBranch()]; }
+
+            const YMD_RE = /^\d{4}-\d{2}-\d{2}$/;
+
+            // "" means no switch: the current branch applies to all history.
+            function getBranchStart() {
+                const raw = localStorage.getItem(STORAGE_KEYS.branchStart) || "";
+                return YMD_RE.test(raw) ? raw : "";
+            }
+
+            function setBranchStart(value) {
+                if (!value) { localStorage.removeItem(STORAGE_KEYS.branchStart); return; }
+                if (!YMD_RE.test(value)) return;   // never persist an unparseable date
+                localStorage.setItem(STORAGE_KEYS.branchStart, value);
+            }
+
+            // Which campus governed a given attendance date. The switch date is the
+            // FIRST day under the current branch; everything before it is the other
+            // campus. Normalizes first: raw row dates can be "2026-3-1", and an
+            // unpadded string sorts AFTER "2026-10-01" in a plain comparison.
+            function getBranchFor(ymd) {
+                const b = getBranch();
+                const start = getBranchStart();
+                if (!start) return b;
+                const norm = normalizeYMD(ymd);
+                if (!norm || norm >= start) return b;
+                return b === "berlin" ? "cairo" : "berlin";
+            }
+
+            function fixedOffDayFor(ymd) { return BRANCH_CONFIG[getBranchFor(ymd)].fixedOffDay; }
 
             // Index 0 = Sunday, matching Date#getUTCDay().
             const WEEKDAY_TABLE = [
@@ -388,8 +418,8 @@
                 return value.includes(":");
             }
 
-            function isFixedNonWorkingDay(dayName) {
-                return dayName === fixedOffDay();
+            function isFixedNonWorkingDay(dayName, ymd) {
+                return dayName === fixedOffDayFor(ymd);
             }
 
             // ═══════════════════════════════════════════════════════════
@@ -484,20 +514,22 @@
                 return getSelectedDayOffFullName(getDayOffCodeForDate(date, fallbackCode));
             }
 
-            // Resolves a day-off code to its full weekday name, restricted to the
-            // branch's six SELECTABLE day-off candidates (dayOffWeekdays()) — the
-            // branch's own fixed off-day must stay unresolvable, because a falsy
-            // return is what normalizeDayOffScheduleEntry uses to reject an entry.
-            // Cairo yields exactly the Sat/Sun/Mon/Tue/Wed/Thu map this replaced;
-            // Berlin yields Mon..Sat, so a Berlin Friday day-off finally resolves.
             function getSelectedDayOffFullName(code) {
-                const match = dayOffWeekdays().find(function (wd) { return wd.code === code; });
+                // Resolves ANY real weekday code, deliberately not restricted to the
+                // current branch's selectable six. It used to double as a validity
+                // gate, which meant a day off that became the fixed off-day after a
+                // campus switch silently stopped resolving — turning every such day
+                // BEFORE the switch into an absence, and destroying stored schedule
+                // entries on read. Validity is "is this a weekday code", which is all
+                // that check ever meant.
+                const match = WEEKDAY_TABLE.find(function (wd) { return wd.code === code; });
                 return match ? match.name : "";
             }
 
             function exportSettingsSnapshot() {
                 return {
                     branch: getBranch(),
+                    branchStart: getBranchStart(),
                     selectedDay: getSelectedDayOffCode(),
                     dayOffSchedule: getStoredDayOffSchedule(),
                     holidays: getStoredHolidays(),
@@ -523,6 +555,15 @@
                 if (snapshot.branch === "cairo" || snapshot.branch === "berlin") {
                     setBranch(snapshot.branch);
                     report.accepted += 1;
+                }
+                if (typeof snapshot.branchStart === "string") {
+                    setBranchStart(snapshot.branchStart);   // no-ops on a malformed value
+                    if (getBranchStart() === snapshot.branchStart) {
+                        report.accepted += 1;
+                    } else {
+                        report.rejected += 1;
+                        report.notes.push("Campus switch date invalid.");
+                    }
                 }
                 if (typeof snapshot.selectedDay === "string") {
                     localStorage.setItem(STORAGE_KEYS.selectedDay, snapshot.selectedDay);
@@ -3938,6 +3979,33 @@
                     lbl.appendChild(document.createTextNode(" " + opt.label));
                     wrap.appendChild(lbl);
                 });
+
+                const dateWrap = document.createElement("div");
+                dateWrap.style.marginTop = "10px";
+                const dateLabel = document.createElement("label");
+                dateLabel.setAttribute("for", "gius-branch-start");
+                dateLabel.style.marginRight = "8px";
+                dateLabel.textContent = "Switched on";
+                const dateInput = document.createElement("input");
+                dateInput.type = "date";
+                dateInput.id = "gius-branch-start";
+                dateInput.value = getBranchStart();
+                dateInput.addEventListener("change", function () {
+                    setBranchStart(dateInput.value);
+                    dateInput.value = getBranchStart();   // a rejected value visibly reverts
+                    renderEnhancedUI();
+                });
+                const dateHint = document.createElement("div");
+                dateHint.style.marginTop = "6px";
+                dateHint.style.opacity = "0.75";
+                dateHint.textContent = "Leave empty unless you switched campuses. Days before this "
+                    + "date use the other campus's weekend rule, so a compensation week spanning "
+                    + "the switch may be short.";
+                dateWrap.appendChild(dateLabel);
+                dateWrap.appendChild(dateInput);
+                dateWrap.appendChild(dateHint);
+                wrap.appendChild(dateWrap);
+
                 return wrap;
             }
 
@@ -4260,8 +4328,8 @@
 
                 const dayName = formatDateToDayName(normalizedDate);
                 const effectiveDayOff = getDayOffFullNameForDate(normalizedDate, getSelectedDayOffCode());
-                if (isFixedNonWorkingDay(dayName)) {
-                    return { ok: false, message: `Compensation leave cannot be applied on ${fixedOffDay()}.` };
+                if (isFixedNonWorkingDay(dayName, normalizedDate)) {
+                    return { ok: false, message: `Compensation leave cannot be applied on ${fixedOffDayFor(normalizedDate)}.` };
                 }
                 if (effectiveDayOff && dayName === effectiveDayOff) {
                     return { ok: false, message: "Compensation leave cannot be applied on your weekly day off." };
@@ -4570,7 +4638,7 @@
                 section.appendChild(title);
 
                 section.appendChild(createUiDescription(
-                    `If you work on your selected weekly day off (not ${fixedOffDay()}), you can take replacement compensation days within the same payroll month (11→10).`,
+                    `If you work on your selected weekly day off, or on ${fixedOffDay()} itself, you earn a replacement compensation day to take within the same payroll month (11→10). Working both in one week earns two.`,
                     "font-size:11px;color:#6b7280;margin:0 0 8px;line-height:1.4;"
                 ));
 
@@ -4979,7 +5047,7 @@
                 eachYmdInRange(periodStart, periodEnd, function (date) {
                     const dayName = formatDateToDayName(date);
                     if (!dayName) return;
-                    const fixedOffMatch = isFixedNonWorkingDay(dayName);
+                    const fixedOffMatch = isFixedNonWorkingDay(dayName, date);
                     const effectiveDayOff = getDayOffFullNameForDate(date, getSelectedDayOffCode());
                     const dayOffMatch = effectiveDayOff && dayName === effectiveDayOff;
                     const holidayMatch = isDateHoliday(date, holidays);
@@ -5246,7 +5314,7 @@
                 const absentByName = new Map(); // dayName -> absence count
                 eachYmdInRange(minDate, maxDate, function (ymd) {
                     const dayName = formatDateToDayName(ymd);
-                    if (!dayName || isFixedNonWorkingDay(dayName)) return; // skip the fixed off-day
+                    if (!dayName || isFixedNonWorkingDay(dayName, ymd)) return; // skip that date's own fixed off-day
                     if (isDateHoliday(ymd, holidays)) return;              // skip holidays
                     if (attendedByDate.get(ymd)) return;                   // attended → not absent
                     absentByName.set(dayName, (absentByName.get(dayName) || 0) + 1);
@@ -5360,7 +5428,7 @@
                     const override = overrideByDate.get(date);
                     const compensationLeave = compensationByDate.get(date);
 
-                    const fixedOffMatch = isFixedNonWorkingDay(dayName);
+                    const fixedOffMatch = isFixedNonWorkingDay(dayName, date);
                     const effectiveDayOff = getDayOffFullNameForDate(date, getSelectedDayOffCode());
                     const dayOffMatch = !!(effectiveDayOff && dayName === effectiveDayOff);
                     const holidayMatch = holidayDateSet.has(date) || isDateHoliday(date, holidays);
@@ -5379,6 +5447,21 @@
                         const overrideActualSeconds = getOverrideActualSecondsForDate(override, date, ramadan);
                         if (dayOffMatch && overrideActualSeconds > 0) {
                             acc.compensationEarnedSeconds += overrideActualSeconds;
+                        }
+
+                        // Same rule as a real attendance row: working the fixed
+                        // weekend day earns a compensation day. Kept here so a
+                        // manually overridden weekend day behaves identically.
+                        if (fixedOffMatch && !holidayMatch && !compensationLeaveMatch
+                            && overrideActualSeconds >= MIN_WORKING_DAY_SECONDS) {
+                            acc.compensationEarnedSeconds += overrideActualSeconds;
+                            acc.requiredSeconds += dayReq;
+                            acc.presentDays += 1;
+                            acc.actualSeconds += overrideActualSeconds;
+                            acc.overriddenDayDetails.push({ date, type: override.type, reason: override.reason || "" });
+                            pushAudit(date, `${fixedOffDay()} (Worked)`,
+                                `Counted via override (${override.type}); earns a compensation day and counts as a regular working day.`);
+                            return;
                         }
 
                         const detail = { date, type: override.type, reason: override.reason || "" };
@@ -5405,6 +5488,39 @@
                         const durationSeconds = getEffectiveRowActualSeconds(row, ramadan, examPeriod);
                         if (dayOffMatch && durationSeconds > 0) {
                             acc.compensationEarnedSeconds += durationSeconds;
+                        }
+
+                        // Working the branch's fixed weekend day (Friday in Cairo,
+                        // Sunday in Berlin) earns a compensation day, and the day
+                        // itself counts as a regular working day — so the earned day
+                        // IS the compensation, rather than banked hours on top of it.
+                        // Independent of the chosen-day-off earn above: a week where
+                        // you worked both earns two. The two can never collide, since
+                        // effectiveDayOff is picked from dayOffWeekdays(), which
+                        // excludes the fixed off-day.
+                        const isWorkedFixedOffDay = fixedOffMatch
+                            && !holidayMatch
+                            && !compensationLeaveMatch
+                            && durationSeconds >= MIN_WORKING_DAY_SECONDS;
+                        if (isWorkedFixedOffDay) {
+                            acc.compensationEarnedSeconds += durationSeconds;
+                            acc.requiredSeconds += dayReq;
+                            acc.presentDays += 1;
+                            acc.actualSeconds += durationSeconds;
+                            const fWorked = secondsToHMS(durationSeconds);
+                            pushAudit(date, `${fixedOffDay()} (Worked)`,
+                                `Worked ${formatHMS(fWorked.hours, fWorked.minutes, fWorked.seconds)} on the fixed non-working day; earns a compensation day and counts as a regular working day.`);
+                            const fixedLateBy = getLateSeconds(row.date, row.firstIn, ramadan);
+                            if (fixedLateBy > 0) {
+                                acc.lateDays += 1;
+                                acc.totalLateSeconds += fixedLateBy;
+                                acc.lateDayDetails.push({
+                                    date: row.date,
+                                    firstIn: row.firstIn,
+                                    lateBySeconds: fixedLateBy
+                                });
+                            }
+                            return;
                         }
 
                         // Day-off swap: when this earn day is paired with a consumed
@@ -6117,7 +6233,7 @@
                     {
                         selector: "#giu-comp-leave-date",
                         title: "Compensations",
-                        description: `Earn by working effective day off (not ${fixedOffDay()}), earn cap = 1/week. Use allowed multiple/week if payroll-month balance supports.`,
+                        description: `Earn by working your effective day off (cap 1/week) or ${fixedOffDay()} itself — these are separate, so a week with both earns two. Use allowed multiple/week if payroll-month balance supports.`,
                         beforeShow: function () { expandSettingsPanelForGuide(); expandAllSettingsSubsectionsForGuide(); }
                     },
                     {
