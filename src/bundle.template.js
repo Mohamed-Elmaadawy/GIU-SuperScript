@@ -5328,6 +5328,9 @@
                 let usedDays = 0;
                 const entries = [];
                 const earnedByWeek = new Map();
+                // The fixed weekend day earns on its own weekly track, so a week
+                // where both it and the chosen day off were worked earns two.
+                const fixedEarnedByWeek = new Map();
 
                 eachYmdInRange(periodStart, periodEnd, function (date) {
                     const dayName = formatDateToDayName(date);
@@ -5347,14 +5350,15 @@
                         workedSeconds = getEffectiveRowActualSeconds(row, ramadan, examPeriod);
                     }
 
-                    let hasDayOffWorkForComp = false;
-                    if (dayOffMatch && !fixedOffMatch) {
-                        if (override) {
-                            hasDayOffWorkForComp = workedSeconds >= MIN_WORKING_DAY_SECONDS;
-                        } else if (row) {
-                            hasDayOffWorkForComp = hasValidLastOut(row.lastOut) && workedSeconds >= MIN_WORKING_DAY_SECONDS;
-                        }
-                    }
+                    const workedEnoughForComp = override
+                        ? workedSeconds >= MIN_WORKING_DAY_SECONDS
+                        : !!(row && hasValidLastOut(row.lastOut) && workedSeconds >= MIN_WORKING_DAY_SECONDS);
+
+                    const hasDayOffWorkForComp = !!(dayOffMatch && !fixedOffMatch && workedEnoughForComp);
+                    // Working the branch's fixed weekend day earns a compensation
+                    // day too. Tracked separately from the chosen day off so the
+                    // two caps do not compete.
+                    const hasFixedOffWorkForComp = !!(fixedOffMatch && !holidayMatch && workedEnoughForComp);
 
                     const week = getCompensationWeekBounds(date);
                     const weekKey = week ? week.key : "";
@@ -5368,6 +5372,20 @@
                             date,
                             seconds: 1,
                             reason: override && override.reason ? override.reason : ""
+                        });
+                    }
+
+                    const weekFixedEarned = weekKey ? (fixedEarnedByWeek.get(weekKey) || 0) : 0;
+                    if (hasFixedOffWorkForComp && weekKey && weekFixedEarned < 1) {
+                        fixedEarnedByWeek.set(weekKey, weekFixedEarned + 1);
+                        earnedDays += 1;
+                        entries.push({
+                            kind: "earn",
+                            date,
+                            seconds: 1,
+                            reason: override && override.reason
+                                ? override.reason
+                                : `Worked ${dayName}, the fixed non-working day.`
                         });
                     }
 
@@ -7891,6 +7909,27 @@
                     setStart: setBranchStart,
                     branchFor: getBranchFor,
                     fixedOffDayFor: fixedOffDayFor,
+                    // Builds the compensation ledger for the payroll period containing
+                    // `todayYmd`, from parsed attendance rows — the ledger is what the
+                    // Compensations table and the usable balance are derived from, so
+                    // it needs to be reachable to test that a worked weekend earns.
+                    compLedger: function (rows, todayYmd) {
+                        const key = getPayrollPeriodKey(todayYmd);
+                        const bounds = getPayrollPeriodBounds(key);
+                        const inPeriod = (rows || []).filter(function (r) {
+                            const d = normalizeYMD(r && r.date ? r.date : "");
+                            return d && d >= bounds.start && d <= bounds.end;
+                        });
+                        const leaves = getStoredCompensationLeaves().filter(function (leave) {
+                            const d = normalizeYMD(leave && leave.date ? leave.date : "");
+                            return d && getPayrollPeriodKey(d) === key;
+                        });
+                        return buildCompensationLedgerForPeriod(
+                            inPeriod, bounds.start, bounds.end,
+                            getStoredHolidays(), getStoredRamadan(), getStoredOverrides(),
+                            getStoredExamPeriod(), leaves
+                        );
+                    },
                     compWeek: getCompensationWeekBounds,
                 };
             } catch { /* ignore */ }
