@@ -60,7 +60,7 @@ Every script carries `@updateURL` and `@downloadURL` pointing at this repo, so T
 
 ### GIU SuperScript — All-in-one bundle
 
-**File:** `GIU SuperScript.js` | **Version:** 1.3.3 | **Author:** Mo.Elmaadawy
+**File:** `GIU SuperScript.js` | **Version:** 1.3.4 | **Author:** Mo.Elmaadawy
 
 The all-in-one userscript that bundles every feature script below except GIU Theme. It also adds a **Control Center** card on the portal Home page where you can turn bundled modules on or off.
 
@@ -86,6 +86,11 @@ https://portal.giu-uni.de/*
 Settings → Branch**. It controls which weekday counts as the fixed non-working
 day — Friday for Cairo, Sunday for Berlin — and applies to your whole report:
 day-off detection, compensation weeks and status labels.
+
+If you moved between campuses, also set **Switched on** to your first day at the
+new one. Days before that date use the other campus's weekend rule, so a report
+spanning the move is calculated correctly on both sides. Leave it empty if you
+have not switched.
 
 The scripts run on the Cairo portal (`portal.giu-uni.de`) only. Berlin staff read
 their attendance there too, because Berlin's own report page returns a server
@@ -125,7 +130,7 @@ https://portal.giu-uni.de/*
 
 ### 2. GIU Staff Enhanced Attendance
 
-**File:** `GIU Staff Attendance Script.js` | **Version:** 3.2.3 | **Author:** Mo.Elmaadawy
+**File:** `GIU Staff Attendance Script.js` | **Version:** 3.2.4 | **Author:** Mo.Elmaadawy
 
 A full attendance management dashboard injected above the Swift Report attendance table. Tracks your hours, leave balance, and exceptions — all stored locally in your browser.
 
@@ -149,7 +154,7 @@ https://portal.giu-uni.de/GIUb/EXT/SwiftReports_m.aspx?swiftreportid=866&execute
 - **Holiday & Annual Leave** — add single dates or ranges, bulk remove, deduplication
 - **Annual leave balance** — editable remaining days (supports decimals), auto-accrues +2 days per payroll month
 - **Attendance overrides** — custom hours for mission days, IN/OUT anomalies, etc.
-- **Compensation days** — earn by working your day off (capped 1/week), use within same period
+- **Compensation days** — earn by working your weekly day off (capped 1/week) *or* the fixed weekend day itself; these are separate, so a week with both earns two. Use within the same period
 - **Ramadan mode** — reduced required hours (6h), adjusted thresholds
 - **Exam period** — configurable last-out time cap override
 - **Conflict detector** — flags dates marked as both holiday and override/compensation
