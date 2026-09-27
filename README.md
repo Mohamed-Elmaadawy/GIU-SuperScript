@@ -12,8 +12,8 @@ Works on the **Cairo portal** ([portal.giu-uni.de](https://portal.giu-uni.de)) a
 
 | You work on… | Install | Optional |
 | --- | --- | --- |
-| **Cairo portal** | [GIU SuperScript](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js) — all Cairo features in one script | [GIU Theme](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Theme.js) — light/dark themes |
-| **Berlin portal** | [GIU Berlin SuperScript](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Berlin%20SuperScript.js) — the Berlin features in one script | — |
+| **Cairo portal** | [GIU SuperScript](https://www.tampermonkey.net/script_installation.php#url=https%3A%2F%2Fraw.githubusercontent.com%2FMohamed-Elmaadawy%2FGIU-SuperScript%2Fmaster%2Fscripts%2FGIU%2520SuperScript.js) — all Cairo features in one script | [GIU Theme](https://www.tampermonkey.net/script_installation.php#url=https%3A%2F%2Fraw.githubusercontent.com%2FMohamed-Elmaadawy%2FGIU-SuperScript%2Fmaster%2Fscripts%2FGIU%2520Theme.js) — light/dark themes |
+| **Berlin portal** | [GIU Berlin SuperScript](https://www.tampermonkey.net/script_installation.php#url=https%3A%2F%2Fraw.githubusercontent.com%2FMohamed-Elmaadawy%2FGIU-SuperScript%2Fmaster%2Fscripts%2FGIU%2520Berlin%2520SuperScript.js) — the Berlin features in one script | — |
 | **Both** | Both SuperScripts — they run on different portals, so they don't clash | GIU Theme |
 
 Each SuperScript has a **Control Center** card on the portal Home page where you can switch individual features on or off.
@@ -25,15 +25,15 @@ Each SuperScript has a **Control Center** card on the portal Home page where you
 
 | Script | Version | Portal | Install |
 | --- | --- | --- | --- |
-| Staff Enhanced Attendance | 3.2.7 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js) |
-| Berlin Attendance | 1.0.0 | Berlin | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js) |
-| Teaching Load | 1.1.4 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Teaching%20Load.js) |
-| Proctoring Reminder | 1.1.4 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Proctoring%20Reminder.js) |
-| Not Entered Sessions | 1.1.2 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Not%20Entered%20Sessions.js) |
-| Student Attendance Report | 1.3.1 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Student%20Attendance%20Report.js) |
-| Upload Grades | 2.4.2 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Upload%20Grades.js) |
-| Manage Group Grades | 1.5 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Manage%20Group%20Grades.js) |
-| Notification Batch Send | 1.4.1 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Notification%20Batch%20Send.js) |
+| Staff Enhanced Attendance | 3.2.7 | Cairo | [install](https://www.tampermonkey.net/script_installation.php#url=https%3A%2F%2Fraw.githubusercontent.com%2FMohamed-Elmaadawy%2FGIU-SuperScript%2Fmaster%2Fscripts%2Findividual%2FGIU%2520Staff%2520Attendance%2520Script.js) |
+| Berlin Attendance | 1.0.0 | Berlin | [install](https://www.tampermonkey.net/script_installation.php#url=https%3A%2F%2Fraw.githubusercontent.com%2FMohamed-Elmaadawy%2FGIU-SuperScript%2Fmaster%2Fscripts%2Findividual%2FGIU%2520Berlin%2520Attendance.js) |
+| Teaching Load | 1.1.4 | Cairo | [install](https://www.tampermonkey.net/script_installation.php#url=https%3A%2F%2Fraw.githubusercontent.com%2FMohamed-Elmaadawy%2FGIU-SuperScript%2Fmaster%2Fscripts%2Findividual%2FGIU%2520Teaching%2520Load.js) |
+| Proctoring Reminder | 1.1.4 | Cairo | [install](https://www.tampermonkey.net/script_installation.php#url=https%3A%2F%2Fraw.githubusercontent.com%2FMohamed-Elmaadawy%2FGIU-SuperScript%2Fmaster%2Fscripts%2Findividual%2FGIU%2520Proctoring%2520Reminder.js) |
+| Not Entered Sessions | 1.1.2 | Cairo | [install](https://www.tampermonkey.net/script_installation.php#url=https%3A%2F%2Fraw.githubusercontent.com%2FMohamed-Elmaadawy%2FGIU-SuperScript%2Fmaster%2Fscripts%2Findividual%2FGIU%2520Not%2520Entered%2520Sessions.js) |
+| Student Attendance Report | 1.3.1 | Cairo | [install](https://www.tampermonkey.net/script_installation.php#url=https%3A%2F%2Fraw.githubusercontent.com%2FMohamed-Elmaadawy%2FGIU-SuperScript%2Fmaster%2Fscripts%2Findividual%2FGIU%2520Student%2520Attendance%2520Report.js) |
+| Upload Grades | 2.4.2 | Cairo | [install](https://www.tampermonkey.net/script_installation.php#url=https%3A%2F%2Fraw.githubusercontent.com%2FMohamed-Elmaadawy%2FGIU-SuperScript%2Fmaster%2Fscripts%2Findividual%2FGIU%2520Upload%2520Grades.js) |
+| Manage Group Grades | 1.5 | Cairo | [install](https://www.tampermonkey.net/script_installation.php#url=https%3A%2F%2Fraw.githubusercontent.com%2FMohamed-Elmaadawy%2FGIU-SuperScript%2Fmaster%2Fscripts%2Findividual%2FGIU%2520Manage%2520Group%2520Grades.js) |
+| Notification Batch Send | 1.4.1 | Cairo | [install](https://www.tampermonkey.net/script_installation.php#url=https%3A%2F%2Fraw.githubusercontent.com%2FMohamed-Elmaadawy%2FGIU-SuperScript%2Fmaster%2Fscripts%2Findividual%2FGIU%2520Notification%2520Batch%2520Send.js) |
 
 The bundles: GIU SuperScript **1.3.6**, GIU Berlin SuperScript **1.0.0**, GIU Theme **1.0.2**.
 
@@ -44,8 +44,24 @@ The bundles: GIU SuperScript **1.3.6**, GIU Berlin SuperScript **1.0.0**, GIU Th
 ## Install
 
 1. **Install Tampermonkey** for your browser: [Chrome / Edge / Brave](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) · [Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/) · [Safari](https://apps.apple.com/us/app/tampermonkey/id1482490089)
-2. **Click the install link** for your script in the table above. Tampermonkey opens an install page — click **Install**.
-3. **Open the portal** (or reload it). The new widgets appear on their pages; see [Features](#features) for where.
+2. **Chrome / Edge only:** open the extensions page (`chrome://extensions` or `edge://extensions`), click **Details** on Tampermonkey and turn on **Allow User Scripts** (on older versions: turn on **Developer mode** at the top right). Without this, Tampermonkey can't run any script.
+3. **Click the install link** for your script in the table above. Tampermonkey opens its install page — click **Install**.
+4. **Open the portal** (or reload it). The new widgets appear on their pages; see [Features](#features) for where.
+
+<details>
+<summary>The install link only shows code / nothing happens?</summary>
+
+Install it from Tampermonkey instead: Tampermonkey icon → **Dashboard** → **Utilities** tab → **Install from URL**, paste the script's address and click **Install**:
+
+| Script | Address to paste |
+| --- | --- |
+| GIU SuperScript | `https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js` |
+| GIU Berlin SuperScript | `https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Berlin%20SuperScript.js` |
+| GIU Theme | `https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Theme.js` |
+
+Single-feature scripts: same address pattern with `scripts/individual/<file name>` (spaces written as `%20`).
+
+</details>
 
 **Updates are automatic.** Tampermonkey checks for new versions regularly. To check now: Tampermonkey **Dashboard → Utilities → Check for userscript updates**.
 
