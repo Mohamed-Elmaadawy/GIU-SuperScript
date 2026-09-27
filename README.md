@@ -50,6 +50,26 @@ The bundles: GIU SuperScript **1.3.6**, GIU Berlin SuperScript **1.0.0**, GIU Th
 **Updates are automatic.** Tampermonkey checks for new versions regularly. To check now: Tampermonkey **Dashboard → Utilities → Check for userscript updates**.
 
 <details>
+<summary>Don't want automatic updates?</summary>
+
+Updates only ever come from this repository, but you can turn them off for any script:
+
+1. Tampermonkey **Dashboard** → click the script's name to open the editor.
+2. Delete these two lines near the top (in the `// ==UserScript==` block):
+
+   ```text
+   // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/...
+   // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/...
+   ```
+
+3. Press **Ctrl + S** to save.
+4. Also open the script's **Settings** tab (next to **Editor**) and untick **Check for updates** — Tampermonkey otherwise remembers where the script was installed from.
+
+To update later, install the script again from its link above.
+
+</details>
+
+<details>
 <summary>Installed by copy-pasting the code?</summary>
 
 A pasted copy doesn't auto-update. Reinstall it once from the install link above; after that, updates arrive automatically.
