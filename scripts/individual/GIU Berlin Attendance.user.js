@@ -10,7 +10,7 @@
 // @match       https://apps.guc.edu.eg/external/tempprojects/swiftreports.aspx*
 // @match       https://apps.guc.edu.eg/External/TempProjects/SwiftReports.aspx*
 // @namespace   Cyn0
-// @version     1.0.0
+// @version     1.0.1
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js
 // @author      Mo.Elmaadawy
@@ -418,6 +418,247 @@ const UNIVERSITY_ICONS = {
     guc: 'data:image/png;base64,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',
 };
 
+// The styled timesheet table, shared by Berlin's full-report view (a Cairo
+// grid imported into the page) and Cairo's own report page (the portal's
+// native grid, styled in place). Display only: cell text is never changed,
+// since the attendance engine reads it.
+//
+// styleReportGrid(grid, { title }) runs once per grid: it marks the grid
+// (REPORT_GRID_STYLED_ATTR) and returns early on every later call, so callers
+// that re-render repeatedly (the engine's renderEnhancedUI) can call it freely.
+// The grid is expected inside a REPORT_GRID_WRAP_CLASS element (the styles are
+// scoped to it); wrapReportGrid(grid) provides one for a grid already on the page.
+
+const REPORT_GRID_WRAP_CLASS = 'gius-berlin-grid';
+const REPORT_GRID_STYLED_ATTR = 'data-gius-grid-styled';
+
+// Presentational attributes (inline colours, cellpadding, ...) dropped so the
+// grid's own styles apply.
+const GRID_PRESENTATION_ATTRS = /^(style|bgcolor|bordercolor|border|cellpadding|cellspacing|rules|frame|width|height|align|valign|nowrap)$/i;
+
+function gridCellText(c) {
+    return String(c.textContent || '').replace(/\s+/g, ' ').trim();
+}
+
+function gridHeaderIndex(rows) {
+    return rows.findIndex(r => Array.from(r.cells).some(c => /^(day|date)$/i.test(gridCellText(c))));
+}
+
+// Cairo's GIU grid carries a few columns the view has no use for: the raw
+// GIU_ID, and the InOutForm/LeaveForm links. Matched case-insensitively,
+// ignoring spaces/underscores, so "In Out Form" or "leave_form" also match.
+// Never matches the GUC canonical grid's own headers
+// (Serial/Day/FirstIn/LastOut/Duration/Sessions/Action).
+const DROPPED_HEADER_KEYS = new Set(['giuid', 'inoutform', 'leaveform']);
+
+function normalizeHeaderKey(text) {
+    return String(text || '').toLowerCase().replace(/[\s_]+/g, '');
+}
+
+// Drops the matched header cell and the same-index cell from every ordinary
+// row. A row whose cell count doesn't match the header (Cairo's pager rows,
+// which carry a single colspan'd cell) is left alone, except its colspan is
+// reduced by the number of columns actually dropped — so it doesn't overshoot
+// the grid's new width — floored at 1.
+function dropUnwantedColumns(grid) {
+    const rows = Array.from(grid.rows);
+    if (!rows.length) return;
+    const headIndex = gridHeaderIndex(rows);
+    if (headIndex < 0) return;
+    const headerCells = Array.from(rows[headIndex].cells);
+    const dropIndexes = [];
+    headerCells.forEach((c, i) => { if (DROPPED_HEADER_KEYS.has(normalizeHeaderKey(gridCellText(c)))) dropIndexes.push(i); });
+    if (!dropIndexes.length) return;
+    rows.forEach(row => {
+        const cells = Array.from(row.cells);
+        if (cells.length === headerCells.length) {
+            dropIndexes.slice().reverse().forEach(i => cells[i] && cells[i].remove());
+        } else if (cells.length === 1) {
+            const span = parseInt(cells[0].getAttribute('colspan') || '1', 10);
+            if (span > 1) cells[0].setAttribute('colspan', String(Math.max(1, span - dropIndexes.length)));
+        }
+    });
+}
+
+// Newest day first: reverses the grid's own data rows in place. The header
+// (found the same way decorateReportGrid finds it) stays first; any pager
+// row — wherever Cairo puts it, since decorateReportGrid marks anything
+// outside the header/data shape as a pager — keeps its original position,
+// so a pager already at the bottom stays at the bottom.
+// Display-only: this reorders the grid's DOM, which is also what the
+// engine's getAttendanceRows() scans (renderEnhancedUI). That's safe
+// because the only place those rows are consumed is
+// groupRowsByPayrollPeriod(), which re-sorts every row by date itself (both
+// the payroll-period order and each period's own row order) — so this
+// function cannot change any engine computation, only the display order.
+// Must run after decorateReportGrid, which is what assigns the
+// gius-berlin-grid-row class this relies on.
+function reverseDataRows(grid) {
+    const dataRows = Array.from(grid.rows).filter(r => r.classList.contains('gius-berlin-grid-row'));
+    if (dataRows.length < 2) return;
+    const parent = dataRows[0].parentNode;
+    if (!dataRows.every(r => r.parentNode === parent)) return; // unexpected structure: leave order alone
+    const anchor = dataRows[dataRows.length - 1].nextSibling;
+    dataRows.slice().reverse().forEach(r => parent.insertBefore(r, anchor));
+}
+
+// Header text → the display kind of its column (display only: cell text is
+// left exactly as it is, since the engine reads it).
+function gridColumnKind(headerText) {
+    const h = headerText.toLowerCase().replace(/\s+/g, '');
+    if (h === 'serial' || h === '#') return 'serial';
+    if (h === 'sessions') return 'sessions';
+    if (h.includes('duration')) return 'num';
+    if (/^(day|date|firstin|lastout|in|out)$/.test(h)) return 'time';
+    if (h.includes('action') || h.includes('leave') || h.includes('form')) return 'action';
+    return '';
+}
+
+// Marks the current first/last rows (for the rounded corners) — called after
+// reverseDataRows, so the corners land on the rows that are actually first
+// and last once the newest-day-first reorder has happened, not on whichever
+// rows held those spots beforehand.
+function markGridEnds(grid) {
+    const rows = grid.rows;
+    if (!rows.length) return;
+    rows[0].classList.add('gius-berlin-grid-first');
+    rows[rows.length - 1].classList.add('gius-berlin-grid-last');
+}
+
+// Marks the header row (a <td> row on Cairo's own grid), pager rows, data
+// rows and each column's kind, and wraps non-empty action cells in a pill.
+// (First/last-row marking is markGridEnds's job — see there for why.)
+function decorateReportGrid(grid) {
+    const rows = Array.from(grid.rows);
+    if (!rows.length) return;
+    const headIndex = gridHeaderIndex(rows);
+    if (headIndex < 0) return;
+    const kinds = Array.from(rows[headIndex].cells).map(c => gridColumnKind(gridCellText(c)));
+    rows.forEach((r, i) => {
+        const cells = Array.from(r.cells);
+        if (i === headIndex) r.classList.add('gius-berlin-grid-head');
+        // Cairo's pager rows ("<Previous Next>"): the report fits one page,
+        // so drop them rather than show a stub row.
+        else if (i < headIndex || cells.length !== kinds.length) { r.remove(); return; }
+        else r.classList.add('gius-berlin-grid-row');
+        cells.forEach((c, j) => {
+            if (kinds[j]) c.classList.add('gius-berlin-col-' + kinds[j]);
+            if (i !== headIndex && kinds[j] === 'action' && gridCellText(c)) {
+                const pill = document.createElement('span');
+                pill.className = 'gius-berlin-action';
+                while (c.firstChild) pill.appendChild(c.firstChild);
+                c.appendChild(pill);
+            }
+        });
+    });
+}
+
+// Once per grid: presentational attributes out, unwanted columns and pager
+// rows out, header/data/column marking, newest day first, rounded ends, and
+// `title` as a <caption>. Links, on* handlers and form controls are left
+// alone (on Cairo's own page they work; Berlin neutralises its imported copy
+// itself before calling this).
+function styleReportGrid(grid, opts) {
+    if (!grid || grid.hasAttribute(REPORT_GRID_STYLED_ATTR)) return grid;
+    grid.setAttribute(REPORT_GRID_STYLED_ATTR, '');
+    [grid, ...grid.querySelectorAll('*')].forEach(el => {
+        Array.from(el.attributes).forEach(attr => {
+            if (GRID_PRESENTATION_ATTRS.test(attr.name)) el.removeAttribute(attr.name);
+        });
+    });
+    dropUnwantedColumns(grid);
+    decorateReportGrid(grid);
+    reverseDataRows(grid);
+    markGridEnds(grid);
+    const title = opts && opts.title;
+    if (title) {
+        const caption = grid.createCaption();
+        caption.className = 'gius-berlin-grid-title';
+        // The text is its own sticky box: it stays in view while a narrow
+        // screen scrolls the grid sideways.
+        const text = document.createElement('span');
+        text.textContent = title;
+        caption.appendChild(text);
+    }
+    return grid;
+}
+
+// For a grid already on the page: puts it inside a wrapper (horizontal scroll
+// on narrow screens, and the scope of the styles), unless it already is.
+// Returns the wrapper.
+function wrapReportGrid(grid) {
+    const parent = grid.parentNode;
+    if (parent && parent.classList && parent.classList.contains(REPORT_GRID_WRAP_CLASS)) return parent;
+    const wrap = document.createElement('div');
+    wrap.className = REPORT_GRID_WRAP_CLASS;
+    parent.insertBefore(wrap, grid);
+    wrap.appendChild(grid);
+    return wrap;
+}
+
+// Light: the report's own table look. Dark (html.gius-dark): GIU Theme's
+// --gp-* tokens when present, with the Home widget's Catppuccin colours as the
+// fallback. Cell colours are !important so GIU Theme's generic table rules
+// (which are !important too) don't flatten the header and zebra rows on Cairo.
+function injectReportGridStyles(S) {
+    S.injectStyle('gius-report-grid-style', `
+        .gius-berlin-grid { max-width: 1500px; margin: 0 auto; overflow-x: auto; }
+        .gius-berlin-grid > #giu-attendance-container { position: sticky; left: 0; }
+        .gius-berlin-grid table#MainContent_DG_SwiftReport {
+            width: 100%; margin: 0 0 8px; border-collapse: separate; border-spacing: 0;
+            background: #fff; border: 1px solid #d1d5db; border-radius: 6px;
+            font-family: inherit; font-size: 13px; line-height: 1.35; color: #111827;
+        }
+        .gius-berlin-grid caption.gius-berlin-grid-title {
+            caption-side: top; padding: 0 0 12px; text-align: left;
+            font-size: 16px; font-weight: 700; color: #1f2937;
+        }
+        .gius-berlin-grid caption.gius-berlin-grid-title > span { position: sticky; left: 0; }
+        .gius-berlin-grid table#MainContent_DG_SwiftReport :is(th, td) {
+            padding: 8px 10px; border: 0; border-bottom: 1px solid #e5e7eb; border-right: 1px solid #e5e7eb;
+            background: #fff !important; color: #111827 !important; border-color: #e5e7eb !important;
+            text-align: left; vertical-align: middle;
+        }
+        .gius-berlin-grid table#MainContent_DG_SwiftReport tr > :last-child { border-right: 0; }
+        .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-last > * { border-bottom: 0; }
+        .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row:nth-child(even) > td { background: #f9fafb !important; }
+        .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row:hover > td { background: #fff8e1 !important; }
+        .gius-berlin-grid table#MainContent_DG_SwiftReport :is(thead th, tr.gius-berlin-grid-head > *) {
+            background: #1f2937 !important; color: #fff !important; font-weight: 700; white-space: nowrap; border-color: #374151 !important;
+        }
+        .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-first > :first-child { border-top-left-radius: 5px; }
+        .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-first > :last-child { border-top-right-radius: 5px; }
+        .gius-berlin-grid table#MainContent_DG_SwiftReport .gius-berlin-col-time { white-space: nowrap; }
+        .gius-berlin-grid table#MainContent_DG_SwiftReport :is(.gius-berlin-col-num, .gius-berlin-col-serial, .gius-berlin-col-sessions) {
+            white-space: nowrap; font-variant-numeric: tabular-nums;
+        }
+        /* Serial and Sessions stay as narrow as their content; the rest share the width. */
+        .gius-berlin-grid table#MainContent_DG_SwiftReport :is(th, td):is(.gius-berlin-col-serial, .gius-berlin-col-sessions) { width: 1%; }
+        .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row > td.gius-berlin-col-serial { color: #6b7280 !important; }
+        .gius-berlin-grid .gius-berlin-action {
+            display: inline-block; padding: 3px 9px; border: 1px solid #d1d5db; border-radius: 999px;
+            background: #f3f4f6; color: #374151; font-size: 11px; font-weight: 700; line-height: 1.3; white-space: nowrap;
+        }
+
+        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport {
+            background: var(--gp-card, #1e1e2e); border-color: var(--gp-border, #313244); color: var(--gp-text, #cdd6f4);
+        }
+        html.gius-dark .gius-berlin-grid caption.gius-berlin-grid-title { color: var(--gp-text, #cdd6f4); }
+        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport :is(th, td) {
+            background: var(--gp-card, #1e1e2e) !important; border-color: var(--gp-border, #313244) !important; color: var(--gp-text, #cdd6f4) !important;
+        }
+        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row:nth-child(even) > td { background: var(--gp-surface, #181825) !important; }
+        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row:hover > td { background: #2a2410 !important; }
+        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport :is(thead th, tr.gius-berlin-grid-head > *) {
+            background: var(--gp-deep, #11111b) !important; color: var(--gp-text, #cdd6f4) !important; border-color: var(--gp-border, #313244) !important;
+        }
+        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row > td.gius-berlin-col-serial { color: var(--gp-muted, #9399b2) !important; }
+        html.gius-dark .gius-berlin-grid .gius-berlin-action {
+            background: var(--gp-surface, #313244); border-color: var(--gp-border, #45475a); color: var(--gp-text, #cdd6f4);
+        }
+    `);
+}
+
 // Berlin UI only — renders what the source reports; never fetches.
 const BERLIN_VIEW_HASH = '#gius-attendance';
 
@@ -487,7 +728,8 @@ function renderUniversityChooser(S, host, onPick) {
 // Everything here is Berlin-only and copies the engine's own look: cards are
 // the Home widget's .gius-att-card, buttons the report's
 // .giu-settings-action-btn (secondary) and .giu-add-holiday-btn (primary),
-// the view header and the grid the report's panels and .giu-holiday-table.
+// and the view header the report's panels. The grid's styles are shared with
+// Cairo's report page (src/shared/reportGrid.js).
 // Dark mode: widget-level pieces use the widget's Catppuccin colours; the
 // report-level ones take GIU Theme's --gp-* tokens when present, with the
 // widget's colours as the fallback.
@@ -562,43 +804,6 @@ function injectBerlinStyles(S) {
             background: #fff3cd; color: #92400e; font-size: 12px; font-weight: 700; line-height: 1.3;
         }
 
-        .gius-berlin-grid { max-width: 1500px; margin: 0 auto; overflow-x: auto; }
-        .gius-berlin-grid > #giu-attendance-container { position: sticky; left: 0; }
-        .gius-berlin-grid table#MainContent_DG_SwiftReport {
-            width: 100%; margin: 0 0 8px; border-collapse: separate; border-spacing: 0;
-            background: #fff; border: 1px solid #d1d5db; border-radius: 6px;
-            font-family: inherit; font-size: 13px; line-height: 1.35; color: #111827;
-        }
-        .gius-berlin-grid caption.gius-berlin-grid-title {
-            caption-side: top; padding: 0 0 12px; text-align: left;
-            font-size: 16px; font-weight: 700; color: #1f2937;
-        }
-        .gius-berlin-grid caption.gius-berlin-grid-title > span { position: sticky; left: 0; }
-        .gius-berlin-grid table#MainContent_DG_SwiftReport :is(th, td) {
-            padding: 8px 10px; border: 0; border-bottom: 1px solid #e5e7eb; border-right: 1px solid #e5e7eb;
-            background: #fff; color: #111827; text-align: left; vertical-align: middle;
-        }
-        .gius-berlin-grid table#MainContent_DG_SwiftReport tr > :last-child { border-right: 0; }
-        .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-last > * { border-bottom: 0; }
-        .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row:nth-child(even) > td { background: #f9fafb; }
-        .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row:hover > td { background: #fff8e1; }
-        .gius-berlin-grid table#MainContent_DG_SwiftReport :is(thead th, tr.gius-berlin-grid-head > *) {
-            background: #1f2937; color: #fff; font-weight: 700; white-space: nowrap; border-color: #374151;
-        }
-        .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-first > :first-child { border-top-left-radius: 5px; }
-        .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-first > :last-child { border-top-right-radius: 5px; }
-        .gius-berlin-grid table#MainContent_DG_SwiftReport .gius-berlin-col-time { white-space: nowrap; }
-        .gius-berlin-grid table#MainContent_DG_SwiftReport :is(.gius-berlin-col-num, .gius-berlin-col-serial, .gius-berlin-col-sessions) {
-            white-space: nowrap; font-variant-numeric: tabular-nums;
-        }
-        /* Serial and Sessions stay as narrow as their content; the rest share the width. */
-        .gius-berlin-grid table#MainContent_DG_SwiftReport :is(th, td):is(.gius-berlin-col-serial, .gius-berlin-col-sessions) { width: 1%; }
-        .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row > td.gius-berlin-col-serial { color: #6b7280; }
-        .gius-berlin-grid .gius-berlin-action {
-            display: inline-block; padding: 3px 9px; border: 1px solid #d1d5db; border-radius: 999px;
-            background: #f3f4f6; color: #374151; font-size: 11px; font-weight: 700; line-height: 1.3; white-space: nowrap;
-        }
-
         html.gius-dark .gius-berlin-error, html.gius-dark .gius-berlin-chooser {
             background: #181825; border-color: #313244; border-left-color: #f9e2af; color: #cdd6f4;
         }
@@ -625,23 +830,8 @@ function injectBerlinStyles(S) {
         html.gius-dark .gius-berlin-badge {
             background: var(--gp-warning-bg, #2a2410); border-color: var(--gp-warning-fg, #f9e2af); color: var(--gp-warning-fg, #f9e2af);
         }
-        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport {
-            background: var(--gp-card, #1e1e2e); border-color: var(--gp-border, #313244); color: var(--gp-text, #cdd6f4);
-        }
-        html.gius-dark .gius-berlin-grid caption.gius-berlin-grid-title { color: var(--gp-text, #cdd6f4); }
-        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport :is(th, td) {
-            background: var(--gp-card, #1e1e2e); border-color: var(--gp-border, #313244); color: var(--gp-text, #cdd6f4);
-        }
-        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row:nth-child(even) > td { background: var(--gp-surface, #181825); }
-        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row:hover > td { background: #2a2410; }
-        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport :is(thead th, tr.gius-berlin-grid-head > *) {
-            background: var(--gp-deep, #11111b); color: var(--gp-text, #cdd6f4); border-color: var(--gp-border, #313244);
-        }
-        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row > td.gius-berlin-col-serial { color: var(--gp-muted, #9399b2); }
-        html.gius-dark .gius-berlin-grid .gius-berlin-action {
-            background: var(--gp-surface, #313244); border-color: var(--gp-border, #45475a); color: var(--gp-text, #cdd6f4);
-        }
     `);
+    injectReportGridStyles(S);
 }
 
 const BERLIN_VIEW_ID = 'gius-berlin-view';
@@ -781,8 +971,8 @@ function renderViewShell(S, host, opts) {
 // postbacks (they would post Berlin's own form), relative links resolve
 // against Berlin (where the report 500s), inline on* handlers and form
 // controls belong to Cairo's page. Keep link text, drop the behaviour.
-// Cairo's presentational attributes (inline colours, cellpadding, ...) are
-// dropped too, so the view's own grid styles apply. `title` → a <caption>.
+// The rest (presentational attributes, dropped columns, newest day first,
+// `title` as a <caption>) is styleReportGrid's, shared with Cairo's page.
 function importReportGrid(doc, gridId, title) {
     const grid = document.importNode(doc.getElementById(gridId), true);
     grid.querySelectorAll('input, select, button, textarea').forEach(el => el.remove());
@@ -794,143 +984,10 @@ function importReportGrid(doc, gridId, title) {
     });
     [grid, ...grid.querySelectorAll('*')].forEach(el => {
         Array.from(el.attributes).forEach(attr => {
-            if (/^on/i.test(attr.name) || GRID_PRESENTATION_ATTRS.test(attr.name)) el.removeAttribute(attr.name);
+            if (/^on/i.test(attr.name)) el.removeAttribute(attr.name);
         });
     });
-    dropUnwantedColumns(grid);
-    decorateReportGrid(grid);
-    reverseDataRows(grid);
-    markGridEnds(grid);
-    if (title) {
-        const caption = grid.createCaption();
-        caption.className = 'gius-berlin-grid-title';
-        // The text is its own sticky box: it stays in view while a narrow
-        // screen scrolls the grid sideways.
-        const text = document.createElement('span');
-        text.textContent = title;
-        caption.appendChild(text);
-    }
-    return grid;
-}
-
-const GRID_PRESENTATION_ATTRS = /^(style|bgcolor|bordercolor|border|cellpadding|cellspacing|rules|frame|width|height|align|valign|nowrap)$/i;
-
-function gridHeaderIndex(rows) {
-    const cellText = c => String(c.textContent || '').replace(/\s+/g, ' ').trim();
-    return rows.findIndex(r => Array.from(r.cells).some(c => /^(day|date)$/i.test(cellText(c))));
-}
-
-// Cairo's GIU grid carries a few columns the view has no use for: the raw
-// GIU_ID, and the InOutForm/LeaveForm postback links (already stripped of
-// their behaviour above, and dead weight now they're inert). Matched
-// case-insensitively, ignoring spaces/underscores, so "In Out Form" or
-// "leave_form" also match. Never matches the GUC canonical grid's own
-// headers (Serial/Day/FirstIn/LastOut/Duration/Sessions/Action).
-const DROPPED_HEADER_KEYS = new Set(['giuid', 'inoutform', 'leaveform']);
-
-function normalizeHeaderKey(text) {
-    return String(text || '').toLowerCase().replace(/[\s_]+/g, '');
-}
-
-// Drops the matched header cell and the same-index cell from every ordinary
-// row. A row whose cell count doesn't match the header (Cairo's pager rows,
-// which carry a single colspan'd cell) is left alone, except its colspan is
-// reduced by the number of columns actually dropped — so it doesn't overshoot
-// the grid's new width — floored at 1.
-function dropUnwantedColumns(grid) {
-    const rows = Array.from(grid.rows);
-    if (!rows.length) return;
-    const cellText = c => String(c.textContent || '').replace(/\s+/g, ' ').trim();
-    const headIndex = gridHeaderIndex(rows);
-    if (headIndex < 0) return;
-    const headerCells = Array.from(rows[headIndex].cells);
-    const dropIndexes = [];
-    headerCells.forEach((c, i) => { if (DROPPED_HEADER_KEYS.has(normalizeHeaderKey(cellText(c)))) dropIndexes.push(i); });
-    if (!dropIndexes.length) return;
-    rows.forEach(row => {
-        const cells = Array.from(row.cells);
-        if (cells.length === headerCells.length) {
-            dropIndexes.slice().reverse().forEach(i => cells[i] && cells[i].remove());
-        } else if (cells.length === 1) {
-            const span = parseInt(cells[0].getAttribute('colspan') || '1', 10);
-            if (span > 1) cells[0].setAttribute('colspan', String(Math.max(1, span - dropIndexes.length)));
-        }
-    });
-}
-
-// Newest day first: reverses the grid's own data rows in place. The header
-// (found the same way decorateReportGrid finds it) stays first; any pager
-// row — wherever Cairo puts it, since decorateReportGrid marks anything
-// outside the header/data shape as a pager — keeps its original position,
-// so a pager already at the bottom stays at the bottom.
-// Display-only: this reorders the mounted grid's DOM, which is also what the
-// engine's getAttendanceRows() scans when it runs against this same view
-// (renderEnhancedUI, straight after this grid is mounted). That's safe
-// because the only place those rows are consumed is
-// groupRowsByPayrollPeriod(), which re-sorts every row by date itself (both
-// the payroll-period order and each period's own row order) — so this
-// function cannot change any engine computation, only the display order.
-// Must run after decorateReportGrid, which is what assigns the
-// gius-berlin-grid-row class this relies on.
-function reverseDataRows(grid) {
-    const dataRows = Array.from(grid.rows).filter(r => r.classList.contains('gius-berlin-grid-row'));
-    if (dataRows.length < 2) return;
-    const parent = dataRows[0].parentNode;
-    if (!dataRows.every(r => r.parentNode === parent)) return; // unexpected structure: leave order alone
-    const anchor = dataRows[dataRows.length - 1].nextSibling;
-    dataRows.slice().reverse().forEach(r => parent.insertBefore(r, anchor));
-}
-
-// Header text → the display kind of its column (display only: cell text is
-// left exactly as it is, since the engine reads it).
-function gridColumnKind(headerText) {
-    const h = headerText.toLowerCase().replace(/\s+/g, '');
-    if (h === 'serial' || h === '#') return 'serial';
-    if (h === 'sessions') return 'sessions';
-    if (h.includes('duration')) return 'num';
-    if (/^(day|date|firstin|lastout|in|out)$/.test(h)) return 'time';
-    if (h.includes('action') || h.includes('leave') || h.includes('form')) return 'action';
-    return '';
-}
-
-// Marks the current first/last rows (for the rounded corners) — called after
-// reverseDataRows, so the corners land on the rows that are actually first
-// and last once the newest-day-first reorder has happened, not on whichever
-// rows held those spots beforehand.
-function markGridEnds(grid) {
-    const rows = grid.rows;
-    if (!rows.length) return;
-    rows[0].classList.add('gius-berlin-grid-first');
-    rows[rows.length - 1].classList.add('gius-berlin-grid-last');
-}
-
-// Marks the header row (a <td> row on Cairo's own grid), pager rows, data
-// rows and each column's kind, and wraps non-empty action cells in a pill.
-// (First/last-row marking is markGridEnds's job — see there for why.)
-function decorateReportGrid(grid) {
-    const rows = Array.from(grid.rows);
-    if (!rows.length) return;
-    const cellText = c => String(c.textContent || '').replace(/\s+/g, ' ').trim();
-    const headIndex = rows.findIndex(r => Array.from(r.cells).some(c => /^(day|date)$/i.test(cellText(c))));
-    if (headIndex < 0) return;
-    const kinds = Array.from(rows[headIndex].cells).map(c => gridColumnKind(cellText(c)));
-    rows.forEach((r, i) => {
-        const cells = Array.from(r.cells);
-        if (i === headIndex) r.classList.add('gius-berlin-grid-head');
-        // Cairo's pager rows ("<Previous Next>") are dead postbacks here and the
-        // report fits one page, so drop them rather than show a stub row.
-        else if (i < headIndex || cells.length !== kinds.length) { r.remove(); return; }
-        else r.classList.add('gius-berlin-grid-row');
-        cells.forEach((c, j) => {
-            if (kinds[j]) c.classList.add('gius-berlin-col-' + kinds[j]);
-            if (i !== headIndex && kinds[j] === 'action' && cellText(c)) {
-                const pill = document.createElement('span');
-                pill.className = 'gius-berlin-action';
-                while (c.firstChild) pill.appendChild(c.firstChild);
-                c.appendChild(pill);
-            }
-        });
-    });
+    return styleReportGrid(grid, { title });
 }
 
 // Berlin Home shows count cards like "0 Session" and "0 NoUserName" that carry
@@ -8724,6 +8781,23 @@ function staffAttendance(S) {
                 return openSetupWizard(true);
             }
 
+            // Cairo only (Berlin styles its imported copy itself): the portal's own
+            // report grid becomes the styled, newest-first table, inside a scroll
+            // wrapper, so the summary inserted before the grid lands in that
+            // wrapper too. styleReportGrid marks the grid and does nothing on later
+            // calls, so this is safe on every render. Display only: the rows it
+            // reorders and the columns it drops never feed a number (rows are
+            // re-sorted by date; Day/Duration/FirstIn/LastOut are found by header).
+            function styleCairoReportGrid(table) {
+                try {
+                    injectReportGridStyles(S);
+                    wrapReportGrid(table);
+                    styleReportGrid(table, { title: "Timesheet — GIU Cairo" });
+                } catch (err) {
+                    console.log("Report grid styling failed:", err && err.message);
+                }
+            }
+
             function renderEnhancedUI() {
                 if (!isTargetReportPage()) return;
                 applyMonthlyAnnualLeaveAccrual();
@@ -8733,6 +8807,7 @@ function staffAttendance(S) {
                 if (!reportTable) return;
 
                 injectStyles();
+                if (!SOURCE) styleCairoReportGrid(reportTable);
 
                 const selectedDayCode = getSelectedDayOffCode();
                 const selectedDayOffFullName = getSelectedDayOffFullName(selectedDayCode);
