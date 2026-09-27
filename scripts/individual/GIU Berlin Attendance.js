@@ -10,7 +10,7 @@
 // @match       https://apps.guc.edu.eg/external/tempprojects/swiftreports.aspx*
 // @match       https://apps.guc.edu.eg/External/TempProjects/SwiftReports.aspx*
 // @namespace   Cyn0
-// @version     1.0.1
+// @version     1.0.2
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js
 // @author      Mo.Elmaadawy
@@ -536,7 +536,17 @@ function decorateReportGrid(grid) {
     const kinds = Array.from(rows[headIndex].cells).map(c => gridColumnKind(gridCellText(c)));
     rows.forEach((r, i) => {
         const cells = Array.from(r.cells);
-        if (i === headIndex) r.classList.add('gius-berlin-grid-head');
+        if (i === headIndex) {
+            r.classList.add('gius-berlin-grid-head');
+            // Header cells on Cairo's grid are sort links (__doPostBack): a
+            // click reloads the page and the report is gone. Keep the text,
+            // drop the link, so headers read as plain header labels.
+            r.querySelectorAll('a').forEach(a => {
+                const label = document.createElement('span');
+                label.textContent = a.textContent;
+                a.replaceWith(label);
+            });
+        }
         // Cairo's pager rows ("<Previous Next>"): the report fits one page,
         // so drop them rather than show a stub row.
         else if (i < headIndex || cells.length !== kinds.length) { r.remove(); return; }
