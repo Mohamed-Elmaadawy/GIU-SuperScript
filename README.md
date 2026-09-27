@@ -1,579 +1,172 @@
 # GIU SuperScript
 
-A collection of Tampermonkey userscripts that enhance the GIU staff portal at [portal.giu-uni.de](https://portal.giu-uni.de). Each script injects UI directly into the portal page and feels native to the original design.
+Browser add-ons (Tampermonkey userscripts) that add useful tools to the GIU staff portal: an attendance dashboard, teaching and proctoring widgets, batch grade upload, batch email and more. Everything appears inside the portal pages you already use.
+
+Works on the **Cairo portal** ([portal.giu-uni.de](https://portal.giu-uni.de)) and the **Berlin portal** ([portal.giu-berlin.de](https://portal.giu-berlin.de)).
+
+**Contents:** [Which script do I need?](#which-script-do-i-need) · [Install](#install) · [Features](#features) · [Berlin portal](#berlin-portal) · [Troubleshooting](#troubleshooting) · [Feedback](#feedback)
 
 ---
 
-## Suggestions & Feedback
+## Which script do I need?
 
-For suggestions, bug reports, or feature requests, send an email to [mohamed.elmaadawy@giu-uni.de](mailto:mohamed.elmaadawy@giu-uni.de).
+| You work on… | Install | Optional |
+| --- | --- | --- |
+| **Cairo portal** | [GIU SuperScript](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js) — all Cairo features in one script | [GIU Theme](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Theme.js) — light/dark themes |
+| **Berlin portal** | [GIU Berlin SuperScript](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Berlin%20SuperScript.js) — the Berlin features in one script | — |
+| **Both** | Both SuperScripts — they run on different portals, so they don't clash | GIU Theme |
 
----
+Each SuperScript has a **Control Center** card on the portal Home page where you can switch individual features on or off.
 
-## Installation
+> **One rule:** per portal, install the SuperScript **or** the single-feature scripts below — never both. Both would add every widget twice.
 
-### Step 1 — Install Tampermonkey
+<details>
+<summary><b>Single-feature scripts</b> (only if you want just one feature)</summary>
 
-| Browser | Link |
-| --- | --- |
-| Chrome / Edge / Brave | [Tampermonkey on Chrome Web Store](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) |
-| Firefox | [Tampermonkey on Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/) |
-| Safari | [Tampermonkey on App Store](https://apps.apple.com/us/app/tampermonkey/id1482490089) |
+| Script | Version | Portal | Install |
+| --- | --- | --- | --- |
+| Staff Enhanced Attendance | 3.2.7 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js) |
+| Berlin Attendance | 1.0.0 | Berlin | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js) |
+| Teaching Load | 1.1.4 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Teaching%20Load.js) |
+| Proctoring Reminder | 1.1.4 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Proctoring%20Reminder.js) |
+| Not Entered Sessions | 1.1.2 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Not%20Entered%20Sessions.js) |
+| Student Attendance Report | 1.3.1 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Student%20Attendance%20Report.js) |
+| Upload Grades | 2.4.2 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Upload%20Grades.js) |
+| Manage Group Grades | 1.5 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Manage%20Group%20Grades.js) |
+| Notification Batch Send | 1.4.1 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Notification%20Batch%20Send.js) |
 
-### Step 2 — Install a Script
+The bundles: GIU SuperScript **1.3.6**, GIU Berlin SuperScript **1.0.0**, GIU Theme **1.0.2**.
 
-Choose **one** install mode:
-
-- **Recommended:** install `GIU SuperScript.js` for the all-in-one bundle, then install `GIU Theme.js` separately if you want theming.
-- **Alternative:** install individual scripts one by one.
-
-Do **not** install `GIU SuperScript.js` and the old individual feature scripts at the same time. They match the same portal pages and will create duplicate widgets, duplicate buttons, and duplicate handlers. `GIU Theme.js` is the only script that intentionally stays separate.
-
-**Berlin staff:** `GIU Berlin Attendance.js` runs on the Berlin portal (`portal.giu-berlin.de`), a different site from every other script here, so it can be installed alongside `GIU SuperScript.js` without duplicates. It also matches the Cairo sign-in pages (GIU `Home.aspx`, the GUC report page), but stays inert there except inside its own sign-in popup, so it never adds anything to your Cairo portal.
-
-On the Berlin portal install **GIU Berlin SuperScript** OR **GIU Berlin Attendance**, never both (both run on portal.giu-berlin.de). It works alongside the Cairo GIU SuperScript.
-
-**Option A — Paste the script manually:**
-
-1. Open Tampermonkey → click the extension icon → **Dashboard**
-2. Click **+** (Create a new script)
-3. Delete the placeholder code
-4. Open the `.js` file from this repo, copy all contents, paste into the editor
-5. Press **Ctrl + S** (or **File → Save**) — the script is now active
-
-**Option B — Install from file:**
-
-1. Open Tampermonkey → **Dashboard** → **Utilities** tab
-2. Under **Import**, click **Choose File** and select the `.js` file
-3. Click **Install** on the confirmation page
-
-### Step 3 — Verify
-
-After saving, go to the target page listed for each script below. A new panel or toolbar should appear automatically. No page refresh needed if you were already on the page — navigate away and back once.
-
-### Step 4 — Auto-updates
-
-Every script carries `@updateURL` and `@downloadURL` pointing at this repo, so Tampermonkey **checks for new versions and updates them automatically** — you don't need to re-paste when a script changes.
-
-- Updates trigger only when the repo's `@version` is higher than your installed copy. Tampermonkey checks periodically (configurable in **Settings → check interval**), or you can force it now via **Dashboard → Utilities → "Check for userscript updates"**.
-- **Manually-pasted copies (Option A) don't auto-update** until they know the update URL. To enable it, reinstall the script once so the `@updateURL`/`@downloadURL` headers are registered — the simplest way is to open the raw `.js` file on GitHub (the **Raw** button) and let Tampermonkey prompt to install. After that one reinstall, all future versions arrive automatically.
+</details>
 
 ---
 
-## Scripts
+## Install
 
-### GIU SuperScript — All-in-one bundle
+1. **Install Tampermonkey** for your browser: [Chrome / Edge / Brave](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) · [Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/) · [Safari](https://apps.apple.com/us/app/tampermonkey/id1482490089)
+2. **Click the install link** for your script in the table above. Tampermonkey opens an install page — click **Install**.
+3. **Open the portal** (or reload it). The new widgets appear on their pages; see [Features](#features) for where.
 
-**File:** `GIU SuperScript.js` | **Version:** 1.3.6 | **Author:** Mo.Elmaadawy
+**Updates are automatic.** Tampermonkey checks for new versions regularly. To check now: Tampermonkey **Dashboard → Utilities → Check for userscript updates**.
 
-The all-in-one userscript that bundles every feature script below except GIU Theme and GIU Berlin Attendance. It also adds a **Control Center** card on the portal Home page where you can turn bundled modules on or off.
+<details>
+<summary>Installed by copy-pasting the code?</summary>
 
-**Target pages:**
+A pasted copy doesn't auto-update. Reinstall it once from the install link above; after that, updates arrive automatically.
 
-```text
-https://portal.giu-uni.de/*
-```
-
-**Bundled modules:**
-
-- Staff Enhanced Attendance
-- Notification Batch Send
-- Upload Grades
-- Manage Group Grades
-- Student Attendance Group Report
-- Proctoring Reminder
-- Proctor Schedule Aggregator
-- Teaching Load
-- Not Entered Sessions
-
-**Working at GIU Berlin?** Use the Berlin scripts (below). The Cairo scripts
-always use the Cairo week (Friday off); the Berlin scripts always use the Berlin
-week (Sunday off) — for compensation weeks and status labels alike. If you moved
-from Cairo to Berlin, the **setup wizard** (see Staff Enhanced Attendance) asks for
-your first day at the Berlin branch when you run the Berlin script. Days before that
-date use the Cairo weekend rule, so a report spanning the move is calculated correctly.
-
-Your weekly day off is never guessed: until you set it via the setup wizard, the
-Home widget shows a **Set your day off** prompt and greys out the numbers.
-
-The SuperScript runs on the Cairo portal (`portal.giu-uni.de`) only. Berlin's own
-report page returns a server error, so Berlin staff either read their attendance
-on the Cairo portal, or install [GIU Berlin Attendance](#11-giu-berlin-attendance),
-which brings the same widget and full report to the Berlin portal by reading the
-timesheet from Cairo in the background.
-
-**Important:** install this **OR** the individual feature scripts, never both. Keep `GIU Theme.js` separate because it needs to run at `document-start` to prevent flash-of-unstyled-content.
+</details>
 
 ---
 
-### 1. GIU Theme
+## Features
 
-**File:** `GIU Theme.js` | **Version:** 1.0.2 | **Author:** Mo.Elmaadawy
+**Available in:** 🅒 GIU SuperScript (Cairo) · 🅑 GIU Berlin SuperScript (Berlin)
 
-A portal-wide theming engine. Choose from four modes via an expanding side-tab picker fixed to the right edge of every portal page: **Off** (native portal, untouched), **Light**, **Slate** (default dark, GitHub-neutral greys), and **Plum** (pink/feminine accent palette). Each on-mode recolours the portal and the injected SuperScript widgets to a matching palette. Built entirely on CSS variables; runs at `document-start` so there is no flash of unstyled content. (A fuller structural reskin — typography, spacing, restyled components — is planned for a later release.)
+### Attendance — 🅒 🅑
 
-> **Reinstall notice:** this script replaces the old "GIU Dark Mode" script. If you had `GIU Dark Mode.js` installed, please remove it and install `GIU Theme.js` once from the link below — the old auto-update URL no longer exists so Tampermonkey cannot migrate you automatically. After that one install, all future updates arrive automatically. Like its predecessor, `GIU Theme.js` must be installed **separately** from `GIU SuperScript.js` (it needs `document-start`; SuperScript runs later).
+**Staff Enhanced Attendance** turns the gate-attendance report into a dashboard:
 
-**Install:** [GIU Theme.js (raw)](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Theme.js)
+- **Home widget** with this payroll month's worked vs required hours, balance, and absent days (one click to file an absent day as holiday, annual leave or compensation).
+- **Full report** with both payroll months (11th → 10th), late arrivals, audit log, and progress bars.
+- **Settings** for holidays and annual leave (ranges supported), leave balance with monthly accrual, attendance overrides (missions, missing punches), compensation days, Ramadan and exam periods.
+- **Backup:** export/import all settings as a `.json` file.
 
-**Target pages:**
+![Attendance dashboard](screenshots/attendance.gif)
 
-```text
-https://portal.giu-uni.de/*
-```
+**First-run setup.** The first time you open it, a short wizard sets everything up — no need to touch the settings:
 
-**Features:**
+1. Import a settings file from before (optional — skips the rest).
+2. *(Berlin only)* The date you started at the Berlin branch.
+3. Your weekly day off.
+4. Whether your day off changed in the last 2 months (then: the previous day and the date it changed).
+5. Remaining annual leave days.
+6. Leave days earned per month (pre-filled).
+7. Download a backup of your settings, then **Finish**.
 
-- **Four modes** — Off / Light / Slate / Plum, selected via an expanding side-tab picker on the right edge of every page
-- **Persists across pages** — preference saved in `localStorage`, applied before first paint (no flash of unstyled content)
-- **CSS variable architecture** — all colour tokens defined once; switching modes swaps the token set instantly
-- **Full co-script coverage** — all other GIU SuperScript panels and widgets inherit the active theme palette automatically
-- **Legacy migration** — if you had "GIU Dark Mode" set to on, the script migrates your preference to Slate mode automatically
+You can **Skip** at any step; **Settings → Run setup again** reopens it any time. Your day off is never guessed — until it's set, the Home widget shows **Set your day off**.
 
-<!-- TODO: replace with Slate/Plum/Light screenshots after live capture -->
+Where it appears: Cairo — Home page and the [attendance report](https://portal.giu-uni.de/GIUb/EXT/SwiftReports_m.aspx?swiftreportid=866&executereport=1). Berlin — Home page and **My Attendance** in the sidebar (see [Berlin portal](#berlin-portal)).
 
----
+### Teaching & exams
 
-### 2. GIU Staff Enhanced Attendance
+**Teaching Load** — 🅒 · Home page. Today's sessions at the top, the full week below, with course names (not codes), period slot and room.
 
-**File:** `GIU Staff Attendance Script.js` | **Version:** 3.2.7 | **Author:** Mo.Elmaadawy
+**Proctoring Reminder** — 🅒 🅑 · Home page. Your next proctoring/supervising duty with countdown, hall and time; the remaining exams on expand; add any session (or all) to your calendar (`.ics`, Google Calendar) or email yourself a reminder.
 
-A full attendance management dashboard injected above the Swift Report attendance table. Tracks your hours, leave balance, and exceptions — all stored locally in your browser.
+**Proctor Schedule Aggregator** — 🅒 · Proctor Exchange page. All proctor assignments across departments in one searchable, filterable table; **Take** a colleague's duty directly (with the portal's confirmation step).
 
-**Target pages:**
+**Not Entered Sessions** — 🅒 · Home page. Lists Regular sessions 1–21 days old with no attendance entered yet; click one to open it on the attendance page, already selected. Hidden when there's nothing to enter.
 
-```text
-https://portal.giu-uni.de/*
-```
+**Student Attendance Report** — 🅒 · Manage Student Attendances page. For the selected group: absence level per student (Level 0 → 3 / drop), group averages, and an at-risk list you can expand to see the missed sessions.
 
-The dashboard itself renders on the Cairo Swift Report page:
+| Teaching Load | Proctoring Reminder | Not Entered Sessions |
+| --- | --- | --- |
+| ![Teaching Load](screenshots/teaching-load.png) | ![Proctoring Reminder](screenshots/proctoring-reminder.png) | ![Not Entered Sessions](screenshots/not-entered-sessions.png) |
 
-```text
-https://portal.giu-uni.de/GIUb/EXT/SwiftReports_m.aspx?swiftreportid=866&executereport=1
-```
+### Grades
 
-**Features:**
-
-- **Payroll period tracking** — groups rows into monthly periods (11th → 10th of next month)
-- **Balance summary** — actual vs. required hours, progress bar, extra/missing balance
-- **Present / Absent / Late tracking** — late threshold: 10:30 AM normal, 9:30 AM Ramadan
-- **Holiday & Annual Leave** — add single dates or ranges, bulk remove, deduplication
-- **Annual leave balance** — editable remaining days (supports decimals), auto-accrues +2 days per payroll month
-- **Attendance overrides** — custom hours for mission days, IN/OUT anomalies, etc.
-- **Compensation days** — earn by working your weekly day off (capped 1/week) *or* the fixed weekend day itself; these are separate, so a week with both earns two. Use within the same period
-- **Ramadan mode** — reduced required hours (6h), adjusted thresholds
-- **Exam period** — configurable last-out time cap override
-- **Conflict detector** — flags dates marked as both holiday and override/compensation
-- **Audit log** — per-day status and reason (Present, Absent, Holiday, Day Off, etc.)
-- **Import / Export** — full settings backup and restore as JSON
-- **Onboarding guide** — first-time spotlight walkthrough for all features
-- **Auto record pruning** — cleans records older than 2 payroll months
-- **Home-page summary** — a current-payroll-month card (worked vs required, balance, present/absent, absent-day list) on the portal Home page, in the Proctoring Reminder style; theme-aware.
-
-![Attendance Dashboard](screenshots/attendance.gif)
-
-**First-run setup:**
-
-On first visit (or when no day off is set), a **setup wizard** opens automatically. It asks:
-
-1. **Settings import** — if you have a settings `.json` file from a previous installation, upload or paste it; if it contains a day off, the wizard finishes there; otherwise, continue.
-2. **Day off** — required, choose one weekday for your consistent weekly rest day (applies from a date you pick).
-3. **Day-off changes** — if your rest day changed in the last 2 months, provide the previous day and the date you switched; otherwise, skip.
-4. **Annual leave balance** — your remaining days (decimals allowed).
-5. **Monthly accrual** — days you earn per payroll month (pre-filled with your current setting).
-6. **Backup & finish** — download or copy your settings as JSON, then click Finish to save and activate.
-
-You can **Skip** the wizard at any step — it won't reopen automatically, but Settings keeps a **Run setup again** button to restart it. The Home page shows **Set your day off** when none is configured.
-
-**Usage:**
-
-1. Navigate to the Swift Report page (link above)
-2. The attendance dashboard appears above the report table
-3. On first visit, the setup wizard launches automatically
-4. Once configured, add holidays, overrides, and compensation days as needed in Settings
-5. Use **Export Settings** to back up your configuration before clearing browser data
-
----
-
-### 3. GIU Notification Batch Send
-
-**File:** `GIU Notification Batch Send.js` | **Version:** 1.4.1 | **Author:** Mo.Elmaadawy
-
-Sends the same email notification to multiple tutorial groups in sequence. Write subject and body once — the script steps through each selected group using a localStorage queue and page reloads.
-
-**Target page:**
-
-```text
-https://portal.giu-uni.de/GIUb/INTStaff/NotificationSystem_SendEmail_m.aspx
-```
-
-**Features:**
-
-- **Batch send** — select all groups or a specific subset, then send to all in one click
-- **Course filter** — filter the group list by course name or code (e.g. "Distributed & Web-based Systems") when you teach multiple courses
-- **Course name display** — groups show full course name instead of raw codes (e.g. `Distributed & Web-based Systems - 4INF2 (Practical)`)
-- **Select All** — respects the active course filter, only selects visible groups
-- **Progress tracking** — live banner updates after each group is processed
-- **Summary table** — shows sent / failed status per group when the batch completes
-
-![Notification Batch Send](screenshots/notification-batch-send.gif)
-
-**Usage:**
-
-1. Navigate to the Send Email page (link above)
-2. The batch panel loads above the standard email form
-3. *(Optional)* Use the course filter dropdown to narrow the group list to one course
-4. Select the groups you want to notify (or click **Select All**)
-5. Write your subject and body in the fields provided
-6. Click **Send to Selected Groups** — the script sends group by group and reports results
-
-> **Note:** The script uses page reloads to submit each group's form. Keep the tab open until the batch completes.
-
----
-
-### 4. GIU Upload Grades
-
-**File:** `GIU Upload Grades.js` | **Version:** 2.4.2 | **Authors:** Ahmed Sherif, Mo.Elmaadawy
-
-Batch grade download and upload across all student groups on the Manage Uploaded Grades page. Runs entirely in the background via fetch — no page reloads between groups.
-
-**Target pages:**
-
-```text
-https://portal.giu-uni.de/GIUb/EXT/ManageUploadedGrades_m.aspx
-```
-
-**The script works in two states depending on where you are on the page:**
-
-**State A — Dropdowns visible (before grade table):**
-
-A toolbar is injected with a custom evaluation method picker. Selecting from it keeps you on the same page.
-
-- **Batch Download** — iterates every group, downloads one combined CSV (Name, Group, Grade)
-- **Batch Upload** — load a CSV file, then push grades to every group automatically
-- **Grade statistics** per group — Min, Max, Average, Range, Pass Rate displayed after each operation
-
-**State B — Grade table visible (after selecting group + eval):**
-
-- **Upload CSV** — fills current group's grade inputs from a CSV file
-- **Download CSV** — exports current group's grades as a CSV file
-
-**CSV format:**
+**Upload Grades** — 🅒 🅑 · Manage Uploaded Grades page. Download all groups' grades as one CSV, or upload one CSV to every group in one go; per-group statistics (min, max, average, pass rate). Single-group upload/download too.
 
 ```csv
 Name,Group,Grade
 (12345678) Ahmed Mohamed,INCS 406 - 4INF2 (Practical),85
-(87654321) Sara Ali,INCS 406 - 4INF2 (Practical),90
 ```
 
-Grades are matched by student ID `(XXXXXXXX)` prefix — safe against row reordering.
+Students are matched by the ID in brackets, so row order doesn't matter.
 
-![Upload Grades — Toolbar (before selection)](screenshots/upload-grades-before.gif)
+![Upload Grades](screenshots/upload-grades-before.gif)
 
-**Usage:**
+**Manage Group Grades** — 🅒 · Manage Group Grade page. CSV upload/download and statistics for the selected group, appearing once the grade table is shown.
 
-*Batch Download:*
+### Communication
 
-1. Navigate to the Manage Uploaded Grades page
-2. Select course and group from the dropdowns
-3. Pick the evaluation method from the toolbar's eval picker
-4. Click **Batch Download** — a combined CSV downloads when all groups finish
+**Notification Batch Send** — 🅒 🅑 · Send Email page. Write one message and send it to several tutorial groups in sequence, with a course filter, progress banner and a sent/failed summary. Keep the tab open until it finishes.
 
-*Batch Upload:*
+![Notification Batch Send](screenshots/notification-batch-send.gif)
 
-1. Complete steps 1–3 above
-2. Click **Load CSV** and pick your filled-in grades file
-3. Click **Batch Upload** — grades upload group by group; progress shown in the toolbar
+### Appearance — separate script
 
-*Single group:*
+**GIU Theme** · every Cairo portal page. A picker on the right edge switches between **Off**, **Light**, **Slate** (dark) and **Plum**. The portal and all SuperScript widgets follow the theme. Install it next to the SuperScript (it's separate on purpose — it must load before the page).
 
-1. Navigate to the grade table for your group (via the page dropdowns)
-2. Use **Upload CSV** to fill grades from a file, or **Download CSV** to export
+> Replaces the old "GIU Dark Mode" script: remove that one and install GIU Theme once.
+
+| Light | Dark |
+| --- | --- |
+| ![Home light](screenshots/dark-mode-home-light.png) | ![Home dark](screenshots/dark-mode-home-dark.png) |
 
 ---
 
-### 5. GIU Manage Group Grades
+## Berlin portal
 
-**File:** `GIU Manage Group Grades.js` | **Version:** 1.5 | **Author:** Mo.Elmaadawy
+Staff of **GIU and GUC** in Berlin use the Berlin portal, but the attendance timesheet only exists on each university's **Cairo** portal. The Berlin scripts read it from Cairo for you.
 
-CSV upload/download buttons on the Manage Group Grade page (per-group grade entry, separate from the uploaded grades flow). The panel only appears after you have selected a season, course, group, and evaluation method — i.e., when the student grade table is actually visible.
-
-**Target page:**
-
-```text
-https://portal.giu-uni.de/GIUb/INTStaff/ManageGroupGrade_m.aspx
-```
-
-**Features:**
-
-- **Upload Grades CSV** — fills grade inputs by matching student ID — safe against row reordering
-- **Download Grades CSV** — exports student names and current grade values to CSV
-- **Grade statistics** — Min, Max, Average, and Range computed from current grade inputs
-- **Auto-hide** — panel is hidden until the grade table is present; disappears if you change selection
-
-**Usage:**
-
-1. Navigate to the Manage Group Grade page
-2. Select Season → Course → Group → Evaluation Method from the page dropdowns
-3. The grade panel appears above the table once student data loads
-4. Click **Download CSV** to export current grades, or **Upload CSV** to fill grades from a file
-5. Statistics update automatically based on the values in the table
-
-> **Note:** Upload matches by student ID `(XXXXXXXX)` prefix in the Name column — safe against row reordering. Students missing from the CSV keep their current grade value.
+- **Once per browser session, you need to be signed in to your Cairo portal** (GIU or GUC — your Cairo account may differ from your Berlin account). When you're not, the widget shows **Sign in to Cairo**: a small window opens with the browser's own login box, and closes itself when you're done. The script never asks for or stores your password.
+- **First run:** choose **GIU** or **GUC**, then the setup wizard (above) runs, including your Berlin start date.
+- **Full report:** sidebar **My Attendance**, or **View full report** in the widget. **Switch University** changes GIU/GUC later.
+- The Berlin week always has **Sunday** off; days before your Berlin start date follow the Cairo week (Friday off).
+- On Home, the **Session** and **NoUserName** cards are hidden while their count is 0.
+- Tested on Chrome. Settings on Berlin are separate from those on Cairo.
 
 ---
 
-### 6. GIU Student Attendance Group Report
+## Troubleshooting
 
-**File:** `GIU Student Attendance Report.js` | **Version:** 1.3.1 | **Author:** Mo.Elmaadawy
+| Problem | Fix |
+| --- | --- |
+| A widget appears twice | You have the SuperScript **and** a single-feature script for the same portal. Remove one. |
+| Nothing appears | Check the script is enabled in Tampermonkey, then reload the page. Make sure you're on the page listed under [Features](#features). |
+| Berlin: "Not signed in to … Cairo" | Click **Sign in to Cairo**, sign in, and the widget reloads. |
+| Berlin: the sign-in window doesn't open | Allow pop-ups for `portal.giu-berlin.de`. Until then the button opens Cairo in a new tab — sign in there, then press **Retry**. |
+| Attendance numbers are grey | Your day off isn't set yet — click **Set your day off**. |
+| Moving to a new computer/browser | In attendance **Settings**, export your settings (`.json`); on the new browser, import it in the first-run wizard. |
+| Want a feature off | Use the **Control Center** card on the portal Home page. |
 
-Auto-scrapes all session attendance for the selected group and displays an absence-level summary panel above the student table. Runs entirely in the background via parallel fetch requests — no page reloads.
-
-**Target page:**
-
-```text
-https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx
-```
-
-**Features:**
-
-- **Auto-trigger** — panel appears automatically when a group is selected; no manual action required
-- **Full-group scrape** — fetches all sessions in parallel (up to 5 concurrent requests) using the page's ASP.NET VIEWSTATE
-- **Hour-weighted absence rates** — weights each session by its contact-hour duration to match the portal's calculation approach
-- **On Hold / Compensation sessions** — included in the denominator with zero absences, matching portal behavior
-- **Unrecorded session detection** — sessions where all students are unchecked are excluded from calculations automatically
-- **Absence level classification** — Level 0 (< 10%), Level 1 (≥ 10%), Level 2 / Second Warning (≥ 20%), Level 3 / Drop (> 25%)
-- **Group stats** — total students, level distribution, group average absence rate
-- **At-risk list** — Level 2+ students shown in a table with name, ID, absent hours, and absence percentage
-- **Click to expand** — click any at-risk row to see the list of sessions the student was absent from
-- **Cache** — results cached in `localStorage` for 30 minutes; loads instantly on page reload
-- **Refresh button** — clears cache and re-scrapes on demand
-
-**Usage:**
-
-1. Navigate to the Manage Student Attendances page
-2. Select a group from the dropdown — the page reloads and the report panel appears automatically
-3. The panel scrapes all sessions in the background and displays group stats and at-risk students when done
-4. Click any at-risk row to expand and see which sessions that student missed
-5. Click **Refresh** to force a fresh scrape
+**Requirements:** Tampermonkey 4.x or later; Chrome, Edge, Brave or Firefox (the Berlin scripts are tested on Chrome); an active portal login.
 
 ---
 
-### 7. GIU Proctor Schedule Aggregator
+## Feedback
 
-**File:** `GIU Proctor Schedule Aggregator.js` | **Version:** 2.2.16 | **Author:** Mo.Elmaadawy
+Suggestions, bugs or feature requests: [mohamed.elmaadawy@giu-uni.de](mailto:mohamed.elmaadawy@giu-uni.de)
 
-Aggregates all proctor exam assignments across departments into one searchable dashboard on the Proctor Exchange page.
-
-**Target pages:**
-
-```text
-https://portal.giu-uni.de/GIUb/INTStaff/ProctorExchange_m.aspx
-```
-
-**Features:**
-
-- **One dashboard** — fetches and combines proctor schedules across departments
-- **Fetch controls** — start, pause, and resume long schedule scrapes
-- **Fetch by department** — type a department in the header box (typo-tolerant, with live suggestions) to scope a fetch to it, or leave it blank for all; it mirrors and pre-fills whatever you picked in the portal's own dropdown
-- **Filters and sorting** — inspect schedules by staff, course, date, hall, and role
-- **Typo-tolerant search** — fuzzy matching with live dropdown suggestions on every filter
-- **Take (Proctoring Exchange)** — take over a colleague's exam directly from the dashboard, with the portal's own confirmation step replicated in a modal; re-checks the live cover first so you never take one already gone
-- **Cache** — stores the latest scraped result in `localStorage`
-- **Import / Export** — move cached schedule data through CSV/file workflows
-- **Session warning** — flags expired sessions and asks you to reload when needed
-
-**Usage:**
-
-1. Navigate to the Proctor Exchange page
-2. Click **View All Proctor Schedules**
-3. Click **Fetch** to scrape schedules, or use cached/imported data
-4. Filter, sort, and export the combined view as needed
-5. Click **Take** on any row to replace that proctor — tick the confirmation checkbox and proceed, exactly like the portal's own exchange flow
-
----
-
-### 8. GIU Proctoring Reminder
-
-**File:** `GIU Proctoring Reminder.js` | **Version:** 1.1.4 | **Author:** Mo.Elmaadawy
-
-Shows your next proctoring session on the portal home page and exports reminders to `.ics`, Google Calendar, or email. Fetches your timetable in the background, caches it for 6 hours, and renders a full-width widget directly under the **Target List** block.
-
-| Light                                                             | Dark (with GIU Theme)                                                 |
-| ----------------------------------------------------------------- | --------------------------------------------------------------------- |
-| ![Proctoring Reminder light](screenshots/proctoring-reminder.png) | ![Proctoring Reminder dark](screenshots/proctoring-reminder-dark.png) |
-
-**Target pages:**
-
-```text
-https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
-```
-
-**Features:**
-
-- **Next session, highlighted** — prominent card with course code, exam name, full start–end time, hall, and a friendly countdown (**ongoing** / **today** / **tomorrow** / "in N days"). A duty already in progress stays shown until it ends. Labelled **Supervising** for supervisor duties, otherwise **Proctoring**
-- **All duties on that day** — if you have more than one duty on the next session's day, every one is shown
-- **Control room** — shown only for supervisor duties (where it's relevant)
-- **Covering badge** — cover duties (exams you took from a colleague) are tagged "Covering"; your own duties are shown plain
-- **Theme-aware** — when GIU Theme is active, the widget switches to a matching palette automatically
-- **Hall-first titles** — each session title leads with the course code and **hall** (where you need to be); the exam name sits on the detail line
-- **Remaining exams** — expand (animated slide) to see the exams left *after* the next session's day, each labelled Supervising/Proctoring with its full start–end time (12-hour AM/PM)
-- **Export per session** — **Download event** (`.ics`), open in **Google Calendar**, or send a reminder **Email** for any individual session
-- **Download all** — one `.ics` file containing all upcoming sessions, each with dual alarms (1 day and 1 hour before)
-- **6-hour cache** — schedule fetched once and cached in `localStorage`; stale data shown with an "offline cache" label until refresh
-
-**Usage:**
-
-1. Navigate to the GIU staff portal Home page
-2. The widget appears automatically under the Target List
-3. Click **Remaining exams** to expand the list of later sessions
-4. Use the export buttons next to any session to add it to your calendar or send yourself a reminder
-5. Click **Download all** to download all upcoming sessions in one calendar file
-
-**Empty state** (no upcoming proctoring):
-
-| Light                                                           | Dark                                                                |
-| --------------------------------------------------------------- | ------------------------------------------------------------------- |
-| ![Empty state light](screenshots/proctoring-reminder-empty.png) | ![Empty state dark](screenshots/proctoring-reminder-empty-dark.png) |
-
-### 9. GIU Teaching Load
-
-**File:** `GIU Teaching Load.js` | **Version:** 1.1.4 | **Author:** Mo.Elmaadawy
-
-Shows your teaching schedule on the portal Home page — today's sessions highlighted
-at the top, plus your full week in an expandable list. Each session shows the period
-slot, the course, and the room. Fetches your schedule in the background via a hidden
-iframe and caches it for 6 hours.
-
-| Light                                                 | Dark (with GIU Theme)                                     |
-| ----------------------------------------------------- | --------------------------------------------------------- |
-| ![Teaching Load light](screenshots/teaching-load.png) | ![Teaching Load dark](screenshots/teaching-load-dark.png) |
-
-**Target page:**
-
-```text
-https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
-```
-
-**Features:**
-
-- **Auto** — derives your own name from the notification page and looks it up in the
-  schedule directory; no configuration
-- **Today highlighted** — today's sessions shown prominently at the top
-- **Full week** — every teaching day grouped into a per-day card; sessions laid out
-  as side-by-side tiles, in one expandable list
-- **Course names** — shows the full course name instead of the raw code
-  (e.g. *Distributed & Web-based Systems* instead of `INCS 406`)
-- **Slot & room emphasis** — the period slot is a badge and the room is shown with a
-  pin marker so the where/when stands out at a glance
-- **Theme-aware** — matches the active GIU Theme palette automatically
-- **6-hour cache** — schedule cached in `localStorage`; stale data shown with an
-  "offline cache" label until refresh
-
-**Usage:**
-
-1. Navigate to the GIU staff portal Home page
-2. The widget appears at the top automatically
-3. Click **All sessions** to expand the full week, grouped by day
-
----
-
-### 10. GIU Not Entered Sessions
-
-**File:** `GIU Not Entered Sessions.js` | **Version:** 1.1.2 | **Author:** Mo.Elmaadawy
-
-Shows any **Regular** (not "On Hold") attendance session that's 1–21 days overdue with no attendance entered yet, right on the portal Home page — useful when the Manage Student Attendances page itself is unreachable from your network. Enumerates your sessions with a single background request, then checks up to 8 candidates per page load, caching results in `localStorage` with a daily refresh.
-
-| Light                                                               | Dark (with GIU Theme)                                                   |
-| ------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| ![Not Entered Sessions light](screenshots/not-entered-sessions.png) | ![Not Entered Sessions dark](screenshots/not-entered-sessions-dark.png) |
-
-**Target pages:**
-
-```text
-https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
-https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx
-```
-
-**Features:**
-
-- **Overdue detection** — flags Regular sessions 1–21 days past their date with no attendance saved; On Hold sessions are ignored
-- **Course names, not codes** — each row shows the full course name, group, date, and slot
-- **One-click deep link** — clicking a row opens the attendance page with that exact session auto-selected (no manual dropdown hunting)
-- **Oldest first** — sorted so the longest-overdue sessions surface at the top
-- **Capped, cached checks** — verifies up to 8 sessions per page load, prioritizing never-checked sessions first, then stale rechecks; already-entered sessions are never rechecked
-- **Zero clutter when clear** — if nothing's unentered, the widget doesn't render at all
-- **Theme-aware** — matches the active GIU Theme palette automatically
-- **Click-through** — each row links to the Manage Student Attendances page (can't deep-link the exact session — WebForms selection is postback-only — but gets you to the right page)
-
-**Usage:**
-
-1. Navigate to the GIU staff portal Home page
-2. The widget appears automatically if any Regular session is overdue and unentered
-3. Click a row to open the Manage Student Attendances page
-
----
-
-### 11. GIU Berlin Attendance
-
-**File:** `GIU Berlin Attendance.js` | **Version:** 1.0.0 | **Author:** Mo.Elmaadawy
-
-Brings the full Staff Enhanced Attendance experience to the **Berlin** portal for both **GIU and GUC** staff. The timesheet still lives only on your university's Cairo portal, so this script reads it from there in the background — no second portal tab needed.
-
-**Target pages:**
-
-```text
-https://portal.giu-berlin.de/GIUb/INTStaff/Home.aspx                    (widget)
-https://portal.giu-berlin.de/GIUb/INTStaff/Home.aspx#gius-attendance    (full report)
-https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx                       (sign-in popup only)
-https://{staff,intranet,apps}.guc.edu.eg/external/tempprojects/swiftreports.aspx   (sign-in popup only)
-```
-
-**Setup (once):**
-
-1. Install the script. Tampermonkey's install page lists the Cairo hosts this script may contact (`portal.giu-uni.de` for GIU, the `guc.edu.eg` hosts for GUC); no access prompt is expected.
-2. In the **same browser**, sign in to your Cairo portal once (GIU: `https://portal.giu-uni.de`; GUC: your staff portal). Your Berlin and Cairo accounts are separate — the script never asks for, stores, or sends a password.
-3. Open the Berlin Home page and pick **GIU** or **GUC** when asked.
-
-**First-run setup:**
-
-See **GIU Staff Enhanced Attendance → First-run setup** above. The Berlin script's wizard also asks when you started at the Berlin branch (if after arrival in Berlin).
-
-**Features:**
-
-- **Home widget** — this payroll month's balance, exactly like the Cairo widget
-- **Full report** — sidebar **My Attendance** (or the widget's "View full report") opens summaries, settings, compensation and the timesheet itself inside the Berlin portal
-- **Switch University** — change GIU/GUC any time from the full report
-- **Berlin week** — always Sunday off; the setup wizard configures your day off and Berlin start date
-- **Clear errors** — "Not signed in", "Couldn't reach", "portal error", "page changed" each get their own card with **Retry**, plus **Sign in to Cairo** where a login helps; nothing retries on its own
-- **Popup sign-in** — **Sign in to Cairo** opens a small popup showing Chrome's own login prompt. Once you're signed in it closes itself and the widget refreshes (one new attempt; closing the popup yourself does the same). Your password only goes into Chrome's prompt; the script never sees or stores it
-
-**Notes:**
-
-- Settings here are separate from the Cairo portal's (browser storage is per site).
-- Verified on Chrome/Chromium only.
-- If your Cairo login expires (e.g. after restarting the browser), use **Sign in to Cairo**.
-- If Chrome blocks the popup, allow popups for `portal.giu-berlin.de`; until then the button falls back to opening Cairo in a new tab — sign in there, then press **Retry**.
-- On the Cairo sign-in pages the script does nothing except inside its own sign-in popup, so it is still fine alongside `GIU SuperScript.js`.
-
----
-
-### 12. GIU Berlin SuperScript — Berlin all-in-one
-
-**File:** `GIU Berlin SuperScript.js` | **Version:** 1.0.0 | **Author:** Mo.Elmaadawy
-
-Everything the Berlin portal supports in one script: **Staff Attendance** (your Cairo timesheet on Berlin — see GIU Berlin Attendance for setup), **Upload Grades**, **Proctor Reminder** and **Notification Batch**, with the same Control Center (Home) to switch each on or off and the same first-run setup wizard as the Cairo SuperScript. All four features start enabled.
-
-**First-run setup:** See **GIU Staff Enhanced Attendance → First-run setup** above.
-
-**Install this OR GIU Berlin Attendance on Berlin — never both.** It's fine alongside the Cairo GIU SuperScript (different portal).
-
----
-
-## Requirements
-
-- Tampermonkey v4.x or later
-- Chrome, Edge, Brave, or Firefox
-- Active GIU staff portal session (must be logged in)
-
----
+Authors: Mo.Elmaadawy · Upload Grades with Ahmed Sherif.
