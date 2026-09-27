@@ -5,15 +5,584 @@
 // @icon        data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKgAAACUCAMAAAAwLZJQAAAAzFBMVEX////VlyYkHiAAAADTHyj36ereiIr8/vzIGSPPAAj//fziu4HTlRbnyp3x49HRHSTTkgzw8PD29vbl5eXV1NRjX2HWY2vUr2zMAADn1rfJjguzsrMfGRsaEBPltLX6+u/OmB67u7vIyMgyLC5sbGycnJypqKmLi4tYWFh9e3wWExXkoJ1HRUaUkpM3NjY+Pj4PAAe/AADIDxPYGiAnJicZGhn27df17eDXqE329uBVYF7AZ2jZjGvOWgTNlSzf0J7lw7PWozvqxcLZsl8WTjZKAAAHBElEQVR4nO2Ya3fbNhJAIWG92tJ2YwzApg6kTQDhQagkpXZlR/t03fz//7QDgo71jqQ0Pf2Ae45tipKlq8FgMAAhmUwmk8lkMplMJpPJZDKZTCaTyWQymUwmk8lkMpnMqRTAENi4dXUV710xvB6979n+v3R39IcoMmGrdkyR2bgtLX/Rvfr5uzdvfvnlx7/i9fc3g8EAf27IltNtfOLuetR9A22CEWB84Cp4C2A5IbzBj3B4IRU+kEAuhCk/pXQyHibGE0rnIb4viv7tH39BkujdoONm+/9v75Jo9HcPgghFqONga/4gWWsJ8TUQTtHWU0W4v1RUVRMaJWcxoJNedkFtEn0TRb9bF73bEe0jWmC46qa7haLEVrBUfEoJr+YcP2WJomYmuL1MlFVJbjEtJee6XPaqi4OiuxF9FRVLjbacUBO4m7YOR712Tg8FKeNTnmFMXXGJp17SLoKzININYbrwDieHRG8+HMrRl4gGU8zQ15Z4oZSjllGhjawMCQAhDdW5qOWs86SvGQ6OdjQHRO+OiRJJFZhAqJe8aTl1FvNVEyorRjQV+Ju1/oKIihS9h5lYv8udRfRFooQ5dMRAKs4F4YIzgrNS8PgBmgkMB+Pne7I2xfNBHnrF+aLfgsLP0rwJB19ytqjWRMewCe20VFxJCUpiCYghBQwoaMIkJi4XcdY1Dd4W3VMkPkVA7ot3P/Dj4eF6cbaoMaSssGp6IanVikpVzLx6EAozlXmGOcyYMrXi+ELXclYHYpeYI6HAv5gmVO+xMIsuoGna/F6igYSpAVyLGJYjTVlB5g5w1s9bgaLQzHDSNwZLQ+APOgZLyHbOuSfgxxJFxa4Eo31tP5Ldl4h6MfOsFx0bA3VVKaKUWXIHQjqMd2MARTXFDwaKGVJVwhKlfdgvammfoUdWinPraBdRDFNwhA1jRPG9a7NUxOmifPBgjccSm0RFlEIzJ2CONcuHMBZ7Rcu0BtGDU36/6OALOTrCcVXUdemmqOBkaO0Dx2rH2pKVMKpC4UsojCnwS2HNLTym6NLwAKxuOFWcbTmweZpK433pe0z03fFZX2CHRJQgDNc6ERoPXkHQKk5vKTAo2oO0UDiMeeODxfmFGaAldjJEeWYavx1T0SbR+Z5gHxU91pR8C3TfJ1XHVor9ET0iyuMEwbKJ14wVHNJjJgReClGQQmsADgLXLR4H+YRlSiXRSbWdE18lGnDxEJ7ULnbJfMktvj1W/dpbUXmsnd41WtTChtrLUMaXfhE53iPK14BLRE0SbXGKSo1zOE6phruqIHyKVZ+3MVeXHLs2IHqmw7EoHREFM5x+RnyFaOmoUIIvcFNimCWytY63NjRQzhwTU+yjUZSYpfuyJ1Hj3RwFsxj3TBZfI1oRPw1RFNdMjcGtMSPn1Ri7vIa6z6JiX9XcQUzTrG/XXgym7+9jqHdEb06Y9aHGfZMj+NvQrnyzOW6YbM2At6oMOM8aG4deTYDsX4d26OvocL2OromOd0QfP4seqaPcBNsAMfG9BIulz+Pi7qrG8UrrWnvrucBB1HWMaH2KKKn6lWktT/qh3y/6cdDvmbY39ht1FAsSfo+Y9wBdlcI/8SYrGBSMxZoE2KlA9wp+0j5P0n42vb4awjyy3Cv6fpVCevfPrcp+ZsHHbfUo/Yy2x2Y/kESH64nS1SVRzfaJjq779ul+642+eYfv+/ap3LrP9ouS+37obw+LinKTf/37h03+83aT61O+Hav7LFWnib6M/erjQVFNt/j5x03+++HdBv876cxKpz3TpN5ccQ+Jkqe+I306KMrlFn/f4tf7LU47W+t751m9MfsOio6eb1Lr/HhI9CgX7JNfTYfd6NOhXlM9KEoen/uJ/7ReotZEQaUFOXW/sV/APeYI9/JYqsBz3NMzBd2k5xCnvThZXqUjnck4vNT9QtjYqe6N6Oh+kExvPt2/qI4+vh28RlSlL6yxo+O4UeYkbouJULxQTCmNs6E/k0nf6IyDKF52B47jybIKVsrG1G1X8cc7a338EuT7d32e3qze3t7fP12/XT0PXkV5atuAKx+PRyQHpwng1o4RAdxy3OVJZR0BJwFko/Q5h6UitAuKgz1ZdOeOqDmjdNF2zcqWKPL+enDXR/UuEk928erD81M8HxWNwxnkvONGWy8FY9ZK65RyMgSwTBN85J1srHLOSaf0WWeQQob5ek2ZGytF9w5XfXn5LDoixeP1qjfsFPFqdX17/9inQjxJF9jKYdQgralMq4LExZOnhMQWKh5oxzvnn5QCw3GyTdNYiW3k6zk+/JT47VU0HuY/3l9/Wq2eV6tPOP6PH7drIfZIsOYAB7rj4uIz8iNs5vzo4IM/HX9uu0wmk8lkMplMJpPJZDKZTCaTyWQymUwmk8lkMplMJpPJHOP/Lb7en38r1wIAAAAASUVORK5CYII=
 // @include     https://portal.giu-uni.de/*
 // @namespace   Cyn0
-// @version     3.2.5
+// @version     3.2.7
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @run-at      document-idle
 // @noframes
 // ==/UserScript==
 
-        (function () {
-            "use strict";
+(function () {
+    'use strict';
+
+function waitFor(selector, cb, { root = document, timeout = 15000 } = {}) {
+            const existing = root.querySelector(selector);
+            if (existing) { cb(existing); return () => {}; }
+            const obs = new MutationObserver(() => {
+                const el = root.querySelector(selector);
+                if (el) { obs.disconnect(); cb(el); }
+            });
+            obs.observe(root.documentElement || root, { childList: true, subtree: true });
+            if (timeout) setTimeout(() => obs.disconnect(), timeout);
+            return () => obs.disconnect();
+        }
+
+function escapeHtml(str) {
+            return String(str == null ? '' : str)
+                .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        }
+
+function injectStyle(id, css) {
+            let el = document.getElementById(id);
+            if (!el) {
+                el = document.createElement('style');
+                el.id = id;
+                (document.head || document.documentElement).appendChild(el);
+            }
+            el.textContent = css;
+            return el;
+        }
+
+function warn(feature, ...args) { console.warn(`[GIU-SS:${feature}]`, ...args); }
+
+function portalUrl(path) { return location.origin + path; }
+
+    const S = { waitFor, escapeHtml, injectStyle, warn, portalUrl };
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  Staff Attendance — first-run setup wizard.
+//  A short step dialog asking what the attendance engine cannot know by
+//  itself (day off, a recent day-off change, annual leave, the Berlin start
+//  date). It never touches storage: the engine (staffAttendance) passes a
+//  small settings API — see setupApi there. Nothing is saved until Finish,
+//  except an import, which the engine applies at once. Top-level function
+//  (inlined into the bundles and standalones); works in page context and in
+//  the Tampermonkey sandbox (plain DOM only).
+//
+//  api: { isBerlin, today(), dayOptions() -> [{code, name}],
+//         previousDayOptions() -> [{code, name}], dayName(code),
+//         current(), berlinStartError(ymd), apply(values), importJson(text),
+//         exportJson(values), markDone(), markSkipped(), onApplied(),
+//         onClosed(reason), isDayOffConfigured(), focusFallback() }
+//  values: { dayOffCode, previous: {code, from}|null, balance, accrualRate,
+//            berlinStart }
+// ═══════════════════════════════════════════════════════════════════════════
+function openAttendanceSetup(S, api, opts) {
+    const prefill = (opts && opts.prefill) || null;
+    const esc = S.escapeHtml;
+    const base = api.current();
+    const days = api.dayOptions();
+    const prevDays = api.previousDayOptions();   // on Berlin also Sunday (a Cairo-era day off)
+    const YMD = /^\d{4}-\d{2}-\d{2}$/;
+
+    S.injectStyle('gius-setup-style', `
+        .gius-setup{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+            z-index:2147483645;background:rgba(15,23,42,.45);padding:20px;font-family:inherit;}
+        .gius-setup *{box-sizing:border-box;}
+        .gius-setup [hidden]{display:none !important;}
+        .gius-setup-change{display:grid;gap:10px;}
+        .gius-setup-sheet{width:100%;max-width:460px;max-height:88vh;overflow:auto;background:#fff;color:#1e1e2e;
+            border-radius:14px;border-left:4px solid #ffc107;padding:18px 20px;box-shadow:0 18px 50px rgba(0,0,0,.35);}
+        .gius-setup-step{font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#6b7280;margin-bottom:4px;}
+        .gius-setup-title{font-weight:800;font-size:16px;margin-bottom:4px;}
+        .gius-setup-sub{font-size:12.5px;color:#6b7280;margin-bottom:14px;line-height:1.45;}
+        .gius-setup-body{display:grid;gap:10px;font-size:13px;line-height:1.45;}
+        .gius-setup-field{display:grid;gap:4px;font-size:12.5px;font-weight:600;color:#374151;}
+        .gius-setup-input{height:34px;padding:0 10px;border:1px solid #9ca3af;border-radius:6px;font:inherit;
+            font-size:13px;font-weight:400;background:#fff;color:#1f2937;width:100%;}
+        textarea.gius-setup-input{height:auto;min-height:96px;padding:8px 10px;resize:vertical;
+            font-family:Consolas,Monaco,monospace;font-size:12px;}
+        .gius-setup-pills{display:flex;flex-wrap:wrap;gap:8px;}
+        .gius-setup-pill{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border:1px solid #cbd5e1;
+            border-radius:999px;cursor:pointer;font-weight:700;font-size:12.5px;background:#f8fafc;color:#334155;}
+        .gius-setup-pill input{margin:0;accent-color:#d97706;}
+        .gius-setup-pill.on{background:#fff8e1;border-color:#d97706;color:#8a6500;}
+        .gius-setup-hint{font-size:12px;font-weight:400;color:#6b7280;line-height:1.4;}
+        .gius-setup-hint.warn{color:#8a6500;}
+        .gius-setup-msg{display:none;margin-top:12px;padding:8px 10px;border-radius:8px;border-left:3px solid;
+            font-size:12.5px;font-weight:600;}
+        .gius-setup-msg.show{display:block;}
+        .gius-setup-error{background:#fee2e2;border-left-color:#e11d48;color:#991b1b;}
+        .gius-setup-ok{background:#dcfce7;border-left-color:#16a34a;color:#166534;}
+        .gius-setup-summary{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0;background:#f8f9fa;
+            border:1px solid #e9ecef;border-radius:10px;padding:10px 12px;font-size:12.5px;}
+        .gius-setup-summary dt{font-weight:700;color:#6b7280;}
+        .gius-setup-summary dd{margin:0;font-weight:700;}
+        .gius-setup-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+        .gius-setup-actions{display:flex;align-items:center;gap:8px;margin-top:16px;flex-wrap:wrap;}
+        .gius-setup-spacer{flex:1 1 auto;}
+        .gius-setup .giu-settings-action-btn{height:32px;padding:0 10px;border:1px solid #64748b;background:#f8fafc;
+            color:#334155;border-radius:6px;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;}
+        .gius-setup .giu-settings-action-btn:hover{background:#e2e8f0;}
+        .gius-setup .giu-add-holiday-btn{height:32px;padding:0 12px;border:1px solid #d97706;background:#ffc107;
+            color:#111827;border-radius:6px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;
+            transition:all .2s ease;}
+        .gius-setup .giu-add-holiday-btn:hover{background:#f59e0b;transform:translateY(-1px);
+            box-shadow:0 3px 10px rgba(255,193,7,.4);}
+        .gius-setup .gius-setup-skip{border-color:transparent;background:transparent;text-decoration:underline;}
+        html.gius-dark .gius-setup-sheet{background:#1e1e2e;color:#cdd6f4;border-left-color:#f9e2af;box-shadow:0 18px 50px rgba(0,0,0,.6);}
+        html.gius-dark .gius-setup-step,html.gius-dark .gius-setup-sub,html.gius-dark .gius-setup-hint{color:#9399b2;}
+        html.gius-dark .gius-setup-field{color:#cdd6f4;}
+        html.gius-dark .gius-setup-input{background:#181825;border-color:#45475a;color:#cdd6f4;color-scheme:dark;}
+        html.gius-dark .gius-setup-pill{background:#181825;border-color:#313244;color:#cdd6f4;}
+        html.gius-dark .gius-setup-pill.on{background:#2a2410;border-color:#f9e2af;color:#f9e2af;}
+        html.gius-dark .gius-setup-hint.warn{color:#f9e2af;}
+        html.gius-dark .gius-setup-error{background:#3a1414;border-left-color:#f38ba8;color:#f38ba8;}
+        html.gius-dark .gius-setup-ok{background:#14351f;border-left-color:#a6e3a1;color:#a6e3a1;}
+        html.gius-dark .gius-setup-summary{background:#181825;border-color:#313244;}
+        html.gius-dark .gius-setup-summary dt{color:#9399b2;}
+        html.gius-dark .gius-setup .giu-settings-action-btn{background:#181825;border-color:#45475a;color:#cdd6f4;}
+        html.gius-dark .gius-setup .giu-settings-action-btn:hover{background:#313244;}
+        html.gius-dark .gius-setup .gius-setup-skip{background:transparent;border-color:transparent;}
+        html.gius-dark .gius-setup .giu-add-holiday-btn{background:#f9e2af;border-color:#f9e2af;color:#1e1e2e;}
+        html.gius-dark .gius-setup .giu-add-holiday-btn:hover{background:#f5d38a;}`);
+
+    // ── Answers (strings, as typed); nothing is written until Finish ──
+    function fromValues(v, keepDayOff) {
+        return {
+            berlinStart: v.berlinStart || '',
+            dayOffCode: keepDayOff ? (v.dayOffCode || '') : '',
+            changed: keepDayOff ? (v.previous ? 'yes' : 'no') : '',
+            prevCode: keepDayOff && v.previous ? v.previous.code : '',
+            changeFrom: keepDayOff && v.previous ? v.previous.from : '',
+            balance: keepDayOff && Number.isFinite(v.balance) ? String(v.balance) : '',
+            accrual: String(v.accrualRate),
+        };
+    }
+    // First run: nothing is guessed — only the accrual rate (and a Berlin start
+    // date set by hand earlier) is pre-filled. "Run setup again": everything.
+    const state = Object.assign({ choice: 'fresh', imported: false, importText: '' },
+        prefill ? fromValues(prefill, true) : fromValues(base, false));
+
+    const steps = ['welcome'].concat(api.isBerlin ? ['berlin'] : [], ['dayoff', 'change', 'balance', 'accrual', 'done']);
+    let index = 0;
+    let dirty = false;          // anything entered by the user (Escape then asks)
+    let importedOnce = false;   // an import already saved settings
+    const opener = document.activeElement;   // focus goes back here on close
+
+    const layer = document.createElement('div');
+    layer.id = 'gius-setup';
+    layer.className = 'gius-setup';
+    layer.innerHTML = `<div class="gius-setup-sheet" role="dialog" aria-modal="true" aria-labelledby="gius-setup-title">
+        <div class="gius-setup-step"></div>
+        <div class="gius-setup-title" id="gius-setup-title"></div>
+        <div class="gius-setup-sub"></div>
+        <div class="gius-setup-body"></div>
+        <div class="gius-setup-msg" role="alert"></div>
+        <div class="gius-setup-actions">
+            <button type="button" class="giu-settings-action-btn gius-setup-skip gius-btn">Skip setup</button>
+            <span class="gius-setup-spacer"></span>
+            <button type="button" class="giu-settings-action-btn gius-setup-back gius-btn">Back</button>
+            <button type="button" class="giu-add-holiday-btn gius-setup-next gius-btn">Next</button>
+        </div></div>`;
+    const sheet = layer.querySelector('.gius-setup-sheet');
+    const $ = sel => layer.querySelector(sel);
+    const body = $('.gius-setup-body');
+    const msg = $('.gius-setup-msg');
+
+    function showMsg(text, ok) {
+        msg.textContent = text || '';
+        msg.className = 'gius-setup-msg' + (text ? ' show ' + (ok ? 'gius-setup-ok' : 'gius-setup-error') : '');
+    }
+
+    function dayName(code) { return api.dayName(code) || code; }
+
+    function twoMonthsAgo() {
+        const d = new Date(api.today() + 'T00:00:00Z');
+        d.setUTCMonth(d.getUTCMonth() - 2);
+        return d.toISOString().slice(0, 10);
+    }
+
+    function values() {
+        return {
+            dayOffCode: state.dayOffCode,
+            previous: state.changed === 'yes' ? { code: state.prevCode, from: state.changeFrom } : null,
+            balance: Number(state.balance),
+            accrualRate: Number(state.accrual),
+            berlinStart: state.berlinStart,
+        };
+    }
+
+    // ── Step views ──
+    function radio(name, value, label, checked) {
+        return `<label class="gius-setup-pill${checked ? ' on' : ''}"><input type="radio" name="${name}" value="${esc(value)}"${checked ? ' checked' : ''}> ${esc(label)}</label>`;
+    }
+
+    const VIEWS = {
+        welcome: {
+            title: 'Set up Staff Attendance',
+            sub: 'A few quick questions so your attendance is counted correctly. You can change everything later in Attendance Settings.',
+            html: () => `<div class="gius-setup-field">Do you have a settings file from before?
+                    <div class="gius-setup-pills">${radio('gius-setup-choice', 'fresh', 'No, set up now', state.choice === 'fresh')}${radio('gius-setup-choice', 'import', 'Yes, I have a file', state.choice === 'import')}</div></div>
+                <div class="gius-setup-import"${state.choice === 'import' ? '' : ' hidden'}>
+                    <div class="gius-setup-field">Choose the .json file
+                        <input type="file" class="gius-setup-input" id="gius-setup-file" accept=".json,application/json,text/json"></div>
+                    <div class="gius-setup-field" style="margin-top:8px;">or paste its contents
+                        <textarea class="gius-setup-input" id="gius-setup-paste" spellcheck="false">${esc(state.importText)}</textarea></div>
+                    <div class="gius-setup-row" style="margin-top:8px;"><button type="button" class="giu-add-holiday-btn gius-btn" id="gius-setup-import">Import</button></div>
+                </div>`,
+            bind() {
+                layer.querySelectorAll('input[name="gius-setup-choice"]').forEach(r => r.addEventListener('change', () => {
+                    state.choice = r.value;
+                    render();
+                }));
+                const file = $('#gius-setup-file');
+                const paste = $('#gius-setup-paste');
+                if (file) file.addEventListener('change', () => {
+                    const f = file.files && file.files[0];
+                    if (!f) return;
+                    const reader = new FileReader();
+                    reader.onload = () => { state.importText = String(reader.result || ''); paste.value = state.importText; showMsg(''); };
+                    reader.onerror = () => showMsg('Could not read that file.');
+                    reader.readAsText(f);
+                });
+                if (paste) paste.addEventListener('input', () => { state.importText = paste.value; });
+                const btn = $('#gius-setup-import');
+                if (btn) btn.addEventListener('click', doImport);
+            },
+            validate: () => state.choice === 'import' && !state.imported
+                ? 'Import your settings file first, or choose "No, set up now".' : '',
+        },
+        berlin: {
+            title: 'When did you start at the Berlin branch?',
+            sub: 'Days before this date follow the Cairo weekend (Friday off). Leave it empty if you have always worked at the Berlin branch.',
+            html: () => `<label class="gius-setup-field">Started at the Berlin branch on
+                <input type="date" class="gius-setup-input" id="gius-setup-berlin" max="${esc(api.today())}" value="${esc(state.berlinStart)}"></label>`,
+            bind() {
+                const input = $('#gius-setup-berlin');
+                input.addEventListener('input', () => { state.berlinStart = input.value; });
+            },
+            validate: () => api.berlinStartError(state.berlinStart),
+        },
+        dayoff: {
+            title: 'Which day is your weekly day off?',
+            sub: 'Your second day off each week, besides the branch weekend.',
+            html: () => `<div class="gius-setup-pills" role="radiogroup" aria-label="Day off">${days.map(d => radio('gius-setup-day', d.code, d.name, state.dayOffCode === d.code)).join('')}</div>`,
+            bind() {
+                layer.querySelectorAll('input[name="gius-setup-day"]').forEach(r => r.addEventListener('change', () => {
+                    state.dayOffCode = r.value;
+                    if (state.prevCode === r.value) state.prevCode = '';
+                    render();
+                }));
+            },
+            validate: () => days.some(d => d.code === state.dayOffCode) ? '' : 'Choose your day off to continue.',
+        },
+        change: {
+            title: 'Did your day off change in the last 2 months?',
+            sub: 'If it did, days before the change are counted with your previous day off.',
+            html: () => {
+                const others = prevDays.filter(d => d.code !== state.dayOffCode);
+                const old = state.changeFrom && state.changeFrom < twoMonthsAgo();
+                return `<div class="gius-setup-pills">${radio('gius-setup-changed', 'no', 'No', state.changed === 'no')}${radio('gius-setup-changed', 'yes', 'Yes', state.changed === 'yes')}</div>
+                    <div class="gius-setup-change"${state.changed === 'yes' ? '' : ' hidden'}>
+                        <label class="gius-setup-field">My previous day off was
+                            <select class="gius-setup-input" id="gius-setup-prev"><option value="">— choose —</option>${others.map(d => `<option value="${esc(d.code)}"${state.prevCode === d.code ? ' selected' : ''}>${esc(d.name)}</option>`).join('')}</select></label>
+                        <label class="gius-setup-field">${esc(dayName(state.dayOffCode))} became my day off on
+                            <input type="date" class="gius-setup-input" id="gius-setup-from" max="${esc(api.today())}" value="${esc(state.changeFrom)}">
+                            <span class="gius-setup-hint warn" id="gius-setup-from-hint"${old ? '' : ' hidden'}>That is more than 2 months ago. Older records are not kept, so you could also answer No.</span></label>
+                    </div>`;
+            },
+            bind() {
+                layer.querySelectorAll('input[name="gius-setup-changed"]').forEach(r => r.addEventListener('change', () => {
+                    state.changed = r.value;
+                    render();
+                }));
+                const prev = $('#gius-setup-prev');
+                const from = $('#gius-setup-from');
+                const hint = $('#gius-setup-from-hint');
+                prev.addEventListener('change', () => { state.prevCode = prev.value; });
+                from.addEventListener('input', () => {
+                    state.changeFrom = from.value;
+                    hint.hidden = !(YMD.test(from.value) && from.value < twoMonthsAgo());
+                });
+            },
+            validate: () => {
+                if (state.changed !== 'yes' && state.changed !== 'no') return 'Choose Yes or No.';
+                if (state.changed === 'no') return '';
+                if (!state.prevCode) return 'Choose your previous day off.';
+                if (state.prevCode === state.dayOffCode) return 'Your previous day off must be different from your current one.';
+                if (!YMD.test(state.changeFrom)) return 'Enter the date your current day off started.';
+                if (state.changeFrom > api.today()) return "That date is in the future — enter the day the change started.";
+                return '';
+            },
+        },
+        balance: {
+            title: 'How many annual leave days do you have left?',
+            sub: 'Your remaining balance as of today. Half days are allowed.',
+            html: () => `<label class="gius-setup-field">Remaining annual leave (days)
+                <input type="number" class="gius-setup-input" id="gius-setup-balance" min="0" step="0.5" inputmode="decimal" value="${esc(state.balance)}" placeholder="e.g. 12.5">
+                <span class="gius-setup-hint">Not sure? Enter 0 and correct it later in Attendance Settings.</span></label>`,
+            bind() {
+                const input = $('#gius-setup-balance');
+                input.addEventListener('input', () => { state.balance = input.value; });
+            },
+            validate: () => {
+                const raw = String(state.balance).trim();
+                const n = Number(raw);
+                if (raw === '' || !Number.isFinite(n) || n < 0) return 'Enter your remaining annual leave in days (0 or more).';
+                if (Math.round(n * 2) !== n * 2) return 'Use whole or half days (for example 12 or 12.5).';
+                return '';
+            },
+        },
+        accrual: {
+            title: 'How many leave days do you gain each month?',
+            sub: 'Added to your annual leave at the start of every payroll month. Keep the default if you are not sure.',
+            html: () => `<label class="gius-setup-field">Monthly accrual (days per month)
+                <input type="number" class="gius-setup-input" id="gius-setup-accrual" min="0" step="0.25" inputmode="decimal" value="${esc(state.accrual)}"></label>`,
+            bind() {
+                const input = $('#gius-setup-accrual');
+                input.addEventListener('input', () => { state.accrual = input.value; });
+            },
+            validate: () => {
+                const raw = String(state.accrual).trim();
+                const n = Number(raw);
+                return raw === '' || !Number.isFinite(n) || n < 0 ? 'Enter the days you gain each month (0 or more).' : '';
+            },
+        },
+        done: {
+            title: 'All set',
+            sub: 'Save a backup of your settings — you can import it later on another computer or browser.',
+            html: () => {
+                const v = state.imported ? api.current() : values();
+                const rows = [];
+                if (state.imported) rows.push(['Settings', 'Imported from your file']);
+                if (api.isBerlin) rows.push(['Berlin branch since', v.berlinStart || 'Always']);
+                rows.push(['Day off', v.dayOffCode ? dayName(v.dayOffCode) : 'Not set']);
+                if (v.previous) rows.push(['Before ' + v.previous.from, dayName(v.previous.code)]);
+                rows.push(['Annual leave left', String(v.balance) + ' day(s)']);
+                rows.push(['Monthly accrual', String(v.accrualRate) + ' day(s)']);
+                return `<dl class="gius-setup-summary">${rows.map(r => `<dt>${esc(r[0])}</dt><dd>${esc(r[1])}</dd>`).join('')}</dl>
+                    <div class="gius-setup-row">
+                        <button type="button" class="giu-settings-action-btn gius-btn" id="gius-setup-download">Download settings (.json)</button>
+                        <button type="button" class="giu-settings-action-btn gius-btn" id="gius-setup-copy">Copy</button>
+                    </div>`;
+            },
+            bind() {
+                $('#gius-setup-download').addEventListener('click', download);
+                $('#gius-setup-copy').addEventListener('click', copy);
+            },
+            validate: () => '',
+        },
+    };
+
+    function render() {
+        const id = steps[index];
+        const view = VIEWS[id];
+        sheet.setAttribute('data-step', id);
+        $('.gius-setup-step').textContent = `Step ${index + 1} of ${steps.length}`;
+        $('.gius-setup-title').textContent = view.title;
+        $('.gius-setup-sub').textContent = view.sub;
+        body.innerHTML = view.html();
+        view.bind();
+        showMsg('');
+        $('.gius-setup-back').hidden = index === 0;
+        $('.gius-setup-next').textContent = id === 'done' ? 'Finish' : 'Next';
+        const first = body.querySelector('input:not([type="radio"]):not([type="file"]):not([hidden]), select');
+        (first && first.offsetParent !== null ? first : $('.gius-setup-next')).focus();
+    }
+
+    function go(to) {
+        index = Math.max(0, Math.min(steps.length - 1, to));
+        render();
+    }
+
+    // ── Import / export ──
+    function doImport() {
+        const text = String(state.importText || '').trim();
+        if (!text) { showMsg('Choose your settings file or paste its contents first.'); return; }
+        const res = api.importJson(text);
+        if (!res.ok) { showMsg(res.error || 'Import failed.'); return; }
+        // An import is saved at once: re-render now; later steps start from it.
+        importedOnce = true;
+        api.onApplied();
+        const report = res.report || {};
+        const rejected = report.rejected || 0;
+        const skipped = rejected
+            ? ' ' + rejected + (rejected === 1 ? ' item' : ' items') + ' skipped'
+                + (report.notes && report.notes.length ? ' (' + report.notes.join(' ') + ')' : '') + '.'
+            : '';
+        if (!api.isDayOffConfigured()) {
+            // Nothing to finish without a day off: carry on from the day-off step
+            // (Finish then saves the answers, pre-filled from the import).
+            state.imported = false;
+            Object.assign(state, fromValues(api.current(), true), { dayOffCode: '', changed: '', prevCode: '', changeFrom: '' });
+            go(steps.indexOf('dayoff'));
+            showMsg('Your settings were imported, but the file has no day off — choose it below.' + skipped, true);
+            return;
+        }
+        api.markDone();
+        state.imported = true;
+        Object.assign(state, fromValues(api.current(), true));
+        go(steps.indexOf('done'));
+        showMsg('Your settings were imported.' + skipped, true);
+    }
+
+    function exportText() {
+        return api.exportJson(state.imported ? null : values());
+    }
+
+    function download() {
+        try {
+            const url = URL.createObjectURL(new Blob([exportText()], { type: 'application/json' }));
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'giu-attendance-settings.json';
+            a.style.display = 'none';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+            showMsg('Settings file downloaded.', true);
+        } catch {
+            showMsg('The download was blocked — use Copy instead.');
+        }
+    }
+
+    async function copy() {
+        const text = exportText();
+        try {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                await navigator.clipboard.writeText(text);
+                showMsg('Settings copied — paste them into a file to keep.', true);
+                return;
+            }
+        } catch { /* fall back below */ }
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.cssText = 'position:fixed;top:-1000px;left:0;opacity:0;';
+        sheet.appendChild(ta);
+        ta.select();
+        let ok = false;
+        try { ok = document.execCommand('copy'); } catch { ok = false; }
+        ta.remove();
+        showMsg(ok ? 'Settings copied — paste them into a file to keep.' : 'Copying was blocked — use Download instead.', ok);
+    }
+
+    // ── Navigation / closing ──
+    let closed = false;
+    function close(reason) {
+        if (closed) return;
+        closed = true;
+        document.removeEventListener('keydown', onKey, true);
+        layer.remove();
+        api.onClosed(reason);
+        // Finish re-renders after closing and refocuses then (see finish()).
+        if (reason !== 'done') restoreFocus();
+    }
+
+    function skip() {
+        api.markSkipped();
+        close('skipped');
+    }
+
+    function finish() {
+        if (!state.imported) {
+            try {
+                api.apply(values());
+            } catch (e) {
+                showMsg(e && e.message ? e.message : 'Could not save your settings.');
+                return;
+            }
+        }
+        api.markDone();
+        close('done');
+        api.onApplied();
+        restoreFocus();   // after the re-render, which may have replaced the opener
+    }
+
+    function next() {
+        const id = steps[index];
+        const error = VIEWS[id].validate();
+        if (error) { showMsg(error); return; }
+        if (id === 'done') { finish(); return; }
+        if (id === 'welcome') {
+            // Back at the start after an import: "Yes" returns to the summary,
+            // "No" walks the steps (pre-filled from the import) and saves them.
+            if (state.choice === 'import') { go(steps.indexOf('done')); return; }
+            state.imported = false;
+        }
+        go(index + 1);
+    }
+
+    function back() {
+        // After an import, Back returns to the start (the steps were skipped).
+        go(steps[index] === 'done' && state.imported ? 0 : index - 1);
+    }
+
+    // The dialog's tab stops, the way the browser walks them: enabled, shown
+    // controls, with each radio group reduced to one stop — its checked radio,
+    // or its first when none is checked.
+    function tabStops() {
+        const seenGroups = new Set();
+        return Array.from(sheet.querySelectorAll('button, input, select, textarea, [tabindex]:not([tabindex="-1"])'))
+            .filter(el => !el.disabled && !el.hidden && el.offsetParent !== null)
+            .filter(el => {
+                if (el.type !== 'radio' || !el.name) return true;
+                if (seenGroups.has(el.name)) return false;
+                seenGroups.add(el.name);
+                return true;
+            })
+            .map(el => {
+                if (el.type !== 'radio' || !el.name) return el;
+                const checked = Array.from(sheet.querySelectorAll('input[type="radio"]'))
+                    .find(r => r.name === el.name && r.checked && !r.disabled);
+                return checked || el;
+            });
+    }
+
+    // Focus back to the opener; if a re-render replaced it, to its successor
+    // (same id), else to what the engine names (api.focusFallback).
+    function restoreFocus() {
+        let target = opener;
+        if (!target || target === document.body || !document.contains(target)) {
+            target = (opener && opener.id && document.getElementById(opener.id))
+                || (typeof api.focusFallback === 'function' ? api.focusFallback() : null);
+        }
+        try { if (target && target.focus) target.focus(); } catch { /* ignore */ }
+    }
+
+    function onKey(e) {
+        if (e.key === 'Tab') {
+            // Keep keyboard focus inside the dialog.
+            const els = tabStops();
+            if (!els.length) return;
+            const first = els[0];
+            const last = els[els.length - 1];
+            const current = document.activeElement;
+            // A radio counts as its group's stop, whichever radio has focus.
+            const at = el => current === el
+                || (current && el.type === 'radio' && current.type === 'radio' && current.name === el.name);
+            const inside = sheet.contains(current);
+            if (e.shiftKey && (!inside || at(first))) { e.preventDefault(); last.focus(); }
+            else if (!e.shiftKey && (!inside || at(last))) { e.preventDefault(); first.focus(); }
+            return;
+        }
+        if (e.key !== 'Escape') return;
+        // One Escape is the wizard's alone (no tip or tour under it reacts).
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        const question = importedOnce
+            ? 'Leave setup? Your imported settings are kept; nothing else you entered here will be saved.'
+            : 'Leave setup? Nothing you entered here will be saved.';
+        if (!dirty || window.confirm(question)) skip();
+    }
+
+    body.addEventListener('input', () => { dirty = true; });
+    body.addEventListener('change', () => { dirty = true; });
+    $('.gius-setup-skip').addEventListener('click', skip);
+    $('.gius-setup-back').addEventListener('click', back);
+    $('.gius-setup-next').addEventListener('click', next);
+    document.addEventListener('keydown', onKey, true);
+
+    document.body.appendChild(layer);
+    render();
+
+    return { close: () => close('closed'), element: layer };
+}
+
+function staffAttendance(S) {
 
             // ═══════════════════════════════════════════════════════════════════════════
             //  Architecture Map (single-file userscript, IIFE-scoped)
@@ -53,6 +622,14 @@
             const REPORT_URL = REPORT_ORIGIN + "/GIUb/EXT/SwiftReports_m.aspx";
             const SWIFT_REPORT_ID = 866; // user's "Gate Attendance ... Gates" SwiftReport id (see README target page)
             const REPORT_DATA_URL = REPORT_URL + "?swiftreportid=" + SWIFT_REPORT_ID + "&executereport=1";
+
+            // Report source override. Absent in the Cairo bundle, which reads the
+            // report same-origin through a hidden iframe. The Berlin script passes
+            // one in (src/berlin/berlinSource.js): it fetches the report
+            // cross-origin from Cairo and hosts the full report in its own view,
+            // because Berlin has no working report page.
+            const SOURCE = (S && S.attendanceSource) || null;
+            const REPORT_VIEW_URL = SOURCE ? SOURCE.reportViewUrl : REPORT_DATA_URL;
             const HOME_CACHE_KEY = "giuAttendanceHomeV2"; // V2: summary gained `tier` + cache now stores rows for live recompute (drops V1)
             const HOME_IFRAME_TIMEOUT_MS = 15000;
             const HOME_REFRESH_TTL_MS = 10 * 60 * 1000;  // skip refresh if cache newer than 10 min
@@ -94,32 +671,29 @@
                 sectionState: "giuSectionStateV1",
                 onboardingCompleted: "giuOnboardingCompletedV1",
                 onboardingState: "giuOnboardingStateV1",
-                dayOffAutoState: "giuDayOffAutoStateV1",
-                branch: "giuBranchV1",
-                branchStart: "giuBranchStartV1"
+                branchStart: "giuBranchStartV1",
+                setup: "giuAttendanceSetupV1"
             };
 
-            // Cairo and Berlin differ by exactly two facts. Branch is an explicit
-            // setting, NOT derived from location.hostname: a Berlin staff member
-            // reads their attendance report on the Cairo host (Berlin's own
-            // SwiftReports_m.aspx returns HTTP 500), so the host says "cairo"
-            // while the Sunday weekend rule must still apply.
+            // One-time cleanup of keys no version reads any more: the removed
+            // day-off auto-detection state and the removed Cairo/Berlin branch
+            // selector. Idempotent, so running it on every boot is harmless.
+            ["giuDayOffAutoStateV1", "giuBranchV1"].forEach(function (key) {
+                try { localStorage.removeItem(key); } catch { /* ignore */ }
+            });
+
+            // Cairo and Berlin differ by exactly two facts. The branch is fixed by
+            // the script, not a setting: the Cairo scripts always follow the Cairo
+            // rule and the Berlin scripts (which pass S.attendanceSource) always
+            // follow Berlin's. Any stored "giuBranchV1" from older versions is
+            // ignored.
             const BRANCH_CONFIG = {
                 cairo:  { fixedOffDay: "Friday" },
                 berlin: { fixedOffDay: "Sunday" },
             };
 
             function getBranch() {
-                const saved = localStorage.getItem(STORAGE_KEYS.branch);
-                if (saved === "cairo" || saved === "berlin") return saved;
-                // This script runs on the Cairo portal only. A Berlin staff member reads
-                // their attendance here too and switches this setting by hand.
-                return "cairo";
-            }
-
-            function setBranch(value) {
-                if (value !== "cairo" && value !== "berlin") return;
-                localStorage.setItem(STORAGE_KEYS.branch, value);
+                return SOURCE ? SOURCE.defaultBranch : "cairo";
             }
 
             function branchConfig() { return BRANCH_CONFIG[getBranch()]; }
@@ -132,18 +706,33 @@
                 return YMD_RE.test(raw) ? raw : "";
             }
 
+            // The one rule for a Berlin start date, shared by the settings editor,
+            // import and the setup wizard: empty (no switch), or a real date that
+            // is not after today. Returns "" when valid, else the message to show.
+            function branchStartError(value) {
+                if (!value) return "";
+                if (!YMD_RE.test(value) || normalizeYMD(value) !== value) return "Enter a valid date.";
+                if (value > getTodayLocalYMD()) return "The start date can't be after today.";
+                return "";
+            }
+
+            // Returns whether the value was accepted ("" clears the date).
             function setBranchStart(value) {
-                if (!value) { localStorage.removeItem(STORAGE_KEYS.branchStart); return; }
-                if (!YMD_RE.test(value)) return;   // never persist an unparseable date
+                if (!value) { localStorage.removeItem(STORAGE_KEYS.branchStart); return true; }
+                if (branchStartError(value)) return false;   // never persist a bad date
                 localStorage.setItem(STORAGE_KEYS.branchStart, value);
+                return true;
             }
 
             // Which campus governed a given attendance date. The switch date is the
             // FIRST day under the current branch; everything before it is the other
             // campus. Normalizes first: raw row dates can be "2026-3-1", and an
             // unpadded string sorts AFTER "2026-10-01" in a plain comparison.
+            // Only the Berlin scripts have a switch date ("started at the Berlin
+            // branch on"); the Cairo scripts apply the Cairo rule to all history.
             function getBranchFor(ymd) {
                 const b = getBranch();
+                if (!SOURCE) return b;
                 const start = getBranchStart();
                 if (!start) return b;
                 const norm = normalizeYMD(ymd);
@@ -260,6 +849,7 @@
             }
 
             function isTargetReportPage() {
+                if (SOURCE) return SOURCE.isReportView();
                 const normalizedPath = (location.pathname || "").replace(/\/+$/, "").toLowerCase();
                 const requiredPath = PAGE_PATH.toLowerCase();
                 if (normalizedPath !== requiredPath) return false;
@@ -434,26 +1024,6 @@
                 return getSelectedDayOffCode() !== "" || getStoredDayOffSchedule().length > 0;
             }
 
-            // Ephemeral auto-detect UI state (like getOnboardingState, not stored domain data).
-            function getDayOffAutoState() {
-                try {
-                    const raw = localStorage.getItem(STORAGE_KEYS.dayOffAutoState);
-                    const parsed = raw ? JSON.parse(raw) : null;
-                    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return null;
-                    return parsed;
-                } catch {
-                    return null;
-                }
-            }
-
-            function setDayOffAutoState(state) {
-                if (!state || typeof state !== "object") {
-                    localStorage.removeItem(STORAGE_KEYS.dayOffAutoState);
-                    return;
-                }
-                localStorage.setItem(STORAGE_KEYS.dayOffAutoState, JSON.stringify(state));
-            }
-
             function isAuditModeEnabled() {
                 return localStorage.getItem(AUDIT_MODE_KEY) !== "0";
             }
@@ -534,6 +1104,7 @@
                     dayOffSchedule: getStoredDayOffSchedule(),
                     holidays: getStoredHolidays(),
                     annualLeaveBalance: getStoredAnnualLeaveBalance(),
+                    annualLeaveAccrualRate: getStoredAnnualLeaveAccrualRate(),
                     overrides: getStoredOverrides(),
                     compensationLeaves: getStoredCompensationLeaves(),
                     ramadan: getStoredRamadan(),
@@ -552,10 +1123,9 @@
                     notes: []
                 };
 
-                if (snapshot.branch === "cairo" || snapshot.branch === "berlin") {
-                    setBranch(snapshot.branch);
-                    report.accepted += 1;
-                }
+                // snapshot.branch (fixed per script now) and snapshot.dayOffAutoState
+                // (removed day-off auto-detection) may appear in older files; both
+                // are ignored.
                 if (typeof snapshot.branchStart === "string") {
                     setBranchStart(snapshot.branchStart);   // no-ops on a malformed value
                     if (getBranchStart() === snapshot.branchStart) {
@@ -586,6 +1156,17 @@
                 if (snapshot.annualLeaveBalance != null) {
                     setStoredAnnualLeaveBalance(snapshot.annualLeaveBalance);
                     report.accepted += 1;
+                }
+                // Older files have no accrual rate; the stored one is kept then.
+                if (snapshot.annualLeaveAccrualRate != null) {
+                    const rate = Number(snapshot.annualLeaveAccrualRate);
+                    if (Number.isFinite(rate) && rate >= 0) {
+                        setStoredAnnualLeaveAccrualRate(rate);
+                        report.accepted += 1;
+                    } else {
+                        report.rejected += 1;
+                        report.notes.push("Accrual rate invalid.");
+                    }
                 }
                 if (Array.isArray(snapshot.overrides)) {
                     const before = snapshot.overrides.length;
@@ -1425,37 +2006,6 @@
                         background: #ffc107;
                     }
 
-                    .giu-dayoff-notice {
-                        display: flex; align-items: flex-start; gap: 10px; flex-wrap: wrap;
-                        border-radius: 8px; padding: 11px 12px; margin: 0 0 14px;
-                        border-left: 4px solid; font-size: 13.5px; line-height: 1.45;
-                    }
-                    .giu-dayoff-notice .ico { font-size: 16px; line-height: 1.3; flex: 0 0 auto; }
-                    .giu-dayoff-notice .body { flex: 1 1 240px; min-width: 200px; }
-                    .giu-dayoff-notice .body strong { font-weight: 800; }
-                    .giu-dayoff-notice .sub { display: block; font-size: 12px; opacity: .85; margin-top: 2px; }
-                    .giu-dayoff-notice .acts { display: inline-flex; gap: 7px; flex-wrap: wrap; align-items: center; }
-                    .giu-dayoff-notice .gius-btn {
-                        font: inherit; font-size: 12.5px; font-weight: 700; line-height: 1; cursor: pointer;
-                        border-radius: 6px; padding: 7px 11px; border: 1px solid transparent;
-                    }
-                    .giu-dayoff-notice .dn-primary { background: #272c33; color: #fff; }
-                    .giu-dayoff-notice .dn-ghost { background: transparent; }
-                    .giu-dayoff-notice .dn-x {
-                        font: inherit; font-size: 15px; font-weight: 700; line-height: 1; cursor: pointer;
-                        background: transparent; border: none; opacity: .6; padding: 2px 4px;
-                    }
-                    .giu-dayoff-notice .dn-x:hover { opacity: 1; }
-                    .giu-dayoff-notice.applied { background: #ecfdf5; border-left-color: #16a34a; color: #065f46; }
-                    .giu-dayoff-notice.applied .dn-ghost { color: #065f46; border-color: #a7d8c1; }
-                    .giu-dayoff-notice.warn { background: #fff8e1; border-left-color: #f59e0b; color: #8a6500; }
-                    .giu-dayoff-notice.warn .dn-primary { background: #b45309; }
-                    html.gius-dark .giu-dayoff-notice.applied { background: #14351f; border-left-color: #a6e3a1; color: #a6e3a1; }
-                    html.gius-dark .giu-dayoff-notice.applied .dn-primary { background: #a6e3a1; color: #11271a; }
-                    html.gius-dark .giu-dayoff-notice.applied .dn-ghost { color: #a6e3a1; border-color: #3a6b4d; }
-                    html.gius-dark .giu-dayoff-notice.warn { background: #2a2410; border-left-color: #f9e2af; color: #f9e2af; }
-                    html.gius-dark .giu-dayoff-notice.warn .dn-primary { background: #f9e2af; color: #2a2410; }
-
                     .giu-config-title,
                     .giu-attendance-section-title {
                         font-size: 16px;
@@ -1638,6 +2188,10 @@
                         border-radius: 6px;
                         color: #6b7280;
                         font-size: 13px;
+                    }
+
+                    .giu-dayoff-empty {
+                        padding: 8px 10px;
                     }
 
                     .giu-pagination {
@@ -1938,6 +2492,17 @@
                         line-height: 1.5;
                     }
 
+                    .giu-rule-box {
+                        margin-top: 10px;
+                        padding: 8px 10px;
+                        border: 1px solid #cbd5e1;
+                        background: #f8fafc;
+                        border-radius: 6px;
+                        font-size: 12px;
+                        color: #1f2937;
+                        line-height: 1.5;
+                    }
+
                     .giu-debug-box {
                         background: #fff7ed;
                         border: 1px solid #f5c68a;
@@ -2141,6 +2706,12 @@
                     .giu-restart-guide-btn:hover {
                         background: #bae6fd;
                         border-color: #0369a1;
+                    }
+
+                    .giu-collapse-arrow {
+                        font-size: 12px;
+                        color: #6b7280;
+                        transition: transform 0.2s;
                     }
 
 
@@ -2380,9 +2951,35 @@
                         background: #ccfbf1;
                     }
 
+                    /* Absent-day rows: the "Add as" actions wrap onto their own line
+                    (right-aligned) when the box is narrow, instead of squeezing
+                    the pills until their labels break out of them. */
+                    .giu-absent-detail-row {
+                        flex-wrap: wrap;
+                        align-items: center;
+                        gap: 4px 8px;
+                    }
+
+                    .giu-absent-actions,
+                    .giu-absent-addas {
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: flex-end;
+                        flex-wrap: wrap;
+                        gap: 6px;
+                        min-width: 0;
+                    }
+
+                    .giu-absent-actions {
+                        margin-left: auto;
+                        row-gap: 4px;
+                    }
+
                     .giu-absent-holiday-btn {
+                        flex: 0 0 auto;
                         height: 24px;
                         padding: 0 10px;
+                        white-space: nowrap;
                         border: 1px solid #be123c;
                         background: #fff1f2;
                         color: #9f1239;
@@ -2471,6 +3068,12 @@
                         background: #fff1f2;
                         color: #9f1239;
                         font-size: 12px;
+                    }
+
+                    .giu-conflict-empty {
+                        border-color: #fecdd3;
+                        background: #fff5f7;
+                        color: #be123c;
                     }
 
                     .giu-conflict-title {
@@ -2817,6 +3420,7 @@
 
             function createInlineModalPrompt(title, initialValue, onConfirm) {
                 const layer = document.createElement("div");
+                if (SOURCE) layer.className = "giu-inline-modal-layer"; // Berlin: the view closes it on leave (closeReportOverlays)
                 layer.style.cssText = "position:fixed;inset:0;background:rgba(15,23,42,0.45);display:flex;align-items:center;justify-content:center;z-index:2147483646;";
                 const modal = document.createElement("div");
                 modal.style.cssText = "width:min(420px,92vw);background:#fff;border:1px solid #d1d5db;border-radius:8px;padding:12px;display:grid;gap:10px;";
@@ -2852,6 +3456,7 @@
             // values (same order as `fields`); return false to keep the modal open.
             function createInlineModalForm(title, fields, onConfirm) {
                 const layer = document.createElement("div");
+                if (SOURCE) layer.className = "giu-inline-modal-layer"; // Berlin: the view closes it on leave (closeReportOverlays)
                 layer.style.cssText = "position:fixed;inset:0;background:rgba(15,23,42,0.45);display:flex;align-items:center;justify-content:center;z-index:2147483646;";
                 const modal = document.createElement("div");
                 modal.style.cssText = "width:min(420px,92vw);background:#fff;border:1px solid #d1d5db;border-radius:8px;padding:12px;display:grid;gap:10px;";
@@ -3233,9 +3838,8 @@
                 const dayLabel = createUiLabel("giu-day-select", "Day Off");
 
                 // Options come from the branch-aware source of truth, never a literal
-                // list: the six selectable candidates must match exactly what
-                // detectDayOffCode can produce and what getSelectedDayOffFullName will
-                // resolve, or the control renders blank for a legitimately detected day.
+                // list: the six selectable candidates must match what
+                // getSelectedDayOffFullName resolves for this branch.
                 const select = createUiSelect("giu-day-select", [{ value: "", label: "---" }].concat(
                     dayOffWeekdays().map(function (wd) { return { value: wd.code, label: wd.name }; })
                 ), selectedDayCode);
@@ -3448,8 +4052,15 @@
                 auditLabel.appendChild(auditToggle);
                 auditLabel.appendChild(auditText);
 
+                // Reopens the first-run setup wizard, pre-filled with today's settings.
+                const setupBtn = createUiButton("Run setup again", "giu-settings-action-btn", function () {
+                    openSetupWizard(true);
+                });
+                setupBtn.id = "giu-run-setup-btn";
+
                 settingsActionRow.appendChild(exportBtn);
                 settingsActionRow.appendChild(importBtn);
+                settingsActionRow.appendChild(setupBtn);
                 settingsActionRow.appendChild(auditLabel);
 
                 const today = getTodayLocalYMD();
@@ -3569,6 +4180,39 @@
                 }
                 conflictBox.appendChild(list);
                 return conflictBox;
+            }
+
+            // Berlin scripts only: the branch itself is fixed (Berlin), so the one
+            // thing left to set is when the staff member started there. Days before
+            // that date use the Cairo weekend rule.
+            function createBranchControl() {
+                const wrap = document.createElement("div");
+                wrap.className = "giu-settings-subsection-body";
+
+                const row = document.createElement("div");
+                row.className = "giu-dayoff-row";
+                const dateLabel = createUiLabel("gius-branch-start", "Started at the Berlin branch on");
+                const dateInput = createUiInput("date", "gius-branch-start", { value: getBranchStart(), max: getTodayLocalYMD() });
+                const saveBtn = createUiButton("Save", "giu-add-holiday-btn", function () {
+                    setBranchStart(dateInput.value);
+                    dateInput.value = getBranchStart();   // a rejected value visibly reverts
+                    renderEnhancedUI();
+                });
+                saveBtn.id = "gius-branch-start-save";
+                row.appendChild(dateLabel);
+                row.appendChild(dateInput);
+                row.appendChild(saveBtn);
+                wrap.appendChild(row);
+
+                const dateHint = document.createElement("div");
+                dateHint.style.marginTop = "6px";
+                dateHint.style.opacity = "0.75";
+                dateHint.textContent = "Leave empty if you have always worked at the Berlin branch. "
+                    + "Days before this date use the Cairo weekend rule (Friday off), so a "
+                    + "compensation week spanning the move may be short.";
+                wrap.appendChild(dateHint);
+
+                return wrap;
             }
 
             function createDayOffScheduleTable() {
@@ -3947,74 +4591,15 @@
                 return examSection;
             }
 
-            function createBranchControl() {
-                const wrap = document.createElement("div");
-                wrap.className = "giu-settings-subsection-body";
-                const hint = document.createElement("div");
-                hint.style.marginBottom = "8px";
-                hint.style.opacity = "0.75";
-                hint.textContent = "Which campus your working week follows. Set this to Berlin "
-                    + "even while viewing the Cairo portal if you are Berlin staff.";
-                wrap.appendChild(hint);
-
-                const current = getBranch();
-                [
-                    { value: "cairo",  label: `Cairo (${BRANCH_CONFIG.cairo.fixedOffDay} off)` },
-                    { value: "berlin", label: `Berlin (${BRANCH_CONFIG.berlin.fixedOffDay} off)` }
-                ].forEach(function (opt) {
-                    const lbl = document.createElement("label");
-                    lbl.style.marginRight = "18px";
-                    lbl.style.cursor = "pointer";
-                    const input = document.createElement("input");
-                    input.type = "radio";
-                    input.name = "gius-branch";
-                    input.value = opt.value;
-                    input.checked = current === opt.value;
-                    input.addEventListener("change", function () {
-                        if (!input.checked) return;
-                        setBranch(opt.value);
-                        renderEnhancedUI();
-                    });
-                    lbl.appendChild(input);
-                    lbl.appendChild(document.createTextNode(" " + opt.label));
-                    wrap.appendChild(lbl);
-                });
-
-                const dateWrap = document.createElement("div");
-                dateWrap.style.marginTop = "10px";
-                const dateLabel = document.createElement("label");
-                dateLabel.setAttribute("for", "gius-branch-start");
-                dateLabel.style.marginRight = "8px";
-                dateLabel.textContent = "Switched on";
-                const dateInput = document.createElement("input");
-                dateInput.type = "date";
-                dateInput.id = "gius-branch-start";
-                dateInput.value = getBranchStart();
-                dateInput.addEventListener("change", function () {
-                    setBranchStart(dateInput.value);
-                    dateInput.value = getBranchStart();   // a rejected value visibly reverts
-                    renderEnhancedUI();
-                });
-                const dateHint = document.createElement("div");
-                dateHint.style.marginTop = "6px";
-                dateHint.style.opacity = "0.75";
-                dateHint.textContent = "Leave empty unless you switched campuses. Days before this "
-                    + "date use the other campus's weekend rule, so a compensation week spanning "
-                    + "the switch may be short.";
-                dateWrap.appendChild(dateLabel);
-                dateWrap.appendChild(dateInput);
-                dateWrap.appendChild(dateHint);
-                wrap.appendChild(dateWrap);
-
-                return wrap;
-            }
-
             function createConfigPanel(selectedDayCode, selectedDayFullName, periods, onDayChange, initialExpanded) {
                 const { panel, bodyWrap, bodyInner } = createConfigPanelHeader(initialExpanded);
 
-                // Mounted first: every other section's meaning (weekend day, report
-                // origin) depends on which branch is selected.
-                bodyInner.appendChild(wrapSettingsSection("branch", "Branch", createBranchControl(), true));
+                // Berlin scripts only, mounted first: the start date decides which
+                // weekend rule every earlier day uses. The Cairo scripts have no
+                // Branch section — they always follow the Cairo rule.
+                if (SOURCE) {
+                    bodyInner.appendChild(wrapSettingsSection("branch", "Branch", createBranchControl(), true));
+                }
 
                 // Default the "Apply from" date to the earliest attendance row so a first-time
                 // manual day-off set applies retroactively over the loaded data, not just today.
@@ -5042,9 +5627,9 @@
                 let earnedDays = 0;
                 let usedDays = 0;
                 const entries = [];
-const earnedByWeek = new Map();
-                // The fixed weekend day earns on its own weekly track, so a week
-                // where both it and the chosen day off were worked earns two.
+                const earnedByWeek = new Map();
+                // The fixed weekend day earns on its own weekly track, so a week
+                // where both it and the chosen day off were worked earns two.
                 const fixedEarnedByWeek = new Map();
 
                 eachYmdInRange(periodStart, periodEnd, function (date) {
@@ -5065,43 +5650,43 @@ const earnedByWeek = new Map();
                         workedSeconds = getEffectiveRowActualSeconds(row, ramadan, examPeriod);
                     }
 
-const workedEnoughForComp = override
-                        ? workedSeconds >= MIN_WORKING_DAY_SECONDS
-                        : !!(row && hasValidLastOut(row.lastOut) && workedSeconds >= MIN_WORKING_DAY_SECONDS);
-
-                    const hasDayOffWorkForComp = !!(dayOffMatch && !fixedOffMatch && workedEnoughForComp);
-                    // Working the branch's fixed weekend day earns a compensation
-                    // day too. Tracked separately from the chosen day off so the
-                    // two caps do not compete.
+                    const workedEnoughForComp = override
+                        ? workedSeconds >= MIN_WORKING_DAY_SECONDS
+                        : !!(row && hasValidLastOut(row.lastOut) && workedSeconds >= MIN_WORKING_DAY_SECONDS);
+
+                    const hasDayOffWorkForComp = !!(dayOffMatch && !fixedOffMatch && workedEnoughForComp);
+                    // Working the branch's fixed weekend day earns a compensation
+                    // day too. Tracked separately from the chosen day off so the
+                    // two caps do not compete.
                     const hasFixedOffWorkForComp = !!(fixedOffMatch && !holidayMatch && workedEnoughForComp);
 
                     const week = getCompensationWeekBounds(date);
                     const weekKey = week ? week.key : "";
                     const weekEarned = weekKey ? (earnedByWeek.get(weekKey) || 0) : 0;
 
-                    if (hasDayOffWorkForComp && weekKey && weekEarned < 1) {
-                        earnedByWeek.set(weekKey, weekEarned + 1);
-                        earnedDays += 1;
-                        entries.push({
-                            kind: "earn",
-                            date,
-                            seconds: 1,
-                            reason: override && override.reason ? override.reason : ""
-                        });
-                    }
-
-                    const weekFixedEarned = weekKey ? (fixedEarnedByWeek.get(weekKey) || 0) : 0;
-                    if (hasFixedOffWorkForComp && weekKey && weekFixedEarned < 1) {
-                        fixedEarnedByWeek.set(weekKey, weekFixedEarned + 1);
-                        earnedDays += 1;
-                        entries.push({
-                            kind: "earn",
-                            date,
-                            seconds: 1,
-                            reason: override && override.reason
-                                ? override.reason
-                                : `Worked ${dayName}, the fixed non-working day.`
-                        });
+                    if (hasDayOffWorkForComp && weekKey && weekEarned < 1) {
+                        earnedByWeek.set(weekKey, weekEarned + 1);
+                        earnedDays += 1;
+                        entries.push({
+                            kind: "earn",
+                            date,
+                            seconds: 1,
+                            reason: override && override.reason ? override.reason : ""
+                        });
+                    }
+
+                    const weekFixedEarned = weekKey ? (fixedEarnedByWeek.get(weekKey) || 0) : 0;
+                    if (hasFixedOffWorkForComp && weekKey && weekFixedEarned < 1) {
+                        fixedEarnedByWeek.set(weekKey, weekFixedEarned + 1);
+                        earnedDays += 1;
+                        entries.push({
+                            kind: "earn",
+                            date,
+                            seconds: 1,
+                            reason: override && override.reason
+                                ? override.reason
+                                : `Worked ${dayName}, the fixed non-working day.`
+                        });
                     }
 
                     const leave = leaveByDate.get(date);
@@ -5296,13 +5881,6 @@ const workedEnoughForComp = override
                 };
             }
 
-            // Detect the staff member's weekly day off: the weekday (the branch's fixed
-            // off-day excluded, holidays excluded) with the MOST absences (days with no
-            // check-in) across the whole loaded table. Returns { code, fullName, occ }
-            // where occ = that weekday's absence count, or null when there are no rows
-            // or no absences at all. Ties resolve to the earliest weekday (the day after
-            // the branch's fixed off-day onward).
-            //
             // The six selectable weekly day-off candidates: every weekday except the
             // branch's fixed off-day, ordered starting from the day AFTER it.
             // Cairo (Friday off) -> Sat, Sun, Mon, Tue, Wed, Thu — identical to the
@@ -5312,71 +5890,6 @@ const workedEnoughForComp = override
                 const out = [];
                 for (let i = 1; i <= 6; i++) out.push(WEEKDAY_TABLE[(off + i) % 7]);
                 return out;
-            }
-
-            function detectDayOffCode(periods) {
-                const rows = (periods || []).flatMap(function (p) { return (p && p.rows) || []; });
-                const attendedByDate = new Map();
-                let minDate = null;
-                let maxDate = null;
-                rows.forEach(function (row) {
-                    const ymd = normalizeYMD(row && row.date ? row.date : "");
-                    if (!ymd) return;
-                    if (!minDate || ymd < minDate) minDate = ymd;
-                    if (!maxDate || ymd > maxDate) maxDate = ymd;
-                    if (hasValidLastOut(row.lastOut)) attendedByDate.set(ymd, true);
-                });
-                if (!minDate || !maxDate) return null;
-
-                const holidays = getStoredHolidays();
-                const absentByName = new Map(); // dayName -> absence count
-                eachYmdInRange(minDate, maxDate, function (ymd) {
-                    const dayName = formatDateToDayName(ymd);
-                    if (!dayName || isFixedNonWorkingDay(dayName, ymd)) return; // skip that date's own fixed off-day
-                    if (isDateHoliday(ymd, holidays)) return;              // skip holidays
-                    if (attendedByDate.get(ymd)) return;                   // attended → not absent
-                    absentByName.set(dayName, (absentByName.get(dayName) || 0) + 1);
-                });
-
-                // Day off = weekday with the most absences (>= 1). Strict ">" keeps the first
-                // weekday in week order on ties (the day after the branch's fixed off-day onward).
-                let best = null;
-                dayOffWeekdays().forEach(function (wd) {
-                    const absent = absentByName.get(wd.name) || 0;
-                    if (absent >= 1 && (!best || absent > best.occ)) {
-                        best = { code: wd.code, fullName: wd.name, occ: absent };
-                    }
-                });
-                return best;
-            }
-
-            // Decide what to do about an unconfigured day off, given the loaded periods.
-            // Returns one of:
-            //   { status: 'applied', code, fullName, occ }  — auto-filled selectedDay
-            //   { status: 'warn' }                          — unset and not confidently detectable
-            //   null                                         — already configured / previously undone
-            // Must run BEFORE buildPeriodStats so rendered numbers use the new day off.
-            function maybeAutoFillDayOff(periods) {
-                if (isDayOffConfigured()) return null;
-                const state = getDayOffAutoState();
-                if (state && state.status === "undone") return { status: "warn" };
-
-                const detected = detectDayOffCode(periods);
-                if (!detected) return { status: "warn" };
-
-                localStorage.setItem(STORAGE_KEYS.selectedDay, detected.code);
-                setDayOffAutoState({
-                    status: "applied",
-                    code: detected.code,
-                    occ: detected.occ,
-                    acknowledged: false
-                });
-                return {
-                    status: "applied",
-                    code: detected.code,
-                    fullName: detected.fullName,
-                    occ: detected.occ
-                };
             }
 
             function buildPeriodStats(periodRows, periodStart, periodEnd) {
@@ -5466,7 +5979,6 @@ const workedEnoughForComp = override
                         if (dayOffMatch && overrideActualSeconds > 0) {
                             acc.compensationEarnedSeconds += overrideActualSeconds;
                         }
-
                         // Same rule as a real attendance row: working the fixed
                         // weekend day earns a compensation day. Kept here so a
                         // manually overridden weekend day behaves identically.
@@ -5890,9 +6402,7 @@ const workedEnoughForComp = override
 
             function createAbsentDayQuickActions(date) {
                 const right = document.createElement("span");
-                right.style.display = "inline-flex";
-                right.style.alignItems = "center";
-                right.style.gap = "6px";
+                right.className = "giu-absent-actions";
 
                 const note = document.createElement("span");
                 note.textContent = "Missing attendance entry";
@@ -5943,11 +6453,17 @@ const workedEnoughForComp = override
                     renderEnhancedUI();
                 }));
 
+                // "Add as:" and its pills stay together as one group, so a narrow
+                // box moves the whole group to its own line.
+                const addAs = document.createElement("span");
+                addAs.className = "giu-absent-addas";
+                addAs.appendChild(addAsLabel);
+                addAs.appendChild(makeHolidayBtn);
+                addAs.appendChild(makeAnnualBtn);
+                addAs.appendChild(addCompBtn);
+
                 right.appendChild(note);
-                right.appendChild(addAsLabel);
-                right.appendChild(makeHolidayBtn);
-                right.appendChild(makeAnnualBtn);
-                right.appendChild(addCompBtn);
+                right.appendChild(addAs);
                 return right;
             }
 
@@ -5961,7 +6477,7 @@ const workedEnoughForComp = override
 
                     details.forEach(function (date) {
                         const row = document.createElement("div");
-                        row.className = "giu-late-detail-row";
+                        row.className = "giu-late-detail-row giu-absent-detail-row";
 
                         const left = document.createElement("span");
                         left.textContent = `${date} (${formatDateToDayName(date)})`;
@@ -6635,6 +7151,9 @@ const workedEnoughForComp = override
 
             function maybeStartOnboardingGuide() {
                 if (isOnboardingCompleted()) return;
+                // The setup wizard comes first: no tour while it is open or while
+                // setup is still needed. After Finish/Skip the tour runs as usual.
+                if (setupWizard || needsSetup()) return;
 
                 const steps = getOnboardingSteps();
                 if (!steps.length) return;
@@ -6827,68 +7346,261 @@ const workedEnoughForComp = override
                 return panel;
             }
 
-            // Build the report-page day-off banner, or null if none is due.
-            // Mirrors the Home note but with full controls (Change / Undo / ×).
-            // `autoResult` is the return of maybeAutoFillDayOff for this render.
-            function buildDayOffNoticeForReport(autoResult, onRerender) {
-                const state = getDayOffAutoState();
-                const notice = document.createElement("div");
+            // ═══════════════════════════════════════════════════════════
+            //  First-run setup wizard (src/features/attendanceSetup.js)
+            //  The wizard never touches storage: it reads and writes through
+            //  setupApi below, which uses the same setters as the settings panel.
+            // ═══════════════════════════════════════════════════════════
 
-                if (autoResult && autoResult.status === "warn") {
-                    notice.className = "giu-dayoff-notice warn";
-                    notice.innerHTML = `<span class="ico">&#9888;</span>
-                        <span class="body">Set your weekly <strong>day off</strong> — attendance is being miscalculated until you do.
-                            <span class="sub">Couldn't auto-detect it from your records.</span></span>
-                        <span class="acts"><button type="button" class="gius-btn dn-primary dn-set">Set day off</button></span>`;
-                    notice.querySelector(".dn-set").addEventListener("click", function () {
-                        expandConfigAndScrollToDayOff();
-                    });
-                    return notice;
+            // "done" (finished or imported) or "skipped"; "" = never asked.
+            function getSetupFlag() {
+                try {
+                    const v = localStorage.getItem(STORAGE_KEYS.setup);
+                    return v === "done" || v === "skipped" ? v : "";
+                } catch {
+                    return "";
                 }
-
-                if (state && state.status === "applied" && !state.acknowledged) {
-                    notice.className = "giu-dayoff-notice applied";
-                    const full = getSelectedDayOffFullName(state.code) || state.code;
-                    const occ = state.occ || 0;
-                    notice.innerHTML = `<span class="ico">&#10003;</span>
-                        <span class="body">Day off set to <strong>${escapeHtmlAttr(full)}</strong> — detected from your attendance.
-                            <span class="sub">${escapeHtmlAttr(full)} has the most absences in your records — ${occ} with no check-in.</span></span>
-                        <span class="acts">
-                            <button type="button" class="gius-btn dn-primary dn-change">Change</button>
-                            <button type="button" class="gius-btn dn-ghost dn-undo">Undo</button>
-                        </span>
-                        <button type="button" class="dn-x" title="Dismiss">&times;</button>`;
-                    notice.querySelector(".dn-change").addEventListener("click", function () {
-                        expandConfigAndScrollToDayOff();
-                    });
-                    notice.querySelector(".dn-undo").addEventListener("click", function () {
-                        localStorage.removeItem(STORAGE_KEYS.selectedDay);
-                        setDayOffAutoState({ status: "undone" });
-                        if (typeof onRerender === "function") onRerender();
-                    });
-                    notice.querySelector(".dn-x").addEventListener("click", function () {
-                        setDayOffAutoState(Object.assign({}, getDayOffAutoState(), { acknowledged: true }));
-                        notice.remove();
-                    });
-                    return notice;
-                }
-
-                return null;
             }
 
-            // Expand the config panel (reusing the existing onboarding helper, which knows the
-            // real .giu-collapsible-header selector) and bring the Day Off selector into view.
-            function expandConfigAndScrollToDayOff() {
-                expandSettingsPanelForGuide();
-                const sel = document.getElementById("giu-day-select");
-                if (sel) sel.scrollIntoView({ behavior: "smooth", block: "center" });
+            function setSetupFlag(value) {
+                try { localStorage.setItem(STORAGE_KEYS.setup, value); } catch { /* ignore */ }
             }
 
-            // Minimal attribute-safe escaper for day names (a-z only in practice).
-            function escapeHtmlAttr(s) {
-                return String(s).replace(/[&<>"']/g, function (c) {
-                    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+            function needsSetup() {
+                return !isDayOffConfigured() && !getSetupFlag();
+            }
+
+            // Choices for the wizard's "previous day off". On Berlin a previous
+            // day off may predate the Berlin start, when the Cairo week applied
+            // and Sunday was an ordinary selectable day — so Berlin offers the
+            // union of both branches' six (all seven weekdays): Berlin's week
+            // order, then the days only Cairo could pick (Sunday, at the end).
+            // Cairo offers its own six, as the day-off step does.
+            function previousDayOffWeekdays() {
+                const own = dayOffWeekdays();
+                if (!SOURCE) return own;
+                const otherOff = BRANCH_CONFIG[getBranch() === "berlin" ? "cairo" : "berlin"].fixedOffDay;
+                const extra = WEEKDAY_TABLE.filter(function (wd) {
+                    return wd.name !== otherOff && !own.some(function (o) { return o.code === wd.code; });
                 });
+                return own.concat(extra);
+            }
+
+            function setupDayBefore(ymd) {
+                const d = new Date(ymd + "T00:00:00Z");
+                d.setUTCDate(d.getUTCDate() - 1);
+                return d.toISOString().slice(0, 10);
+            }
+
+            // What "Run setup again" pre-fills: the day off in effect today, the
+            // latest change (the day in effect just before the most recent schedule
+            // entry, when it differs), the REMAINING annual leave (as the settings
+            // "Edit" shows it), the accrual rate and the Berlin start date.
+            function currentSetupValues() {
+                const today = getTodayLocalYMD();
+                const dayOffCode = getDayOffCodeForDate(today);
+                const past = getStoredDayOffSchedule().filter(function (e) { return e.startDate <= today; });
+                let previous = null;
+                const last = past[past.length - 1];
+                if (last && last.code === dayOffCode) {
+                    const before = getDayOffCodeForDate(setupDayBefore(last.startDate));
+                    if (before && before !== last.code) previous = { code: before, from: last.startDate };
+                }
+                return {
+                    dayOffCode,
+                    previous,
+                    balance: getStoredAnnualLeaveBalance() - computeAnnualUsedDays(getStoredHolidays()),
+                    accrualRate: getStoredAnnualLeaveAccrualRate(),
+                    berlinStart: getBranchStart(),
+                };
+            }
+
+            // The storage the wizard's answers turn into — what doing it by hand in
+            // the settings produces: each "Day Off" + "Apply from" writes one
+            // schedule entry { startDate, code }. The first entry goes on the
+            // retention cutoff (the oldest date records are kept for; earlier still
+            // when the change date is older), so it covers all kept history:
+            //   no change:  [{ cutoff, current }]
+            //   change:     [{ cutoff, previous }, { changeDate, current }]
+            // Entries up to today are replaced (the answers describe the past);
+            // changes already scheduled for later days are kept. selectedDay (the
+            // fallback before the first entry, and the settings dropdown's value)
+            // becomes the current day. The balance entered is what REMAINS; it is
+            // stored as a total the way the settings "Edit" stores it.
+            //
+            // Answers equal to what is stored ("Run setup again" clicked through)
+            // leave the schedule untouched. Otherwise only the stretch the answers
+            // describe is replaced; older entries are kept:
+            //   change:    entries before the change date are kept, except that the
+            //              latest of them becomes the previous day (dropped when the
+            //              day before it already was that day); with none left, the
+            //              previous day starts on the cutoff as above.
+            //   no change: entries before the cutoff are kept.
+            // selectedDay only changes when no older entry is kept (it is the
+            // fallback for the dates before them).
+            function sameSetupDayOff(values, cur) {
+                const a = values.previous || null;
+                const b = cur.previous || null;
+                return values.dayOffCode === cur.dayOffCode
+                    && (!a && !b || !!a && !!b && a.code === b.code && a.from === b.from);
+            }
+
+            function planSetupDayOff(values) {
+                const today = getTodayLocalYMD();
+                const code = values.dayOffCode;
+                const schedule = getStoredDayOffSchedule();
+                if (sameSetupDayOff(values, currentSetupValues())) {
+                    return { selectedDay: getSelectedDayOffCode(), dayOffSchedule: schedule };
+                }
+                const previous = values.previous && values.previous.code && values.previous.from
+                    ? values.previous : null;
+                const later = schedule.filter(function (e) { return e.startDate > today; });
+                let cutoff = getRetentionCutoffStartDate() || today;
+                if (cutoff > today) cutoff = today;
+                let kept;
+                let entries;
+                if (previous) {
+                    kept = schedule.filter(function (e) { return e.startDate < previous.from; });
+                    const last = kept.pop();
+                    if (last) {
+                        const before = getDayOffCodeForDate(setupDayBefore(last.startDate));
+                        const merged = kept.length && before === previous.code;
+                        entries = (merged ? [] : [{ startDate: last.startDate, code: previous.code }])
+                            .concat([{ startDate: previous.from, code }]);
+                    } else {
+                        const dayBefore = setupDayBefore(previous.from);
+                        const anchor = dayBefore < cutoff ? dayBefore : cutoff;
+                        entries = [{ startDate: anchor, code: previous.code }, { startDate: previous.from, code }];
+                    }
+                } else {
+                    kept = schedule.filter(function (e) { return e.startDate < cutoff; });
+                    entries = [{ startDate: cutoff, code }];
+                }
+                return {
+                    selectedDay: kept.length ? getSelectedDayOffCode() : code,
+                    dayOffSchedule: kept.concat(entries, later),
+                };
+            }
+
+            function planSetupValues(values) {
+                const dayOff = planSetupDayOff(values);
+                const plan = {
+                    selectedDay: dayOff.selectedDay,
+                    dayOffSchedule: dayOff.dayOffSchedule,
+                    annualLeaveBalance: Math.max(0, Number(values.balance) + computeAnnualUsedDays(getStoredHolidays())),
+                    annualLeaveAccrualRate: Number(values.accrualRate),
+                };
+                if (SOURCE) plan.branchStart = values.berlinStart || "";
+                return plan;
+            }
+
+            function applySetupValues(values) {
+                if (!values || !getSelectedDayOffFullName(values.dayOffCode)) {
+                    throw new Error("A day off is required.");
+                }
+                const prev = values.previous;
+                const prevOk = prev && previousDayOffWeekdays().some(function (wd) { return wd.code === prev.code; });
+                if (prev && (!prevOk || prev.code === values.dayOffCode
+                    || !YMD_RE.test(prev.from || "") || prev.from > getTodayLocalYMD())) {
+                    throw new Error("The day-off change is invalid.");
+                }
+                const plan = planSetupValues(values);
+                if ("branchStart" in plan && !setBranchStart(plan.branchStart)) {
+                    throw new Error(branchStartError(plan.branchStart));
+                }
+                if (plan.selectedDay) localStorage.setItem(STORAGE_KEYS.selectedDay, plan.selectedDay);
+                setStoredDayOffSchedule(plan.dayOffSchedule);
+                setStoredAnnualLeaveBalance(plan.annualLeaveBalance);
+                setStoredAnnualLeaveAccrualRate(plan.annualLeaveAccrualRate);
+                // The balance entered is today's: accrue from the next period on.
+                localStorage.setItem(ANNUAL_LEAVE_ACCRUAL_PERIOD_KEY, getPayrollPeriodKey(getTodayLocalYMD()));
+            }
+
+            // Re-render whatever is on screen with the new settings.
+            function refreshAfterSetup() {
+                if (isTargetReportPage() && document.getElementById("giu-attendance-container")) renderEnhancedUI();
+                if (isHomePage()) homeRerender();
+            }
+
+            let setupWizard = null;        // the open wizard's handle, or null
+            let setupAutoOpened = false;   // auto-open at most once per page load
+
+            const setupApi = {
+                isBerlin: !!SOURCE,
+                today: getTodayLocalYMD,
+                dayOptions: function () {
+                    return dayOffWeekdays().map(function (wd) { return { code: wd.code, name: wd.name }; });
+                },
+                previousDayOptions: function () {
+                    return previousDayOffWeekdays().map(function (wd) { return { code: wd.code, name: wd.name }; });
+                },
+                dayName: getSelectedDayOffFullName,
+                current: currentSetupValues,
+                berlinStartError: branchStartError,
+                apply: applySetupValues,
+                importJson: function (text) {
+                    try {
+                        const report = importSettingsSnapshot(JSON.parse(String(text || "")));
+                        if (!report.accepted) return { ok: false, error: "This file has no attendance settings in it." };
+                        return { ok: true, report };
+                    } catch (e) {
+                        return { ok: false, error: "That is not a valid settings file (" + (e && e.message ? e.message : "unknown error") + ")." };
+                    }
+                },
+                // Given the wizard's answers, the backup already contains them
+                // (the wizard offers the download before Finish writes them).
+                exportJson: function (values) {
+                    const snapshot = exportSettingsSnapshot();
+                    if (values) Object.assign(snapshot, planSetupValues(values));
+                    return JSON.stringify(snapshot, null, 2);
+                },
+                markDone: function () { setSetupFlag("done"); },
+                markSkipped: function () { if (getSetupFlag() !== "done") setSetupFlag("skipped"); },
+                onApplied: refreshAfterSetup,
+                onClosed: function (reason) {
+                    setupWizard = null;
+                    if (typeof Tips.release === "function") Tips.release();
+                    // Skipped on the report: the tour it held back may start now.
+                    if (reason === "skipped" && isTargetReportPage() && document.getElementById("giu-attendance-container")) {
+                        maybeStartOnboardingGuide();
+                    }
+                },
+                needsSetup,
+                isDayOffConfigured,
+                // Where focus goes on close when the opener was re-rendered away.
+                focusFallback: function () {
+                    return document.getElementById("giu-run-setup-btn")
+                        || document.querySelector("#gius-att-widget .gius-att-dayoff-btn")
+                        || document.querySelector("#gius-att-widget button, #gius-att-widget a[href]");
+                },
+            };
+
+            // withPrefill: "Run setup again" / the Home prompt pre-fill the stored
+            // answers — but only once a day off exists (a first run guesses nothing).
+            function openSetupWizard(withPrefill) {
+                if (setupWizard) return setupWizard;
+                // A due monthly accrual first, so the balance shown (and saved) is today's.
+                applyMonthlyAnnualLeaveAccrual();
+                const prefill = withPrefill && isDayOffConfigured() ? currentSetupValues() : null;
+                // The tour would sit on top of the dialog; stop it (not completed).
+                if (onboardingController && onboardingController.isActive()) onboardingController.stop(false);
+                // Tips (bundle) wait until the wizard closes; the stub has no hold.
+                if (typeof Tips.hold === "function") Tips.hold();
+                setupWizard = openAttendanceSetup(S, setupApi, { prefill });
+                return setupWizard;
+            }
+
+            // Home boot and report render: open the wizard when setup is needed,
+            // once per page load.
+            function maybeAutoOpenSetup() {
+                if (setupAutoOpened || setupWizard || !needsSetup()) return;
+                setupAutoOpened = true;
+                openSetupWizard(false);
+            }
+
+            // The Home "Set your day off" prompt: the wizard, in place (no navigation).
+            function openSetup() {
+                return openSetupWizard(true);
             }
 
             function renderEnhancedUI() {
@@ -6914,8 +7626,6 @@ const workedEnoughForComp = override
 
                 const periods = groupRowsByPayrollPeriod(getAttendanceRows());
 
-                const dayOffAuto = maybeAutoFillDayOff(periods);
-
                 // Day-off dropdown changes are staged; only "Apply from" persists schedule changes.
                 const noopDayChange = function () {};
                 const configPanel = createConfigPanel(
@@ -6936,11 +7646,11 @@ const workedEnoughForComp = override
 
                 container.appendChild(configPanel);
 
-                const dayOffNotice = buildDayOffNoticeForReport(dayOffAuto, renderEnhancedUI);
-                if (dayOffNotice) container.insertBefore(dayOffNotice, container.firstChild);
-
                 reportTable.parentNode.insertBefore(container, reportTable);
                 window.scrollTo({ top: renderState.scrollY, behavior: "auto" });
+
+                // First run: the setup wizard (it holds the guide back until it closes).
+                maybeAutoOpenSetup();
 
                 // Run first-time guide after UI is in the DOM so step selectors can resolve.
                 maybeStartOnboardingGuide();
@@ -6949,8 +7659,6 @@ const workedEnoughForComp = override
             function computeCurrentMonthSummary(rows, todayYmd) {
                 const periods = groupRowsByPayrollPeriod(rows || []);
                 if (!periods.length) return { empty: true };
-                const auto = maybeAutoFillDayOff(periods);
-                const dayOffWarn = !!(auto && auto.status === "warn");
                 // Pick the period containing TODAY, not the latest period with data:
                 // the gate report lags ~a day, so right after a period flip (the 11th)
                 // the newest rows still belong to the previous payroll month and the
@@ -6958,18 +7666,38 @@ const workedEnoughForComp = override
                 const todayKey = getPayrollPeriodKey(todayYmd || getTodayLocalYMD());
                 const current = periods.find(function (p) { return p.key === todayKey; });
                 if (current) {
-                    return { label: current.label, dayOffWarn: dayOffWarn, stats: buildPeriodStats(current.rows, current.start, current.end) };
+                    return { label: current.label, stats: buildPeriodStats(current.rows, current.start, current.end) };
                 }
                 const bounds = getPayrollPeriodBounds(todayKey);
                 return {
                     label: getPayrollPeriodLabel(todayKey),
-                    dayOffWarn: dayOffWarn,
                     stats: buildPeriodStats([], bounds.start, bounds.end),
                 };
             }
 
             let homeLastRows = [];
             let homeFetchInFlight = false; // guards the manual refresh button and the auto-refresh path from overlapping
+            // Berlin only: the failure shown as an inline notice over the stale widget,
+            // until a fetch succeeds. homeRerender puts it back after repainting.
+            let homeLastError = null;
+
+            // Berlin only: SOURCE rejects with kind "superseded" when the university
+            // changed while its request was in flight. The switch already reset and
+            // rebooted the widget (homeReset), so a superseded result renders nothing
+            // and leaves the widget state alone. Never true on Cairo (SOURCE is null).
+            function isSupersededFetch(err) {
+                return !!(SOURCE && err && err.kind === "superseded");
+            }
+
+            // Berlin only (handed to SOURCE.start): forget everything the widget
+            // holds for the university being left, so it cannot re-render or re-save
+            // the old university's rows.
+            function homeReset() {
+                homeLastRows = [];
+                homeFetchInFlight = false;
+                homeLastError = null;
+                try { localStorage.removeItem(HOME_CACHE_KEY); } catch { /* ignore */ }
+            }
 
             function loadHomeCache() {
                 try {
@@ -7026,6 +7754,17 @@ const workedEnoughForComp = override
 
                     iframe.addEventListener("error", function () { finish(reject, new Error("home-iframe-error")); });
                     document.body.appendChild(iframe);
+                });
+            }
+
+            // One entry point for "get the report rows", whichever source is active.
+            // Only the Berlin source honours opts.force (skips its short memo).
+            function fetchReportRows(opts) {
+                if (!SOURCE) return fetchReportViaIframe();
+                return SOURCE.fetchReportDoc(opts).then(function (doc) {
+                    const layoutError = reportDocLayoutError(doc);
+                    if (layoutError) throw layoutError;
+                    return getAttendanceRows(doc);
                 });
             }
 
@@ -7096,7 +7835,14 @@ const workedEnoughForComp = override
                 return balance + (stats && stats.isPositiveOrZero ? " Extra" : " Missing");
             }
 
+            // Berlin only: a failure over a stale widget, kept until a fetch succeeds.
+            function homeShowInlineError(err) {
+                homeLastError = err;
+                SOURCE.renderError(homeEnsureHost(), err, homeRetry, { inline: true });
+            }
+
             function homeRenderFromRows(rows) {
+                homeLastError = null;
                 homeLastRows = Array.isArray(rows) ? rows : [];
                 const summary = computeCurrentMonthSummary(homeLastRows);
                 saveHomeCache(summary, homeLastRows);
@@ -7109,12 +7855,14 @@ const workedEnoughForComp = override
                     return;
                 }
 
-                fetchReportViaIframe().then(homeRenderFromRows).catch(function () {
+                fetchReportRows().then(homeRenderFromRows).catch(function (err) {
+                    if (isSupersededFetch(err)) return;
                     const cache = loadHomeCache();
                     if (cache && cache.summary) {
                         renderHomeWidget(cache.summary, { stale: true });
+                        if (SOURCE) homeShowInlineError(err);
                     } else {
-                        homeShowError(homeEnsureHost());
+                        homeShowError(homeEnsureHost(), err);
                     }
                 });
             }
@@ -7192,6 +7940,9 @@ const workedEnoughForComp = override
                         font-size:17px;font-weight:700;margin-bottom:8px;}
                     .gius-att-balance{display:inline-block;font-size:13px;font-weight:700;padding:3px 10px;
                         border-radius:999px;}
+                    .gius-att-bal-green{background:#dcfce7;color:#166534;}
+                    .gius-att-bal-amber{background:#fff8e1;color:#8a6500;}
+                    .gius-att-bal-red{background:#fee2e2;color:#991b1b;}
                     .gius-att-bar{height:8px;border-radius:6px;background:#e9ecef;overflow:hidden;margin:10px 0 8px;}
                     .gius-att-bar-fill{height:100%;border-radius:6px;}
                     .gius-att-bar-ghost{background:#64748b;} .gius-att-bar-deduct{background:#e11d48;} .gius-att-bar-close{background:#f59e0b;} .gius-att-bar-ontime{background:#16a34a;}
@@ -7209,6 +7960,7 @@ const workedEnoughForComp = override
                     .gius-att-sheet{width:100%;max-width:420px;max-height:85vh;overflow:auto;background:#fff;color:#1e1e2e;border-radius:14px;padding:18px;box-shadow:0 18px 50px rgba(0,0,0,.35);}
                     .gius-att-sheet-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;}
                     .gius-att-sheet-title{font-weight:800;font-size:16px;}
+                    .gius-att-sheet-sub{font-size:12.5px;color:#6b7280;margin-bottom:14px;}
                     .gius-att-x{border:none;background:transparent;font-size:20px;line-height:1;cursor:pointer;color:inherit;padding:4px;}
                     .gius-att-trow{display:flex;align-items:flex-start;gap:11px;padding:11px;border-radius:10px;margin-bottom:8px;border:1px solid #eef0f3;}
                     .gius-att-trow.cur{background:#f6f8fa;border-color:#d0d7de;}
@@ -7220,7 +7972,7 @@ const workedEnoughForComp = override
                     .gius-att-trow-cur{font-size:10.5px;font-weight:800;letter-spacing:.4px;padding:1px 6px;border-radius:999px;background:#1e1e2e;color:#fff;}
                     .gius-att-trow-cond{font-size:12px;color:#6b7280;margin-top:2px;}
                     html.gius-dark .gius-att-sheet{background:#1e1e2e;color:#cdd6f4;}
-                    html.gius-dark .gius-att-trow-cond{color:#9399b2;}
+                    html.gius-dark .gius-att-sheet-sub,html.gius-dark .gius-att-trow-cond{color:#9399b2;}
                     html.gius-dark .gius-att-trow{border-color:#2a2a3a;}
                     html.gius-dark .gius-att-trow.cur{background:#181825;border-color:#3a3a4d;}
                     html.gius-dark .gius-att-trow-cur{background:#cdd6f4;color:#1e1e2e;}
@@ -7257,6 +8009,9 @@ const workedEnoughForComp = override
                     html.gius-dark .gius-att-absent-row{background:#11111b;}
                     html.gius-dark .gius-att-action{background:#181825;border-color:#313244;color:#cdd6f4;}
                     html.gius-dark .gius-att-action:hover{background:#2a2410;border-color:#f9e2af;}
+                    html.gius-dark .gius-att-bal-green{background:#14351f;color:#a6e3a1;}
+                    html.gius-dark .gius-att-bal-amber{background:#2a2410;color:#f9e2af;}
+                    html.gius-dark .gius-att-bal-red{background:#3a1414;color:#f38ba8;}
                     .gius-att-dayoff{display:flex;align-items:center;gap:9px;flex-wrap:wrap;
                         border-radius:8px;padding:9px 12px;margin:0 0 12px;font-size:13.5px;
                         line-height:1.45;border-left:3px solid;}
@@ -7266,12 +8021,8 @@ const workedEnoughForComp = override
                     .gius-att-dayoff-btn{font:inherit;font-size:12.5px;font-weight:700;line-height:1;
                         cursor:pointer;border-radius:6px;padding:7px 11px;border:1px solid transparent;
                         flex:0 0 auto;}
-                    .gius-att-dayoff.applied{background:#ecfdf5;border-left-color:#16a34a;color:#065f46;}
-                    .gius-att-dayoff.applied .gius-att-dayoff-btn{background:#16a34a;color:#fff;}
                     .gius-att-dayoff.warn{background:#fff8e1;border-left-color:#f59e0b;color:#8a6500;}
                     .gius-att-dayoff.warn .gius-att-dayoff-btn{background:#b45309;color:#fff;}
-                    html.gius-dark .gius-att-dayoff.applied{background:#14351f;border-left-color:#a6e3a1;color:#a6e3a1;}
-                    html.gius-dark .gius-att-dayoff.applied .gius-att-dayoff-btn{background:#a6e3a1;color:#11271a;}
                     html.gius-dark .gius-att-dayoff.warn{background:#2a2410;border-left-color:#f9e2af;color:#f9e2af;}
                     html.gius-dark .gius-att-dayoff.warn .gius-att-dayoff-btn{background:#f9e2af;color:#2a2410;}
                     .gius-att-card.gius-att-muted{opacity:.45;filter:grayscale(.6);}`;
@@ -7281,35 +8032,20 @@ const workedEnoughForComp = override
                 document.head.appendChild(style);
             }
 
-            // Build the day-off note element for the Home widget, or null if none is due.
-            // applied (not acknowledged) → green note + "Adjust in report"; warn → amber note
-            // + "Open report". Both buttons carry gius-btn so GIU Dark Mode leaves them styled.
-            function buildDayOffNoteForHome(summary) {
-                const state = getDayOffAutoState();
-                let cls = "";
-                let html = "";
-                // Warn purely from LIVE config — not the cached summary.dayOffWarn, which is
-                // baked at compute time and wrong in both directions (lingers after a set,
-                // missing after a removal). Unconfigured ⟹ numbers wrong ⟹ warn.
-                if (!isDayOffConfigured()) {
-                    cls = "warn";
-                    html = `<span class="ico">&#9888;</span>
-                        <span class="txt">Set your weekly day off to see correct attendance.</span>
-                        <button type="button" class="gius-att-dayoff-btn gius-btn">Open report &rarr;</button>`;
-                } else if (state && state.status === "applied" && !state.acknowledged) {
-                    cls = "applied";
-                    const full = getSelectedDayOffFullName(state.code) || state.code;
-                    html = `<span class="ico">&#10003;</span>
-                        <span class="txt">Day off auto-set to <strong>${homeEsc(full)}</strong>.</span>
-                        <button type="button" class="gius-att-dayoff-btn gius-btn">Adjust in report &rarr;</button>`;
-                } else {
-                    return null;
-                }
+            // The Home "Set your day off" prompt, or null once a day off is set.
+            // Gated purely on LIVE config (never a cached summary flag), so it tracks
+            // set/remove immediately. Nothing is guessed: until the staff member picks
+            // a day off the numbers stay greyed and this prompt stays. The button
+            // carries gius-btn so GIU Dark Mode leaves it styled.
+            function buildDayOffPromptForHome() {
+                if (isDayOffConfigured()) return null;
                 const el = document.createElement("div");
-                el.className = "gius-att-dayoff " + cls;
-                el.innerHTML = html;
+                el.className = "gius-att-dayoff warn";
+                el.innerHTML = `<span class="ico">&#9888;</span>
+                    <span class="txt"><strong>Set your day off</strong> to see correct attendance.</span>
+                    <button type="button" class="gius-att-dayoff-btn gius-btn">Set your day off &rarr;</button>`;
                 el.querySelector(".gius-att-dayoff-btn").addEventListener("click", function () {
-                    window.location.href = REPORT_DATA_URL;
+                    openSetup();
                 });
                 return el;
             }
@@ -7321,7 +8057,7 @@ const workedEnoughForComp = override
 
                 if (!summary || summary.empty) {
                     host.innerHTML = `<div class="gius-att-head">Attendance</div>
-                        <div class="gius-att-empty">No attendance records yet. <a class="gius-att-link" href="${REPORT_DATA_URL}">View full report</a></div>`;
+                        <div class="gius-att-empty">No attendance records yet. <a class="gius-att-link" href="${REPORT_VIEW_URL}">View full report</a></div>`;
                     return;
                 }
 
@@ -7434,9 +8170,9 @@ const workedEnoughForComp = override
                         <div class="gius-att-quip">${homeEsc(tierQuip)}</div>
                     </div>
                     ${absentBlock}
-                    <a class="gius-att-link" href="${REPORT_DATA_URL}">View full report →</a>`;
+                    <a class="gius-att-link" href="${REPORT_VIEW_URL}">View full report →</a>`;
 
-                const dayOffNote = buildDayOffNoteForHome(summary);
+                const dayOffNote = buildDayOffPromptForHome();
                 if (dayOffNote) {
                     const head = host.querySelector(".gius-att-head");
                     if (head && head.nextSibling) head.parentNode.insertBefore(dayOffNote, head.nextSibling);
@@ -7471,16 +8207,20 @@ const workedEnoughForComp = override
                         if (homeFetchInFlight) return;
                         homeFetchInFlight = true;
                         refreshBtn.disabled = true;
-                        fetchReportViaIframe().then(function (rows) {
+                        fetchReportRows({ force: true }).then(function (rows) {
                             homeFetchInFlight = false;
                             homeRenderFromRows(rows);
-                        }).catch(function () {
+                        }).catch(function (err) {
+                            if (isSupersededFetch(err)) return;
                             homeFetchInFlight = false;
                             refreshBtn.disabled = false;
+                            if (SOURCE) homeShowInlineError(err);
                         });
                     });
                 }
                 homeAttachAbsentActions(host);
+                Tips.show({ id: 'staffAttendance', el: host, title: 'Attendance — This Payroll Month',
+                    text: 'Your live attendance balance for the current payroll month. Expand absent days to file holiday, annual or compensation requests, or open the full report below.' });
             }
 
             // Tier legend popup: lists every tier with its colour + condition, current one flagged.
@@ -7519,7 +8259,8 @@ const workedEnoughForComp = override
                 document.addEventListener("keydown", onKey);
             }
 
-            function homeShowError(host) {
+            function homeShowError(host, err) {
+                if (SOURCE) { SOURCE.renderError(host, err, homeRetry); return; }
                 host.innerHTML = `<div class="gius-att-head">Attendance</div>
                     <div class="gius-att-empty">Couldn't load attendance. <button type="button" id="gius-att-retry" class="gius-att-toggle gius-btn">Retry</button></div>`;
                 const r = host.querySelector("#gius-att-retry");
@@ -7531,16 +8272,17 @@ const workedEnoughForComp = override
                     <div class="gius-att-empty">Loading attendance…</div>`;
             }
 
-            // Berlin origin only: the attendance report is served exclusively by the
-            // Cairo portal (Berlin's own SwiftReports_m.aspx returns HTTP 500), and
-            // REPORT_DATA_URL is therefore cross-origin here. Reading it would need
-            // grants this phase deliberately does not take, so point the user at Cairo
-            // instead of spinning the hidden iframe for its full timeout and then
-            // showing a permanent "Couldn't load attendance" card.
-
-            function bootHome() {
+            // On Berlin, SOURCE supplies the report cross-origin from Cairo
+            // (src/berlin/); on Cairo the hidden same-origin iframe does.
+            // Berlin only: opts.force (a user's Retry, see homeRetry) skips the
+            // fresh-cache early return and the paint delay, and asks the source
+            // to bypass its memo. Never set on Cairo, where bootHome is also a
+            // click listener and receives an Event.
+            function bootHome(opts) {
                 if (!isHomePage()) return;
+                const force = !!(SOURCE && opts && opts.force === true);
                 homeInjectStyles();
+                maybeAutoOpenSetup();
 
                 const cache = loadHomeCache();
                 const fresh = !!(cache && cache.fetchedAt &&
@@ -7557,29 +8299,81 @@ const workedEnoughForComp = override
                 } else {
                     homeShowLoading(homeEnsureHost()); // no cache → show a spinner, not a blank card
                 }
-                if (fresh) return; // gate rows recent enough — skip the report iframe entirely
+                if (fresh && !force) return; // gate rows recent enough — skip the report iframe entirely
 
                 const refresh = function () {
                     if (homeFetchInFlight) return;
                     homeFetchInFlight = true;
-                    fetchReportViaIframe().then(function (rows) {
+                    fetchReportRows(force ? { force: true } : undefined).then(function (rows) {
                         homeFetchInFlight = false;
                         homeRenderFromRows(rows);
-                    }).catch(function () {
+                    }).catch(function (err) {
+                        if (isSupersededFetch(err)) return;
                         homeFetchInFlight = false;
-                        if (cache) return; // keep the stale render
-                        homeShowError(homeEnsureHost());
+                        if (cache && !SOURCE) return; // keep the stale render
+                        if (cache) { homeShowInlineError(err); return; }
+                        homeShowError(homeEnsureHost(), err);
                     });
                 };
                 // With a cached render on screen, let Home finish loading before
                 // spawning the hidden report iframe (it executes the full report).
-                if (cache) setTimeout(refresh, HOME_REFRESH_DELAY_MS);
+                if (cache && !force) setTimeout(refresh, HOME_REFRESH_DELAY_MS);
                 else refresh();
+            }
+
+            // Berlin only: the widget's Retry. Every click is exactly one attempt,
+            // even when the cache is fresh (e.g. after a failed refresh button).
+            function homeRetry() {
+                bootHome({ force: true });
+            }
+
+            // Berlin only (handed to SOURCE.start): recompute the widget from the
+            // rows it already holds, so settings edited in the report view show on
+            // Home at once. Never fetches.
+            function homeRerender() {
+                if (!isHomePage()) return;
+                const cache = loadHomeCache();
+                const rows = cache && Array.isArray(cache.rows) ? cache.rows : homeLastRows;
+                if (!rows.length) return; // nothing rendered from rows yet (loading, error, chooser)
+                const fresh = !!(cache && cache.fetchedAt &&
+                    (Date.now() - cache.fetchedAt) < HOME_REFRESH_TTL_MS);
+                // A failure still current keeps the widget marked stale, with its notice on top.
+                renderHomeWidget(computeCurrentMonthSummary(rows), { stale: !fresh || !!homeLastError });
+                if (homeLastError) SOURCE.renderError(homeEnsureHost(), homeLastError, homeRetry, { inline: true });
+            }
+
+            // Berlin only (handed to SOURCE.start): a report the view loaded also
+            // refreshes the widget and its cache. Never fetches.
+            function homeRenderFromDoc(doc) {
+                if (!isHomePage()) return;
+                homeRenderFromRows(getAttendanceRows(doc));
+            }
+
+            // Berlin only (handed to SOURCE.start): the layout error for a report
+            // document whose grid lacks the Day/Duration columns, else null.
+            function reportDocLayoutError(doc) {
+                const table = doc.getElementById("MainContent_DG_SwiftReport");
+                if (!table || getAttendanceRows(doc).length) return null;
+                if (detectAttendanceColumnIndexes(Array.from(table.rows || []))) return null;
+                return SOURCE.error("layout", { missing: ["Day", "Duration"] });
+            }
+
+            // Berlin only (handed to SOURCE.start): tear down what the report UI
+            // put on <body> (onboarding tour, inline edit modals) when the view
+            // closes. The tour is stopped, not completed, so it can run again.
+            function closeReportOverlays() {
+                if (onboardingController && onboardingController.isActive()) {
+                    onboardingController.stop(false);
+                }
+                document.querySelectorAll(".giu-inline-modal-layer").forEach(function (el) {
+                    el.remove();
+                });
             }
 
             window.__giuAttHome = {
                 isHomePage,
                 bootHome,
+                homeRefreshAfterQuickAction,
                 getAttendanceRows,
                 computeCurrentMonthSummary,
                 fetchReportViaIframe,
@@ -7588,11 +8382,13 @@ const workedEnoughForComp = override
                 renderHomeWidget,
                 setHomeRowsForTest: function (rows) { homeLastRows = Array.isArray(rows) ? rows : []; },
                 isDayOffConfigured,
-                getDayOffAutoState,
-                setDayOffAutoState,
                 groupRowsByPayrollPeriod,
-                detectDayOffCode,
-                maybeAutoFillDayOff,
+                openSetup,
+                // Setup wizard test hooks.
+                setupApi,
+                needsSetup,
+                openSetupWizard,
+                isSetupOpen: function () { return !!setupWizard; },
                 renderEnhancedUI,
                 getStoredAnnualLeaveBalance,
                 setStoredAnnualLeaveBalance,
@@ -7602,13 +8398,70 @@ const workedEnoughForComp = override
             };
 
             try {
+                window.__giuBranch = {
+                    get: getBranch,
+                    fixedOffDay: () => branchConfig().fixedOffDay,
+                    reportOrigin: () => REPORT_ORIGIN,
+                    exportSnapshot: exportSettingsSnapshot,
+                    importSnapshot: importSettingsSnapshot,
+                    dayOffWeekdays: dayOffWeekdays,
+                    dayOffFullName: getSelectedDayOffFullName,
+                    dayOffSchedule: getStoredDayOffSchedule,
+                    isFixedNonWorking: isFixedNonWorkingDay,
+                    getStart: getBranchStart,
+                    setStart: setBranchStart,
+                    branchFor: getBranchFor,
+                    fixedOffDayFor: fixedOffDayFor,
+                    // Builds the compensation ledger for the payroll period containing
+                    // `todayYmd`, from parsed attendance rows — the ledger is what the
+                    // Compensations table and the usable balance are derived from, so
+                    // it needs to be reachable to test that a worked weekend earns.
+                    compLedger: function (rows, todayYmd) {
+                        const key = getPayrollPeriodKey(todayYmd);
+                        const bounds = getPayrollPeriodBounds(key);
+                        const inPeriod = (rows || []).filter(function (r) {
+                            const d = normalizeYMD(r && r.date ? r.date : "");
+                            return d && d >= bounds.start && d <= bounds.end;
+                        });
+                        const leaves = getStoredCompensationLeaves().filter(function (leave) {
+                            const d = normalizeYMD(leave && leave.date ? leave.date : "");
+                            return d && getPayrollPeriodKey(d) === key;
+                        });
+                        return buildCompensationLedgerForPeriod(
+                            inPeriod, bounds.start, bounds.end,
+                            getStoredHolidays(), getStoredRamadan(), getStoredOverrides(),
+                            getStoredExamPeriod(), leaves
+                        );
+                    },
+                    compWeek: getCompensationWeekBounds,
+                };
+            } catch { /* ignore */ }
+
+            try {
                 // window.__giuAttDisableAutoRun lets tests inject the script and drive
                 // functions manually without the page-detection auto-run firing.
                 if (!window.__giuAttDisableAutoRun) {
-                    renderEnhancedUI();
-                    bootHome();
+                    if (SOURCE) {
+                        SOURCE.start({
+                            renderEnhancedUI,
+                            bootHome,
+                            resetHome: homeReset,
+                            rerenderHome: homeRerender,
+                            renderHomeFromDoc: homeRenderFromDoc,
+                            checkReportDoc: reportDocLayoutError,
+                            closeOverlays: closeReportOverlays,
+                        });
+                    } else {
+                        renderEnhancedUI();
+                        bootHome();
+                    }
                 }
             } catch (err) {
                 console.log("Enhanced attendance script error:", err.message);
             }
-        })();
+        }
+
+    // Tips is the bundle's first-run tooltip system; this script ships without it.
+    const Tips = { show() {} };
+    staffAttendance(S);
+})();
