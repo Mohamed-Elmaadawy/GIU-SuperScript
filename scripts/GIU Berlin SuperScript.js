@@ -1,59 +1,69 @@
-/*__HEADER__*/
+// ==UserScript==
+// @name        GIU Berlin SuperScript
+// @description All-in-one GIU Berlin portal enhancements (4 features: attendance from Cairo, upload grades, proctor reminder, notification batch). Install this OR GIU Berlin Attendance — never both.
+// @match       https://portal.giu-berlin.de/*
+// @match       https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx*
+// @match       https://staff.guc.edu.eg/external/tempprojects/swiftreports.aspx*
+// @match       https://staff.guc.edu.eg/External/TempProjects/SwiftReports.aspx*
+// @match       https://intranet.guc.edu.eg/external/tempprojects/swiftreports.aspx*
+// @match       https://intranet.guc.edu.eg/External/TempProjects/SwiftReports.aspx*
+// @match       https://apps.guc.edu.eg/external/tempprojects/swiftreports.aspx*
+// @match       https://apps.guc.edu.eg/External/TempProjects/SwiftReports.aspx*
+// @namespace   Cyn0
+// @version     1.0.0
+// @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Berlin%20SuperScript.js
+// @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Berlin%20SuperScript.js
+// @author      Mo.Elmaadawy
+// @icon        data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAADAFBMVEX///////0DAwP7+/z+/v0BAQH8/fwAAAD+//7//v///f/9//////7///v+///+/v/8/////vzcjxvejhr///kFBQXdjR7ckBX4////+//7+vvajxv9//v//P/Zjh/ZjBjcjhn5+fn8//7//f4UExP+//1wcHD6//81NTX//P76//7YkBr9//4iIiIxMTHcjBe8vLwZGRknJyeioqL+/P8eHh04ODhrbGtTU1NkZGNgX1/39/e2traurq4PDw/bjxf//+0qKSnYkRR3dneys7LQmEX6//ucnJx8e3ympqY7Ojr579IKCgr8/P7z8/P19fW5ubnp6Oj//vM9PT3/++nCwsKfn5/fjxTGx8f//PxZWVlBQD/w8PBDQ0SXmJhHR0guLS3t7e2/v78FAQHm5eXPz8/T09L///bk5OTj4eHb3NyKior/+/jsKTPExMTV1db++f3TnEnWnUn89NKpqarUjB736MXgjB3hjRn6/fx/gYDwKS38/vjr6+uHh4ff397Nzc1cXFuDg4OQkJDUkR3LysrTiiX+/PzUlDvciRvlKi/VjBTY2Nj0/v7PjSJKSkrAwb71/vuTk5P+2Nz89db578rfjSH6/f/++N7/++LZiRDirF796eXmxo3x8vP02ab84+T++fHhbXROT07OjCvet3lXVlbfJC7TjTH55b7NJjLzxc6MjI3+xsjVZGn8z8/st7T/9evxw8L/9PX/4d/WT1fJjiHYrGLtz5vr06n5/PXowH/3/fjUbW/htGz/+fn31dTspqbYqVXeXWPfhhPhmZvdoVDYWF7+6u/JbHLiv77NWl/bMEHTkiv1+frQih7eq3P77djzz4/QNULdplDgpFr1uLv/0NjXdXnar6nYoKP3p6rCWVzRlUbhihjhiSXOkjPXjSfQoE/z48H89vr44bL34s7UmUDUoGHa29jvlJbIRUKvWFncQFLJkT3HvsPdyZzw+ff2zce5cnvitrPNgIXLiIfyeHjNl0fIhCTa2dzTqZ7Uinq0RkvGfnriNDiK2Tf2AAAACXBIWXMAAAsTAAALEwEAmpwYAAAPLElEQVR42u2Zd1xT5/7Hv4HDOSYhCYEEQkgC5GRDgLD3vqwSdoBAGCIiq4KKIpSNGFERhVbUKm7r3tat1bbW0dq9bG/n7bDj7vH7/e543eckYL19Ua8v/NH+k0/0BHJ48bzPdz8PADbZZJNNNtlkk0022WSTTTbZZNMUwn7ZtTHAflECHKP+Yb8UBI4kpC6/DAAuxO77Gv85DY9RD0+tnlVdOxAwvz4322IOyy3s57G8N7r2NESGhujsCIIfGxiR3okCAgfhz2EJyu+Q2x+a6UAgaVW9JaEhDkSmYjVgQnT35/A9ZDVoCQeC78DfGVMdhQE+e6BfRcjaTVBVPPN1AT2mIZRwsLPjE4HJ1PMKLcGIF8qI0AZ+yQybAKNeqbGEnZ2DHVFaS0U/LuTYC4VCM8wNJPhEBOBstuVH6XTrO5tNZzAY6Bu65UJH39MfwfwYDmno8R0IO0KL1kfPLsfZHGOjkXMbcjIzEYC9VDmLhpZgMJRM9EaTCuju7mKxUq52FyudxO4cDaZ+lPiDcmp9JLtkEFKfibgMJ4yXMjYWBQoCAbQ5scER6BwmKJnAliIAX7FAIGXT0M8JBMFipkCvfpT4q8q0rG9HhE94m8UNFghw6RijDebGEpGwTjoLGZshDmbQmQx3jqNGg5GCIQ2NxhKtEwk0CMCJ8QgeMPmh4CcQAVE1AcA1cgRKhnqsGeMac/qrQCOXOjHomN6XJKVSNZ0ulYuNrFlMGtBEKVw5RgFMPwa8oQEFGvI/n8jIngAwGhnoSRs7jNuOH33OCHIR11fJZKWsWycy4uvWcd3Vvhy5kWSSDAZJihliBht5ZvoyUflPUAhpMNEKlALkWWNe3pVTL7/85o5R3gVMzfE1t2n09s3GtnXNzc1DQwy1mmSo9U7NZHMwk0mjOU4fIJ2wowCQE1omAZhKJyaI5h1985nHH3/8mcObeSTHTDJBr2fTgSkAetvQkNg9xZeuWSfggJkjmEWSjwCwh4oACiC2ZrLi0Ok0Fik69vwzj69cufKJ/VcAFzSeHH33xPbRd9/dvHl09PLlzSc427ed2HaC23j9copGrianHwPjlcgCDhSAdra1/VEAIhEJz71sWf+JZ3aQauXmixd3/OuPz+947+hfD1/8y+h7B+DIxdHD3zg+96fNch6qEexpA8yVEQ5WC6hgcgyhYyK5mgJAogCgmXPy1jvPfXf0+3cKjt248uU/Pzh8HA7dOnLqzeNHbp3kNXLZSuW0AaocHCZiwO9e66djUlRZNr+08glkgCf2vwhq+eipHYffO/T9qRujN3b87b13Lx6AQy8dOfy3Wx88f5JplINgaNomqKJq0CTAxGdmESpt3rwr+1dSQXhqG9ueffKlDw59+M333xy6fuPiqRevH7YCHLrz7fPblFweqR+btgUMfMLuxwBcXKAX3r6w/cU39+/f/9IfO7yFmpMf/vXF7658+4/3D/zp/UPfvXPrL+9f+fDIhwfcb3y7TYmJSDU5bYAA1IWJHwM0Sq0WHX3n6PETQKLXiZt/v3Pg+p/v3Dl+sy7v5oGjd94/fnPzzW2w7c/X6b5ODB5v2gADsZMWUP3gAjOtu+p3v8tJDli7dm1OTtX8gYEsYDlygi1l+sSx7QUF8UjHtm/csP3YdqWSST4CwOyESYCQTlQHLAyaNij3i51jKZDULT6/tB6E5rbg5mZz/O+/fvvaW29du3r17WvX3rr69Wuvp5y7MDTUhjYTODVUozfMkk7UjCukPsWwB++1hicBYpuszRgBaEhvZeqcOfw5SHy+HRFhwoPFHAFbrMfjnzq/fNOqTS+8MPjCC5s2vXpp3zEej9cmYE42dyqVKARLn5uYtPEHjlRdk3WAiAFv609iwe4cHDJQiZyDktTOIbMb7Ju5GoGTfEigJuOfXrxs2dJW1/VLEz3f3pgCwupciKqurs2aXZuLQ+c4WnwcDdQmE+C5aKTujKJGngdVIkshtDYjb6upyOZmujeaReysYwoRmkXHO3hcBinHg93d572x6xUfTxeJxNVnzRsawdwKra4vWhYiK4yM1SrGh9FQ4Z2vgKyEcOhUlcP4sAF54kEuwJEPrGmQnz2xLZW2GdVCaEcWoEwwhyj7DV0oook5mpR5Rvdg0da9n7q5FcX5SFr3ftHxh8o91fOLg3RNps78kdzMlnAiAFKJMAjSBTZlBzoMgCoAhA9aXwjJDpZShC4GKgjQiOrbxhDbQyFhqVHUqOrNNWPAYCpTeFwymLZvhcTNzR8BDH71FATI6qBOmR7b259dGhaUUNybUWLKTwiD4dSwdqEqPLC+NODBMYCitcxiAutIhoIGfUInSTMUWwAoF5Seo2H3Si3d8bFfeTp7uHj5uPovWARVsrrs0opyXVhhdkVCZhrkp+8MjUgK65YlDavq/HoiMzKqHuwCFCCGTGoaQC80lHqj5XGmk1zUAWspABQGfKJUCFLm1AC+9qqK+i6/gyGG+urQ5NSQuozoKqInKeygLixCVuhnwFVE8YNdQBF0Ud6mwjCwDiUChnGQ9BMWmENZ4DeMZjF9SgAc7vb6JRxM1iZogyJjYLg9IhnqoSspvBAgKbKkGOaGDqDfiVP5ab1YVrR4xZKiYMnVEqu1+cRwNbVPxbgkQwgtBN+OEp8o8waz0XEqgCd99WioM0HU7NkmHCUxbrI8rXenCYRo3O1EO95x7IcNOEzWpPtrE1U0skqsKYdsYEA3ROfOeQvRboVPWPMz/w8aEW9qgFkwN7e7GmbdzS0OmJ+zusaQU1MbkFMPnfUA3d0g7KmHgKri6PqeWjBFR+dCZw0OdejearTvndsN9+CyFXYIgdqc8XurOlEucLBqNCrFajN6SyJLS25r8J+wgAZKY8L8omDnSFqoNjwovzQyqEEWqQ1IljWBIgJW8/dkRZTKwtO1/bmq/DJtjyE2B7oiITswIcpb1X4vOtDuJKYSPSyfj+ZDu4TwtKSwnSF+YUE940NUb4rSc8SMKWPgyRTIaFGgzVNZEKSWAQTGAKTlwx5FNJEBil7o80sYgELdOMQe7B1G82dGNKHrbNgDhSpVECSgMRy/l4tgKg/NJCY1p7K9OMqyD+XFx+fxML2ehKljAPJbIiJVDeEIoBQX+qlKOg/K+lTzYzIyFEmRkGAIU0BqyGzQpekQW3FGf1lJRV8vDPf3h2OVaRA1AUCdgwBEFTdEhAYGBpaFFdYg0+RtXLJ1y+5Lly7tPlvQSNdPDSCFjJjIriYd+vXIAnjlSC70Be5MgKCK6oTM9oDM3lAtKoomkDVktAOMqArLTGWZirrY4TJZTWjfvRJlOZazZEVUVlYWCl2wF6pff+2rVxZv2rTJ839Pb+SR2H8CeLl4+DijNOSCX3q4AkaIFigPxXFtWHINckFIX0sl5BBJ4cM9ySEtLbLZkNkfLevqyhyJrsS7+WHtKoMhQxFalm748U55ohldODfPCEt2JfqsX+/q7Lb46QI2l3VfEP7as6jIRbLMCwGQyvKamBygl9dATyomHFFEpFeVQ8BBQyEG6S2pNQCF0U1dWcI+A+RERqZDU2o2BMSUB6BRbCQoKSxoiuMyJLpTCg8BfOrm0drq6mUFEP0A8NSvPIvcEICz/8JF5BjIaQCz/kvPv/84BJ8IOvjpSYHBUTqSsETiJXF18fCImwLALQ61Y+dB1AvGk7uhO6B2rXDWeEB1siEHx6NyDDGFqT0BhckmyEqPGa+Zn5waUxhQVQNYVQ/VF4ToEIaqf0LqRHRqAIYTE4N9kqWuHl4eHh5TAMR5ubhKvAY/WwR3ZUEQFBIdexCaKmMyG3Q9EBPYHluRX67T+uVXR6oqC5N2JvllVjb0BUKNrIoqkJaX5TT2p85jGWKmErcAxMVNAMjlcB+AxMPLxcXDy/+zx6A7BAFoc2T84mq/ZP5AhQJKImMqZ2ebYls6dQ3almxQlMDqkNWQnVAeEYnyzXoMjAkxC8TUjiKNbASw5JVB50Q3D4nz4qc3svH7AX4t8fHwd/F0W/X1BrirS4egwJjSsARDaLRDTaqqVleczNeG1+nKwsNNSfz8bsUeuIsAIFrmV/tfGuM9AK6jqI325ALXuMQ4D4mX51sbHEn8PwAkEi//uLhVuwsgV5sKqQkGv9wwWUY0f8BUGZ4PQQk93Vm6YR3K887hkqReZIEmlOEJCmpMfhgAtpzHk0sLXlseFxeHrO351SLW/XVgyQrkF38Unq9uYd2GCG27Nuz/tN3eKl0yOuRJI/qhXNaXlsyPiY5Nj+wKTVPshNWoM0BWoAIe8hBeKeXxSM28s8vjnFEiFLl9soRl5kze5Dh+scvLx+OjVonk061wOyWqr6K9ozYpF+Ym9UQ0wdyIWiguCR9OV+RAUvlIRZIwfQRyFdXI60np8JDnzkpqv9nW8frCVV6tEg+3ol1neWZ0TEa1Iw4E07buckn0cRl0Xr5wkZOgzWzt9VQhxaz5PRFaPzwshsNEwD9ktXByonN5InPjljX+H7v6uBW9ujueZ3Z3J7nBwcGYmXV++Xq3RIlL0bNb4tGoSAqF9ii3MeqPDdYr+i+kch0sf/ygmDBL7D38sTvTiU7yRHrjos+WucS5+bcu/p8lXHuBhsvjpQwJuAVXV7kiz3zkueAxmP6m+IGSyxliVsqYPn7rb5clJnq4uizfHX9hXQppnNfRJsz7/JNEz/UoMvaemWeeofNrFosh5qYMOTXGb9m1zNXVo8hl75n4PKO7WpQS3Lzh0hq3wY9b3Z7dvb2RBzNmAQZXJBDoGzee3/Xxep/ExGWfvIFaMtdRKtpwfo2Hf2vr+mdPbyAvG2cIwFeKzkB5Iie22rzxzIpVqOy6Sta8febz1x/b98a15c4ubomL955/smPM3X2GAFAQIgAei84wd8xbcnrv4EdL43wW71qxYMGKV+OKXAaXPfvZ1gLzkEDEnSkAJqrGXBaLTtI5Y+yCra/9ds0qT0li4irXwaWbVi1fcfrMovjLak5K/EzFAB0cWSxHtEGk4WaOnpdX8OWWqwtXvLJmzfIVKxae3vLFBhqWZxarefNYMwVAZ/FYwOawZ/E6gs15eRgvL+/Yl/vO/v7s559vyKMBRz8mFeH6YHc6zJQcJ46/WSyOI5eGpjSS+prFoqFzcRLzZbPRATkH6DMHMAUSRpIkNS86OoJNNtlkk0022WSTTTbZZJNNNtlkk03/n/o39fHvD6ByBZIAAAAASUVORK5CYII=
+// @run-at      document-idle
+// @grant       GM_xmlhttpRequest
+// @grant       GM_setValue
+// @grant       GM_addValueChangeListener
+// @grant       GM_removeValueChangeListener
+// @connect     portal.giu-uni.de
+// @connect     staff.guc.edu.eg
+// @connect     intranet.guc.edu.eg
+// @connect     apps.guc.edu.eg
+// @noframes
+// ==/UserScript==
 
 
 (function () {
     'use strict';
 
     // ═══════════════════════════════════════════════════════════════════════════
-    //  0. CONFIG — per-feature toggles
-    //     Defaults below; user overrides persisted in localStorage 'gius-features'.
+    //  GIU Berlin SuperScript — the Berlin portal's all-in-one bundle.
+    //  Shares every feature body, Tips and the Control Center with the Cairo
+    //  bundle (src/features, src/shared); only this config differs.
+    //  Install this OR "GIU Berlin Attendance" on Berlin — never both.
     // ═══════════════════════════════════════════════════════════════════════════
-    // Conservative defaults: only the everyday features start enabled.
-    // Everything else is opt-in via the Control Center on Home.
     const FEATURE_DEFAULTS = {
         staffAttendance:   true,
         uploadGrades:      true,
-        teachingLoad:      false,
-        proctorReminder:   false,
-        unenteredSessions: true,
-        proctorAggregator: false,
+        proctorReminder:   true,
         notificationBatch: true,
-        manageGroupGrades: false,
-        studentAttendance: false,
     };
-
 
     const FEATURE_LABELS = {
         staffAttendance:   'Staff Attendance',
         uploadGrades:      'Upload Grades',
-        teachingLoad:      'Teaching Load',
         proctorReminder:   'Proctor Reminder',
-        unenteredSessions: 'Not Entered Sessions',
-        proctorAggregator: 'Proctor Exchange',
         notificationBatch: 'Notification Batch',
-        manageGroupGrades: 'Manage Group Grades',
-        studentAttendance: 'Student Attendance',
     };
 
-    // Grouping for the Control Center toggle list — display only, doesn't
-    // touch ROUTES/FEATURE_DEFAULTS. CATEGORY_ORDER controls section order;
-    // any id missing from FEATURE_CATEGORIES falls into "Other".
     const FEATURE_CATEGORIES = {
         staffAttendance:   'Attendance',
-        studentAttendance: 'Attendance',
-        unenteredSessions: 'Attendance',
         uploadGrades:      'Grades',
-        manageGroupGrades: 'Grades',
-        teachingLoad:      'Scheduling',
         proctorReminder:   'Scheduling',
-        proctorAggregator: 'Scheduling',
         notificationBatch: 'Communication',
     };
     const CATEGORY_ORDER = ['Attendance', 'Grades', 'Scheduling', 'Communication', 'Other'];
 
-    // Modules whose source page is only reachable from the GIU campus network
-    // (VPN/on-site) — Control Center shows an info icon warning of this.
-    const NETWORK_ONLY_FEATURES = new Set(['studentAttendance', 'manageGroupGrades', 'unenteredSessions']);
+    // Every Berlin feature page is reachable off-campus.
+    const NETWORK_ONLY_FEATURES = new Set();
+
+    // First-run Control Center tip (its text depends on this bundle's defaults).
+    const CONTROL_CENTER_TIP = 'All SuperScript features are managed from this card. All four Berlin features start enabled — open it to switch any off. Changes apply after a reload.';
 
     function loadFeatureToggles() {
         let saved = {};
@@ -72,21 +82,36 @@
 
     const FEATURES = loadFeatureToggles();
 
-    // ═══════════════════════════════════════════════════════════════════════════
-    //  1. SHARED — single impl of utilities duplicated across the old scripts.
-    //     Feature modules receive this object; they call Shared.* instead of
-    //     re-declaring local copies.
-    // ═══════════════════════════════════════════════════════════════════════════
     const Shared = {
-        // ── Wait for a selector to exist, then call cb(el). Returns a disconnect fn. ──
-        /*__CORE_WAITFOR__*/,
+        waitFor(selector, cb, { root = document, timeout = 15000 } = {}) {
+            const existing = root.querySelector(selector);
+            if (existing) { cb(existing); return () => {}; }
+            const obs = new MutationObserver(() => {
+                const el = root.querySelector(selector);
+                if (el) { obs.disconnect(); cb(el); }
+            });
+            obs.observe(root.documentElement || root, { childList: true, subtree: true });
+            if (timeout) setTimeout(() => obs.disconnect(), timeout);
+            return () => obs.disconnect();
+        },
 
-        /*__CORE_ESCAPEHTML__*/,
+        escapeHtml(str) {
+            return String(str == null ? '' : str)
+                .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        },
 
-        // Idempotent <style> injector keyed by id (re-call replaces content).
-        /*__CORE_INJECTSTYLE__*/,
+        injectStyle(id, css) {
+            let el = document.getElementById(id);
+            if (!el) {
+                el = document.createElement('style');
+                el.id = id;
+                (document.head || document.documentElement).appendChild(el);
+            }
+            el.textContent = css;
+            return el;
+        },
 
-        // Course-name dataset generated from data/courses.json.
         courses: {
             map: {"AD 601":"Architectural Design Studio VI","AD 602":"Architectural Design Working Drawings II","AD 603":"Conservation and Restoration","AD 604":"Housing","AD 605":"Project Management and Building Economics","AD 1001":"Elective - Theme: Smart Architecture","AD 1090":"Advanced Architectural Design Studio II","AD 1099":"Research proposal and Seminar","AE 101":"Introduction to Academic English","ARCH 102":"Manual Visualization","ARCH 104":"History of Architecture I","ARCH 202":"Design Studio II","ARCH 203":"Descriptive Geometry","ARCH 204":"Architectonics II","ARCH 205":"3D Modeling","ARCH 206":"History II","ARCH 213":"Design Studio IV","ARCH 214":"Theories of Architecture II","ARCH 215":"Ecology and Environmental Design","ARCH 216":"Architectonics IV","ARCH 217":"CAD II","ARCH 218":"Structure II","ARCH 601":"CAD IV","ARCH 609":"Cairo Waterfronts","ARCH 610":"BIM and Beyond : Digital Delivery in Building Technology","ARCH 611":"Pixels & Places: Reimagining Urban Spaces through Gamification and VR","ARCH 613":"Design with Nature: Crafting outdoor Living Spaces","ARCH 700":"Bachelor Thesis","ARCH 802":"Professional Practice:Legislations and Contracts","ARCH 803":"Business Ethics and Workplace Readiness","AS 101":"English for Academic Purposes","BINF 401":"Digital Marketing","BINF 402":"Digital Transformation","BINF 601":"IT Project Management","BINF 602":"Business Intelligence and Analytics","BINF 1001":"Advanced Data Management & Mining","BINF 1002":"Digital Innovation and Entrepreneurship","BINF 1003":"Advanced IT Project Management","BINF 1004":"Advanced Research Methodology for BI","BIOM 601":"Ergonomics","BIOT 305":"Statistics","BIOT 601":"Bioinformatics","BIOT 602":"Industrial Biotechnology & Bioprocess Technology","BIOT 603":"Downstream Processing","BIOT 700":"Bachelor Thesis","BIOT 801":"Intellectual Property Management and IP Contract Law","BIOT 1001":"Bioethics and Biotechnology","BIOT 1002":"Biosafety","BIOT 1003":"Vaccine and Sera Process Technology","BIOT 1004":"Nutrigenomics","BIOT 1005":"Systems Biology","BIOT 1006":"Master Thesis Preparatory Courses","BSAD 102":"Microeconomics","BSAD 103":"Marketing","BSAD 105":"Cost Accounting","BSAD 406":"Macroeconomics","BSAD 407":"Principles of Corporate Finance","BSAD 408":"Innovation Management","BSAD 409":"Applied Statistics","BSAD 410":"Managing Organizations","BSAD 501":"Management Accounting","BSAD 503":"Research Methodology","BSAD 601":"Company Taxation","BSAD 602":"Information Management","BSAD 603":"Project management","BSAD 604":"Project management","BSAD 700":"Bachelor Thesis","BSAD 701":"Business Simulation","BSDM 502":"Marketing Analytics","BSDM 601":"Market Research","BSDM 602":"Communication Strategies and Consumer Behavior","BSDM 603":"Product and Distribution Management","BSEN 601":"Managing SMEs","BSEN 602":"Business Management and Entrepreneurship","BSEN 603":"SMEs Production Management and Marketing","BSFA 502":"Capital Markets","BSFA 601":"Financial Markets, Institutions and Investments","BSFA 602":"Financial Analysis and Evaluation","BSFA 603":"Corporate Finance","BSIB 502":"Regional Studies","BSIB 601":"Strategic Management","BSIB 602":"Applied International Sustainability Management","BSIB 603":"International Marketing","BSIN 102":"Programming I for Business Informatics","BSIN 103":"Business Process Management","BSIN 104":"Math II for Business Informatics","BSIN 105":"Programming II for Business Informatics","BSIN 301":"Data Structures & Algorithms","BSSC 601":"Auditing and Accountability","BSSC 602":"Distribution and Transportation Management","BSSC 603":"Production and Supply Chain Management","BTGN 601":"Research Methodology","BUAD 301":"Management Accounting for BI","BUAD 405":"Applied Econometrics","BUAD 406":"Human Resources Management for BI","BUAD 407":"Innovation Management for BI","BUAD 524":"Business Law and Technology Governance","BUAD 618":"Real Estate Finance & Investments","BUAD 619":"Digital Transformation of Real Estate Management","BUAD 620":"Marketing and Sales in Real Estate","BUAD 624":"Financial Derivatives","BUAD 625":"Fixed Income Securities","BUAD 626":"Investment Banking","BUAD 627":"Intermediate Macroeconomics","BUAD 705":"Business Simulation","BUAD 912":"Supply Chain Finance","BUAD 1001":"Advanced Research Methodology","BUAD 1002":"Industry Global Competitiveness","BUAD 1003":"Advanced Sustainability Management","BUAD 1004":"Current Issues in Marketing","BUAD 1005":"Brand Management","BUAD 1006":"Financial Modeling","BUAD 1007":"Digital Accounting","CNET 101":"Computer Networks","CPS 402":"Communication & Presentation Skills (A2)","CSBA 201":"Computer Science II","CSEN 102":"Computer Science I","CSEN 103":"Digital Logic Design","CSEN 104":"Programming I","CSEN 204":"Computer Science II","CSEN 303":"Software Engineering","CSEN 406":"Software  Engineering","CSIS 101":"Introduction to Computer Science I","CSIS 102":"Theoretical Computer Science","CSIS 201":"Programming II","CSMR 101":"Computer Organization","CTRL 101":"Financial Accounting I","DE 101":"German 1","DE 202":"German 2","DE 303":"German 3","DE 404":"German 4","DESN 1001":"General Design Project Review","DESN 1002":"Master Thesis Preparatory Courses","DMES 201":"Digital Media Design Essentials","DMES 202":"Digital Storytelling","DMES 203":"Creative Coding","DMES 204":"Basic Typography and Layout","DMES 206":"Basics of 2D Animation","DRAW 101":"Technical Drawing","DSFD 201":"Jewelry Design Workshop I","DSFD 401":"Jewelry Design Workshop III","DSFD 601":"Jewelry Design Workshop V","DSGN 601":"General Studies: Ethic and Law","DSGN 700":"Bachelor Thesis","DSGN 701":"Design Concept","DSTH 101":"Design Theory I (Art & Design History)","ECON 101":"Introduction to Economics","ECON 201":"Principles of Economics","ELCT 101":"Electrical Engineering I","ELCT 403":"Electric Machines and Drives","ELEC 905":"Advanced Electrical Energy Systems","ELEC 1001":"AI-Based Intelligent Control Systems","ELEC 1002":"Power System Operation and Planning","ELEC 1005":"Computational Intelligence","ENAU 601":"Automation/Control Engineering Project","ENAU 602":"Computer-Controlled Systems","ENAU 603":"Special Electric Machines","ENEE 502":"Power Electronics I","ENEE 504":"Modelling and Control of Renewable Energy Systems","ENEP 601":"Electric Power Systems Project","ENEP 602":"Electric Power Systems II","ENEP 604":"Power Electronics II","ENGN 101":"Sensors and Metrology","ENGN 105":"Mechanics I","ENGN 108":"Electrical Engineering II","ENGN 109":"Engineering Design I","ENGN 112":"Electrical Engineering and Electronics","ENGN 113":"Machining processes","ENGN 401":"Electronics II","ENGN 415":"Microcontroller","ENGN 501":"Control Engineering","ENGN 503":"Electric Power,Machines & Drives","ENGN 601":"Introduction to AI","ENGN 700":"Bachelor Thesis","ENGN 701":"Research Methodology","ENGN 1001":"Smart Sensors and Actuators","ENGN 1099":"Master Thesis Preparatory Project","ENME 405":"Mechanics II","ENME 406":"Mechanics of materials","ENME 407":"Classic Control Engineering","ENME 408":"Control System Lab","ENME 501":"Control Systems for Mechatronics Engineers","ENME 503":"Electric Drives","ENME 506":"Introduction to Computer Networks","ENME 601":"Mechatronics Engineering Project","ENMF 601":"Quality Control","ENMF 602":"Production Operations Management","ENMR 601":"Vehicle Dynamics","ENMR 602":"Signal and Image Processing","ENMR 603":"Vehicle Powertrain","ENMR 604":"Fluid Mechanics and Thermodynamics","ENRB 601":"Industrial Robots","ENRB 602":"Parallel Kinematics & Kinetics","ENRB 603":"Industrial Automation & PLC Programming","ENRB 604":"Facility Design","FAPR 406":"Design Short Term Project I","FASD 405":"Main Collection Project I (Concept, Prototyping)","FASD 407":"Fashion Technology III: CAD/Fashion II, Portfolio, Technical Drawing","FASD 408":"CAD-Pattern I, 3D Prototyping","FASD 601":"Fashion Management and Marketing","FASD 602":"Design Short Term Project II","FASD 603":"Main Collection Project III","FDDS 101":"Design Basics I (Fashion Design)","FDFT 101":"Fashion Technology I","FINA 201":"Financial Accounting II","FJDS 1001":"Design Project- FD","HRMG 101":"Human Resources Management","HUMA 801":"Business Ethics","IA 601":"Interior Architecture Studio VI","IA 602":"Interior Architecture Working Drawings II","IA 603":"Furniture Design","IA 604":"Light Design","IA 605":"Project Management and Interior Design Economics","IA 1001":"Elective - Theme: Smart Interior Architecture","IA 1090":"Advanced Interior Architecture Studio II","IA 1099":"Research proposal and Seminar","ICS 502":"Database Programming","ICS 507":"Digital Forensics","ICS 512":"Human Computer Interaction","ICS 602":"Big Data and NoSQL","ICS 603":"Advanced Machine Learning","ICS 604":"Introduction to Image Processing and Computer Vision","ICS 605":"Network Security","ICS 606":"Business Continuity and Risk Management","ICS 607":"Ethical Hacking and Penetration Testing","ICS 608":"Software Cloud Computing","ICS 609":"Software Mobile Development","ICS 610":"Software Project II","ICS 611":"3D Design","ICS 612":"Mobile Development","ICS 613":"Media Informatics Project","IDDS 101":"Design Basics I (Industrial Design)","IDDS 201":"Design Basics II (Industrial Design)","IDDS 403":"Design Main Project I: Design, Presentation & Documentation","IDDS 405":"Material/Sustainable Manufacturing","IDDS 406":"CAD 3D Modeling","IDDS 601":"Universal Design Thinking and Intercultural Competence","IDDS 602":"Design Short Term Project II","IDDS 603":"Design Main Project III: Business Management","IDES 1001":"Design Project- ID","IDPR 404":"Design Short Term Project I","INCS 101":"Programming III","INCS 102":"Operating Systems","INCS 103":"Databases","INCS 104":"Data Structures & Algorithms","INCS 402":"Analysis & Design of Algorithms","INCS 406":"Distributed &Web-based Systems","INCS 407":"Information Security","INCS 408":"Introduction to Data Science","INCS 409":"Introduction to Media Informatics","INCS 410":"Cloud Computing","INCS 515":"Databases","INCS 614":"Cybersecurity","INCS 615":"Big Data and NoSQL","INCS 616":"Business Continuity and Risk Management","INCS 617":"Software Engineering","INCS 700":"Bachelor Thesis","INCS 902":"Research Project I","INCS 1001":"Seminar - Selected Major-specific Topics","INCS 1002":"Research Project II","INCS 1003":"Analytics in the Cloud","INCS 1004":"Statistical Modeling for Data Science Applications","INCS 1005":"Social-Legal & Ethical issues in IT Security","INCS 1006":"Secure Systems Engineering","INCS 1007":"Software Game Development","INCS 1008":"Software Engineering Studio","INCS 1009":"Advanced Game Development and AI in Gaming","INCS 1010":"Digital Video and Sound Processing","INGN 601":"Research Methodology","LAWS 101":"Introduction to Law","MATH 101":"Mathematics & Statistics I","MATH 102":"Mathematics I for Pharmaceutical Engineering and Technology","MATH 103":"Mathematics I","MATH 104":"Mathematics I for Biotechnology","MATH 106":"Mathematics I for Architecture","MATH 108":"Math I for Business Informatics","MATH 109":"Mathematics I","MATH 203":"Mathematics II","MATH 204":"Mathematics II","MATH 205":"Mathematics II Business & Economics","MATH 302":"Mathematics II","MATH 303":"Math III - Probability & Statistics","MATH 304":"Mathematics III","MATH 401":"Biostatistics","MATH 403":"Mathematics IV","MECH 613":"CAD/CAM/CAE in Mechanical Engineering","MECH 907":"Autonomous Vehicle Systems","MECH 1001":"Automotive Electronics","MECH 1002":"Industrial Robots II","MECH 1003":"Robotics in manufacturing","MECH 1005":"Manufacturing Ergonomics","MGMT 401":"Introduction to Management and Economics","MNGT 101":"Introduction to Management","NETW 401":"Signals and Systems","NETW 402":"Modelling & Simulation of dynamic systems","PHEN 302":"Statistics","PHEN 303":"Fundamentals of Electrical Engineering","PHEN 401":"Fluid Mechanics","PHEN 402":"Chemical Reaction Engineering","PHEN 403":"Introduction to Process Engineering","PHEN 405":"Sensors,Metrology and Instrumentation Systems","PHEN 601":"Pharmaceutical Process Validation","PHEN 602":"Industrial Automation & PLC Programming","PHEN 603":"Water & Air Systems","PHEN 604":"Digitalization in Pharmaceutical Industry","PHEN 605":"Industrial Planning & Project Management","PHEN 606":"Pharmaceutical Processing Technology II","PHEN 608":"Cosmetics Technology","PHEN 700":"Bachelor Thesis","PHEN 1001":"Sustainability and Environmental Impact in the Pharmaceutical Industry","PHEN 1002":"Quality by Design and Advanced Quality Management","PHEN 1007":"Special Topics in Pharmaceutical Engineering II","PHEN 1099":"Master Thesis Preparatory Project","PHGN 601":"Research Methodology","PHTH 102":"Biophysics for Physiotherapy","PHTH 104":"Anatomy I for Physiotherapy","PHTH 105":"Physiology I for Physiotherapy","PHTH 213":"Anatomy II","PHTH 214":"Physiology II","PHTH 217":"Tests & Measurements I","PHTH 218":"Ethics & Law","PHTH 219":"kinesiology","PHTH 221":"First Aid in Hygienic Issue for PT","PHTH 222":"Psychology and Therapeutic Communication","PHTH 401":"Neuroanatomy","PHTH 402":"Neurophysiology","PHTH 403":"Biomechanics II","PHTH 404":"Therapeutic exercise II","PHTH 405":"Electrotherapy II","PHTH 406":"Hydrotherapy","PHTH 408":"Exercise physiology","PHYS 101":"Physics","PHYS 102":"Physics Lab","PTOR 601":"Traumatology","PTOR 602":"Physical Therapy for Traumatology","PTOR 603":"Orthopedic diseases and Surgeries","PTOR 604":"Physical Therapy for Orthopedic diseases and Surgeries","PTOR 605":"Physical Therapy for Sport Injury","PTSR 601":"General Surgery & Oncology","PTSR 602":"Physical Therapy for General Surgery & Oncology","RPW 401":"Research Paper Writing (A2)","SM 101":"Scientific Methods"},
             normalizeCode(code) { return String(code == null ? '' : code).trim(); },
@@ -97,18 +122,1126 @@
             has(code) { return Object.prototype.hasOwnProperty.call(this.map, this.normalizeCode(code)); },
         },
 
-        /*__CORE_WARN__*/,
+        warn(feature, ...args) { console.warn(`[GIU-SS:${feature}]`, ...args); },
 
-        // Absolute URL on whichever portal host the script is running on.
-        /*__CORE_PORTALURL__*/,
+        portalUrl(path) { return location.origin + path; },
     };
 
-    // ═══════════════════════════════════════════════════════════════════════════
-    //  1.5 TIPS — first-use spotlight walkthrough.
-    //      A feature calls Tips.show({id, el, title, text}) right after it
-    //      renders UI; each widget is spotlighted once, ever (localStorage
-    //      'gius-tips-v1'; '*' = user skipped all tips).
-    // ═══════════════════════════════════════════════════════════════════════════
+    // ── Berlin attendance source: cross-origin Cairo fetch, GUC parsing, UI ──
+// Shared by the Berlin fetch/parse layer. `kind` drives the message the UI
+// shows; an error never carries, or is derived from, credentials.
+const REPORT_GRID_ID = 'MainContent_DG_SwiftReport';
+
+function timesheetError(kind, detail) {
+    const err = new Error('timesheet:' + kind);
+    err.kind = kind;
+    if (detail) Object.assign(err, detail);
+    return err;
+}
+
+// GUC Cairo "Gate Attendance: My User" (SwiftReport 5) → the canonical
+// one-row-per-day grid the attendance engine reads. Grid structure and the
+// same-day cleanup rule come from the "GUC Swift Report" userscript
+// (scripts/GUC/swift_final.txt), reused with its author's permission.
+const GUC_GRID_ID = 'DG_SwiftReport';
+const GUC_REQUIRED_HEADERS = ['date', 'in', 'out', 'duration'];
+
+function gucCellText(cell) {
+    return String((cell && cell.textContent) || '').replace(/ /g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+function gucHasValue(text) {
+    return text !== '' && text !== '-' && text !== '—';
+}
+
+function gucClockSeconds(text) {
+    const m = String(text || '').trim().match(/^(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(AM|PM)?$/i);
+    if (!m) return null;
+    let hours = Number(m[1]);
+    const meridiem = m[4] ? m[4].toUpperCase() : '';
+    if (meridiem) {
+        hours %= 12;
+        if (meridiem === 'PM') hours += 12;
+    }
+    return hours * 3600 + Number(m[2]) * 60 + Number(m[3] || 0);
+}
+
+function gucDurationSeconds(text) {
+    const m = String(text || '').trim().match(/^(\d{1,3}):(\d{2}):(\d{2})$/);
+    return m ? Number(m[1]) * 3600 + Number(m[2]) * 60 + Number(m[3]) : 0;
+}
+
+function gucFormatHMS(total) {
+    const p = n => String(n).padStart(2, '0');
+    return `${p(Math.floor(total / 3600))}:${p(Math.floor((total % 3600) / 60))}:${p(total % 60)}`;
+}
+
+// ActionRequired cells read "2026-08-11:" or "2026-08-11: In/Out Form Required".
+function gucActionText(cell) {
+    return gucCellText(cell).replace(/^\d{4}-\d{2}-\d{2}:\s*/, '');
+}
+
+function parseGucSessions(doc) {
+    const table = doc.getElementById(GUC_GRID_ID);
+    if (!table) throw timesheetError('no-grid');
+    const rows = Array.from(table.rows || []);
+    // Row 0 is the pager; the header row is the first one with a "Date" cell.
+    const headerIndex = rows.findIndex(r => Array.from(r.cells).some(c => gucCellText(c).toLowerCase() === 'date'));
+    if (headerIndex < 0) throw timesheetError('layout', { missing: GUC_REQUIRED_HEADERS.slice() });
+    const headers = Array.from(rows[headerIndex].cells).map(c => gucCellText(c).toLowerCase());
+    const idx = {
+        date: headers.indexOf('date'),
+        in: headers.indexOf('in'),
+        out: headers.indexOf('out'),
+        duration: headers.findIndex(h => h.includes('duration')),
+        action: headers.findIndex(h => h.includes('action')),
+    };
+    const missing = GUC_REQUIRED_HEADERS.filter(k => idx[k] < 0);
+    if (missing.length) throw timesheetError('layout', { missing });
+
+    const sessions = [];
+    rows.slice(headerIndex + 1).forEach(r => {
+        const cells = r.cells;
+        const date = (gucCellText(cells[idx.date]).match(/\d{4}-\d{2}-\d{2}/) || [])[0];
+        if (!date) return; // pager / footer rows
+        sessions.push({
+            date,
+            in: gucCellText(cells[idx.in]),
+            out: gucCellText(cells[idx.out]),
+            duration: gucCellText(cells[idx.duration]),
+            action: idx.action >= 0 ? gucActionText(cells[idx.action]) : '',
+        });
+    });
+    return sessions;
+}
+
+// One row per gate session → one row per day. When a day has at least one
+// complete (In and Out) session, its incomplete sessions are dropped — the
+// GUC script's removeSameDayIssueRows rule.
+function aggregateGucDays(sessions) {
+    const byDate = new Map();
+    sessions.forEach(s => {
+        if (!byDate.has(s.date)) byDate.set(s.date, []);
+        byDate.get(s.date).push(s);
+    });
+    const days = [];
+    byDate.forEach((list, date) => {
+        const complete = list.filter(s => gucHasValue(s.in) && gucHasValue(s.out));
+        const used = complete.length ? complete : list;
+        let firstIn = '', firstInSec = null, lastOut = '', lastOutSec = null, total = 0;
+        used.forEach(s => {
+            const i = gucClockSeconds(s.in);
+            const o = gucClockSeconds(s.out);
+            if (i !== null && (firstInSec === null || i < firstInSec)) { firstInSec = i; firstIn = s.in; }
+            if (o !== null && (lastOutSec === null || o > lastOutSec)) { lastOutSec = o; lastOut = s.out; }
+            if (complete.length) total += gucDurationSeconds(s.duration);
+        });
+        const actions = [...new Set(list.map(s => s.action).filter(Boolean))];
+        days.push({ date, firstIn, lastOut, duration: gucFormatHMS(total), sessions: used.length, action: actions.join('; ') });
+    });
+    days.sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
+    return days;
+}
+
+// Header names match the engine's detectAttendanceColumnIndexes (Day /
+// FirstIn / LastOut / Duration); Sessions and Action are display-only.
+// The header row is <th> in <thead>: the engine scans table.rows and cell
+// text, which covers both row groups and both cell kinds.
+function buildCanonicalReportDoc(days) {
+    const doc = document.implementation.createHTMLDocument('attendance');
+    const table = doc.createElement('table');
+    table.id = REPORT_GRID_ID;
+    const headRow = table.createTHead().insertRow();
+    ['Serial', 'Day', 'FirstIn', 'LastOut', 'Duration', 'Sessions', 'Action'].forEach(text => {
+        const th = doc.createElement('th');
+        th.scope = 'col';
+        th.textContent = text;
+        headRow.appendChild(th);
+    });
+    const body = table.createTBody();
+    days.forEach((d, i) => {
+        const tr = body.insertRow();
+        [String(i + 1), d.date, d.firstIn, d.lastOut, d.duration, String(d.sessions), d.action].forEach(text => {
+            tr.insertCell().textContent = text;
+        });
+    });
+    doc.body.appendChild(table);
+    return doc;
+}
+
+// Cross-origin reads of the Cairo attendance report. Auth is the browser's
+// cached Cairo login (NTLM for GIU): GM_xmlhttpRequest is CORS-exempt and
+// sends it along. JS cannot perform an NTLM login itself, so this layer never
+// handles credentials — a missing session surfaces as kind 'auth'.
+// Never retries on its own: repeated NTLM attempts tripped server-side
+// throttling during discovery (2026-09-22 spec, risk 2).
+const CAIRO_TIMEOUT_MS = 20000;
+const GIU_CAIRO_ORIGIN = 'https://portal.giu-uni.de';
+const GIU_BOOTSTRAP_URL = GIU_CAIRO_ORIGIN + '/GIUb/INTStaff/Home.aspx';
+const GIU_REPORT_URL = GIU_CAIRO_ORIGIN + '/GIUb/EXT/SwiftReports_m.aspx?swiftreportid=866&executereport=1';
+const GUC_HOSTS = ['staff.guc.edu.eg', 'intranet.guc.edu.eg', 'apps.guc.edu.eg'];
+const GUC_REPORT_PATH = '/external/tempprojects/swiftreports.aspx?SwiftReportId=5&ExecuteReport=1';
+const GUC_GRID_ID_RAW = 'DG_SwiftReport';
+const GUC_HOST_KEY = 'giuBerlinGucHostV1';
+
+function gmGet(url) {
+    return new Promise((resolve, reject) => {
+        if (typeof GM_xmlhttpRequest !== 'function') { reject(timesheetError('no-grant')); return; }
+        GM_xmlhttpRequest({
+            method: 'GET',
+            url,
+            timeout: CAIRO_TIMEOUT_MS,
+            onload: res => resolve(res),
+            onerror: () => reject(timesheetError('network')),
+            ontimeout: () => reject(timesheetError('timeout')),
+        });
+    });
+}
+
+function throwOnBadStatus(status) {
+    if (status === 0) throw timesheetError('network');
+    if (status === 401 || status === 403) throw timesheetError('auth', { status });
+    if (status >= 500) throw timesheetError('server', { status });
+    if (status !== 200) throw timesheetError('http', { status });
+}
+
+// A raw GM response → a parsed Document holding `gridId`, or a typed error.
+function classifyReportResponse(res, gridId) {
+    throwOnBadStatus(res.status);
+    const doc = new DOMParser().parseFromString(res.responseText || '', 'text/html');
+    if (doc.getElementById(gridId)) return doc;
+    // A 200 carrying a password field is a login page, not a report.
+    if (doc.querySelector('input[type="password"]')) throw timesheetError('auth', { status: res.status });
+    throw timesheetError('no-grid', { status: res.status });
+}
+
+// Home.aspx first: without it the report 302s to Home with no grid, which
+// looks exactly like an auth failure (2026-09-22 spec, finding 6).
+async function fetchGiuReportDoc() {
+    const boot = await gmGet(GIU_BOOTSTRAP_URL);
+    throwOnBadStatus(boot.status);
+    return classifyReportResponse(await gmGet(GIU_REPORT_URL), REPORT_GRID_ID);
+}
+
+function readGucHost() {
+    try {
+        const v = localStorage.getItem(GUC_HOST_KEY);
+        return GUC_HOSTS.includes(v) ? v : null;
+    } catch { return null; }
+}
+
+function rememberGucHost(host) {
+    try { localStorage.setItem(GUC_HOST_KEY, host); } catch { /* ignore */ }
+}
+
+function forgetGucHost() {
+    try { localStorage.removeItem(GUC_HOST_KEY); } catch { /* ignore */ }
+}
+
+function gucReportUrl(host) {
+    return 'https://' + host + GUC_REPORT_PATH;
+}
+
+function gucSignInUrl() {
+    return gucReportUrl(readGucHost() || GUC_HOSTS[0]);
+}
+
+// Which *.guc.edu.eg host serves the staff report is not fixed, so probe the
+// GUC script's own @match hosts in order, once, and remember the answer.
+async function fetchGucReportDoc() {
+    const remembered = readGucHost();
+    const hosts = remembered ? [remembered] : GUC_HOSTS;
+    let lastError = null;
+    for (const host of hosts) {
+        try {
+            const doc = classifyReportResponse(await gmGet(gucReportUrl(host)), GUC_GRID_ID_RAW);
+            rememberGucHost(host);
+            return doc;
+        } catch (err) {
+            // Any auth answer stops the probe, rather than knocking on the others
+            // with the same request. Only a login challenge (401, or a 200 login
+            // form) proves this is the right server; a 403 refusal does not, so
+            // it is not remembered.
+            if (err.kind === 'auth') {
+                if (err.status !== 403) rememberGucHost(host);
+                err.host = host;
+                throw err;
+            }
+            lastError = err;
+        }
+    }
+    if (remembered && lastError && (lastError.kind === 'no-grid' || lastError.kind === 'http')) forgetGucHost();
+    throw lastError || timesheetError('network');
+}
+
+// Cairo sign-in through a script-opened popup. A popup is a top-level
+// document, so Chrome shows its native NTLM prompt there (it refuses auth
+// prompts inside a cross-origin iframe). The password only ever goes into
+// that prompt; this module never sees, stores or sends a credential.
+//
+// Two halves of the same script:
+// - Berlin side, openCairoSignIn(): opens the popup from the user's click and
+//   waits for it to finish, then asks for ONE new attempt.
+// - Cairo side, runCairoSignInHelper(): inert unless this window is that
+//   popup; on a real signed-in portal page it signals Berlin and closes.
+// The signal travels through Tampermonkey value storage (shared by this
+// script across origins); its value is a timestamp and nothing else.
+const CAIRO_SIGNIN_WINDOW = 'gius-cairo-signin';
+const CAIRO_SIGNIN_KEY = 'giuCairoSignInV1';
+const CAIRO_SIGNIN_FEATURES = 'popup,width=520,height=640';
+const CAIRO_SIGNIN_POLL_MS = 500;
+const CAIRO_SIGNIN_TIMEOUT_MS = 5 * 60 * 1000;
+
+// The one pending sign-in flow: { url, popup, finish } or null.
+let cairoSignIn = null;
+
+// Drops the pending flow WITHOUT a retry: closes its popup and removes the
+// listener, poll and timeout. For when the flow no longer matches what the
+// user is signing in to (a university switch, another sign-in URL).
+function cancelCairoSignIn() {
+    const flow = cairoSignIn;
+    if (!flow) return;
+    flow.finish(false);
+    try { if (!flow.popup.closed) flow.popup.close(); } catch { /* ignore */ }
+}
+
+// Must be called synchronously from the click (popup blockers allow only
+// user-initiated window.open). Returns false when the popup was blocked, so
+// the caller lets the link's own new-tab navigation happen instead.
+// onDone runs at most once per flow: on the Cairo signal or when the popup
+// is closed, whichever comes first; never on the 5-minute give-up or a cancel.
+function openCairoSignIn(url, onDone) {
+    if (cairoSignIn && cairoSignIn.url !== url) cancelCairoSignIn();
+    if (cairoSignIn) {
+        if (!cairoSignIn.popup.closed) {
+            try { cairoSignIn.popup.focus(); } catch { /* ignore */ }
+        } else {
+            cairoSignIn.finish(true); // closed before the next poll: that is completion
+        }
+        return true;
+    }
+    const popup = window.open(url, CAIRO_SIGNIN_WINDOW, CAIRO_SIGNIN_FEATURES);
+    if (!popup) return false;
+
+    let listenerId = null;
+    let poll = null;
+    let giveUp = null;
+    const flow = { url, popup, finish: null };
+    flow.finish = retry => {
+        if (cairoSignIn !== flow) return; // single-shot
+        cairoSignIn = null;
+        clearInterval(poll);
+        clearTimeout(giveUp);
+        if (listenerId !== null && typeof GM_removeValueChangeListener === 'function') {
+            try { GM_removeValueChangeListener(listenerId); } catch { /* ignore */ }
+        }
+        if (!retry) return;
+        try { if (!popup.closed) popup.close(); } catch { /* ignore */ }
+        onDone();
+    };
+    cairoSignIn = flow;
+    // Without the listener grant the closed-poll alone still completes the flow.
+    if (typeof GM_addValueChangeListener === 'function') {
+        try { listenerId = GM_addValueChangeListener(CAIRO_SIGNIN_KEY, () => flow.finish(true)); } catch { listenerId = null; }
+    }
+    // A local check of the window handle; no network.
+    poll = setInterval(() => { if (popup.closed) flow.finish(true); }, CAIRO_SIGNIN_POLL_MS);
+    giveUp = setTimeout(() => flow.finish(false), CAIRO_SIGNIN_TIMEOUT_MS);
+    return true;
+}
+
+// A real, signed-in portal page (not the browser's 401 page, not a login
+// form): GIU Home.aspx or the GUC report page.
+function isSignedInCairoPage() {
+    const host = location.hostname;
+    let marker = null;
+    if (host === 'portal.giu-uni.de') {
+        marker = document.getElementById('MainContent_div_grid') || document.getElementById('form1');
+    } else if (GUC_HOSTS.includes(host)) {
+        marker = document.getElementById('DG_SwiftReport') || document.getElementById('Form1');
+    }
+    return !!marker && !document.querySelector('input[type="password"]');
+}
+
+function runCairoSignInHelper() {
+    if (window.name !== CAIRO_SIGNIN_WINDOW) return;
+    if (!isSignedInCairoPage()) return; // still on the prompt / 401: Berlin's closed-poll covers a manual close
+    if (typeof GM_setValue === 'function') {
+        try { GM_setValue(CAIRO_SIGNIN_KEY, Date.now()); } catch { /* ignore */ }
+    }
+    window.close();
+}
+
+// University marks for the Berlin chooser buttons, embedded so they show
+// without a request to either Cairo portal (whose login would block an <img>).
+// GIU: the GIU wordmark (scripts/GUC/Giu_Logo.png), trimmed. GUC: the GUC logo,
+// resized to 64px. Regenerate from the source images; don't hand-edit.
+const UNIVERSITY_ICONS = {
+    giu: 'data:image/png;base64,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',
+    guc: 'data:image/png;base64,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',
+};
+
+// Berlin UI only — renders what the source reports; never fetches.
+const BERLIN_VIEW_HASH = '#gius-attendance';
+
+function berlinErrorCopy(err, label) {
+    const kind = (err && err.kind) || 'unknown';
+    switch (kind) {
+        case 'auth': return { title: `Not signed in to ${label}`, body: `Your Berlin login doesn't carry over to ${label}. Use Sign in: a small window opens for your ${label} login, and this refreshes once you're done.`, signIn: true };
+        case 'no-grid': return { title: `${label} returned no attendance report`, body: `Your ${label} session probably hasn't started. Use Sign in: a small window opens for your ${label} login, and this refreshes once you're done. Or press Retry.`, signIn: true };
+        case 'network': return { title: `Couldn't reach ${label}`, body: 'Check your connection (the Cairo portal may need VPN), then press Retry.', signIn: false };
+        case 'timeout': return { title: `${label} took too long to answer`, body: 'The portal may be busy. Press Retry in a minute.', signIn: false };
+        case 'server':
+        case 'http': return { title: `${label} portal error (HTTP ${err.status})`, body: 'The Cairo portal failed on its side. Try again later.', signIn: false };
+        case 'layout': return { title: `The ${label} attendance page changed`, body: `Missing columns: ${(err.missing || []).join(', ') || 'unknown'}. This script needs an update.`, signIn: false };
+        case 'no-grant': return { title: 'Cross-site access blocked', body: `Tampermonkey did not give this script network access. Check that the script is enabled and that its @connect hosts are allowed in Tampermonkey's settings, then reload this page.`, signIn: false };
+        default: return { title: `Couldn't load attendance from ${label}`, body: 'Unexpected error. Press Retry.', signIn: false };
+    }
+}
+
+// A card that replaces the Home widget's content keeps the widget's own
+// "Attendance" heading above it, so it still reads as that widget.
+function widgetHead(host) {
+    return host.classList.contains('gius-att-widget') ? '<div class="gius-att-head">Attendance</div>' : '';
+}
+
+// opts: { label, signInUrl, onRetry, onSignIn, inline }. onSignIn(event) runs
+// on the sign-in link's click; the link keeps its new-tab href as the fallback
+// when it does not preventDefault(). inline → prepend a notice and
+// keep whatever the host already shows (a stale widget), instead of replacing it.
+function renderBerlinError(S, host, err, opts) {
+    const esc = S.escapeHtml;
+    const copy = berlinErrorCopy(err, opts.label);
+    const signIn = copy.signIn
+        ? `<a class="gius-berlin-btn gius-berlin-btn-primary gius-berlin-signin" href="${esc(opts.signInUrl)}" target="_blank" rel="noopener noreferrer">Sign in to ${esc(opts.label)}</a>`
+        : '';
+    const html = `<div class="gius-berlin-error gius-berlin-card" role="alert">
+        <div class="gius-berlin-error-title">${esc(copy.title)}</div>
+        <div class="gius-berlin-error-body">${esc(copy.body)}</div>
+        <div class="gius-berlin-actions">${signIn}<button type="button" class="gius-berlin-btn gius-berlin-retry">Retry</button></div>
+    </div>`;
+    if (opts.inline) {
+        const old = host.querySelector('.gius-berlin-error');
+        if (old) old.remove();
+        host.insertAdjacentHTML('afterbegin', html);
+    } else {
+        host.innerHTML = widgetHead(host) + html;
+    }
+    const card = host.querySelector('.gius-berlin-error');
+    card.querySelector('.gius-berlin-retry').addEventListener('click', opts.onRetry);
+    const link = card.querySelector('.gius-berlin-signin');
+    if (link && opts.onSignIn) link.addEventListener('click', opts.onSignIn);
+}
+
+function renderUniversityChooser(S, host, onPick) {
+    host.innerHTML = widgetHead(host) + `<div class="gius-berlin-chooser gius-berlin-card">
+        <div class="gius-berlin-error-title">Where is your timesheet?</div>
+        <div class="gius-berlin-error-body">Pick the university whose Cairo portal holds your attendance. You can switch later from the full report.</div>
+        <div class="gius-berlin-actions">
+            <button type="button" class="gius-berlin-btn gius-berlin-univ" data-gius-univ="giu"><span class="gius-berlin-univ-icon"><img src="${UNIVERSITY_ICONS.giu}" alt=""></span>GIU</button>
+            <button type="button" class="gius-berlin-btn gius-berlin-univ" data-gius-univ="guc"><span class="gius-berlin-univ-icon"><img src="${UNIVERSITY_ICONS.guc}" alt=""></span>GUC</button>
+        </div>
+    </div>`;
+    host.querySelectorAll('[data-gius-univ]').forEach(b => {
+        b.addEventListener('click', () => onPick(b.getAttribute('data-gius-univ')));
+    });
+}
+
+// Everything here is Berlin-only and copies the engine's own look: cards are
+// the Home widget's .gius-att-card, buttons the report's
+// .giu-settings-action-btn (secondary) and .giu-add-holiday-btn (primary),
+// the view header and the grid the report's panels and .giu-holiday-table.
+// Dark mode: widget-level pieces use the widget's Catppuccin colours; the
+// report-level ones take GIU Theme's --gp-* tokens when present, with the
+// widget's colours as the fallback.
+function injectBerlinStyles(S) {
+    S.injectStyle('gius-berlin-style', `
+        .gius-berlin-hidden { display: none !important; }
+
+        .gius-berlin-error, .gius-berlin-chooser {
+            box-sizing: border-box; margin: 0 0 12px; padding: 14px;
+            background: #f8f9fa; border: 1px solid #e9ecef; border-left: 4px solid #ffc107; border-radius: 12px;
+            color: #1e1e2e; font-size: 13px; line-height: 1.45; text-align: left;
+        }
+        .gius-att-widget > .gius-berlin-card:last-child { margin-bottom: 0; }
+        .gius-berlin-error { border-left-color: #e11d48; }
+        .gius-berlin-error-title { font-size: 15px; font-weight: 700; margin: 0 0 4px; }
+        .gius-berlin-error .gius-berlin-error-title { color: #991b1b; }
+        .gius-berlin-error-body { color: #272c33; }
+        .gius-berlin-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+        #gius-berlin-view .gius-berlin-error, #gius-berlin-view .gius-berlin-chooser {
+            max-width: 1500px; margin: 14px auto; background: #fff; border-radius: 6px; box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
+        }
+
+        :is(a, button).gius-berlin-btn {
+            display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box;
+            height: 32px; margin: 0; padding: 0 12px; border: 1px solid #64748b; border-radius: 6px;
+            background: #f8fafc; color: #334155; font-family: inherit; font-size: 12px; font-weight: 700;
+            line-height: 1; white-space: nowrap; text-decoration: none; cursor: pointer;
+            transition: background 0.15s, border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+        }
+        :is(a, button).gius-berlin-btn:hover { background: #e2e8f0; color: #334155; text-decoration: none; }
+        :is(a, button).gius-berlin-btn:focus { text-decoration: none; }
+        :is(a, button).gius-berlin-btn:focus-visible { outline: 2px solid #60a5fa; outline-offset: 1px; }
+        :is(a, button).gius-berlin-btn-primary { border-color: #d97706; background: #ffc107; color: #111827; font-size: 13px; }
+        :is(a, button).gius-berlin-btn-primary:hover { background: #f59e0b; color: #111827; transform: translateY(-1px); box-shadow: 0 3px 10px rgba(255,193,7,0.4); }
+        :is(a, button).gius-berlin-btn:disabled, :is(a, button).gius-berlin-btn[aria-disabled="true"] {
+            opacity: 0.55; cursor: not-allowed; transform: none; box-shadow: none;
+        }
+        /* University choice: two identical neutral buttons told apart by their logos;
+           each takes its university's colour only on hover/focus. */
+        button.gius-berlin-btn.gius-berlin-univ {
+            min-width: 96px; height: 38px; gap: 8px; padding: 0 14px;
+            background: #fff; border-color: #d1d5db; color: #111827; font-size: 13px;
+        }
+        button.gius-berlin-btn.gius-berlin-univ:hover { background: #fff; transform: translateY(-1px); }
+        button.gius-berlin-btn.gius-berlin-univ[data-gius-univ="giu"]:is(:hover, :focus-visible) { border-color: #d97706; box-shadow: 0 3px 10px rgba(217,119,6,0.25); }
+        button.gius-berlin-btn.gius-berlin-univ[data-gius-univ="guc"]:is(:hover, :focus-visible) { border-color: #dc2626; box-shadow: 0 3px 10px rgba(220,38,38,0.22); }
+        /* White chip keeps both logos (incl. GUC's black stroke) legible in dark mode. */
+        .gius-berlin-univ-icon {
+            display: inline-flex; align-items: center; justify-content: center;
+            height: 24px; min-width: 24px; padding: 0 3px; box-sizing: border-box;
+            background: #fff; border-radius: 4px;
+        }
+        .gius-berlin-univ-icon img { display: block; height: 18px; width: auto; }
+        #gius-berlin-view { padding: 16px 0; font-family: 'Open Sans', Arial, Helvetica, sans-serif; color: #111827; }
+        .gius-berlin-view-head {
+            position: relative; box-sizing: border-box; max-width: 1500px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between; gap: 10px 12px; flex-wrap: wrap;
+            padding: 13px 12px 10px; background: #fff; border: 1px solid #eee; border-radius: 6px;
+            box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
+        }
+        .gius-berlin-view-head::before {
+            content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 3px; background: #ffc107;
+            border-radius: 6px 6px 0 0;
+        }
+        .gius-berlin-view-head h3 {
+            display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0;
+            font-family: inherit; font-size: 18px; font-weight: 700; line-height: 1.3; color: #1f2937;
+        }
+        .gius-berlin-view-head .gius-berlin-actions { margin-top: 0; }
+        .gius-berlin-badge {
+            display: inline-block; padding: 3px 10px; border: 1px solid #ffc107; border-radius: 999px;
+            background: #fff3cd; color: #92400e; font-size: 12px; font-weight: 700; line-height: 1.3;
+        }
+
+        .gius-berlin-grid { max-width: 1500px; margin: 0 auto; overflow-x: auto; }
+        .gius-berlin-grid > #giu-attendance-container { position: sticky; left: 0; }
+        .gius-berlin-grid table#MainContent_DG_SwiftReport {
+            width: 100%; margin: 0 0 8px; border-collapse: separate; border-spacing: 0;
+            background: #fff; border: 1px solid #d1d5db; border-radius: 6px;
+            font-family: inherit; font-size: 13px; line-height: 1.35; color: #111827;
+        }
+        .gius-berlin-grid caption.gius-berlin-grid-title {
+            caption-side: top; padding: 0 0 12px; text-align: left;
+            font-size: 16px; font-weight: 700; color: #1f2937;
+        }
+        .gius-berlin-grid caption.gius-berlin-grid-title > span { position: sticky; left: 0; }
+        .gius-berlin-grid table#MainContent_DG_SwiftReport :is(th, td) {
+            padding: 8px 10px; border: 0; border-bottom: 1px solid #e5e7eb; border-right: 1px solid #e5e7eb;
+            background: #fff; color: #111827; text-align: left; vertical-align: middle;
+        }
+        .gius-berlin-grid table#MainContent_DG_SwiftReport tr > :last-child { border-right: 0; }
+        .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-last > * { border-bottom: 0; }
+        .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row:nth-child(even) > td { background: #f9fafb; }
+        .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row:hover > td { background: #fff8e1; }
+        .gius-berlin-grid table#MainContent_DG_SwiftReport :is(thead th, tr.gius-berlin-grid-head > *) {
+            background: #1f2937; color: #fff; font-weight: 700; white-space: nowrap; border-color: #374151;
+        }
+        .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-first > :first-child { border-top-left-radius: 5px; }
+        .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-first > :last-child { border-top-right-radius: 5px; }
+        .gius-berlin-grid table#MainContent_DG_SwiftReport .gius-berlin-col-time { white-space: nowrap; }
+        .gius-berlin-grid table#MainContent_DG_SwiftReport :is(.gius-berlin-col-num, .gius-berlin-col-serial, .gius-berlin-col-sessions) {
+            white-space: nowrap; font-variant-numeric: tabular-nums;
+        }
+        /* Serial and Sessions stay as narrow as their content; the rest share the width. */
+        .gius-berlin-grid table#MainContent_DG_SwiftReport :is(th, td):is(.gius-berlin-col-serial, .gius-berlin-col-sessions) { width: 1%; }
+        .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row > td.gius-berlin-col-serial { color: #6b7280; }
+        .gius-berlin-grid .gius-berlin-action {
+            display: inline-block; padding: 3px 9px; border: 1px solid #d1d5db; border-radius: 999px;
+            background: #f3f4f6; color: #374151; font-size: 11px; font-weight: 700; line-height: 1.3; white-space: nowrap;
+        }
+
+        html.gius-dark .gius-berlin-error, html.gius-dark .gius-berlin-chooser {
+            background: #181825; border-color: #313244; border-left-color: #f9e2af; color: #cdd6f4;
+        }
+        html.gius-dark .gius-berlin-error { border-left-color: #f38ba8; }
+        html.gius-dark .gius-berlin-error .gius-berlin-error-title { color: #f38ba8; }
+        html.gius-dark .gius-berlin-error-body { color: #cdd6f4; }
+        html.gius-dark #gius-berlin-view .gius-berlin-error, html.gius-dark #gius-berlin-view .gius-berlin-chooser {
+            background: var(--gp-card, #1e1e2e); border-color: var(--gp-border, #313244); box-shadow: 0 2px 10px rgba(0,0,0,.45);
+        }
+        html.gius-dark :is(a, button).gius-berlin-btn { background: #1e1e2e; border-color: #45475a; color: #cdd6f4; }
+        html.gius-dark :is(a, button).gius-berlin-btn:hover { background: #313244; color: #cdd6f4; }
+        html.gius-dark :is(a, button).gius-berlin-btn:focus-visible { outline-color: #89b4fa; }
+        html.gius-dark :is(a, button).gius-berlin-btn-primary { background: #f9e2af; border-color: #f9e2af; color: #1e1e2e; }
+        html.gius-dark :is(a, button).gius-berlin-btn-primary:hover { background: #f5d48a; color: #1e1e2e; box-shadow: 0 3px 10px rgba(249,226,175,0.25); }
+        html.gius-dark button.gius-berlin-btn.gius-berlin-univ { background: #1e1e2e; border-color: #45475a; color: #cdd6f4; }
+        html.gius-dark button.gius-berlin-btn.gius-berlin-univ:hover { background: #1e1e2e; }
+        html.gius-dark button.gius-berlin-btn.gius-berlin-univ[data-gius-univ="giu"]:is(:hover, :focus-visible) { border-color: #f9e2af; box-shadow: 0 3px 10px rgba(249,226,175,0.18); }
+        html.gius-dark button.gius-berlin-btn.gius-berlin-univ[data-gius-univ="guc"]:is(:hover, :focus-visible) { border-color: #f38ba8; box-shadow: 0 3px 10px rgba(243,139,168,0.18); }
+        html.gius-dark #gius-berlin-view { color: var(--gp-text, #cdd6f4); }
+        html.gius-dark .gius-berlin-view-head {
+            background: var(--gp-card, #1e1e2e); border-color: var(--gp-border, #313244); box-shadow: 0 2px 10px rgba(0,0,0,.45);
+        }
+        html.gius-dark .gius-berlin-view-head h3 { color: var(--gp-text, #cdd6f4); }
+        html.gius-dark .gius-berlin-badge {
+            background: var(--gp-warning-bg, #2a2410); border-color: var(--gp-warning-fg, #f9e2af); color: var(--gp-warning-fg, #f9e2af);
+        }
+        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport {
+            background: var(--gp-card, #1e1e2e); border-color: var(--gp-border, #313244); color: var(--gp-text, #cdd6f4);
+        }
+        html.gius-dark .gius-berlin-grid caption.gius-berlin-grid-title { color: var(--gp-text, #cdd6f4); }
+        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport :is(th, td) {
+            background: var(--gp-card, #1e1e2e); border-color: var(--gp-border, #313244); color: var(--gp-text, #cdd6f4);
+        }
+        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row:nth-child(even) > td { background: var(--gp-surface, #181825); }
+        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row:hover > td { background: #2a2410; }
+        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport :is(thead th, tr.gius-berlin-grid-head > *) {
+            background: var(--gp-deep, #11111b); color: var(--gp-text, #cdd6f4); border-color: var(--gp-border, #313244);
+        }
+        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row > td.gius-berlin-col-serial { color: var(--gp-muted, #9399b2); }
+        html.gius-dark .gius-berlin-grid .gius-berlin-action {
+            background: var(--gp-surface, #313244); border-color: var(--gp-border, #45475a); color: var(--gp-text, #cdd6f4);
+        }
+    `);
+}
+
+const BERLIN_VIEW_ID = 'gius-berlin-view';
+const BERLIN_HIDDEN_CLASS = 'gius-berlin-hidden';
+const BERLIN_SIDEBAR_LINK_ID = 'gius-berlin-nav';
+
+function berlinContentArea() {
+    return document.querySelector('.page-content') || document.querySelector('.content') ||
+        document.getElementById('form1') || document.body;
+}
+
+// Takes over the page's content area (siblings hidden, not removed, so
+// leaving the view restores Home exactly as it was).
+function mountReportView() {
+    let host = document.getElementById(BERLIN_VIEW_ID);
+    if (host) return host;
+    const area = berlinContentArea();
+    Array.from(area.children).forEach(el => el.classList.add(BERLIN_HIDDEN_CLASS));
+    host = document.createElement('div');
+    host.id = BERLIN_VIEW_ID;
+    // The view sits inside Berlin's <form id="form1">: Enter in an engine input
+    // would implicitly submit it (POST ./Home.aspx), dropping the view and any
+    // unsaved input. Textareas and buttons keep their own Enter behaviour.
+    host.addEventListener('keydown', e => {
+        if (e.key === 'Enter' && e.target && e.target.tagName === 'INPUT') e.preventDefault();
+    }, true);
+    area.prepend(host);
+    return host;
+}
+
+// Returns whether a view was actually open (and is now gone).
+function unmountReportView() {
+    const host = document.getElementById(BERLIN_VIEW_ID);
+    if (!host) return false;
+    const area = host.parentElement;
+    host.remove();
+    Array.from(area.children).forEach(el => el.classList.remove(BERLIN_HIDDEN_CLASS));
+    return true;
+}
+
+function ensureSidebarLink(url) {
+    if (document.getElementById(BERLIN_SIDEBAR_LINK_ID)) return;
+    const panel = document.querySelector('#left-panel, aside.left-panel');
+    const nav = panel && panel.querySelector('.navbar-nav');
+    if (!nav) return; // unknown layout: the Home widget's link still reaches the view
+    // A top-level entry of its own, placed right above the "Attendance" menu and
+    // cloned from it (submenu and dropdown wiring stripped), so font, icon size
+    // and spacing are exactly the portal's. Without an Attendance menu, clone a
+    // plain top-level item of the first list instead.
+    const firstLink = li => li.querySelector(':scope > a');
+    const attendance = Array.from(panel.querySelectorAll('li')).find(li =>
+        li.querySelector(':scope > ul') && /^attendance$/i.test(String((firstLink(li) || {}).textContent || '').trim()));
+    const template = attendance ||
+        Array.from(nav.children).find(li => firstLink(li) && !li.querySelector('ul'));
+    let li;
+    if (template) {
+        li = template.cloneNode(true);
+        li.querySelectorAll(':scope > ul').forEach(ul => ul.remove());
+        // Keep the dropdown classes: they are what draw the siblings' arrow.
+        li.classList.remove('active', 'show', 'open');
+        const a = firstLink(li) || li.querySelector('a');
+        const icon = a.querySelector('i') || li.querySelector('i');
+        a.href = url;
+        ['target', 'onclick', 'data-toggle', 'data-bs-toggle', 'aria-expanded', 'aria-haspopup', 'role'].forEach(n => a.removeAttribute(n));
+        if (icon) icon.className = icon.className.replace(/\bfa-(?!fw\b)[\w-]+/g, '').trim() + ' fa-clock-o';
+        setMenuLabel(a, icon, 'My Attendance');
+        // Because it still looks like a dropdown, the portal's menu script may
+        // treat a click as "toggle submenu". Take the click first (capture
+        // phase, propagation stopped) and just open the report.
+        a.addEventListener('click', e => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (/\/home\.aspx$/i.test(location.pathname || '')) location.hash = BERLIN_VIEW_HASH;
+            else location.href = url;
+        }, true);
+    } else {
+        li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = url;
+        a.innerHTML = '<i class="menu-icon fa fa-clock-o"></i> My Attendance';
+        li.appendChild(a);
+    }
+    li.id = BERLIN_SIDEBAR_LINK_ID;
+    if (attendance) attendance.parentNode.insertBefore(li, attendance);
+    else nav.appendChild(li);
+}
+
+// Swaps a cloned menu link's label, keeping the whitespace the portal puts
+// around it (that whitespace is what spaces the icon from the text) and every
+// non-label child except the icon out of the way.
+function setMenuLabel(a, icon, label) {
+    // Drop child elements that carry text (a badge, a second label); keep
+    // text-less ones such as an arrow glyph.
+    Array.from(a.children).forEach(el => {
+        if (el !== icon && !el.contains(icon) && String(el.textContent || '').trim()) el.remove();
+    });
+    const texts = [];
+    const walker = document.createTreeWalker(a, NodeFilter.SHOW_TEXT);
+    while (walker.nextNode()) if (walker.currentNode.nodeValue.trim()) texts.push(walker.currentNode);
+    if (texts.length) {
+        const t = texts[0];
+        t.nodeValue = t.nodeValue.replace(/\S[\s\S]*\S|\S/, label);
+        texts.slice(1).forEach(n => n.remove());
+    } else {
+        a.appendChild(document.createTextNode(label));
+    }
+    // Guarantee a gap when the icon sits right before the label with no space.
+    const next = icon && icon.nextSibling;
+    if (icon && a.contains(icon) && (!next || (next.nodeType === 3 && !/^\s/.test(next.nodeValue)))) {
+        icon.after(document.createTextNode(' '));
+    }
+}
+
+// Returns the body element the report (or an error) renders into.
+function renderViewShell(S, host, opts) {
+    host.innerHTML = `<div class="gius-berlin-view-head">
+        <h3 class="gius-berlin-view-title">My Attendance<span class="gius-berlin-badge">${S.escapeHtml(opts.label)}</span></h3>
+        <div class="gius-berlin-actions">
+            <button type="button" class="gius-berlin-btn gius-berlin-refresh">Refresh</button>
+            <button type="button" class="gius-berlin-btn gius-berlin-switch">Switch University</button>
+            <a class="gius-berlin-btn gius-berlin-back" href="#">Back to Home</a>
+        </div>
+    </div>
+    <div class="gius-berlin-view-body"></div>`;
+    host.querySelector('.gius-berlin-refresh').addEventListener('click', opts.onRefresh);
+    host.querySelector('.gius-berlin-switch').addEventListener('click', opts.onSwitch);
+    // Leave by hash (the route unmounts the view), not by reloading Home.aspx,
+    // which would boot the widget again and may re-request Cairo.
+    host.querySelector('.gius-berlin-back').addEventListener('click', e => {
+        e.preventDefault();
+        location.hash = '';
+    });
+    return host.querySelector('.gius-berlin-view-body');
+}
+
+// The Cairo grid is display-only on Berlin. Pager/sort links are Cairo
+// postbacks (they would post Berlin's own form), relative links resolve
+// against Berlin (where the report 500s), inline on* handlers and form
+// controls belong to Cairo's page. Keep link text, drop the behaviour.
+// Cairo's presentational attributes (inline colours, cellpadding, ...) are
+// dropped too, so the view's own grid styles apply. `title` → a <caption>.
+function importReportGrid(doc, gridId, title) {
+    const grid = document.importNode(doc.getElementById(gridId), true);
+    grid.querySelectorAll('input, select, button, textarea').forEach(el => el.remove());
+    grid.querySelectorAll('a[href]').forEach(a => {
+        if (/^https?:\/\//i.test(a.getAttribute('href').trim())) return;
+        const span = document.createElement('span');
+        span.textContent = a.textContent;
+        a.replaceWith(span);
+    });
+    [grid, ...grid.querySelectorAll('*')].forEach(el => {
+        Array.from(el.attributes).forEach(attr => {
+            if (/^on/i.test(attr.name) || GRID_PRESENTATION_ATTRS.test(attr.name)) el.removeAttribute(attr.name);
+        });
+    });
+    dropUnwantedColumns(grid);
+    decorateReportGrid(grid);
+    reverseDataRows(grid);
+    markGridEnds(grid);
+    if (title) {
+        const caption = grid.createCaption();
+        caption.className = 'gius-berlin-grid-title';
+        // The text is its own sticky box: it stays in view while a narrow
+        // screen scrolls the grid sideways.
+        const text = document.createElement('span');
+        text.textContent = title;
+        caption.appendChild(text);
+    }
+    return grid;
+}
+
+const GRID_PRESENTATION_ATTRS = /^(style|bgcolor|bordercolor|border|cellpadding|cellspacing|rules|frame|width|height|align|valign|nowrap)$/i;
+
+function gridHeaderIndex(rows) {
+    const cellText = c => String(c.textContent || '').replace(/\s+/g, ' ').trim();
+    return rows.findIndex(r => Array.from(r.cells).some(c => /^(day|date)$/i.test(cellText(c))));
+}
+
+// Cairo's GIU grid carries a few columns the view has no use for: the raw
+// GIU_ID, and the InOutForm/LeaveForm postback links (already stripped of
+// their behaviour above, and dead weight now they're inert). Matched
+// case-insensitively, ignoring spaces/underscores, so "In Out Form" or
+// "leave_form" also match. Never matches the GUC canonical grid's own
+// headers (Serial/Day/FirstIn/LastOut/Duration/Sessions/Action).
+const DROPPED_HEADER_KEYS = new Set(['giuid', 'inoutform', 'leaveform']);
+
+function normalizeHeaderKey(text) {
+    return String(text || '').toLowerCase().replace(/[\s_]+/g, '');
+}
+
+// Drops the matched header cell and the same-index cell from every ordinary
+// row. A row whose cell count doesn't match the header (Cairo's pager rows,
+// which carry a single colspan'd cell) is left alone, except its colspan is
+// reduced by the number of columns actually dropped — so it doesn't overshoot
+// the grid's new width — floored at 1.
+function dropUnwantedColumns(grid) {
+    const rows = Array.from(grid.rows);
+    if (!rows.length) return;
+    const cellText = c => String(c.textContent || '').replace(/\s+/g, ' ').trim();
+    const headIndex = gridHeaderIndex(rows);
+    if (headIndex < 0) return;
+    const headerCells = Array.from(rows[headIndex].cells);
+    const dropIndexes = [];
+    headerCells.forEach((c, i) => { if (DROPPED_HEADER_KEYS.has(normalizeHeaderKey(cellText(c)))) dropIndexes.push(i); });
+    if (!dropIndexes.length) return;
+    rows.forEach(row => {
+        const cells = Array.from(row.cells);
+        if (cells.length === headerCells.length) {
+            dropIndexes.slice().reverse().forEach(i => cells[i] && cells[i].remove());
+        } else if (cells.length === 1) {
+            const span = parseInt(cells[0].getAttribute('colspan') || '1', 10);
+            if (span > 1) cells[0].setAttribute('colspan', String(Math.max(1, span - dropIndexes.length)));
+        }
+    });
+}
+
+// Newest day first: reverses the grid's own data rows in place. The header
+// (found the same way decorateReportGrid finds it) stays first; any pager
+// row — wherever Cairo puts it, since decorateReportGrid marks anything
+// outside the header/data shape as a pager — keeps its original position,
+// so a pager already at the bottom stays at the bottom.
+// Display-only: this reorders the mounted grid's DOM, which is also what the
+// engine's getAttendanceRows() scans when it runs against this same view
+// (renderEnhancedUI, straight after this grid is mounted). That's safe
+// because the only place those rows are consumed is
+// groupRowsByPayrollPeriod(), which re-sorts every row by date itself (both
+// the payroll-period order and each period's own row order) — so this
+// function cannot change any engine computation, only the display order.
+// Must run after decorateReportGrid, which is what assigns the
+// gius-berlin-grid-row class this relies on.
+function reverseDataRows(grid) {
+    const dataRows = Array.from(grid.rows).filter(r => r.classList.contains('gius-berlin-grid-row'));
+    if (dataRows.length < 2) return;
+    const parent = dataRows[0].parentNode;
+    if (!dataRows.every(r => r.parentNode === parent)) return; // unexpected structure: leave order alone
+    const anchor = dataRows[dataRows.length - 1].nextSibling;
+    dataRows.slice().reverse().forEach(r => parent.insertBefore(r, anchor));
+}
+
+// Header text → the display kind of its column (display only: cell text is
+// left exactly as it is, since the engine reads it).
+function gridColumnKind(headerText) {
+    const h = headerText.toLowerCase().replace(/\s+/g, '');
+    if (h === 'serial' || h === '#') return 'serial';
+    if (h === 'sessions') return 'sessions';
+    if (h.includes('duration')) return 'num';
+    if (/^(day|date|firstin|lastout|in|out)$/.test(h)) return 'time';
+    if (h.includes('action') || h.includes('leave') || h.includes('form')) return 'action';
+    return '';
+}
+
+// Marks the current first/last rows (for the rounded corners) — called after
+// reverseDataRows, so the corners land on the rows that are actually first
+// and last once the newest-day-first reorder has happened, not on whichever
+// rows held those spots beforehand.
+function markGridEnds(grid) {
+    const rows = grid.rows;
+    if (!rows.length) return;
+    rows[0].classList.add('gius-berlin-grid-first');
+    rows[rows.length - 1].classList.add('gius-berlin-grid-last');
+}
+
+// Marks the header row (a <td> row on Cairo's own grid), pager rows, data
+// rows and each column's kind, and wraps non-empty action cells in a pill.
+// (First/last-row marking is markGridEnds's job — see there for why.)
+function decorateReportGrid(grid) {
+    const rows = Array.from(grid.rows);
+    if (!rows.length) return;
+    const cellText = c => String(c.textContent || '').replace(/\s+/g, ' ').trim();
+    const headIndex = rows.findIndex(r => Array.from(r.cells).some(c => /^(day|date)$/i.test(cellText(c))));
+    if (headIndex < 0) return;
+    const kinds = Array.from(rows[headIndex].cells).map(c => gridColumnKind(cellText(c)));
+    rows.forEach((r, i) => {
+        const cells = Array.from(r.cells);
+        if (i === headIndex) r.classList.add('gius-berlin-grid-head');
+        // Cairo's pager rows ("<Previous Next>") are dead postbacks here and the
+        // report fits one page, so drop them rather than show a stub row.
+        else if (i < headIndex || cells.length !== kinds.length) { r.remove(); return; }
+        else r.classList.add('gius-berlin-grid-row');
+        cells.forEach((c, j) => {
+            if (kinds[j]) c.classList.add('gius-berlin-col-' + kinds[j]);
+            if (i !== headIndex && kinds[j] === 'action' && cellText(c)) {
+                const pill = document.createElement('span');
+                pill.className = 'gius-berlin-action';
+                while (c.firstChild) pill.appendChild(c.firstChild);
+                c.appendChild(pill);
+            }
+        });
+    });
+}
+
+// Berlin Home shows count cards like "0 Session" and "0 NoUserName" that carry
+// no information at zero. Hide those two when their value is 0; every other
+// card, and any non-zero count, is left alone. Matched by text because the
+// portal's card markup has no stable ids.
+const EMPTY_HOME_CARD_LABEL = /(?:^|\s)(sessions?|nousername)(?=\s|$)/i;
+
+function hideEmptyHomeCards() {
+    const cards = Array.from(document.querySelectorAll('.card'))
+        .filter(card => !card.querySelector('.card') && !card.closest('#gius-att-widget, #gius-berlin-view'));
+    cards.forEach(card => {
+        // Join the card's text nodes with spaces: adjacent elements carry no
+        // whitespace ("0 SessionSee Student List") in the portal's markup.
+        const parts = [];
+        const walker = document.createTreeWalker(card, NodeFilter.SHOW_TEXT);
+        while (walker.nextNode()) parts.push(walker.currentNode.nodeValue);
+        const text = parts.join(' ').replace(/\s+/g, ' ').trim();
+        if (!EMPTY_HOME_CARD_LABEL.test(text)) return;
+        const count = /(?:^|\s)(\d+)(?=\s|$)/.exec(text);
+        if (!count || Number(count[1]) !== 0) return;
+        // Hide the grid column holding the card when it holds nothing else,
+        // so the empty slot doesn't leave a gap.
+        const col = card.parentElement && /\bcol-/.test(card.parentElement.className) &&
+            card.parentElement.children.length === 1 ? card.parentElement : card;
+        col.classList.add(BERLIN_HIDDEN_CLASS);
+        col.setAttribute('data-gius-empty-card', '');
+    });
+}
+
+// createBerlinSource(S) → the S.attendanceSource object staffAttendance reads
+// (contract: docs/superpowers/specs/2026-09-24-berlin-attendance-design.md).
+const UNIVERSITY_KEY = 'giuBerlinUniversityV1';
+const UNIVERSITY_LABELS = { giu: 'GIU Cairo', guc: 'GUC Cairo' };
+// How long the last outcome (report or failure) of a Cairo request answers
+// passive callers. Memoising failures too is what keeps "never retry
+// automatically": the widget's delayed refresh must not re-ask Cairo right
+// after the view's request failed. Only a user action (force, Retry, a
+// university pick) bypasses it.
+const DOC_MEMO_MS = 60 * 1000;
+
+function createBerlinSource(S) {
+    let inflight = null;
+    // { univ, at, doc } or { univ, at, err }
+    let last = null;
+    // The engine api handed to start(); null until then (and in tests that
+    // drive fetchReportDoc without starting).
+    let engine = null;
+    // Bumped on every openView() call (and when the route leaves the view), so a
+    // completion from an older, superseded call can tell it no longer owns the view
+    // and must not touch the (by-then-replaced) shell or call renderEnhancedUI again.
+    // isReportView() alone only catches leaving the view entirely — it stays true
+    // across a Refresh/Switch that replaces the shell while remaining on the same hash.
+    let viewGen = 0;
+
+    function getUniversity() {
+        try {
+            const v = localStorage.getItem(UNIVERSITY_KEY);
+            return v === 'giu' || v === 'guc' ? v : null;
+        } catch { return null; }
+    }
+
+    // On a university change: drop this source's caches, then have the engine
+    // forget the widget's rows/cache and boot the widget again for the new
+    // university (the view, if open, reloads itself through its own callback).
+    function resetCaches() {
+        last = null;
+        // Drop the reference (not the promise itself — a caller already
+        // holding it still settles, as 'superseded'); the next fetchReportDoc
+        // must start a fresh request rather than adopt one for the university
+        // being left behind. See the inflight-token guard in fetchReportDoc.
+        inflight = null;
+        forgetGucHost();
+        // A popup still open for the university being left must not be
+        // focused by the next Sign in, nor retry when it closes.
+        cancelCairoSignIn();
+        if (engine && engine.resetHome) {
+            engine.resetHome();
+            engine.bootHome();
+        }
+    }
+
+    function setUniversity(value) {
+        if (value !== 'giu' && value !== 'guc') return;
+        try { localStorage.setItem(UNIVERSITY_KEY, value); } catch { /* ignore */ }
+        resetCaches();
+    }
+
+    function clearUniversity() {
+        try { localStorage.removeItem(UNIVERSITY_KEY); } catch { /* ignore */ }
+        resetCaches();
+    }
+
+    function label() { return UNIVERSITY_LABELS[getUniversity()] || 'Cairo'; }
+    function signInUrl() { return getUniversity() === 'guc' ? gucSignInUrl() : GIU_BOOTSTRAP_URL; }
+
+    // A result that arrives after the university changed belongs to the one
+    // left behind: callers get the silent 'superseded' kind instead, which
+    // renderError and the engine ignore (the switch already rebooted them).
+    function forUniversity(univ, promise) {
+        return promise.then(doc => {
+            if (getUniversity() !== univ) throw timesheetError('superseded');
+            return doc;
+        }, err => {
+            if (getUniversity() !== univ) throw timesheetError('superseded');
+            throw err;
+        });
+    }
+
+    // Widget and report view can ask at the same moment: share one request.
+    // The last outcome, success or failure, answers passive callers for
+    // DOC_MEMO_MS; `force` (a user action) always asks Cairo again.
+    function fetchReportDoc(opts) {
+        const univ = getUniversity();
+        if (!univ) return Promise.reject(timesheetError('no-university'));
+        const force = !!(opts && opts.force);
+        if (!force && last && last.univ === univ && Date.now() - last.at < DOC_MEMO_MS) {
+            return last.err ? Promise.reject(last.err) : Promise.resolve(last.doc);
+        }
+        if (inflight) return forUniversity(univ, inflight);
+        const request = univ === 'guc'
+            ? fetchGucReportDoc().then(doc => buildCanonicalReportDoc(aggregateGucDays(parseGucSessions(doc))))
+            : fetchGiuReportDoc();
+        // Token guard: a university switch mid-request clears `inflight`
+        // (resetCaches), and may start a new one for the other university.
+        // Only the request `inflight` still points at when it settles is
+        // allowed to write `last` or clear inflight — an orphaned request
+        // (switched away from) must not resurrect a stale cache or clobber
+        // the new one's inflight slot.
+        const thisRequest = request.then(doc => {
+            if (inflight === thisRequest) {
+                inflight = null;
+                last = { univ, doc, at: Date.now() };
+            }
+            return doc;
+        }, err => {
+            if (inflight === thisRequest) {
+                inflight = null;
+                last = { univ, err, at: Date.now() };
+            }
+            S.warn('berlinAttendance', err && err.kind ? err.kind : err);
+            throw err;
+        });
+        inflight = thisRequest;
+        return forUniversity(univ, thisRequest);
+    }
+
+    // Every Retry is a user action: it drops the memoised outcome so the
+    // request it triggers really asks Cairo again, whichever path the caller
+    // takes to fetch (the widget's Retry reboots Home without `force`).
+    function renderError(host, err, onRetry, opts) {
+        if (err && err.kind === 'superseded') return;
+        if (err && err.kind === 'no-university') {
+            // setUniversity() resets the memo (and reboots the widget).
+            renderUniversityChooser(S, host, value => { setUniversity(value); onRetry(); });
+            return;
+        }
+        const retry = () => { last = null; onRetry(); };
+        // The popup's completion is one Retry click: at most one attempt, and
+        // only because the user started the sign-in.
+        const onSignIn = e => { if (openCairoSignIn(signInUrl(), retry)) e.preventDefault(); };
+        renderBerlinError(S, host, err, { label: label(), signInUrl: signInUrl(), onRetry: retry, onSignIn, inline: !!(opts && opts.inline) });
+    }
+
+    const reportViewUrl = location.origin + '/GIUb/INTStaff/Home.aspx' + BERLIN_VIEW_HASH;
+
+    function isReportView() {
+        return (location.pathname || '').toLowerCase() === '/giub/intstaff/home.aspx' &&
+            location.hash === BERLIN_VIEW_HASH;
+    }
+
+    function openView(api, opts) {
+        const gen = ++viewGen;
+        const host = mountReportView();
+        const body = renderViewShell(S, host, {
+            label: label(),
+            onRefresh: () => openView(api, { force: true }),
+            onSwitch: () => { clearUniversity(); openView(api); },
+        });
+        body.innerHTML = `<div class="gius-att-empty">Loading attendance from ${S.escapeHtml(label())}…</div>`;
+        const retry = () => openView(api, { force: true });
+        fetchReportDoc(opts).then(doc => {
+            if (gen !== viewGen || !isReportView()) return; // superseded, or left the view while loading
+            // Same Day/Duration check the widget's fetch applies: a changed
+            // layout gets the layout card, not the engine's debug box.
+            const layoutError = api.checkReportDoc ? api.checkReportDoc(doc) : null;
+            if (layoutError) { renderError(body, layoutError, retry); return; }
+            body.innerHTML = '';
+            const wrap = document.createElement('div');
+            wrap.className = 'gius-berlin-grid';
+            wrap.appendChild(importReportGrid(doc, REPORT_GRID_ID, `Timesheet — ${label()}`));
+            body.appendChild(wrap);
+            api.renderEnhancedUI(); // engine reads the grid we just mounted
+            // The widget (hidden under the view) shows the same report; no request.
+            if (api.renderHomeFromDoc) api.renderHomeFromDoc(doc);
+        }).catch(err => {
+            if (gen !== viewGen || !isReportView()) return;
+            renderError(body, err, retry);
+        });
+    }
+
+    // api (from the engine): { renderEnhancedUI, bootHome, resetHome,
+    //   rerenderHome, renderHomeFromDoc, checkReportDoc, closeOverlays }.
+    // The last four are optional (tests start() with a partial api); none of
+    // them makes a network request.
+    function start(api) {
+        engine = api;
+        injectBerlinStyles(S);
+        ensureSidebarLink(reportViewUrl);
+        if (/\/home\.aspx$/i.test(location.pathname || '')) hideEmptyHomeCards();
+        api.bootHome(); // no-op off Home; creates the widget host before the view hides it
+        const route = () => {
+            if (isReportView()) openView(api);
+            else {
+                viewGen++;
+                if (!unmountReportView()) return; // was not in the view: nothing to restore
+                // Close what the view left on <body>, and show settings edited
+                // there (holidays, day off, ...) on the widget straight away.
+                if (api.closeOverlays) api.closeOverlays();
+                if (api.rerenderHome) api.rerenderHome();
+            }
+        };
+        window.addEventListener('hashchange', route);
+        route();
+    }
+
+    return {
+        reportViewUrl,
+        defaultBranch: 'berlin',
+        isReportView,
+        fetchReportDoc,
+        error: timesheetError,
+        renderError,
+        start,
+        getUniversity,
+        setUniversity,
+        clearUniversity,
+    };
+}
+
+    // Cairo host: the script also matches the Cairo sign-in pages; there only
+    // the sign-in popup helper runs (it is inert outside its own popup) and
+    // nothing below — no Tips, no Control Center — is initialised.
+    if (location.hostname !== 'portal.giu-berlin.de') {
+        try { runCairoSignInHelper(); } catch (e) { Shared.warn('cairoSignIn', 'crashed:', e); }
+        return;
+    }
+
     const Tips = (() => {
         const KEY = 'gius-tips-v1';
 
@@ -130,6 +1263,7 @@
         let active = null;              // step currently on screen
         let cutout = null, bubble = null, clickLayer = null;
         let rafId = null;
+        let held = 0;                   // > 0 while a dialog (the attendance setup) holds tips back
 
         function injectStyles() {
             Shared.injectStyle('gius-tips-style', `
@@ -229,6 +1363,7 @@
         // vanished (postback re-render), so it stays unseen for next time.
         function advance(mark) {
             if (active && mark) markSeen(active.id);
+            if (held) { active = null; teardown(); return; }   // queued tips wait for release()
             active = queue.shift() || null;
             while (active && (!document.contains(active.el) || isSeen(active.id))) {
                 active = queue.shift() || null;
@@ -250,25 +1385,567 @@
                 // The Control Center explains the whole bundle — always first in line.
                 if (step.id === 'controlCenter') queue.unshift(step);
                 else queue.push(step);
-                if (!active) advance(false);
+                if (!active && !held) advance(false);
             } catch (e) { Shared.warn('Tips', 'show failed:', e); }
         }
 
+        // A modal dialog holds tips back: the tip on screen goes back to the
+        // front of the queue, unseen, and nothing shows until release().
+        function hold() {
+            held += 1;
+            if (active) { queue.unshift(active); active = null; }
+            teardown();
+        }
+
+        function release() {
+            if (!held) return;
+            held -= 1;
+            if (!held && !active) advance(false);
+        }
+
         return {
-            show, isSeen, markSeen, markAllSeen, loadSeen,
+            show, hold, release, isSeen, markSeen, markAllSeen, loadSeen,
             _queueIds: () => queue.map(s => s.id),
             _activeId: () => (active ? active.id : null),
             _resetSeen: () => { try { localStorage.removeItem(KEY); } catch { /* ignore */ } },
         };
     })();
 
-    // Test hook — kept in production like the per-module hooks.
     try { window.__giusTips = Tips; } catch { /* ignore */ }
 
-    // ═══════════════════════════════════════════════════════════════════════════
-    //  2. FEATURE MODULES — one per feature. STUBS for now (Phase 1).
-    //     Each will receive Shared and own its full body once folded in.
-    // ═══════════════════════════════════════════════════════════════════════════
+    // Staff Attendance's first-run setup wizard (src/features/attendanceSetup.js).
+// ═══════════════════════════════════════════════════════════════════════════
+//  Staff Attendance — first-run setup wizard.
+//  A short step dialog asking what the attendance engine cannot know by
+//  itself (day off, a recent day-off change, annual leave, the Berlin start
+//  date). It never touches storage: the engine (staffAttendance) passes a
+//  small settings API — see setupApi there. Nothing is saved until Finish,
+//  except an import, which the engine applies at once. Top-level function
+//  (inlined into the bundles and standalones); works in page context and in
+//  the Tampermonkey sandbox (plain DOM only).
+//
+//  api: { isBerlin, today(), dayOptions() -> [{code, name}],
+//         previousDayOptions() -> [{code, name}], dayName(code),
+//         current(), berlinStartError(ymd), apply(values), importJson(text),
+//         exportJson(values), markDone(), markSkipped(), onApplied(),
+//         onClosed(reason), isDayOffConfigured(), focusFallback() }
+//  values: { dayOffCode, previous: {code, from}|null, balance, accrualRate,
+//            berlinStart }
+// ═══════════════════════════════════════════════════════════════════════════
+function openAttendanceSetup(S, api, opts) {
+    const prefill = (opts && opts.prefill) || null;
+    const esc = S.escapeHtml;
+    const base = api.current();
+    const days = api.dayOptions();
+    const prevDays = api.previousDayOptions();   // on Berlin also Sunday (a Cairo-era day off)
+    const YMD = /^\d{4}-\d{2}-\d{2}$/;
+
+    S.injectStyle('gius-setup-style', `
+        .gius-setup{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+            z-index:2147483645;background:rgba(15,23,42,.45);padding:20px;font-family:inherit;}
+        .gius-setup *{box-sizing:border-box;}
+        .gius-setup [hidden]{display:none !important;}
+        .gius-setup-change{display:grid;gap:10px;}
+        .gius-setup-sheet{width:100%;max-width:460px;max-height:88vh;overflow:auto;background:#fff;color:#1e1e2e;
+            border-radius:14px;border-left:4px solid #ffc107;padding:18px 20px;box-shadow:0 18px 50px rgba(0,0,0,.35);}
+        .gius-setup-step{font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#6b7280;margin-bottom:4px;}
+        .gius-setup-title{font-weight:800;font-size:16px;margin-bottom:4px;}
+        .gius-setup-sub{font-size:12.5px;color:#6b7280;margin-bottom:14px;line-height:1.45;}
+        .gius-setup-body{display:grid;gap:10px;font-size:13px;line-height:1.45;}
+        .gius-setup-field{display:grid;gap:4px;font-size:12.5px;font-weight:600;color:#374151;}
+        .gius-setup-input{height:34px;padding:0 10px;border:1px solid #9ca3af;border-radius:6px;font:inherit;
+            font-size:13px;font-weight:400;background:#fff;color:#1f2937;width:100%;}
+        textarea.gius-setup-input{height:auto;min-height:96px;padding:8px 10px;resize:vertical;
+            font-family:Consolas,Monaco,monospace;font-size:12px;}
+        .gius-setup-pills{display:flex;flex-wrap:wrap;gap:8px;}
+        .gius-setup-pill{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border:1px solid #cbd5e1;
+            border-radius:999px;cursor:pointer;font-weight:700;font-size:12.5px;background:#f8fafc;color:#334155;}
+        .gius-setup-pill input{margin:0;accent-color:#d97706;}
+        .gius-setup-pill.on{background:#fff8e1;border-color:#d97706;color:#8a6500;}
+        .gius-setup-hint{font-size:12px;font-weight:400;color:#6b7280;line-height:1.4;}
+        .gius-setup-hint.warn{color:#8a6500;}
+        .gius-setup-msg{display:none;margin-top:12px;padding:8px 10px;border-radius:8px;border-left:3px solid;
+            font-size:12.5px;font-weight:600;}
+        .gius-setup-msg.show{display:block;}
+        .gius-setup-error{background:#fee2e2;border-left-color:#e11d48;color:#991b1b;}
+        .gius-setup-ok{background:#dcfce7;border-left-color:#16a34a;color:#166534;}
+        .gius-setup-summary{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0;background:#f8f9fa;
+            border:1px solid #e9ecef;border-radius:10px;padding:10px 12px;font-size:12.5px;}
+        .gius-setup-summary dt{font-weight:700;color:#6b7280;}
+        .gius-setup-summary dd{margin:0;font-weight:700;}
+        .gius-setup-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+        .gius-setup-actions{display:flex;align-items:center;gap:8px;margin-top:16px;flex-wrap:wrap;}
+        .gius-setup-spacer{flex:1 1 auto;}
+        .gius-setup .giu-settings-action-btn{height:32px;padding:0 10px;border:1px solid #64748b;background:#f8fafc;
+            color:#334155;border-radius:6px;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;}
+        .gius-setup .giu-settings-action-btn:hover{background:#e2e8f0;}
+        .gius-setup .giu-add-holiday-btn{height:32px;padding:0 12px;border:1px solid #d97706;background:#ffc107;
+            color:#111827;border-radius:6px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;
+            transition:all .2s ease;}
+        .gius-setup .giu-add-holiday-btn:hover{background:#f59e0b;transform:translateY(-1px);
+            box-shadow:0 3px 10px rgba(255,193,7,.4);}
+        .gius-setup .gius-setup-skip{border-color:transparent;background:transparent;text-decoration:underline;}
+        html.gius-dark .gius-setup-sheet{background:#1e1e2e;color:#cdd6f4;border-left-color:#f9e2af;box-shadow:0 18px 50px rgba(0,0,0,.6);}
+        html.gius-dark .gius-setup-step,html.gius-dark .gius-setup-sub,html.gius-dark .gius-setup-hint{color:#9399b2;}
+        html.gius-dark .gius-setup-field{color:#cdd6f4;}
+        html.gius-dark .gius-setup-input{background:#181825;border-color:#45475a;color:#cdd6f4;color-scheme:dark;}
+        html.gius-dark .gius-setup-pill{background:#181825;border-color:#313244;color:#cdd6f4;}
+        html.gius-dark .gius-setup-pill.on{background:#2a2410;border-color:#f9e2af;color:#f9e2af;}
+        html.gius-dark .gius-setup-hint.warn{color:#f9e2af;}
+        html.gius-dark .gius-setup-error{background:#3a1414;border-left-color:#f38ba8;color:#f38ba8;}
+        html.gius-dark .gius-setup-ok{background:#14351f;border-left-color:#a6e3a1;color:#a6e3a1;}
+        html.gius-dark .gius-setup-summary{background:#181825;border-color:#313244;}
+        html.gius-dark .gius-setup-summary dt{color:#9399b2;}
+        html.gius-dark .gius-setup .giu-settings-action-btn{background:#181825;border-color:#45475a;color:#cdd6f4;}
+        html.gius-dark .gius-setup .giu-settings-action-btn:hover{background:#313244;}
+        html.gius-dark .gius-setup .gius-setup-skip{background:transparent;border-color:transparent;}
+        html.gius-dark .gius-setup .giu-add-holiday-btn{background:#f9e2af;border-color:#f9e2af;color:#1e1e2e;}
+        html.gius-dark .gius-setup .giu-add-holiday-btn:hover{background:#f5d38a;}`);
+
+    // ── Answers (strings, as typed); nothing is written until Finish ──
+    function fromValues(v, keepDayOff) {
+        return {
+            berlinStart: v.berlinStart || '',
+            dayOffCode: keepDayOff ? (v.dayOffCode || '') : '',
+            changed: keepDayOff ? (v.previous ? 'yes' : 'no') : '',
+            prevCode: keepDayOff && v.previous ? v.previous.code : '',
+            changeFrom: keepDayOff && v.previous ? v.previous.from : '',
+            balance: keepDayOff && Number.isFinite(v.balance) ? String(v.balance) : '',
+            accrual: String(v.accrualRate),
+        };
+    }
+    // First run: nothing is guessed — only the accrual rate (and a Berlin start
+    // date set by hand earlier) is pre-filled. "Run setup again": everything.
+    const state = Object.assign({ choice: 'fresh', imported: false, importText: '' },
+        prefill ? fromValues(prefill, true) : fromValues(base, false));
+
+    const steps = ['welcome'].concat(api.isBerlin ? ['berlin'] : [], ['dayoff', 'change', 'balance', 'accrual', 'done']);
+    let index = 0;
+    let dirty = false;          // anything entered by the user (Escape then asks)
+    let importedOnce = false;   // an import already saved settings
+    const opener = document.activeElement;   // focus goes back here on close
+
+    const layer = document.createElement('div');
+    layer.id = 'gius-setup';
+    layer.className = 'gius-setup';
+    layer.innerHTML = `<div class="gius-setup-sheet" role="dialog" aria-modal="true" aria-labelledby="gius-setup-title">
+        <div class="gius-setup-step"></div>
+        <div class="gius-setup-title" id="gius-setup-title"></div>
+        <div class="gius-setup-sub"></div>
+        <div class="gius-setup-body"></div>
+        <div class="gius-setup-msg" role="alert"></div>
+        <div class="gius-setup-actions">
+            <button type="button" class="giu-settings-action-btn gius-setup-skip gius-btn">Skip setup</button>
+            <span class="gius-setup-spacer"></span>
+            <button type="button" class="giu-settings-action-btn gius-setup-back gius-btn">Back</button>
+            <button type="button" class="giu-add-holiday-btn gius-setup-next gius-btn">Next</button>
+        </div></div>`;
+    const sheet = layer.querySelector('.gius-setup-sheet');
+    const $ = sel => layer.querySelector(sel);
+    const body = $('.gius-setup-body');
+    const msg = $('.gius-setup-msg');
+
+    function showMsg(text, ok) {
+        msg.textContent = text || '';
+        msg.className = 'gius-setup-msg' + (text ? ' show ' + (ok ? 'gius-setup-ok' : 'gius-setup-error') : '');
+    }
+
+    function dayName(code) { return api.dayName(code) || code; }
+
+    function twoMonthsAgo() {
+        const d = new Date(api.today() + 'T00:00:00Z');
+        d.setUTCMonth(d.getUTCMonth() - 2);
+        return d.toISOString().slice(0, 10);
+    }
+
+    function values() {
+        return {
+            dayOffCode: state.dayOffCode,
+            previous: state.changed === 'yes' ? { code: state.prevCode, from: state.changeFrom } : null,
+            balance: Number(state.balance),
+            accrualRate: Number(state.accrual),
+            berlinStart: state.berlinStart,
+        };
+    }
+
+    // ── Step views ──
+    function radio(name, value, label, checked) {
+        return `<label class="gius-setup-pill${checked ? ' on' : ''}"><input type="radio" name="${name}" value="${esc(value)}"${checked ? ' checked' : ''}> ${esc(label)}</label>`;
+    }
+
+    const VIEWS = {
+        welcome: {
+            title: 'Set up Staff Attendance',
+            sub: 'A few quick questions so your attendance is counted correctly. You can change everything later in Attendance Settings.',
+            html: () => `<div class="gius-setup-field">Do you have a settings file from before?
+                    <div class="gius-setup-pills">${radio('gius-setup-choice', 'fresh', 'No, set up now', state.choice === 'fresh')}${radio('gius-setup-choice', 'import', 'Yes, I have a file', state.choice === 'import')}</div></div>
+                <div class="gius-setup-import"${state.choice === 'import' ? '' : ' hidden'}>
+                    <div class="gius-setup-field">Choose the .json file
+                        <input type="file" class="gius-setup-input" id="gius-setup-file" accept=".json,application/json,text/json"></div>
+                    <div class="gius-setup-field" style="margin-top:8px;">or paste its contents
+                        <textarea class="gius-setup-input" id="gius-setup-paste" spellcheck="false">${esc(state.importText)}</textarea></div>
+                    <div class="gius-setup-row" style="margin-top:8px;"><button type="button" class="giu-add-holiday-btn gius-btn" id="gius-setup-import">Import</button></div>
+                </div>`,
+            bind() {
+                layer.querySelectorAll('input[name="gius-setup-choice"]').forEach(r => r.addEventListener('change', () => {
+                    state.choice = r.value;
+                    render();
+                }));
+                const file = $('#gius-setup-file');
+                const paste = $('#gius-setup-paste');
+                if (file) file.addEventListener('change', () => {
+                    const f = file.files && file.files[0];
+                    if (!f) return;
+                    const reader = new FileReader();
+                    reader.onload = () => { state.importText = String(reader.result || ''); paste.value = state.importText; showMsg(''); };
+                    reader.onerror = () => showMsg('Could not read that file.');
+                    reader.readAsText(f);
+                });
+                if (paste) paste.addEventListener('input', () => { state.importText = paste.value; });
+                const btn = $('#gius-setup-import');
+                if (btn) btn.addEventListener('click', doImport);
+            },
+            validate: () => state.choice === 'import' && !state.imported
+                ? 'Import your settings file first, or choose "No, set up now".' : '',
+        },
+        berlin: {
+            title: 'When did you start at the Berlin branch?',
+            sub: 'Days before this date follow the Cairo weekend (Friday off). Leave it empty if you have always worked at the Berlin branch.',
+            html: () => `<label class="gius-setup-field">Started at the Berlin branch on
+                <input type="date" class="gius-setup-input" id="gius-setup-berlin" max="${esc(api.today())}" value="${esc(state.berlinStart)}"></label>`,
+            bind() {
+                const input = $('#gius-setup-berlin');
+                input.addEventListener('input', () => { state.berlinStart = input.value; });
+            },
+            validate: () => api.berlinStartError(state.berlinStart),
+        },
+        dayoff: {
+            title: 'Which day is your weekly day off?',
+            sub: 'Your second day off each week, besides the branch weekend.',
+            html: () => `<div class="gius-setup-pills" role="radiogroup" aria-label="Day off">${days.map(d => radio('gius-setup-day', d.code, d.name, state.dayOffCode === d.code)).join('')}</div>`,
+            bind() {
+                layer.querySelectorAll('input[name="gius-setup-day"]').forEach(r => r.addEventListener('change', () => {
+                    state.dayOffCode = r.value;
+                    if (state.prevCode === r.value) state.prevCode = '';
+                    render();
+                }));
+            },
+            validate: () => days.some(d => d.code === state.dayOffCode) ? '' : 'Choose your day off to continue.',
+        },
+        change: {
+            title: 'Did your day off change in the last 2 months?',
+            sub: 'If it did, days before the change are counted with your previous day off.',
+            html: () => {
+                const others = prevDays.filter(d => d.code !== state.dayOffCode);
+                const old = state.changeFrom && state.changeFrom < twoMonthsAgo();
+                return `<div class="gius-setup-pills">${radio('gius-setup-changed', 'no', 'No', state.changed === 'no')}${radio('gius-setup-changed', 'yes', 'Yes', state.changed === 'yes')}</div>
+                    <div class="gius-setup-change"${state.changed === 'yes' ? '' : ' hidden'}>
+                        <label class="gius-setup-field">My previous day off was
+                            <select class="gius-setup-input" id="gius-setup-prev"><option value="">— choose —</option>${others.map(d => `<option value="${esc(d.code)}"${state.prevCode === d.code ? ' selected' : ''}>${esc(d.name)}</option>`).join('')}</select></label>
+                        <label class="gius-setup-field">${esc(dayName(state.dayOffCode))} became my day off on
+                            <input type="date" class="gius-setup-input" id="gius-setup-from" max="${esc(api.today())}" value="${esc(state.changeFrom)}">
+                            <span class="gius-setup-hint warn" id="gius-setup-from-hint"${old ? '' : ' hidden'}>That is more than 2 months ago. Older records are not kept, so you could also answer No.</span></label>
+                    </div>`;
+            },
+            bind() {
+                layer.querySelectorAll('input[name="gius-setup-changed"]').forEach(r => r.addEventListener('change', () => {
+                    state.changed = r.value;
+                    render();
+                }));
+                const prev = $('#gius-setup-prev');
+                const from = $('#gius-setup-from');
+                const hint = $('#gius-setup-from-hint');
+                prev.addEventListener('change', () => { state.prevCode = prev.value; });
+                from.addEventListener('input', () => {
+                    state.changeFrom = from.value;
+                    hint.hidden = !(YMD.test(from.value) && from.value < twoMonthsAgo());
+                });
+            },
+            validate: () => {
+                if (state.changed !== 'yes' && state.changed !== 'no') return 'Choose Yes or No.';
+                if (state.changed === 'no') return '';
+                if (!state.prevCode) return 'Choose your previous day off.';
+                if (state.prevCode === state.dayOffCode) return 'Your previous day off must be different from your current one.';
+                if (!YMD.test(state.changeFrom)) return 'Enter the date your current day off started.';
+                if (state.changeFrom > api.today()) return "That date is in the future — enter the day the change started.";
+                return '';
+            },
+        },
+        balance: {
+            title: 'How many annual leave days do you have left?',
+            sub: 'Your remaining balance as of today. Half days are allowed.',
+            html: () => `<label class="gius-setup-field">Remaining annual leave (days)
+                <input type="number" class="gius-setup-input" id="gius-setup-balance" min="0" step="0.5" inputmode="decimal" value="${esc(state.balance)}" placeholder="e.g. 12.5">
+                <span class="gius-setup-hint">Not sure? Enter 0 and correct it later in Attendance Settings.</span></label>`,
+            bind() {
+                const input = $('#gius-setup-balance');
+                input.addEventListener('input', () => { state.balance = input.value; });
+            },
+            validate: () => {
+                const raw = String(state.balance).trim();
+                const n = Number(raw);
+                if (raw === '' || !Number.isFinite(n) || n < 0) return 'Enter your remaining annual leave in days (0 or more).';
+                if (Math.round(n * 2) !== n * 2) return 'Use whole or half days (for example 12 or 12.5).';
+                return '';
+            },
+        },
+        accrual: {
+            title: 'How many leave days do you gain each month?',
+            sub: 'Added to your annual leave at the start of every payroll month. Keep the default if you are not sure.',
+            html: () => `<label class="gius-setup-field">Monthly accrual (days per month)
+                <input type="number" class="gius-setup-input" id="gius-setup-accrual" min="0" step="0.25" inputmode="decimal" value="${esc(state.accrual)}"></label>`,
+            bind() {
+                const input = $('#gius-setup-accrual');
+                input.addEventListener('input', () => { state.accrual = input.value; });
+            },
+            validate: () => {
+                const raw = String(state.accrual).trim();
+                const n = Number(raw);
+                return raw === '' || !Number.isFinite(n) || n < 0 ? 'Enter the days you gain each month (0 or more).' : '';
+            },
+        },
+        done: {
+            title: 'All set',
+            sub: 'Save a backup of your settings — you can import it later on another computer or browser.',
+            html: () => {
+                const v = state.imported ? api.current() : values();
+                const rows = [];
+                if (state.imported) rows.push(['Settings', 'Imported from your file']);
+                if (api.isBerlin) rows.push(['Berlin branch since', v.berlinStart || 'Always']);
+                rows.push(['Day off', v.dayOffCode ? dayName(v.dayOffCode) : 'Not set']);
+                if (v.previous) rows.push(['Before ' + v.previous.from, dayName(v.previous.code)]);
+                rows.push(['Annual leave left', String(v.balance) + ' day(s)']);
+                rows.push(['Monthly accrual', String(v.accrualRate) + ' day(s)']);
+                return `<dl class="gius-setup-summary">${rows.map(r => `<dt>${esc(r[0])}</dt><dd>${esc(r[1])}</dd>`).join('')}</dl>
+                    <div class="gius-setup-row">
+                        <button type="button" class="giu-settings-action-btn gius-btn" id="gius-setup-download">Download settings (.json)</button>
+                        <button type="button" class="giu-settings-action-btn gius-btn" id="gius-setup-copy">Copy</button>
+                    </div>`;
+            },
+            bind() {
+                $('#gius-setup-download').addEventListener('click', download);
+                $('#gius-setup-copy').addEventListener('click', copy);
+            },
+            validate: () => '',
+        },
+    };
+
+    function render() {
+        const id = steps[index];
+        const view = VIEWS[id];
+        sheet.setAttribute('data-step', id);
+        $('.gius-setup-step').textContent = `Step ${index + 1} of ${steps.length}`;
+        $('.gius-setup-title').textContent = view.title;
+        $('.gius-setup-sub').textContent = view.sub;
+        body.innerHTML = view.html();
+        view.bind();
+        showMsg('');
+        $('.gius-setup-back').hidden = index === 0;
+        $('.gius-setup-next').textContent = id === 'done' ? 'Finish' : 'Next';
+        const first = body.querySelector('input:not([type="radio"]):not([type="file"]):not([hidden]), select');
+        (first && first.offsetParent !== null ? first : $('.gius-setup-next')).focus();
+    }
+
+    function go(to) {
+        index = Math.max(0, Math.min(steps.length - 1, to));
+        render();
+    }
+
+    // ── Import / export ──
+    function doImport() {
+        const text = String(state.importText || '').trim();
+        if (!text) { showMsg('Choose your settings file or paste its contents first.'); return; }
+        const res = api.importJson(text);
+        if (!res.ok) { showMsg(res.error || 'Import failed.'); return; }
+        // An import is saved at once: re-render now; later steps start from it.
+        importedOnce = true;
+        api.onApplied();
+        const report = res.report || {};
+        const rejected = report.rejected || 0;
+        const skipped = rejected
+            ? ' ' + rejected + (rejected === 1 ? ' item' : ' items') + ' skipped'
+                + (report.notes && report.notes.length ? ' (' + report.notes.join(' ') + ')' : '') + '.'
+            : '';
+        if (!api.isDayOffConfigured()) {
+            // Nothing to finish without a day off: carry on from the day-off step
+            // (Finish then saves the answers, pre-filled from the import).
+            state.imported = false;
+            Object.assign(state, fromValues(api.current(), true), { dayOffCode: '', changed: '', prevCode: '', changeFrom: '' });
+            go(steps.indexOf('dayoff'));
+            showMsg('Your settings were imported, but the file has no day off — choose it below.' + skipped, true);
+            return;
+        }
+        api.markDone();
+        state.imported = true;
+        Object.assign(state, fromValues(api.current(), true));
+        go(steps.indexOf('done'));
+        showMsg('Your settings were imported.' + skipped, true);
+    }
+
+    function exportText() {
+        return api.exportJson(state.imported ? null : values());
+    }
+
+    function download() {
+        try {
+            const url = URL.createObjectURL(new Blob([exportText()], { type: 'application/json' }));
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'giu-attendance-settings.json';
+            a.style.display = 'none';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+            showMsg('Settings file downloaded.', true);
+        } catch {
+            showMsg('The download was blocked — use Copy instead.');
+        }
+    }
+
+    async function copy() {
+        const text = exportText();
+        try {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                await navigator.clipboard.writeText(text);
+                showMsg('Settings copied — paste them into a file to keep.', true);
+                return;
+            }
+        } catch { /* fall back below */ }
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.cssText = 'position:fixed;top:-1000px;left:0;opacity:0;';
+        sheet.appendChild(ta);
+        ta.select();
+        let ok = false;
+        try { ok = document.execCommand('copy'); } catch { ok = false; }
+        ta.remove();
+        showMsg(ok ? 'Settings copied — paste them into a file to keep.' : 'Copying was blocked — use Download instead.', ok);
+    }
+
+    // ── Navigation / closing ──
+    let closed = false;
+    function close(reason) {
+        if (closed) return;
+        closed = true;
+        document.removeEventListener('keydown', onKey, true);
+        layer.remove();
+        api.onClosed(reason);
+        // Finish re-renders after closing and refocuses then (see finish()).
+        if (reason !== 'done') restoreFocus();
+    }
+
+    function skip() {
+        api.markSkipped();
+        close('skipped');
+    }
+
+    function finish() {
+        if (!state.imported) {
+            try {
+                api.apply(values());
+            } catch (e) {
+                showMsg(e && e.message ? e.message : 'Could not save your settings.');
+                return;
+            }
+        }
+        api.markDone();
+        close('done');
+        api.onApplied();
+        restoreFocus();   // after the re-render, which may have replaced the opener
+    }
+
+    function next() {
+        const id = steps[index];
+        const error = VIEWS[id].validate();
+        if (error) { showMsg(error); return; }
+        if (id === 'done') { finish(); return; }
+        if (id === 'welcome') {
+            // Back at the start after an import: "Yes" returns to the summary,
+            // "No" walks the steps (pre-filled from the import) and saves them.
+            if (state.choice === 'import') { go(steps.indexOf('done')); return; }
+            state.imported = false;
+        }
+        go(index + 1);
+    }
+
+    function back() {
+        // After an import, Back returns to the start (the steps were skipped).
+        go(steps[index] === 'done' && state.imported ? 0 : index - 1);
+    }
+
+    // The dialog's tab stops, the way the browser walks them: enabled, shown
+    // controls, with each radio group reduced to one stop — its checked radio,
+    // or its first when none is checked.
+    function tabStops() {
+        const seenGroups = new Set();
+        return Array.from(sheet.querySelectorAll('button, input, select, textarea, [tabindex]:not([tabindex="-1"])'))
+            .filter(el => !el.disabled && !el.hidden && el.offsetParent !== null)
+            .filter(el => {
+                if (el.type !== 'radio' || !el.name) return true;
+                if (seenGroups.has(el.name)) return false;
+                seenGroups.add(el.name);
+                return true;
+            })
+            .map(el => {
+                if (el.type !== 'radio' || !el.name) return el;
+                const checked = Array.from(sheet.querySelectorAll('input[type="radio"]'))
+                    .find(r => r.name === el.name && r.checked && !r.disabled);
+                return checked || el;
+            });
+    }
+
+    // Focus back to the opener; if a re-render replaced it, to its successor
+    // (same id), else to what the engine names (api.focusFallback).
+    function restoreFocus() {
+        let target = opener;
+        if (!target || target === document.body || !document.contains(target)) {
+            target = (opener && opener.id && document.getElementById(opener.id))
+                || (typeof api.focusFallback === 'function' ? api.focusFallback() : null);
+        }
+        try { if (target && target.focus) target.focus(); } catch { /* ignore */ }
+    }
+
+    function onKey(e) {
+        if (e.key === 'Tab') {
+            // Keep keyboard focus inside the dialog.
+            const els = tabStops();
+            if (!els.length) return;
+            const first = els[0];
+            const last = els[els.length - 1];
+            const current = document.activeElement;
+            // A radio counts as its group's stop, whichever radio has focus.
+            const at = el => current === el
+                || (current && el.type === 'radio' && current.type === 'radio' && current.name === el.name);
+            const inside = sheet.contains(current);
+            if (e.shiftKey && (!inside || at(first))) { e.preventDefault(); last.focus(); }
+            else if (!e.shiftKey && (!inside || at(last))) { e.preventDefault(); first.focus(); }
+            return;
+        }
+        if (e.key !== 'Escape') return;
+        // One Escape is the wizard's alone (no tip or tour under it reacts).
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        const question = importedOnce
+            ? 'Leave setup? Your imported settings are kept; nothing else you entered here will be saved.'
+            : 'Leave setup? Nothing you entered here will be saved.';
+        if (!dirty || window.confirm(question)) skip();
+    }
+
+    body.addEventListener('input', () => { dirty = true; });
+    body.addEventListener('change', () => { dirty = true; });
+    $('.gius-setup-skip').addEventListener('click', skip);
+    $('.gius-setup-back').addEventListener('click', back);
+    $('.gius-setup-next').addEventListener('click', next);
+    document.addEventListener('keydown', onKey, true);
+
+    document.body.appendChild(layer);
+    render();
+
+    return { close: () => close('closed'), element: layer };
+}
+
     const Features = {
         staffAttendance(S) {
 
@@ -310,6 +1987,14 @@
             const REPORT_URL = REPORT_ORIGIN + "/GIUb/EXT/SwiftReports_m.aspx";
             const SWIFT_REPORT_ID = 866; // user's "Gate Attendance ... Gates" SwiftReport id (see README target page)
             const REPORT_DATA_URL = REPORT_URL + "?swiftreportid=" + SWIFT_REPORT_ID + "&executereport=1";
+
+            // Report source override. Absent in the Cairo bundle, which reads the
+            // report same-origin through a hidden iframe. The Berlin script passes
+            // one in (src/berlin/berlinSource.js): it fetches the report
+            // cross-origin from Cairo and hosts the full report in its own view,
+            // because Berlin has no working report page.
+            const SOURCE = (S && S.attendanceSource) || null;
+            const REPORT_VIEW_URL = SOURCE ? SOURCE.reportViewUrl : REPORT_DATA_URL;
             const HOME_CACHE_KEY = "giuAttendanceHomeV2"; // V2: summary gained `tier` + cache now stores rows for live recompute (drops V1)
             const HOME_IFRAME_TIMEOUT_MS = 15000;
             const HOME_REFRESH_TTL_MS = 10 * 60 * 1000;  // skip refresh if cache newer than 10 min
@@ -351,33 +2036,29 @@
                 sectionState: "giuSectionStateV1",
                 onboardingCompleted: "giuOnboardingCompletedV1",
                 onboardingState: "giuOnboardingStateV1",
-                dayOffAutoState: "giuDayOffAutoStateV1",
-                branch: "giuBranchV1",
-                branchStart: "giuBranchStartV1"
+                branchStart: "giuBranchStartV1",
+                setup: "giuAttendanceSetupV1"
             };
 
-            // Cairo and Berlin differ by exactly two facts. Branch is an explicit
-            // setting, NOT derived from location.hostname: a Berlin staff member
-            // reads their attendance report on the Cairo host (Berlin's own
-            // SwiftReports_m.aspx returns HTTP 500), so the host says "cairo"
-            // while the Sunday weekend rule must still apply.
+            // One-time cleanup of keys no version reads any more: the removed
+            // day-off auto-detection state and the removed Cairo/Berlin branch
+            // selector. Idempotent, so running it on every boot is harmless.
+            ["giuDayOffAutoStateV1", "giuBranchV1"].forEach(function (key) {
+                try { localStorage.removeItem(key); } catch { /* ignore */ }
+            });
+
+            // Cairo and Berlin differ by exactly two facts. The branch is fixed by
+            // the script, not a setting: the Cairo scripts always follow the Cairo
+            // rule and the Berlin scripts (which pass S.attendanceSource) always
+            // follow Berlin's. Any stored "giuBranchV1" from older versions is
+            // ignored.
             const BRANCH_CONFIG = {
                 cairo:  { fixedOffDay: "Friday" },
                 berlin: { fixedOffDay: "Sunday" },
             };
 
             function getBranch() {
-                const saved = localStorage.getItem(STORAGE_KEYS.branch);
-                if (saved === "cairo" || saved === "berlin") return saved;
-                // This suite runs on the Cairo portal only. A Berlin staff member
-                // reads their attendance here too (Berlin's own report page 500s)
-                // and switches this setting by hand.
-                return "cairo";
-            }
-
-            function setBranch(value) {
-                if (value !== "cairo" && value !== "berlin") return;
-                localStorage.setItem(STORAGE_KEYS.branch, value);
+                return SOURCE ? SOURCE.defaultBranch : "cairo";
             }
 
             function branchConfig() { return BRANCH_CONFIG[getBranch()]; }
@@ -390,18 +2071,33 @@
                 return YMD_RE.test(raw) ? raw : "";
             }
 
+            // The one rule for a Berlin start date, shared by the settings editor,
+            // import and the setup wizard: empty (no switch), or a real date that
+            // is not after today. Returns "" when valid, else the message to show.
+            function branchStartError(value) {
+                if (!value) return "";
+                if (!YMD_RE.test(value) || normalizeYMD(value) !== value) return "Enter a valid date.";
+                if (value > getTodayLocalYMD()) return "The start date can't be after today.";
+                return "";
+            }
+
+            // Returns whether the value was accepted ("" clears the date).
             function setBranchStart(value) {
-                if (!value) { localStorage.removeItem(STORAGE_KEYS.branchStart); return; }
-                if (!YMD_RE.test(value)) return;   // never persist an unparseable date
+                if (!value) { localStorage.removeItem(STORAGE_KEYS.branchStart); return true; }
+                if (branchStartError(value)) return false;   // never persist a bad date
                 localStorage.setItem(STORAGE_KEYS.branchStart, value);
+                return true;
             }
 
             // Which campus governed a given attendance date. The switch date is the
             // FIRST day under the current branch; everything before it is the other
             // campus. Normalizes first: raw row dates can be "2026-3-1", and an
             // unpadded string sorts AFTER "2026-10-01" in a plain comparison.
+            // Only the Berlin scripts have a switch date ("started at the Berlin
+            // branch on"); the Cairo scripts apply the Cairo rule to all history.
             function getBranchFor(ymd) {
                 const b = getBranch();
+                if (!SOURCE) return b;
                 const start = getBranchStart();
                 if (!start) return b;
                 const norm = normalizeYMD(ymd);
@@ -518,6 +2214,7 @@
             }
 
             function isTargetReportPage() {
+                if (SOURCE) return SOURCE.isReportView();
                 const normalizedPath = (location.pathname || "").replace(/\/+$/, "").toLowerCase();
                 const requiredPath = PAGE_PATH.toLowerCase();
                 if (normalizedPath !== requiredPath) return false;
@@ -692,26 +2389,6 @@
                 return getSelectedDayOffCode() !== "" || getStoredDayOffSchedule().length > 0;
             }
 
-            // Ephemeral auto-detect UI state (like getOnboardingState, not stored domain data).
-            function getDayOffAutoState() {
-                try {
-                    const raw = localStorage.getItem(STORAGE_KEYS.dayOffAutoState);
-                    const parsed = raw ? JSON.parse(raw) : null;
-                    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return null;
-                    return parsed;
-                } catch {
-                    return null;
-                }
-            }
-
-            function setDayOffAutoState(state) {
-                if (!state || typeof state !== "object") {
-                    localStorage.removeItem(STORAGE_KEYS.dayOffAutoState);
-                    return;
-                }
-                localStorage.setItem(STORAGE_KEYS.dayOffAutoState, JSON.stringify(state));
-            }
-
             function isAuditModeEnabled() {
                 return localStorage.getItem(AUDIT_MODE_KEY) !== "0";
             }
@@ -792,6 +2469,7 @@
                     dayOffSchedule: getStoredDayOffSchedule(),
                     holidays: getStoredHolidays(),
                     annualLeaveBalance: getStoredAnnualLeaveBalance(),
+                    annualLeaveAccrualRate: getStoredAnnualLeaveAccrualRate(),
                     overrides: getStoredOverrides(),
                     compensationLeaves: getStoredCompensationLeaves(),
                     ramadan: getStoredRamadan(),
@@ -810,10 +2488,9 @@
                     notes: []
                 };
 
-                if (snapshot.branch === "cairo" || snapshot.branch === "berlin") {
-                    setBranch(snapshot.branch);
-                    report.accepted += 1;
-                }
+                // snapshot.branch (fixed per script now) and snapshot.dayOffAutoState
+                // (removed day-off auto-detection) may appear in older files; both
+                // are ignored.
                 if (typeof snapshot.branchStart === "string") {
                     setBranchStart(snapshot.branchStart);   // no-ops on a malformed value
                     if (getBranchStart() === snapshot.branchStart) {
@@ -844,6 +2521,17 @@
                 if (snapshot.annualLeaveBalance != null) {
                     setStoredAnnualLeaveBalance(snapshot.annualLeaveBalance);
                     report.accepted += 1;
+                }
+                // Older files have no accrual rate; the stored one is kept then.
+                if (snapshot.annualLeaveAccrualRate != null) {
+                    const rate = Number(snapshot.annualLeaveAccrualRate);
+                    if (Number.isFinite(rate) && rate >= 0) {
+                        setStoredAnnualLeaveAccrualRate(rate);
+                        report.accepted += 1;
+                    } else {
+                        report.rejected += 1;
+                        report.notes.push("Accrual rate invalid.");
+                    }
                 }
                 if (Array.isArray(snapshot.overrides)) {
                     const before = snapshot.overrides.length;
@@ -1682,37 +3370,6 @@
                         height: 3px;
                         background: #ffc107;
                     }
-
-                    .giu-dayoff-notice {
-                        display: flex; align-items: flex-start; gap: 10px; flex-wrap: wrap;
-                        border-radius: 8px; padding: 11px 12px; margin: 0 0 14px;
-                        border-left: 4px solid; font-size: 13.5px; line-height: 1.45;
-                    }
-                    .giu-dayoff-notice .ico { font-size: 16px; line-height: 1.3; flex: 0 0 auto; }
-                    .giu-dayoff-notice .body { flex: 1 1 240px; min-width: 200px; }
-                    .giu-dayoff-notice .body strong { font-weight: 800; }
-                    .giu-dayoff-notice .sub { display: block; font-size: 12px; opacity: .85; margin-top: 2px; }
-                    .giu-dayoff-notice .acts { display: inline-flex; gap: 7px; flex-wrap: wrap; align-items: center; }
-                    .giu-dayoff-notice .gius-btn {
-                        font: inherit; font-size: 12.5px; font-weight: 700; line-height: 1; cursor: pointer;
-                        border-radius: 6px; padding: 7px 11px; border: 1px solid transparent;
-                    }
-                    .giu-dayoff-notice .dn-primary { background: #272c33; color: #fff; }
-                    .giu-dayoff-notice .dn-ghost { background: transparent; }
-                    .giu-dayoff-notice .dn-x {
-                        font: inherit; font-size: 15px; font-weight: 700; line-height: 1; cursor: pointer;
-                        background: transparent; border: none; opacity: .6; padding: 2px 4px;
-                    }
-                    .giu-dayoff-notice .dn-x:hover { opacity: 1; }
-                    .giu-dayoff-notice.applied { background: #ecfdf5; border-left-color: #16a34a; color: #065f46; }
-                    .giu-dayoff-notice.applied .dn-ghost { color: #065f46; border-color: #a7d8c1; }
-                    .giu-dayoff-notice.warn { background: #fff8e1; border-left-color: #f59e0b; color: #8a6500; }
-                    .giu-dayoff-notice.warn .dn-primary { background: #b45309; }
-                    html.gius-dark .giu-dayoff-notice.applied { background: #14351f; border-left-color: #a6e3a1; color: #a6e3a1; }
-                    html.gius-dark .giu-dayoff-notice.applied .dn-primary { background: #a6e3a1; color: #11271a; }
-                    html.gius-dark .giu-dayoff-notice.applied .dn-ghost { color: #a6e3a1; border-color: #3a6b4d; }
-                    html.gius-dark .giu-dayoff-notice.warn { background: #2a2410; border-left-color: #f9e2af; color: #f9e2af; }
-                    html.gius-dark .giu-dayoff-notice.warn .dn-primary { background: #f9e2af; color: #2a2410; }
 
                     .giu-config-title,
                     .giu-attendance-section-title {
@@ -2659,9 +4316,35 @@
                         background: #ccfbf1;
                     }
 
+                    /* Absent-day rows: the "Add as" actions wrap onto their own line
+                    (right-aligned) when the box is narrow, instead of squeezing
+                    the pills until their labels break out of them. */
+                    .giu-absent-detail-row {
+                        flex-wrap: wrap;
+                        align-items: center;
+                        gap: 4px 8px;
+                    }
+
+                    .giu-absent-actions,
+                    .giu-absent-addas {
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: flex-end;
+                        flex-wrap: wrap;
+                        gap: 6px;
+                        min-width: 0;
+                    }
+
+                    .giu-absent-actions {
+                        margin-left: auto;
+                        row-gap: 4px;
+                    }
+
                     .giu-absent-holiday-btn {
+                        flex: 0 0 auto;
                         height: 24px;
                         padding: 0 10px;
+                        white-space: nowrap;
                         border: 1px solid #be123c;
                         background: #fff1f2;
                         color: #9f1239;
@@ -3102,6 +4785,7 @@
 
             function createInlineModalPrompt(title, initialValue, onConfirm) {
                 const layer = document.createElement("div");
+                if (SOURCE) layer.className = "giu-inline-modal-layer"; // Berlin: the view closes it on leave (closeReportOverlays)
                 layer.style.cssText = "position:fixed;inset:0;background:rgba(15,23,42,0.45);display:flex;align-items:center;justify-content:center;z-index:2147483646;";
                 const modal = document.createElement("div");
                 modal.style.cssText = "width:min(420px,92vw);background:#fff;border:1px solid #d1d5db;border-radius:8px;padding:12px;display:grid;gap:10px;";
@@ -3137,6 +4821,7 @@
             // values (same order as `fields`); return false to keep the modal open.
             function createInlineModalForm(title, fields, onConfirm) {
                 const layer = document.createElement("div");
+                if (SOURCE) layer.className = "giu-inline-modal-layer"; // Berlin: the view closes it on leave (closeReportOverlays)
                 layer.style.cssText = "position:fixed;inset:0;background:rgba(15,23,42,0.45);display:flex;align-items:center;justify-content:center;z-index:2147483646;";
                 const modal = document.createElement("div");
                 modal.style.cssText = "width:min(420px,92vw);background:#fff;border:1px solid #d1d5db;border-radius:8px;padding:12px;display:grid;gap:10px;";
@@ -3518,9 +5203,8 @@
                 const dayLabel = createUiLabel("giu-day-select", "Day Off");
 
                 // Options come from the branch-aware source of truth, never a literal
-                // list: the six selectable candidates must match exactly what
-                // detectDayOffCode can produce and what getSelectedDayOffFullName will
-                // resolve, or the control renders blank for a legitimately detected day.
+                // list: the six selectable candidates must match what
+                // getSelectedDayOffFullName resolves for this branch.
                 const select = createUiSelect("giu-day-select", [{ value: "", label: "---" }].concat(
                     dayOffWeekdays().map(function (wd) { return { value: wd.code, label: wd.name }; })
                 ), selectedDayCode);
@@ -3733,8 +5417,15 @@
                 auditLabel.appendChild(auditToggle);
                 auditLabel.appendChild(auditText);
 
+                // Reopens the first-run setup wizard, pre-filled with today's settings.
+                const setupBtn = createUiButton("Run setup again", "giu-settings-action-btn", function () {
+                    openSetupWizard(true);
+                });
+                setupBtn.id = "giu-run-setup-btn";
+
                 settingsActionRow.appendChild(exportBtn);
                 settingsActionRow.appendChild(importBtn);
+                settingsActionRow.appendChild(setupBtn);
                 settingsActionRow.appendChild(auditLabel);
 
                 const today = getTodayLocalYMD();
@@ -3856,64 +5547,35 @@
                 return conflictBox;
             }
 
+            // Berlin scripts only: the branch itself is fixed (Berlin), so the one
+            // thing left to set is when the staff member started there. Days before
+            // that date use the Cairo weekend rule.
             function createBranchControl() {
                 const wrap = document.createElement("div");
                 wrap.className = "giu-settings-subsection-body";
-                const hint = document.createElement("div");
-                hint.style.marginBottom = "8px";
-                hint.style.opacity = "0.75";
-                hint.textContent = "Which campus your working week follows. Set this to Berlin "
-                    + "even while viewing the Cairo portal if you are Berlin staff.";
-                wrap.appendChild(hint);
 
-                const current = getBranch();
-                [
-                    { value: "cairo",  label: `Cairo (${BRANCH_CONFIG.cairo.fixedOffDay} off)` },
-                    { value: "berlin", label: `Berlin (${BRANCH_CONFIG.berlin.fixedOffDay} off)` }
-                ].forEach(function (opt) {
-                    const lbl = document.createElement("label");
-                    lbl.style.marginRight = "18px";
-                    lbl.style.cursor = "pointer";
-                    const input = document.createElement("input");
-                    input.type = "radio";
-                    input.name = "gius-branch";
-                    input.value = opt.value;
-                    input.checked = current === opt.value;
-                    input.addEventListener("change", function () {
-                        if (!input.checked) return;
-                        setBranch(opt.value);
-                        renderEnhancedUI();
-                    });
-                    lbl.appendChild(input);
-                    lbl.appendChild(document.createTextNode(" " + opt.label));
-                    wrap.appendChild(lbl);
-                });
-
-                const dateWrap = document.createElement("div");
-                dateWrap.style.marginTop = "10px";
-                const dateLabel = document.createElement("label");
-                dateLabel.setAttribute("for", "gius-branch-start");
-                dateLabel.style.marginRight = "8px";
-                dateLabel.textContent = "Switched on";
-                const dateInput = document.createElement("input");
-                dateInput.type = "date";
-                dateInput.id = "gius-branch-start";
-                dateInput.value = getBranchStart();
-                dateInput.addEventListener("change", function () {
+                const row = document.createElement("div");
+                row.className = "giu-dayoff-row";
+                const dateLabel = createUiLabel("gius-branch-start", "Started at the Berlin branch on");
+                const dateInput = createUiInput("date", "gius-branch-start", { value: getBranchStart(), max: getTodayLocalYMD() });
+                const saveBtn = createUiButton("Save", "giu-add-holiday-btn", function () {
                     setBranchStart(dateInput.value);
                     dateInput.value = getBranchStart();   // a rejected value visibly reverts
                     renderEnhancedUI();
                 });
+                saveBtn.id = "gius-branch-start-save";
+                row.appendChild(dateLabel);
+                row.appendChild(dateInput);
+                row.appendChild(saveBtn);
+                wrap.appendChild(row);
+
                 const dateHint = document.createElement("div");
                 dateHint.style.marginTop = "6px";
                 dateHint.style.opacity = "0.75";
-                dateHint.textContent = "Leave empty unless you switched campuses. Days before this "
-                    + "date use the other campus's weekend rule, so a compensation week spanning "
-                    + "the switch may be short.";
-                dateWrap.appendChild(dateLabel);
-                dateWrap.appendChild(dateInput);
-                dateWrap.appendChild(dateHint);
-                wrap.appendChild(dateWrap);
+                dateHint.textContent = "Leave empty if you have always worked at the Berlin branch. "
+                    + "Days before this date use the Cairo weekend rule (Friday off), so a "
+                    + "compensation week spanning the move may be short.";
+                wrap.appendChild(dateHint);
 
                 return wrap;
             }
@@ -4297,9 +5959,12 @@
             function createConfigPanel(selectedDayCode, selectedDayFullName, periods, onDayChange, initialExpanded) {
                 const { panel, bodyWrap, bodyInner } = createConfigPanelHeader(initialExpanded);
 
-                // Mounted first: every other section's meaning (weekend day, report
-                // origin) depends on which branch is selected.
-                bodyInner.appendChild(wrapSettingsSection("branch", "Branch", createBranchControl(), true));
+                // Berlin scripts only, mounted first: the start date decides which
+                // weekend rule every earlier day uses. The Cairo scripts have no
+                // Branch section — they always follow the Cairo rule.
+                if (SOURCE) {
+                    bodyInner.appendChild(wrapSettingsSection("branch", "Branch", createBranchControl(), true));
+                }
 
                 // Default the "Apply from" date to the earliest attendance row so a first-time
                 // manual day-off set applies retroactively over the loaded data, not just today.
@@ -5581,13 +7246,6 @@
                 };
             }
 
-            // Detect the staff member's weekly day off: the weekday (the branch's fixed
-            // off-day excluded, holidays excluded) with the MOST absences (days with no
-            // check-in) across the whole loaded table. Returns { code, fullName, occ }
-            // where occ = that weekday's absence count, or null when there are no rows
-            // or no absences at all. Ties resolve to the earliest weekday (the day after
-            // the branch's fixed off-day onward).
-            //
             // The six selectable weekly day-off candidates: every weekday except the
             // branch's fixed off-day, ordered starting from the day AFTER it.
             // Cairo (Friday off) -> Sat, Sun, Mon, Tue, Wed, Thu — identical to the
@@ -5597,71 +7255,6 @@
                 const out = [];
                 for (let i = 1; i <= 6; i++) out.push(WEEKDAY_TABLE[(off + i) % 7]);
                 return out;
-            }
-
-            function detectDayOffCode(periods) {
-                const rows = (periods || []).flatMap(function (p) { return (p && p.rows) || []; });
-                const attendedByDate = new Map();
-                let minDate = null;
-                let maxDate = null;
-                rows.forEach(function (row) {
-                    const ymd = normalizeYMD(row && row.date ? row.date : "");
-                    if (!ymd) return;
-                    if (!minDate || ymd < minDate) minDate = ymd;
-                    if (!maxDate || ymd > maxDate) maxDate = ymd;
-                    if (hasValidLastOut(row.lastOut)) attendedByDate.set(ymd, true);
-                });
-                if (!minDate || !maxDate) return null;
-
-                const holidays = getStoredHolidays();
-                const absentByName = new Map(); // dayName -> absence count
-                eachYmdInRange(minDate, maxDate, function (ymd) {
-                    const dayName = formatDateToDayName(ymd);
-                    if (!dayName || isFixedNonWorkingDay(dayName, ymd)) return; // skip that date's own fixed off-day
-                    if (isDateHoliday(ymd, holidays)) return;              // skip holidays
-                    if (attendedByDate.get(ymd)) return;                   // attended → not absent
-                    absentByName.set(dayName, (absentByName.get(dayName) || 0) + 1);
-                });
-
-                // Day off = weekday with the most absences (>= 1). Strict ">" keeps the first
-                // weekday in week order on ties (the day after the branch's fixed off-day onward).
-                let best = null;
-                dayOffWeekdays().forEach(function (wd) {
-                    const absent = absentByName.get(wd.name) || 0;
-                    if (absent >= 1 && (!best || absent > best.occ)) {
-                        best = { code: wd.code, fullName: wd.name, occ: absent };
-                    }
-                });
-                return best;
-            }
-
-            // Decide what to do about an unconfigured day off, given the loaded periods.
-            // Returns one of:
-            //   { status: 'applied', code, fullName, occ }  — auto-filled selectedDay
-            //   { status: 'warn' }                          — unset and not confidently detectable
-            //   null                                         — already configured / previously undone
-            // Must run BEFORE buildPeriodStats so rendered numbers use the new day off.
-            function maybeAutoFillDayOff(periods) {
-                if (isDayOffConfigured()) return null;
-                const state = getDayOffAutoState();
-                if (state && state.status === "undone") return { status: "warn" };
-
-                const detected = detectDayOffCode(periods);
-                if (!detected) return { status: "warn" };
-
-                localStorage.setItem(STORAGE_KEYS.selectedDay, detected.code);
-                setDayOffAutoState({
-                    status: "applied",
-                    code: detected.code,
-                    occ: detected.occ,
-                    acknowledged: false
-                });
-                return {
-                    status: "applied",
-                    code: detected.code,
-                    fullName: detected.fullName,
-                    occ: detected.occ
-                };
             }
 
             function buildPeriodStats(periodRows, periodStart, periodEnd) {
@@ -6174,9 +7767,7 @@
 
             function createAbsentDayQuickActions(date) {
                 const right = document.createElement("span");
-                right.style.display = "inline-flex";
-                right.style.alignItems = "center";
-                right.style.gap = "6px";
+                right.className = "giu-absent-actions";
 
                 const note = document.createElement("span");
                 note.textContent = "Missing attendance entry";
@@ -6227,11 +7818,17 @@
                     renderEnhancedUI();
                 }));
 
+                // "Add as:" and its pills stay together as one group, so a narrow
+                // box moves the whole group to its own line.
+                const addAs = document.createElement("span");
+                addAs.className = "giu-absent-addas";
+                addAs.appendChild(addAsLabel);
+                addAs.appendChild(makeHolidayBtn);
+                addAs.appendChild(makeAnnualBtn);
+                addAs.appendChild(addCompBtn);
+
                 right.appendChild(note);
-                right.appendChild(addAsLabel);
-                right.appendChild(makeHolidayBtn);
-                right.appendChild(makeAnnualBtn);
-                right.appendChild(addCompBtn);
+                right.appendChild(addAs);
                 return right;
             }
 
@@ -6245,7 +7842,7 @@
 
                     details.forEach(function (date) {
                         const row = document.createElement("div");
-                        row.className = "giu-late-detail-row";
+                        row.className = "giu-late-detail-row giu-absent-detail-row";
 
                         const left = document.createElement("span");
                         left.textContent = `${date} (${formatDateToDayName(date)})`;
@@ -6919,6 +8516,9 @@
 
             function maybeStartOnboardingGuide() {
                 if (isOnboardingCompleted()) return;
+                // The setup wizard comes first: no tour while it is open or while
+                // setup is still needed. After Finish/Skip the tour runs as usual.
+                if (setupWizard || needsSetup()) return;
 
                 const steps = getOnboardingSteps();
                 if (!steps.length) return;
@@ -7111,68 +8711,261 @@
                 return panel;
             }
 
-            // Build the report-page day-off banner, or null if none is due.
-            // Mirrors the Home note but with full controls (Change / Undo / ×).
-            // `autoResult` is the return of maybeAutoFillDayOff for this render.
-            function buildDayOffNoticeForReport(autoResult, onRerender) {
-                const state = getDayOffAutoState();
-                const notice = document.createElement("div");
+            // ═══════════════════════════════════════════════════════════
+            //  First-run setup wizard (src/features/attendanceSetup.js)
+            //  The wizard never touches storage: it reads and writes through
+            //  setupApi below, which uses the same setters as the settings panel.
+            // ═══════════════════════════════════════════════════════════
 
-                if (autoResult && autoResult.status === "warn") {
-                    notice.className = "giu-dayoff-notice warn";
-                    notice.innerHTML = `<span class="ico">&#9888;</span>
-                        <span class="body">Set your weekly <strong>day off</strong> — attendance is being miscalculated until you do.
-                            <span class="sub">Couldn't auto-detect it from your records.</span></span>
-                        <span class="acts"><button type="button" class="gius-btn dn-primary dn-set">Set day off</button></span>`;
-                    notice.querySelector(".dn-set").addEventListener("click", function () {
-                        expandConfigAndScrollToDayOff();
-                    });
-                    return notice;
+            // "done" (finished or imported) or "skipped"; "" = never asked.
+            function getSetupFlag() {
+                try {
+                    const v = localStorage.getItem(STORAGE_KEYS.setup);
+                    return v === "done" || v === "skipped" ? v : "";
+                } catch {
+                    return "";
                 }
-
-                if (state && state.status === "applied" && !state.acknowledged) {
-                    notice.className = "giu-dayoff-notice applied";
-                    const full = getSelectedDayOffFullName(state.code) || state.code;
-                    const occ = state.occ || 0;
-                    notice.innerHTML = `<span class="ico">&#10003;</span>
-                        <span class="body">Day off set to <strong>${escapeHtmlAttr(full)}</strong> — detected from your attendance.
-                            <span class="sub">${escapeHtmlAttr(full)} has the most absences in your records — ${occ} with no check-in.</span></span>
-                        <span class="acts">
-                            <button type="button" class="gius-btn dn-primary dn-change">Change</button>
-                            <button type="button" class="gius-btn dn-ghost dn-undo">Undo</button>
-                        </span>
-                        <button type="button" class="dn-x" title="Dismiss">&times;</button>`;
-                    notice.querySelector(".dn-change").addEventListener("click", function () {
-                        expandConfigAndScrollToDayOff();
-                    });
-                    notice.querySelector(".dn-undo").addEventListener("click", function () {
-                        localStorage.removeItem(STORAGE_KEYS.selectedDay);
-                        setDayOffAutoState({ status: "undone" });
-                        if (typeof onRerender === "function") onRerender();
-                    });
-                    notice.querySelector(".dn-x").addEventListener("click", function () {
-                        setDayOffAutoState(Object.assign({}, getDayOffAutoState(), { acknowledged: true }));
-                        notice.remove();
-                    });
-                    return notice;
-                }
-
-                return null;
             }
 
-            // Expand the config panel (reusing the existing onboarding helper, which knows the
-            // real .giu-collapsible-header selector) and bring the Day Off selector into view.
-            function expandConfigAndScrollToDayOff() {
-                expandSettingsPanelForGuide();
-                const sel = document.getElementById("giu-day-select");
-                if (sel) sel.scrollIntoView({ behavior: "smooth", block: "center" });
+            function setSetupFlag(value) {
+                try { localStorage.setItem(STORAGE_KEYS.setup, value); } catch { /* ignore */ }
             }
 
-            // Minimal attribute-safe escaper for day names (a-z only in practice).
-            function escapeHtmlAttr(s) {
-                return String(s).replace(/[&<>"']/g, function (c) {
-                    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+            function needsSetup() {
+                return !isDayOffConfigured() && !getSetupFlag();
+            }
+
+            // Choices for the wizard's "previous day off". On Berlin a previous
+            // day off may predate the Berlin start, when the Cairo week applied
+            // and Sunday was an ordinary selectable day — so Berlin offers the
+            // union of both branches' six (all seven weekdays): Berlin's week
+            // order, then the days only Cairo could pick (Sunday, at the end).
+            // Cairo offers its own six, as the day-off step does.
+            function previousDayOffWeekdays() {
+                const own = dayOffWeekdays();
+                if (!SOURCE) return own;
+                const otherOff = BRANCH_CONFIG[getBranch() === "berlin" ? "cairo" : "berlin"].fixedOffDay;
+                const extra = WEEKDAY_TABLE.filter(function (wd) {
+                    return wd.name !== otherOff && !own.some(function (o) { return o.code === wd.code; });
                 });
+                return own.concat(extra);
+            }
+
+            function setupDayBefore(ymd) {
+                const d = new Date(ymd + "T00:00:00Z");
+                d.setUTCDate(d.getUTCDate() - 1);
+                return d.toISOString().slice(0, 10);
+            }
+
+            // What "Run setup again" pre-fills: the day off in effect today, the
+            // latest change (the day in effect just before the most recent schedule
+            // entry, when it differs), the REMAINING annual leave (as the settings
+            // "Edit" shows it), the accrual rate and the Berlin start date.
+            function currentSetupValues() {
+                const today = getTodayLocalYMD();
+                const dayOffCode = getDayOffCodeForDate(today);
+                const past = getStoredDayOffSchedule().filter(function (e) { return e.startDate <= today; });
+                let previous = null;
+                const last = past[past.length - 1];
+                if (last && last.code === dayOffCode) {
+                    const before = getDayOffCodeForDate(setupDayBefore(last.startDate));
+                    if (before && before !== last.code) previous = { code: before, from: last.startDate };
+                }
+                return {
+                    dayOffCode,
+                    previous,
+                    balance: getStoredAnnualLeaveBalance() - computeAnnualUsedDays(getStoredHolidays()),
+                    accrualRate: getStoredAnnualLeaveAccrualRate(),
+                    berlinStart: getBranchStart(),
+                };
+            }
+
+            // The storage the wizard's answers turn into — what doing it by hand in
+            // the settings produces: each "Day Off" + "Apply from" writes one
+            // schedule entry { startDate, code }. The first entry goes on the
+            // retention cutoff (the oldest date records are kept for; earlier still
+            // when the change date is older), so it covers all kept history:
+            //   no change:  [{ cutoff, current }]
+            //   change:     [{ cutoff, previous }, { changeDate, current }]
+            // Entries up to today are replaced (the answers describe the past);
+            // changes already scheduled for later days are kept. selectedDay (the
+            // fallback before the first entry, and the settings dropdown's value)
+            // becomes the current day. The balance entered is what REMAINS; it is
+            // stored as a total the way the settings "Edit" stores it.
+            //
+            // Answers equal to what is stored ("Run setup again" clicked through)
+            // leave the schedule untouched. Otherwise only the stretch the answers
+            // describe is replaced; older entries are kept:
+            //   change:    entries before the change date are kept, except that the
+            //              latest of them becomes the previous day (dropped when the
+            //              day before it already was that day); with none left, the
+            //              previous day starts on the cutoff as above.
+            //   no change: entries before the cutoff are kept.
+            // selectedDay only changes when no older entry is kept (it is the
+            // fallback for the dates before them).
+            function sameSetupDayOff(values, cur) {
+                const a = values.previous || null;
+                const b = cur.previous || null;
+                return values.dayOffCode === cur.dayOffCode
+                    && (!a && !b || !!a && !!b && a.code === b.code && a.from === b.from);
+            }
+
+            function planSetupDayOff(values) {
+                const today = getTodayLocalYMD();
+                const code = values.dayOffCode;
+                const schedule = getStoredDayOffSchedule();
+                if (sameSetupDayOff(values, currentSetupValues())) {
+                    return { selectedDay: getSelectedDayOffCode(), dayOffSchedule: schedule };
+                }
+                const previous = values.previous && values.previous.code && values.previous.from
+                    ? values.previous : null;
+                const later = schedule.filter(function (e) { return e.startDate > today; });
+                let cutoff = getRetentionCutoffStartDate() || today;
+                if (cutoff > today) cutoff = today;
+                let kept;
+                let entries;
+                if (previous) {
+                    kept = schedule.filter(function (e) { return e.startDate < previous.from; });
+                    const last = kept.pop();
+                    if (last) {
+                        const before = getDayOffCodeForDate(setupDayBefore(last.startDate));
+                        const merged = kept.length && before === previous.code;
+                        entries = (merged ? [] : [{ startDate: last.startDate, code: previous.code }])
+                            .concat([{ startDate: previous.from, code }]);
+                    } else {
+                        const dayBefore = setupDayBefore(previous.from);
+                        const anchor = dayBefore < cutoff ? dayBefore : cutoff;
+                        entries = [{ startDate: anchor, code: previous.code }, { startDate: previous.from, code }];
+                    }
+                } else {
+                    kept = schedule.filter(function (e) { return e.startDate < cutoff; });
+                    entries = [{ startDate: cutoff, code }];
+                }
+                return {
+                    selectedDay: kept.length ? getSelectedDayOffCode() : code,
+                    dayOffSchedule: kept.concat(entries, later),
+                };
+            }
+
+            function planSetupValues(values) {
+                const dayOff = planSetupDayOff(values);
+                const plan = {
+                    selectedDay: dayOff.selectedDay,
+                    dayOffSchedule: dayOff.dayOffSchedule,
+                    annualLeaveBalance: Math.max(0, Number(values.balance) + computeAnnualUsedDays(getStoredHolidays())),
+                    annualLeaveAccrualRate: Number(values.accrualRate),
+                };
+                if (SOURCE) plan.branchStart = values.berlinStart || "";
+                return plan;
+            }
+
+            function applySetupValues(values) {
+                if (!values || !getSelectedDayOffFullName(values.dayOffCode)) {
+                    throw new Error("A day off is required.");
+                }
+                const prev = values.previous;
+                const prevOk = prev && previousDayOffWeekdays().some(function (wd) { return wd.code === prev.code; });
+                if (prev && (!prevOk || prev.code === values.dayOffCode
+                    || !YMD_RE.test(prev.from || "") || prev.from > getTodayLocalYMD())) {
+                    throw new Error("The day-off change is invalid.");
+                }
+                const plan = planSetupValues(values);
+                if ("branchStart" in plan && !setBranchStart(plan.branchStart)) {
+                    throw new Error(branchStartError(plan.branchStart));
+                }
+                if (plan.selectedDay) localStorage.setItem(STORAGE_KEYS.selectedDay, plan.selectedDay);
+                setStoredDayOffSchedule(plan.dayOffSchedule);
+                setStoredAnnualLeaveBalance(plan.annualLeaveBalance);
+                setStoredAnnualLeaveAccrualRate(plan.annualLeaveAccrualRate);
+                // The balance entered is today's: accrue from the next period on.
+                localStorage.setItem(ANNUAL_LEAVE_ACCRUAL_PERIOD_KEY, getPayrollPeriodKey(getTodayLocalYMD()));
+            }
+
+            // Re-render whatever is on screen with the new settings.
+            function refreshAfterSetup() {
+                if (isTargetReportPage() && document.getElementById("giu-attendance-container")) renderEnhancedUI();
+                if (isHomePage()) homeRerender();
+            }
+
+            let setupWizard = null;        // the open wizard's handle, or null
+            let setupAutoOpened = false;   // auto-open at most once per page load
+
+            const setupApi = {
+                isBerlin: !!SOURCE,
+                today: getTodayLocalYMD,
+                dayOptions: function () {
+                    return dayOffWeekdays().map(function (wd) { return { code: wd.code, name: wd.name }; });
+                },
+                previousDayOptions: function () {
+                    return previousDayOffWeekdays().map(function (wd) { return { code: wd.code, name: wd.name }; });
+                },
+                dayName: getSelectedDayOffFullName,
+                current: currentSetupValues,
+                berlinStartError: branchStartError,
+                apply: applySetupValues,
+                importJson: function (text) {
+                    try {
+                        const report = importSettingsSnapshot(JSON.parse(String(text || "")));
+                        if (!report.accepted) return { ok: false, error: "This file has no attendance settings in it." };
+                        return { ok: true, report };
+                    } catch (e) {
+                        return { ok: false, error: "That is not a valid settings file (" + (e && e.message ? e.message : "unknown error") + ")." };
+                    }
+                },
+                // Given the wizard's answers, the backup already contains them
+                // (the wizard offers the download before Finish writes them).
+                exportJson: function (values) {
+                    const snapshot = exportSettingsSnapshot();
+                    if (values) Object.assign(snapshot, planSetupValues(values));
+                    return JSON.stringify(snapshot, null, 2);
+                },
+                markDone: function () { setSetupFlag("done"); },
+                markSkipped: function () { if (getSetupFlag() !== "done") setSetupFlag("skipped"); },
+                onApplied: refreshAfterSetup,
+                onClosed: function (reason) {
+                    setupWizard = null;
+                    if (typeof Tips.release === "function") Tips.release();
+                    // Skipped on the report: the tour it held back may start now.
+                    if (reason === "skipped" && isTargetReportPage() && document.getElementById("giu-attendance-container")) {
+                        maybeStartOnboardingGuide();
+                    }
+                },
+                needsSetup,
+                isDayOffConfigured,
+                // Where focus goes on close when the opener was re-rendered away.
+                focusFallback: function () {
+                    return document.getElementById("giu-run-setup-btn")
+                        || document.querySelector("#gius-att-widget .gius-att-dayoff-btn")
+                        || document.querySelector("#gius-att-widget button, #gius-att-widget a[href]");
+                },
+            };
+
+            // withPrefill: "Run setup again" / the Home prompt pre-fill the stored
+            // answers — but only once a day off exists (a first run guesses nothing).
+            function openSetupWizard(withPrefill) {
+                if (setupWizard) return setupWizard;
+                // A due monthly accrual first, so the balance shown (and saved) is today's.
+                applyMonthlyAnnualLeaveAccrual();
+                const prefill = withPrefill && isDayOffConfigured() ? currentSetupValues() : null;
+                // The tour would sit on top of the dialog; stop it (not completed).
+                if (onboardingController && onboardingController.isActive()) onboardingController.stop(false);
+                // Tips (bundle) wait until the wizard closes; the stub has no hold.
+                if (typeof Tips.hold === "function") Tips.hold();
+                setupWizard = openAttendanceSetup(S, setupApi, { prefill });
+                return setupWizard;
+            }
+
+            // Home boot and report render: open the wizard when setup is needed,
+            // once per page load.
+            function maybeAutoOpenSetup() {
+                if (setupAutoOpened || setupWizard || !needsSetup()) return;
+                setupAutoOpened = true;
+                openSetupWizard(false);
+            }
+
+            // The Home "Set your day off" prompt: the wizard, in place (no navigation).
+            function openSetup() {
+                return openSetupWizard(true);
             }
 
             function renderEnhancedUI() {
@@ -7198,8 +8991,6 @@
 
                 const periods = groupRowsByPayrollPeriod(getAttendanceRows());
 
-                const dayOffAuto = maybeAutoFillDayOff(periods);
-
                 // Day-off dropdown changes are staged; only "Apply from" persists schedule changes.
                 const noopDayChange = function () {};
                 const configPanel = createConfigPanel(
@@ -7220,11 +9011,11 @@
 
                 container.appendChild(configPanel);
 
-                const dayOffNotice = buildDayOffNoticeForReport(dayOffAuto, renderEnhancedUI);
-                if (dayOffNotice) container.insertBefore(dayOffNotice, container.firstChild);
-
                 reportTable.parentNode.insertBefore(container, reportTable);
                 window.scrollTo({ top: renderState.scrollY, behavior: "auto" });
+
+                // First run: the setup wizard (it holds the guide back until it closes).
+                maybeAutoOpenSetup();
 
                 // Run first-time guide after UI is in the DOM so step selectors can resolve.
                 maybeStartOnboardingGuide();
@@ -7233,8 +9024,6 @@
             function computeCurrentMonthSummary(rows, todayYmd) {
                 const periods = groupRowsByPayrollPeriod(rows || []);
                 if (!periods.length) return { empty: true };
-                const auto = maybeAutoFillDayOff(periods);
-                const dayOffWarn = !!(auto && auto.status === "warn");
                 // Pick the period containing TODAY, not the latest period with data:
                 // the gate report lags ~a day, so right after a period flip (the 11th)
                 // the newest rows still belong to the previous payroll month and the
@@ -7242,18 +9031,38 @@
                 const todayKey = getPayrollPeriodKey(todayYmd || getTodayLocalYMD());
                 const current = periods.find(function (p) { return p.key === todayKey; });
                 if (current) {
-                    return { label: current.label, dayOffWarn: dayOffWarn, stats: buildPeriodStats(current.rows, current.start, current.end) };
+                    return { label: current.label, stats: buildPeriodStats(current.rows, current.start, current.end) };
                 }
                 const bounds = getPayrollPeriodBounds(todayKey);
                 return {
                     label: getPayrollPeriodLabel(todayKey),
-                    dayOffWarn: dayOffWarn,
                     stats: buildPeriodStats([], bounds.start, bounds.end),
                 };
             }
 
             let homeLastRows = [];
             let homeFetchInFlight = false; // guards the manual refresh button and the auto-refresh path from overlapping
+            // Berlin only: the failure shown as an inline notice over the stale widget,
+            // until a fetch succeeds. homeRerender puts it back after repainting.
+            let homeLastError = null;
+
+            // Berlin only: SOURCE rejects with kind "superseded" when the university
+            // changed while its request was in flight. The switch already reset and
+            // rebooted the widget (homeReset), so a superseded result renders nothing
+            // and leaves the widget state alone. Never true on Cairo (SOURCE is null).
+            function isSupersededFetch(err) {
+                return !!(SOURCE && err && err.kind === "superseded");
+            }
+
+            // Berlin only (handed to SOURCE.start): forget everything the widget
+            // holds for the university being left, so it cannot re-render or re-save
+            // the old university's rows.
+            function homeReset() {
+                homeLastRows = [];
+                homeFetchInFlight = false;
+                homeLastError = null;
+                try { localStorage.removeItem(HOME_CACHE_KEY); } catch { /* ignore */ }
+            }
 
             function loadHomeCache() {
                 try {
@@ -7310,6 +9119,17 @@
 
                     iframe.addEventListener("error", function () { finish(reject, new Error("home-iframe-error")); });
                     document.body.appendChild(iframe);
+                });
+            }
+
+            // One entry point for "get the report rows", whichever source is active.
+            // Only the Berlin source honours opts.force (skips its short memo).
+            function fetchReportRows(opts) {
+                if (!SOURCE) return fetchReportViaIframe();
+                return SOURCE.fetchReportDoc(opts).then(function (doc) {
+                    const layoutError = reportDocLayoutError(doc);
+                    if (layoutError) throw layoutError;
+                    return getAttendanceRows(doc);
                 });
             }
 
@@ -7380,7 +9200,14 @@
                 return balance + (stats && stats.isPositiveOrZero ? " Extra" : " Missing");
             }
 
+            // Berlin only: a failure over a stale widget, kept until a fetch succeeds.
+            function homeShowInlineError(err) {
+                homeLastError = err;
+                SOURCE.renderError(homeEnsureHost(), err, homeRetry, { inline: true });
+            }
+
             function homeRenderFromRows(rows) {
+                homeLastError = null;
                 homeLastRows = Array.isArray(rows) ? rows : [];
                 const summary = computeCurrentMonthSummary(homeLastRows);
                 saveHomeCache(summary, homeLastRows);
@@ -7393,12 +9220,14 @@
                     return;
                 }
 
-                fetchReportViaIframe().then(homeRenderFromRows).catch(function () {
+                fetchReportRows().then(homeRenderFromRows).catch(function (err) {
+                    if (isSupersededFetch(err)) return;
                     const cache = loadHomeCache();
                     if (cache && cache.summary) {
                         renderHomeWidget(cache.summary, { stale: true });
+                        if (SOURCE) homeShowInlineError(err);
                     } else {
-                        homeShowError(homeEnsureHost());
+                        homeShowError(homeEnsureHost(), err);
                     }
                 });
             }
@@ -7557,12 +9386,8 @@
                     .gius-att-dayoff-btn{font:inherit;font-size:12.5px;font-weight:700;line-height:1;
                         cursor:pointer;border-radius:6px;padding:7px 11px;border:1px solid transparent;
                         flex:0 0 auto;}
-                    .gius-att-dayoff.applied{background:#ecfdf5;border-left-color:#16a34a;color:#065f46;}
-                    .gius-att-dayoff.applied .gius-att-dayoff-btn{background:#16a34a;color:#fff;}
                     .gius-att-dayoff.warn{background:#fff8e1;border-left-color:#f59e0b;color:#8a6500;}
                     .gius-att-dayoff.warn .gius-att-dayoff-btn{background:#b45309;color:#fff;}
-                    html.gius-dark .gius-att-dayoff.applied{background:#14351f;border-left-color:#a6e3a1;color:#a6e3a1;}
-                    html.gius-dark .gius-att-dayoff.applied .gius-att-dayoff-btn{background:#a6e3a1;color:#11271a;}
                     html.gius-dark .gius-att-dayoff.warn{background:#2a2410;border-left-color:#f9e2af;color:#f9e2af;}
                     html.gius-dark .gius-att-dayoff.warn .gius-att-dayoff-btn{background:#f9e2af;color:#2a2410;}
                     .gius-att-card.gius-att-muted{opacity:.45;filter:grayscale(.6);}`;
@@ -7572,35 +9397,20 @@
                 document.head.appendChild(style);
             }
 
-            // Build the day-off note element for the Home widget, or null if none is due.
-            // applied (not acknowledged) → green note + "Adjust in report"; warn → amber note
-            // + "Open report". Both buttons carry gius-btn so GIU Dark Mode leaves them styled.
-            function buildDayOffNoteForHome(summary) {
-                const state = getDayOffAutoState();
-                let cls = "";
-                let html = "";
-                // Warn purely from LIVE config — not the cached summary.dayOffWarn, which is
-                // baked at compute time and wrong in both directions (lingers after a set,
-                // missing after a removal). Unconfigured ⟹ numbers wrong ⟹ warn.
-                if (!isDayOffConfigured()) {
-                    cls = "warn";
-                    html = `<span class="ico">&#9888;</span>
-                        <span class="txt">Set your weekly day off to see correct attendance.</span>
-                        <button type="button" class="gius-att-dayoff-btn gius-btn">Open report &rarr;</button>`;
-                } else if (state && state.status === "applied" && !state.acknowledged) {
-                    cls = "applied";
-                    const full = getSelectedDayOffFullName(state.code) || state.code;
-                    html = `<span class="ico">&#10003;</span>
-                        <span class="txt">Day off auto-set to <strong>${homeEsc(full)}</strong>.</span>
-                        <button type="button" class="gius-att-dayoff-btn gius-btn">Adjust in report &rarr;</button>`;
-                } else {
-                    return null;
-                }
+            // The Home "Set your day off" prompt, or null once a day off is set.
+            // Gated purely on LIVE config (never a cached summary flag), so it tracks
+            // set/remove immediately. Nothing is guessed: until the staff member picks
+            // a day off the numbers stay greyed and this prompt stays. The button
+            // carries gius-btn so GIU Dark Mode leaves it styled.
+            function buildDayOffPromptForHome() {
+                if (isDayOffConfigured()) return null;
                 const el = document.createElement("div");
-                el.className = "gius-att-dayoff " + cls;
-                el.innerHTML = html;
+                el.className = "gius-att-dayoff warn";
+                el.innerHTML = `<span class="ico">&#9888;</span>
+                    <span class="txt"><strong>Set your day off</strong> to see correct attendance.</span>
+                    <button type="button" class="gius-att-dayoff-btn gius-btn">Set your day off &rarr;</button>`;
                 el.querySelector(".gius-att-dayoff-btn").addEventListener("click", function () {
-                    window.location.href = REPORT_DATA_URL;
+                    openSetup();
                 });
                 return el;
             }
@@ -7612,7 +9422,7 @@
 
                 if (!summary || summary.empty) {
                     host.innerHTML = `<div class="gius-att-head">Attendance</div>
-                        <div class="gius-att-empty">No attendance records yet. <a class="gius-att-link" href="${REPORT_DATA_URL}">View full report</a></div>`;
+                        <div class="gius-att-empty">No attendance records yet. <a class="gius-att-link" href="${REPORT_VIEW_URL}">View full report</a></div>`;
                     return;
                 }
 
@@ -7725,9 +9535,9 @@
                         <div class="gius-att-quip">${homeEsc(tierQuip)}</div>
                     </div>
                     ${absentBlock}
-                    <a class="gius-att-link" href="${REPORT_DATA_URL}">View full report →</a>`;
+                    <a class="gius-att-link" href="${REPORT_VIEW_URL}">View full report →</a>`;
 
-                const dayOffNote = buildDayOffNoteForHome(summary);
+                const dayOffNote = buildDayOffPromptForHome();
                 if (dayOffNote) {
                     const head = host.querySelector(".gius-att-head");
                     if (head && head.nextSibling) head.parentNode.insertBefore(dayOffNote, head.nextSibling);
@@ -7762,12 +9572,14 @@
                         if (homeFetchInFlight) return;
                         homeFetchInFlight = true;
                         refreshBtn.disabled = true;
-                        fetchReportViaIframe().then(function (rows) {
+                        fetchReportRows({ force: true }).then(function (rows) {
                             homeFetchInFlight = false;
                             homeRenderFromRows(rows);
-                        }).catch(function () {
+                        }).catch(function (err) {
+                            if (isSupersededFetch(err)) return;
                             homeFetchInFlight = false;
                             refreshBtn.disabled = false;
+                            if (SOURCE) homeShowInlineError(err);
                         });
                     });
                 }
@@ -7812,7 +9624,8 @@
                 document.addEventListener("keydown", onKey);
             }
 
-            function homeShowError(host) {
+            function homeShowError(host, err) {
+                if (SOURCE) { SOURCE.renderError(host, err, homeRetry); return; }
                 host.innerHTML = `<div class="gius-att-head">Attendance</div>
                     <div class="gius-att-empty">Couldn't load attendance. <button type="button" id="gius-att-retry" class="gius-att-toggle gius-btn">Retry</button></div>`;
                 const r = host.querySelector("#gius-att-retry");
@@ -7824,15 +9637,17 @@
                     <div class="gius-att-empty">Loading attendance…</div>`;
             }
 
-            // Berlin origin only: the attendance report is served exclusively by the
-            // Cairo portal (Berlin's own SwiftReports_m.aspx returns HTTP 500), and
-            // REPORT_DATA_URL is therefore cross-origin here. Reading it would need
-            // grants this phase deliberately does not take, so point the user at Cairo
-            // instead of spinning the hidden iframe for its full timeout and then
-            // showing a permanent "Couldn't load attendance" card.
-            function bootHome() {
+            // On Berlin, SOURCE supplies the report cross-origin from Cairo
+            // (src/berlin/); on Cairo the hidden same-origin iframe does.
+            // Berlin only: opts.force (a user's Retry, see homeRetry) skips the
+            // fresh-cache early return and the paint delay, and asks the source
+            // to bypass its memo. Never set on Cairo, where bootHome is also a
+            // click listener and receives an Event.
+            function bootHome(opts) {
                 if (!isHomePage()) return;
+                const force = !!(SOURCE && opts && opts.force === true);
                 homeInjectStyles();
+                maybeAutoOpenSetup();
 
                 const cache = loadHomeCache();
                 const fresh = !!(cache && cache.fetchedAt &&
@@ -7849,29 +9664,81 @@
                 } else {
                     homeShowLoading(homeEnsureHost()); // no cache → show a spinner, not a blank card
                 }
-                if (fresh) return; // gate rows recent enough — skip the report iframe entirely
+                if (fresh && !force) return; // gate rows recent enough — skip the report iframe entirely
 
                 const refresh = function () {
                     if (homeFetchInFlight) return;
                     homeFetchInFlight = true;
-                    fetchReportViaIframe().then(function (rows) {
+                    fetchReportRows(force ? { force: true } : undefined).then(function (rows) {
                         homeFetchInFlight = false;
                         homeRenderFromRows(rows);
-                    }).catch(function () {
+                    }).catch(function (err) {
+                        if (isSupersededFetch(err)) return;
                         homeFetchInFlight = false;
-                        if (cache) return; // keep the stale render
-                        homeShowError(homeEnsureHost());
+                        if (cache && !SOURCE) return; // keep the stale render
+                        if (cache) { homeShowInlineError(err); return; }
+                        homeShowError(homeEnsureHost(), err);
                     });
                 };
                 // With a cached render on screen, let Home finish loading before
                 // spawning the hidden report iframe (it executes the full report).
-                if (cache) setTimeout(refresh, HOME_REFRESH_DELAY_MS);
+                if (cache && !force) setTimeout(refresh, HOME_REFRESH_DELAY_MS);
                 else refresh();
+            }
+
+            // Berlin only: the widget's Retry. Every click is exactly one attempt,
+            // even when the cache is fresh (e.g. after a failed refresh button).
+            function homeRetry() {
+                bootHome({ force: true });
+            }
+
+            // Berlin only (handed to SOURCE.start): recompute the widget from the
+            // rows it already holds, so settings edited in the report view show on
+            // Home at once. Never fetches.
+            function homeRerender() {
+                if (!isHomePage()) return;
+                const cache = loadHomeCache();
+                const rows = cache && Array.isArray(cache.rows) ? cache.rows : homeLastRows;
+                if (!rows.length) return; // nothing rendered from rows yet (loading, error, chooser)
+                const fresh = !!(cache && cache.fetchedAt &&
+                    (Date.now() - cache.fetchedAt) < HOME_REFRESH_TTL_MS);
+                // A failure still current keeps the widget marked stale, with its notice on top.
+                renderHomeWidget(computeCurrentMonthSummary(rows), { stale: !fresh || !!homeLastError });
+                if (homeLastError) SOURCE.renderError(homeEnsureHost(), homeLastError, homeRetry, { inline: true });
+            }
+
+            // Berlin only (handed to SOURCE.start): a report the view loaded also
+            // refreshes the widget and its cache. Never fetches.
+            function homeRenderFromDoc(doc) {
+                if (!isHomePage()) return;
+                homeRenderFromRows(getAttendanceRows(doc));
+            }
+
+            // Berlin only (handed to SOURCE.start): the layout error for a report
+            // document whose grid lacks the Day/Duration columns, else null.
+            function reportDocLayoutError(doc) {
+                const table = doc.getElementById("MainContent_DG_SwiftReport");
+                if (!table || getAttendanceRows(doc).length) return null;
+                if (detectAttendanceColumnIndexes(Array.from(table.rows || []))) return null;
+                return SOURCE.error("layout", { missing: ["Day", "Duration"] });
+            }
+
+            // Berlin only (handed to SOURCE.start): tear down what the report UI
+            // put on <body> (onboarding tour, inline edit modals) when the view
+            // closes. The tour is stopped, not completed, so it can run again.
+            function closeReportOverlays() {
+                if (onboardingController && onboardingController.isActive()) {
+                    onboardingController.stop(false);
+                }
+                document.querySelectorAll(".giu-inline-modal-layer").forEach(function (el) {
+                    el.remove();
+                });
             }
 
             window.__giuAttHome = {
                 isHomePage,
                 bootHome,
+                homeRefreshAfterQuickAction,
                 getAttendanceRows,
                 computeCurrentMonthSummary,
                 fetchReportViaIframe,
@@ -7880,11 +9747,13 @@
                 renderHomeWidget,
                 setHomeRowsForTest: function (rows) { homeLastRows = Array.isArray(rows) ? rows : []; },
                 isDayOffConfigured,
-                getDayOffAutoState,
-                setDayOffAutoState,
                 groupRowsByPayrollPeriod,
-                detectDayOffCode,
-                maybeAutoFillDayOff,
+                openSetup,
+                // Setup wizard test hooks.
+                setupApi,
+                needsSetup,
+                openSetupWizard,
+                isSetupOpen: function () { return !!setupWizard; },
                 renderEnhancedUI,
                 getStoredAnnualLeaveBalance,
                 setStoredAnnualLeaveBalance,
@@ -7896,7 +9765,6 @@
             try {
                 window.__giuBranch = {
                     get: getBranch,
-                    set: setBranch,
                     fixedOffDay: () => branchConfig().fixedOffDay,
                     reportOrigin: () => REPORT_ORIGIN,
                     exportSnapshot: exportSettingsSnapshot,
@@ -7938,8 +9806,20 @@
                 // window.__giuAttDisableAutoRun lets tests inject the script and drive
                 // functions manually without the page-detection auto-run firing.
                 if (!window.__giuAttDisableAutoRun) {
-                    renderEnhancedUI();
-                    bootHome();
+                    if (SOURCE) {
+                        SOURCE.start({
+                            renderEnhancedUI,
+                            bootHome,
+                            resetHome: homeReset,
+                            rerenderHome: homeRerender,
+                            renderHomeFromDoc: homeRenderFromDoc,
+                            checkReportDoc: reportDocLayoutError,
+                            closeOverlays: closeReportOverlays,
+                        });
+                    } else {
+                        renderEnhancedUI();
+                        bootHome();
+                    }
                 }
             } catch (err) {
                 console.log("Enhanced attendance script error:", err.message);
@@ -8739,460 +10619,6 @@
         
             init();
         },
-        // ── teachingLoad (from GIU Teaching Load v1.1) ────────────────────────
-        teachingLoad(S) {
-            // ── Selectors / structure — PINNED from the Task 1 captures (real values) ──
-            const SEL = {
-                nameSelect: '#MainContent_DDL_FromStaff',        // notification.html: single option "Mr. <Full Name>"
-                scheduleTable: '#MainContent_schedule',          // rendered grid: row0=period headers, col0=day name
-                showScheduleBtn: '#MainContent_B_ShowSchedule',  // submit (postback) that renders the schedule
-                staffFieldName: 'ta[]',                          // POST field carrying the selected staff id
-                staffContainer: '#teaching_assistants',          // empty div the staff control mounts into
-                // window.tas = [{ id, value:<fullName> }, ...] — all 546 staff — is read directly to map name -> id.
-            };
-
-            const NOTIFICATION_URL = S.portalUrl('/GIUb/INTStaff/NotificationSystem_SendEmail_m.aspx');
-            const SCHEDULE_URL = S.portalUrl('/GIUb/INTStaff/SearchAcademicScheduled_001_m.aspx');
-            const CACHE_KEY = 'giuTeachingLoadV1';
-            // TODO: name cache has no TTL; clear it if a fresh schedule fetch starts failing to find the staff id.
-            const NAME_CACHE_KEY = 'giuTeachingLoadNameV1';
-            const TTL_MS = 7 * 24 * 60 * 60 * 1000;  // 7d — schedule changes ~once per semester; ⟳ button forces refresh
-            const IFRAME_TIMEOUT_MS = 20000;
-            const FETCH_TIMEOUT_MS = 15000;
-            const HOME_BOOT_DELAY_MS = 800;
-
-            let restExpanded = false; // expandable "rest of week" open state, persisted across re-renders
-            let lastRendered = null;  // last view rendered (for re-render after toggle)
-
-            function esc(s) {
-                return String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-            }
-
-            // Replace the leading course code in a tutorial label ("INCS 406 - 4INF20 (Practical)")
-            // with the full course name, keeping the group/section suffix. Unknown codes pass through.
-            function displayTutorial(tutorial) {
-                const parts = String(tutorial).split(' - ');
-                const code = parts[0].trim();
-                const name = S.courses.lookup(code);
-                if (!S.courses.has(code) || parts.length < 2) return tutorial;
-                return [name, ...parts.slice(1)].join(' - ');
-            }
-
-            function injectStyles() {
-                if (document.getElementById('gius-tl-style')) return;
-                const css = `
-                    .gius-tl-widget{font-family:inherit;display:block;width:100%;box-sizing:border-box;
-                        margin:28px 0;border-radius:12px;padding:16px 18px;
-                        background:#ffffff;color:#1e1e2e;box-shadow:0 2px 10px rgba(0,0,0,.12);}
-                    .gius-tl-widget *{box-sizing:border-box;}
-                    .gius-tl-head{font-weight:700;font-size:16px;margin-bottom:12px;}
-                    .gius-tl-refresh{float:right;border:none;background:transparent;cursor:pointer;
-                        font-size:15px;line-height:1;color:inherit;opacity:.55;padding:2px 4px;}
-                    .gius-tl-refresh:hover{opacity:1;}
-                    .gius-tl-refresh:disabled{opacity:.3;cursor:wait;}
-                    .gius-tl-stale{color:#b8860b;font-weight:600;font-size:12px;}
-                    .gius-tl-today{background:#f8f9fa;border:1px solid #e9ecef;border-left:4px solid #ffc107;
-                        border-radius:12px;padding:14px;margin-bottom:14px;}
-                    .gius-tl-today-head{font-size:13px;font-weight:700;color:#272c33;
-                        text-transform:uppercase;letter-spacing:.03em;margin-bottom:10px;}
-                    .gius-tl-card{background:#ffffff;border-radius:10px;padding:12px 16px;
-                        box-shadow:0 1px 4px rgba(0,0,0,.08);}
-                    .gius-tl-card + .gius-tl-card{margin-top:10px;}
-                    .gius-tl-items{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;}
-                    .gius-tl-item{flex:1 1 180px;min-width:150px;background:#f5f5fa;border-radius:8px;padding:10px 12px;}
-                    .gius-tl-slot{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.02em;
-                        color:#7a5b00;background:#fff3cd;border-radius:6px;padding:3px 9px;margin-bottom:7px;}
-                    .gius-tl-tutorial{font-size:14px;font-weight:600;line-height:1.3;margin-bottom:7px;color:#3a3f47;}
-                    .gius-tl-loc{display:inline-flex;align-items:center;gap:5px;font-size:16px;font-weight:800;color:#9a6b00;}
-                    .gius-tl-loc svg{width:16px;height:16px;flex:0 0 auto;}
-                    .gius-tl-toggle{margin-top:6px;font-size:13px;font-weight:700;background:transparent;border:none;
-                        color:#272c33;cursor:pointer;padding:4px 0;}
-                    .gius-tl-toggle::before{content:"▸";display:inline-block;margin-right:6px;
-                        transition:transform .3s ease-out;}
-                    .gius-tl-toggle-open::before{transform:rotate(90deg);}
-                    .gius-tl-expand-wrapper{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease-out;}
-                    .gius-tl-expand-wrapper.gius-tl-expanded{grid-template-rows:1fr;}
-                    .gius-tl-expand-inner{overflow:hidden;}
-                    .gius-tl-day{margin-top:10px;}
-                    .gius-tl-day-head{font-size:13px;font-weight:700;margin:8px 0 4px;}
-                    .gius-tl-row{background:#f5f5fa;border-radius:8px;padding:10px 12px;}
-                    .gius-tl-row + .gius-tl-row{margin-top:6px;}
-                    .gius-tl-empty{font-size:13px;opacity:.85;padding:6px 0;}
-
-                    /* Dark mode — reacts to GIU Dark Mode (html.gius-dark, Catppuccin Mocha). */
-                    html.gius-dark .gius-tl-widget{background:#1e1e2e;color:#cdd6f4;box-shadow:0 2px 10px rgba(0,0,0,.45);}
-                    html.gius-dark .gius-tl-today{background:#181825;border-color:#313244;border-left-color:#f9e2af;}
-                    html.gius-dark .gius-tl-today-head{color:#cdd6f4;}
-                    html.gius-dark .gius-tl-card{background:#11111b;box-shadow:none;}
-                    html.gius-dark .gius-tl-slot{color:#f9e2af;background:#2a2410;}
-                    html.gius-dark .gius-tl-tutorial{color:#cdd6f4;}
-                    html.gius-dark .gius-tl-empty{color:#cdd6f4;opacity:1;}
-                    html.gius-dark .gius-tl-loc{color:#f9e2af;}
-                    html.gius-dark .gius-tl-item{background:#181825;}
-                    html.gius-dark .gius-tl-day-head{color:#cdd6f4;}
-                    html.gius-dark .gius-tl-toggle{color:#cdd6f4;}
-                    html.gius-dark .gius-tl-stale{color:#f9e2af;}`;
-                const style = document.createElement('style');
-                style.id = 'gius-tl-style';
-                style.textContent = css;
-                document.head.appendChild(style);
-            }
-
-            // Strip an honorific title ("Mr.", "Miss.", "Dr.", "Prof.", etc.) and collapse whitespace.
-            function parseFullName(raw) {
-                return String(raw)
-                    .replace(/^\s*(mr|mrs|miss|ms|dr|prof|eng)\.?\s+/i, '')
-                    .replace(/\s+/g, ' ')
-                    .trim();
-            }
-
-            function readNameFromDoc(doc) {
-                const sel = doc.querySelector(SEL.nameSelect);
-                if (!sel) return '';
-                // Prefer the selected option; fall back to the first non-placeholder option.
-                const opts = Array.from(sel.options || []);
-                const opt = opts.find(o => o.selected && o.value) || opts.find(o => o.text && o.value) || opts[0];
-                return opt ? parseFullName(opt.text) : '';
-            }
-
-            async function fetchFullName() {
-                const cached = (() => { try { return localStorage.getItem(NAME_CACHE_KEY) || ''; } catch { return ''; } })();
-                if (cached) return cached;
-                const ctrl = new AbortController();
-                const timer = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS);
-                try {
-                    const resp = await fetch(NOTIFICATION_URL, { credentials: 'include', signal: ctrl.signal });
-                    if (!resp.ok) throw new Error('HTTP ' + resp.status);
-                    const doc = new DOMParser().parseFromString(await resp.text(), 'text/html');
-                    const name = readNameFromDoc(doc);
-                    if (!name) throw new Error('name-not-found');
-                    try { localStorage.setItem(NAME_CACHE_KEY, name); } catch { /* quota */ }
-                    return name;
-                } finally {
-                    clearTimeout(timer);
-                }
-            }
-
-            // Teaching week order (GIU runs Saturday→Thursday; Friday is the weekend).
-            const WEEK = ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-
-            function todayWeekdayName() {
-                return ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][new Date().getDay()];
-            }
-
-            // Clean a period header like "1st First" / "2nd Second" down to "1st" / "2nd".
-            function periodLabel(raw) {
-                const m = String(raw).trim().match(/^(\d+)\s*(st|nd|rd|th)/i);
-                return m ? (m[1] + m[2].toLowerCase()) : String(raw).replace(/\s+/g, ' ').trim();
-            }
-
-            // Read the <dd> text following the <dt> whose label matches (e.g. "Group", "Location").
-            function ddByLabel(slotEl, label) {
-                const dts = slotEl.querySelectorAll('dt');
-                for (const dt of dts) {
-                    if (dt.textContent.trim().toLowerCase() === label.toLowerCase()) {
-                        const dd = dt.nextElementSibling;
-                        if (dd && dd.tagName === 'DD') return dd.textContent.replace(/\s+/g, ' ').trim();
-                    }
-                }
-                return '';
-            }
-
-            // Transposed grid parser: row0 = period headers (col0 blank); each later row = a day
-            // (col0 = day name); each populated cell holds one or more `.slot` divs.
-            function parseScheduleDoc(doc) {
-                const table = doc.querySelector(SEL.scheduleTable);
-                if (!table || !table.rows || table.rows.length < 2) return [];
-                const header = Array.from(table.rows[0].cells).map(c => periodLabel(c.textContent));
-                const out = [];
-                for (let r = 1; r < table.rows.length; r++) {
-                    const cells = table.rows[r].cells;
-                    if (!cells.length) continue;
-                    const day = cells[0].textContent.replace(/\s+/g, ' ').trim();
-                    if (!WEEK.includes(day)) continue;
-                    for (let c = 1; c < cells.length; c++) {
-                        const slotEls = cells[c].querySelectorAll('.slot');
-                        for (const slotEl of slotEls) {
-                            const tutorial = ddByLabel(slotEl, 'Group');
-                            const location = ddByLabel(slotEl, 'Location');
-                            if (!tutorial && !location) continue;
-                            out.push({ day, slot: header[c] || String(c), tutorial, location });
-                        }
-                    }
-                }
-                return out;
-            }
-
-            // Split into today's sessions + the full week's sessions grouped by day
-            // (the rest list covers every teaching day so the whole schedule is visible).
-            function splitByDay(sessions, todayName) {
-                const today = todayName || todayWeekdayName();
-                const todaySessions = sessions.filter(s => s.day === today);
-                const rest = [];
-                for (let i = 0; i < WEEK.length; i++) {
-                    const day = WEEK[i];
-                    const daySessions = sessions.filter(s => s.day === day);
-                    if (daySessions.length) rest.push({ day, sessions: daySessions });
-                }
-                return { today: todaySessions, rest };
-            }
-
-            function saveCache(sessions) {
-                const payload = { fetchedAt: Date.now(), sessions };
-                try { localStorage.setItem(CACHE_KEY, JSON.stringify(payload)); } catch { /* quota */ }
-            }
-
-            function loadCache() {
-                try {
-                    const raw = JSON.parse(localStorage.getItem(CACHE_KEY));
-                    if (!raw || !Array.isArray(raw.sessions)) return null;
-                    return raw;
-                } catch { return null; }
-            }
-
-            function isStale(fetchedAt) {
-                return !fetchedAt || (Date.now() - fetchedAt) > TTL_MS;
-            }
-
-            // Look up a staff id by full name in the page's `tas` array (read from the iframe window).
-            function findStaffId(win, fullName) {
-                const tas = win.tas;
-                if (!Array.isArray(tas)) return null;
-                const norm = s => String(s).replace(/\s+/g, ' ').trim().toLowerCase();
-                const want = norm(fullName);
-                const m = tas.find(x => norm(x.value) === want)
-                    || tas.find(x => norm(x.value).includes(want))
-                    || tas.find(x => want.includes(norm(x.value)));
-                return m ? m.id : null;
-            }
-
-            // Inject the staff id as the `ta[]` form field the server expects, then submit.
-            function submitStaff(win, staffId) {
-                const doc = win.document;
-                const btn = doc.querySelector(SEL.showScheduleBtn);
-                if (!btn) return false;
-                const form = btn.form || doc.forms[0];
-                if (!form) return false;
-                let inp = form.querySelector('input[name="' + SEL.staffFieldName + '"]');
-                if (!inp) {
-                    inp = doc.createElement('input');
-                    inp.type = 'hidden';
-                    inp.name = SEL.staffFieldName;
-                    (doc.querySelector(SEL.staffContainer) || form).appendChild(inp);
-                }
-                inp.value = staffId;
-                btn.click();
-                return true;
-            }
-
-            function fetchScheduleViaIframe(fullName, timeoutMs) {
-                const limit = timeoutMs || IFRAME_TIMEOUT_MS;
-                return new Promise((resolve, reject) => {
-                    const iframe = document.createElement('iframe');
-                    iframe.setAttribute('data-gius-tl', '1');
-                    iframe.style.cssText = 'position:absolute;left:-9999px;top:-9999px;width:0;height:0;border:0;';
-                    iframe.src = SCHEDULE_URL;
-
-                    let done = false, submitted = false;
-                    const started = Date.now();
-                    const cleanup = () => { try { iframe.remove(); } catch {} };
-                    const finish = (fn, arg) => { if (done) return; done = true; clearInterval(poll); cleanup(); fn(arg); };
-
-                    const poll = setInterval(() => {
-                        if (Date.now() - started > limit) { finish(reject, new Error('teaching-load-iframe-timeout')); return; }
-                        let win;
-                        try { win = iframe.contentWindow; if (!win || !win.document) return; } catch { return; }
-                        // If a populated schedule is already present, parse and resolve.
-                        const sessions = parseScheduleDoc(win.document);
-                        if (sessions.length) { finish(resolve, sessions); return; }
-                        // Otherwise, once `tas` is available, submit our staff id exactly once.
-                        if (!submitted) {
-                            const id = findStaffId(win, fullName);
-                            if (id) { try { if (submitStaff(win, id)) submitted = true; } catch { /* retry next tick */ } }
-                        }
-                    }, 300);
-
-                    iframe.addEventListener('error', () => finish(reject, new Error('teaching-load-iframe-error')));
-                    document.body.appendChild(iframe);
-                });
-            }
-
-            function ensureHost() {
-                let host = document.getElementById('gius-tl-widget');
-                if (!host) {
-                    host = document.createElement('div');
-                    host.id = 'gius-tl-widget';
-                    host.className = 'gius-tl-widget';
-                }
-                // Placement: TOP of Home — directly after the Target List block, before other widgets.
-                const target = document.getElementById('MainContent_div_grid');
-                if (target) {
-                    if (target.nextElementSibling !== host) target.insertAdjacentElement('afterend', host);
-                } else {
-                    const fb = document.querySelector('.page-content') ||
-                        document.querySelector('[id*=MainContent]') || document.body;
-                    if (fb.firstElementChild !== host) fb.prepend(host);
-                }
-                return host;
-            }
-
-            // One session line inside a day card.
-            function sessionLineHTML(s) {
-                return `<div class="gius-tl-item">
-                    <div class="gius-tl-slot">${esc(s.slot)}</div>
-                    <div class="gius-tl-tutorial">${esc(displayTutorial(s.tutorial))}</div>
-                    ${s.location ? `<div class="gius-tl-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.686-6-10a6 6 0 1 1 12 0c0 4.314-6 10-6 10z"/><circle cx="12" cy="11" r="2"/></svg>${esc(s.location)}</div>` : ''}
-                </div>`;
-            }
-            // One card holding every session for a single day (header + side-by-side items).
-            function dayCardHTML(label, sessions) {
-                return `<div class="gius-tl-card">
-                    <div class="gius-tl-day-head">${esc(label)}</div>
-                    <div class="gius-tl-items">${sessions.map(sessionLineHTML).join('')}</div>
-                </div>`;
-            }
-
-            function renderView(view, opts) {
-                if (!opts) opts = {};
-                lastRendered = view;
-                const host = ensureHost();
-                const todayHTML = view.today.length
-                    ? `<div class="gius-tl-items">${view.today.map(sessionLineHTML).join('')}</div>`
-                    : `<div class="gius-tl-empty">No teaching sessions today.</div>`;
-
-                const restCount = view.rest.reduce((n, d) => n + d.sessions.length, 0);
-                const restHTML = view.rest.length ? `
-                    <button type="button" class="gius-tl-toggle gius-btn${restExpanded ? ' gius-tl-toggle-open' : ''}"
-                        aria-expanded="${restExpanded}" aria-controls="gius-tl-rest">All sessions (${restCount})</button>
-                    <div id="gius-tl-rest" class="gius-tl-expand-wrapper${restExpanded ? ' gius-tl-expanded' : ''}">
-                        <div class="gius-tl-expand-inner">
-                            ${view.rest.map(d => dayCardHTML(d.day, d.sessions)).join('')}
-                        </div>
-                    </div>` : '';
-
-                host.innerHTML = `<div class="gius-tl-head">Teaching Load${opts.stale ? ' · <span class="gius-tl-stale">offline cache</span>' : ''}
-                        <button type="button" class="gius-tl-refresh gius-btn" title="Refresh schedule (cached up to 7 days)">⟳</button></div>
-                    <div class="gius-tl-today">
-                        <div class="gius-tl-today-head">Today</div>
-                        ${todayHTML}
-                    </div>
-                    ${restHTML}`;
-
-                const toggle = host.querySelector('.gius-tl-toggle');
-                if (toggle) {
-                    toggle.addEventListener('click', () => {
-                        const el = host.querySelector('#gius-tl-rest');
-                        const open = el.classList.toggle('gius-tl-expanded');
-                        toggle.classList.toggle('gius-tl-toggle-open', open);
-                        toggle.setAttribute('aria-expanded', String(open));
-                        restExpanded = open;
-                    });
-                }
-
-                const refreshBtn = host.querySelector('.gius-tl-refresh');
-                if (refreshBtn) {
-                    refreshBtn.addEventListener('click', async () => {
-                        refreshBtn.disabled = true;
-                        try {
-                            const name = await fetchFullName();
-                            const sessions = await fetchScheduleViaIframe(name);
-                            saveCache(sessions);
-                            renderFromSessions(sessions);
-                        } catch {
-                            refreshBtn.disabled = false; // fetch failed; keep current render
-                        }
-                    });
-                }
-                Tips.show({ id: 'teachingLoad', el: host, title: 'Teaching Load',
-                    text: "Today's teaching sessions at a glance — expand to see the whole week. Cached for 7 days; hit ⟳ after a schedule change." });
-            }
-
-            function showError(host) {
-                host.innerHTML = `<div class="gius-tl-head">Teaching Load</div>
-                    <div class="gius-tl-empty">Couldn't load schedule.
-                        <button type="button" id="gius-tl-retry" class="gius-tl-toggle gius-btn">Retry</button></div>`;
-                const btn = host.querySelector('#gius-tl-retry');
-                if (btn) btn.addEventListener('click', boot);
-            }
-
-            function renderFromSessions(sessions, opts) {
-                const view = splitByDay(sessions);
-                renderView(view, opts);
-            }
-
-            async function boot() {
-                injectStyles();
-                const cache = loadCache();
-                const fresh = !!(cache && !isStale(cache.fetchedAt));
-                if (cache) renderFromSessions(cache.sessions, { stale: !fresh });
-                // Fresh cache: skip the schedule iframe entirely — it costs two full
-                // page loads (initial + postback) inside a hidden frame.
-                if (fresh) return;
-                try {
-                    const name = await fetchFullName();
-                    const sessions = await fetchScheduleViaIframe(name);
-                    saveCache(sessions);
-                    renderFromSessions(sessions);
-                } catch {
-                    if (!cache) showError(ensureHost());
-                    // else: keep the stale cache already painted above.
-                }
-            }
-
-            // ── Schedule page: auto-fill the staff name and show the schedule. ──
-            // Same mechanism the hidden-iframe fetch uses (tas lookup + ta[] submit),
-            // run against the live page. After the postback reload the schedule table
-            // exists, so parseScheduleDoc() is non-empty and we do nothing (no loop).
-            function isSchedulePage() {
-                return /SearchAcademicScheduled_001_m\.aspx$/i.test(location.pathname || '');
-            }
-
-            async function autoFillSchedulePage() {
-                if (parseScheduleDoc(document).length) return; // already submitted
-                let name;
-                try { name = await fetchFullName(); } catch { return; }
-                const win = (typeof unsafeWindow !== 'undefined') ? unsafeWindow : window;
-                const started = Date.now();
-                const poll = setInterval(() => {
-                    if (Date.now() - started > 15000 || parseScheduleDoc(document).length) {
-                        clearInterval(poll);
-                        return;
-                    }
-                    const id = findStaffId(win, name);
-                    if (id) {
-                        clearInterval(poll);
-                        try { submitStaff(win, id); } catch { /* leave page as-is */ }
-                    }
-                }, 300);
-            }
-
-            if (isSchedulePage()) {
-                autoFillSchedulePage();
-            } else {
-                // Boot as soon as the Home grid anchor exists. The standalone script used a
-                // fixed setTimeout(boot, 800) — that delay is the "slow to appear" lag. At
-                // document-idle the grid is usually already present, so waitFor fires boot now.
-                let booted = false;
-                const bootOnce = () => { if (!booted) { booted = true; boot(); } };
-                S.waitFor('#MainContent_div_grid', bootOnce, { timeout: HOME_BOOT_DELAY_MS * 4 });
-                // Fallback: if the anchor never shows, still boot so the page-content placement runs.
-                setTimeout(bootOnce, HOME_BOOT_DELAY_MS * 4);
-            }
-
-            // ── test hook (extended as functions are added) ──
-            window.__giuTeachingLoad = {
-                SEL, parseFullName, readNameFromDoc, fetchFullName,
-                parseScheduleDoc, splitByDay, todayWeekdayName, WEEK, displayTutorial,
-                week: () => WEEK.slice(),
-                saveCache, loadCache, isStale,
-                fetchScheduleViaIframe, findStaffId, submitStaff,
-                renderView, ensureHost,
-                renderFromSessions, boot,
-                _renderView: renderView,
-                _rerender: () => { if (lastRendered) renderView(lastRendered); },
-            };
-        },
-        // ── proctorReminder (from GIU Proctoring Reminder v1.1) ───────────────
         proctorReminder(S) {
             const CACHE_KEY = 'giuProctorTimetableV1';
             const TIMETABLE_URL = S.portalUrl('/GIUb/INTStaff/ViewTimeTable_m.aspx');
@@ -9707,1945 +11133,6 @@
                 buildICS, googleCalUrl, mailtoUrl,
                 _rerender: () => { if (lastRendered) render(lastRendered); },
             };
-        },
-        // ═══ Not Entered Sessions — Home widget listing Regular sessions 1–21 days ═══
-        //     past whose attendance was never entered on the source page (that page
-        //     is unreachable from the staff network; Home.aspx is reachable, so all
-        //     source-page traffic happens via background fetch() from Home).
-        /*__FEATURE_UNENTERED_SESSIONS__*/,
-        proctorAggregator(S) {
-        
-            const CACHE_KEY = 'giuProctorScheduleV1';
-            const MAX_CONCURRENT = 20;
-            const PAGE_URL = S.portalUrl('/GIUb/INTStaff/ProctorExchange_m.aspx');
-        
-            // ── Normalisation ─────────────────────────────────────────────────────────
-        
-            const TITLE_RE = /^(Miss|Ms\.|Mrs\.|Mr\.|Dr\.|Prof\.|Eng\.)\s*/i;
-            function stripTitle(s) { return s ? s.replace(/ /g, ' ').trim().replace(TITLE_RE, '').trim() : s; }
-            function normalizeRow(r) {
-                const p = stripTitle(r.proctor);
-                const c = stripTitle(r.coverName);
-                const patched = (p !== r.proctor || c !== r.coverName) ? { ...r, proctor: p, coverName: c } : r;
-                if (patched.slotKey) return patched;
-                return { ...patched, slotKey: (patched.dateKey || '') + '|' + (patched.timeSort || patched.startTime || '') };
-            }
-        
-            // ── Cache ─────────────────────────────────────────────────────────────────
-        
-            function loadCache() {
-                try { return JSON.parse(localStorage.getItem(CACHE_KEY)); }
-                catch { return null; }
-            }
-        
-            function saveCache(rows) {
-                localStorage.setItem(CACHE_KEY, JSON.stringify({ rows, scrapedAt: new Date().toISOString() }));
-            }
-        
-            function clearCache() {
-                localStorage.removeItem(CACHE_KEY);
-            }
-        
-            function formatCacheAge(isoStr) {
-                const scraped = new Date(isoStr);
-                const today = new Date();
-                const scrapedD = new Date(scraped.getFullYear(), scraped.getMonth(), scraped.getDate());
-                const todayD = new Date(today.getFullYear(),   today.getMonth(),   today.getDate());
-                const days = Math.round((todayD - scrapedD) / 86400000);
-                if (days === 0) return 'today';
-                if (days === 1) return '1 day ago';
-                return `${days} days ago`;
-            }
-        
-            // ── ASP.NET helpers ───────────────────────────────────────────────────────
-        
-            function extractFormState(doc) {
-                const get = id => (doc.getElementById(id) || {}).value || '';
-                return {
-                    __VIEWSTATE: get('__VIEWSTATE'),
-                    __VIEWSTATEGENERATOR: get('__VIEWSTATEGENERATOR'),
-                    __EVENTVALIDATION: get('__EVENTVALIDATION'),
-                };
-            }
-        
-            async function doPostback(eventTarget, extraFields, baseState) {
-                const state = baseState || extractFormState(document);
-                const body = new URLSearchParams({
-                    __EVENTTARGET: eventTarget,
-                    __EVENTARGUMENT: '',
-                    __LASTFOCUS: '',
-                    __VIEWSTATE: state.__VIEWSTATE,
-                    __VIEWSTATEGENERATOR: state.__VIEWSTATEGENERATOR,
-                    __EVENTVALIDATION: state.__EVENTVALIDATION,
-                    ...extraFields,
-                });
-                const resp = await fetch(PAGE_URL, {
-                    method: 'POST',
-                    credentials: 'include',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: body.toString(),
-                });
-                if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-                const html = await resp.text();
-                if (html.includes('Login_m.aspx') || html.includes('id="LoginPage"')) {
-                    throw new Error('SESSION_EXPIRED');
-                }
-                return new DOMParser().parseFromString(html, 'text/html');
-            }
-        
-            // ── Parsers ───────────────────────────────────────────────────────────────
-        
-            function parseExamString(raw) {
-                // "Mar 28 2026  1:30PM ---> GIU-Cairo.Informatics 4th - MATH403 Mathematics IV"
-                // Campus prefix may use "." or "-" as separator (e.g. GIU-Cairo.Dept or GIU-Cairo-Dept)
-                const stripCampus = s => s.replace(/^GIU-[^.-]*[.-]/, '').trim();
-                // Course codes: 2-8 uppercase letters followed by 3-4 digits, optional trailing letter
-                const COURSE_CODE = /^[A-Z]{2,8}[a-z]?\d{3,4}[A-Za-z]?$/;
-        
-                const parts = raw.split(' ---> ');
-                if (parts.length < 2) return { courseCode: '', examName: raw.trim(), program: '' };
-        
-                const right = parts[1].trim();
-                const segs = right.split(' - ');
-                const program = stripCampus(segs[0]);
-        
-                if (segs.length === 1) {
-                    // No " - " separator — try to find course code inside the segment
-                    const words = program.split(/\s+/);
-                    const codeIdx = words.findIndex(w => COURSE_CODE.test(w));
-                    if (codeIdx !== -1) {
-                        return {
-                            program: words.slice(0, codeIdx).join(' '),
-                            courseCode: words[codeIdx],
-                            examName: words.slice(codeIdx + 1).join(' '),
-                        };
-                    }
-                    return { courseCode: '', examName: right, program: '' };
-                }
-        
-                // Join remaining segs (handles exam names that contain " - ")
-                const rest = segs.slice(1).join(' ').trim();
-                const words = rest.split(/\s+/);
-                const codeIdx = words.findIndex(w => COURSE_CODE.test(w));
-        
-                if (codeIdx !== -1) {
-                    return {
-                        program,
-                        courseCode: words[codeIdx],
-                        examName: words.slice(codeIdx + 1).join(' ').replace(/^[-\s]+/, '').trim(),
-                    };
-                }
-                return { courseCode: '', program, examName: rest };
-            }
-        
-            function formatTime(str) {
-                // "3/28/2026 1:30:00 PM" → "1:30 PM"
-                const d = new Date(str);
-                if (isNaN(d.getTime())) return str;
-                return d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
-            }
-        
-            function formatDate(str) {
-                // "3/28/2026 1:30:00 PM" → "Sat Mar 28"
-                const d = new Date(str);
-                if (isNaN(d.getTime())) return str;
-                return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
-            }
-        
-            function parseDateKey(str) {
-                // "3/28/2026 1:30:00 PM" → "2026-03-28" for sorting
-                const d = new Date(str);
-                if (isNaN(d.getTime())) return str;
-                return d.toISOString().slice(0, 10);
-            }
-        
-            // ── Concurrency pool ──────────────────────────────────────────────────────
-        
-            function runPool(tasks, worker, { isPaused = () => false, onSetResume = () => {}, shouldAbort = () => false } = {}) {
-                return new Promise(resolve => {
-                    if (!tasks.length) { resolve([]); return; }
-                    let running = 0, index = 0;
-                    const results = new Array(tasks.length);
-        
-                    function next() {
-                        if (isPaused() || shouldAbort()) return;
-                        while (running < MAX_CONCURRENT && index < tasks.length) {
-                            if (shouldAbort()) return;
-                            const i = index++;
-                            running++;
-                            worker(tasks[i], i)
-                                .then(r  => { results[i] = r; })
-                                .catch(() => { results[i] = null; })
-                                .finally(() => {
-                                    running--;
-                                    if (index < tasks.length) next();
-                                    else if (running === 0) resolve(results);
-                                });
-                        }
-                    }
-                    onSetResume(next);
-                    next();
-                });
-            }
-        
-            // ── Scrape: Phase 1 — departments ─────────────────────────────────────────
-        
-            async function fetchDepartment(dept, baseState) {
-                const doc = await doPostback(
-                    'ctl00$MainContent$acdmcDpLst',
-                    { 'ctl00$MainContent$acdmcDpLst': dept.value },
-                    baseState
-                );
-                const deptState = extractFormState(doc);
-                const table = doc.getElementById('MainContent_dprtmntDg');
-                if (!table) return [];
-                return Array.from(table.querySelectorAll('a')).map(a => {
-                    const href = a.getAttribute('href') || '';
-                    const match = href.match(/__doPostBack\('([^']+)'/);
-                    return match ? { name: stripTitle(a.textContent.trim()), target: match[1], deptLabel: dept.label, state: deptState } : null;
-                }).filter(Boolean);
-            }
-        
-            // ── Scrape: Phase 2 — proctor schedules ───────────────────────────────────
-        
-            async function fetchProctorSchedule(proctor) {
-                const doc = await doPostback(proctor.target, {}, proctor.state);
-                const table = doc.getElementById('MainContent_schdlDg');
-                if (!table) return [];
-                const rows = [];
-                Array.from(table.querySelectorAll('tr')).forEach((tr, i) => {
-                    if (i === 0) return; // skip header
-                    const tds = tr.querySelectorAll('td');
-                    if (tds.length < 5) return;
-                    const examRaw = tds[0].textContent.trim();
-                    const hall = tds[1].textContent.trim();
-                    const startRaw = tds[2].textContent.trim();
-                    const endRaw = tds[3].textContent.trim();
-                    const coverName = stripTitle(tds[4].textContent);
-                    const { courseCode, examName, program } = parseExamString(examRaw);
-                    const dateKey = parseDateKey(startRaw);
-                    const timeSort = new Date(startRaw).toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
-                    rows.push({
-                        proctor: proctor.name,
-                        department: proctor.deptLabel,
-                        examName,
-                        courseCode,
-                        program,
-                        hall,
-                        dateKey,
-                        date: formatDate(startRaw),
-                        startTime: formatTime(startRaw),
-                        timeSort,
-                        slotKey: dateKey + '|' + timeSort,
-                        endTime: formatTime(endRaw),
-                        coverName,
-                    });
-                });
-                return rows;
-            }
-        
-            // ── Proctoring Exchange (Take) ────────────────────────────────────────────
-            // Replicates the portal's own flow: dept select → proctor click → exam click
-            // (arms the form: server fills prctrIdHdn/cvrStfIdHdn and renders the confirm
-            // widget) → final POST with rplcChk=on + setBtn. Everything is resolved fresh
-            // at take-time by name/slot matching, so cached and CSV rows work too.
-        
-            function deptValueForLabel(label) {
-                const deptEl = document.getElementById('MainContent_acdmcDpLst');
-                if (!deptEl) return '';
-                const want = (label || '').trim().toLowerCase();
-                const opt = Array.from(deptEl.options).find(o => o.text.trim().toLowerCase() === want);
-                return opt ? opt.value : '';
-            }
-        
-            async function prepareExchange(row) {
-                // Step 1 — select the department
-                const deptValue = deptValueForLabel(row.department);
-                if (!deptValue) throw new Error(`Department "${row.department}" not found on this page.`);
-                const deptDoc = await doPostback(
-                    'ctl00$MainContent$acdmcDpLst',
-                    { 'ctl00$MainContent$acdmcDpLst': deptValue }
-                );
-        
-                // Step 2 — click the proctor name (matched by title-stripped name)
-                const wantName = stripTitle(row.proctor).toLowerCase();
-                const proctorLink = Array.from(deptDoc.querySelectorAll('#MainContent_dprtmntDg a')).find(a =>
-                    stripTitle(a.textContent.trim()).toLowerCase() === wantName
-                );
-                if (!proctorLink) throw new Error(`Proctor "${row.proctor}" not found in ${row.department}.`);
-                const proctorTarget = ((proctorLink.getAttribute('href') || '').match(/__doPostBack\('([^']+)'/) || [])[1];
-                if (!proctorTarget) throw new Error('Could not read the proctor link.');
-                const schedDoc = await doPostback(
-                    proctorTarget,
-                    { 'ctl00$MainContent$acdmcDpLst': deptValue },
-                    extractFormState(deptDoc)
-                );
-        
-                // Step 3 — click the exam row (matched by date+time slot and hall)
-                const examEntry = Array.from(schedDoc.querySelectorAll('#MainContent_schdlDg tr')).slice(1).map(tr => {
-                    const tds = tr.querySelectorAll('td');
-                    if (tds.length < 5) return null;
-                    const startRaw = tds[2].textContent.trim();
-                    const slotKey = parseDateKey(startRaw) + '|' +
-                        new Date(startRaw).toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
-                    return { a: tds[0].querySelector('a'), slotKey, hall: tds[1].textContent.trim(), cover: stripTitle(tds[4].textContent) };
-                }).find(x => x && x.slotKey === row.slotKey && x.hall === row.hall);
-                if (!examEntry || !examEntry.a) throw new Error("This exam is no longer on the proctor's schedule. Refresh the data.");
-        
-                // Freshness check: someone may have already covered it since the last scrape
-                if (examEntry.cover) {
-                    // Reflect the fresh cover in our data so the table updates
-                    markRowCovered(row, examEntry.cover);
-                    throw new Error(`Already taken by ${examEntry.cover}.`);
-                }
-                const examTarget = ((examEntry.a.getAttribute('href') || '').match(/__doPostBack\('([^']+)'/) || [])[1];
-                if (!examTarget) throw new Error('Could not read the exam link.');
-                const confirmDoc = await doPostback(
-                    examTarget,
-                    {
-                        'ctl00$MainContent$acdmcDpLst': deptValue,
-                        'ctl00$MainContent$prctrIdHdn': '',
-                        'ctl00$MainContent$cvrStfIdHdn': '',
-                    },
-                    extractFormState(schedDoc)
-                );
-        
-                // Server fills the hidden ids and renders the confirm widget when armed
-                const getEl = id => confirmDoc.getElementById(id);
-                const prctrId  = (getEl('MainContent_prctrIdHdn')  || {}).value || '';
-                const cvrStfId = (getEl('MainContent_cvrStfIdHdn') || {}).value || '';
-                const nm = (getEl('MainContent_nmLbl')?.textContent || row.proctor).trim();
-                const tm = (getEl('MainContent_tmLbl')?.textContent || `${row.date} ${row.startTime} ${row.hall}`).trim();
-                if (!prctrId || !getEl('MainContent_setBtn')) {
-                    const msg = (getEl('MainContent_msgLbl')?.textContent || '').trim();
-                    throw new Error(msg || 'The portal did not offer a replacement for this exam.');
-                }
-                return { deptValue, prctrId, cvrStfId, nm, tm, state: extractFormState(confirmDoc) };
-            }
-        
-            async function executeExchange(prep) {
-                const doc = await doPostback('', {
-                    'ctl00$MainContent$acdmcDpLst': prep.deptValue,
-                    'ctl00$MainContent$prctrIdHdn': prep.prctrId,
-                    'ctl00$MainContent$cvrStfIdHdn': prep.cvrStfId,
-                    'ctl00$MainContent$rplcChk': 'on',
-                    'ctl00$MainContent$setBtn': 'Proceed With Replacement',
-                }, prep.state);
-                return (doc.getElementById('MainContent_msgLbl')?.textContent || '').trim();
-            }
-        
-            // ── Scrape orchestrator ───────────────────────────────────────────────────
-        
-            async function scrapeAll(cb, scope) {
-                // cb: { onProgress(stats), onRows(rows), onError(type), onComplete(rows) }
-                // scope: optional { value, label } to fetch a single department; falsy = all
-                const baseState = extractFormState(document);
-                const deptEl = document.getElementById('MainContent_acdmcDpLst');
-                let depts = Array.from(deptEl.options)
-                    .filter(o => o.value !== '')
-                    .map(o => ({ value: o.value, label: o.text.trim() }));
-                if (scope && scope.value) {
-                    depts = depts.filter(d => d.value === scope.value);
-                }
-        
-                const stats = { depts: 0, totalDepts: depts.length, proctors: 0, exams: 0, failed: 0,
-                                proctorsDone: 0, totalProctors: 0 };
-                const allProctors = [];
-                const allRows = [];
-                const uniqueExams = new Set();
-        
-                let aborted = false;
-                const poolCtrl = {
-                    isPaused: () => _paused,
-                    onSetResume: fn => { _resumeFn = fn; },
-                    shouldAbort: () => aborted,
-                };
-        
-                // Phase 1 — departments
-                await runPool(depts, async dept => {
-                    try {
-                        const proctors = await fetchDepartment(dept, baseState);
-                        allProctors.push(...proctors);
-                        stats.depts++;
-                        stats.proctors = allProctors.length;
-                    } catch (e) {
-                        if (e.message === 'SESSION_EXPIRED') { aborted = true; cb.onError('SESSION_EXPIRED'); throw e; }
-                        stats.failed++;
-                    }
-                    cb.onProgress({ ...stats });
-                }, poolCtrl);
-        
-                stats.totalProctors = allProctors.length;
-        
-                // Phase 2 — proctor schedules
-                await runPool(allProctors, async proctor => {
-                    try {
-                        const rows = await fetchProctorSchedule(proctor);
-                        allRows.push(...rows);
-                        rows.forEach(r => uniqueExams.add(`${r.examName}|${r.slotKey}|${r.hall}`));
-                        stats.exams = uniqueExams.size;
-                    } catch (e) {
-                        if (e.message === 'SESSION_EXPIRED') { aborted = true; cb.onError('SESSION_EXPIRED'); throw e; }
-                        stats.failed++;
-                    }
-                    stats.proctorsDone++;
-                    cb.onProgress({ ...stats });
-                    cb.onRows([...allRows]);
-                }, poolCtrl);
-        
-                saveCache(allRows);
-                cb.onComplete(allRows);
-            }
-        
-            // ── Styles ────────────────────────────────────────────────────────────────
-        
-            function injectStyles() {
-                if (document.getElementById('gius-proctor-styles')) return;
-                const s = document.createElement('style');
-                s.id = 'gius-proctor-styles';
-                s.textContent = `
-                    @keyframes giusSlideDown {
-                        from { opacity: 0; transform: translateY(-14px); }
-                        to   { opacity: 1; transform: translateY(0); }
-                    }
-                    @keyframes giusRowIn {
-                        from { opacity: 0; transform: translateX(-8px); }
-                        to   { opacity: 1; transform: translateX(0); }
-                    }
-                    @keyframes giusSpin {
-                        to { transform: rotate(360deg); }
-                    }
-                    @keyframes giusRefreshPulse {
-                        0%   { box-shadow: 0 0 0 0 rgba(27,89,198,0.45); }
-                        70%  { box-shadow: 0 0 0 7px rgba(27,89,198,0); }
-                        100% { box-shadow: 0 0 0 0 rgba(27,89,198,0); }
-                    }
-                    .gius-refresh-pulse {
-                        animation: giusRefreshPulse 1.1s ease-out infinite;
-                        border-color: #1B59C6 !important; color: #1B59C6 !important;
-                    }
-                    .gius-refresh-pulse .fa { animation: giusSpin 1.6s linear infinite; }
-        
-                    .gius-proctor-card {
-                        background: #fff;
-                        border: 1px solid #eeeeee;
-                        border-radius: 6px;
-                        box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
-                        margin-bottom: 20px;
-                        margin-top: 10px;
-                        animation: giusSlideDown 0.38s cubic-bezier(0.25,0.46,0.45,0.94);
-                        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-                        overflow: hidden;
-                        position: relative;
-                    }
-                    .gius-proctor-card::before {
-                        content: "";
-                        position: absolute; top: 0; left: 0;
-                        width: 100%; height: 3px;
-                        background: #ffc107;
-                    }
-                    .gius-proctor-hdr {
-                        background: #272c33;
-                        color: #fff;
-                        padding: 10px 14px;
-                        border-bottom: 2px solid #ffc107;
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-                        gap: 10px;
-                        flex-wrap: wrap;
-                        position: relative;
-                        z-index: 10; /* keep header (and its fetch dropdown) above the body table */
-                    }
-                    .gius-proctor-hdr-left {
-                        display: flex; align-items: center; gap: 10px;
-                    }
-                    .gius-proctor-title {
-                        margin: 0;
-                        font-size: 14px; font-weight: 700; color: #fff;
-                        display: flex; align-items: center; gap: 8px;
-                    }
-                    .gius-proctor-meta {
-                        font-size: 12px; color: rgba(255,255,255,0.65);
-                        margin-top: 2px;
-                    }
-                    .gius-proctor-hdr-btns {
-                        display: flex; gap: 6px; align-items: center;
-                    }
-                    .gius-fetch-dept-input {
-                        height: 26px; width: 220px; padding: 0 8px;
-                        font-size: 12px; font-weight: 600;
-                        border: 1px solid #d1d5db; border-radius: 6px;
-                        background: #fff; color: #374151;
-                        font-family: 'Open Sans', Arial, sans-serif;
-                        text-overflow: ellipsis;
-                    }
-                    .gius-fetch-dept-input:focus { outline: 2px solid #60a5fa; outline-offset: 1px; border-color: #1B59C6; }
-                    .gius-fetch-dept-input.gius-fetch-dept-error { border-color: #dc2626; outline-color: #f87171; }
-                    html.gius-dark .gius-fetch-dept-input {
-                        background: #313244 !important; border-color: #45475a !important; color: #cdd6f4 !important;
-                    }
-                    .gius-proctor-body {
-                        padding: 14px 16px;
-                    }
-                    .gius-proctor-body.collapsed { display: none; }
-        
-                    .gius-proctor-hdr { cursor: pointer; }
-                    .gius-proctor-hdr:hover { opacity: 0.92; }
-                    .gius-proctor-hdr button { cursor: pointer; }
-        
-                    .gius-empty-state {
-                        text-align: center; padding: 32px 16px;
-                    }
-                    .gius-empty-state p {
-                        color: #6b7280; margin: 0 0 14px; font-size: 14px;
-                    }
-                    .gius-empty-hint {
-                        max-width: 460px; margin: 0 auto 16px !important;
-                        font-size: 12.5px !important; line-height: 1.5;
-                        color: #6b7280; background: #f3f4f6;
-                        border: 1px solid #e5e7eb; border-radius: 6px;
-                        padding: 8px 12px !important;
-                    }
-                    .gius-empty-hint .fa { color: #1B59C6; margin-right: 4px; }
-                    html.gius-dark .gius-empty-hint {
-                        background: #181825 !important; border-color: #313244 !important; color: #9399b2 !important;
-                    }
-                    html.gius-dark .gius-empty-hint .fa { color: #89b4fa !important; }
-        
-                    .gius-btn {
-                        height: 32px; padding: 0 14px; border-radius: 6px;
-                        font-size: 13px; font-weight: 700; cursor: pointer;
-                        border: 1px solid transparent;
-                        transition: all 0.2s ease;
-                        display: inline-flex; align-items: center; gap: 5px;
-                        white-space: nowrap;
-                        font-family: 'Open Sans', Arial, sans-serif;
-                    }
-                    .gius-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-                    .gius-btn-primary  { background: #1B59C6; border-color: #1648a8; color: #fff; }
-                    .gius-btn-primary:not(:disabled):hover  { background: #1648a8; }
-                    .gius-btn-outline  { background: #fff; border-color: #d1d5db; color: #374151; }
-                    .gius-btn-outline:not(:disabled):hover  { background: #f9fafb; }
-                    .gius-btn-muted    { background: #f9fafb; border-color: #d1d5db; color: #374151; }
-                    .gius-btn-muted:not(:disabled):hover    { background: #e5e7eb; }
-                    .gius-btn-sm { height: 26px; padding: 0 10px; font-size: 12px; }
-        
-                    /* Entry trigger — dark slate + gold accent, matches the panel header */
-                    #gius-proctor-trigger {
-                        margin: 10px 0 0 !important;
-                        height: 34px !important; padding: 0 16px !important;
-                        display: inline-flex !important; align-items: center; gap: 7px;
-                        background: #272c33 !important; color: #fff !important;
-                        border: 1px solid #1c2025 !important;
-                        border-left: 3px solid #ffc107 !important;
-                        border-radius: 6px !important;
-                        font: 700 13px/1 'Open Sans', Arial, sans-serif !important;
-                        cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,.15);
-                        transition: background .2s ease, transform .1s ease;
-                        animation: giusSlideDown 0.3s ease both;
-                    }
-                    #gius-proctor-trigger:hover { background: #363d47 !important; }
-                    #gius-proctor-trigger:active { transform: translateY(1px); }
-                    #gius-proctor-trigger .fa { color: #ffc107 !important; }
-                    #gius-proctor-trigger.gius-hide { display: none !important; }
-                    html.gius-dark #gius-proctor-trigger {
-                        background: #11111b !important; color: #fff !important;
-                        border-color: #0b0b12 !important; border-left-color: #ffc107 !important;
-                    }
-                    html.gius-dark #gius-proctor-trigger .fa { color: #ffc107 !important; }
-        
-                    .gius-progress-wrap {
-                        background: #e5e7eb; border-radius: 999px; height: 8px; overflow: hidden; margin-bottom: 6px;
-                    }
-                    .gius-progress-bar {
-                        height: 100%; border-radius: 999px; background: #1B59C6;
-                        transition: width 0.45s ease;
-                    }
-                    .gius-progress-label { font-size: 12px; color: #6b7280; margin-bottom: 12px; }
-        
-                    .gius-filter-bar {
-                        display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
-                        margin-bottom: 10px;
-                    }
-                    .gius-filter-select, .gius-filter-input {
-                        height: 32px; padding: 4px 8px; font-size: 13px;
-                        border: 1px solid #9ca3af; border-radius: 6px;
-                        color: #111827; background: #fff;
-                        font-family: 'Open Sans', sans-serif;
-                        cursor: pointer;
-                        transition: border-color 0.2s ease;
-                    }
-                    .gius-filter-input { min-width: 180px; }
-                    .gius-filter-select:focus, .gius-filter-input:focus {
-                        outline: 2px solid #60a5fa; outline-offset: 1px; border-color: #1B59C6;
-                    }
-        
-                    .gius-chip-row {
-                        display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 10px;
-                    }
-                    .gius-chip {
-                        display: inline-flex; align-items: center; gap: 4px;
-                        background: #dbeafe; color: #1e40af;
-                        border: 1px solid #bfdbfe; border-radius: 999px;
-                        padding: 2px 10px; font-size: 12px; font-weight: 600;
-                        font-family: 'Open Sans', sans-serif;
-                    }
-                    .gius-chip-x {
-                        cursor: pointer; font-size: 13px; line-height: 1;
-                        margin-left: 2px; opacity: 0.7;
-                    }
-                    .gius-chip-x:hover { opacity: 1; }
-        
-                    .gius-table-section {
-                        border: 1px solid #e5e7eb; border-radius: 4px;
-                    }
-                    .gius-proctor-table-wrap {
-                        overflow-x: auto; border-radius: 4px 4px 0 0;
-                    }
-                    .gius-proctor-table {
-                        width: 100%; border-collapse: collapse;
-                        font-size: 13px; font-family: 'Open Sans', sans-serif;
-                    }
-                    .gius-proctor-table thead th {
-                        background: #272c33; color: #fff;
-                        padding: 8px 10px; text-align: left; white-space: nowrap;
-                        font-size: 12px; font-weight: 700; letter-spacing: 0.4px;
-                        cursor: pointer; user-select: none;
-                        position: sticky; top: 0; z-index: 2;
-                    }
-                    .gius-proctor-table thead th:hover { background: #363d47; }
-                    .gius-sort-icon { margin-left: 4px; opacity: 0.5; }
-                    .gius-sort-icon.active { opacity: 1; }
-                    .gius-proctor-table tbody tr { border-bottom: 1px solid #f3f4f6; }
-                    .gius-proctor-table tbody tr:nth-child(even) { background: #f9fafb; }
-                    .gius-proctor-table tbody tr:hover { background: #eff6ff; }
-                    .gius-proctor-table td {
-                        padding: 7px 10px; color: #374151; vertical-align: middle;
-                    }
-                    .gius-proctor-table td.muted { color: #9ca3af; font-style: italic; }
-                    .gius-row-in { animation: giusRowIn 0.25s ease both; }
-                    .gius-data-row { cursor: pointer; }
-                    .gius-cover-view-row { border-left: 3px solid #6366f1; background: #eef2ff !important; }
-                    .gius-cover-view-row td:first-child { font-style: italic; color: #4338ca; font-weight: 600; }
-                    .gius-cover-view-row:hover { background: #e0e7ff !important; }
-                    html.gius-dark .gius-cover-view-row { border-left-color: #818cf8 !important; background: #1e1e38 !important; }
-                    html.gius-dark .gius-cover-view-row td:first-child { color: #a5b4fc !important; }
-                    html.gius-dark .gius-cover-view-row:hover { background: #25254a !important; }
-                    .gius-covered-row { border-left: 3px solid #f59e0b; background: #fffbeb !important; }
-                    .gius-covered-row td:first-child { color: #92400e; font-weight: 600; }
-                    .gius-covered-row:hover { background: #fef3c7 !important; }
-                    html.gius-dark .gius-covered-row { border-left-color: #fbbf24 !important; background: #1c1400 !important; }
-                    html.gius-dark .gius-covered-row td:first-child { color: #fbbf24 !important; }
-                    html.gius-dark .gius-covered-row:hover { background: #2a1e00 !important; }
-                    .gius-coproctor-row td {
-                        background: #e0e7ff !important; color: #1e3a8a !important;
-                        font-size: 1em; padding: 8px 16px 8px 20px !important;
-                        border-top: 1px solid #a5b4fc !important;
-                        border-left: 4px solid #6366f1 !important;
-                        animation: giusSlideDown 0.2s ease;
-                    }
-                    .gius-coproctor-label {
-                        font-weight: 700; display: block; margin-bottom: 4px; color: #4338ca;
-                    }
-                    .gius-coproctor-list {
-                        margin: 0; padding: 0 0 0 18px; list-style: disc;
-                    }
-                    .gius-coproctor-list li { margin: 2px 0; }
-                    .gius-coproctor-dept { color: #6366f1; margin-left: 4px; }
-                    html.gius-dark .gius-coproctor-dept { color: #818cf8 !important; }
-                    .gius-cover-status {
-                        display: inline-block; margin-left: 6px; font-size: 10px; font-weight: 600;
-                        background: #e0e7ff; color: #4338ca; border-radius: 4px; padding: 1px 5px;
-                        vertical-align: middle; letter-spacing: 0.02em;
-                    }
-                    html.gius-dark .gius-cover-status { background: #1e2050 !important; color: #a5b4fc !important; }
-                    .gius-original-status {
-                        display: inline-block; margin-left: 6px; font-size: 10px; font-weight: 600;
-                        background: #fef3c7; color: #92400e; border-radius: 4px; padding: 1px 5px;
-                        vertical-align: middle; letter-spacing: 0.02em;
-                    }
-                    html.gius-dark .gius-original-status { background: #451a03 !important; color: #fbbf24 !important; }
-        
-                    .gius-covering-badge {
-                        display: block; font-size: 11px; color: #6366f1;
-                        font-style: italic; margin-top: 2px;
-                    }
-                    html.gius-dark .gius-covering-badge { color: #818cf8 !important; }
-        
-                    .gius-table-footer { border-top: 1px solid #e5e7eb; padding: 6px 10px; }
-                    .gius-pagination {
-                        display: flex; align-items: center; justify-content: space-between;
-                        flex-wrap: wrap; gap: 8px;
-                    }
-                    .gius-page-info { font-size: 12px; color: #6b7280; }
-                    .gius-page-controls { display: flex; align-items: center; gap: 6px; }
-                    .gius-page-size-label { font-size: 12px; color: #6b7280; }
-                    .gius-page-size-select {
-                        height: 26px; padding: 0 6px; font-size: 12px;
-                        border: 1px solid #d1d5db; border-radius: 4px;
-                        background: #fff; color: #374151; cursor: pointer;
-                        font-family: 'Open Sans', sans-serif;
-                    }
-                    .gius-page-btn {
-                        height: 26px; min-width: 26px; padding: 0 7px;
-                        border: 1px solid #d1d5db; border-radius: 4px;
-                        background: #fff; color: #374151; font-size: 14px; cursor: pointer;
-                        display: inline-flex; align-items: center; justify-content: center;
-                        font-family: 'Open Sans', sans-serif;
-                    }
-                    .gius-page-btn:hover:not(:disabled) { background: #f3f4f6; }
-                    .gius-page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
-                    .gius-page-num { font-size: 12px; color: #374151; white-space: nowrap; }
-        
-                    .gius-spinner {
-                        display: inline-block; width: 13px; height: 13px;
-                        border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff;
-                        border-radius: 50%; animation: giusSpin 0.7s linear infinite;
-                        vertical-align: middle;
-                    }
-        
-                    .gius-warn-pill {
-                        display: inline-flex; align-items: center; gap: 5px;
-                        background: #fef3c7; color: #92400e; border: 1px solid #fde68a;
-                        border-radius: 999px; padding: 2px 12px; font-size: 12px; font-weight: 600;
-                    }
-        
-                    /* ── Dark mode overrides ── */
-                    html.gius-dark .gius-proctor-card {
-                        background: #181825 !important; border-color: transparent !important;
-                    }
-                    html.gius-dark .gius-proctor-hdr { background: #11111b !important; }
-                    html.gius-dark .gius-proctor-body { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-proctor-table tbody tr { border-color: #313244 !important; }
-                    html.gius-dark .gius-proctor-table tbody tr:nth-child(even) { background: #181825 !important; }
-                    html.gius-dark .gius-proctor-table tbody tr:hover { background: #1e3a6e !important; }
-                    html.gius-dark .gius-proctor-table td { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-proctor-table td.muted { color: #9399b2 !important; }
-                    html.gius-dark .gius-progress-wrap { background: #313244 !important; }
-                    html.gius-dark .gius-progress-label { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-filter-select, html.gius-dark .gius-filter-input {
-                        background: #313244 !important; color: #cdd6f4 !important;
-                        border-color: #45475a !important;
-                    }
-                    html.gius-dark .gius-btn-outline {
-                        background: #313244 !important; border-color: #45475a !important;
-                        color: #cdd6f4 !important;
-                    }
-                    html.gius-dark .gius-btn-muted {
-                        background: #313244 !important; border-color: #45475a !important;
-                        color: #cdd6f4 !important;
-                    }
-                    html.gius-dark .gius-page-info  { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-page-num   { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-page-size-label { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-page-size-select {
-                        background: #313244 !important; color: #cdd6f4 !important; border-color: #45475a !important;
-                    }
-                    html.gius-dark .gius-page-btn {
-                        background: #313244 !important; color: #cdd6f4 !important; border-color: #45475a !important;
-                    }
-                    html.gius-dark .gius-page-btn:hover:not(:disabled) { background: #45475a !important; }
-                    html.gius-dark .gius-table-section { border-color: #45475a !important; }
-                    html.gius-dark .gius-table-footer { border-top-color: #45475a !important; }
-                    html.gius-dark .gius-empty-state p { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-chip {
-                        background: #1a2a4a !important; color: #89b4fa !important;
-                        border-color: #1e3a6e !important;
-                    }
-                    html.gius-dark .gius-warn-pill {
-                        background: #2d1f00 !important; color: #fbbf24 !important;
-                        border-color: #78350f !important;
-                    }
-                    html.gius-dark .gius-coproctor-row td {
-                        background: #1e2050 !important; color: #e0e7ff !important;
-                        border-top-color: #4338ca !important; border-left-color: #818cf8 !important;
-                    }
-                    html.gius-dark .gius-coproctor-label { color: #a5b4fc !important; }
-        
-                    /* ── Dropdown search ── */
-                    .gius-dd-wrap   { position: relative; display: inline-block; z-index: 1000; }
-                    .gius-dd-panel  {
-                        position: fixed; z-index: 2147483000;
-                        background: #fff; border: 1px solid #d1d5db; border-radius: 6px;
-                        box-shadow: 0 4px 12px rgba(0,0,0,.12);
-                        max-height: 220px; overflow-y: auto; display: none;
-                    }
-                    .gius-dd-item   {
-                        padding: 6px 10px; font-size: 13px; cursor: pointer; color: #374151;
-                        white-space: nowrap; font-family: 'Open Sans', sans-serif;
-                    }
-                    .gius-dd-item:hover, .gius-dd-item.gius-dd-hi { background: #eff6ff; color: #1d4ed8; }
-                    .gius-dd-fuzzy  { color: #6b7280; font-style: italic; }
-                    .gius-dd-fuzzy-mark { font-size: 10px; margin-right: 4px; color: #9ca3af; }
-                    .gius-dd-empty  { padding: 6px 10px; font-size: 12px; color: #9ca3af;
-                                      font-family: 'Open Sans', sans-serif; }
-                    html.gius-dark .gius-dd-panel  {
-                        background: #313244 !important; border-color: #45475a !important;
-                        box-shadow: 0 4px 12px rgba(0,0,0,.4) !important;
-                    }
-                    html.gius-dark .gius-dd-item { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-dd-item:hover,
-                    html.gius-dark .gius-dd-item.gius-dd-hi  {
-                        background: #45475a !important; color: #cdd6f4 !important;
-                    }
-                    html.gius-dark .gius-dd-fuzzy  { color: #6c7086 !important; }
-                    html.gius-dark .gius-dd-fuzzy-mark { color: #585b70 !important; }
-                    html.gius-dark .gius-dd-empty  { color: #6c7086 !important; }
-        
-                    .gius-take-th { width: 1%; }
-                    .gius-take-btn { white-space: nowrap; }
-                    .gius-taken-badge {
-                        display: inline-flex; align-items: center; gap: 4px;
-                        background: #dcfce7; color: #166534;
-                        border: 1px solid #bbf7d0; border-radius: 999px;
-                        padding: 2px 10px; font-size: 12px; font-weight: 700;
-                        font-family: 'Open Sans', sans-serif; white-space: nowrap;
-                    }
-                    html.gius-dark .gius-taken-badge {
-                        background: #052e16 !important; color: #4ade80 !important;
-                        border-color: #14532d !important;
-                    }
-        
-                    .gius-ex-overlay {
-                        position: fixed; inset: 0; z-index: 2147483646;
-                        background: rgba(17, 24, 39, 0.55);
-                        display: flex; align-items: center; justify-content: center;
-                        animation: giusSlideDown 0.15s ease both;
-                    }
-                    .gius-ex-modal {
-                        background: #fff; border-radius: 10px; width: 420px; max-width: 92vw;
-                        box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-                        font-family: 'Open Sans', Arial, sans-serif;
-                        overflow: hidden;
-                    }
-                    .gius-ex-hdr {
-                        display: flex; align-items: center; justify-content: space-between;
-                        background: #272c33; color: #fff;
-                        padding: 10px 14px; font-size: 14px; font-weight: 700;
-                    }
-                    .gius-ex-close {
-                        background: none; border: none; color: #fff; font-size: 15px;
-                        cursor: pointer; opacity: 0.7; padding: 2px 6px;
-                    }
-                    .gius-ex-close:hover { opacity: 1; }
-                    .gius-ex-body { padding: 18px 16px; }
-                    .gius-ex-loading {
-                        display: flex; align-items: center; gap: 10px;
-                        color: #6b7280; font-size: 14px; padding: 10px 0;
-                    }
-                    .gius-ex-spinner {
-                        width: 18px; height: 18px; border-radius: 50%;
-                        border: 3px solid #e5e7eb; border-top-color: #1B59C6;
-                        animation: giusSpin 0.8s linear infinite; flex-shrink: 0;
-                    }
-                    .gius-ex-text { font-size: 14px; color: #111827; margin: 0 0 8px; line-height: 1.6; }
-                    .gius-ex-exam { font-size: 13px; color: #6b7280; margin: 0 0 14px; }
-                    .gius-ex-check {
-                        display: flex; align-items: flex-start; gap: 8px;
-                        font-size: 13px; color: #374151; cursor: pointer;
-                        margin: 0 0 16px; line-height: 1.5;
-                    }
-                    .gius-ex-check input { margin-top: 3px; cursor: pointer; }
-                    .gius-ex-actions { display: flex; justify-content: flex-end; gap: 8px; }
-                    .gius-ex-result {
-                        display: flex; align-items: flex-start; gap: 8px;
-                        font-size: 14px; margin: 0 0 16px; line-height: 1.5;
-                    }
-                    .gius-ex-result .fa { margin-top: 2px; }
-                    .gius-ex-ok  { color: #166534; }
-                    .gius-ex-err { color: #b91c1c; }
-                    html.gius-dark .gius-ex-modal { background: #1e1e2e !important; }
-                    html.gius-dark .gius-ex-hdr { background: #11111b !important; }
-                    html.gius-dark .gius-ex-text { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-ex-exam { color: #9399b2 !important; }
-                    html.gius-dark .gius-ex-check { color: #bac2de !important; }
-                    html.gius-dark .gius-ex-loading { color: #9399b2 !important; }
-                    html.gius-dark .gius-ex-spinner { border-color: #313244 !important; border-top-color: #89b4fa !important; }
-                    html.gius-dark .gius-ex-ok  { color: #4ade80 !important; }
-                    html.gius-dark .gius-ex-err { color: #f87171 !important; }
-                `;
-                document.head.appendChild(s);
-            }
-        
-            // ── UI state ──────────────────────────────────────────────────────────────
-        
-            let _allRows = [];
-            let _filteredRows = [];
-            let _renderedRows = [];
-            let _coveringMap = new Map();
-            let _filters = { search: '', day: '', exam: '', proctor: '', room: '', department: '' };
-            let _sortCol = 'dateKey';
-            let _sortAsc = true;
-            let _pageSize = 20;
-            let _currentPage = 1;
-            let _paused = false;
-            let _resumeFn = null;
-            let _panelEl = null;
-            let _scraping = false;
-            let _fetchDeptList = []; // [{ value, label }] from the portal dropdown
-        
-            // Resolve the typed department text → { value, label } | null (all) | { error }
-            function resolveFetchScope() {
-                const inp = document.getElementById('gius-fetch-dept');
-                if (!inp) return null;
-                const text = inp.value.trim();
-                if (!text) return null; // blank = all departments
-                const lo = text.toLowerCase();
-                // Exact (case-insensitive), then substring
-                let hit = _fetchDeptList.find(d => d.label.toLowerCase() === lo)
-                       || _fetchDeptList.find(d => d.label.toLowerCase().includes(lo));
-                // Then typo-tolerant: closest full-label edit distance within a budget
-                if (!hit) {
-                    let best = null, bestD = Infinity;
-                    for (const d of _fetchDeptList) {
-                        const dist = editDistance(lo, d.label.toLowerCase());
-                        if (dist < bestD) { bestD = dist; best = d; }
-                    }
-                    if (best && bestD <= Math.ceil(lo.length / 4)) hit = best;
-                }
-                return hit ? { value: hit.value, label: hit.label } : { error: text };
-            }
-        
-            function flagFetchDeptError() {
-                const inp = document.getElementById('gius-fetch-dept');
-                if (!inp) return;
-                inp.classList.add('gius-fetch-dept-error');
-                inp.title = 'No matching department — clear the box to fetch all';
-                inp.focus();
-            }
-        
-            // Read the portal's department dropdown into _fetchDeptList, and seed the
-            // input with whatever is currently selected there (so the portal's choice
-            // becomes an explicit, visible scope instead of a silent one).
-            function populateFetchDept() {
-                const inp = document.getElementById('gius-fetch-dept');
-                const portal = document.getElementById('MainContent_acdmcDpLst');
-                if (!inp || !portal) return;
-                _fetchDeptList = Array.from(portal.options)
-                    .filter(o => o.value !== '')
-                    .map(o => ({ value: o.value, label: o.text.trim() }));
-                const selected = _fetchDeptList.find(d => d.value === portal.value);
-                if (selected && !inp.value) inp.value = selected.label;
-            }
-        
-            function setAllRows(rows) {
-                _allRows = rows;
-                _coveringMap = buildCoveringMap(rows);
-                updateFilterOptions();
-            }
-        
-            function uniqueSorted(rows, key) {
-                return [...new Set(rows.map(r => r[key]).filter(Boolean))].sort();
-            }
-        
-            function escHtml(s) {
-                return String(s)
-                    .replace(/&/g, '&amp;')
-                    .replace(/</g, '&lt;')
-                    .replace(/>/g, '&gt;')
-                    .replace(/"/g, '&quot;');
-            }
-        
-            // ── Fuzzy search ─────────────────────────────────────────────────────────
-        
-            function editDistance(a, b) {
-                const m = a.length, n = b.length;
-                if (!m) return n; if (!n) return m;
-                const row = Array.from({ length: n + 1 }, (_, i) => i);
-                for (let i = 1; i <= m; i++) {
-                    let diag = row[0];
-                    row[0] = i;
-                    for (let j = 1; j <= n; j++) {
-                        const saved = row[j];
-                        row[j] = a[i-1] === b[j-1] ? diag
-                            : 1 + Math.min(row[j], row[j-1], diag);
-                        diag = saved;
-                    }
-                }
-                return row[n];
-            }
-        
-            // Returns true if query matches text via substring OR per-word edit distance.
-            // Rooms and dates: pass useFuzzy=false to use exact substring only.
-            function fuzzyMatch(query, text, useFuzzy = true) {
-                if (!query) return true;
-                if (text.includes(query)) return true;
-                if (!useFuzzy || query.length < 3) return false;
-                const threshold = Math.ceil(query.length / 4);
-                return text.split(/\s+/).some(word =>
-                    word.length >= query.length - threshold &&
-                    editDistance(query, word) <= threshold
-                );
-            }
-        
-            // Rank options array for dropdown: exact substring matches first, fuzzy-only after.
-            // Returns [{value, fuzzy}] where fuzzy=true means no substring match.
-            function rankOptions(query, options) {
-                if (!query) return options.map(v => ({ value: v, fuzzy: false }));
-                const q = query.toLowerCase();
-                const exact = [], fuzzyOnly = [];
-                for (const v of options) {
-                    const lo = v.toLowerCase();
-                    if (lo.includes(q)) {
-                        exact.push({ value: v, fuzzy: false });
-                    } else if (fuzzyMatch(q, lo)) {
-                        fuzzyOnly.push({ value: v, fuzzy: true });
-                    }
-                }
-                return [...exact, ...fuzzyOnly];
-            }
-        
-            // ── Dropdown component ────────────────────────────────────────────────────
-        
-            const _dropdownOptions = { day: [], exam: [], proctor: [], room: [], department: [] };
-        
-            function makeDropdown(inputId, getOptions) {
-                const inp = document.getElementById(inputId);
-                if (!inp) return;
-        
-                const wrap = document.createElement('span');
-                wrap.className = 'gius-dd-wrap';
-                inp.parentNode.insertBefore(wrap, inp);
-                wrap.appendChild(inp);
-        
-                const panel = document.createElement('ul');
-                panel.className = 'gius-dd-panel';
-                panel.style.minWidth = inp.offsetWidth + 'px';
-                // Mount on <body> (not inside the card) so no ancestor's overflow:hidden
-                // or stacking context can ever clip or hide the list.
-                document.body.appendChild(panel);
-        
-                let activeIdx = -1;
-                let rendered = [];
-        
-                // Position the panel as a viewport-fixed box anchored under the input.
-                // Fixed positioning escapes the card's `overflow:hidden` clip and any
-                // ancestor stacking context, so the list always sits above the rest of UI.
-                function position() {
-                    const r = inp.getBoundingClientRect();
-                    panel.style.top = (r.bottom + 2) + 'px';
-                    panel.style.left = r.left + 'px';
-                    panel.style.minWidth = r.width + 'px';
-                }
-        
-                function open(items) {
-                    rendered = items;
-                    activeIdx = -1;
-                    if (!items.length) {
-                        panel.innerHTML = `<li class="gius-dd-empty">No matches</li>`;
-                    } else {
-                        panel.innerHTML = items.map((item, i) =>
-                            item.fuzzy
-                                ? `<li class="gius-dd-item gius-dd-fuzzy" data-i="${i}"><span class="gius-dd-fuzzy-mark">~</span>${escHtml(item.value)}</li>`
-                                : `<li class="gius-dd-item" data-i="${i}">${escHtml(item.value)}</li>`
-                        ).join('');
-                    }
-                    panel.style.display = 'block';
-                    position();
-                }
-        
-                function close() { panel.style.display = 'none'; activeIdx = -1; rendered = []; }
-        
-                // Keep the fixed panel glued to the input on scroll/resize while open
-                const reposition = () => { if (panel.style.display === 'block') position(); };
-                window.addEventListener('scroll', reposition, true);
-                window.addEventListener('resize', reposition);
-        
-                function highlight(idx) {
-                    panel.querySelectorAll('.gius-dd-item').forEach((el, i) =>
-                        el.classList.toggle('gius-dd-hi', i === idx)
-                    );
-                    const el = panel.querySelectorAll('.gius-dd-item')[idx];
-                    if (el) el.scrollIntoView({ block: 'nearest' });
-                }
-        
-                function select(val) {
-                    inp.value = val;
-                    inp.dispatchEvent(new Event('input', { bubbles: true }));
-                    close();
-                }
-        
-                inp.addEventListener('input', () => {
-                    const q = inp.value.trim().toLowerCase();
-                    if (!q) { close(); return; }
-                    const items = rankOptions(q, getOptions());
-                    if (!items.length) { close(); return; }
-                    open(items);
-                });
-        
-                inp.addEventListener('keydown', e => {
-                    if (panel.style.display === 'none') return;
-                    const items = panel.querySelectorAll('.gius-dd-item');
-                    if (e.key === 'ArrowDown') {
-                        e.preventDefault();
-                        activeIdx = Math.min(activeIdx + 1, items.length - 1);
-                        highlight(activeIdx);
-                    } else if (e.key === 'ArrowUp') {
-                        e.preventDefault();
-                        activeIdx = Math.max(activeIdx - 1, 0);
-                        highlight(activeIdx);
-                    } else if (e.key === 'Enter' && activeIdx >= 0) {
-                        e.preventDefault();
-                        const item = rendered[activeIdx];
-                        if (item) select(item.value);
-                    } else if (e.key === 'Escape') {
-                        e.preventDefault();
-                        close();
-                    }
-                });
-        
-                panel.addEventListener('mousedown', e => {
-                    const li = e.target.closest('[data-i]');
-                    if (!li) return;
-                    e.preventDefault();
-                    const item = rendered[parseInt(li.dataset.i, 10)];
-                    if (item) select(item.value);
-                });
-        
-                document.addEventListener('click', e => {
-                    if (!wrap.contains(e.target) && !panel.contains(e.target)) close();
-                });
-            }
-        
-            // ── Panel skeleton ────────────────────────────────────────────────────────
-        
-            function buildPanel() {
-                const div = document.createElement('div');
-                div.id = 'gius-proctor-panel';
-                div.className = 'gius-proctor-card';
-                div.innerHTML = `
-                    <div class="gius-proctor-hdr" id="gius-proctor-hdr">
-                        <div class="gius-proctor-hdr-left" id="gius-proctor-hdr-toggle">
-                            <div>
-                                <h3 class="gius-proctor-title">
-                                    <i class="fa fa-laptop"></i> Proctor Schedule Aggregator
-                                </h3>
-                                <div class="gius-proctor-meta" id="gius-proctor-meta"></div>
-                            </div>
-                        </div>
-                        <div class="gius-proctor-hdr-btns">
-                            <span id="gius-proctor-warn" style="display:none"></span>
-                            <input class="gius-fetch-dept-input" id="gius-fetch-dept" type="text" placeholder="All Departments (type to scope)" title="Scope the fetch — type a department to fetch only it, or leave blank for all" autocomplete="off" />
-                            <button type="button" class="gius-btn gius-btn-outline gius-btn-sm" id="gius-proctor-upload" title="Load rows from a previously exported CSV">
-                                <i class="fa fa-upload"></i> Upload CSV
-                            </button>
-                            <input type="file" id="gius-file-input" accept=".csv" style="display:none">
-                            <button type="button" class="gius-btn gius-btn-outline gius-btn-sm" id="gius-proctor-csv" title="Export filtered rows as CSV">
-                                <i class="fa fa-download"></i> Export CSV
-                            </button>
-                            <button type="button" class="gius-btn gius-btn-outline gius-btn-sm" id="gius-proctor-refresh" title="Re-fetch using the selected scope">
-                                <i class="fa fa-refresh"></i> Refresh
-                            </button>
-                            <button type="button" class="gius-btn gius-btn-outline gius-btn-sm" id="gius-proctor-pause" style="display:none" title="Pause or resume fetching">&#x23F8; Pause</button>
-                            <button type="button" class="gius-btn gius-btn-muted gius-btn-sm" id="gius-proctor-close">&#x2715;</button>
-                        </div>
-                    </div>
-                    <div class="gius-proctor-body" id="gius-proctor-body">
-                        <div id="gius-progress-section" style="display:none">
-                            <div class="gius-progress-wrap">
-                                <div class="gius-progress-bar" id="gius-progress-bar" style="width:0%"></div>
-                            </div>
-                            <div class="gius-progress-label" id="gius-progress-label">Starting&hellip;</div>
-                        </div>
-                        <div class="gius-filter-bar" id="gius-filter-bar" style="display:none">
-                            <input class="gius-filter-input" id="gius-f-search"     type="text" placeholder="Search all columns&hellip;" />
-                            <input class="gius-filter-input" id="gius-f-day"        type="text" placeholder="All Days" />
-                            <input class="gius-filter-input" id="gius-f-exam"       type="text" placeholder="All Exams" />
-                            <input class="gius-filter-input" id="gius-f-proctor"    type="text" placeholder="All Proctors" />
-                            <input class="gius-filter-input" id="gius-f-room"       type="text" placeholder="All Rooms" />
-                            <input class="gius-filter-input" id="gius-f-department" type="text" placeholder="All Departments" />
-                            <button type="button" class="gius-btn gius-btn-muted gius-btn-sm" id="gius-f-clear" style="display:none">&#x2715; Clear all</button>
-                        </div>
-                        <div class="gius-chip-row" id="gius-chip-row"></div>
-                        <div id="gius-empty-state" class="gius-empty-state" style="display:none">
-                            <p>No schedule data loaded yet.</p>
-                            <p class="gius-empty-hint">
-                                <i class="fa fa-filter"></i>
-                                Tip: leave the <b>All Departments</b> box (top-right) blank to fetch every
-                                department, or type one to fetch just that department — much faster.
-                            </p>
-                            <button type="button" class="gius-btn gius-btn-primary" id="gius-start-fetch">
-                                <i class="fa fa-play"></i> Fetch Schedules
-                            </button>
-                        </div>
-                        <div class="gius-table-section" id="gius-table-section" style="display:none">
-                            <div class="gius-proctor-table-wrap" id="gius-table-wrap">
-                                <table class="gius-proctor-table">
-                                    <thead>
-                                        <tr>
-                                            <th data-col="proctor">Proctor <span class="gius-sort-icon" data-col="proctor">&#x25B2;</span></th>
-                                            <th data-col="exam">Exam <span class="gius-sort-icon" data-col="exam">&#x25B2;</span></th>
-                                            <th data-col="hall">Room <span class="gius-sort-icon" data-col="hall">&#x25B2;</span></th>
-                                            <th data-col="dateKey">Date <span class="gius-sort-icon active" data-col="dateKey">&#x25B2;</span></th>
-                                            <th data-col="time">Time <span class="gius-sort-icon" data-col="time">&#x25B2;</span></th>
-                                            <th data-col="department">Department <span class="gius-sort-icon" data-col="department">&#x25B2;</span></th>
-                                            <th data-col="coverName">Cover <span class="gius-sort-icon" data-col="coverName">&#x25B2;</span></th>
-                                            <th class="gius-take-th">Take</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="gius-tbody"></tbody>
-                                </table>
-                            </div>
-                            <div class="gius-table-footer" id="gius-table-footer"></div>
-                        </div>
-                    </div>
-                `;
-                return div;
-            }
-        
-            // ── Filter / sort / render ────────────────────────────────────────────────
-        
-            function buildFilterQuery() {
-                const f = _filters;
-                return {
-                    search: f.search.toLowerCase(),
-                    dayQ: f.day.toLowerCase(),
-                    examQ: f.exam.toLowerCase(),
-                    proctorQ: f.proctor.toLowerCase(),
-                    roomQ: f.room.toLowerCase(),
-                    deptQ: f.department.toLowerCase(),
-                };
-            }
-        
-            function rowPassesBaseFilters(r, { search, dayQ, examQ, roomQ, deptQ }) {
-                if (dayQ && !r.date.toLowerCase().includes(dayQ)) return false;
-                if (examQ && !fuzzyMatch(examQ, r.examName.toLowerCase())) return false;
-                if (roomQ && !r.hall.toLowerCase().includes(roomQ)) return false;
-                if (deptQ && !fuzzyMatch(deptQ, r.department.toLowerCase())) return false;
-                if (search) {
-                    const proctor  = fuzzyMatch(search, r.proctor.toLowerCase());
-                    const cover    = r.coverName && fuzzyMatch(search, r.coverName.toLowerCase());
-                    const examText = fuzzyMatch(search, (r.program + ' ' + r.examName + ' ' + r.courseCode).toLowerCase());
-                    const exact    = [r.hall, r.date, r.department].join(' ').toLowerCase().includes(search);
-                    if (!proctor && !cover && !examText && !exact) return false;
-                }
-                return true;
-            }
-        
-            function applyFiltersAndSort() {
-                const q = buildFilterQuery();
-        
-                const rows = _allRows.flatMap(r => {
-                    if (!rowPassesBaseFilters(r, q)) return [];
-                    if (q.proctorQ) {
-                        const matchProctor = fuzzyMatch(q.proctorQ, r.proctor.toLowerCase());
-                        const matchCover   = r.coverName && fuzzyMatch(q.proctorQ, r.coverName.toLowerCase());
-                        if (!matchProctor && !matchCover) return [];
-                        if (!matchProctor && matchCover)  return [{ ...r, _coverView: true }];
-                    }
-                    return [r];
-                });
-        
-                rows.sort((a, b) => {
-                    const col = _sortCol;
-                    const va = col === 'exam' ? ((a.program || a.courseCode) + ' ' + a.examName) :
-                               col === 'time' ? (a.dateKey + (a.timeSort || a.startTime)) : (a[col] || '');
-                    const vb = col === 'exam' ? ((b.program || b.courseCode) + ' ' + b.examName) :
-                               col === 'time' ? (b.dateKey + (b.timeSort || b.startTime)) : (b[col] || '');
-                    const cmp = va.localeCompare(vb, undefined, { numeric: true });
-                    return _sortAsc ? cmp : -cmp;
-                });
-        
-                _filteredRows = rows;
-                _currentPage = 1;
-                renderTable(_filteredRows);
-                renderChips();
-            }
-        
-            function buildCoveringMap(rows) {
-                const map = new Map();
-                rows.forEach(r => {
-                    if (r.coverName) {
-                        map.set(`${r.coverName}|${r.hall}|${r.slotKey}|${r.examName}`, r.proctor);
-                    }
-                });
-                return map;
-            }
-        
-            function renderTable(rows) {
-                const tbody = document.getElementById('gius-tbody');
-                const section = document.getElementById('gius-table-section');
-                if (!tbody) return;
-        
-                _renderedRows = rows;
-                if (section) section.style.display = (_allRows.length || rows.length) ? '' : 'none';
-        
-                const total = rows.length;
-                const totalPages = Math.max(1, Math.ceil(total / _pageSize));
-                _currentPage = Math.min(_currentPage, totalPages);
-                const start = (_currentPage - 1) * _pageSize;
-                const end = Math.min(start + _pageSize, total);
-                const pageRows = rows.slice(start, end);
-        
-                const coveringMap = _coveringMap;
-        
-                tbody.innerHTML = pageRows.map((r, i) => {
-                    if (r._coverView) {
-                        return `
-                    <tr class="gius-row-in gius-data-row gius-cover-view-row" data-idx="${start + i}" style="animation-delay:${Math.min(i, 30) * 12}ms">
-                        <td>${escHtml(r.coverName)}<span class="gius-covering-badge">&#x21AA; Covering for: ${escHtml(r.proctor)}</span></td>
-                        <td>${escHtml(r.program || r.courseCode)} &ndash; ${escHtml(r.examName)}</td>
-                        <td>${escHtml(r.hall)}</td>
-                        <td>${escHtml(r.date)}</td>
-                        <td>${escHtml(r.startTime)} &ndash; ${escHtml(r.endTime)}</td>
-                        <td>${escHtml(r.department)}</td>
-                        <td class="muted">—</td>
-                        <td class="muted">—</td>
-                    </tr>
-                `;
-                    }
-                    const coveringFor = coveringMap.get(`${r.proctor}|${r.hall}|${r.slotKey}|${r.examName}`) || '';
-                    return `
-                    <tr class="gius-row-in gius-data-row${r.coverName ? ' gius-covered-row' : ''}" data-idx="${start + i}" style="animation-delay:${Math.min(i, 30) * 12}ms">
-                        <td>${escHtml(r.proctor)}${coveringFor ? `<span class="gius-covering-badge">&#x21AA; Covering: ${escHtml(coveringFor)}</span>` : ''}</td>
-                        <td>${escHtml(r.program || r.courseCode)} &ndash; ${escHtml(r.examName)}</td>
-                        <td>${escHtml(r.hall)}</td>
-                        <td>${escHtml(r.date)}</td>
-                        <td>${escHtml(r.startTime)} &ndash; ${escHtml(r.endTime)}</td>
-                        <td>${escHtml(r.department)}</td>
-                        <td class="${r.coverName ? '' : 'muted'}">${escHtml(r.coverName || '—')}</td>
-                        <td>${r.coverName === 'You'
-                            ? '<span class="gius-taken-badge"><i class="fa fa-check"></i> Taken</span>'
-                            : `<button type="button" class="gius-btn gius-btn-outline gius-btn-sm gius-take-btn" data-idx="${start + i}" title="Replace this proctor for this exam"><i class="fa fa-exchange"></i> Take</button>`}</td>
-                    </tr>
-                `;
-                }).join('');
-        
-                renderPagination(total, totalPages, start, end);
-            }
-        
-            function renderPagination(total, totalPages, start, end) {
-                const foot = document.getElementById('gius-table-footer');
-                if (!foot) return;
-                if (!_allRows.length) { foot.innerHTML = ''; return; }
-        
-                const from = total === 0 ? 0 : start + 1;
-                const filtered = total !== _allRows.length ? ` (filtered from ${_allRows.length.toLocaleString()})` : '';
-                foot.innerHTML = `
-                    <div class="gius-pagination">
-                        <span class="gius-page-info">Showing ${from}–${end} of ${total.toLocaleString()} exams${filtered}</span>
-                        <div class="gius-page-controls">
-                            <label class="gius-page-size-label">Rows:
-                                <select class="gius-page-size-select" id="gius-page-size">
-                                    ${[5, 10, 20, 50].map(n =>
-                                        `<option value="${n}"${_pageSize === n ? ' selected' : ''}>${n}</option>`
-                                    ).join('')}
-                                </select>
-                            </label>
-                            <button type="button" class="gius-page-btn" id="gius-page-prev"${_currentPage <= 1 ? ' disabled' : ''}>&#x2039;</button>
-                            <span class="gius-page-num" id="gius-page-num">Page ${_currentPage} / ${totalPages}</span>
-                            <button type="button" class="gius-page-btn" id="gius-page-next"${_currentPage >= totalPages ? ' disabled' : ''}>&#x203A;</button>
-                        </div>
-                    </div>
-                `;
-        
-                document.getElementById('gius-page-size')?.addEventListener('change', e => {
-                    _pageSize = parseInt(e.target.value, 10);
-                    _currentPage = 1;
-                    renderTable(_filteredRows);
-                });
-                document.getElementById('gius-page-prev')?.addEventListener('click', () => {
-                    if (_currentPage > 1) { _currentPage--; renderTable(_filteredRows); }
-                });
-                document.getElementById('gius-page-next')?.addEventListener('click', () => {
-                    if (_currentPage < totalPages) { _currentPage++; renderTable(_filteredRows); }
-                });
-            }
-        
-            function renderChips() {
-                const row = document.getElementById('gius-chip-row');
-                const clearEl = document.getElementById('gius-f-clear');
-                if (!row) return;
-                const labels = { day: 'Day', exam: 'Exam', proctor: 'Proctor', room: 'Room', department: 'Dept', search: 'Search' };
-                const active = Object.entries(_filters).filter(([, v]) => v);
-                row.innerHTML = active.map(([k, v]) =>
-                    `<span class="gius-chip">${labels[k] || k}: ${escHtml(v)}<span class="gius-chip-x" data-filter="${k}" title="Remove">&#x2715;</span></span>`
-                ).join('');
-                if (clearEl) clearEl.style.display = active.length ? '' : 'none';
-                row.querySelectorAll('.gius-chip-x').forEach(x => {
-                    x.addEventListener('click', () => {
-                        const key = x.dataset.filter;
-                        _filters[key] = '';
-                        const el = document.getElementById('gius-f-' + key);
-                        if (el) el.value = '';
-                        applyFiltersAndSort();
-                    });
-                });
-            }
-        
-            function updateFilterOptions() {
-                _dropdownOptions.day        = uniqueSorted(_allRows, 'date');
-                _dropdownOptions.exam       = uniqueSorted(_allRows, 'examName');
-                _dropdownOptions.proctor    = [...new Set([..._allRows.map(r => r.proctor), ..._allRows.map(r => r.coverName)].filter(Boolean))].sort();
-                _dropdownOptions.room       = uniqueSorted(_allRows, 'hall');
-                _dropdownOptions.department = uniqueSorted(_allRows, 'department');
-            }
-        
-            function updateSortIcons() {
-                document.querySelectorAll('.gius-sort-icon').forEach(el => {
-                    const col = el.dataset.col;
-                    const active = col === _sortCol;
-                    el.classList.toggle('active', active);
-                    el.textContent = active ? (_sortAsc ? '▲' : '▼') : '▲';
-                });
-            }
-        
-            // ── CSV export ────────────────────────────────────────────────────────────
-        
-            function exportCSV() {
-                const q = buildFilterQuery();
-                const rows = _allRows.filter(r => {
-                    if (!rowPassesBaseFilters(r, q)) return false;
-                    if (q.proctorQ && !fuzzyMatch(q.proctorQ, r.proctor.toLowerCase()) && !(r.coverName && fuzzyMatch(q.proctorQ, r.coverName.toLowerCase()))) return false;
-                    return true;
-                });
-        
-                const esc = v => `"${String(v ?? '').replace(/"/g, '""')}"`;
-                const header = ['Proctor', 'Course Code', 'Exam Name', 'Room', 'Date', 'Start Time', 'End Time', 'Department', 'Cover', 'Program', 'Date Key'];
-                const lines = rows.map(r => [
-                    r.proctor, r.courseCode, r.examName, r.hall, r.date,
-                    r.startTime, r.endTime, r.department, r.coverName, r.program, r.dateKey,
-                ].map(esc).join(','));
-        
-                const csv = '﻿' + [header.join(','), ...lines].join('\r\n');
-                const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `proctor-schedule-${new Date().toISOString().slice(0, 10)}.csv`;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-            }
-        
-            // ── CSV upload ────────────────────────────────────────────────────────────
-        
-            function parseCsvLine(line) {
-                const fields = [];
-                let i = 0, field = '';
-                while (i < line.length) {
-                    if (line[i] === '"') {
-                        i++;
-                        while (i < line.length) {
-                            if (line[i] === '"' && line[i + 1] === '"') { field += '"'; i += 2; }
-                            else if (line[i] === '"') { i++; break; }
-                            else { field += line[i++]; }
-                        }
-                        if (i < line.length && line[i] === ',') i++;
-                    } else {
-                        while (i < line.length && line[i] !== ',') field += line[i++];
-                        if (i < line.length) i++;
-                    }
-                    fields.push(field);
-                    field = '';
-                }
-                return fields;
-            }
-        
-            function parseUploadedCSV(text) {
-                const cleaned = text.replace(/^﻿/, '');
-                const lines = cleaned.split(/\r?\n/).filter(l => l.trim());
-                if (lines.length < 2) return [];
-                const headers = parseCsvLine(lines[0]).map(h => h.toLowerCase().trim());
-                const idx = {};
-                headers.forEach((h, i) => { idx[h] = i; });
-                const get = (fields, col, fallback = '') => (fields[idx[col]] ?? fallback).trim();
-        
-                return lines.slice(1).map(line => {
-                    const f = parseCsvLine(line);
-                    return {
-                        proctor: get(f, 'proctor'),
-                        department: get(f, 'department'),
-                        examName: get(f, 'exam name'),
-                        courseCode: get(f, 'course code'),
-                        program: get(f, 'program'),
-                        hall: get(f, 'room'),
-                        dateKey: get(f, 'date key') || get(f, 'date'),
-                        date: get(f, 'date'),
-                        startTime: get(f, 'start time'),
-                        endTime: get(f, 'end time'),
-                        coverName: get(f, 'cover'),
-                    };
-                }).filter(r => r.proctor || r.examName);
-            }
-        
-            // ── Co-proctor toggle ─────────────────────────────────────────────────────
-        
-            function toggleCoProctors(tr, row) {
-                const existing = tr.nextElementSibling;
-                if (existing && existing.classList.contains('gius-coproctor-row')) {
-                    existing.remove();
-                    return;
-                }
-                let coProctors;
-                let isActingCover = false;
-                if (row._coverView) {
-                    isActingCover = true;
-                    coProctors = _allRows.filter(r =>
-                        r.hall     === row.hall &&
-                        r.slotKey  === row.slotKey &&
-                        r.examName === row.examName
-                    );
-                    if (!coProctors.length) {
-                        coProctors = [{ proctor: row.proctor, department: row.department, _isOriginal: true }];
-                    } else {
-                        coProctors = coProctors.map(r => ({ ...r, _isOriginal: r.proctor === row.proctor }));
-                    }
-                } else if (row.coverName) {
-                    // This exam is covered. Show ALL other proctors in the slot (genuine
-                    // co-proctors) and flag whichever one is the cover.
-                    coProctors = _allRows.filter(r =>
-                        r !== row &&
-                        r.hall     === row.hall &&
-                        r.slotKey  === row.slotKey &&
-                        r.examName === row.examName
-                    ).map(r => ({ ...r, _isCover: r.proctor === row.coverName }));
-                    // Cover may have no own row in the data (e.g. taken via this script) —
-                    // add a synthetic entry so they always appear.
-                    if (!coProctors.some(r => r._isCover)) {
-                        coProctors.push({ proctor: row.coverName, department: '', _isCover: true });
-                    }
-                } else {
-                    coProctors = _allRows.filter(r =>
-                        r !== row &&
-                        r.hall     === row.hall &&
-                        r.slotKey  === row.slotKey &&
-                        r.examName === row.examName
-                    );
-                    if (!isActingCover) isActingCover = coProctors.some(r => r.coverName === row.proctor);
-                }
-                if (!coProctors.length) return;
-                const cpRow = document.createElement('tr');
-                cpRow.className = 'gius-coproctor-row';
-                const cpItems = coProctors.map(r => {
-                    const dept = r.department ? `<span class="gius-coproctor-dept">&mdash; ${escHtml(r.department)}</span>` : '';
-                    let badge = '';
-                    if (r._isCover)       badge = `<span class="gius-cover-status">Cover Proctor</span>`;
-                    else if (r._isOriginal || r.coverName === row.proctor) badge = `<span class="gius-original-status">Original Proctor</span>`;
-                    return `<li>${escHtml(r.proctor)}${dept}${badge}</li>`;
-                }).join('');
-                const label = (isActingCover && !row._coverView) ? 'Covering for:' : 'Co-proctors:';
-                const icon = (isActingCover && !row._coverView) ? 'fa-exchange' : 'fa-users';
-                cpRow.innerHTML = `<td colspan="8"><span class="gius-coproctor-label"><i class="fa ${icon}"></i> ${label}</span><ul class="gius-coproctor-list">${cpItems}</ul></td>`;
-                tr.insertAdjacentElement('afterend', cpRow);
-            }
-        
-            // ── Exchange modal ────────────────────────────────────────────────────────
-        
-            function closeExchangeModal() {
-                document.getElementById('gius-ex-overlay')?.remove();
-                document.removeEventListener('keydown', onExchangeEsc);
-            }
-        
-            function onExchangeEsc(e) {
-                if (e.key === 'Escape') closeExchangeModal();
-            }
-        
-            function openExchangeModal(row) {
-                closeExchangeModal();
-                const overlay = document.createElement('div');
-                overlay.id = 'gius-ex-overlay';
-                overlay.className = 'gius-ex-overlay';
-                overlay.innerHTML = `
-                    <div class="gius-ex-modal" role="dialog" aria-modal="true">
-                        <div class="gius-ex-hdr">
-                            <span><i class="fa fa-exchange"></i> Proctoring Exchange</span>
-                            <button type="button" class="gius-ex-close" id="gius-ex-close" title="Close">&#x2715;</button>
-                        </div>
-                        <div class="gius-ex-body" id="gius-ex-body">
-                            <div class="gius-ex-loading">
-                                <span class="gius-ex-spinner"></span>
-                                Contacting the portal&hellip;
-                            </div>
-                        </div>
-                    </div>
-                `;
-                document.body.appendChild(overlay);
-                document.addEventListener('keydown', onExchangeEsc);
-                overlay.addEventListener('click', e => { if (e.target === overlay) closeExchangeModal(); });
-                document.getElementById('gius-ex-close')?.addEventListener('click', closeExchangeModal);
-        
-                const body = document.getElementById('gius-ex-body');
-        
-                prepareExchange(row).then(prep => {
-                    if (!document.getElementById('gius-ex-body')) return; // modal closed meanwhile
-                    body.innerHTML = `
-                        <p class="gius-ex-text">I would like to replace<br>
-                            <b>${escHtml(prep.nm)}</b><br>
-                            during the session on <b>${escHtml(prep.tm)}</b>.</p>
-                        <p class="gius-ex-exam">${escHtml(row.program || row.courseCode)} &ndash; ${escHtml(row.examName)}</p>
-                        <label class="gius-ex-check">
-                            <input type="checkbox" id="gius-ex-sure" />
-                            I am sure, I want to replace my colleague during this session.
-                        </label>
-                        <div class="gius-ex-actions">
-                            <button type="button" class="gius-btn gius-btn-muted" id="gius-ex-cancel">Cancel</button>
-                            <button type="button" class="gius-btn gius-btn-primary" id="gius-ex-go" disabled>
-                                <i class="fa fa-check"></i> Proceed With Replacement
-                            </button>
-                        </div>
-                    `;
-                    const sure = document.getElementById('gius-ex-sure');
-                    const go = document.getElementById('gius-ex-go');
-                    sure?.addEventListener('change', () => { go.disabled = !sure.checked; });
-                    document.getElementById('gius-ex-cancel')?.addEventListener('click', closeExchangeModal);
-                    go?.addEventListener('click', () => {
-                        go.disabled = true;
-                        body.innerHTML = `
-                            <div class="gius-ex-loading">
-                                <span class="gius-ex-spinner"></span>
-                                Processing replacement&hellip;
-                            </div>
-                        `;
-                        executeExchange(prep).then(msg => {
-                            const ok = /success/i.test(msg);
-                            if (!document.getElementById('gius-ex-body')) return;
-                            body.innerHTML = `
-                                <p class="gius-ex-result ${ok ? 'gius-ex-ok' : 'gius-ex-err'}">
-                                    <i class="fa ${ok ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
-                                    ${escHtml(msg || 'No response message from the portal.')}
-                                </p>
-                                <div class="gius-ex-actions">
-                                    <button type="button" class="gius-btn gius-btn-primary" id="gius-ex-done">Close</button>
-                                </div>
-                            `;
-                            document.getElementById('gius-ex-done')?.addEventListener('click', closeExchangeModal);
-                            if (ok) markRowTaken(row);
-                        }).catch(err => showExchangeError(err));
-                    });
-                }).catch(err => showExchangeError(err));
-        
-                function showExchangeError(err) {
-                    if (!document.getElementById('gius-ex-body')) return;
-                    const msg = err && err.message === 'SESSION_EXPIRED'
-                        ? 'Your portal session has expired — reload the page and log in again.'
-                        : (err && err.message) || 'Something went wrong.';
-                    body.innerHTML = `
-                        <p class="gius-ex-result gius-ex-err">
-                            <i class="fa fa-exclamation-circle"></i> ${escHtml(msg)}
-                        </p>
-                        <div class="gius-ex-actions">
-                            <button type="button" class="gius-btn gius-btn-muted" id="gius-ex-done">Close</button>
-                        </div>
-                    `;
-                    document.getElementById('gius-ex-done')?.addEventListener('click', closeExchangeModal);
-                }
-            }
-        
-            function markRowTaken(row) {
-                _allRows.forEach(r => {
-                    if (r.proctor === row.proctor && r.slotKey === row.slotKey &&
-                        r.hall === row.hall && r.examName === row.examName) {
-                        r.coverName = 'You';
-                    }
-                });
-                saveCache(_allRows);
-                updateFilterOptions();
-                applyFiltersAndSort();
-            }
-        
-            // Record a cover the portal reported during a freshness check (someone else
-            // already took it). Keeps the table honest without a full re-scrape.
-            function markRowCovered(row, coverName) {
-                let changed = false;
-                _allRows.forEach(r => {
-                    if (r.proctor === row.proctor && r.slotKey === row.slotKey &&
-                        r.hall === row.hall && r.examName === row.examName && r.coverName !== coverName) {
-                        r.coverName = coverName;
-                        changed = true;
-                    }
-                });
-                if (!changed) return;
-                saveCache(_allRows);
-                updateFilterOptions();
-                applyFiltersAndSort();
-            }
-        
-            // ── Panel wiring ──────────────────────────────────────────────────────────
-        
-            function wirePanel(panel) {
-                // Sort headers
-                panel.querySelectorAll('thead th[data-col]').forEach(th => {
-                    th.addEventListener('click', () => {
-                        const col = th.dataset.col;
-                        if (_sortCol === col) _sortAsc = !_sortAsc;
-                        else { _sortCol = col; _sortAsc = true; }
-                        updateSortIcons();
-                        applyFiltersAndSort();
-                    });
-                });
-        
-                // Filter inputs
-                function bindFilter(id, key) {
-                    const el = document.getElementById(id);
-                    if (!el) return;
-                    el.addEventListener('change', () => { _filters[key] = el.value; applyFiltersAndSort(); });
-                    if (el.tagName === 'INPUT') {
-                        el.addEventListener('input', () => { _filters[key] = el.value; applyFiltersAndSort(); });
-                    }
-                }
-                bindFilter('gius-f-search',     'search');
-                bindFilter('gius-f-day',        'day');
-                bindFilter('gius-f-exam',       'exam');
-                bindFilter('gius-f-proctor',    'proctor');
-                bindFilter('gius-f-room',       'room');
-                bindFilter('gius-f-department', 'department');
-        
-                makeDropdown('gius-f-day',        () => _dropdownOptions.day);
-                makeDropdown('gius-f-exam',       () => _dropdownOptions.exam);
-                makeDropdown('gius-f-proctor',    () => _dropdownOptions.proctor);
-                makeDropdown('gius-f-room',       () => _dropdownOptions.room);
-                makeDropdown('gius-f-department', () => _dropdownOptions.department);
-                makeDropdown('gius-fetch-dept',   () => _fetchDeptList.map(d => d.label));
-                document.getElementById('gius-fetch-dept')?.addEventListener('input', e => {
-                    e.target.classList.remove('gius-fetch-dept-error');
-                    // Pulse Refresh once a real department is typed, hinting "click to apply"
-                    const refreshBtn = document.getElementById('gius-proctor-refresh');
-                    if (!refreshBtn) return;
-                    const scope = resolveFetchScope();
-                    refreshBtn.classList.toggle('gius-refresh-pulse', !!(scope && !scope.error && scope.value));
-                });
-        
-                // Clear all
-                document.getElementById('gius-f-clear')?.addEventListener('click', () => {
-                    _filters = { search: '', day: '', exam: '', proctor: '', room: '', department: '' };
-                    ['gius-f-search', 'gius-f-day', 'gius-f-exam', 'gius-f-proctor', 'gius-f-room', 'gius-f-department']
-                        .forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
-                    applyFiltersAndSort();
-                });
-        
-                // CSV
-                document.getElementById('gius-proctor-csv')?.addEventListener('click', exportCSV);
-        
-                // Toggle panel body on header click (but not when clicking buttons)
-                document.getElementById('gius-proctor-hdr')?.addEventListener('click', e => {
-                    if (e.target.closest('button') || e.target.closest('input')) return;
-                    const body = document.getElementById('gius-proctor-body');
-                    if (body) body.classList.toggle('collapsed');
-                });
-        
-                // First-run fetch button
-                document.getElementById('gius-start-fetch')?.addEventListener('click', () => {
-                    const scope = resolveFetchScope();
-                    if (scope && scope.error) { flagFetchDeptError(); return; }
-                    document.getElementById('gius-proctor-refresh')?.classList.remove('gius-refresh-pulse');
-                    const emptyState = document.getElementById('gius-empty-state');
-                    if (emptyState) emptyState.style.display = 'none';
-                    startScrape(scope);
-                });
-        
-                // Close
-                document.getElementById('gius-proctor-close')?.addEventListener('click', () => {
-                    panel.remove();
-                    // Remove the body-mounted dropdown panels too (avoid orphan leak on reopen)
-                    document.querySelectorAll('body > .gius-dd-panel').forEach(p => p.remove());
-                    _panelEl = null;
-                    // Bring the entry trigger back so the panel can be reopened
-                    const trigger = document.getElementById('gius-proctor-trigger');
-                    if (trigger) trigger.classList.remove('gius-hide');
-                });
-        
-                // Refresh — re-fetch using the currently selected scope
-                document.getElementById('gius-proctor-refresh')?.addEventListener('click', () => {
-                    if (_scraping) return;
-                    const scope = resolveFetchScope();
-                    if (scope && scope.error) { flagFetchDeptError(); return; }
-                    document.getElementById('gius-proctor-refresh')?.classList.remove('gius-refresh-pulse');
-                    _paused = false;
-                    clearCache();
-                    setAllRows([]);
-                    _filters = { search: '', day: '', exam: '', proctor: '', room: '', department: '' };
-                    startScrape(scope);
-                });
-        
-                // Co-proctor row expansion (event delegation on tbody)
-                const tbody = panel.querySelector('#gius-tbody');
-                tbody?.addEventListener('click', e => {
-                    const takeBtn = e.target.closest('.gius-take-btn');
-                    if (takeBtn) {
-                        e.stopPropagation();
-                        const tIdx = parseInt(takeBtn.dataset.idx, 10);
-                        if (!isNaN(tIdx) && _renderedRows[tIdx]) openExchangeModal(_renderedRows[tIdx]);
-                        return;
-                    }
-                    const tr = e.target.closest('tr.gius-data-row');
-                    if (!tr) return;
-                    const idx = parseInt(tr.dataset.idx, 10);
-                    if (!isNaN(idx) && _renderedRows[idx]) toggleCoProctors(tr, _renderedRows[idx]);
-                });
-        
-                // Upload CSV
-                const uploadBtn = document.getElementById('gius-proctor-upload');
-                const fileInput = document.getElementById('gius-file-input');
-                uploadBtn?.addEventListener('click', () => fileInput?.click());
-                fileInput?.addEventListener('change', () => {
-                    const file = fileInput.files[0];
-                    if (!file) return;
-                    const reader = new FileReader();
-                    reader.onload = ev => {
-                        const rows = parseUploadedCSV(ev.target.result);
-                        if (!rows.length) return;
-                        _scraping = false;
-                        _paused = true;
-                        const normalized = rows.map(normalizeRow);
-                        setAllRows(normalized);
-                        saveCache(normalized);
-                        const metaEl = document.getElementById('gius-proctor-meta');
-                        if (metaEl) metaEl.textContent = `Loaded from CSV · ${rows.length.toLocaleString()} exams`;
-                        const filterBr = document.getElementById('gius-filter-bar');
-                        if (filterBr) filterBr.style.display = '';
-                        const progSec = document.getElementById('gius-progress-section');
-                        if (progSec) progSec.style.display = 'none';
-                        const pauseBtn = document.getElementById('gius-proctor-pause');
-                        if (pauseBtn)  { pauseBtn.style.display = 'none'; pauseBtn.innerHTML = '&#x23F8; Pause'; }
-                        const refreshBtn = document.getElementById('gius-proctor-refresh');
-                        if (refreshBtn) refreshBtn.disabled = false;
-                        const emptyState = document.getElementById('gius-empty-state');
-                        if (emptyState) emptyState.style.display = 'none';
-                        applyFiltersAndSort();
-                    };
-                    reader.readAsText(file);
-                    fileInput.value = '';
-                });
-            }
-        
-            function startScrape(scope) {
-                _scraping = true;
-                _paused = false;
-                const emptyState = document.getElementById('gius-empty-state');
-                if (emptyState) emptyState.style.display = 'none';
-                const progSec = document.getElementById('gius-progress-section');
-                const progBar = document.getElementById('gius-progress-bar');
-                const progLbl = document.getElementById('gius-progress-label');
-                const filterBr = document.getElementById('gius-filter-bar');
-                const metaEl = document.getElementById('gius-proctor-meta');
-                const warnEl = document.getElementById('gius-proctor-warn');
-                const refreshBtn = document.getElementById('gius-proctor-refresh');
-                const pauseBtn = document.getElementById('gius-proctor-pause');
-                if (refreshBtn) refreshBtn.disabled = true;
-                if (pauseBtn) {
-                    pauseBtn.style.display = '';
-                    pauseBtn.innerHTML = '&#x23F8; Pause';
-                    pauseBtn.onclick = () => {
-                        if (_paused) {
-                            _paused = false;
-                            pauseBtn.innerHTML = '&#x23F8; Pause';
-                            if (_resumeFn) _resumeFn();
-                        } else {
-                            _paused = true;
-                            pauseBtn.innerHTML = '&#x25B6; Resume';
-                        }
-                    };
-                }
-                if (progSec)  progSec.style.display = '';
-                if (filterBr) filterBr.style.display = '';
-        
-                const scopeLabel = scope && scope.label ? ` · ${scope.label}` : '';
-        
-                scrapeAll({
-                    onProgress(stats) {
-                        const pct = stats.totalProctors
-                            ? Math.round((stats.proctorsDone / stats.totalProctors) * 100)
-                            : Math.round((stats.depts / stats.totalDepts) * 50);
-                        if (progBar) progBar.style.width = pct + '%';
-                        if (progLbl) {
-                            if (stats.totalProctors) {
-                                progLbl.textContent =
-                                    `Scraped ${stats.proctorsDone} / ${stats.totalProctors} entities · ${stats.exams.toLocaleString()} exams`;
-                            } else {
-                                progLbl.textContent = scope && scope.label
-                                    ? `Fetching ${scope.label}…`
-                                    : `Fetching departments ${stats.depts} / ${stats.totalDepts}…`;
-                            }
-                        }
-                    },
-                    onRows(rows) {
-                        if (!_scraping) return;
-                        setAllRows(rows);
-                        applyFiltersAndSort();
-                    },
-                    onError(type) {
-                        if (type === 'SESSION_EXPIRED') {
-                            if (warnEl) {
-                                warnEl.style.display = '';
-                                warnEl.innerHTML = '<span class="gius-warn-pill">⚠ Session expired — reload page</span>';
-                            }
-                        }
-                    },
-                    onComplete(rows) {
-                        if (!_scraping) return;
-                        _scraping = false;
-                        _paused = false;
-                        setAllRows(rows);
-                        if (progSec)    progSec.style.display = 'none';
-                        if (refreshBtn) refreshBtn.disabled = false;
-                        if (pauseBtn)   { pauseBtn.style.display = 'none'; pauseBtn.innerHTML = '&#x23F8; Pause'; }
-                        const now = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
-                        if (metaEl) metaEl.textContent = `Last updated: ${now}${scopeLabel} · ${rows.length.toLocaleString()} exams`;
-                        applyFiltersAndSort();
-                    },
-                }, scope);
-            }
-        
-            function openPanel() {
-                // Hide the entry trigger while the aggregator is on the page
-                const trigger = document.getElementById('gius-proctor-trigger');
-                if (trigger) trigger.classList.add('gius-hide');
-        
-                if (_panelEl) { _panelEl.style.display = ''; return; }
-        
-                const panel = buildPanel();
-                _panelEl = panel;
-        
-                const anchor = document.getElementById('mainTbl') || document.getElementById('form1');
-                if (!anchor) return;
-                anchor.parentNode.insertBefore(panel, anchor);
-                wirePanel(panel);
-                populateFetchDept();
-        
-                const cached = loadCache();
-                if (cached && cached.rows && cached.rows.length) {
-                    setAllRows(cached.rows.map(normalizeRow));
-                    const age = formatCacheAge(cached.scrapedAt);
-                    const dateStr = new Date(cached.scrapedAt).toLocaleDateString('en-GB',
-                        { day: 'numeric', month: 'short', year: 'numeric' });
-                    const metaEl = document.getElementById('gius-proctor-meta');
-                    if (metaEl) metaEl.textContent = `Last updated: ${dateStr} (${age}) · ${cached.rows.length.toLocaleString()} exams`;
-                    const filterBr = document.getElementById('gius-filter-bar');
-                    if (filterBr) filterBr.style.display = '';
-                    applyFiltersAndSort();
-                } else {
-                    const metaEl = document.getElementById('gius-proctor-meta');
-                    if (metaEl) metaEl.textContent = 'No data — click Fetch to load schedules';
-                    const emptyState = document.getElementById('gius-empty-state');
-                    if (emptyState) emptyState.style.display = '';
-                }
-            }
-        
-            // ── Entry point ───────────────────────────────────────────────────────────
-        
-            function injectTrigger() {
-                if (document.getElementById('gius-proctor-trigger')) return;
-                const row = document.getElementById('MainContent_lstTR');
-                if (!row) return;
-                const btn = document.createElement('button');
-                btn.id = 'gius-proctor-trigger';
-                btn.type = 'button';
-                btn.className = 'gius-btn gius-btn-primary';
-                btn.innerHTML = '<i class="fa fa-laptop"></i> View All Proctor Schedules';
-                btn.addEventListener('click', openPanel);
-                const td = row.querySelector('td') || row;
-                td.appendChild(btn);
-            }
-        
-            function init() {
-                injectStyles();
-                injectTrigger();
-            }
-        
-            init();
         },
         notificationBatch(S) {
             const QUEUE_KEY = 'giuBatchNotifyQueueV1';
@@ -12502,1234 +11989,22 @@
         
             init();
         },
-        // ── manageGroupGrades (from GIU Manage Group Grades v1.5) ──────────────
-        manageGroupGrades(S) {
-            function injectGradeStyles() {
-                S.injectStyle('gius-mgg-styles', `
-                    @keyframes gmggSlide {
-                        from { opacity: 0; transform: translateY(-14px); }
-                        to   { opacity: 1; transform: translateY(0); }
-                    }
-                    @keyframes gmggFadeIn {
-                        from { opacity: 0; }
-                        to   { opacity: 1; }
-                    }
-
-                    .gmgg-panel {
-                        background: #ffffff;
-                        border: 1px solid #eeeeee;
-                        border-radius: 6px;
-                        box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
-                        position: relative;
-                        overflow: hidden;
-                        margin: 20px 0 14px;
-                        animation: gmggSlide 0.38s cubic-bezier(0.25,0.46,0.45,0.94);
-                        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-                    }
-                    .gmgg-panel::before {
-                        content: "";
-                        position: absolute;
-                        top: 0; left: 0;
-                        width: 100%; height: 3px;
-                        background: #ffc107;
-                        z-index: 1;
-                    }
-                    .gmgg-panel-header {
-                        background: #272c33;
-                        color: #fff;
-                        padding: 10px 14px;
-                        border-bottom: 2px solid #ffc107;
-                    }
-                    .gmgg-panel-title {
-                        margin: 0;
-                        font-size: 14px;
-                        font-weight: 700;
-                        color: #fff;
-                    }
-                    .gmgg-panel-subtitle {
-                        margin: 3px 0 0;
-                        font-size: 12px;
-                        color: rgba(255,255,255,0.7);
-                    }
-                    .gmgg-panel-body {
-                        padding: 14px 16px;
-                        display: flex;
-                        flex-direction: column;
-                        gap: 12px;
-                    }
-                    .gmgg-btn-row {
-                        display: flex;
-                        align-items: center;
-                        flex-wrap: wrap;
-                        gap: 8px;
-                    }
-                    .gmgg-btn {
-                        height: 32px;
-                        padding: 0 14px;
-                        border-radius: 6px;
-                        font-size: 13px;
-                        font-weight: 700;
-                        cursor: pointer;
-                        border: 1px solid transparent;
-                        transition: all 0.2s ease;
-                        display: inline-flex;
-                        align-items: center;
-                        gap: 5px;
-                        white-space: nowrap;
-                        font-family: 'Open Sans', Arial, sans-serif;
-                    }
-                    .gmgg-btn:disabled {
-                        opacity: 0.5;
-                        cursor: not-allowed;
-                        transform: none !important;
-                        box-shadow: none !important;
-                    }
-                    .gmgg-btn-upload {
-                        background: #1B59C6;
-                        border-color: #1648a8;
-                        color: #fff;
-                    }
-                    .gmgg-btn-upload:not(:disabled):hover {
-                        background: #1648a8;
-                        transform: translateY(-1px);
-                        box-shadow: 0 3px 10px rgba(27,89,198,0.35);
-                    }
-                    .gmgg-btn-download {
-                        background: #fff;
-                        border-color: #d1d5db;
-                        color: #374151;
-                    }
-                    .gmgg-btn-download:not(:disabled):hover {
-                        background: #f9fafb;
-                        border-color: #9ca3af;
-                    }
-                    .gmgg-feedback {
-                        font-size: 13px;
-                        font-family: 'Open Sans', sans-serif;
-                        padding: 8px 10px;
-                        border-radius: 6px;
-                        animation: gmggFadeIn 0.25s ease;
-                    }
-                    .gmgg-feedback-success {
-                        background: #e8f5e9;
-                        color: #15803d;
-                        border: 1px solid #a5d6a7;
-                    }
-                    .gmgg-feedback-error {
-                        background: #fee2e2;
-                        color: #991b1b;
-                        border: 1px solid #fca5a5;
-                    }
-                    .gmgg-stats {
-                        animation: gmggFadeIn 0.35s ease;
-                    }
-                    .gmgg-stats-title {
-                        font-size: 11px;
-                        font-weight: 700;
-                        color: #6b7280;
-                        text-transform: uppercase;
-                        letter-spacing: 0.6px;
-                        margin-bottom: 8px;
-                        font-family: 'Open Sans', sans-serif;
-                    }
-                    .gmgg-stats-grid {
-                        display: grid;
-                        grid-template-columns: 1fr 1fr;
-                        gap: 6px;
-                    }
-                    .gmgg-stat-row {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        padding: 8px 10px;
-                        background: #e5e7eb;
-                        border: 1px solid #d1d5db;
-                        border-radius: 6px;
-                        font-size: 13px;
-                    }
-                    .gmgg-stat-label {
-                        font-weight: 600;
-                        color: #374151;
-                        font-family: 'Open Sans', sans-serif;
-                    }
-                    .gmgg-stat-val {
-                        font-weight: 700;
-                        color: #111827;
-                        font-family: 'Open Sans', sans-serif;
-                    }
-                `);
-            }
-
-            function computeStats(values) {
-                const nums = values.filter(v => v !== '' && Number.isFinite(+v)).map(Number);
-                if (!nums.length) return null;
-                const min = Math.min(...nums);
-                const max = Math.max(...nums);
-                const avg = nums.reduce((a, b) => a + b, 0) / nums.length;
-                return {
-                    min:   min.toFixed(1),
-                    max:   max.toFixed(1),
-                    avg:   avg.toFixed(1),
-                    range: (max - min).toFixed(1),
-                    count: nums.length
-                };
-            }
-
-            function getTableGrades() {
-                const grades = [];
-                document.querySelectorAll('#Table1 tbody tr').forEach((row, i) => {
-                    if (i === 0) return;
-                    const val = row.cells[2]?.querySelector('input')?.value;
-                    if (val !== undefined && val !== '') grades.push(val);
-                });
-                return grades;
-            }
-
-            function renderStats(body) {
-                body.querySelector('.gmgg-stats')?.remove();
-                const stats = computeStats(getTableGrades());
-                if (!stats || stats.count < 2) return;
-
-                const el = document.createElement('div');
-                el.className = 'gmgg-stats';
-                el.innerHTML = `
-                    <div class="gmgg-stats-title">Grade Statistics — ${stats.count} students</div>
-                    <div class="gmgg-stats-grid">
-                        <div class="gmgg-stat-row">
-                            <span class="gmgg-stat-label">Min</span>
-                            <span class="gmgg-stat-val">${stats.min}</span>
-                        </div>
-                        <div class="gmgg-stat-row">
-                            <span class="gmgg-stat-label">Max</span>
-                            <span class="gmgg-stat-val">${stats.max}</span>
-                        </div>
-                        <div class="gmgg-stat-row">
-                            <span class="gmgg-stat-label">Avg</span>
-                            <span class="gmgg-stat-val">${stats.avg}</span>
-                        </div>
-                        <div class="gmgg-stat-row">
-                            <span class="gmgg-stat-label">Range</span>
-                            <span class="gmgg-stat-val">${stats.range}</span>
-                        </div>
-                    </div>
-                `;
-                body.appendChild(el);
-            }
-
-            function parseGradeCSV(text) {
-                const map = {};
-                text.trim().split(/\r?\n/).forEach(line => {
-                    const cols  = line.split(',').map(v => v.trim());
-                    const name  = cols[0] || '';
-                    const grade = cols[cols.length - 1];
-                    const m     = name.match(/\((\d+)\)/);
-                    if (m && grade !== '' && !isNaN(grade)) map[m[1]] = grade;
-                });
-                return map;
-            }
-
-            function createGradeButtons(table) {
-                injectGradeStyles();
-
-                const panel = document.createElement('div');
-                panel.className = 'gmgg-panel';
-
-                const fileInput    = document.createElement('input');
-                fileInput.type     = 'file';
-                fileInput.accept   = '.csv';
-                fileInput.style.display = 'none';
-
-                const uploadBtn       = document.createElement('button');
-                uploadBtn.type        = 'button';
-                uploadBtn.textContent = 'Upload Grades CSV';
-                uploadBtn.className   = 'gmgg-btn gmgg-btn-upload';
-
-                const downloadBtn       = document.createElement('button');
-                downloadBtn.type        = 'button';
-                downloadBtn.textContent = 'Download Grades CSV';
-                downloadBtn.className   = 'gmgg-btn gmgg-btn-download';
-
-                let feedbackEl = null;
-
-                function showFeedback(msg, type = 'success') {
-                    if (feedbackEl) feedbackEl.remove();
-                    feedbackEl = document.createElement('div');
-                    feedbackEl.className = `gmgg-feedback gmgg-feedback-${type}`;
-                    feedbackEl.textContent = msg;
-                    body.appendChild(feedbackEl);
-                    setTimeout(() => { if (feedbackEl) { feedbackEl.remove(); feedbackEl = null; } }, 4000);
-                }
-
-                uploadBtn.onclick = () => fileInput.click();
-
-                downloadBtn.onclick = () => {
-                    const rows = document.querySelectorAll('#Table1 tbody tr');
-                    const csv  = [['Name', 'Grade']];
-
-                    rows.forEach((row, index) => {
-                        if (index === 0) return;
-                        const name = row.cells[0]?.querySelector('span')?.textContent || '';
-                        const grade = row.cells[2]?.querySelector('input')?.value;
-                        csv.push([name, grade]);
-                    });
-
-                    const blob = new Blob([csv.join('\n')], { type: 'text/csv' });
-                    const url  = URL.createObjectURL(blob);
-
-                    const csvTitleId = document.getElementById('MainContent_crntLbl');
-                    const csvTitle   = csvTitleId.textContent
-                        .split('||')[0].replace(/\s+/g, '').trim();
-
-                    const a    = document.createElement('a');
-                    a.href     = url;
-                    a.download = csvTitle;
-                    a.click();
-                    URL.revokeObjectURL(url);
-                    showFeedback('✓ CSV downloaded successfully');
-                    renderStats(body);
-                };
-
-                fileInput.addEventListener('change', async () => {
-                    const file = fileInput.files[0];
-                    if (!file) return;
-                    fileInput.value = '';
-
-                    const grades  = parseGradeCSV(await file.text());
-                    let applied   = 0;
-                    let missing   = 0;
-
-                    document.querySelectorAll('#Table1 tbody tr').forEach((row, index) => {
-                        if (index === 0) return;
-                        const input    = row.cells[2]?.querySelector('input');
-                        const nameText = row.cells[0]?.querySelector('span')?.textContent || '';
-                        const m        = nameText.match(/\((\d+)\)/);
-                        if (!input || !m) return;
-                        if (grades[m[1]] !== undefined) {
-                            input.value = grades[m[1]];
-                            applied++;
-                        } else {
-                            missing++;
-                        }
-                    });
-
-                    const msg = missing > 0
-                        ? `✓ Applied ${applied} grade(s) — ${missing} student(s) not in CSV`
-                        : `✓ Grades applied to ${applied} student(s)`;
-                    showFeedback(msg, missing > 0 ? 'error' : 'success');
-                    renderStats(body);
-                });
-
-                panel.innerHTML = `
-                    <div class="gmgg-panel-header">
-                        <h4 class="gmgg-panel-title">Group Grades</h4>
-                        <p class="gmgg-panel-subtitle">Upload or download grades for this tutorial group</p>
-                    </div>
-                `;
-
-                const btnRow = document.createElement('div');
-                btnRow.className = 'gmgg-btn-row';
-                btnRow.append(uploadBtn, fileInput, downloadBtn);
-
-                const body = document.createElement('div');
-                body.className = 'gmgg-panel-body';
-                body.appendChild(btnRow);
-                panel.appendChild(body);
-
-                const labelEl = document.getElementById('MainContent_crntLbl');
-                (labelEl ?? table).insertAdjacentElement('afterend', panel);
-
-                renderStats(body);
-                Tips.show({ id: 'manageGroupGrades', el: panel, title: 'Group Grades Tools',
-                    text: 'CSV upload and download plus live statistics for the visible grade table.' });
-
-                return panel;
-            }
-
-            // Entry: watch grade-table visibility, mount/unmount the panel.
-            let activeCard = null;
-
-            function checkTableVisibility() {
-                const gradeTable = document.querySelector('#MainContent_nttTb');
-                const visible    = gradeTable !== null && gradeTable.offsetParent !== null;
-
-                if (visible && !activeCard) {
-                    activeCard = createGradeButtons(document.querySelector('#Table1'));
-                } else if (!visible && activeCard) {
-                    activeCard.remove();
-                    activeCard = null;
-                }
-            }
-
-            let visibilityRaf = null;
-            const observer = new MutationObserver(() => {
-                if (visibilityRaf !== null) return;
-                visibilityRaf = requestAnimationFrame(() => {
-                    visibilityRaf = null;
-                    checkTableVisibility();
-                });
-            });
-            observer.observe(document.body, {
-                childList:       true,
-                subtree:         true,
-                attributes:      true,
-                attributeFilter: ['style', 'class', 'hidden']
-            });
-
-            checkTableVisibility();
-        },
-        studentAttendance(S) {
-            const PAGE_URL       = S.portalUrl('/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx');
-            const CACHE_PREFIX   = 'giuAttendanceGroupV1_';
-            const CACHE_TTL_MS   = Infinity;
-            const MAX_CONCURRENT = 5;
-            const LEVEL_RULES = [
-                { min: 0.25, exclusive: true,  level: 3, badge: 'DROP',        label: 'Will Be Dropped' },
-                { min: 0.20, exclusive: false, level: 2, badge: '2nd Warning', label: 'Second Warning'  },
-                { min: 0.10, exclusive: false, level: 1, badge: '1st Warning', label: 'First Warning'   },
-                { min: 0,    exclusive: false, level: 0, badge: 'OK',          label: 'OK'              },
-            ];
-            let _abortCtrl = null;
-    
-            // Returns [{id, label, date, status, durationHours}] — skips the "[Choose …]" option (value "0")
-            function parseSessionOptions(ddl) {
-                return Array.from(ddl.options)
-                    .filter(opt => opt.value && opt.value !== '0')
-                    .map(opt => {
-                        const text     = opt.textContent;
-                        const dateM    = text.match(/@(\d{4})\.(\d{2})\.(\d{2})/);
-                        const durM     = text.match(/\b(\d+)h\b/i);
-                        const status   = /On Hold/i.test(text)    ? 'onHold'
-                                    : /Compensation/i.test(text) ? 'compensation'
-                                    : 'regular';
-                        return {
-                            id:            opt.value,
-                            label:         text.trim(),
-                            date:          dateM ? `${dateM[1]}-${dateM[2]}-${dateM[3]}` : null,
-                            status,
-                            durationHours: durM ? parseInt(durM[1], 10) : 2,
-                        };
-                    });
-            }
-    
-            // Extracts season+year from first session label for cache key (e.g. "Spring 2026" → "S2026")
-            function extractSeasonYear(sessions) {
-                if (!sessions.length) return 'unknown';
-                const m = sessions[0].label.match(/([A-Za-z]+)\s+(\d{4})/);
-                return m ? `${m[1][0].toUpperCase()}${m[2]}` : 'unknown';
-            }
-    
-            // Captures all hidden ASP.NET form fields from the live DOM
-            function snapshotForm() {
-                const get = id => { const el = document.getElementById(id); return el ? el.value : ''; };
-                return {
-                    __VIEWSTATE:          get('__VIEWSTATE'),
-                    __VIEWSTATEGENERATOR: get('__VIEWSTATEGENERATOR'),
-                    __EVENTVALIDATION:    get('__EVENTVALIDATION'),
-                    __SCROLLPOSITIONX:    '0',
-                    __SCROLLPOSITIONY:    '0',
-                    MainContent_H_AlertText: '',
-                };
-            }
-    
-            // Parses the student attendance DataGrid from a response document.
-            // Returns [{id, name, attended}] — empty array if table not found.
-            function parseStudentTable(doc) {
-                const table = doc.getElementById('MainContent_DG_StudentAttendance');
-                if (!table) return [];
-                return Array.from(table.querySelectorAll('tr'))
-                    .slice(1) // skip header row
-                    .map(tr => {
-                        const tds = tr.querySelectorAll('td');
-                        if (tds.length < 4) return null;
-                        const cb = tds[1].querySelector('input[type="checkbox"]');
-                        return {
-                            id:       tds[2].textContent.trim(),
-                            name:     tds[3].textContent.trim(),
-                            attended: cb ? cb.checked : false,
-                        };
-                    })
-                    .filter(Boolean);
-            }
-    
-            // A session where every student is unchecked most likely has no attendance entered.
-            // Exclude these sessions from absence calculations.
-            function isUnrecorded(students) {
-                return students.length > 0 && students.every(s => !s.attended);
-            }
-    
-            // Returns [{id, name, attended}] on success.
-            // Returns {error: 'expired'} if session has expired.
-            // Returns {error: 'network'} on fetch failure.
-            // Returns {error: 'aborted'} if signal was aborted.
-            async function fetchSessionStudents(sessionId, groupId, formState, signal) {
-                const body = new URLSearchParams({
-                    __EVENTTARGET:                        'ctl00$MainContent$DDL_Sessions',
-                    __EVENTARGUMENT:                      '',
-                    __LASTFOCUS:                          '',
-                    __VIEWSTATE:                          formState.__VIEWSTATE,
-                    __VIEWSTATEGENERATOR:                 formState.__VIEWSTATEGENERATOR,
-                    __EVENTVALIDATION:                    formState.__EVENTVALIDATION,
-                    __SCROLLPOSITIONX:                    formState.__SCROLLPOSITIONX,
-                    __SCROLLPOSITIONY:                    formState.__SCROLLPOSITIONY,
-                    'ctl00$MainContent$H_AlertText':      '',
-                    'ctl00$MainContent$DDL_StudentGroup': groupId,
-                    'ctl00$MainContent$DDL_Sessions':     sessionId,
-                });
-    
-                let resp;
-                try {
-                    resp = await fetch(PAGE_URL, {
-                        method:      'POST',
-                        credentials: 'include',
-                        headers:     { 'Content-Type': 'application/x-www-form-urlencoded' },
-                        body:        body.toString(),
-                        signal,
-                    });
-                } catch (e) {
-                    return { error: e.name === 'AbortError' ? 'aborted' : 'network' };
-                }
-    
-                if (!resp.ok) return { error: 'network' };
-    
-                const html = await resp.text();
-                if (html.includes('Login_m.aspx') || html.includes('id="LoginPage"')) {
-                    return { error: 'expired' };
-                }
-    
-                const doc = new DOMParser().parseFromString(html, 'text/html');
-                return parseStudentTable(doc);
-            }
-    
-            // Runs worker(task, index) for each task with at most maxConcurrent in-flight.
-            // Calls onProgress(completedCount, totalCount) after each task finishes.
-            // Respects signal: stops launching new tasks when signal.aborted is true.
-            // Always resolves (never rejects) — individual failures become null entries.
-            function runPool(tasks, worker, { maxConcurrent = 5, onProgress, signal } = {}) {
-                return new Promise(resolve => {
-                    if (!tasks.length) { resolve([]); return; }
-                    let running = 0, index = 0, done = 0;
-                    const results = new Array(tasks.length);
-    
-                    function next() {
-                        if (signal && signal.aborted) {
-                            if (running === 0) resolve(results);
-                            return;
-                        }
-                        while (running < maxConcurrent && index < tasks.length) {
-                            const i = index++;
-                            running++;
-                            worker(tasks[i], i)
-                                .then(r  => { results[i] = r; })
-                                .catch(() => { results[i] = null; })
-                                .finally(() => {
-                                    running--;
-                                    done++;
-                                    if (onProgress) onProgress(done, tasks.length);
-                                    if (signal && signal.aborted) {
-                                        if (running === 0) resolve(results);
-                                    } else if (index < tasks.length) {
-                                        next();
-                                    } else if (running === 0) {
-                                        resolve(results);
-                                    }
-                                });
-                        }
-                    }
-                    next();
-                });
-            }
-    
-            // Returns absence level 0-3 based on hour-weighted absence rate.
-            // > 25% → 3 (Drop), >= 20% → 2 (Second Warning), >= 10% → 1 (First Warning), else 0.
-            function classifyLevel(rate) {
-                if (rate > 0.25) return 3;
-                if (rate >= 0.20) return 2;
-                if (rate >= 0.10) return 1;
-                return 0;
-            }
-    
-            // Aggregates per-student hour-weighted absence data across all sessions.
-            // Returns {students, atRisk, levelCounts, avgRate, eligibleCount, errorCount, unrecordedCount, total}.
-            function buildReport(sessions, sessionResults) {
-                const map = new Map(); // studentId → {id, name, absentHours, totalHours, sessionCount, appearedIn, absentSessions}
-    
-                const eligibleSessions = sessions.filter((_, i) => Array.isArray(sessionResults[i]));
-                const eligibleCount    = eligibleSessions.length;
-    
-                sessions.forEach((session, i) => {
-                    const result = sessionResults[i];
-                    if (!Array.isArray(result)) return;
-    
-                    result.forEach(student => {
-                        if (!map.has(student.id)) {
-                            map.set(student.id, { id: student.id, name: student.name, absentHours: 0, totalHours: 0, sessionCount: 0, appearedIn: new Set(), absentSessions: [] });
-                        }
-                        const s = map.get(student.id);
-                        s.totalHours += session.durationHours;
-                        s.sessionCount++;
-                        s.appearedIn.add(session.id);
-                        if (!student.attended) {
-                            s.absentHours += session.durationHours;
-                            s.absentSessions.push({ date: session.date, durationHours: session.durationHours, status: session.status });
-                        }
-                    });
-                });
-    
-                const students = Array.from(map.values()).map(s => {
-                    const { appearedIn, ...rest } = s;
-                    const missingSessions = eligibleSessions.filter(sess => !appearedIn.has(sess.id))
-                        .map(sess => ({ id: sess.id, date: sess.date, durationHours: sess.durationHours }));
-                    const partialData = missingSessions.length > 0;
-                    const rate  = rest.totalHours > 0 ? rest.absentHours / rest.totalHours : 0;
-                    const level = classifyLevel(rate);
-                    return { ...rest, missingSessions, absenceRate: rate, level, partialData };
-                }).sort((a, b) => b.absenceRate - a.absenceRate);
-    
-                const levelCounts = { 0: 0, 1: 0, 2: 0, 3: 0 };
-                students.forEach(s => levelCounts[s.level]++);
-    
-                const atRisk   = students.filter(s => s.level >= 2);
-                const avgRate  = students.length > 0
-                    ? students.reduce((acc, s) => acc + s.absenceRate, 0) / students.length
-                    : 0;
-    
-                const errorCount      = sessionResults.filter(r => r === null).length;
-                const unrecordedCount = sessionResults.filter(r => r === 'unrecorded').length;
-    
-                return { students, atRisk, levelCounts, avgRate, eligibleCount, errorCount, unrecordedCount, total: students.length };
-            }
-    
-            function makeCacheKey(groupId, sessions) {
-                return `${CACHE_PREFIX}${groupId}_${extractSeasonYear(sessions)}`;
-            }
-    
-            function makeOverridesKey(groupId, sessions) {
-                return `giuAttOverridesV1_${groupId}_${extractSeasonYear(sessions)}`;
-            }
-    
-            // Loads persisted overrides. Returns empty Map if session count changed (new week added).
-            function loadOverrides(key, sessions) {
-                try {
-                    const raw = localStorage.getItem(key);
-                    if (!raw) return new Map();
-                    const data = JSON.parse(raw);
-                    if (!data || data.sessionCount !== sessions.length) return new Map();
-                    return new Map(Object.entries(data.overrides || {}));
-                } catch { return new Map(); }
-            }
-    
-            function saveOverrides(key, overridesMap, sessions) {
-                try {
-                    localStorage.setItem(key, JSON.stringify({
-                        overrides:    Object.fromEntries(overridesMap),
-                        sessionCount: sessions.length,
-                    }));
-                } catch { /* quota */ }
-            }
-    
-            function clearOverrides(key) {
-                try { localStorage.removeItem(key); } catch { /* ignore */ }
-            }
-    
-            // Returns cached data object if exists and within TTL, otherwise null.
-            function readCache(key) {
-                try {
-                    const raw = localStorage.getItem(key);
-                    if (!raw) return null;
-                    const data = JSON.parse(raw);
-                    if (!data || !data.ts) return null;
-                    if (Date.now() - data.ts > CACHE_TTL_MS) return null;
-                    return data;
-                } catch { return null; }
-            }
-    
-            // Stores payload with a timestamp. Silently ignores quota errors.
-            function writeCache(key, payload) {
-                try {
-                    localStorage.setItem(key, JSON.stringify({ ...payload, ts: Date.now() }));
-                } catch { /* storage quota exceeded */ }
-            }
-    
-            function clearCacheEntry(key) {
-                try { localStorage.removeItem(key); } catch { /* ignore */ }
-            }
-    
-            // Returns human-readable cache age string.
-            function formatCacheAge(ts) {
-                const sec = Math.floor((Date.now() - ts) / 1000);
-                if (sec < 60)   return `${sec}s ago`;
-                if (sec < 3600) return `${Math.floor(sec / 60)}m ago`;
-                return `${Math.floor(sec / 3600)}h ago`;
-            }
-    
-            // "2026-02-14" → "Feb 14"
-            function fmtSessionDate(dateStr) {
-                if (!dateStr) return '?';
-                const d = new Date(dateStr + 'T00:00:00');
-                return isNaN(d) ? dateStr : d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-            }
-    
-            function injectStyles() {
-                if (document.getElementById('gius-att-styles')) return;
-                const style = document.createElement('style');
-                style.id = 'gius-att-styles';
-                style.textContent = `
-        @keyframes giusAttSlideDown {
-            from { opacity: 0; transform: translateY(-14px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        /* ── Panel container ─────────────────────────────────────────── */
-        .gius-att-panel {
-            background: #fff;
-            border: 1px solid #eeeeee;
-            border-radius: 6px;
-            box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
-            margin-bottom: 20px;
-            margin-top: 10px;
-            animation: giusAttSlideDown 0.38s cubic-bezier(0.25,0.46,0.45,0.94);
-            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-            font-size: 13px;
-            overflow: hidden;
-            position: relative;
-        }
-        .gius-att-panel::before {
-            content: "";
-            position: absolute; top: 0; left: 0;
-            width: 100%; height: 3px;
-            background: #ffc107;
-        }
-        /* ── Header bar ──────────────────────────────────────────────── */
-        .gius-att-header {
-            background: #272c33;
-            color: #fff;
-            padding: 10px 14px;
-            border-bottom: 2px solid #ffc107;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            flex-wrap: wrap;
-            cursor: pointer;
-        }
-        .gius-att-title { font-size: 14px; font-weight: 700; flex: 1; }
-        .gius-att-chevron { transition: transform 0.25s ease; margin-right: 5px; font-size: 11px; }
-        .gius-att-panel.gius-att-collapsed .gius-att-body { display: none; }
-        .gius-att-panel.gius-att-collapsed .gius-att-chevron { transform: rotate(-90deg); }
-        .gius-att-meta  { font-size: 12px; color: rgba(255,255,255,0.65); }
-        .gius-att-refresh {
-            height: 26px; padding: 0 10px; border-radius: 6px;
-            font-size: 12px; font-weight: 700; cursor: pointer;
-            border: 1px solid rgba(255,255,255,0.3);
-            background: rgba(255,255,255,0.1);
-            color: #fff;
-            transition: all 0.2s ease;
-            display: inline-flex; align-items: center; gap: 4px;
-            font-family: 'Open Sans', Arial, sans-serif;
-        }
-        .gius-att-refresh:hover { background: rgba(255,255,255,0.22); }
-        /* ── Body ────────────────────────────────────────────────────── */
-        .gius-att-body { padding: 14px 16px; }
-        /* ── Progress bar ────────────────────────────────────────────── */
-        .gius-att-progress { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
-        .gius-att-progress-bar  { flex: 1; height: 8px; background: #e5e7eb; border-radius: 999px; overflow: hidden; }
-        .gius-att-progress-fill { height: 100%; background: #1B59C6; border-radius: 999px; width: 0%; transition: width 0.45s ease; }
-        .gius-att-progress-text { font-size: 12px; color: #6b7280; white-space: nowrap; min-width: 150px; }
-        /* ── Error banner ────────────────────────────────────────────── */
-        .gius-att-error {
-            background: #fef3c7; color: #92400e; border: 1px solid #fde68a;
-            border-radius: 6px; padding: 8px 12px; font-size: 12px; font-weight: 600;
-        }
-        /* ── Stats grid ──────────────────────────────────────────────── */
-        .gius-att-stats { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; }
-        .gius-att-stat  { font-size: 12px; color: #374151; }
-        .gius-att-stat-val { font-weight: 700; }
-        /* ── At-risk table ───────────────────────────────────────────── */
-        .gius-att-atrisk-title { font-size: 12px; font-weight: 700; color: #374151; margin: 6px 0 6px; }
-        .gius-att-atrisk-table { border-collapse: collapse; font-size: 13px; width: 100%; max-width: 680px; }
-        .gius-att-atrisk-table thead th {
-            background: #272c33; color: #fff;
-            padding: 7px 10px; text-align: left;
-            font-size: 12px; font-weight: 700; letter-spacing: 0.4px;
-        }
-        .gius-att-atrisk-table tbody tr { border-bottom: 1px solid #f3f4f6; }
-        .gius-att-atrisk-table tbody tr:nth-child(even) { background: #f9fafb; }
-        .gius-att-atrisk-table tbody tr:hover { background: #eff6ff; }
-        .gius-att-atrisk-table td { padding: 6px 10px; color: #374151; }
-        /* ── Level badge pills ───────────────────────────────────────── */
-        .gius-att-badge {
-            display: inline-flex; align-items: center;
-            border-radius: 999px; padding: 2px 10px;
-            font-size: 11px; font-weight: 700; white-space: nowrap;
-        }
-        .gius-att-badge-red   { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
-        .gius-att-badge-amber { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
-        /* ── Partial-data warning ───────────────────────────────────── */
-        .gius-att-partial {
-            display: inline-flex; align-items: center; gap: 3px;
-            color: #d97706; font-size: 11px; font-weight: 700;
-            cursor: help; margin-left: 4px;
-        }
-        html.gius-dark .gius-att-partial { color: #fbbf24 !important; }
-        /* ── Absent detail row ───────────────────────────────────────── */
-        .gius-att-data-row { cursor: pointer; }
-        .gius-att-detail-row td {
-            font-size: 12px;
-            padding: 6px 10px 6px 20px !important;
-            border-top: 1px solid #a5b4fc !important;
-            border-left: 4px solid #6366f1 !important;
-            background: #eef2ff !important;
-            color: #1e3a8a !important;
-        }
-        .gius-att-detail-label { font-weight: 700; display: block; margin-bottom: 3px; color: #4338ca; }
-        .gius-att-detail-list { margin: 0; padding: 0 0 0 16px; list-style: disc; }
-        .gius-att-detail-list li { margin: 1px 0; }
-        /* ── Missing-session override controls ──────────────────────── */
-        .gius-att-missing-section { margin-top: 8px; border-top: 1px dashed #a5b4fc; padding-top: 6px; }
-        .gius-att-missing-item { display: flex; align-items: center; gap: 10px; padding: 3px 0; }
-        .gius-att-missing-date { font-size: 12px; min-width: 90px; }
-        .gius-att-miss-grp {
-            display: inline-flex; border-radius: 5px; overflow: hidden;
-            border: 1px solid #d1d5db; flex-shrink: 0;
-        }
-        .gius-att-miss-btn {
-            padding: 3px 10px; font-size: 11px; font-weight: 600; cursor: pointer;
-            border: none; border-left: 1px solid #d1d5db;
-            background: transparent; color: #9ca3af;
-            font-family: 'Open Sans', Arial, sans-serif;
-            transition: background 0.15s, color 0.15s; white-space: nowrap;
-        }
-        .gius-att-miss-btn:first-child { border-left: none; }
-        .gius-att-miss-btn:not(.active):hover { background: #f3f4f6; color: #374151; }
-        .gius-att-miss-btn.active[data-val="attended"] { background: #d1fae5; color: #065f46; }
-        .gius-att-miss-btn.active[data-val="absent"]   { background: #fee2e2; color: #991b1b; }
-        .gius-att-miss-btn.active[data-val="onHold"]   { background: #fef3c7; color: #92400e; }
-        .gius-att-adjusted { font-size: 12px; margin-top: 6px; font-weight: 700; color: #4338ca; }
-        html.gius-dark .gius-att-missing-section { border-top-color: #4338ca !important; }
-        html.gius-dark .gius-att-miss-grp { border-color: #45475a !important; }
-        html.gius-dark tr.gius-att-detail-row td button.gius-att-miss-btn { border-left-color: #45475a !important; color: #9399b2 !important; background: transparent !important; }
-        html.gius-dark tr.gius-att-detail-row td button.gius-att-miss-btn:not(.active):hover { background: #313244 !important; color: #cdd6f4 !important; }
-        html.gius-dark tr.gius-att-detail-row td button.gius-att-miss-btn.active[data-val="attended"] { background: #166534 !important; color: #86efac !important; }
-        html.gius-dark tr.gius-att-detail-row td button.gius-att-miss-btn.active[data-val="absent"]   { background: #7f1d1d !important; color: #fca5a5 !important; }
-        html.gius-dark tr.gius-att-detail-row td button.gius-att-miss-btn.active[data-val="onHold"]   { background: #78350f !important; color: #fcd34d !important; }
-        html.gius-dark .gius-att-adjusted { color: #a5b4fc !important; }
-        /* ── Dark mode ───────────────────────────────────────────────── */
-        html.gius-dark .gius-att-panel { background: #181825 !important; border-color: transparent !important; }
-        html.gius-dark .gius-att-header { background: #11111b !important; }
-        html.gius-dark .gius-att-body   { color: #cdd6f4 !important; }
-        html.gius-dark .gius-att-progress-bar  { background: #313244 !important; }
-        html.gius-dark .gius-att-progress-fill { background: #89b4fa !important; }
-        html.gius-dark .gius-att-progress-text { color: #cdd6f4 !important; }
-        html.gius-dark .gius-att-error { background: #45475a !important; color: #f38ba8 !important; border-color: transparent !important; }
-        html.gius-dark .gius-att-stat  { color: #cdd6f4 !important; }
-        html.gius-dark .gius-att-atrisk-title { color: #cdd6f4 !important; }
-        html.gius-dark .gius-att-atrisk-table tbody tr { border-bottom-color: #313244 !important; }
-        html.gius-dark .gius-att-atrisk-table tbody tr:nth-child(even) { background: #181825 !important; }
-        html.gius-dark .gius-att-atrisk-table tbody tr:hover { background: #1e3a6e !important; }
-        html.gius-dark .gius-att-atrisk-table td { color: #cdd6f4 !important; }
-        html.gius-dark .gius-att-badge-red   { background: #3d1218 !important; color: #f38ba8 !important; border-color: #7f1d1d !important; }
-        html.gius-dark .gius-att-badge-amber { background: #2d1f00 !important; color: #fbbf24 !important; border-color: #78350f !important; }
-        html.gius-dark .gius-att-detail-row td { background: #1e2050 !important; color: #e0e7ff !important; border-top-color: #4338ca !important; border-left-color: #818cf8 !important; }
-        html.gius-dark .gius-att-detail-label { color: #a5b4fc !important; }
-        /* ── Idle / fetch state ─────────────────────────────────────────── */
-        .gius-att-idle { display: flex; align-items: center; gap: 10px; padding: 4px 0; }
-        .gius-att-idle-text { font-size: 12px; color: #6b7280; }
-        .gius-att-fetch-btn {
-            height: 28px; padding: 0 14px; border-radius: 6px;
-            font-size: 12px; font-weight: 700; cursor: pointer;
-            border: none; background: #ffc107; color: #272c33;
-            display: inline-flex; align-items: center; gap: 4px;
-        }
-        .gius-att-fetch-btn:hover { background: #e6ac00; }
-        html.gius-dark .gius-att-idle-text { color: #cdd6f4 !important; }
-        `;
-                document.head.appendChild(style);
-            }
-    
-            // Creates and returns the panel DOM element (not yet inserted into the page).
-            function buildPanel(groupLabel) {
-                const panel = document.createElement('div');
-                panel.className = 'gius-att-panel';
-                panel.innerHTML = `
-                <div class="gius-att-header">
-                    <span class="gius-att-title"><i class="fa fa-chevron-down gius-att-chevron"></i>Group Attendance Report — <strong>${groupLabel}</strong></span>
-                    <span class="gius-att-meta"></span>
-                    <button class="gius-att-refresh" type="button"><i class="fa fa-refresh"></i> Refresh</button>
-                </div>
-                <div class="gius-att-body">
-                    <div class="gius-att-progress" hidden>
-                        <div class="gius-att-progress-bar">
-                            <div class="gius-att-progress-fill"></div>
-                        </div>
-                        <span class="gius-att-progress-text">Preparing…</span>
-                    </div>
-                    <div class="gius-att-idle" hidden>
-                        <span class="gius-att-idle-text">Attendance data not loaded.</span>
-                        <button class="gius-att-fetch-btn" type="button">Fetch</button>
-                    </div>
-                    <div class="gius-att-error" hidden></div>
-                    <div class="gius-att-report" hidden>
-                        <div class="gius-att-stats"></div>
-                        <div class="gius-att-atrisk" hidden>
-                            <div class="gius-att-atrisk-title">AT-RISK STUDENTS (Level 2+)</div>
-                            <table class="gius-att-atrisk-table">
-                                <thead><tr>
-                                    <th>Level</th><th>Name</th><th>ID</th><th>Absent</th><th>%</th>
-                                </tr></thead>
-                                <tbody class="gius-att-atrisk-body"></tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>`;
-                return panel;
-            }
-    
-            function showIdle(panel) {
-                panel.querySelector('.gius-att-idle').hidden     = false;
-                panel.querySelector('.gius-att-progress').hidden = true;
-                panel.querySelector('.gius-att-error').hidden    = true;
-                panel.querySelector('.gius-att-report').hidden   = true;
-                panel.querySelector('.gius-att-meta').textContent = '';
-            }
-    
-            function showProgress(panel, done, total) {
-                panel.querySelector('.gius-att-idle').hidden     = true;
-                panel.querySelector('.gius-att-progress').hidden = false;
-                panel.querySelector('.gius-att-error').hidden    = true;
-                panel.querySelector('.gius-att-report').hidden   = true;
-    
-                const pct  = total > 0 ? Math.round((done / total) * 100) : 0;
-                panel.querySelector('.gius-att-progress-fill').style.width = `${pct}%`;
-                panel.querySelector('.gius-att-progress-text').textContent =
-                    `${done} / ${total} sessions scraped…`;
-                panel.querySelector('.gius-att-meta').textContent = '';
-            }
-    
-            function showError(panel, message) {
-                panel.querySelector('.gius-att-idle').hidden     = true;
-                panel.querySelector('.gius-att-progress').hidden = true;
-                panel.querySelector('.gius-att-error').hidden    = false;
-                panel.querySelector('.gius-att-report').hidden   = true;
-    
-                panel.querySelector('.gius-att-error').textContent = message;
-                panel.querySelector('.gius-att-meta').textContent  = '';
-            }
-    
-            function renderReport(panel, report, { ts, sessions, overridesKey }) {
-                panel.querySelector('.gius-att-idle').hidden     = true;
-                panel.querySelector('.gius-att-progress').hidden = true;
-                panel.querySelector('.gius-att-error').hidden    = true;
-                panel.querySelector('.gius-att-report').hidden   = false;
-    
-                // Header meta line
-                const scrapedNote = report.errorCount > 0
-                    ? `${report.eligibleCount}/${sessions.length} sessions (${report.errorCount} failed)`
-                    : `${sessions.length} sessions`;
-                panel.querySelector('.gius-att-meta').textContent =
-                    `${scrapedNote} · cached ${formatCacheAge(ts)}`;
-    
-                // Stats
-                const pct = n => `${(n * 100).toFixed(1)}%`;
-                panel.querySelector('.gius-att-stats').innerHTML = `
-                <span class="gius-att-stat"><span class="gius-att-stat-val">${report.total}</span> students</span>
-                <span class="gius-att-stat"><span class="gius-att-stat-val">${report.levelCounts[0] + report.levelCounts[1]}</span> OK / Level 1</span>
-                <span class="gius-att-stat"><span class="gius-att-stat-val">${report.levelCounts[2]}</span> Second Warning</span>
-                <span class="gius-att-stat"><span class="gius-att-stat-val">${report.levelCounts[3]}</span> Drop</span>
-                <span class="gius-att-stat">Group avg: <span class="gius-att-stat-val">${pct(report.avgRate)}</span> absent</span>
-                ${report.unrecordedCount > 0 ? `<span class="gius-att-stat" style="opacity:.7">(${report.unrecordedCount} unrecorded sessions excluded)</span>` : ''}
-            `;
-    
-                // At-risk table
-                const atRiskEl = panel.querySelector('.gius-att-atrisk');
-                if (report.atRisk.length === 0) {
-                    atRiskEl.hidden = true;
-                    return;
-                }
-                atRiskEl.hidden = false;
-                const tbody = panel.querySelector('.gius-att-atrisk-body');
-                tbody.innerHTML = report.atRisk.map((s, idx) => {
-                    const rule      = LEVEL_RULES.find(r => r.level === s.level);
-                    const pillCls   = s.level === 3 ? 'gius-att-badge-red' : 'gius-att-badge-amber';
-                    const absentSess = `${s.absentSessions.length}/${s.sessionCount}`;
-                    const partial    = s.partialData
-                        ? `<span class="gius-att-partial" title="Only ${s.sessionCount} of ${report.eligibleCount} sessions found in this group — student may have attended another group's session(s). Actual absence rate could be lower.">⚠ ${s.sessionCount}/${report.eligibleCount}</span>`
-                        : '';
-                    return `<tr class="gius-att-data-row" data-idx="${idx}">
-                    <td><span class="gius-att-badge ${pillCls}">${rule.badge}</span></td>
-                    <td>${s.name}${partial}</td>
-                    <td>${s.id}</td>
-                    <td>${absentSess}</td>
-                    <td>${pct(s.absenceRate)}</td>
-                </tr>`;
-                }).join('');
-    
-                // overrides: studentId:sessionId → 'attended' | 'absent' | 'onHold' — persisted in localStorage
-                const overrides = overridesKey ? loadOverrides(overridesKey, sessions) : new Map();
-    
-                function computeAdjusted(student) {
-                    let extraTotal = 0, extraAbsent = 0, extraTotalSess = 0, extraAbsentSess = 0;
-                    (student.missingSessions || []).forEach(sess => {
-                        const state = overrides.get(`${student.id}:${sess.id}`) ?? null;
-                        if (state === null || state === 'onHold') return;
-                        extraTotal += sess.durationHours;
-                        extraTotalSess++;
-                        if (state === 'absent') { extraAbsent += sess.durationHours; extraAbsentSess++; }
-                    });
-                    const adjTotal      = student.totalHours + extraTotal;
-                    const adjAbsent     = student.absentHours + extraAbsent;
-                    const adjRate       = adjTotal > 0 ? adjAbsent / adjTotal : 0;
-                    const adjTotalSess  = student.sessionCount + extraTotalSess;
-                    const adjAbsentSess = student.absentSessions.length + extraAbsentSess;
-                    return { adjTotal, adjAbsent, adjRate, adjLevel: classifyLevel(adjRate), adjTotalSess, adjAbsentSess };
-                }
-    
-                function refreshDataRow(dataTr, student) {
-                    const adj     = computeAdjusted(student);
-                    const rule    = LEVEL_RULES.find(r => r.level === adj.adjLevel);
-                    const pillCls = adj.adjLevel === 3 ? 'gius-att-badge-red' : 'gius-att-badge-amber';
-                    const tds     = dataTr.querySelectorAll('td');
-                    tds[0].innerHTML = `<span class="gius-att-badge ${pillCls}">${rule.badge}</span>`;
-                    tds[3].textContent = `${adj.adjAbsentSess}/${adj.adjTotalSess}`;
-                    tds[4].textContent = pct(adj.adjRate);
-                    const adjEl = dataTr.nextElementSibling && dataTr.nextElementSibling.querySelector('[data-adjusted]');
-                    if (adjEl) adjEl.textContent = `Adjusted: ${adj.adjAbsentSess}/${adj.adjTotalSess} sessions = ${pct(adj.adjRate)} → ${rule.label}`;
-                }
-    
-                function buildDetailHtml(student) {
-                    const items = (student.absentSessions || [])
-                        .map(s => `<li>${fmtSessionDate(s.date)} · ${s.durationHours}h</li>`)
-                        .join('');
-                    const absentHtml = student.absentSessions.length
-                        ? `<span class="gius-att-detail-label">Absent sessions (${student.absentSessions.length}):</span>
-                           <ul class="gius-att-detail-list">${items}</ul>`
-                        : '';
-    
-                    let missingHtml = '';
-                    if (student.partialData && (student.missingSessions || []).length) {
-                        const adj     = computeAdjusted(student);
-                        const rule    = LEVEL_RULES.find(r => r.level === adj.adjLevel);
-                        const isDark  = document.documentElement.classList.contains('gius-dark');
-                        const DARK_ACTIVE = {
-                            attended: 'background:#166534;color:#86efac',
-                            absent:   'background:#7f1d1d;color:#fca5a5',
-                            onHold:   'background:#78350f;color:#fcd34d',
-                        };
-                        const missItems = student.missingSessions.map(sess => {
-                            const state = overrides.get(`${student.id}:${sess.id}`) ?? null;
-                            const btnStyle = val => (state === val && isDark) ? ` style="${DARK_ACTIVE[val]}"` : '';
-                            return `<div class="gius-att-missing-item"
-                                         data-sid="${student.id}" data-session-id="${sess.id}" data-hours="${sess.durationHours}">
-                                <span class="gius-att-missing-date">${fmtSessionDate(sess.date)} · ${sess.durationHours}h</span>
-                                <div class="gius-att-miss-grp">
-                                    <button type="button" class="gius-att-miss-btn${state === 'attended' ? ' active' : ''}" data-val="attended"${btnStyle('attended')}>✓ Attended</button>
-                                    <button type="button" class="gius-att-miss-btn${state === 'absent'   ? ' active' : ''}" data-val="absent"${btnStyle('absent')}>✗ Absent</button>
-                                    <button type="button" class="gius-att-miss-btn${state === 'onHold'   ? ' active' : ''}" data-val="onHold"${btnStyle('onHold')}>⏸ On Hold</button>
-                                </div>
-                            </div>`;
-                        }).join('');
-                        missingHtml = `<div class="gius-att-missing-section">
-                            <span class="gius-att-detail-label" style="color:#d97706">Missing sessions — mark attendance:</span>
-                            ${missItems}
-                            <div class="gius-att-adjusted" data-adjusted>Adjusted: ${adj.adjAbsentSess}/${adj.adjTotalSess} sessions = ${pct(adj.adjRate)} → ${rule.label}</div>
-                        </div>`;
-                    }
-                    return `<td colspan="5">${absentHtml}${missingHtml}</td>`;
-                }
-    
-                tbody.onclick = e => {
-                    // Toggle button inside missing-session section
-                    const btn = e.target.closest('.gius-att-miss-btn');
-                    if (btn) {
-                        const item      = btn.closest('.gius-att-missing-item');
-                        const studentId = item.dataset.sid;
-                        const sessId    = item.dataset.sessionId;
-                        overrides.set(`${studentId}:${sessId}`, btn.dataset.val);
-                        if (overridesKey) saveOverrides(overridesKey, overrides, sessions);
-                        const isDark = document.documentElement.classList.contains('gius-dark');
-                        const DARK_ACTIVE = { attended:'background:#166534;color:#86efac', absent:'background:#7f1d1d;color:#fca5a5', onHold:'background:#78350f;color:#fcd34d' };
-                        item.querySelectorAll('.gius-att-miss-btn').forEach(b => {
-                            const isActive = b.dataset.val === btn.dataset.val;
-                            b.classList.toggle('active', isActive);
-                            b.style.cssText = (isActive && isDark) ? DARK_ACTIVE[b.dataset.val] : '';
-                        });
-                        const dataTr  = item.closest('tr.gius-att-detail-row').previousElementSibling;
-                        const idx     = parseInt(dataTr.dataset.idx, 10);
-                        refreshDataRow(dataTr, report.atRisk[idx]);
-                        return;
-                    }
-    
-                    // Expand / collapse row
-                    const tr = e.target.closest('tr.gius-att-data-row');
-                    if (!tr) return;
-                    const idx     = parseInt(tr.dataset.idx, 10);
-                    const student = report.atRisk[idx];
-                    if (!student) return;
-                    const existing = tr.nextElementSibling;
-                    if (existing && existing.classList.contains('gius-att-detail-row')) {
-                        existing.remove();
-                        return;
-                    }
-                    const detailTr = document.createElement('tr');
-                    detailTr.className = 'gius-att-detail-row';
-                    detailTr.innerHTML = buildDetailHtml(student);
-                    tr.insertAdjacentElement('afterend', detailTr);
-                };
-    
-                // Apply any saved overrides to the already-rendered rows immediately
-                report.atRisk.forEach((student, idx) => {
-                    if (!student.partialData) return;
-                    const hasOverride = (student.missingSessions || []).some(sess =>
-                        overrides.has(`${student.id}:${sess.id}`));
-                    if (!hasOverride) return;
-                    const dataTr = tbody.querySelector(`tr[data-idx="${idx}"]`);
-                    if (dataTr) refreshDataRow(dataTr, student);
-                });
-            }
-    
-            // Finds the best insertion point and inserts panel. Returns panel element or null.
-            function mountPanel(groupLabel) {
-                const studentTable = document.getElementById('MainContent_DG_StudentAttendance');
-                const sessionInfoEl = document.getElementById('MainContent_L_SessionStart');
-    
-                const anchor = studentTable
-                    || sessionInfoEl?.closest('table')?.nextSibling
-                    || null;
-    
-                if (!anchor || !anchor.parentElement) return null;
-    
-                injectStyles();
-                const panel = buildPanel(groupLabel);
-                anchor.parentElement.insertBefore(panel, anchor);
-                Tips.show({ id: 'studentAttendance', el: panel, title: 'Group Attendance Report',
-                    text: 'Scans every session for this group and flags students near the absence limit. Click a student to see their absent sessions.' });
-                return panel;
-            }
-    
-            async function runScrape(signal, panel, sessions, groupId, formState, cacheKey, groupLabel, preloadedSessionId, overridesKey) {
-                const worker = async (session) => {
-                    let result;
-                    if (session.id === preloadedSessionId) {
-                        // This session is already rendered on the page — read DOM directly.
-                        // Re-fetching it would send no-change postback → ASP.NET returns empty table.
-                        result = parseStudentTable(document);
-                    } else {
-                        result = await fetchSessionStudents(session.id, groupId, formState, signal);
-                    }
-                    if (Array.isArray(result)) {
-                        // On Hold / Compensation: portal counts hours in denominator but no absences
-                        if (session.status === 'onHold' || session.status === 'compensation') {
-                            return result.map(s => ({ ...s, attended: true }));
-                        }
-                        return isUnrecorded(result) ? 'unrecorded' : result;
-                    }
-                    if (result && result.error === 'expired') return { error: 'expired' };
-                    return null;
-                };
-    
-                const rawResults = await runPool(sessions, worker, {
-                    maxConcurrent: MAX_CONCURRENT,
-                    signal,
-                    onProgress: (done, total) => {
-                        if (!signal.aborted) showProgress(panel, done, total);
-                    },
-                });
-    
-                if (signal.aborted) return;
-    
-                if (rawResults.some(r => r && r.error === 'expired')) {
-                    showError(panel, 'Session may have expired — please reload the page.');
-                    return;
-                }
-    
-                const report = buildReport(sessions, rawResults);
-                writeCache(cacheKey, { report, sessions, groupLabel });
-                renderReport(panel, report, { ts: Date.now(), sessions, overridesKey });
-            }
-    
-            function init() {
-                const groupDdl   = document.getElementById('MainContent_DDL_StudentGroup');
-                const sessionDdl = document.getElementById('MainContent_DDL_Sessions');
-                if (!groupDdl || !sessionDdl) return;
-    
-                const groupId    = groupDdl.value;
-                const groupLabel = groupDdl.options[groupDdl.selectedIndex]?.textContent?.trim() ?? '';
-                if (!groupId || groupId === '0') return;
-    
-                const sessions = parseSessionOptions(sessionDdl);
-                if (!sessions.length) return;
-    
-                const panel = mountPanel(groupLabel);
-                if (!panel) return;
-    
-                const cacheKey          = makeCacheKey(groupId, sessions);
-                const overridesKey      = makeOverridesKey(groupId, sessions);
-                const formState         = snapshotForm();
-                const selectedSessionId = sessionDdl.value !== '0' ? sessionDdl.value : null;
-    
-                function startScrape() {
-                    if (_abortCtrl) _abortCtrl.abort();
-                    _abortCtrl = new AbortController();
-                    showProgress(panel, 0, sessions.length);
-                    runScrape(_abortCtrl.signal, panel, sessions, groupId, formState, cacheKey, groupLabel, selectedSessionId, overridesKey);
-                }
-    
-                panel.querySelector('.gius-att-header').addEventListener('click', e => {
-                    if (e.target.closest('button, input, a')) return;
-                    panel.classList.toggle('gius-att-collapsed');
-                });
-    
-                panel.querySelector('.gius-att-refresh').addEventListener('click', () => {
-                    clearCacheEntry(cacheKey);
-                    clearOverrides(overridesKey);
-                    startScrape();
-                });
-    
-                panel.querySelector('.gius-att-fetch-btn').addEventListener('click', startScrape);
-    
-                const cached = readCache(cacheKey);
-                if (cached && cached.report && cached.sessions) {
-                    renderReport(panel, cached.report, { ts: cached.ts, sessions: cached.sessions, overridesKey });
-                } else {
-                    showIdle(panel);
-                }
-            }
-    
-            init();
-        },
     };
 
-    // ═══════════════════════════════════════════════════════════════════════════
-    //  3. ROUTES — path test per feature. Array order is deterministic:
-    //     teachingLoad + proctorReminder both match Home.aspx; ordering here
-    //     fixes the race the two standalone scripts had.
-    // ═══════════════════════════════════════════════════════════════════════════
-    // Control Center: each feature name links to the page the feature lives on
-    // (Home widgets link to their portal source pages).
+    // Control Center: each feature name links to its page (attendance → its report view).
     const FEATURE_PAGES = {
-        // Pinned absolute (not Shared.portalUrl): the report is not reachable on Berlin.
-        staffAttendance:   'https://portal.giu-uni.de/GIUb/EXT/SwiftReports_m.aspx?swiftreportid=866&executereport=1',
+        staffAttendance:   Shared.portalUrl('/GIUb/INTStaff/Home.aspx' + BERLIN_VIEW_HASH),
         uploadGrades:      Shared.portalUrl('/GIUb/EXT/ManageUploadedGrades_m.aspx'),
-        teachingLoad:      Shared.portalUrl('/GIUb/INTStaff/SearchAcademicScheduled_001_m.aspx'),
         proctorReminder:   Shared.portalUrl('/GIUb/INTStaff/ViewTimeTable_m.aspx'),
-        unenteredSessions: Shared.portalUrl('/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx'),
-        proctorAggregator: Shared.portalUrl('/GIUb/INTStaff/ProctorExchange_m.aspx'),
         notificationBatch: Shared.portalUrl('/GIUb/INTStaff/NotificationSystem_SendEmail_m.aspx'),
-        manageGroupGrades: Shared.portalUrl('/GIUb/INTStaff/ManageGroupGrade_m.aspx'),
-        studentAttendance: Shared.portalUrl('/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx'),
     };
 
+    // Order matters on Home: attendance first; Proctor Reminder anchors below it.
     const ROUTES = [
-        // Page-gated here; module keeps its own internal page checks as second layer.
-        { id: 'staffAttendance',   test: (p) => /SwiftReports_m\.aspx$/i.test(p) || /\/home\.aspx$/i.test(p) },
+        { id: 'staffAttendance',   test: (p) => /\/home\.aspx$/i.test(p) },
         { id: 'uploadGrades',      test: (p) => /\/ManageUploadedGrades_m\.aspx$/i.test(p) },
-        // Home widgets (ordered):
-        { id: 'teachingLoad',      test: (p) => /\/Home\.aspx$/i.test(p) || /SearchAcademicScheduled_001_m\.aspx$/i.test(p) },
         { id: 'proctorReminder',   test: (p) => /\/Home\.aspx$/i.test(p) },
-        { id: 'unenteredSessions', test: (p) => /\/Home\.aspx$/i.test(p) },
-        // Page-specific:
-        { id: 'proctorAggregator', test: (p) => /\/ProctorExchange_m\.aspx$/i.test(p) },
         { id: 'notificationBatch', test: (p) => /\/NotificationSystem_SendEmail_m\.aspx$/i.test(p) },
-        { id: 'manageGroupGrades', test: (p) => /\/ManageGroupGrade_m\.aspx$/i.test(p) },
-        { id: 'studentAttendance', test: (p) => /\/ClassAttendance_ManageStudentAttendancesH003\.aspx/i.test(p) },
     ];
 
     function renderHomeFeatureToggles() {
@@ -13972,7 +12247,7 @@
                 });
             }, { passive: true });
             Tips.show({ id: 'controlCenter', el: panel, title: 'Control Center',
-                text: 'All SuperScript features are managed from this card. Only three start enabled — open it and switch on what you need. Changes apply after a reload.' });
+                text: CONTROL_CENTER_TIP });
 
             const status = panel.querySelector('#gius-feature-status');
             const reloadBtn = panel.querySelector('#gius-feature-reload');
@@ -14005,44 +12280,21 @@
         setTimeout(mount, 3200);
     }
 
-    // ═══════════════════════════════════════════════════════════════════════════
-    //  4. BOOTSTRAP — toggle check → path test → per-feature try/catch isolation.
-    // ═══════════════════════════════════════════════════════════════════════════
+    // ═══ BOOTSTRAP ═══
+    Shared.attendanceSource = createBerlinSource(Shared);
+    try { window.__giuBerlin = Shared.attendanceSource; } catch { /* ignore */ }
+
     const path = location.pathname;
     renderHomeFeatureToggles();
     for (const route of ROUTES) {
-        if (!FEATURES[route.id]) continue;       // user toggled off
-        if (!route.test(path)) continue;         // wrong page
+        if (!FEATURES[route.id]) continue;
+        if (!route.test(path)) continue;
         const fn = Features[route.id];
         if (typeof fn !== 'function') { Shared.warn(route.id, 'no module'); continue; }
         try {
-            fn(Shared);                          // one feature crashing won't kill the rest
+            fn(Shared);
         } catch (e) {
             Shared.warn(route.id, 'crashed:', e);
         }
-    }
-
-    // ═══ Deep-link: auto-select session when arriving from a Not Entered
-    //     Sessions widget click (?gius_session={id}). The sessions dropdown
-    //     is not group-filtered (confirmed live — it lists every group's
-    //     sessions regardless of the group control's value), so selecting
-    //     the session alone and letting its native onchange fire the
-    //     portal's own __doPostBack is enough; no group step needed. Runs
-    //     unconditionally (not feature-toggled) — it's a no-op without the
-    //     query param. ──
-    try {
-        if (/\/ClassAttendance_ManageStudentAttendancesH003\.aspx/i.test(path)) {
-            const sessionId = new URLSearchParams(location.search).get('gius_session');
-            const sel = document.getElementById('MainContent_DDL_Sessions');
-            if (sessionId && sel && sel.value !== sessionId) {
-                const opt = Array.from(sel.options).find(o => o.value === sessionId);
-                if (opt) {
-                    sel.value = sessionId;
-                    sel.dispatchEvent(new Event('change', { bubbles: true }));
-                }
-            }
-        }
-    } catch (e) {
-        Shared.warn('sessionDeepLink', 'crashed:', e);
     }
 })();

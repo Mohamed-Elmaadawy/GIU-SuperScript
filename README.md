@@ -29,6 +29,10 @@ Choose **one** install mode:
 
 Do **not** install `GIU SuperScript.js` and the old individual feature scripts at the same time. They match the same portal pages and will create duplicate widgets, duplicate buttons, and duplicate handlers. `GIU Theme.js` is the only script that intentionally stays separate.
 
+**Berlin staff:** `GIU Berlin Attendance.js` runs on the Berlin portal (`portal.giu-berlin.de`), a different site from every other script here, so it can be installed alongside `GIU SuperScript.js` without duplicates. It also matches the Cairo sign-in pages (GIU `Home.aspx`, the GUC report page), but stays inert there except inside its own sign-in popup, so it never adds anything to your Cairo portal.
+
+On the Berlin portal install **GIU Berlin SuperScript** OR **GIU Berlin Attendance**, never both (both run on portal.giu-berlin.de). It works alongside the Cairo GIU SuperScript.
+
 **Option A — Paste the script manually:**
 
 1. Open Tampermonkey → click the extension icon → **Dashboard**
@@ -60,9 +64,9 @@ Every script carries `@updateURL` and `@downloadURL` pointing at this repo, so T
 
 ### GIU SuperScript — All-in-one bundle
 
-**File:** `GIU SuperScript.js` | **Version:** 1.3.5 | **Author:** Mo.Elmaadawy
+**File:** `GIU SuperScript.js` | **Version:** 1.3.6 | **Author:** Mo.Elmaadawy
 
-The all-in-one userscript that bundles every feature script below except GIU Theme. It also adds a **Control Center** card on the portal Home page where you can turn bundled modules on or off.
+The all-in-one userscript that bundles every feature script below except GIU Theme and GIU Berlin Attendance. It also adds a **Control Center** card on the portal Home page where you can turn bundled modules on or off.
 
 **Target pages:**
 
@@ -82,19 +86,21 @@ https://portal.giu-uni.de/*
 - Teaching Load
 - Not Entered Sessions
 
-**Working at GIU Berlin?** Set your campus under **Staff Enhanced Attendance →
-Settings → Branch**. It controls which weekday counts as the fixed non-working
-day — Friday for Cairo, Sunday for Berlin — and applies to your whole report:
-day-off detection, compensation weeks and status labels.
+**Working at GIU Berlin?** Use the Berlin scripts (below). The Cairo scripts
+always use the Cairo week (Friday off); the Berlin scripts always use the Berlin
+week (Sunday off) — for compensation weeks and status labels alike. If you moved
+from Cairo to Berlin, the **setup wizard** (see Staff Enhanced Attendance) asks for
+your first day at the Berlin branch when you run the Berlin script. Days before that
+date use the Cairo weekend rule, so a report spanning the move is calculated correctly.
 
-If you moved between campuses, also set **Switched on** to your first day at the
-new one. Days before that date use the other campus's weekend rule, so a report
-spanning the move is calculated correctly on both sides. Leave it empty if you
-have not switched.
+Your weekly day off is never guessed: until you set it via the setup wizard, the
+Home widget shows a **Set your day off** prompt and greys out the numbers.
 
-The scripts run on the Cairo portal (`portal.giu-uni.de`) only. Berlin staff read
-their attendance there too, because Berlin's own report page returns a server
-error.
+The SuperScript runs on the Cairo portal (`portal.giu-uni.de`) only. Berlin's own
+report page returns a server error, so Berlin staff either read their attendance
+on the Cairo portal, or install [GIU Berlin Attendance](#11-giu-berlin-attendance),
+which brings the same widget and full report to the Berlin portal by reading the
+timesheet from Cairo in the background.
 
 **Important:** install this **OR** the individual feature scripts, never both. Keep `GIU Theme.js` separate because it needs to run at `document-start` to prevent flash-of-unstyled-content.
 
@@ -130,7 +136,7 @@ https://portal.giu-uni.de/*
 
 ### 2. GIU Staff Enhanced Attendance
 
-**File:** `GIU Staff Attendance Script.js` | **Version:** 3.2.5 | **Author:** Mo.Elmaadawy
+**File:** `GIU Staff Attendance Script.js` | **Version:** 3.2.7 | **Author:** Mo.Elmaadawy
 
 A full attendance management dashboard injected above the Swift Report attendance table. Tracks your hours, leave balance, and exceptions — all stored locally in your browser.
 
@@ -166,14 +172,26 @@ https://portal.giu-uni.de/GIUb/EXT/SwiftReports_m.aspx?swiftreportid=866&execute
 
 ![Attendance Dashboard](screenshots/attendance.gif)
 
+**First-run setup:**
+
+On first visit (or when no day off is set), a **setup wizard** opens automatically. It asks:
+
+1. **Settings import** — if you have a settings `.json` file from a previous installation, upload or paste it; if it contains a day off, the wizard finishes there; otherwise, continue.
+2. **Day off** — required, choose one weekday for your consistent weekly rest day (applies from a date you pick).
+3. **Day-off changes** — if your rest day changed in the last 2 months, provide the previous day and the date you switched; otherwise, skip.
+4. **Annual leave balance** — your remaining days (decimals allowed).
+5. **Monthly accrual** — days you earn per payroll month (pre-filled with your current setting).
+6. **Backup & finish** — download or copy your settings as JSON, then click Finish to save and activate.
+
+You can **Skip** the wizard at any step — it won't reopen automatically, but Settings keeps a **Run setup again** button to restart it. The Home page shows **Set your day off** when none is configured.
+
 **Usage:**
 
 1. Navigate to the Swift Report page (link above)
 2. The attendance dashboard appears above the report table
-3. On first visit, a guided walkthrough launches automatically
-4. Set your **Day Off** in Settings — applies from a chosen start date forward
-5. Add holidays, overrides, and compensation days as needed
-6. Use **Export Settings** to back up your configuration before clearing browser data
+3. On first visit, the setup wizard launches automatically
+4. Once configured, add holidays, overrides, and compensation days as needed in Settings
+5. Use **Export Settings** to back up your configuration before clearing browser data
 
 ---
 
@@ -493,6 +511,62 @@ https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendances
 1. Navigate to the GIU staff portal Home page
 2. The widget appears automatically if any Regular session is overdue and unentered
 3. Click a row to open the Manage Student Attendances page
+
+---
+
+### 11. GIU Berlin Attendance
+
+**File:** `GIU Berlin Attendance.js` | **Version:** 1.0.0 | **Author:** Mo.Elmaadawy
+
+Brings the full Staff Enhanced Attendance experience to the **Berlin** portal for both **GIU and GUC** staff. The timesheet still lives only on your university's Cairo portal, so this script reads it from there in the background — no second portal tab needed.
+
+**Target pages:**
+
+```text
+https://portal.giu-berlin.de/GIUb/INTStaff/Home.aspx                    (widget)
+https://portal.giu-berlin.de/GIUb/INTStaff/Home.aspx#gius-attendance    (full report)
+https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx                       (sign-in popup only)
+https://{staff,intranet,apps}.guc.edu.eg/external/tempprojects/swiftreports.aspx   (sign-in popup only)
+```
+
+**Setup (once):**
+
+1. Install the script. Tampermonkey's install page lists the Cairo hosts this script may contact (`portal.giu-uni.de` for GIU, the `guc.edu.eg` hosts for GUC); no access prompt is expected.
+2. In the **same browser**, sign in to your Cairo portal once (GIU: `https://portal.giu-uni.de`; GUC: your staff portal). Your Berlin and Cairo accounts are separate — the script never asks for, stores, or sends a password.
+3. Open the Berlin Home page and pick **GIU** or **GUC** when asked.
+
+**First-run setup:**
+
+See **GIU Staff Enhanced Attendance → First-run setup** above. The Berlin script's wizard also asks when you started at the Berlin branch (if after arrival in Berlin).
+
+**Features:**
+
+- **Home widget** — this payroll month's balance, exactly like the Cairo widget
+- **Full report** — sidebar **My Attendance** (or the widget's "View full report") opens summaries, settings, compensation and the timesheet itself inside the Berlin portal
+- **Switch University** — change GIU/GUC any time from the full report
+- **Berlin week** — always Sunday off; the setup wizard configures your day off and Berlin start date
+- **Clear errors** — "Not signed in", "Couldn't reach", "portal error", "page changed" each get their own card with **Retry**, plus **Sign in to Cairo** where a login helps; nothing retries on its own
+- **Popup sign-in** — **Sign in to Cairo** opens a small popup showing Chrome's own login prompt. Once you're signed in it closes itself and the widget refreshes (one new attempt; closing the popup yourself does the same). Your password only goes into Chrome's prompt; the script never sees or stores it
+
+**Notes:**
+
+- Settings here are separate from the Cairo portal's (browser storage is per site).
+- Verified on Chrome/Chromium only.
+- If your Cairo login expires (e.g. after restarting the browser), use **Sign in to Cairo**.
+- If Chrome blocks the popup, allow popups for `portal.giu-berlin.de`; until then the button falls back to opening Cairo in a new tab — sign in there, then press **Retry**.
+- On the Cairo sign-in pages the script does nothing except inside its own sign-in popup, so it is still fine alongside `GIU SuperScript.js`.
+
+---
+
+### 12. GIU Berlin SuperScript — Berlin all-in-one
+
+**File:** `GIU Berlin SuperScript.js` | **Version:** 1.0.0 | **Author:** Mo.Elmaadawy
+
+Everything the Berlin portal supports in one script: **Staff Attendance** (your Cairo timesheet on Berlin — see GIU Berlin Attendance for setup), **Upload Grades**, **Proctor Reminder** and **Notification Batch**, with the same Control Center (Home) to switch each on or off and the same first-run setup wizard as the Cairo SuperScript. All four features start enabled.
+
+**First-run setup:** See **GIU Staff Enhanced Attendance → First-run setup** above.
+
+**Install this OR GIU Berlin Attendance on Berlin — never both.** It's fine alongside the Cairo GIU SuperScript (different portal).
 
 ---
 
