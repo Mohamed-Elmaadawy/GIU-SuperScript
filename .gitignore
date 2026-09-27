@@ -1,5 +1,4 @@
 # Release-only repository: the userscripts, README and screenshots.
-# Sources and the build pipeline live in a separate private repository.
 *
 !.gitignore
 !README.md
