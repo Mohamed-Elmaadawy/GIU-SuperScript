@@ -180,6 +180,7 @@ Staff of **GIU and GUC** in Berlin use the Berlin portal, but the attendance tim
 - **First run:** choose **GIU** or **GUC**, then the setup wizard (above) runs, including your Berlin start date.
 - **Full report:** sidebar **My Attendance**, or **View full report** in the widget. **Switch University** changes GIU/GUC later.
 - The Berlin week always has **Sunday** off; days before your Berlin start date follow the Cairo week (Friday off).
+- **Times are shown in Berlin time.** The Cairo portal records Berlin badge times on Cairo's clock; the script converts each day using that day's actual difference (usually 1 hour, 0 from late March to late April, 2 for a few days in late October). The timesheet's **Time diff** column shows the difference used (`—` = before your Berlin start date, not converted). Late arrivals and the 7:00 PM cap are checked on Berlin time; worked durations don't change.
 - On Home, the **Session** and **NoUserName** cards are hidden while their count is 0.
 - Tested on Chrome. Settings on Berlin are separate from those on Cairo.
 
