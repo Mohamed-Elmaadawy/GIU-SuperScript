@@ -10,7 +10,7 @@
 // @match       https://apps.guc.edu.eg/external/tempprojects/swiftreports.aspx*
 // @match       https://apps.guc.edu.eg/External/TempProjects/SwiftReports.aspx*
 // @namespace   Cyn0
-// @version     1.0.3
+// @version     1.0.4
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js
 // @author      Mo.Elmaadawy
@@ -1836,7 +1836,9 @@ function giusDateFormat(ymd) {
 function createGiusDateField(S, opts) {
     const o = opts || {};
     S.injectStyle('gius-date-style', `
-        .gius-date{position:relative;display:inline-flex;align-items:stretch;gap:6px;vertical-align:middle;}
+        .gius-date{position:relative;display:inline-flex;flex-wrap:wrap;align-items:stretch;gap:6px;vertical-align:middle;}
+        .gius-date .gius-date-hint{flex:0 0 100%;font-size:11.5px;line-height:1.3;color:#6b7280;margin-top:-2px;}
+        html.gius-dark .gius-date .gius-date-hint{color:#a6adc8;}
         .gius-date .gius-date-text{width:130px;min-width:0;}
         .gius-setup .gius-date{display:flex;}
         .gius-setup .gius-date .gius-date-text{width:auto;flex:1 1 auto;}
@@ -1877,7 +1879,13 @@ function createGiusDateField(S, opts) {
     native.tabIndex = -1;
     native.setAttribute('aria-hidden', 'true');
     if (o.max) native.max = o.max;
-    wrap.append(input, btn, native);
+    // Always-visible format hint: the placeholder vanishes as soon as you type.
+    const hint = document.createElement('span');
+    hint.className = 'gius-date-hint';
+    hint.id = (o.id || ('gius-date-' + Math.random().toString(36).slice(2, 8))) + '-format';
+    hint.textContent = 'Format: dd/mm/yyyy, e.g. 05/09/2026 — or pick it from the calendar';
+    input.setAttribute('aria-describedby', hint.id);
+    wrap.append(input, btn, native, hint);
 
     input.addEventListener('input', () => { if (o.onInput) o.onInput(input.value); });
     btn.addEventListener('click', () => {
