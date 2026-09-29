@@ -25,8 +25,8 @@ Each SuperScript has a **Control Center** card on the portal Home page where you
 
 | Script | Version | Portal | Install |
 | --- | --- | --- | --- |
-| Staff Enhanced Attendance | 3.2.11 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.user.js) |
-| Berlin Attendance | 1.0.4 | Berlin | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.user.js) |
+| Staff Enhanced Attendance | 3.2.12 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.user.js) |
+| Berlin Attendance | 1.0.5 | Berlin | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.user.js) |
 | Teaching Load | 1.1.5 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Teaching%20Load.user.js) |
 | Proctoring Reminder | 1.1.4 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Proctoring%20Reminder.user.js) |
 | Not Entered Sessions | 1.1.2 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Not%20Entered%20Sessions.user.js) |
@@ -35,7 +35,7 @@ Each SuperScript has a **Control Center** card on the portal Home page where you
 | Manage Group Grades | 1.5 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Manage%20Group%20Grades.user.js) |
 | Notification Batch Send | 1.4.1 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Notification%20Batch%20Send.user.js) |
 
-The bundles: GIU SuperScript **1.3.11**, GIU Berlin SuperScript **1.0.4**, GIU Theme **1.0.2**.
+The bundles: GIU SuperScript **1.3.12**, GIU Berlin SuperScript **1.0.5**, GIU Theme **1.0.2**.
 
 </details>
 

@@ -10,7 +10,7 @@
 // @match       https://apps.guc.edu.eg/external/tempprojects/swiftreports.aspx*
 // @match       https://apps.guc.edu.eg/External/TempProjects/SwiftReports.aspx*
 // @namespace   Cyn0
-// @version     1.0.4
+// @version     1.0.5
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js
 // @author      Mo.Elmaadawy
@@ -418,6 +418,185 @@ const UNIVERSITY_ICONS = {
     guc: 'data:image/png;base64,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',
 };
 
+// Cairo's portals stamp badge times on Cairo's clock: a Berlin staff
+// member's 09:00 badge reads 10:00 in the report. The Berlin scripts shift
+// the report's FirstIn/LastOut cells to Berlin local time before the engine
+// reads them (berlinSource.js, fetchReportDoc), so the widget, late arrivals
+// and the exam-period last-out cap all see Berlin times. Duration is left
+// alone: a shift moves both ends of the day.
+//
+// The offset is per date, from the browser's own time-zone database, never a
+// hard-coded hour: Berlin − Cairo is −1h most of the year, 0h in spring
+// (Berlin's DST starts on the last Sunday of March, Egypt's on the last
+// Friday of April) and −2h for a few autumn days (Berlin's ends on the last
+// Sunday of October, Egypt's at the end of the last Thursday of October).
+const BERLIN_TIME_ZONE = 'Europe/Berlin';
+const CAIRO_TIME_ZONE = 'Africa/Cairo';
+// Outside the DST gaps; used only if this browser cannot resolve the zones.
+const FALLBACK_BERLIN_CAIRO_MINUTES = -60;
+const TIME_DIFF_HEADER = 'Time diff';
+// The cell's original Cairo text, kept so every conversion starts from it:
+// converting again (re-render, memoised doc, changed start date) can never
+// shift a time twice.
+const CAIRO_TIME_ATTR = 'data-gius-cairo-time';
+// On each Time diff cell: the minutes applied, or '' when not converted.
+const TIME_DIFF_ATTR = 'data-gius-time-diff';
+const DAY_SECONDS = 24 * 3600;
+
+const tzFormatters = {};
+const tzOffsetMemo = new Map();
+
+function tzYmdParts(ymd) {
+    const m = String(ymd || '').match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
+    return m ? [Number(m[1]), Number(m[2]), Number(m[3])] : null;
+}
+
+// `timeZone`'s UTC offset in minutes at 12:00 UTC of `ymd` (midday, well
+// clear of both zones' switch hours), or null if this browser can't tell.
+function tzUtcOffsetMinutes(timeZone, ymd) {
+    const parts = tzYmdParts(ymd);
+    if (!parts) return null;
+    const instant = Date.UTC(parts[0], parts[1] - 1, parts[2], 12);
+    try {
+        if (!tzFormatters[timeZone]) {
+            tzFormatters[timeZone] = new Intl.DateTimeFormat('en-US', {
+                timeZone, hourCycle: 'h23',
+                year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit',
+            });
+        }
+        const p = {};
+        tzFormatters[timeZone].formatToParts(new Date(instant)).forEach(x => { p[x.type] = x.value; });
+        const local = Date.UTC(Number(p.year), Number(p.month) - 1, Number(p.day), Number(p.hour) % 24, Number(p.minute));
+        if (!isNaN(local)) return Math.round((local - instant) / 60000);
+    } catch { /* fall through */ }
+    try {
+        // Older engines without formatToParts: parse the zone's wall clock back.
+        const local = new Date(new Date(instant).toLocaleString('en-US', { timeZone }));
+        const utc = new Date(new Date(instant).toLocaleString('en-US', { timeZone: 'UTC' }));
+        const diff = Math.round((local - utc) / 60000);
+        if (!isNaN(diff)) return diff;
+    } catch { /* fall through */ }
+    return null;
+}
+
+// Minutes to add to a Cairo wall-clock time on `ymd` to get Berlin's.
+function berlinCairoOffsetMinutes(ymd) {
+    if (tzOffsetMemo.has(ymd)) return tzOffsetMemo.get(ymd);
+    const berlin = tzUtcOffsetMinutes(BERLIN_TIME_ZONE, ymd);
+    const cairo = tzUtcOffsetMinutes(CAIRO_TIME_ZONE, ymd);
+    const diff = berlin === null || cairo === null ? FALLBACK_BERLIN_CAIRO_MINUTES : berlin - cairo;
+    tzOffsetMemo.set(ymd, diff);
+    return diff;
+}
+
+const CLOCK_TEXT_RE = /^(\d{1,2}):(\d{2})(?::(\d{2}))?(\s*)(AM|PM)?$/i;
+
+// "10:00:00 AM" + (−60) → "9:00:00 AM", in the text's own style (12h/24h,
+// seconds or not). The row keeps its date: a result before midnight or past
+// 23:59:59 is clamped to that end of the day (the offsets involved are an
+// hour or two, so this only touches badges within that of midnight). Text
+// that is not a time ('', '-', ...) comes back unchanged.
+function shiftClockText(text, minutes) {
+    const raw = text == null ? '' : String(text);
+    const m = raw.replace(/ /g, ' ').trim().match(CLOCK_TEXT_RE);
+    if (!m || !minutes) return raw;
+    const meridiem = m[5] ? m[5].toUpperCase() : '';
+    let hours = Number(m[1]);
+    if (meridiem) hours = (hours % 12) + (meridiem === 'PM' ? 12 : 0);
+    let secs = hours * 3600 + Number(m[2]) * 60 + Number(m[3] || 0) + minutes * 60;
+    secs = Math.min(Math.max(secs, 0), DAY_SECONDS - 1);
+    const pad = n => String(n).padStart(2, '0');
+    const h = Math.floor(secs / 3600);
+    const tail = ':' + pad(Math.floor((secs % 3600) / 60)) + (m[3] !== undefined ? ':' + pad(secs % 60) : '');
+    if (meridiem) return String(h % 12 || 12) + tail + (m[4] || ' ') + (h >= 12 ? 'PM' : 'AM');
+    return (m[1].length === 2 ? pad(h) : String(h)) + tail;
+}
+
+// −60 → "−1h", 0 → "0h", −90 → "−1h 30m"; null (not converted) → "—".
+function formatTimeDiff(minutes) {
+    if (minutes === null || minutes === undefined) return '—';
+    if (!minutes) return '0h';
+    const abs = Math.abs(minutes);
+    const parts = [];
+    if (Math.floor(abs / 60)) parts.push(Math.floor(abs / 60) + 'h');
+    if (abs % 60) parts.push((abs % 60) + 'm');
+    return (minutes < 0 ? '−' : '+') + parts.join(' ');
+}
+
+function tzCellText(cell) {
+    return String((cell && cell.textContent) || '').replace(/\s+/g, ' ').trim();
+}
+
+function tzHeaderKey(cell) {
+    return tzCellText(cell).toLowerCase().replace(/[^a-z]/g, '');
+}
+
+function tzRowYmd(text) {
+    const parts = tzYmdParts((String(text || '').match(/\d{4}-\d{1,2}-\d{1,2}/) || [])[0]);
+    if (!parts) return '';
+    return parts[0] + '-' + String(parts[1]).padStart(2, '0') + '-' + String(parts[2]).padStart(2, '0');
+}
+
+// Converts a report grid (Cairo's GIU grid, or the GUC canonical one) to
+// Berlin time in place, and gives it a "Time diff" column right after the
+// time columns. `start` is the Berlin start date (yyyy-mm-dd, '' = always
+// Berlin): earlier rows keep their Cairo times and show "—". Idempotent — see
+// CAIRO_TIME_ATTR — so it is safe on a memoised document and on every
+// re-render of the mounted grid, including one after the start date changed.
+function localizeReportGrid(table, start) {
+    if (!table) return table;
+    const rows = Array.from(table.rows || []);
+    const headIndex = rows.findIndex(r => Array.from(r.cells).some(c => /^(day|date)$/.test(tzHeaderKey(c))));
+    if (headIndex < 0) return table;
+    const head = rows[headIndex];
+    let keys = Array.from(head.cells).map(tzHeaderKey);
+    const dateIdx = keys.findIndex(k => k === 'day' || k === 'date');
+    const inIdx = keys.indexOf('firstin');
+    const outIdx = keys.indexOf('lastout');
+    if (inIdx < 0 && outIdx < 0) return table;
+
+    if (keys.indexOf('timediff') < 0) {
+        const width = keys.length;
+        const at = Math.max(inIdx, outIdx) + 1;
+        const ref = head.cells[at - 1];
+        const th = table.ownerDocument.createElement(ref.tagName.toLowerCase());
+        if (ref.tagName === 'TH') th.scope = 'col';
+        th.textContent = TIME_DIFF_HEADER;
+        head.insertBefore(th, head.cells[at] || null);
+        rows.forEach((r, i) => {
+            if (i === headIndex) return;
+            if (r.cells.length === width) r.insertCell(at);
+            else if (r.cells.length === 1) {
+                // Cairo's pager rows: one colspan'd cell spanning the grid.
+                const span = parseInt(r.cells[0].getAttribute('colspan') || '1', 10);
+                if (span > 1) r.cells[0].setAttribute('colspan', String(span + 1));
+            }
+        });
+        keys = Array.from(head.cells).map(tzHeaderKey);
+    }
+    const diffIdx = keys.indexOf('timediff');
+    const width = keys.length;
+
+    rows.forEach((r, i) => {
+        if (i <= headIndex || r.cells.length !== width) return;
+        const ymd = tzRowYmd(tzCellText(r.cells[dateIdx]));
+        if (!ymd) return;
+        const offset = start && ymd < start ? null : berlinCairoOffsetMinutes(ymd);
+        [inIdx, outIdx].forEach(idx => {
+            if (idx < 0) return;
+            const cell = r.cells[idx];
+            if (!cell.hasAttribute(CAIRO_TIME_ATTR)) cell.setAttribute(CAIRO_TIME_ATTR, cell.textContent);
+            const raw = cell.getAttribute(CAIRO_TIME_ATTR);
+            const text = offset === null ? raw : shiftClockText(raw, offset);
+            if (cell.textContent !== text) cell.textContent = text;
+        });
+        const diffCell = r.cells[diffIdx];
+        diffCell.textContent = formatTimeDiff(offset);
+        diffCell.setAttribute(TIME_DIFF_ATTR, offset === null ? '' : String(offset));
+    });
+    return table;
+}
+
 // The styled timesheet table, shared by Berlin's full-report view (a Cairo
 // grid imported into the page) and Cairo's own report page (the portal's
 // native grid, styled in place). Display only: cell text is never changed,
@@ -508,6 +687,8 @@ function gridColumnKind(headerText) {
     const h = headerText.toLowerCase().replace(/\s+/g, '');
     if (h === 'serial' || h === '#') return 'serial';
     if (h === 'sessions') return 'sessions';
+    // Berlin only: the Cairo→Berlin offset applied to the row (src/berlin/timezone.js).
+    if (h === 'timediff') return 'tzdiff';
     if (h.includes('duration')) return 'num';
     if (/^(day|date|firstin|lastout|in|out)$/.test(h)) return 'time';
     if (h.includes('action') || h.includes('leave') || h.includes('form')) return 'action';
@@ -639,11 +820,11 @@ function injectReportGridStyles(S) {
         .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-first > :first-child { border-top-left-radius: 5px; }
         .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-first > :last-child { border-top-right-radius: 5px; }
         .gius-berlin-grid table#MainContent_DG_SwiftReport .gius-berlin-col-time { white-space: nowrap; }
-        .gius-berlin-grid table#MainContent_DG_SwiftReport :is(.gius-berlin-col-num, .gius-berlin-col-serial, .gius-berlin-col-sessions) {
+        .gius-berlin-grid table#MainContent_DG_SwiftReport :is(.gius-berlin-col-num, .gius-berlin-col-serial, .gius-berlin-col-sessions, .gius-berlin-col-tzdiff) {
             white-space: nowrap; font-variant-numeric: tabular-nums;
         }
-        /* Serial and Sessions stay as narrow as their content; the rest share the width. */
-        .gius-berlin-grid table#MainContent_DG_SwiftReport :is(th, td):is(.gius-berlin-col-serial, .gius-berlin-col-sessions) { width: 1%; }
+        /* Serial, Sessions and Time diff stay as narrow as their content; the rest share the width. */
+        .gius-berlin-grid table#MainContent_DG_SwiftReport :is(th, td):is(.gius-berlin-col-serial, .gius-berlin-col-sessions, .gius-berlin-col-tzdiff) { width: 1%; }
         .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row > td.gius-berlin-col-serial { color: #6b7280 !important; }
         .gius-berlin-grid .gius-berlin-action {
             display: inline-block; padding: 3px 9px; border: 1px solid #d1d5db; border-radius: 999px;
@@ -1038,6 +1219,9 @@ const UNIVERSITY_LABELS = { giu: 'GIU Cairo', guc: 'GUC Cairo' };
 // after the view's request failed. Only a user action (force, Retry, a
 // university pick) bypasses it.
 const DOC_MEMO_MS = 60 * 1000;
+// The engine's Berlin start date (staffAttendance.js STORAGE_KEYS.branchStart):
+// rows before it are Cairo days and keep Cairo's clock.
+const BRANCH_START_KEY = 'giuBranchStartV1';
 
 function createBerlinSource(S) {
     let inflight = null;
@@ -1091,6 +1275,27 @@ function createBerlinSource(S) {
         resetCaches();
     }
 
+    function branchStart() {
+        try {
+            const v = localStorage.getItem(BRANCH_START_KEY) || '';
+            return /^\d{4}-\d{2}-\d{2}$/.test(v) ? v : '';
+        } catch { return ''; }
+    }
+
+    // Cairo badge times → Berlin local time (src/berlin/timezone.js), on the
+    // fetched document before anyone reads it, and again on the mounted
+    // view grid at every engine render (localizeGrid) so a changed start
+    // date shows at once. Idempotent: always derived from the raw Cairo text.
+    function localizeGrid(table) {
+        try { localizeReportGrid(table, branchStart()); } catch (e) { S.warn('berlinAttendance', 'time conversion failed:', e); }
+        return table;
+    }
+
+    function localizeDoc(doc) {
+        localizeGrid(doc.getElementById(REPORT_GRID_ID));
+        return doc;
+    }
+
     function label() { return UNIVERSITY_LABELS[getUniversity()] || 'Cairo'; }
     function signInUrl() { return getUniversity() === 'guc' ? gucSignInUrl() : GIU_BOOTSTRAP_URL; }
 
@@ -1115,12 +1320,12 @@ function createBerlinSource(S) {
         if (!univ) return Promise.reject(timesheetError('no-university'));
         const force = !!(opts && opts.force);
         if (!force && last && last.univ === univ && Date.now() - last.at < DOC_MEMO_MS) {
-            return last.err ? Promise.reject(last.err) : Promise.resolve(last.doc);
+            return last.err ? Promise.reject(last.err) : Promise.resolve(localizeDoc(last.doc));
         }
         if (inflight) return forUniversity(univ, inflight);
-        const request = univ === 'guc'
+        const request = (univ === 'guc'
             ? fetchGucReportDoc().then(doc => buildCanonicalReportDoc(aggregateGucDays(parseGucSessions(doc))))
-            : fetchGiuReportDoc();
+            : fetchGiuReportDoc()).then(localizeDoc);
         // Token guard: a university switch mid-request clears `inflight`
         // (resetCaches), and may start a new one for the other university.
         // Only the request `inflight` still points at when it settles is
@@ -1235,6 +1440,7 @@ function createBerlinSource(S) {
         defaultBranch: 'berlin',
         isReportView,
         fetchReportDoc,
+        localizeGrid,
         error: timesheetError,
         renderError,
         start,
@@ -8958,6 +9164,10 @@ function staffAttendance(S) {
 
                 const reportTable = document.getElementById("MainContent_DG_SwiftReport");
                 if (!reportTable) return;
+                // Berlin only: the view's grid in Berlin time for the current start
+                // date (SOURCE converts from the raw Cairo text, so this is a no-op
+                // unless the start date changed). Before any row is read below.
+                if (SOURCE && SOURCE.localizeGrid) SOURCE.localizeGrid(reportTable);
 
                 injectStyles();
                 if (!SOURCE) styleCairoReportGrid(reportTable);
