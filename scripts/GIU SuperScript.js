@@ -5,7 +5,7 @@
 // @icon        data:image/png;base64,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
 // @namespace   Cyn0
 // @match       https://portal.giu-uni.de/*
-// @version     1.3.9
+// @version     1.3.10
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @run-at      document-idle
@@ -671,6 +671,9 @@ function openAttendanceSetup(S, api, opts) {
             changeFrom: keepDayOff && v.previous ? v.previous.from : '',
             balance: keepDayOff && Number.isFinite(v.balance) ? String(v.balance) : '',
             accrual: String(v.accrualRate),
+            // Date text typed but not (yet) a date, per field; null = none.
+            // The yyyy-mm-dd fields above keep the last real date meanwhile.
+            badDate: { berlin: null, from: null },
         };
     }
     // First run: nothing is guessed — only the accrual rate (and a Berlin start
@@ -715,6 +718,24 @@ function openAttendanceSetup(S, api, opts) {
         const d = new Date(api.today() + 'T00:00:00Z');
         d.setUTCMonth(d.getUTCMonth() - 2);
         return d.toISOString().slice(0, 10);
+    }
+
+    // Mounts the dd/mm/yyyy control in the step's placeholder span. `key` is
+    // the state field (yyyy-mm-dd) and `bad` its badDate slot.
+    function mountDate(id, key, bad, onChange) {
+        const slot = $(`[data-gius-date="${id}"]`);
+        const shown = state.badDate[bad] != null ? state.badDate[bad] : state[key];
+        const field = createGiusDateField(S, {
+            id, value: shown, max: api.today(), inputClass: 'gius-setup-input',
+            onInput: text => {
+                const ymd = giusDateParse(text);
+                if (ymd === null) state.badDate[bad] = text;
+                else { state.badDate[bad] = null; state[key] = ymd; }
+                if (onChange) onChange();
+            },
+        });
+        slot.replaceWith(field.element);
+        return field;
     }
 
     function values() {
@@ -771,12 +792,11 @@ function openAttendanceSetup(S, api, opts) {
             title: 'When did you start at the Berlin branch?',
             sub: 'Days before this date follow the Cairo weekend (Friday off). Leave it empty if you have always worked at the Berlin branch.',
             html: () => `<label class="gius-setup-field">Started at the Berlin branch on
-                <input type="date" class="gius-setup-input" id="gius-setup-berlin" max="${esc(api.today())}" value="${esc(state.berlinStart)}"></label>`,
+                <span data-gius-date="gius-setup-berlin"></span></label>`,
             bind() {
-                const input = $('#gius-setup-berlin');
-                input.addEventListener('input', () => { state.berlinStart = input.value; });
+                mountDate('gius-setup-berlin', 'berlinStart', 'berlin');
             },
-            validate: () => api.berlinStartError(state.berlinStart),
+            validate: () => state.badDate.berlin != null ? GIUS_DATE_FORMAT_ERROR : api.berlinStartError(state.berlinStart),
         },
         dayoff: {
             title: 'Which day is your weekly day off?',
@@ -802,7 +822,7 @@ function openAttendanceSetup(S, api, opts) {
                         <label class="gius-setup-field">My previous day off was
                             <select class="gius-setup-input" id="gius-setup-prev"><option value="">— choose —</option>${others.map(d => `<option value="${esc(d.code)}"${state.prevCode === d.code ? ' selected' : ''}>${esc(d.name)}</option>`).join('')}</select></label>
                         <label class="gius-setup-field">${esc(dayName(state.dayOffCode))} became my day off on
-                            <input type="date" class="gius-setup-input" id="gius-setup-from" max="${esc(api.today())}" value="${esc(state.changeFrom)}">
+                            <span data-gius-date="gius-setup-from"></span>
                             <span class="gius-setup-hint warn" id="gius-setup-from-hint"${old ? '' : ' hidden'}>That is more than 2 months ago. Older records are not kept, so you could also answer No.</span></label>
                     </div>`;
             },
@@ -812,12 +832,10 @@ function openAttendanceSetup(S, api, opts) {
                     render();
                 }));
                 const prev = $('#gius-setup-prev');
-                const from = $('#gius-setup-from');
                 const hint = $('#gius-setup-from-hint');
                 prev.addEventListener('change', () => { state.prevCode = prev.value; });
-                from.addEventListener('input', () => {
-                    state.changeFrom = from.value;
-                    hint.hidden = !(YMD.test(from.value) && from.value < twoMonthsAgo());
+                mountDate('gius-setup-from', 'changeFrom', 'from', () => {
+                    hint.hidden = !(state.badDate.from == null && YMD.test(state.changeFrom) && state.changeFrom < twoMonthsAgo());
                 });
             },
             validate: () => {
@@ -825,6 +843,7 @@ function openAttendanceSetup(S, api, opts) {
                 if (state.changed === 'no') return '';
                 if (!state.prevCode) return 'Choose your previous day off.';
                 if (state.prevCode === state.dayOffCode) return 'Your previous day off must be different from your current one.';
+                if (state.badDate.from != null) return GIUS_DATE_FORMAT_ERROR;
                 if (!YMD.test(state.changeFrom)) return 'Enter the date your current day off started.';
                 if (state.changeFrom > api.today()) return "That date is in the future — enter the day the change started.";
                 return '';
@@ -870,9 +889,9 @@ function openAttendanceSetup(S, api, opts) {
                 const v = state.imported ? api.current() : values();
                 const rows = [];
                 if (state.imported) rows.push(['Settings', 'Imported from your file']);
-                if (api.isBerlin) rows.push(['Berlin branch since', v.berlinStart || 'Always']);
+                if (api.isBerlin) rows.push(['Berlin branch since', v.berlinStart ? giusDateFormat(v.berlinStart) : 'Always']);
                 rows.push(['Day off', v.dayOffCode ? dayName(v.dayOffCode) : 'Not set']);
-                if (v.previous) rows.push(['Before ' + v.previous.from, dayName(v.previous.code)]);
+                if (v.previous) rows.push(['Before ' + giusDateFormat(v.previous.from), dayName(v.previous.code)]);
                 rows.push(['Annual leave left', String(v.balance) + ' day(s)']);
                 rows.push(['Monthly accrual', String(v.accrualRate) + ' day(s)']);
                 return `<dl class="gius-setup-summary">${rows.map(r => `<dt>${esc(r[0])}</dt><dd>${esc(r[1])}</dd>`).join('')}</dl>
@@ -901,7 +920,7 @@ function openAttendanceSetup(S, api, opts) {
         showMsg('');
         $('.gius-setup-back').hidden = index === 0;
         $('.gius-setup-next').textContent = id === 'done' ? 'Finish' : 'Next';
-        const first = body.querySelector('input:not([type="radio"]):not([type="file"]):not([hidden]), select');
+        const first = body.querySelector('input:not([type="radio"]):not([type="file"]):not([hidden]):not([tabindex="-1"]), select');
         (first && first.offsetParent !== null ? first : $('.gius-setup-next')).focus();
     }
 
@@ -1040,7 +1059,7 @@ function openAttendanceSetup(S, api, opts) {
     function tabStops() {
         const seenGroups = new Set();
         return Array.from(sheet.querySelectorAll('button, input, select, textarea, [tabindex]:not([tabindex="-1"])'))
-            .filter(el => !el.disabled && !el.hidden && el.offsetParent !== null)
+            .filter(el => !el.disabled && !el.hidden && el.offsetParent !== null && el.getAttribute('tabindex') !== '-1')
             .filter(el => {
                 if (el.type !== 'radio' || !el.name) return true;
                 if (seenGroups.has(el.name)) return false;
@@ -1103,6 +1122,112 @@ function openAttendanceSetup(S, api, opts) {
     render();
 
     return { close: () => close('closed'), element: layer };
+}
+
+// ── dd/mm/yyyy date control ──
+// A native <input type=date> shows the browser's locale format and cannot be
+// told otherwise, so date fields are a text input in dd/mm/yyyy plus a
+// calendar button that opens a hidden native picker. Values stay yyyy-mm-dd
+// everywhere else (storage, validation, the engine). Shared by the setup
+// wizard and the attendance settings (both inlined into the same scope).
+const GIUS_DATE_FORMAT_ERROR = 'Enter the date as dd/mm/yyyy.';
+
+// Text → "yyyy-mm-dd"; "" when empty; null when not a real date.
+// Takes d/m/yyyy or dd/mm/yyyy with "/", "-" or "." (one separator
+// throughout), and a pasted yyyy-mm-dd.
+function giusDateParse(text) {
+    const s = String(text == null ? '' : text).trim();
+    if (!s) return '';
+    let y, m, d;
+    let match = /^(\d{1,2})([/.-])(\d{1,2})\2(\d{4})$/.exec(s);
+    if (match) {
+        d = Number(match[1]); m = Number(match[3]); y = Number(match[4]);
+    } else if ((match = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(s))) {
+        y = Number(match[1]); m = Number(match[2]); d = Number(match[3]);
+    } else {
+        return null;
+    }
+    const dt = new Date(Date.UTC(y, m - 1, d));
+    if (y < 1000 || dt.getUTCFullYear() !== y || dt.getUTCMonth() !== m - 1 || dt.getUTCDate() !== d) return null;
+    return `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+}
+
+// "yyyy-mm-dd" → "dd/mm/yyyy" (anything else comes back unchanged).
+function giusDateFormat(ymd) {
+    const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(ymd || ''));
+    return match ? `${match[3]}/${match[2]}/${match[1]}` : String(ymd || '');
+}
+
+// opts: { id, value (yyyy-mm-dd, or text to show as typed), max (yyyy-mm-dd),
+//         inputClass, onInput(text) }. Returns { element, input, value(),
+//         setValue(ymd) }; value() is giusDateParse of the text.
+function createGiusDateField(S, opts) {
+    const o = opts || {};
+    S.injectStyle('gius-date-style', `
+        .gius-date{position:relative;display:inline-flex;align-items:stretch;gap:6px;vertical-align:middle;}
+        .gius-date .gius-date-text{width:130px;min-width:0;}
+        .gius-setup .gius-date{display:flex;}
+        .gius-setup .gius-date .gius-date-text{width:auto;flex:1 1 auto;}
+        .gius-date .gius-date-btn{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
+            width:34px;min-height:32px;margin:0;padding:0;border:1px solid #9ca3af;border-radius:6px;
+            background:#f8fafc;color:#334155;cursor:pointer;transition:background .15s,border-color .15s;}
+        .gius-date .gius-date-btn:hover{background:#e2e8f0;border-color:#64748b;}
+        .gius-date .gius-date-btn:focus-visible{outline:2px solid #60a5fa;outline-offset:1px;}
+        .gius-date .gius-date-btn svg{display:block;width:16px;height:16px;pointer-events:none;}
+        .gius-date input.gius-date-native{position:absolute !important;right:0 !important;bottom:0 !important;
+            width:1px !important;height:1px !important;min-width:0 !important;margin:0 !important;padding:0 !important;
+            border:0 !important;opacity:0 !important;pointer-events:none !important;}
+        html.gius-dark .gius-date .gius-date-btn{background:#181825;border-color:#45475a;color:#cdd6f4;}
+        html.gius-dark .gius-date .gius-date-btn:hover{background:#313244;border-color:#6c7086;}
+        html.gius-dark .gius-date .gius-date-btn:focus-visible{outline-color:#89b4fa;}`);
+
+    const wrap = document.createElement('span');
+    wrap.className = 'gius-date';
+    const input = document.createElement('input');
+    input.type = 'text';
+    if (o.id) input.id = o.id;
+    input.className = ((o.inputClass || '') + ' gius-date-text').trim();
+    input.placeholder = 'dd/mm/yyyy';
+    input.autocomplete = 'off';
+    input.spellcheck = false;
+    input.value = giusDateFormat(o.value);
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'gius-date-btn';
+    btn.title = 'Pick a date';
+    btn.setAttribute('aria-label', 'Pick a date from a calendar');
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>';
+    // The native picker: rendered (showPicker needs that) but invisible and
+    // out of the tab order; it only ever opens from the button.
+    const native = document.createElement('input');
+    native.type = 'date';
+    native.className = 'gius-date-native';
+    native.tabIndex = -1;
+    native.setAttribute('aria-hidden', 'true');
+    if (o.max) native.max = o.max;
+    wrap.append(input, btn, native);
+
+    input.addEventListener('input', () => { if (o.onInput) o.onInput(input.value); });
+    btn.addEventListener('click', () => {
+        native.value = giusDateParse(input.value) || '';
+        try {
+            if (typeof native.showPicker === 'function') { native.showPicker(); return; }
+        } catch { /* not allowed here: fall back below */ }
+        try { native.focus(); native.click(); } catch { /* ignore */ }
+    });
+    native.addEventListener('change', () => {
+        if (!native.value) return;
+        input.value = giusDateFormat(native.value);
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        input.focus();
+    });
+
+    return {
+        element: wrap,
+        input,
+        value: () => giusDateParse(input.value),
+        setValue(ymd) { input.value = giusDateFormat(ymd); },
+    };
 }
 
     // ═══════════════════════════════════════════════════════════════════════════
@@ -4720,15 +4845,18 @@ function openAttendanceSetup(S, api, opts) {
                 const row = document.createElement("div");
                 row.className = "giu-dayoff-row";
                 const dateLabel = createUiLabel("gius-branch-start", "Started at the Berlin branch on");
-                const dateInput = createUiInput("date", "gius-branch-start", { value: getBranchStart(), max: getTodayLocalYMD() });
+                // dd/mm/yyyy text + calendar button (src/features/attendanceSetup.js),
+                // the same control as the setup wizard's; stored as yyyy-mm-dd.
+                const dateField = createGiusDateField(S, { id: "gius-branch-start", value: getBranchStart(), max: getTodayLocalYMD() });
                 const saveBtn = createUiButton("Save", "giu-add-holiday-btn", function () {
-                    setBranchStart(dateInput.value);
-                    dateInput.value = getBranchStart();   // a rejected value visibly reverts
+                    const ymd = dateField.value();   // null: text that is not a date
+                    if (ymd !== null) setBranchStart(ymd);
+                    dateField.setValue(getBranchStart());   // a rejected value visibly reverts
                     renderEnhancedUI();
                 });
                 saveBtn.id = "gius-branch-start-save";
                 row.appendChild(dateLabel);
-                row.appendChild(dateInput);
+                row.appendChild(dateField.element);
                 row.appendChild(saveBtn);
                 wrap.appendChild(row);
 
