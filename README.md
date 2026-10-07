@@ -34,6 +34,7 @@ Each SuperScript has a **Control Center** card on the portal Home page where you
 | Upload Grades | 2.4.2 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Upload%20Grades.user.js) |
 | Manage Group Grades | 1.5 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Manage%20Group%20Grades.user.js) |
 | Notification Batch Send | 1.4.1 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Notification%20Batch%20Send.user.js) |
+| Berlin Session Form Filler | 1.0.0 | Berlin (Microsoft Form) | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Session%20Form%20Filler.user.js) |
 
 The bundles: GIU SuperScript **1.3.12**, GIU Berlin SuperScript **1.0.5**, GIU Theme **1.0.2**.
 
@@ -132,6 +133,8 @@ Where it appears: Cairo — Home page and the [attendance report](https://portal
 **Proctor Schedule Aggregator** — 🅒 · Proctor Exchange page. All proctor assignments across departments in one searchable, filterable table; **Take** a colleague's duty directly (with the portal's confirmation step).
 
 **Not Entered Sessions** — 🅒 · Home page. Lists Regular sessions 1–21 days old with no attendance entered yet; click one to open it on the attendance page, already selected. Hidden when there's nothing to enter.
+
+**Berlin Session Form Filler** — 🅑 separate script · the Berlin session attendance Microsoft Form. Save your name once and a preset per course / session type / group; one click fills name, course, session type and group. You still enter the session date and Ref. ID, attach the attendance sheet and press Submit yourself.
 
 **Student Attendance Report** — 🅒 · Manage Student Attendances page. For the selected group: absence level per student (Level 0 → 3 / drop), group averages, and an at-risk list you can expand to see the missed sessions.
 
