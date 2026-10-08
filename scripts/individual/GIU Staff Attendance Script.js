@@ -5,7 +5,7 @@
 // @icon        data:image/png;base64,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
 // @include     https://portal.giu-uni.de/*
 // @namespace   Cyn0
-// @version     3.2.12
+// @version     3.2.13
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @run-at      document-idle
@@ -968,6 +968,363 @@ function createGiusDateField(S, opts) {
     };
 }
 
+// ═══════════════════════════════════════════════════════════════════════════
+//  Staff Attendance — "Plan my days".
+//  When to check in and leave on each working day left in the payroll month
+//  so it ends even. The engine (staffAttendance) builds the input from its
+//  own rules (period stats, day off, holidays, caps) and passes a small API —
+//  see createPlannerApi there. planAttendanceDays is pure; the card below is
+//  plain DOM. Top-level functions (inlined into the bundles and standalones).
+//
+//  input: { workedSeconds, requiredSeconds  (the summary's numbers without
+//           today and later rows), minDaySeconds, days: [{ ymd, isToday,
+//           requiredSeconds, capSeconds, lateSeconds, inSeconds,
+//           outSeconds|null, fixedSeconds|null, inBase, inEdited,
+//           outEdited, inFromReport }] }
+//  inBase: the day (an override) is already in worked/required; it is
+//  shown, never counted again. A day under 4h counts as absent, as in the
+//  summary: no required hours, its hours still count.
+// ═══════════════════════════════════════════════════════════════════════════
+function plannerParseTime(text) {
+    const m = String(text || "").match(/^(\d{1,2}):(\d{2})$/);
+    if (!m) return null;
+    const h = Number(m[1]), mi = Number(m[2]);
+    if (h > 23 || mi > 59) return null;
+    return h * 3600 + mi * 60;
+}
+
+function plannerFormatTime(seconds) {
+    const total = Math.max(0, Math.min(Math.round(seconds / 60), 24 * 60 - 1));
+    return String(Math.floor(total / 60)).padStart(2, "0") + ":" + String(total % 60).padStart(2, "0");
+}
+
+function plannerFormat12(seconds) {
+    const t = plannerFormatTime(seconds).split(":").map(Number);
+    return ((t[0] + 11) % 12 + 1) + ":" + String(t[1]).padStart(2, "0") + " " + (t[0] >= 12 ? "PM" : "AM");
+}
+
+function plannerDuration(seconds) {
+    const total = Math.round(Math.abs(seconds) / 60);
+    return Math.floor(total / 60) + ":" + String(total % 60).padStart(2, "0");
+}
+
+// Splits what is still needed evenly over the days nobody pinned. Each day
+// stays within [4h, room] (room = cap − check-in); a day with less than 4h
+// of room counts as absent. Whatever one day cannot take is spread over the
+// others.
+function planAttendanceDays(input) {
+    const minDay = input.minDaySeconds;
+    let required = input.requiredSeconds;
+    let pinnedSeconds = 0;
+    const free = [];
+    const days = (input.days || []).map(function (d) {
+        const day = Object.assign({}, d, { hours: 0, warn: "", pinned: false, locked: false });
+        if (day.inBase) {
+            day.locked = true;
+            day.hours = Math.max(0, day.fixedSeconds || 0);
+            return day;
+        }
+        required += day.requiredSeconds;
+        if (day.fixedSeconds != null) {
+            day.locked = true;
+            day.hours = Math.max(0, day.fixedSeconds);
+            pinnedSeconds += day.hours;
+            return day;
+        }
+        const room = Math.max(0, day.capSeconds - day.inSeconds);
+        if (day.outSeconds != null) {
+            day.pinned = true;
+            day.hours = Math.max(0, Math.min(day.outSeconds, day.capSeconds) - day.inSeconds);
+            if (day.outSeconds < day.inSeconds) day.warn = "order";
+            else if (day.hours < minDay) day.warn = "short";
+        } else if (room < minDay) {
+            day.hours = room;
+            day.outSeconds = day.inSeconds + room;
+            day.warn = "short-cap";
+        } else {
+            day.room = room;
+            free.push(day);
+            return day;
+        }
+        if (day.hours < minDay) required -= day.requiredSeconds;   // absent day
+        pinnedSeconds += day.hours;
+        return day;
+    });
+
+    let need = required - input.workedSeconds - pinnedSeconds;
+    let open = free.slice();
+    while (open.length) {
+        const share = need / open.length;
+        // Cap first: once the full days are out, the share for the rest grows.
+        const over = open.filter(function (d) { return share > d.room; });
+        const under = over.length ? [] : open.filter(function (d) { return share < minDay; });
+        const clamped = over.length ? over : under;
+        if (!clamped.length) {
+            open.forEach(function (d) { d.hours = share; });
+            break;
+        }
+        clamped.forEach(function (d) {
+            if (share > d.room) { d.hours = d.room; d.warn = "cap"; }
+            else d.hours = minDay;
+            need -= d.hours;
+        });
+        open = open.filter(function (d) { return clamped.indexOf(d) === -1; });
+    }
+
+    free.forEach(function (d) {
+        // Round up to the whole minute (a leave-by of 5:23:30 reads 5:24).
+        d.hours = Math.min(d.room, Math.ceil(Math.max(0, d.hours) / 60) * 60);
+        d.outSeconds = d.inSeconds + d.hours;
+        delete d.room;
+    });
+    days.forEach(function (d) {
+        if (!d.locked && !d.warn && d.inSeconds > d.lateSeconds) d.warn = "late";
+    });
+
+    const planned = days.reduce(function (sum, d) { return sum + (d.inBase ? 0 : d.hours); }, 0);
+    const freeExtra = free.reduce(function (sum, d) { return sum + d.hours - d.requiredSeconds; }, 0);
+    return {
+        days,
+        balanceNowSeconds: input.workedSeconds - input.requiredSeconds,
+        endBalanceSeconds: input.workedSeconds + planned - required,
+        freeDays: free.length,
+        perDayExtraSeconds: free.length ? freeExtra / free.length : 0,
+    };
+}
+
+// The "Plan my days" card. api: createPlannerApi in staffAttendance. Every
+// change goes to api, then the card re-renders from api.input().
+function renderAttendancePlanner(S, api, host) {
+    const esc = S.escapeHtml;
+    S.injectStyle('gius-plan-style', `
+        .gius-plan{background:#fff;border:1px solid #eee;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,.12);overflow:hidden;margin:16px 0;container-type:inline-size;}
+        .gius-plan-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 14px;background:#272c33;color:#fff;border-bottom:2px solid #ffc107;}
+        .gius-plan-head h3{margin:0;font-size:14px;font-weight:700;color:#fff;}
+        .gius-plan-toggle{display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:none;border:0;padding:0;margin:0;color:#fff;font:inherit;font-weight:700;cursor:pointer;text-align:left;}
+        .gius-plan-toggle:focus-visible{outline:2px solid #60a5fa;outline-offset:2px;border-radius:3px;}
+        .gius-plan-chev{display:inline-block;transition:transform .15s;}
+        .gius-plan-toggle[aria-expanded="false"] .gius-plan-chev{transform:rotate(-90deg);}
+        .gius-plan-peek{font-size:12px;font-weight:600;background:#374151;border:1px solid #4b5563;color:#f9fafb;padding:2px 8px;border-radius:999px;}
+        @media (prefers-reduced-motion: reduce){.gius-plan-chev{transition:none;}}
+        .gius-plan-usual{font-size:12px;color:#d1d5db;display:flex;align-items:center;gap:6px;margin:0;font-weight:400;}
+        .gius-plan-body{padding:16px;display:grid;gap:14px;}
+        .gius-plan-body[hidden]{display:none;}
+        .gius-plan-side{display:grid;gap:14px;align-content:start;min-width:0;}
+        .gius-plan-days{min-width:0;}
+        @container (min-width: 760px){.gius-plan-body{grid-template-columns:minmax(260px,1fr) minmax(0,1.6fr);gap:24px;align-items:start;}}
+        .gius-plan-q{font-size:13px;color:#6b7280;}
+        .gius-plan-big{font-size:30px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums;color:#111827;}
+        .gius-plan-came{font-size:13px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:0;font-weight:400;}
+        .gius-plan-sentence{margin:0;padding:10px 12px;border-radius:6px;background:#f3f4f6;line-height:1.5;}
+        .gius-plan-bad{color:#b91c1c;} .gius-plan-good{color:#065f46;}
+        .gius-plan input[type=time]{font:inherit;font-weight:600;font-variant-numeric:tabular-nums;color:inherit;background:transparent;border:1px dashed transparent;border-radius:4px;padding:3px 4px;cursor:pointer;height:auto;width:auto;box-shadow:none;}
+        .gius-plan input[type=time]:hover{border-color:#9ca3af;background:#fff;}
+        .gius-plan input[type=time]:focus-visible{outline:2px solid #60a5fa;outline-offset:1px;background:#fff;}
+        .gius-plan-head input[type=time]{color:#fff;}
+        .gius-plan-head input[type=time]:hover,.gius-plan-head input[type=time]:focus-visible{color:#111827;}
+        .gius-plan-head input[type=time]::-webkit-calendar-picker-indicator{filter:invert(1);}
+        .gius-plan-head input[type=time]:hover::-webkit-calendar-picker-indicator,.gius-plan-head input[type=time]:focus-visible::-webkit-calendar-picker-indicator{filter:none;}
+        .gius-plan-edited input[type=time]{background:#e0ecff;color:#1B59C6;}
+        .gius-plan-row,.gius-plan-th{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:8px;padding:6px 4px;}
+        .gius-plan-row{border-top:1px solid #e5e7eb;}
+        .gius-plan-th{font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;padding-bottom:4px;}
+        .gius-plan-row.gius-plan-today{background:#fffbea;}
+        .gius-plan-day b{font-weight:600;}
+        .gius-plan-day small{display:block;color:#b91c1c;font-size:11px;}
+        .gius-plan-cell{display:flex;align-items:center;gap:2px;width:128px;justify-content:flex-end;}
+        .gius-plan-fixed{font-weight:600;color:#6b7280;padding:3px 4px;}
+        .gius-plan-undo{border:0;background:none;color:#1B59C6;font-size:15px;line-height:1;cursor:pointer;padding:2px 4px;border-radius:4px;}
+        .gius-plan-undo:hover{background:#e0ecff;}
+        .gius-plan-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px;color:#6b7280;}
+        .gius-plan-foot b{color:#111827;}
+        .gius-plan-link{border:0;background:none;color:#1B59C6;font:inherit;font-weight:600;cursor:pointer;padding:0;text-decoration:underline;}
+        html.gius-dark .gius-plan{background:#181825;border-color:#313244;color:#cdd6f4;}
+        html.gius-dark .gius-plan-big,html.gius-dark .gius-plan-foot b{color:#cdd6f4;}
+        html.gius-dark .gius-plan-q,html.gius-dark .gius-plan-th,html.gius-dark .gius-plan-foot,html.gius-dark .gius-plan-fixed{color:#9399b2;}
+        html.gius-dark .gius-plan-sentence{background:#313244;}
+        html.gius-dark .gius-plan-row{border-top-color:#313244;}
+        html.gius-dark .gius-plan-row.gius-plan-today{background:rgba(249,226,175,.08);}
+        html.gius-dark .gius-plan input[type=time]:hover,html.gius-dark .gius-plan input[type=time]:focus-visible{background:#313244;border-color:#585b70;color:#cdd6f4;}
+        html.gius-dark .gius-plan-edited input[type=time]{background:#1e3a5f;color:#89b4fa;}
+        html.gius-dark .gius-plan input[type=time]::-webkit-calendar-picker-indicator{filter:invert(1);}
+        html.gius-dark .gius-plan-bad,html.gius-dark .gius-plan-day small{color:#f38ba8;}
+        html.gius-dark .gius-plan-good{color:#a6e3a1;}
+        html.gius-dark .gius-plan-link,html.gius-dark .gius-plan-undo{color:#89b4fa;}
+        html.gius-dark .gius-plan-undo:hover{background:#1e3a5f;}
+    `);
+
+    const dayLabel = function (ymd) {
+        return new Date(ymd + "T00:00:00Z").toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" });
+    };
+    const warnText = function (d) {
+        if (d.warn === "cap") return "Can't stay past " + plannerFormat12(d.capSeconds);
+        if (d.warn === "order") return "Out is before In";
+        if (d.warn === "short") return "Under 4h: counts as absent";
+        if (d.warn === "short-cap") return "Under 4h before " + plannerFormat12(d.capSeconds) + ": counts as absent";
+        if (d.warn === "late") return "Late (after " + plannerFormat12(d.lateSeconds) + ")";
+        return "";
+    };
+    const amount = function (seconds) {
+        const mins = Math.round(Math.abs(seconds) / 60);
+        return mins < 60 ? mins + " min" : plannerDuration(seconds) + " h";
+    };
+
+    function timeCell(d, kind, seconds, edited) {
+        const today = d.isToday && kind === "in" ? ' data-today="1"' : "";
+        return '<span class="gius-plan-cell' + (edited ? " gius-plan-edited" : "") + '">' +
+            '<input type="time" class="gius-plan-time" data-ymd="' + esc(d.ymd) + '" data-kind="' + kind + '"' + today +
+            ' value="' + plannerFormatTime(seconds) + '" aria-label="' + (kind === "in" ? "Check-in " : "Check-out ") + esc(dayLabel(d.ymd)) + '">' +
+            (edited ? '<button type="button" class="gius-plan-undo" data-ymd="' + esc(d.ymd) + '" data-kind="' + kind + '" aria-label="Undo change">×</button>' : "") +
+            "</span>";
+    }
+
+    function row(d) {
+        const label = d.isToday ? "Today" : dayLabel(d.ymd);
+        const warn = warnText(d);
+        let cells;
+        if (d.locked) {
+            cells = '<span class="gius-plan-cell"></span><span class="gius-plan-cell"><span class="gius-plan-fixed">' +
+                (d.inBase ? "Override" : "Done") + " (" + plannerDuration(d.hours) + ")</span></span>";
+        } else {
+            const inCell = d.isToday && d.inFromReport
+                ? '<span class="gius-plan-cell"><span class="gius-plan-fixed">' + plannerFormat12(d.inSeconds) + "</span></span>"
+                : timeCell(d, "in", d.inSeconds, d.inEdited);
+            cells = inCell + timeCell(d, "out", d.outSeconds, d.outEdited);
+        }
+        return '<div class="gius-plan-row' + (d.isToday ? " gius-plan-today" : "") + '" data-ymd="' + esc(d.ymd) + '">' +
+            '<span class="gius-plan-day"><b>' + esc(label) + "</b>" + (warn ? "<small>" + esc(warn) + "</small>" : "") + "</span>" +
+            cells + "</div>";
+    }
+
+    function hero(plan) {
+        const today = plan.days.find(function (d) { return d.isToday; });
+        if (today && today.locked) {
+            return '<div><div class="gius-plan-q">Today is done</div><div class="gius-plan-big" id="gius-plan-leave">' +
+                plannerDuration(today.hours) + "</div></div>";
+        }
+        if (today) {
+            const came = today.inFromReport
+                ? '<p class="gius-plan-came">You came in at <b>' + plannerFormat12(today.inSeconds) + "</b></p>"
+                : '<label class="gius-plan-came" for="gius-plan-today-in">You came in at <input type="time" id="gius-plan-today-in" value="' +
+                    plannerFormatTime(today.inSeconds) + '"></label>';
+            return '<div><div class="gius-plan-q">Leave today by</div><div class="gius-plan-big" id="gius-plan-leave">' +
+                plannerFormat12(today.outSeconds) + "</div>" + came + "</div>";
+        }
+        const next = plan.days.find(function (d) { return !d.locked; });
+        if (next) {
+            return '<div><div class="gius-plan-q">No work today. ' + esc(dayLabel(next.ymd)) + ', leave by</div><div class="gius-plan-big" id="gius-plan-leave">' +
+                plannerFormat12(next.outSeconds) + "</div></div>";
+        }
+        return '<div><div class="gius-plan-q">No working days left in this payroll month.</div></div>';
+    }
+
+    function sentence(plan) {
+        const now = plan.balanceNowSeconds;
+        const head = now < 0 ? 'You are <b class="gius-plan-bad">missing ' + plannerDuration(now) + "</b>."
+            : now > 0 ? 'You are <b class="gius-plan-good">' + plannerDuration(now) + " ahead</b>."
+            : "You are even so far.";
+        if (!plan.freeDays) return head;
+        const k = plan.freeDays + " working day" + (plan.freeDays === 1 ? "" : "s");
+        const extra = plan.perDayExtraSeconds;
+        if (Math.round(Math.abs(extra) / 60) === 0) return head + " A normal day on each of the next " + k + " keeps you even.";
+        if (extra > 0) {
+            return head + " Stay about <b>" + amount(extra) + "</b> longer than a normal day on each of the next " + k +
+                (Math.round(plan.endBalanceSeconds / 60) >= 0 ? " and you finish the month even." : ".");
+        }
+        return head + " You can leave about <b>" + amount(extra) + "</b> early on each of the next " + k + ".";
+    }
+
+    function endLine(plan) {
+        const mins = Math.round(plan.endBalanceSeconds / 60);
+        const text = mins === 0 ? "even" : (mins > 0 ? "Extra " : "Missing ") + plannerDuration(plan.endBalanceSeconds);
+        return 'Month ends: <b class="' + (mins >= 0 ? "gius-plan-good" : "gius-plan-bad") + '">' + text + "</b>";
+    }
+
+    function render(focusTarget) {
+        const prefs = api.prefs();
+        const input = api.input();
+        const plan = input ? planAttendanceDays(input) : null;
+        const expanded = api.isExpanded();
+        // Folded, the header still answers the main question.
+        const today = plan ? plan.days.find(function (d) { return d.isToday && !d.locked; }) : null;
+        const peek = !expanded && today
+            ? '<span class="gius-plan-peek">Leave today by ' + plannerFormat12(today.outSeconds) + "</span>" : "";
+        const head = '<div class="gius-plan-head"><h3><button type="button" class="gius-plan-toggle" id="gius-plan-toggle" aria-expanded="' +
+            expanded + '" aria-controls="gius-plan-body"><span class="gius-plan-chev" aria-hidden="true">▾</span>Plan my days' + peek + "</button></h3>" +
+            '<label class="gius-plan-usual" for="gius-plan-usual">Usual check-in <input type="time" id="gius-plan-usual" value="' +
+            esc(prefs.usualIn) + '"></label></div>';
+        const bodyOpen = '<div class="gius-plan-body" id="gius-plan-body"' + (expanded ? "" : " hidden") + ">";
+        if (!plan) {
+            host.innerHTML = '<section class="gius-plan">' + head + bodyOpen + '<p class="gius-plan-sentence">Set your weekly day off to see your plan.</p></div></section>';
+            return;
+        }
+        // Keep focus on the same field across the re-render.
+        const active = focusTarget || document.activeElement;
+        const focusKey = active && host.contains(active) ? (active.id || active.dataset.ymd + "|" + active.dataset.kind) : null;
+
+        const hasEdits = Object.keys(prefs.edits).length > 0;
+        // Answer on the left, day list on the right when the card is wide.
+        host.innerHTML = '<section class="gius-plan">' + head + bodyOpen +
+            '<div class="gius-plan-side">' +
+            hero(plan) +
+            '<p class="gius-plan-sentence">' + sentence(plan) + "</p>" +
+            '<div class="gius-plan-foot"><span id="gius-plan-end">' + endLine(plan) + "</span>" +
+            '<button type="button" class="gius-plan-link" id="gius-plan-reset"' + (hasEdits ? "" : " hidden") + ">Undo all changes</button></div>" +
+            "</div>" +
+            (plan.days.length
+                ? '<div class="gius-plan-days"><div class="gius-plan-th"><span>Day</span><span class="gius-plan-cell">In</span><span class="gius-plan-cell">Out</span></div>' +
+                    plan.days.map(row).join("") + "</div>"
+                : "") +
+            "</div></section>";
+
+        if (focusKey) {
+            const el = focusKey.indexOf("|") === -1
+                ? host.querySelector("#" + focusKey)
+                : host.querySelector('[data-ymd="' + focusKey.split("|")[0] + '"][data-kind="' + focusKey.split("|")[1] + '"]');
+            if (el) el.focus();
+        }
+    }
+
+    // Chrome fires change on every segment typed into a time field; rebuilding
+    // then would reset the caret mid-entry. Save at once, re-render on leave.
+    let pending = false;
+    host.addEventListener("change", function (e) {
+        const el = e.target;
+        if (el.id === "gius-plan-usual") api.setUsualIn(el.value);
+        else if (el.id === "gius-plan-today-in" || el.dataset.today === "1") api.setTodayIn(el.value);
+        else if (el.dataset.kind) api.setEdit(el.dataset.ymd, el.dataset.kind, el.value);
+        else return;
+        if (el === document.activeElement) { pending = true; return; }
+        render();
+    });
+    host.addEventListener("focusout", function (e) {
+        if (!pending) return;
+        pending = false;
+        const next = e.relatedTarget;
+        // A button click in the card re-renders by itself; rebuilding now
+        // would remove the button before its click lands.
+        if (next && host.contains(next) && next.tagName === "BUTTON") return;
+        render(next && host.contains(next) ? next : null);
+    });
+    host.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" && e.target.matches("input[type=time]")) e.target.blur();
+    });
+    host.addEventListener("click", function (e) {
+        if (e.target.closest("#gius-plan-toggle")) {
+            pending = false;
+            api.setExpanded(!api.isExpanded());
+            render();
+            return;
+        }
+        const undo = e.target.closest(".gius-plan-undo");
+        if (undo) { pending = false; api.setEdit(undo.dataset.ymd, undo.dataset.kind, null); render(); return; }
+        if (e.target.closest("#gius-plan-reset")) { pending = false; api.clearEdits(); render(); }
+    });
+
+    render();
+    return { render };
+}
+
 function staffAttendance(S) {
 
             // ═══════════════════════════════════════════════════════════════════════════
@@ -1058,7 +1415,8 @@ function staffAttendance(S) {
                 onboardingCompleted: "giuOnboardingCompletedV1",
                 onboardingState: "giuOnboardingStateV1",
                 branchStart: "giuBranchStartV1",
-                setup: "giuAttendanceSetupV1"
+                setup: "giuAttendanceSetupV1",
+                planner: "giuAttendancePlannerV1"
             };
 
             // One-time cleanup of keys no version reads any more: the removed
@@ -7911,6 +8269,169 @@ function staffAttendance(S) {
                 if (isHomePage()) homeRerender();
             }
 
+            // ═══════════════════════════════════════════════════════════
+            //  Plan my days (src/features/attendancePlanner.js)
+            //  The planner's input comes from the same rules as the summary;
+            //  its UI only sees createPlannerApi below.
+            // ═══════════════════════════════════════════════════════════
+
+            const PLANNER_DEFAULT_IN = "09:00";
+
+            // Stored { usualIn, today: {date, in}, edits: {ymd: {in?, out?}} }.
+            // Edits before today and a "today" from another day are dropped here.
+            function getPlannerPrefs() {
+                const today = getTodayLocalYMD();
+                let raw = null;
+                try { raw = JSON.parse(localStorage.getItem(STORAGE_KEYS.planner)); } catch { raw = null; }
+                if (!raw || typeof raw !== "object") raw = {};
+                const usualIn = plannerParseTime(raw.usualIn) !== null ? raw.usualIn : PLANNER_DEFAULT_IN;
+                const todayIn = raw.today && raw.today.date === today && plannerParseTime(raw.today.in) !== null
+                    ? raw.today.in : "";
+                const edits = {};
+                Object.keys(raw.edits || {}).forEach(function (ymd) {
+                    if (!YMD_RE.test(ymd) || ymd < today) return;
+                    const e = raw.edits[ymd] || {};
+                    const clean = {};
+                    if (plannerParseTime(e.in) !== null) clean.in = e.in;
+                    if (plannerParseTime(e.out) !== null) clean.out = e.out;
+                    if (clean.in || clean.out) edits[ymd] = clean;
+                });
+                return { usualIn, todayIn, edits };
+            }
+
+            function setPlannerPrefs(prefs) {
+                try {
+                    localStorage.setItem(STORAGE_KEYS.planner, JSON.stringify({
+                        usualIn: prefs.usualIn,
+                        today: prefs.todayIn ? { date: getTodayLocalYMD(), in: prefs.todayIn } : null,
+                        edits: prefs.edits
+                    }));
+                } catch { /* quota */ }
+            }
+
+            // Worked/required as the summary counts them, minus today's and later
+            // rows; plus every working day from today to the period end. The full
+            // period window keeps the summary's compensation pairing (a comp leave
+            // booked later pairs with the day-off work it uses) and its overrides.
+            // Null until a day off is set (the planner never guesses one).
+            function buildPlannerInput(rows) {
+                if (!isDayOffConfigured()) return null;
+                const today = getTodayLocalYMD();
+                const bounds = getPayrollPeriodBounds(getPayrollPeriodKey(today));
+                const periodRows = (rows || []).filter(function (r) {
+                    return r.date >= bounds.start && r.date <= bounds.end;
+                });
+                const past = buildPeriodStats(periodRows.filter(function (r) { return r.date < today; }), bounds.start, bounds.end);
+                const prefs = getPlannerPrefs();
+                const holidays = getStoredHolidays();
+                const ramadan = getStoredRamadan();
+                const examPeriod = getStoredExamPeriod();
+                const overrideByDate = new Map(getStoredOverrides().map(function (o) { return [normalizeYMD(o.date), o]; }));
+                const compDates = new Set(getStoredCompensationLeaves().map(function (c) { return normalizeYMD(c.date); }));
+                const todayRow = periodRows.find(function (r) { return r.date === today; }) || null;
+
+                const days = [];
+                eachYmdInRange(today, bounds.end, function (date) {
+                    const dayName = formatDateToDayName(date);
+                    if (!dayName) return;
+                    if (isFixedNonWorkingDay(dayName, date)) return;
+                    const effectiveDayOff = getDayOffFullNameForDate(date, getSelectedDayOffCode());
+                    if (effectiveDayOff && dayName === effectiveDayOff) return;
+                    if (isDateHoliday(date, holidays) || compDates.has(date)) return;   // holidays include annual leave
+
+                    const isToday = date === today;
+                    const edit = prefs.edits[date] || {};
+                    const day = {
+                        ymd: date,
+                        dayName,
+                        isToday,
+                        requiredSeconds: getRequiredSecondsBySeason(date, ramadan),
+                        capSeconds: getLastOutCapForDate(date, ramadan, examPeriod),
+                        lateSeconds: isBetweenDates(ramadan.start, ramadan.end, date)
+                            ? LATE_THRESHOLD_SECONDS_RAMADAN : LATE_THRESHOLD_SECONDS_NORMAL,
+                        inSeconds: plannerParseTime(edit.in || prefs.usualIn),
+                        outSeconds: edit.out ? plannerParseTime(edit.out) : null,
+                        fixedSeconds: null,
+                        inBase: false,
+                        inEdited: !!edit.in,
+                        outEdited: !!edit.out,
+                        inFromReport: false
+                    };
+                    const override = overrideByDate.get(date);
+                    if (override) {
+                        // Already counted by buildPeriodStats above.
+                        day.fixedSeconds = getOverrideActualSecondsForDate(override, date, ramadan);
+                        day.inBase = true;
+                    } else if (isToday) {
+                        // The gate report lags; use today's row when it is there.
+                        const reportIn = todayRow ? parseTimeToSeconds(todayRow.firstIn) : null;
+                        if (todayRow && hasValidLastOut(todayRow.lastOut)) {
+                            day.fixedSeconds = getEffectiveRowActualSeconds(todayRow, ramadan, examPeriod);
+                        } else if (reportIn !== null) {
+                            day.inSeconds = reportIn;
+                            day.inFromReport = true;
+                        } else if (prefs.todayIn) {
+                            day.inSeconds = plannerParseTime(prefs.todayIn);
+                        }
+                        day.inEdited = false;
+                    }
+                    days.push(day);
+                });
+
+                return {
+                    periodStart: bounds.start,
+                    periodEnd: bounds.end,
+                    workedSeconds: past.actualSeconds,
+                    requiredSeconds: past.requiredSeconds,
+                    minDaySeconds: MIN_WORKING_DAY_SECONDS,
+                    days
+                };
+            }
+
+            function createPlannerApi(getRows) {
+                return {
+                    input: function () { return buildPlannerInput(getRows()); },
+                    prefs: getPlannerPrefs,
+                    isExpanded: function () { return getSectionExpanded("planner", true); },
+                    setExpanded: function (expanded) { setSectionExpanded("planner", expanded); },
+                    setUsualIn: function (hhmm) {
+                        if (plannerParseTime(hhmm) === null) return;
+                        const p = getPlannerPrefs();
+                        p.usualIn = hhmm;
+                        setPlannerPrefs(p);
+                    },
+                    setTodayIn: function (hhmm) {
+                        const p = getPlannerPrefs();
+                        p.todayIn = plannerParseTime(hhmm) !== null ? hhmm : "";
+                        setPlannerPrefs(p);
+                    },
+                    // hhmm "" / null removes that edit.
+                    setEdit: function (ymd, kind, hhmm) {
+                        const p = getPlannerPrefs();
+                        const e = Object.assign({}, p.edits[ymd]);
+                        if (plannerParseTime(hhmm) !== null) e[kind] = hhmm;
+                        else delete e[kind];
+                        if (e.in || e.out) p.edits[ymd] = e;
+                        else delete p.edits[ymd];
+                        setPlannerPrefs(p);
+                    },
+                    clearEdits: function () {
+                        const p = getPlannerPrefs();
+                        p.edits = {};
+                        setPlannerPrefs(p);
+                    }
+                };
+            }
+
+            // The Home widget's one line, or null (today off, or already done).
+            function plannerTodayLeaveBy(rows) {
+                const input = buildPlannerInput(rows);
+                if (!input) return null;
+                const today = planAttendanceDays(input).days.find(function (d) { return d.isToday; });
+                if (!today || today.locked) return null;
+                return plannerFormat12(today.outSeconds);
+            }
+
             let setupWizard = null;        // the open wizard's handle, or null
             let setupAutoOpened = false;   // auto-open at most once per page load
 
@@ -8049,6 +8570,10 @@ function staffAttendance(S) {
 
                 if (periods.length > 0) {
                     container.appendChild(createSummaryPanel(periods, selectedDayOffFullName, renderState));
+                    const plannerHost = document.createElement("div");
+                    plannerHost.id = "giu-att-planner";
+                    container.appendChild(plannerHost);
+                    renderAttendancePlanner(S, createPlannerApi(function () { return getAttendanceRows(); }), plannerHost);
                 } else {
                     container.appendChild(createDebugBox(
                         "Attendance summary could not be generated because valid Day/Duration rows were not detected from the report table."
@@ -8361,6 +8886,9 @@ function staffAttendance(S) {
                     .gius-att-tierwrap{margin-top:10px;}
                     .gius-att-quip{margin-top:6px;font-size:12.5px;font-style:italic;color:#6b7280;}
                     html.gius-dark .gius-att-quip{color:#9399b2;}
+                    .gius-att-plan{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:8px;padding:7px 10px;border-radius:6px;background:#f3f4f6;font-size:12px;font-weight:600;}
+                    .gius-att-plan b{font-variant-numeric:tabular-nums;}
+                    html.gius-dark .gius-att-plan{background:#313244;color:#cdd6f4;}
                     .gius-att-tier{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:800;padding:3px 9px;border-radius:999px;}
                     .gius-att-tier-btn{cursor:pointer;border:none;font-family:inherit;transition:filter .12s,transform .12s;}
                     .gius-att-tier-btn:hover{filter:brightness(.96);transform:translateY(-1px);}
@@ -8568,6 +9096,7 @@ function staffAttendance(S) {
                             </div>
                         </div>
                     </div>` : "";
+                const leaveBy = plannerTodayLeaveBy(homeLastRows);
 
                 host.innerHTML = `
                     <div class="gius-att-head">This Payroll Month${opts.stale ? ' · <span class="gius-att-stale">offline</span>' : ""}
@@ -8579,6 +9108,7 @@ function staffAttendance(S) {
                         <div class="gius-att-meta">${pctRaw}% covered &middot; Present ${st.presentDays} &middot; Absent ${st.absentDays} &middot; ${homeEsc(summary.label || "")}</div>
                         <div class="gius-att-tierwrap"><button type="button" class="gius-att-tier gius-att-tier-btn ${tierClass} gius-btn${tierHintSeen ? " gius-att-tier-seen" : ""}" id="gius-att-tier-btn" title="See all tiers">${tierName}</button></div>
                         <div class="gius-att-quip">${homeEsc(tierQuip)}</div>
+                        ${leaveBy ? `<div class="gius-att-plan"><span>Leave today by</span><b>${homeEsc(leaveBy)}</b></div>` : ""}
                     </div>
                     ${absentBlock}
                     <a class="gius-att-link" href="${REPORT_VIEW_URL}">View full report →</a>`;
@@ -8806,6 +9336,10 @@ function staffAttendance(S) {
                 getStoredAnnualLeaveAccrualRate,
                 setStoredAnnualLeaveAccrualRate,
                 applyMonthlyAnnualLeaveAccrual,
+                // Planner test hooks.
+                buildPlannerInput,
+                createPlannerApi,
+                plannerTodayLeaveBy,
             };
 
             try {
