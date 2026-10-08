@@ -105,10 +105,20 @@ A pasted copy doesn't auto-update. Reinstall it once from the install link above
 
 - **Home widget** with this payroll month's worked vs required hours, balance, and absent days (one click to file an absent day as holiday, annual leave or compensation).
 - **Full report** with both payroll months (11th → 10th), late arrivals, audit log, and progress bars.
+- **Plan my days** — when to leave each working day left this payroll month so it ends even (see below). The Home widget shows today's answer: **Leave today by 5:42 PM**.
 - **Settings** for holidays and annual leave (ranges supported), leave balance with monthly accrual, attendance overrides (missions, missing punches), compensation days, Ramadan and exam periods.
 - **Backup:** export/import all settings as a `.json` file.
 
 ![Attendance dashboard](screenshots/attendance.gif)
+
+**Plan my days.** A card on the attendance report, under the summary:
+
+- **Leave today by** — type the time you came in (the gate report lags a day; once today's row is in, it is used instead).
+- If you are missing hours, they are spread evenly over the working days left; if you are ahead, you can leave earlier. Your day off, Fridays (Sundays in Berlin), holidays and leave days are skipped.
+- Set your **usual check-in** once; change it for any single day.
+- **What-if:** click any day's In or Out time and type another one (e.g. leaving at 3 PM on Thursday). The other days adjust, and **Month ends** shows the result. Changed times turn blue — **×** undoes one, **Undo all changes** clears them. What-ifs never touch your real hours.
+- It follows the report's rules: last-out counted until 7 PM (6 PM in Ramadan, or the exam-period cap), late after 10:30 AM (9:30 in Ramadan), and a day under 4 hours counts as absent.
+- Click the title to fold the card; folded, it still shows today's leave time.
 
 **First-run setup.** The first time you open it, a short wizard sets everything up — no need to touch the settings:
 
