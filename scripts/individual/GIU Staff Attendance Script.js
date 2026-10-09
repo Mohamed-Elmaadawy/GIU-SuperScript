@@ -5,7 +5,7 @@
 // @icon        data:image/png;base64,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
 // @include     https://portal.giu-uni.de/*
 // @namespace   Cyn0
-// @version     3.2.13
+// @version     3.2.14
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @run-at      document-idle
@@ -1391,6 +1391,7 @@ function staffAttendance(S) {
             const REQUIRED_SECONDS_NORMAL = (8 * 60 + 24) * 60;   // 30240s = 8h24m
             const REQUIRED_SECONDS_RAMADAN = 6 * 3600;              // 21600s = 6h
             const MIN_WORKING_DAY_SECONDS = 4 * 3600;               // 14400s = 4h minimum to count day as worked
+            const SINGLE_ENTRY_MAX_PER_PERIOD = 2;                  // single-entry days credited as full days per payroll month
             const LATE_THRESHOLD_SECONDS_NORMAL = (10 * 60 + 30) * 60;  // 10:30 AM
             const LATE_THRESHOLD_SECONDS_RAMADAN = (9 * 60 + 30) * 60;  // 9:30 AM
             const LASTOUT_CAP_SECONDS_NORMAL = 19 * 3600;               // 7:00 PM
@@ -1406,6 +1407,7 @@ function staffAttendance(S) {
                 dayOffSchedule: "giuDayOffScheduleV1",
                 examPeriod: "giuExamPeriod",
                 auditMode: "giuAuditModeV1",
+                singleEntryRule: "giuSingleEntryRuleV1",
                 annualLeaveBalance: "giuAnnualLeaveBalanceV1",
                 annualLeaveAccrualPeriod: "giuAnnualLeaveAccrualPeriodV1",
                 annualLeaveAccrualRate: "giuAnnualLeaveAccrualRateV1",
@@ -1752,6 +1754,16 @@ function staffAttendance(S) {
                 return value.includes(":");
             }
 
+            // One gate punch: an In time with no valid LastOut, or the same time
+            // in both columns.
+            function isSingleEntryRow(row) {
+                if (!row) return false;
+                const inSeconds = parseTimeToSeconds(row.firstIn);
+                if (inSeconds === null) return false;
+                if (!hasValidLastOut(row.lastOut)) return true;
+                return parseTimeToSeconds(row.lastOut) === inSeconds;
+            }
+
             function isFixedNonWorkingDay(dayName, ymd) {
                 return dayName === fixedOffDayFor(ymd);
             }
@@ -1774,6 +1786,18 @@ function staffAttendance(S) {
 
             function setAuditModeEnabled(enabled) {
                 localStorage.setItem(AUDIT_MODE_KEY, enabled ? "1" : "0");
+            }
+
+            // Single-entry rule: a working day with one gate punch and no checkout
+            // counts as a full day, at most SINGLE_ENTRY_MAX_PER_PERIOD times per
+            // payroll month. Confirmed at GUC, pending GIU HR confirmation, hence
+            // the switch. On by default.
+            function isSingleEntryRuleEnabled() {
+                return localStorage.getItem(STORAGE_KEYS.singleEntryRule) !== "0";
+            }
+
+            function setSingleEntryRuleEnabled(enabled) {
+                localStorage.setItem(STORAGE_KEYS.singleEntryRule, enabled ? "1" : "0");
             }
 
             function normalizeDayOffScheduleEntry(entry) {
@@ -1853,7 +1877,8 @@ function staffAttendance(S) {
                     compensationLeaves: getStoredCompensationLeaves(),
                     ramadan: getStoredRamadan(),
                     examPeriod: getStoredExamPeriod(),
-                    auditMode: isAuditModeEnabled()
+                    auditMode: isAuditModeEnabled(),
+                    singleEntryRule: isSingleEntryRuleEnabled()
                 };
             }
 
@@ -1953,6 +1978,10 @@ function staffAttendance(S) {
                 }
                 if (typeof snapshot.auditMode === "boolean") {
                     setAuditModeEnabled(snapshot.auditMode);
+                    report.accepted += 1;
+                }
+                if (typeof snapshot.singleEntryRule === "boolean") {
+                    setSingleEntryRuleEnabled(snapshot.singleEntryRule);
                     report.accepted += 1;
                 }
                 return report;
@@ -4774,27 +4803,40 @@ function staffAttendance(S) {
                     }, 0);
                 });
 
-                const auditLabel = document.createElement("label");
-                auditLabel.style.display = "inline-flex";
-                auditLabel.style.alignItems = "center";
-                auditLabel.style.gap = "6px";
-                auditLabel.style.fontWeight = "700";
-                auditLabel.style.fontSize = "12px";
-                auditLabel.style.color = "#334155";
+                const createSettingsToggle = function (text, checked, onChange, title) {
+                    const label = document.createElement("label");
+                    label.style.display = "inline-flex";
+                    label.style.alignItems = "center";
+                    label.style.gap = "6px";
+                    label.style.fontWeight = "700";
+                    label.style.fontSize = "12px";
+                    label.style.color = "#334155";
+                    if (title) label.title = title;
 
-                const auditToggle = document.createElement("input");
-                auditToggle.type = "checkbox";
-                auditToggle.checked = isAuditModeEnabled();
-                auditToggle.addEventListener("change", function () {
-                    setAuditModeEnabled(auditToggle.checked);
-                    renderEnhancedUI();
-                });
+                    const toggle = document.createElement("input");
+                    toggle.type = "checkbox";
+                    toggle.checked = checked;
+                    toggle.addEventListener("change", function () {
+                        onChange(toggle.checked);
+                        renderEnhancedUI();
+                    });
 
-                const auditText = document.createElement("span");
-                auditText.textContent = "Audit log mode";
+                    const span = document.createElement("span");
+                    span.textContent = text;
 
-                auditLabel.appendChild(auditToggle);
-                auditLabel.appendChild(auditText);
+                    label.appendChild(toggle);
+                    label.appendChild(span);
+                    return label;
+                };
+
+                const auditLabel = createSettingsToggle("Audit log mode", isAuditModeEnabled(), setAuditModeEnabled);
+                const singleEntryLabel = createSettingsToggle(
+                    `Single entry counts as full day (max ${SINGLE_ENTRY_MAX_PER_PERIOD}/month)`,
+                    isSingleEntryRuleEnabled(),
+                    setSingleEntryRuleEnabled,
+                    "A working day with one gate punch and no checkout counts as a full day, up to "
+                        + `${SINGLE_ENTRY_MAX_PER_PERIOD} times per payroll month. Confirmed at GUC; still awaiting GIU HR confirmation.`
+                );
 
                 // Reopens the first-run setup wizard, pre-filled with today's settings.
                 const setupBtn = createUiButton("Run setup again", "giu-settings-action-btn", function () {
@@ -4806,6 +4848,7 @@ function staffAttendance(S) {
                 settingsActionRow.appendChild(importBtn);
                 settingsActionRow.appendChild(setupBtn);
                 settingsActionRow.appendChild(auditLabel);
+                settingsActionRow.appendChild(singleEntryLabel);
 
                 const today = getTodayLocalYMD();
                 const currentPeriodKey = getPayrollPeriodKey(today);
@@ -6683,6 +6726,25 @@ function staffAttendance(S) {
                 const windowStart = periodStart || fallbackStart;
                 const windowEnd = periodEnd || fallbackEnd;
 
+                // Single-entry days credited as full days: past regular working
+                // days with one punch and no override, the earliest
+                // SINGLE_ENTRY_MAX_PER_PERIOD in the period. Later ones fall
+                // through to the normal (absent) rule.
+                const singleEntryCredits = new Set();
+                if (isSingleEntryRuleEnabled()) {
+                    eachYmdInRange(windowStart, windowEnd, function (date) {
+                        if (singleEntryCredits.size >= SINGLE_ENTRY_MAX_PER_PERIOD || date >= today) return;
+                        const dayName = formatDateToDayName(date);
+                        if (!dayName || overrideByDate.has(date) || compensationByDate.has(date)) return;
+                        if (!isSingleEntryRow(rowByDate.get(date))) return;
+                        if (isFixedNonWorkingDay(dayName, date)) return;
+                        const effectiveDayOff = getDayOffFullNameForDate(date, getSelectedDayOffCode());
+                        if (effectiveDayOff && dayName === effectiveDayOff) return;
+                        if (holidayDateSet.has(date) || isDateHoliday(date, holidays)) return;
+                        singleEntryCredits.add(date);
+                    });
+                }
+
                 const pushAudit = function (date, status, reason) {
                     if (date > today) return;
                     acc.auditEntries.push({
@@ -6828,6 +6890,25 @@ function staffAttendance(S) {
                                 pushAudit(date, "Day Off (Swap, Short)", `Swap day worked less than 4:00:00; still counted as required day.`);
                             }
                             acc.actualSeconds += durationSeconds;
+                            return;
+                        }
+
+                        if (singleEntryCredits.has(date)) {
+                            acc.requiredSeconds += dayReq;
+                            acc.actualSeconds += dayReq;
+                            acc.presentDays += 1;
+                            pushAudit(date, "Present (Single Entry)",
+                                `In at ${row.firstIn} with no checkout; counted as a full day (single entry ${[...singleEntryCredits].indexOf(date) + 1} of ${SINGLE_ENTRY_MAX_PER_PERIOD} this month).`);
+                            const lateBy = getLateSeconds(row.date, row.firstIn, ramadan);
+                            if (lateBy > 0) {
+                                acc.lateDays += 1;
+                                acc.totalLateSeconds += lateBy;
+                                acc.lateDayDetails.push({
+                                    date: row.date,
+                                    firstIn: row.firstIn,
+                                    lateBySeconds: lateBy
+                                });
+                            }
                             return;
                         }
 
@@ -7341,7 +7422,7 @@ function staffAttendance(S) {
                 const normalM = Math.floor((LATE_THRESHOLD_SECONDS_NORMAL % 3600) / 60);
                 const ramadanH = Math.floor(LATE_THRESHOLD_SECONDS_RAMADAN / 3600);
                 const ramadanM = Math.floor((LATE_THRESHOLD_SECONDS_RAMADAN % 3600) / 60);
-                note.innerHTML = `Required hours count only when the day has passed or a LastOut value exists.<br>Working day is counted only if worked duration is at least 4:00:00.<br>Payroll period is calculated from the 11th of the month to the 10th of the following month.<br>Late arrivals are counted when First In is after the threshold: ${formatTime12(normalH, normalM)} for normal days, ${formatTime12(ramadanH, ramadanM)} for Ramadan days.`;
+                note.innerHTML = `Required hours count only when the day has passed or a LastOut value exists.<br>Working day is counted only if worked duration is at least 4:00:00.<br>${isSingleEntryRuleEnabled() ? `A single entry (In with no checkout) counts as a full day, up to ${SINGLE_ENTRY_MAX_PER_PERIOD} times per payroll period; later ones count as absent.<br>` : ""}Payroll period is calculated from the 11th of the month to the 10th of the following month.<br>Late arrivals are counted when First In is after the threshold: ${formatTime12(normalH, normalM)} for normal days, ${formatTime12(ramadanH, ramadanM)} for Ramadan days.`;
                 fullInner.appendChild(note);
 
                 fullWrapper.appendChild(fullInner);
