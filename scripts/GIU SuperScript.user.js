@@ -5,7 +5,7 @@
 // @icon        data:image/png;base64,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
 // @namespace   Cyn0
 // @match       https://portal.giu-uni.de/*
-// @version     1.3.16
+// @version     1.3.17
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @run-at      document-idle
@@ -1387,6 +1387,7 @@ function planAttendanceDays(input) {
         balanceNowSeconds: input.workedSeconds - input.requiredSeconds + finished,
         endBalanceSeconds: input.workedSeconds + planned - required,
         freeDays: free.length,
+        pinnedDays: days.filter(function (d) { return d.pinned; }).length,
         perDayExtraSeconds: free.length ? freeExtra / free.length : 0,
     };
 }
@@ -1447,6 +1448,9 @@ function renderAttendancePlanner(S, api, host) {
         .gius-plan-row.gius-plan-today{background:#fffbea;}
         .gius-plan-day b{font-weight:600;}
         .gius-plan-day small{display:block;color:#b91c1c;font-size:11px;}
+        .gius-plan-day small.gius-plan-note{color:#6b7280;}
+        .gius-plan-range{font-size:24px;}
+        .gius-plan-arrow{font-size:13px;color:#9ca3af;}
         .gius-plan-cell{display:flex;align-items:center;gap:2px;width:128px;justify-content:flex-end;}
         .gius-plan-fixed{font-weight:600;color:#6b7280;padding:3px 4px;}
         .gius-plan-undo{border:0;background:none;color:#1B59C6;font-size:15px;line-height:1;cursor:pointer;padding:2px 4px;border-radius:4px;}
@@ -1465,6 +1469,7 @@ function renderAttendancePlanner(S, api, host) {
         html.gius-dark .gius-plan-edited input[type=time]{background:#1e3a5f;color:#89b4fa;}
         html.gius-dark .gius-plan input[type=time]::-webkit-calendar-picker-indicator{filter:invert(1);}
         html.gius-dark .gius-plan-bad,html.gius-dark .gius-plan-day small{color:#f38ba8;}
+        html.gius-dark .gius-plan-day small.gius-plan-note{color:#9399b2;}
         html.gius-dark .gius-plan-good{color:#a6e3a1;}
         html.gius-dark .gius-plan-link,html.gius-dark .gius-plan-undo{color:#89b4fa;}
         html.gius-dark .gius-plan-undo:hover{background:#1e3a5f;}
@@ -1480,7 +1485,7 @@ function renderAttendancePlanner(S, api, host) {
         if (d.warn === "order") return "Out is before In";
         if (d.warn === "short") return "Under 4h: counts as absent";
         if (d.warn === "short-cap") return "Under 4h before " + plannerFormat12(d.capSeconds) + ": counts as absent";
-        if (d.warn === "late") return "Late (after " + plannerFormat12(d.lateSeconds) + ")";
+        if (d.warn === "late") return "Arrives after " + plannerFormat12(d.lateSeconds);
         return "";
     };
     const amount = function (seconds) {
@@ -1511,8 +1516,27 @@ function renderAttendancePlanner(S, api, host) {
             cells = inCell + timeCell(d, "out", d.outSeconds, d.outEdited);
         }
         return '<div class="gius-plan-row' + (d.isToday ? " gius-plan-today" : "") + '" data-ymd="' + esc(d.ymd) + '">' +
-            '<span class="gius-plan-day"><b>' + esc(label) + "</b>" + (warn ? "<small>" + esc(warn) + "</small>" : "") + "</span>" +
+            // Late is for information only (HR takes nothing off): grey, not red.
+            '<span class="gius-plan-day"><b>' + esc(label) + "</b>" +
+            (warn ? "<small" + (d.warn === "late" ? ' class="gius-plan-note"' : "") + ">" + esc(warn) + "</small>" : "") + "</span>" +
             cells + "</div>";
+    }
+
+    // Both times set: the card is a what-if; its answer is the month end below.
+    function heroBoth(plan, prefs) {
+        const today = plan.days.find(function (d) { return d.isToday; });
+        let todayLine = "";
+        if (today && today.locked) {
+            todayLine = '<p class="gius-plan-came">Today is done (' + plannerDuration(today.hours) + ")</p>";
+        } else if (today && today.inFromReport) {
+            todayLine = '<p class="gius-plan-came">Today you came in at <b>' + plannerFormat12(today.inSeconds) + "</b></p>";
+        } else if (today) {
+            todayLine = '<label class="gius-plan-came" for="gius-plan-today-in">Today you came in at <input type="time" id="gius-plan-today-in" value="' +
+                plannerFormatTime(today.inSeconds) + '"></label>';
+        }
+        return '<div><div class="gius-plan-q">If every day you work</div><div class="gius-plan-big gius-plan-range" id="gius-plan-leave">' +
+            plannerFormat12(plannerParseTime(prefs.usualIn)) + ' <span class="gius-plan-arrow">→</span> ' +
+            plannerFormat12(plannerParseTime(prefs.usualOut)) + "</div>" + todayLine + "</div>";
     }
 
     function hero(plan) {
@@ -1544,14 +1568,23 @@ function renderAttendancePlanner(S, api, host) {
 
     // One balance on the card: where the month ends with the times above,
     // plus what to do about it when there is something to do.
-    function monthEnd(plan) {
+    function monthEnd(plan, both) {
         const mins = Math.round(plan.endBalanceSeconds / 60);
         const text = mins === 0 ? "even" : (mins > 0 ? "Extra " : "Missing ") + plannerDuration(plan.endBalanceSeconds);
         const end = '<span id="gius-plan-end">Month ends: <b class="' + (mins >= 0 ? "gius-plan-good" : "gius-plan-bad") + '">' + text + "</b></span>";
         const k = plan.freeDays + " working day" + (plan.freeDays === 1 ? "" : "s");
         const extra = Math.round(plan.perDayExtraSeconds / 60);
         let hint = "";
-        if (mins < 0) {
+        if (both && plan.pinnedDays && mins !== 0) {
+            // The one change on every planned day that evens the month out.
+            const per = Math.ceil(Math.abs(plan.endBalanceSeconds) / plan.pinnedDays / 60) * 60;
+            const n = plan.pinnedDays + " day" + (plan.pinnedDays === 1 ? "" : "s");
+            const atCap = plan.days.every(function (d) { return !d.pinned || d.outSeconds >= d.capSeconds; });
+            hint = mins < 0
+                ? "To break even: " + (atCap ? "" : "leave about <b>" + amount(per) + "</b> later or ") +
+                    "come about <b>" + amount(per) + "</b> earlier on each of the " + n + "."
+                : "You could leave about <b>" + amount(per) + "</b> earlier on each of the " + n + " and still end even.";
+        } else if (mins < 0) {
             hint = plan.freeDays ? "Even leaving at the latest time each day isn't enough." : "Change a time above to cover it.";
         } else if (plan.freeDays && extra > 0) {
             hint = "Stay about <b>" + amount(plan.perDayExtraSeconds) + "</b> longer than a normal day on each of the next " + k + ".";
@@ -1568,22 +1601,35 @@ function renderAttendancePlanner(S, api, host) {
         const plan = input ? planAttendanceDays(input) : null;
         const expanded = api.isExpanded();
         // Folded, the header still answers the main question.
+        const mode = prefs.usualMode;
+        const both = mode === "both";
         const today = plan ? plan.days.find(function (d) { return d.isToday && !d.locked; }) : null;
-        const peek = !expanded && today
-            ? '<span class="gius-plan-peek">' + plannerDayAnswer(today).verb + " today by " + plannerDayAnswer(today).time + "</span>" : "";
+        let peek = "";
+        if (!expanded && plan && both) {
+            const m = Math.round(plan.endBalanceSeconds / 60);
+            peek = '<span class="gius-plan-peek">Month ends: ' + (m === 0 ? "even" : (m > 0 ? "Extra " : "Missing ") + plannerDuration(plan.endBalanceSeconds)) + "</span>";
+        } else if (!expanded && today) {
+            peek = '<span class="gius-plan-peek">' + plannerDayAnswer(today).verb + " today by " + plannerDayAnswer(today).time + "</span>";
+        }
         // The usual time drives every day below, so it looks like a control,
         // not a caption.
-        const outMode = prefs.usualMode === "out";
-        const modeBtn = function (mode, text) {
-            return '<button type="button" class="gius-plan-mode" id="gius-plan-mode-' + mode + '" data-mode="' + mode + '" aria-pressed="' + ((mode === "out") === outMode) + '">' + text + "</button>";
+        const modeBtn = function (m, text) {
+            return '<button type="button" class="gius-plan-mode" id="gius-plan-mode-' + m + '" data-mode="' + m + '" aria-pressed="' + (m === mode) + '">' + text + "</button>";
         };
+        const usualInput = function (id, value, label) {
+            return '<input type="time" id="' + id + '" value="' + esc(value) + '" aria-label="' + label + '" title="Click to change">';
+        };
+        const times = both
+            ? usualInput("gius-plan-usual", prefs.usualIn, "Usual check-in time") + '<span aria-hidden="true">→</span>' +
+                usualInput("gius-plan-usual-out", prefs.usualOut, "Usual check-out time")
+            : mode === "out"
+                ? usualInput("gius-plan-usual", prefs.usualOut, "Usual check-out time")
+                : usualInput("gius-plan-usual", prefs.usualIn, "Usual check-in time");
         const head = '<div class="gius-plan-head"><h3><button type="button" class="gius-plan-toggle" id="gius-plan-toggle" aria-expanded="' +
             expanded + '" aria-controls="gius-plan-body"><span class="gius-plan-chev" aria-hidden="true">▾</span>Plan my days' + peek + "</button></h3>" +
             '<div class="gius-plan-usual" id="gius-plan-usual-box" role="group" aria-label="Plan by">Plan by' +
-            '<span class="gius-plan-seg">' + modeBtn("in", "Check-in") + modeBtn("out", "Check-out") + "</span>" +
-            '<input type="time" id="gius-plan-usual" value="' + esc(outMode ? prefs.usualOut : prefs.usualIn) +
-            '" aria-label="' + (outMode ? "Usual check-out time" : "Usual check-in time") + '" title="Click to change">' +
-            '<span class="gius-plan-pen" aria-hidden="true">✎</span></div></div>';
+            '<span class="gius-plan-seg">' + modeBtn("in", "Check-in") + modeBtn("out", "Check-out") + modeBtn("both", "Both") + "</span>" +
+            times + '<span class="gius-plan-pen" aria-hidden="true">✎</span></div></div>';
         const bodyOpen = '<div class="gius-plan-body" id="gius-plan-body"' + (expanded ? "" : " hidden") + ">";
         if (!plan) {
             host.innerHTML = '<section class="gius-plan">' + head + bodyOpen + '<p class="gius-plan-sentence">Set your weekly day off to see your plan.</p></div></section>';
@@ -1597,8 +1643,8 @@ function renderAttendancePlanner(S, api, host) {
         // Answer on the left, day list on the right when the card is wide.
         host.innerHTML = '<section class="gius-plan">' + head + bodyOpen +
             '<div class="gius-plan-side">' +
-            hero(plan) +
-            '<p class="gius-plan-sentence">' + monthEnd(plan) + "</p>" +
+            (both ? heroBoth(plan, prefs) : hero(plan)) +
+            '<p class="gius-plan-sentence">' + monthEnd(plan, both) + "</p>" +
             (hasEdits ? '<div class="gius-plan-foot"><button type="button" class="gius-plan-link" id="gius-plan-reset">Undo all changes</button></div>' : "") +
             "</div>" +
             (plan.days.length
@@ -1621,6 +1667,7 @@ function renderAttendancePlanner(S, api, host) {
     host.addEventListener("change", function (e) {
         const el = e.target;
         if (el.id === "gius-plan-usual") api.setUsualTime(el.value);
+        else if (el.id === "gius-plan-usual-out") api.setUsualTime(el.value, "out");
         else if (el.id === "gius-plan-today-in" || el.dataset.today === "1") api.setTodayIn(el.value);
         else if (el.dataset.kind) api.setEdit(el.dataset.ymd, el.dataset.kind, el.value);
         else return;
@@ -1646,10 +1693,10 @@ function renderAttendancePlanner(S, api, host) {
             render();
             return;
         }
-        const mode = e.target.closest(".gius-plan-mode");
-        if (mode) {
+        const modeBtn = e.target.closest(".gius-plan-mode");
+        if (modeBtn) {
             pending = false;
-            if (mode.getAttribute("aria-pressed") !== "true") { api.setUsualMode(mode.dataset.mode); render(mode); }
+            if (modeBtn.getAttribute("aria-pressed") !== "true") { api.setUsualMode(modeBtn.dataset.mode); render(modeBtn); }
             return;
         }
         const undo = e.target.closest(".gius-plan-undo");
@@ -7895,7 +7942,7 @@ function renderAttendancePlanner(S, api, host) {
                     {
                         selector: "#gius-plan-usual-box",
                         title: "Plan my days: Plan by",
-                        description: "Plan from your usual check-in, or switch to Check-out to plan when to come in. Every day in the plan follows it; change a single day in its row."
+                        description: "Plan from your usual check-in, switch to Check-out to plan when to come in, or pick Both to see how the month ends with the same hours every day. Change a single day in its row."
                     },
                     {
                         selector: "#giu-attendance-container .giu-config-title",
@@ -8706,7 +8753,7 @@ function renderAttendancePlanner(S, api, host) {
             const PLANNER_DEFAULT_OUT = "17:00";
             const PLANNER_EARLIEST_IN_SECONDS = 7 * 3600;   // usual check-out mode never plans a check-in before 7:00 AM
 
-            // Stored { usualMode: "in"|"out", usualIn, usualOut, today: {date, in},
+            // Stored { usualMode: "in"|"out"|"both", usualIn, usualOut, today: {date, in},
             // edits: {ymd: {in?, out?}} }. Edits before today and a "today" from
             // another day are dropped here.
             function getPlannerPrefs() {
@@ -8714,7 +8761,7 @@ function renderAttendancePlanner(S, api, host) {
                 let raw = null;
                 try { raw = JSON.parse(localStorage.getItem(STORAGE_KEYS.planner)); } catch { raw = null; }
                 if (!raw || typeof raw !== "object") raw = {};
-                const usualMode = raw.usualMode === "out" ? "out" : "in";
+                const usualMode = raw.usualMode === "out" || raw.usualMode === "both" ? raw.usualMode : "in";
                 const usualIn = plannerParseTime(raw.usualIn) !== null ? raw.usualIn : PLANNER_DEFAULT_IN;
                 const usualOut = plannerParseTime(raw.usualOut) !== null ? raw.usualOut : PLANNER_DEFAULT_OUT;
                 const todayIn = raw.today && raw.today.date === today && plannerParseTime(raw.today.in) !== null
@@ -8765,8 +8812,10 @@ function renderAttendancePlanner(S, api, host) {
                 const todayRow = periodRows.find(function (r) { return r.date === today; }) || null;
 
                 // Usual check-out mode: each day's check-out is known and its
-                // check-in is worked out (null here), unless edited.
+                // check-in is worked out (null here), unless edited. Both: every
+                // day is pinned to the usual pair, a what-if for the month end.
                 const outMode = prefs.usualMode === "out";
+                const bothMode = prefs.usualMode === "both";
                 const days = [];
                 eachYmdInRange(today, bounds.end, function (date) {
                     const dayName = formatDateToDayName(date);
@@ -8788,7 +8837,7 @@ function renderAttendancePlanner(S, api, host) {
                             ? LATE_THRESHOLD_SECONDS_RAMADAN : LATE_THRESHOLD_SECONDS_NORMAL,
                         earliestSeconds: PLANNER_EARLIEST_IN_SECONDS,
                         inSeconds: edit.in ? plannerParseTime(edit.in) : (outMode ? null : plannerParseTime(prefs.usualIn)),
-                        outSeconds: edit.out ? plannerParseTime(edit.out) : (outMode ? plannerParseTime(prefs.usualOut) : null),
+                        outSeconds: edit.out ? plannerParseTime(edit.out) : (outMode || bothMode ? plannerParseTime(prefs.usualOut) : null),
                         fixedSeconds: null,
                         inBase: false,
                         inEdited: !!edit.in,
@@ -8812,7 +8861,8 @@ function renderAttendancePlanner(S, api, host) {
                         } else if (knownIn !== null) {
                             day.inSeconds = knownIn;
                             day.inFromReport = reportIn !== null;
-                            day.outSeconds = edit.out ? plannerParseTime(edit.out) : null;
+                            day.outSeconds = edit.out ? plannerParseTime(edit.out)
+                                : (bothMode ? plannerParseTime(prefs.usualOut) : null);
                         } else {
                             day.inSeconds = outMode ? null : plannerParseTime(prefs.usualIn);
                         }
@@ -8839,14 +8889,14 @@ function renderAttendancePlanner(S, api, host) {
                     setExpanded: function (expanded) { setSectionExpanded("planner", expanded); },
                     setUsualMode: function (mode) {
                         const p = getPlannerPrefs();
-                        p.usualMode = mode === "out" ? "out" : "in";
+                        p.usualMode = mode === "out" || mode === "both" ? mode : "in";
                         setPlannerPrefs(p);
                     },
-                    // The usual check-in or check-out, whichever mode is on.
-                    setUsualTime: function (hhmm) {
+                    // kind "in"/"out"; left out, the one the mode plans from.
+                    setUsualTime: function (hhmm, kind) {
                         if (plannerParseTime(hhmm) === null) return;
                         const p = getPlannerPrefs();
-                        if (p.usualMode === "out") p.usualOut = hhmm;
+                        if ((kind || (p.usualMode === "out" ? "out" : "in")) === "out") p.usualOut = hhmm;
                         else p.usualIn = hhmm;
                         setPlannerPrefs(p);
                     },
@@ -9047,7 +9097,7 @@ function renderAttendancePlanner(S, api, host) {
                 const usualBox = document.getElementById("gius-plan-usual-box");
                 if (usualBox && isOnboardingCompleted()) {
                     Tips.show({ id: 'attendancePlannerUsual', el: usualBox, title: 'Plan by check-in or check-out',
-                        text: 'Plan your days from when you usually check in, or switch to Check-out to plan around when you leave. Every day below follows it; change a single day in its row.' });
+                        text: 'Plan your days from when you usually check in, switch to Check-out to plan around when you leave, or pick Both to see how the month ends with fixed hours. Change a single day in its row.' });
                 }
             }
 

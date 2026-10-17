@@ -25,8 +25,8 @@ Each SuperScript has a **Control Center** card on the portal Home page where you
 
 | Script | Version | Portal | Install |
 | --- | --- | --- | --- |
-| Staff Enhanced Attendance | 3.2.16 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.user.js) |
-| Berlin Attendance | 1.0.9 | Berlin | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.user.js) |
+| Staff Enhanced Attendance | 3.2.17 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.user.js) |
+| Berlin Attendance | 1.0.10 | Berlin | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.user.js) |
 | Teaching Load | 1.1.5 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Teaching%20Load.user.js) |
 | Proctoring Reminder | 1.1.4 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Proctoring%20Reminder.user.js) |
 | Not Entered Sessions | 1.1.2 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Not%20Entered%20Sessions.user.js) |
@@ -36,7 +36,7 @@ Each SuperScript has a **Control Center** card on the portal Home page where you
 | Notification Batch Send | 1.4.1 | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Notification%20Batch%20Send.user.js) |
 | Berlin Session Form Filler | 1.0.0 | Berlin (Microsoft Form) | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Session%20Form%20Filler.user.js) |
 
-The bundles: GIU SuperScript **1.3.16**, GIU Berlin SuperScript **1.0.9**, GIU Theme **1.0.2**.
+The bundles: GIU SuperScript **1.3.17**, GIU Berlin SuperScript **1.0.10**, GIU Theme **1.0.2**.
 
 </details>
 
@@ -105,7 +105,7 @@ A pasted copy doesn't auto-update. Reinstall it once from the install link above
 
 - **Home widget** with this payroll month's worked vs required hours, balance, and absent days (one click to file an absent day as holiday, annual leave or compensation).
 - **Full report** with both payroll months (11th → 10th), late arrivals, audit log, and progress bars.
-- **Plan my days** — when to leave each working day left this payroll month so it ends even (see below). The Home widget shows today's answer: **Leave today by 5:42 PM**.
+- **Plan my days** — when to come in or leave on each working day left this payroll month so it ends even (see below). The Home widget shows today's answer: **Leave today by 5:42 PM** (or **Come in today by…**).
 - **Settings** for holidays and annual leave (ranges supported), leave balance with monthly accrual, attendance overrides (missions, missing punches), compensation days, Ramadan and exam periods.
 - **Backup:** export/import all settings as a `.json` file.
 
@@ -113,12 +113,16 @@ A pasted copy doesn't auto-update. Reinstall it once from the install link above
 
 **Plan my days.** A card on the attendance report, under the summary:
 
+- **Plan by** (in the card's header) — pick what you plan from:
+  - **Check-in:** set your usual check-in; the card tells you when to leave.
+  - **Check-out:** set your usual check-out; the card tells you when to come in (never before 7:00 AM).
+  - **Both:** set a check-in and a check-out (e.g. 10:00 → 6:00) to see how the month ends if you keep those hours every day, and how much later or earlier to break even.
 - **Leave today by** — type the time you came in (the gate report lags a day; once today's row is in, it is used instead).
 - If you are missing hours, they are spread evenly over the working days left; if you are ahead, you can leave earlier. Your day off, Fridays (Sundays in Berlin), holidays and leave days are skipped.
-- Set your **usual check-in** once; change it for any single day.
+- Change the times for any single day in its row.
 - **What-if:** click any day's In or Out time and type another one (e.g. leaving at 3 PM on Thursday). The other days adjust, and **Month ends** shows the result. Changed times turn blue — **×** undoes one, **Undo all changes** clears them. What-ifs never touch your real hours.
-- It follows the report's rules: last-out counted until 7 PM (6 PM in Ramadan, or the exam-period cap), late after 10:30 AM (9:30 in Ramadan), and a day under 4 hours counts as absent.
-- Click the title to fold the card; folded, it still shows today's leave time.
+- It follows the report's rules: last-out counted until 7 PM (6 PM in Ramadan, or the exam-period cap) and a day under 4 hours counts as absent. Arriving after 10:30 AM (9:30 in Ramadan) shows a grey note — for your information only, it takes no hours off.
+- Click the title to fold the card; folded, it still shows today's answer (with **Both**: how the month ends).
 
 **First-run setup.** The first time you open it, a short wizard sets everything up — no need to touch the settings:
 
