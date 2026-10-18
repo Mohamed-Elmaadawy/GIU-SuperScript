@@ -10,7 +10,7 @@
 // @match       https://apps.guc.edu.eg/external/tempprojects/swiftreports.aspx*
 // @match       https://apps.guc.edu.eg/External/TempProjects/SwiftReports.aspx*
 // @namespace   Cyn0
-// @version     1.0.10
+// @version     1.0.11
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Berlin%20SuperScript.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Berlin%20SuperScript.js
 // @author      Mo.Elmaadawy
@@ -2894,6 +2894,8 @@ function renderAttendancePlanner(S, api, host) {
 
             const REQUIRED_SECONDS_NORMAL = (8 * 60 + 24) * 60;   // 30240s = 8h24m
             const REQUIRED_SECONDS_RAMADAN = 6 * 3600;              // 21600s = 6h
+            const SECRET_TIER_MIN_DAYS = 10;                         // working days gone before a secret rank can show
+            const SECRET_TIER_MIN_INSTALL_DAYS = 14;                 // days since this browser first ran the script
             const MIN_WORKING_DAY_SECONDS = 4 * 3600;               // 14400s = 4h minimum to count day as worked
             const SINGLE_ENTRY_MAX_PER_PERIOD = 2;                  // single-entry days credited as full days per payroll month
             const LATE_THRESHOLD_SECONDS_NORMAL = (10 * 60 + 30) * 60;  // 10:30 AM
@@ -2922,7 +2924,10 @@ function renderAttendancePlanner(S, api, host) {
                 onboardingState: "giuOnboardingStateV1",
                 branchStart: "giuBranchStartV1",
                 setup: "giuAttendanceSetupV1",
-                planner: "giuAttendancePlannerV1"
+                planner: "giuAttendancePlannerV1",
+                firstSeen: "giuAttFirstSeenV1",
+                account: "giuAttAccountV1",
+                secretTiers: "giuAttSecretTiersV1"
             };
 
             // One-time cleanup of keys no version reads any more: the removed
@@ -3382,7 +3387,10 @@ function renderAttendancePlanner(S, api, host) {
                     ramadan: getStoredRamadan(),
                     examPeriod: getStoredExamPeriod(),
                     auditMode: isAuditModeEnabled(),
-                    singleEntryRule: isSingleEntryRuleEnabled()
+                    singleEntryRule: isSingleEntryRuleEnabled(),
+                    // Carried so a new browser keeps the secret-rank conditions.
+                    firstSeen: noteAttendanceFirstSeen(),
+                    secretTiersSeen: homeSecretTiersSeen()
                 };
             }
 
@@ -3486,6 +3494,30 @@ function renderAttendancePlanner(S, api, host) {
                 }
                 if (typeof snapshot.singleEntryRule === "boolean") {
                     setSingleEntryRuleEnabled(snapshot.singleEntryRule);
+                    report.accepted += 1;
+                }
+                // The earlier first-run date wins, so moving browsers keeps the
+                // 14-day count; a date in the future is rejected.
+                if (typeof snapshot.firstSeen === "string") {
+                    const imported = normalizeYMD(snapshot.firstSeen);
+                    if (imported && imported <= getTodayLocalYMD()) {
+                        if (imported < noteAttendanceFirstSeen()) {
+                            try { localStorage.setItem(STORAGE_KEYS.firstSeen, imported); } catch { /* storage blocked */ }
+                        }
+                        report.accepted += 1;
+                    } else {
+                        report.rejected += 1;
+                        report.notes.push("First-use date invalid.");
+                    }
+                }
+                // Secret ranks already reached stay reached (merged, never removed).
+                if (snapshot.secretTiersSeen && typeof snapshot.secretTiersSeen === "object") {
+                    const seen = homeSecretTiersSeen();
+                    Object.keys(snapshot.secretTiersSeen).forEach(function (t) {
+                        const period = snapshot.secretTiersSeen[t];
+                        if (homeSecretTierCopy(t) && typeof period === "string" && !seen[t]) seen[t] = period;
+                    });
+                    try { localStorage.setItem(STORAGE_KEYS.secretTiers, JSON.stringify(seen)); } catch { /* quota */ }
                     report.accepted += 1;
                 }
                 return report;
@@ -4674,16 +4706,35 @@ function renderAttendancePlanner(S, api, host) {
                         font-weight: 700;
                         display: inline-block;
                         vertical-align: middle;
+                        border: 1px solid currentColor;
                     }
 
-                    .giu-tag-positive {
-                        background: #bbf7d0;
-                        color: #065f46;
+                    /* The summary's Balance box takes its rank's colours (the
+                       gius-att-tier-* palette, same as the Home pill). Own classes,
+                       so GIU Theme's .giu-stat-row dark overrides leave it alone. */
+                    .giu-balance-row {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        gap: 12px;
+                        padding: 9px 10px;
+                        border: 1px solid color-mix(in srgb, currentColor 30%, transparent);
+                        border-radius: 6px;
                     }
 
-                    .giu-tag-negative {
-                        background: #fecaca;
-                        color: #7f1d1d;
+                    .giu-balance-row .giu-stat-icon {
+                        color: inherit !important;
+                    }
+
+                    .giu-balance-label {
+                        font-size: 13px;
+                        font-weight: 600;
+                    }
+
+                    .giu-balance-value {
+                        font-size: 13px;
+                        font-weight: 700;
+                        white-space: nowrap;
                     }
 
                     .giu-progress-wrap {
@@ -5621,6 +5672,7 @@ function renderAttendancePlanner(S, api, host) {
                         from { opacity: 0; transform: translateY(6px); }
                         to   { opacity: 1; transform: translateY(0); }
                     }
+                    ${tierPaletteCss()}
                 `;
                 document.head.appendChild(style);
             }
@@ -8120,21 +8172,28 @@ function renderAttendancePlanner(S, api, host) {
 
                 // Home-widget tier — computed here so the breakpoints live with the math and
                 // never drift from the view (single source for Home + any future surface).
-                // Below 100%: gap ≤3h → "close", ≤10h → "deduct", else "ghost". At/above
-                // 100%: escalate by EXTRA hours banked (balanceSeconds), +3h/+8h/+15h.
+                // Below 100%: gap ≤3h → "close", ≤10h → "deduct", ≤15h → "ghost", else
+                // "missing". At/above 100%: escalate by EXTRA hours banked
+                // (balanceSeconds), +3h/+8h/+15h/+20h. The two secret ranks at the
+                // ends ("missing", "gohome") need SECRET_TIER_MIN_DAYS working days
+                // (present or absent) gone; before that they stop one rank short.
+                const secretTierReady = acc.presentDays + acc.absentDays >= SECRET_TIER_MIN_DAYS;
                 let tier;
                 if (progressPercentRaw < 100) {
                     tier = progressGapSeconds <= 3 * 3600 ? "close"
                         : progressGapSeconds <= 10 * 3600 ? "deduct"
-                        : "ghost";
+                        : progressGapSeconds <= 15 * 3600 || !secretTierReady ? "ghost"
+                        : "missing";
                 } else if (balanceSeconds < 3 * 3600) {
                     tier = "ontime";
                 } else if (balanceSeconds < 8 * 3600) {
                     tier = "workaholic";
                 } else if (balanceSeconds < 15 * 3600) {
                     tier = "grass";
-                } else {
+                } else if (balanceSeconds < 20 * 3600 || !secretTierReady) {
                     tier = "slave";
+                } else {
+                    tier = "gohome";
                 }
 
                 const formatSeconds = function (totalSeconds) {
@@ -8497,7 +8556,7 @@ function renderAttendancePlanner(S, api, host) {
 
             function createBalanceRow(stats) {
                 const row = document.createElement("div");
-                row.className = `giu-stat-row ${stats.isPositiveOrZero ? "giu-balance-positive" : "giu-balance-negative"}`;
+                row.className = `giu-balance-row gius-att-tier-${displayTier(stats.tier).look}`;
 
                 const left = document.createElement("div");
                 left.className = "giu-stat-left";
@@ -8519,17 +8578,17 @@ function renderAttendancePlanner(S, api, host) {
                 }
 
                 const labelEl = document.createElement("div");
-                labelEl.className = "giu-stat-label";
+                labelEl.className = "giu-balance-label";
                 labelEl.textContent = "Balance";
 
                 left.appendChild(iconEl);
                 left.appendChild(labelEl);
 
                 const valueWrap = document.createElement("div");
-                valueWrap.className = "giu-stat-value";
+                valueWrap.className = "giu-balance-value";
                 valueWrap.innerHTML = `
                     ${stats.balanceHM}
-                    <span class="giu-balance-tag ${stats.isPositiveOrZero ? "giu-tag-positive" : "giu-tag-negative"}">
+                    <span class="giu-balance-tag">
                         ${stats.label}
                     </span>
                 `;
@@ -10149,6 +10208,7 @@ function renderAttendancePlanner(S, api, host) {
 
             function renderEnhancedUI() {
                 if (!isTargetReportPage()) return;
+                noteAttendanceFirstSeen();
                 applyMonthlyAnnualLeaveAccrual();
                 pruneOldRecords();
 
@@ -10378,6 +10438,65 @@ function renderAttendancePlanner(S, api, host) {
                 }
             }
 
+            // Seeded 53-bit string hash (cyrb53), base 36.
+            function homeHash53(str, seed) {
+                let h1 = 0xdeadbeef ^ seed, h2 = 0x41c6ce57 ^ seed;
+                for (let i = 0; i < str.length; i++) {
+                    const ch = str.charCodeAt(i);
+                    h1 = Math.imul(h1 ^ ch, 2654435761);
+                    h2 = Math.imul(h2 ^ ch, 1597334677);
+                }
+                h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507); h1 ^= Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+                h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507); h2 ^= Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+                return (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(36);
+            }
+
+
+
+            function homeUnseal(sealed, key) {
+                try {
+                    const k = new TextEncoder().encode(key);
+                    const bytes = Uint8Array.from(atob(sealed), function (c, i) {
+                        return c.charCodeAt(0) ^ k[i % k.length] ^ ((i * 131) & 255);
+                    });
+                    return JSON.parse(new TextDecoder().decode(bytes));
+                } catch {
+                    return null;
+                }
+            }
+
+
+
+
+            // look = the colour set (a gius-att-*-<look> class); fx = their popup
+
+
+
+            function homePersonalTierName() {
+                const personal = {
+                    "x": { tier: "gohome", part: 1, emoji: "👑", look: "missing", fx: "king",
+                        sealed: "" },
+                    "x": { tier: "missing", part: 0, emoji: "🌙", look: "pink", fx: "moon",
+                        sealed: "" }
+                };
+                try {
+                    const el = document.querySelector('[id*="lbl_Account"]');
+                    let account = el && el.textContent ? el.textContent.trim().toLowerCase() : "";
+                    // The report page has no account label: use the one Home saw last.
+                    try {
+                        if (account) localStorage.setItem(STORAGE_KEYS.account, account);
+                        else account = localStorage.getItem(STORAGE_KEYS.account) || "";
+                    } catch { /* storage blocked */ }
+                    const hit = account ? personal[homeHash53(account, 7919)] : null;
+                    const piece = hit ? account.split(".")[hit.part] : "";
+                    if (!piece) return null;
+                    const msg = homeUnseal(hit.sealed, account) || {};
+                    return { tier: hit.tier, emoji: hit.emoji, look: hit.look, fx: hit.fx, text: msg.text, ok: msg.ok, name: piece.charAt(0).toUpperCase() + piece.slice(1) };
+                } catch {
+                    return null;
+                }
+            }
+
             // Picks a stable-per-day item from `list`: hash today's date + `keySuffix" →
             // index. Same date ⟹ same pick (no per-reload flicker); different suffixes
             // (e.g. tier name vs tier+"-cond") diverge so two lists don't sync up.
@@ -10482,6 +10601,24 @@ function renderAttendancePlanner(S, api, host) {
                 });
             }
 
+            // Rank colours (chip, bar and dot per rank, light and dark), shared by
+            // the Home widget and the full report so both show the same pill.
+            function tierPaletteCss() {
+                return `
+                    .gius-att-tier-ghost{background:#e2e8f0;color:#334155;} .gius-att-tier-deduct{background:#ffe4e6;color:#9f1239;} .gius-att-tier-close{background:#fff3da;color:#92600a;}
+                    .gius-att-tier-ontime{background:#dcfce7;color:#166534;} .gius-att-tier-workaholic{background:#ffedd5;color:#9a3412;}
+                    .gius-att-tier-grass{background:#ecfccb;color:#3f6212;} .gius-att-tier-slave{background:#fae8ff;color:#86198f;}
+                    .gius-att-tier-missing{background:#1f2937;color:#f9fafb;} .gius-att-tier-gohome{background:#e0e7ff;color:#3730a3;}
+                    .gius-att-tier-pink{background:#fce7f3;color:#be185d;}
+                    html.gius-dark .gius-att-tier-ghost{background:#2a3040;color:#b6c2d9;} html.gius-dark .gius-att-tier-deduct{background:#3a1220;color:#f7a8c0;} html.gius-dark .gius-att-tier-close{background:#3a2c10;color:#f9d77e;}
+                    html.gius-dark .gius-att-tier-ontime{background:#14351f;color:#a6e3a1;} html.gius-dark .gius-att-tier-workaholic{background:#3a1f10;color:#fdba74;}
+                    html.gius-dark .gius-att-tier-grass{background:#1f2d0a;color:#bef264;} html.gius-dark .gius-att-tier-slave{background:#2e1230;color:#f0abfc;}
+                    html.gius-dark .gius-att-tier-missing{background:#e5e7eb;color:#111827;} html.gius-dark .gius-att-tier-gohome{background:#1e1b4b;color:#c7d2fe;}
+                    html.gius-dark .gius-att-bar-missing{background:#e5e7eb;}
+                    html.gius-dark .gius-att-tier-pink{background:#3d0f2b;color:#f9a8d4;} html.gius-dark .gius-att-bar-pink,html.gius-dark .gius-att-dot-pink{background:#f472b6;}
+                `;
+            }
+
             function homeInjectStyles() {
                 if (document.getElementById("gius-att-style")) return;
                 const css = `
@@ -10508,6 +10645,7 @@ function renderAttendancePlanner(S, api, host) {
                     .gius-att-bar-fill{height:100%;border-radius:6px;}
                     .gius-att-bar-ghost{background:#64748b;} .gius-att-bar-deduct{background:#e11d48;} .gius-att-bar-close{background:#f59e0b;} .gius-att-bar-ontime{background:#16a34a;}
                     .gius-att-bar-workaholic{background:#ea580c;} .gius-att-bar-grass{background:#65a30d;} .gius-att-bar-slave{background:#a21caf;}
+                    .gius-att-bar-missing{background:#111827;} .gius-att-bar-gohome{background:#4338ca;} .gius-att-bar-pink{background:#db2777;}
                     .gius-att-tierwrap{margin-top:10px;}
                     .gius-att-quip{margin-top:6px;font-size:12.5px;font-style:italic;color:#6b7280;}
                     html.gius-dark .gius-att-quip{color:#9399b2;}
@@ -10531,21 +10669,135 @@ function renderAttendancePlanner(S, api, host) {
                     .gius-att-dot{flex:0 0 auto;width:14px;height:14px;border-radius:50%;margin-top:3px;}
                     .gius-att-dot-ghost{background:#64748b;} .gius-att-dot-deduct{background:#e11d48;} .gius-att-dot-close{background:#f59e0b;} .gius-att-dot-ontime{background:#16a34a;}
                     .gius-att-dot-workaholic{background:#ea580c;} .gius-att-dot-grass{background:#65a30d;} .gius-att-dot-slave{background:#a21caf;}
+                    .gius-att-dot-missing{background:#111827;} .gius-att-dot-gohome{background:#4338ca;} .gius-att-dot-pink{background:#db2777;}
+                    html.gius-dark .gius-att-dot-missing{background:#e5e7eb;}
                     .gius-att-trow-main{flex:1 1 auto;min-width:0;}
                     .gius-att-trow-name{font-weight:800;font-size:13.5px;display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
                     .gius-att-trow-cur{font-size:10.5px;font-weight:800;letter-spacing:.4px;padding:1px 6px;border-radius:999px;background:#1e1e2e;color:#fff;}
                     .gius-att-trow-cond{font-size:12px;color:#6b7280;margin-top:2px;}
+                    .gius-att-secret-tag{font-size:10px;font-weight:800;letter-spacing:.4px;padding:1px 6px;border-radius:999px;background:#ffc107;color:#1e1e2e;}
+                    .gius-att-unlock{text-align:center;}
+                    .gius-att-unlock-emoji{font-size:44px;line-height:1;margin:6px 0 10px;}
+                    .gius-att-unlock-kicker{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#92600a;}
+                    .gius-att-unlock .gius-att-tier{font-size:14px;margin:8px 0 10px;}
+                    .gius-att-unlock-text{font-size:13.5px;line-height:1.55;margin:0 0 16px;}
+                    .gius-att-unlock-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+                    .gius-att-unlock-go{display:inline-block;background:#1B59C6;color:#fff;border-radius:8px;padding:8px 16px;font-weight:700;font-size:13px;text-decoration:none;}
+                    .gius-att-unlock-ok{border:1px solid #d0d7de;background:transparent;color:inherit;border-radius:8px;padding:8px 16px;font-weight:700;font-size:13px;cursor:pointer;font-family:inherit;}
+                    html.gius-dark .gius-att-unlock-kicker{color:#f9d77e;}
+                    html.gius-dark .gius-att-unlock-go{background:#89b4fa;color:#11111b;}
+                    html.gius-dark .gius-att-unlock-ok{border-color:#3a3a4d;}
+                    /* Unlock popup animations (keyframes prefixed giusU). */
+                    .gius-att-unlock-modal{background:transparent;}
+                    .gius-att-unlock-scrim{position:absolute;inset:0;background:rgba(0,0,0,.45);}
+                    .gius-att-fx-gohome .gius-att-unlock-scrim{background:rgba(0,0,0,.6);}
+                    .gius-att-fx-king .gius-att-unlock-scrim{background:radial-gradient(ellipse at 50% 35%,rgba(250,204,21,.55),transparent 60%),linear-gradient(180deg,rgba(66,44,0,.88),rgba(146,96,10,.62));}
+                    .gius-att-fx-moon .gius-att-unlock-scrim{background:linear-gradient(180deg,rgba(30,20,60,.85),rgba(80,20,70,.6));}
+                    .gius-att-unlock-modal .gius-att-unlock{position:relative;z-index:2;overflow:visible;max-height:none;perspective:900px;}
+                    .gius-att-unlock-emoji{display:inline-block;}
+                    .gius-att-unlock-kicker span{display:inline-block;white-space:pre;}
+                    canvas.gius-att-fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4;}
+                    .gius-att-play .gius-att-unlock-scrim{animation:giusUFade .35s ease-out both;}
+                    .gius-att-play .gius-att-unlock-kicker span{animation:giusULetter .35s ease-out both;animation-delay:calc(var(--d,.5s) + var(--i) * 22ms);}
+                    .gius-att-play .gius-att-unlock .gius-att-tier{animation:giusUChip .45s cubic-bezier(.2,1.5,.4,1) both;animation-delay:var(--d2,.9s);}
+                    .gius-att-play .gius-att-unlock-text{animation:giusURise .45s ease-out both;animation-delay:var(--d3,1.05s);}
+                    .gius-att-play .gius-att-unlock-actions{animation:giusURise .45s ease-out both;animation-delay:var(--d4,1.2s);}
+                    @keyframes giusUFade{from{opacity:0;}}
+                    @keyframes giusULetter{from{opacity:0;transform:translateY(6px);}}
+                    @keyframes giusUChip{from{opacity:0;transform:scale(.6);}}
+                    @keyframes giusURise{from{opacity:0;transform:translateY(10px);}}
+                    @keyframes giusUPop{from{opacity:0;transform:scale(.4);}}
+                    /* Missing Person: out of the fog */
+                    .gius-att-fog{position:absolute;width:140%;height:70%;left:-20%;border-radius:50%;filter:blur(30px);opacity:0;pointer-events:none;z-index:1;}
+                    .gius-att-fog-a{top:45%;background:radial-gradient(closest-side,rgba(203,213,225,.85),transparent);}
+                    .gius-att-fog-b{top:60%;background:radial-gradient(closest-side,rgba(148,163,184,.7),transparent);}
+                    html.gius-dark .gius-att-fog-a{background:radial-gradient(closest-side,rgba(148,163,184,.45),transparent);}
+                    html.gius-dark .gius-att-fog-b{background:radial-gradient(closest-side,rgba(100,116,139,.45),transparent);}
+                    .gius-att-play .gius-att-fog-a{animation:giusUFog 2.4s ease-out both,giusUDrift 9s ease-in-out .2s infinite alternate;}
+                    .gius-att-play .gius-att-fog-b{animation:giusUFog 2.4s ease-out .2s both,giusUDrift 11s ease-in-out infinite alternate-reverse;}
+                    @keyframes giusUFog{0%{opacity:0;}30%{opacity:1;}100%{opacity:.55;}}
+                    @keyframes giusUDrift{to{transform:translateX(8%);}}
+                    .gius-att-play.gius-att-fx-missing .gius-att-unlock{animation:giusUOutOfFog 1.1s cubic-bezier(.2,.8,.2,1) .25s both;}
+                    @keyframes giusUOutOfFog{from{opacity:0;transform:translateY(70px) scale(.94);filter:blur(8px);}to{filter:blur(0);}}
+                    .gius-att-play.gius-att-fx-missing .gius-att-unlock-emoji{transform-origin:50% 90%;animation:giusUPop .5s ease-out .6s both,giusUSway 2.2s ease-in-out 1.1s 3;}
+                    @keyframes giusUSway{0%,100%{transform:rotate(0);}25%{transform:rotate(-7deg) translateY(-2px);}75%{transform:rotate(7deg) translateY(-2px);}}
+                    /* Go Home: lights off, door opens */
+                    .gius-att-play.gius-att-fx-gohome .gius-att-unlock-scrim{animation:giusULightsOff .9s steps(1,end) both;}
+                    @keyframes giusULightsOff{0%{opacity:0;}20%{opacity:.5;}32%{opacity:.1;}48%{opacity:.75;}60%{opacity:.35;}76%,100%{opacity:1;}}
+                    .gius-att-door{position:absolute;top:50%;left:50%;width:min(420px,calc(100% - 40px));height:330px;transform:translate(-50%,-50%);display:flex;z-index:3;pointer-events:none;perspective:900px;opacity:0;}
+                    .gius-att-door b{flex:1;background:linear-gradient(90deg,#7c4a2a,#94603a);border:2px solid #5b3519;}
+                    .gius-att-door b:first-child{transform-origin:left center;border-radius:10px 0 0 10px;}
+                    .gius-att-door b:last-child{transform-origin:right center;border-radius:0 10px 10px 0;}
+                    .gius-att-door b::after{content:"";display:block;width:9px;height:9px;border-radius:50%;background:#fcd34d;margin:160px 10px 0 auto;}
+                    .gius-att-door b:last-child::after{margin:160px auto 0 10px;}
+                    .gius-att-play .gius-att-door{animation:giusUDoorShow 1.9s linear .7s both;}
+                    .gius-att-play .gius-att-door b:first-child{animation:giusUSwingL .9s cubic-bezier(.5,0,.2,1) 1.1s both;}
+                    .gius-att-play .gius-att-door b:last-child{animation:giusUSwingR .9s cubic-bezier(.5,0,.2,1) 1.1s both;}
+                    @keyframes giusUDoorShow{0%{opacity:0;}8%{opacity:1;}85%{opacity:1;}100%{opacity:0;}}
+                    @keyframes giusUSwingL{to{transform:rotateY(-100deg);}}
+                    @keyframes giusUSwingR{to{transform:rotateY(100deg);}}
+                    .gius-att-fx-gohome .gius-att-unlock{--d:1.45s;--d2:1.75s;--d3:1.9s;--d4:2.05s;}
+                    .gius-att-play.gius-att-fx-gohome .gius-att-unlock{animation:giusUSlideOut .8s cubic-bezier(.2,1.2,.4,1) 1.2s both;}
+                    @keyframes giusUSlideOut{from{opacity:0;transform:scale(.85);}}
+                    .gius-att-play.gius-att-fx-gohome .gius-att-unlock-emoji{animation:giusUHop .6s ease-out 1.7s 2;}
+                    @keyframes giusUHop{0%,100%{transform:translateY(0);}40%{transform:translateY(-10px) scale(1.05);}}
+                    /* Personal: crown drop + gold */
+                    .gius-att-fx-king .gius-att-unlock{--d:.55s;--d2:1.25s;--d3:1.4s;--d4:1.55s;}
+                    .gius-att-play.gius-att-fx-king .gius-att-unlock{animation:giusUPopCard .55s cubic-bezier(.2,1.4,.4,1) .15s both;}
+                    @keyframes giusUPopCard{from{opacity:0;transform:translateY(24px) scale(.88);}}
+                    .gius-att-play.gius-att-fx-king .gius-att-unlock-emoji{animation:giusUCrownDrop 1s cubic-bezier(.3,0,.2,1) .35s both,giusUGlowGold .6s ease-out 1.3s both;}
+                    @keyframes giusUCrownDrop{0%{opacity:0;transform:translateY(-260px) rotate(-25deg) scale(1.4);}55%{opacity:1;transform:translateY(0) rotate(8deg) scale(1);}70%{transform:translateY(-14px) rotate(-4deg);}85%{transform:translateY(0) rotate(2deg);}100%{transform:translateY(0) rotate(0);}}
+                    @keyframes giusUGlowGold{from{filter:drop-shadow(0 0 0 rgba(250,204,21,0));}to{filter:drop-shadow(0 0 12px rgba(250,204,21,.9));}}
+                    .gius-att-shine{position:absolute;left:50%;top:44px;width:120px;height:120px;margin-left:-60px;border-radius:50%;background:radial-gradient(closest-side,rgba(252,211,77,.85),transparent);opacity:0;pointer-events:none;}
+                    .gius-att-play .gius-att-shine{animation:giusUShine 1.2s ease-out .9s both;}
+                    @keyframes giusUShine{0%{opacity:0;transform:scale(.3);}25%{opacity:1;}100%{opacity:0;transform:scale(2.4);}}
+                    /* Personal: moonrise, stars, petals */
+                    .gius-att-stars{position:absolute;inset:0;pointer-events:none;z-index:1;}
+                    .gius-att-stars i{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;box-shadow:0 0 6px 1px rgba(255,255,255,.8);opacity:0;}
+                    .gius-att-play .gius-att-stars i{animation:giusUTwinkleOn .5s ease-out both,giusUTwinkle 1.6s ease-in-out infinite alternate;animation-delay:var(--sd),calc(var(--sd) + .5s);}
+                    @keyframes giusUTwinkleOn{from{opacity:0;transform:scale(0);}to{opacity:1;}}
+                    @keyframes giusUTwinkle{to{opacity:.35;}}
+                    .gius-att-bigmoon{position:absolute;font-size:64px;line-height:1;left:50%;bottom:-80px;opacity:0;z-index:1;pointer-events:none;filter:drop-shadow(0 0 18px rgba(253,230,138,.6));}
+                    .gius-att-play .gius-att-bigmoon{animation:giusUMoonrise 1.5s cubic-bezier(.2,.7,.2,1) .2s both,giusUMoonOut .5s ease-in 1.6s both;}
+                    @keyframes giusUMoonrise{from{opacity:0;transform:translate(-150px,0) rotate(-40deg);}to{opacity:1;transform:translate(-32px,-55vh) rotate(0);}}
+                    @keyframes giusUMoonOut{from{opacity:1;transform:translate(-32px,-55vh);}to{opacity:0;transform:translate(-32px,-52vh) scale(.5);}}
+                    .gius-att-fx-moon .gius-att-unlock{--d:1.85s;--d2:2.2s;--d3:2.35s;--d4:2.5s;}
+                    .gius-att-play.gius-att-fx-moon .gius-att-unlock{animation:giusUFloatIn .9s cubic-bezier(.2,.9,.3,1) 1.6s both;}
+                    @keyframes giusUFloatIn{from{opacity:0;transform:translateY(30px) scale(.95);}}
+                    .gius-att-play.gius-att-fx-moon .gius-att-unlock-emoji{animation:giusUPop .5s ease-out 1.85s both,giusUGlowPink .6s ease-out 2.3s both;}
+                    @keyframes giusUGlowPink{from{filter:drop-shadow(0 0 0 rgba(249,168,212,0));}to{filter:drop-shadow(0 0 12px rgba(249,168,212,.9));}}
+                    /* Buttons: hover lift; gold / pink for the personal popups, with a shine sweep */
+                    .gius-att-unlock-go,.gius-att-unlock-ok{transition:transform .15s ease,box-shadow .15s ease,filter .15s ease,background-color .15s ease;position:relative;}
+                    .gius-att-unlock-go{overflow:hidden;}
+                    .gius-att-unlock-go:hover{transform:translateY(-2px);filter:brightness(1.08);box-shadow:0 6px 16px rgba(27,89,198,.35);}
+                    .gius-att-unlock-ok:hover{transform:translateY(-2px);background:rgba(0,0,0,.05);}
+                    html.gius-dark .gius-att-unlock-ok:hover{background:rgba(255,255,255,.07);}
+                    .gius-att-unlock-go:active,.gius-att-unlock-ok:active{transform:translateY(0) scale(.97);}
+                    .gius-att-unlock-go-gold{background:linear-gradient(135deg,#fde68a,#eab308 55%,#ca8a04);color:#3b2a00;box-shadow:0 2px 10px rgba(234,179,8,.35);}
+                    html.gius-dark .gius-att-unlock-go-gold{background:linear-gradient(135deg,#fde68a,#facc15 55%,#eab308);color:#1c1400;}
+                    .gius-att-unlock-go-pink{background:linear-gradient(135deg,#f472b6,#db2777);color:#fff;box-shadow:0 2px 10px rgba(219,39,119,.35);}
+                    html.gius-dark .gius-att-unlock-go-pink{background:linear-gradient(135deg,#fbcfe8,#f472b6);color:#3d0f2b;}
+                    .gius-att-unlock-go-gold:hover{box-shadow:0 6px 18px rgba(234,179,8,.55);}
+                    .gius-att-unlock-go-pink:hover{box-shadow:0 6px 18px rgba(219,39,119,.5);}
+                    .gius-att-unlock-go-gold::after,.gius-att-unlock-go-pink::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.65),transparent);transform:skewX(-20deg);opacity:0;}
+                    .gius-att-unlock-go-gold:hover::after,.gius-att-unlock-go-pink:hover::after{animation:giusUSweep .7s ease-out;}
+                    @keyframes giusUSweep{0%{left:-60%;opacity:1;}100%{left:130%;opacity:1;}}
+                    .gius-att-laugh{display:inline-block;transform-origin:50% 85%;}
+                    .gius-att-unlock-ok:hover .gius-att-laugh,.gius-att-unlock-ok:focus-visible .gius-att-laugh{animation:giusUGiggle .38s ease-in-out infinite;}
+                    @keyframes giusUGiggle{0%,100%{transform:rotate(0) translateY(0);}25%{transform:rotate(-9deg) translateY(-1px);}50%{transform:rotate(0) translateY(0);}75%{transform:rotate(9deg) translateY(-1px);}}
+                    @media (prefers-reduced-motion: reduce){
+                        .gius-att-unlock-modal *{animation:none !important;}
+                        .gius-att-play .gius-att-unlock{animation:giusUFade .3s ease-out both !important;}
+                        .gius-att-door,.gius-att-bigmoon,.gius-att-fog,.gius-att-shine{display:none;}
+                        .gius-att-stars i{opacity:.8;}
+                        .gius-att-unlock-go:hover,.gius-att-unlock-ok:hover{transform:none;}
+                    }
                     html.gius-dark .gius-att-sheet{background:#1e1e2e;color:#cdd6f4;}
                     html.gius-dark .gius-att-sheet-sub,html.gius-dark .gius-att-trow-cond{color:#9399b2;}
                     html.gius-dark .gius-att-trow{border-color:#2a2a3a;}
                     html.gius-dark .gius-att-trow.cur{background:#181825;border-color:#3a3a4d;}
                     html.gius-dark .gius-att-trow-cur{background:#cdd6f4;color:#1e1e2e;}
-                    .gius-att-tier-ghost{background:#e2e8f0;color:#334155;} .gius-att-tier-deduct{background:#ffe4e6;color:#9f1239;} .gius-att-tier-close{background:#fff3da;color:#92600a;}
-                    .gius-att-tier-ontime{background:#dcfce7;color:#166534;} .gius-att-tier-workaholic{background:#ffedd5;color:#9a3412;}
-                    .gius-att-tier-grass{background:#ecfccb;color:#3f6212;} .gius-att-tier-slave{background:#fae8ff;color:#86198f;}
-                    html.gius-dark .gius-att-tier-ghost{background:#2a3040;color:#b6c2d9;} html.gius-dark .gius-att-tier-deduct{background:#3a1220;color:#f7a8c0;} html.gius-dark .gius-att-tier-close{background:#3a2c10;color:#f9d77e;}
-                    html.gius-dark .gius-att-tier-ontime{background:#14351f;color:#a6e3a1;} html.gius-dark .gius-att-tier-workaholic{background:#3a1f10;color:#fdba74;}
-                    html.gius-dark .gius-att-tier-grass{background:#1f2d0a;color:#bef264;} html.gius-dark .gius-att-tier-slave{background:#2e1230;color:#f0abfc;}
+                    ${tierPaletteCss()}
                     .gius-att-meta{font-size:13px;color:#272c33;}
                     .gius-att-toggle{margin-top:6px;font-size:13px;font-weight:700;background:transparent;border:none;
                         color:#272c33;cursor:pointer;padding:4px 0;}
@@ -10615,6 +10867,7 @@ function renderAttendancePlanner(S, api, host) {
             }
 
             function renderHomeWidget(summary, opts) {
+                noteAttendanceFirstSeen();
                 opts = opts || {};
                 homeInjectStyles();
                 const host = homeEnsureHost();
@@ -10635,24 +10888,39 @@ function renderAttendancePlanner(S, api, host) {
                 // Fallback for summaries cached by an older version (no `tier` field): a missing
                 // tier must NOT reach TIER_QUIPS[tier]/.length below — that threw and left the
                 // widget blank. The fresh iframe fetch overwrites this with the real tier.
-                const tier = st.tier || "ontime";
+                const tier = displayTier(st.tier).tier;
                 const TIER_NAMES = {
+                    missing: "🪦 Missing Person",
                     ghost: "👻 Ghosting GIU", deduct: "💸 Paycheck Hit",
                     close: "😅 Cutting It Close",
                     ontime: "✅ Perfectly Mid", workaholic: "💪 Workaholic",
-                    grass: "🌱 Get a Life", slave: "⛏️ Officially a Slave"
+                    grass: "🌱 Get a Life", slave: "⛏️ Officially a Slave",
+                    gohome: "🏠 Go Home"
                 };
-                const TIER_ORDER = ["ghost", "deduct", "close", "ontime", "workaholic", "grass", "slave"];
+                const personalTier = homePersonalTierName();
+                if (personalTier) TIER_NAMES[personalTier.tier] = personalTier.emoji + " " + personalTier.name;
+                // Colour set per rank: its own, or the personal one.
+                const TIER_LOOKS = {};
+                if (personalTier) TIER_LOOKS[personalTier.tier] = personalTier.look;
+                const TIER_ORDER = ["missing", "ghost", "deduct", "close", "ontime", "workaholic", "grass", "slave", "gohome"];
                 const TIER_CONDS = {
-                    ghost: "Behind by more than 10 hours",
+                    missing: "Behind by more than 15 hours",
+                    ghost: "Behind by 10 to 15 hours",
                     deduct: "Behind by 3 to 10 hours",
                     close: "Behind by up to 3 hours",
                     ontime: "100% covered, under +3h extra",
                     workaholic: "+3 to +8 hours extra",
                     grass: "+8 to +15 hours extra",
-                    slave: "+15 hours extra or more"
+                    slave: "+15 to +20 hours extra",
+                    gohome: "+20 hours extra or more"
                 };
                 const TIER_QUIPS = {
+                    missing: [
+                        "Security has your photo on a milk carton.",
+                        "HR is drafting the search party email.",
+                        "Your desk plant has stopped waiting.",
+                        "Last seen: some time last week."
+                    ],
                     ghost: [
                         "The gate scanner forgot what you look like.",
                         "Attendance: purely theoretical.",
@@ -10691,10 +10959,16 @@ function renderAttendancePlanner(S, api, host) {
                         "GIU should be paying rent in your life.",
                         "At this point, bring a sleeping bag.",
                         "Officially married to the gate scanner."
+                    ],
+                    gohome: [
+                        "Security wants to lock up. Please leave.",
+                        "Your bed called. It misses you.",
+                        "The building closes at night. You don't.",
+                        "Seriously. Go home."
                     ]
                 };
-                const barClass = "gius-att-bar-" + tier;
-                const tierClass = "gius-att-tier-" + tier;
+                const barClass = "gius-att-bar-" + (TIER_LOOKS[tier] || tier);
+                const tierClass = "gius-att-tier-" + (TIER_LOOKS[tier] || tier);
                 const tierName = TIER_NAMES[tier];
                 // Hide the "i" hint once the user has opened the tier popup at least once.
                 let tierHintSeen = false;
@@ -10764,8 +11038,14 @@ function renderAttendancePlanner(S, api, host) {
                     tierBtn.addEventListener("click", function () {
                         try { localStorage.setItem("giuAttTierHintSeen", "1"); } catch {}
                         tierBtn.classList.add("gius-att-tier-seen");
-                        homeOpenTierModal(tier, TIER_NAMES, TIER_CONDS, TIER_ORDER);
+                        // A secret rank is listed once it has been reached.
+                        const unlocked = homeSecretTiersSeen();
+                        const order = TIER_ORDER.filter(function (t) { return !homeSecretTierCopy(t) || t === tier || unlocked[t]; });
+                        homeOpenTierModal(tier, TIER_NAMES, TIER_CONDS, order, TIER_LOOKS);
                     });
+                }
+                if (!opts.stale && isDayOffConfigured() && homeSecretTierCopy(tier)) {
+                    homeMaybeShowSecretTier(tier, TIER_NAMES[tier], tierClass);
                 }
                 const refreshBtn = host.querySelector(".gius-att-refresh");
                 if (refreshBtn) {
@@ -10789,8 +11069,203 @@ function renderAttendancePlanner(S, api, host) {
                     text: 'Your live attendance balance for the current payroll month. Expand absent days to file holiday, annual or compensation requests, or open the full report below.' });
             }
 
+            // The two secret ranks (hidden from the rank list until reached) and
+            // their one-time popup copy; null for every other rank.
+            function homeSecretTierCopy(tier) {
+                if (tier === "missing") return { emoji: "🪦", ok: "I'm on it", text: "You're more than 15 hours behind, with at least 10 working days gone. Few people find this rank, and nobody wants to keep it. A few solid days get you out: Plan my days on the full report shows when to come in and leave to catch up." };
+                if (tier === "gohome") return { emoji: "🏠", ok: "Will do", text: "You're 20 or more hours ahead, with at least 10 working days done. That's more than enough for this month, so take it easy: Plan my days on the full report shows how early you can leave and still end even." };
+                return null;
+            }
+
+            // First day this browser ran the attendance script (YYYY-MM-DD), saved once.
+            function noteAttendanceFirstSeen() {
+                const today = getTodayLocalYMD();
+                try {
+                    const saved = localStorage.getItem(STORAGE_KEYS.firstSeen) || "";
+                    if (YMD_RE.test(saved)) return saved;
+                    localStorage.setItem(STORAGE_KEYS.firstSeen, today);
+                } catch { /* storage blocked */ }
+                return today;
+            }
+
+            // A new user may run the script before setting it up (no day off, no
+            // holidays or overrides yet), so the numbers can be wrong. Secret ranks
+            // wait for a set day off and SECRET_TIER_MIN_INSTALL_DAYS on this browser.
+            function secretTiersAllowed() {
+                if (!isDayOffConfigured()) return false;
+                const first = noteAttendanceFirstSeen();
+                const days = (Date.parse(getTodayLocalYMD() + "T00:00:00Z") - Date.parse(first + "T00:00:00Z")) / 86400000;
+                return days >= SECRET_TIER_MIN_INSTALL_DAYS;
+            }
+
+            // The rank a page shows for stats.tier: a secret rank only once allowed
+            // (else one rank short), and its personal colour set (look) when the
+            // signed-in account has one. Home and the full report both use this.
+            function displayTier(rawTier) {
+                let tier = rawTier || "ontime";
+                if (homeSecretTierCopy(tier) && !secretTiersAllowed()) tier = tier === "missing" ? "ghost" : "slave";
+                const personal = homePersonalTierName();
+                return { tier, look: personal && personal.tier === tier ? personal.look : tier };
+            }
+
+            // Secret ranks reached: { tier: payroll period key of its last popup }.
+            function homeSecretTiersSeen() {
+                try {
+                    const raw = JSON.parse(localStorage.getItem(STORAGE_KEYS.secretTiers) || "{}");
+                    return raw && typeof raw === "object" ? raw : {};
+                } catch { return {}; }
+            }
+
+            // Once per payroll month per secret rank. Tips wait while it is open.
+            function homeMaybeShowSecretTier(tier, name, tierClass) {
+                const personal = homePersonalTierName();
+                const base = homeSecretTierCopy(tier);
+                const copy = base && personal && personal.tier === tier && personal.text
+                    ? { emoji: personal.emoji, text: personal.text, ok: personal.ok || base.ok } : base;
+                const seen = homeSecretTiersSeen();
+                const period = getPayrollPeriodKey(getTodayLocalYMD());
+                if (!copy || seen[tier] === period || document.getElementById("gius-att-unlock")) return;
+                seen[tier] = period;
+                try { localStorage.setItem(STORAGE_KEYS.secretTiers, JSON.stringify(seen)); } catch { /* quota */ }
+                const held = typeof Tips.hold === "function";
+                if (held) Tips.hold();
+                // fx: "missing" (fog), "gohome" (lights off, door), or a personal
+                // one ("king": crown drop + gold burst, "moon": moonrise + petals).
+                const fx = personal && personal.tier === tier && personal.fx ? personal.fx : tier;
+                const okHtml = homeEsc(copy.ok).replace("😂", '<span class="gius-att-laugh" aria-hidden="true">😂</span>');
+                const goClass = fx === "king" ? " gius-att-unlock-go-gold" : fx === "moon" ? " gius-att-unlock-go-pink" : "";
+                const modal = document.createElement("div");
+                modal.id = "gius-att-unlock";
+                modal.className = "gius-att-modal gius-att-unlock-modal gius-att-fx-" + fx;
+                modal.innerHTML = `<div class="gius-att-unlock-scrim"></div>
+                    ${fx === "missing" ? '<div class="gius-att-fog gius-att-fog-a"></div><div class="gius-att-fog gius-att-fog-b"></div>' : ""}
+                    ${fx === "moon" ? '<div class="gius-att-stars"></div><div class="gius-att-bigmoon" aria-hidden="true">🌙</div>' : ""}
+                    <div class="gius-att-sheet gius-att-unlock" role="dialog" aria-modal="true" aria-labelledby="gius-att-unlock-kicker">
+                    ${fx === "king" ? '<div class="gius-att-shine" aria-hidden="true"></div>' : ""}
+                    <div class="gius-att-unlock-emoji" aria-hidden="true">${copy.emoji}</div>
+                    <div class="gius-att-unlock-kicker" id="gius-att-unlock-kicker" aria-label="Secret rank unlocked">Secret rank unlocked</div>
+                    <div><span class="gius-att-tier ${tierClass}">${homeEsc(name)}</span></div>
+                    <p class="gius-att-unlock-text">${homeEsc(copy.text)}</p>
+                    <div class="gius-att-unlock-actions">
+                        <a class="gius-att-unlock-go${goClass}" href="${REPORT_VIEW_URL}">View my plan</a>
+                        <button type="button" class="gius-att-unlock-ok gius-btn">${okHtml}</button>
+                    </div></div>
+                    ${fx === "gohome" ? '<div class="gius-att-door" aria-hidden="true"><b></b><b></b></div>' : ""}
+                    ${fx === "king" || fx === "moon" ? '<canvas class="gius-att-fx" aria-hidden="true"></canvas>' : ""}`;
+                // Kicker types on letter by letter; stars sit at random spots.
+                const kicker = modal.querySelector(".gius-att-unlock-kicker");
+                Array.from(kicker.textContent).forEach(function (ch, i) {
+                    if (i === 0) kicker.textContent = "";
+                    const span = document.createElement("span");
+                    span.textContent = ch;
+                    span.setAttribute("aria-hidden", "true");
+                    span.style.setProperty("--i", i);
+                    kicker.appendChild(span);
+                });
+                const stars = modal.querySelector(".gius-att-stars");
+                for (let i = 0; stars && i < 28; i++) {
+                    const star = document.createElement("i");
+                    star.style.left = (4 + Math.random() * 92) + "%";
+                    star.style.top = (3 + Math.random() * 60) + "%";
+                    star.style.setProperty("--sd", (0.6 + Math.random() * 1.2).toFixed(2) + "s");
+                    stars.appendChild(star);
+                }
+                document.body.appendChild(modal);
+                let stopFx = function () {};
+                requestAnimationFrame(function () {
+                    modal.classList.add("open", "gius-att-play");
+                    stopFx = homeUnlockParticles(modal, fx);
+                });
+                const onKey = function (e) { if (e.key === "Escape") close(); };
+                function close() {
+                    stopFx();
+                    modal.classList.remove("open");
+                    document.removeEventListener("keydown", onKey);
+                    setTimeout(function () { try { modal.remove(); } catch {} }, 160);
+                    if (held && typeof Tips.release === "function") Tips.release();
+                }
+                modal.querySelector(".gius-att-unlock-ok").addEventListener("click", close);
+                modal.addEventListener("click", function (e) {
+                    if (e.target === modal || e.target.classList.contains("gius-att-unlock-scrim")) close();
+                });
+                document.addEventListener("keydown", onKey);
+                const ok = modal.querySelector(".gius-att-unlock-ok");
+                if (ok) ok.focus();
+            }
+
+            // Gold confetti ("king") or drifting pink petals ("moon") on the
+            // popup's canvas. Returns a stop function. Nothing with reduced motion.
+            function homeUnlockParticles(modal, fx) {
+                const canvas = modal.querySelector("canvas.gius-att-fx");
+                const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+                if (!canvas || reduce || !canvas.getContext) return function () {};
+                const dpr = Math.min(2, window.devicePixelRatio || 1);
+                const w = canvas.clientWidth, h = canvas.clientHeight;
+                canvas.width = w * dpr;
+                canvas.height = h * dpr;
+                const ctx = canvas.getContext("2d");
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                const gold = ["#fcd34d", "#f59e0b", "#fde68a", "#eab308", "#ffffff"];
+                const pink = ["#f9a8d4", "#f472b6", "#fbcfe8", "#ec4899", "#fdf2f8"];
+                const list = [];
+                const start = performance.now();
+                let last = start, raf = 0, burst = false;
+                function spawn(t) {
+                    if (fx === "king" && !burst && t > 900) {
+                        burst = true;
+                        const crown = modal.querySelector(".gius-att-unlock-emoji");
+                        const box = crown ? crown.getBoundingClientRect() : { left: w / 2, top: h / 2, width: 0, height: 0 };
+                        const cx = box.left + box.width / 2, cy = box.top + box.height / 2;
+                        for (let i = 0; i < 110; i++) {
+                            const a = Math.random() * Math.PI * 2, sp = 3 + Math.random() * 7;
+                            list.push({ x: cx, y: cy, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 3, g: 0.18, drag: 0.985,
+                                rot: Math.random() * 6, vr: (Math.random() - 0.5) * 0.4, s: 5 + Math.random() * 6,
+                                c: gold[i % gold.length], shape: i % 5 === 0 ? "spark" : "rect", life: 90 + Math.random() * 60 });
+                        }
+                    }
+                    if (fx === "moon" && t > 1500 && t < 4200 && Math.random() < 0.35) {
+                        list.push({ x: Math.random() * w, y: -12, vx: (Math.random() - 0.5) * 0.6, vy: 0.6 + Math.random() * 0.9, g: 0.004, drag: 1,
+                            rot: Math.random() * 6, vr: (Math.random() - 0.5) * 0.06, s: 5 + Math.random() * 5,
+                            c: pink[Math.floor(Math.random() * pink.length)], shape: "petal", sway: 0.8, seed: Math.random() * 3000, life: 600 });
+                    }
+                }
+                function frame(now) {
+                    const dt = Math.min(40, now - last) / 16.67;
+                    last = now;
+                    const t = now - start;
+                    spawn(t);
+                    ctx.clearRect(0, 0, w, h);
+                    for (let i = list.length - 1; i >= 0; i--) {
+                        const pt = list[i];
+                        pt.vy += pt.g * dt; pt.vx *= pt.drag; pt.vy *= pt.drag;
+                        pt.x += (pt.vx + (pt.sway ? Math.sin((t + pt.seed) / 300) * pt.sway : 0)) * dt;
+                        pt.y += pt.vy * dt;
+                        pt.rot += pt.vr * dt;
+                        pt.life -= dt;
+                        if (pt.life <= 0 || pt.y > h + 30) { list.splice(i, 1); continue; }
+                        ctx.save();
+                        ctx.globalAlpha = Math.min(1, pt.life / 25);
+                        ctx.translate(pt.x, pt.y);
+                        ctx.rotate(pt.rot);
+                        ctx.fillStyle = pt.c;
+                        if (pt.shape === "rect") ctx.fillRect(-pt.s / 2, -pt.s / 4, pt.s, pt.s / 2);
+                        else if (pt.shape === "petal") { ctx.beginPath(); ctx.ellipse(0, 0, pt.s, pt.s / 2, 0, 0, Math.PI * 2); ctx.fill(); }
+                        else {
+                            ctx.beginPath();
+                            for (let k = 0; k < 4; k++) { ctx.rotate(Math.PI / 2); ctx.lineTo(0, -pt.s); ctx.lineTo(pt.s / 4, -pt.s / 4); }
+                            ctx.fill();
+                        }
+                        ctx.restore();
+                    }
+                    if (t < (fx === "moon" ? 4200 : 1000) || list.length) raf = requestAnimationFrame(frame);
+                    else ctx.clearRect(0, 0, w, h);
+                }
+                raf = requestAnimationFrame(frame);
+                return function () { cancelAnimationFrame(raf); };
+            }
+
             // Tier legend popup: lists every tier with its colour + condition, current one flagged.
-            function homeOpenTierModal(currentTier, names, conds, order) {
+            function homeOpenTierModal(currentTier, names, conds, order, looks) {
                 const existing = document.getElementById("gius-att-modal");
                 if (existing) existing.remove();
                 const modal = document.createElement("div");
@@ -10799,10 +11274,11 @@ function renderAttendancePlanner(S, api, host) {
                 const userLabel = homeEsc(homeGetUserFirstName() || "YOU");
                 const rows = order.map(function (t) {
                     const cur = t === currentTier;
+                    const look = (looks && looks[t]) || t;
                     return `<div class="gius-att-trow${cur ? " cur" : ""}">
-                        <span class="gius-att-dot gius-att-dot-${t}"></span>
+                        <span class="gius-att-dot gius-att-dot-${look}"></span>
                         <div class="gius-att-trow-main">
-                            <div class="gius-att-trow-name"><span class="gius-att-tier gius-att-tier-${t}">${names[t]}</span>${cur ? `<span class="gius-att-trow-cur">${userLabel}</span>` : ""}</div>
+                            <div class="gius-att-trow-name"><span class="gius-att-tier gius-att-tier-${look}">${names[t]}</span>${cur ? `<span class="gius-att-trow-cur">${userLabel}</span>` : ""}${homeSecretTierCopy(t) ? '<span class="gius-att-secret-tag">SECRET</span>' : ""}</div>
                             <div class="gius-att-trow-cond">${homeEsc(conds[t])}</div>
                         </div></div>`;
                 }).join("");
@@ -10965,6 +11441,7 @@ function renderAttendancePlanner(S, api, host) {
                 buildPlannerInput,
                 createPlannerApi,
                 plannerTodayLeaveBy,
+                displayTier,
             };
 
             try {
