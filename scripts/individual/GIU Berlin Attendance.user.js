@@ -10,7 +10,7 @@
 // @match       https://apps.guc.edu.eg/external/tempprojects/swiftreports.aspx*
 // @match       https://apps.guc.edu.eg/External/TempProjects/SwiftReports.aspx*
 // @namespace   Cyn0
-// @version     1.0.12
+// @version     1.0.13
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js
 // @author      Mo.Elmaadawy
@@ -10454,6 +10454,14 @@ function staffAttendance(S) {
                     .gius-att-fx-king .gius-att-unlock-scrim{background:radial-gradient(ellipse at 50% 35%,rgba(250,204,21,.55),transparent 60%),linear-gradient(180deg,rgba(66,44,0,.88),rgba(146,96,10,.62));}
                     .gius-att-fx-moon .gius-att-unlock-scrim{background:linear-gradient(180deg,rgba(30,20,60,.85),rgba(80,20,70,.6));}
                     .gius-att-unlock-modal .gius-att-unlock{position:relative;z-index:2;overflow:visible;max-height:none;perspective:900px;}
+                    /* Bigger than the other sheets: the portal draws everything small. */
+                    .gius-att-unlock-modal .gius-att-unlock{max-width:500px;padding:26px 28px;border-radius:16px;}
+                    .gius-att-unlock-modal .gius-att-unlock-emoji{font-size:60px;margin:4px 0 12px;}
+                    .gius-att-unlock-modal .gius-att-unlock-kicker{font-size:13px;}
+                    .gius-att-unlock-modal .gius-att-unlock .gius-att-tier{font-size:17px;padding:5px 13px;margin:10px 0 14px;}
+                    .gius-att-unlock-modal .gius-att-unlock-text{font-size:16.5px;line-height:1.6;margin:0 0 20px;}
+                    .gius-att-unlock-modal .gius-att-unlock-go,.gius-att-unlock-modal .gius-att-unlock-ok{font-size:15px;padding:11px 20px;border-radius:10px;}
+                    .gius-att-unlock-modal .gius-att-shine{top:50px;}
                     .gius-att-unlock-emoji{display:inline-block;}
                     .gius-att-unlock-kicker span{display:inline-block;white-space:pre;}
                     canvas.gius-att-fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4;}
