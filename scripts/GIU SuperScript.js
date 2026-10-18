@@ -5,7 +5,7 @@
 // @icon        data:image/png;base64,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
 // @namespace   Cyn0
 // @match       https://portal.giu-uni.de/*
-// @version     1.3.18
+// @version     1.3.19
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @run-at      document-idle
@@ -9181,6 +9181,8 @@ function renderAttendancePlanner(S, api, host) {
             }
 
             let homeLastRows = [];
+            // Set while Home shows a rank preview (see homeRankPreview): { tier, account }.
+            let homePreview = null;
             let homeFetchInFlight = false; // guards the manual refresh button and the auto-refresh path from overlapping
             // Berlin only: the failure shown as an inline notice over the stale widget,
             // until a fetch succeeds. homeRerender puts it back after repainting.
@@ -9366,11 +9368,15 @@ function renderAttendancePlanner(S, api, host) {
                 try {
                     const el = document.querySelector('[id*="lbl_Account"]');
                     let account = el && el.textContent ? el.textContent.trim().toLowerCase() : "";
-                    // The report page has no account label: use the one Home saw last.
-                    try {
-                        if (account) localStorage.setItem(STORAGE_KEYS.account, account);
-                        else account = localStorage.getItem(STORAGE_KEYS.account) || "";
-                    } catch { /* storage blocked */ }
+                    if (homePreview && homePreview.account) {
+                        account = homePreview.account;   // preview only, never stored
+                    } else {
+                        // The report page has no account label: use the one Home saw last.
+                        try {
+                            if (account) localStorage.setItem(STORAGE_KEYS.account, account);
+                            else account = localStorage.getItem(STORAGE_KEYS.account) || "";
+                        } catch { /* storage blocked */ }
+                    }
                     const hit = account ? personal[homeHash53(account, 7919)] : null;
                     const piece = hit ? account.split(".")[hit.part] : "";
                     if (!piece) return null;
@@ -9928,8 +9934,8 @@ function renderAttendancePlanner(S, api, host) {
                         homeOpenTierModal(tier, TIER_NAMES, TIER_CONDS, order, TIER_LOOKS);
                     });
                 }
-                if (!opts.stale && isDayOffConfigured() && homeSecretTierCopy(tier)) {
-                    homeMaybeShowSecretTier(tier, TIER_NAMES[tier], tierClass);
+                if ((opts.preview || (!opts.stale && isDayOffConfigured())) && homeSecretTierCopy(tier)) {
+                    homeMaybeShowSecretTier(tier, TIER_NAMES[tier], tierClass, !!opts.preview);
                 }
                 const refreshBtn = host.querySelector(".gius-att-refresh");
                 if (refreshBtn) {
@@ -9987,7 +9993,7 @@ function renderAttendancePlanner(S, api, host) {
             // signed-in account has one. Home and the full report both use this.
             function displayTier(rawTier) {
                 let tier = rawTier || "ontime";
-                if (homeSecretTierCopy(tier) && !secretTiersAllowed()) tier = tier === "missing" ? "ghost" : "slave";
+                if (!homePreview && homeSecretTierCopy(tier) && !secretTiersAllowed()) tier = tier === "missing" ? "ghost" : "slave";
                 const personal = homePersonalTierName();
                 return { tier, look: personal && personal.tier === tier ? personal.look : tier };
             }
@@ -10001,16 +10007,18 @@ function renderAttendancePlanner(S, api, host) {
             }
 
             // Once per payroll month per secret rank. Tips wait while it is open.
-            function homeMaybeShowSecretTier(tier, name, tierClass) {
+            function homeMaybeShowSecretTier(tier, name, tierClass, preview) {
                 const personal = homePersonalTierName();
                 const base = homeSecretTierCopy(tier);
                 const copy = base && personal && personal.tier === tier && personal.text
                     ? { emoji: personal.emoji, text: personal.text, ok: personal.ok || base.ok } : base;
                 const seen = homeSecretTiersSeen();
                 const period = getPayrollPeriodKey(getTodayLocalYMD());
-                if (!copy || seen[tier] === period || document.getElementById("gius-att-unlock")) return;
-                seen[tier] = period;
-                try { localStorage.setItem(STORAGE_KEYS.secretTiers, JSON.stringify(seen)); } catch { /* quota */ }
+                if (!copy || (!preview && seen[tier] === period) || document.getElementById("gius-att-unlock")) return;
+                if (!preview) {
+                    seen[tier] = period;
+                    try { localStorage.setItem(STORAGE_KEYS.secretTiers, JSON.stringify(seen)); } catch { /* quota */ }
+                }
                 const held = typeof Tips.hold === "function";
                 if (held) Tips.hold();
                 // fx: "missing" (fog), "gohome" (lights off, door), or a personal
@@ -10204,8 +10212,36 @@ function renderAttendancePlanner(S, api, host) {
             // fresh-cache early return and the paint delay, and asks the source
             // to bypass its memo. Never set on Cairo, where bootHome is also a
             // click listener and receives an Event.
+            // Preview a secret rank's unlock popup without reaching it:
+            // Home.aspx#gius-rank-preview=gohome (or =missing), optionally
+            // &account=first.last to see that account's personal version.
+            // Draws example numbers and saves nothing (no "seen" mark, no stored
+            // account, no first-use date). Changing the hash replays it.
+            function homeRankPreview() {
+                const m = String(location.hash || "").match(/^#gius-rank-preview=(missing|gohome)(?:&account=([a-z0-9._-]+))?$/i);
+                if (!m) return false;
+                const tier = m[1].toLowerCase();
+                homePreview = { tier, account: m[2] ? m[2].toLowerCase() : "" };
+                const old = document.getElementById("gius-att-unlock");
+                if (old) old.remove();
+                const up = tier === "gohome";
+                renderHomeWidget({ label: "Preview", stats: {
+                    tier, balanceHM: up ? "26:00:00" : "44:00:00", isPositiveOrZero: up, label: up ? "Extra" : "Missing",
+                    progressPercent: up ? 100 : 48, progressPercentRaw: up ? 131 : 48,
+                    presentDays: 10, absentDays: 0, absentDayDetails: []
+                } }, { preview: true });
+                return true;
+            }
+
             function bootHome(opts) {
                 if (!isHomePage()) return;
+                if (homeRankPreview()) {
+                    if (!bootHome.previewListener) {
+                        bootHome.previewListener = true;
+                        window.addEventListener("hashchange", function () { if (isHomePage()) homeRankPreview(); });
+                    }
+                    return;
+                }
                 const force = !!(SOURCE && opts && opts.force === true);
                 homeInjectStyles();
                 maybeAutoOpenSetup();
