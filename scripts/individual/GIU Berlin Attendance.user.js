@@ -10,7 +10,7 @@
 // @match       https://apps.guc.edu.eg/external/tempprojects/swiftreports.aspx*
 // @match       https://apps.guc.edu.eg/External/TempProjects/SwiftReports.aspx*
 // @namespace   Cyn0
-// @version     1.0.14
+// @version     1.0.15
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js
 // @author      Mo.Elmaadawy
@@ -2649,7 +2649,6 @@ function staffAttendance(S) {
             const REQUIRED_SECONDS_NORMAL = (8 * 60 + 24) * 60;   // 30240s = 8h24m
             const REQUIRED_SECONDS_RAMADAN = 6 * 3600;              // 21600s = 6h
             const SECRET_TIER_MIN_DAYS = 10;                         // working days gone before a secret rank can show
-            const SECRET_TIER_MIN_INSTALL_DAYS = 14;                 // days since this browser first ran the script
             const MIN_WORKING_DAY_SECONDS = 4 * 3600;               // 14400s = 4h minimum to count day as worked
             const SINGLE_ENTRY_MAX_PER_PERIOD = 2;                  // single-entry days credited as full days per payroll month
             const LATE_THRESHOLD_SECONDS_NORMAL = (10 * 60 + 30) * 60;  // 10:30 AM
@@ -2680,6 +2679,7 @@ function staffAttendance(S) {
                 setup: "giuAttendanceSetupV1",
                 planner: "giuAttendancePlannerV1",
                 firstSeen: "giuAttFirstSeenV1",
+                firstSeenAt: "giuAttFirstSeenAtV1",
                 account: "giuAttAccountV1",
                 secretTiers: "giuAttSecretTiersV1"
             };
@@ -3142,7 +3142,8 @@ function staffAttendance(S) {
                     examPeriod: getStoredExamPeriod(),
                     auditMode: isAuditModeEnabled(),
                     singleEntryRule: isSingleEntryRuleEnabled(),
-                    // Carried so a new browser keeps the secret-rank conditions.
+                    // Carried so a new browser keeps the first-use date and the
+                    // ranks already reached.
                     firstSeen: noteAttendanceFirstSeen(),
                     secretTiersSeen: homeSecretTiersSeen()
                 };
@@ -3250,13 +3251,17 @@ function staffAttendance(S) {
                     setSingleEntryRuleEnabled(snapshot.singleEntryRule);
                     report.accepted += 1;
                 }
-                // The earlier first-run date wins, so moving browsers keeps the
-                // 14-day count; a date in the future is rejected.
+                // The earlier first-use date wins, so moving browsers keeps it; a
+                // date in the future is rejected. Its exact time is not carried
+                // (the imported date counts from midnight).
                 if (typeof snapshot.firstSeen === "string") {
                     const imported = normalizeYMD(snapshot.firstSeen);
                     if (imported && imported <= getTodayLocalYMD()) {
                         if (imported < noteAttendanceFirstSeen()) {
-                            try { localStorage.setItem(STORAGE_KEYS.firstSeen, imported); } catch { /* storage blocked */ }
+                            try {
+                                localStorage.setItem(STORAGE_KEYS.firstSeen, imported);
+                                localStorage.removeItem(STORAGE_KEYS.firstSeenAt);
+                            } catch { /* storage blocked */ }
                         }
                         report.accepted += 1;
                     } else {
@@ -3264,6 +3269,9 @@ function staffAttendance(S) {
                         report.notes.push("First-use date invalid.");
                     }
                 }
+                // A settings file with a day off restores a set-up state, so setup
+                // counts as done (secret ranks may unlock).
+                if (typeof snapshot.selectedDay === "string" && snapshot.selectedDay) setSetupFlag("done");
                 // Secret ranks already reached stay reached (merged, never removed).
                 if (snapshot.secretTiersSeen && typeof snapshot.secretTiersSeen === "object") {
                     const seen = homeSecretTiersSeen();
@@ -10839,25 +10847,29 @@ function staffAttendance(S) {
                 return null;
             }
 
-            // First day this browser ran the attendance script (YYYY-MM-DD), saved once.
+            // First day this browser ran the attendance script (YYYY-MM-DD), saved
+            // once, with the exact time (ms) next to it. Recorded for later use;
+            // nothing depends on it yet.
             function noteAttendanceFirstSeen() {
                 const today = getTodayLocalYMD();
                 try {
                     const saved = localStorage.getItem(STORAGE_KEYS.firstSeen) || "";
                     if (YMD_RE.test(saved)) return saved;
                     localStorage.setItem(STORAGE_KEYS.firstSeen, today);
+                    localStorage.setItem(STORAGE_KEYS.firstSeenAt, String(Date.now()));
                 } catch { /* storage blocked */ }
                 return today;
             }
 
             // A new user may run the script before setting it up (no day off, no
-            // holidays or overrides yet), so the numbers can be wrong. Secret ranks
-            // wait for a set day off and SECRET_TIER_MIN_INSTALL_DAYS on this browser.
+            // leave or overrides yet), so the numbers can be wrong. Secret ranks
+            // wait for a set day off and a finished setup: the wizard finished or
+            // a settings file imported ("done"). Users from before the wizard,
+            // who set their day off by hand and were never asked, count as set up.
             function secretTiersAllowed() {
                 if (!isDayOffConfigured()) return false;
-                const first = noteAttendanceFirstSeen();
-                const days = (Date.parse(getTodayLocalYMD() + "T00:00:00Z") - Date.parse(first + "T00:00:00Z")) / 86400000;
-                return days >= SECRET_TIER_MIN_INSTALL_DAYS;
+                const flag = getSetupFlag();
+                return flag === "done" || flag === "";
             }
 
             // The rank a page shows for stats.tier: a secret rank only once allowed
