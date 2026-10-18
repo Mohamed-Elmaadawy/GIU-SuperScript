@@ -10,7 +10,7 @@
 // @match       https://apps.guc.edu.eg/external/tempprojects/swiftreports.aspx*
 // @match       https://apps.guc.edu.eg/External/TempProjects/SwiftReports.aspx*
 // @namespace   Cyn0
-// @version     1.0.13
+// @version     1.0.14
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js
 // @author      Mo.Elmaadawy
@@ -10051,8 +10051,6 @@ function staffAttendance(S) {
             }
 
             let homeLastRows = [];
-            // Set while Home shows a rank preview (see homeRankPreview): { tier, account }.
-            let homePreview = null;
             let homeFetchInFlight = false; // guards the manual refresh button and the auto-refresh path from overlapping
             // Berlin only: the failure shown as an inline notice over the stale widget,
             // until a fetch succeeds. homeRerender puts it back after repainting.
@@ -10238,15 +10236,11 @@ function staffAttendance(S) {
                 try {
                     const el = document.querySelector('[id*="lbl_Account"]');
                     let account = el && el.textContent ? el.textContent.trim().toLowerCase() : "";
-                    if (homePreview && homePreview.account) {
-                        account = homePreview.account;   // preview only, never stored
-                    } else {
-                        // The report page has no account label: use the one Home saw last.
-                        try {
-                            if (account) localStorage.setItem(STORAGE_KEYS.account, account);
-                            else account = localStorage.getItem(STORAGE_KEYS.account) || "";
-                        } catch { /* storage blocked */ }
-                    }
+                    // The report page has no account label: use the one Home saw last.
+                    try {
+                        if (account) localStorage.setItem(STORAGE_KEYS.account, account);
+                        else account = localStorage.getItem(STORAGE_KEYS.account) || "";
+                    } catch { /* storage blocked */ }
                     const hit = account ? personal[homeHash53(account, 7919)] : null;
                     const piece = hit ? account.split(".")[hit.part] : "";
                     if (!piece) return null;
@@ -10812,8 +10806,8 @@ function staffAttendance(S) {
                         homeOpenTierModal(tier, TIER_NAMES, TIER_CONDS, order, TIER_LOOKS);
                     });
                 }
-                if ((opts.preview || (!opts.stale && isDayOffConfigured())) && homeSecretTierCopy(tier)) {
-                    homeMaybeShowSecretTier(tier, TIER_NAMES[tier], tierClass, !!opts.preview);
+                if (!opts.stale && isDayOffConfigured() && homeSecretTierCopy(tier)) {
+                    homeMaybeShowSecretTier(tier, TIER_NAMES[tier], tierClass);
                 }
                 const refreshBtn = host.querySelector(".gius-att-refresh");
                 if (refreshBtn) {
@@ -10871,7 +10865,7 @@ function staffAttendance(S) {
             // signed-in account has one. Home and the full report both use this.
             function displayTier(rawTier) {
                 let tier = rawTier || "ontime";
-                if (!homePreview && homeSecretTierCopy(tier) && !secretTiersAllowed()) tier = tier === "missing" ? "ghost" : "slave";
+                if (homeSecretTierCopy(tier) && !secretTiersAllowed()) tier = tier === "missing" ? "ghost" : "slave";
                 const personal = homePersonalTierName();
                 return { tier, look: personal && personal.tier === tier ? personal.look : tier };
             }
@@ -10885,18 +10879,16 @@ function staffAttendance(S) {
             }
 
             // Once per payroll month per secret rank. Tips wait while it is open.
-            function homeMaybeShowSecretTier(tier, name, tierClass, preview) {
+            function homeMaybeShowSecretTier(tier, name, tierClass) {
                 const personal = homePersonalTierName();
                 const base = homeSecretTierCopy(tier);
                 const copy = base && personal && personal.tier === tier && personal.text
                     ? { emoji: personal.emoji, text: personal.text, ok: personal.ok || base.ok } : base;
                 const seen = homeSecretTiersSeen();
                 const period = getPayrollPeriodKey(getTodayLocalYMD());
-                if (!copy || (!preview && seen[tier] === period) || document.getElementById("gius-att-unlock")) return;
-                if (!preview) {
-                    seen[tier] = period;
-                    try { localStorage.setItem(STORAGE_KEYS.secretTiers, JSON.stringify(seen)); } catch { /* quota */ }
-                }
+                if (!copy || seen[tier] === period || document.getElementById("gius-att-unlock")) return;
+                seen[tier] = period;
+                try { localStorage.setItem(STORAGE_KEYS.secretTiers, JSON.stringify(seen)); } catch { /* quota */ }
                 const held = typeof Tips.hold === "function";
                 if (held) Tips.hold();
                 // fx: "missing" (fog), "gohome" (lights off, door), or a personal
@@ -11090,36 +11082,8 @@ function staffAttendance(S) {
             // fresh-cache early return and the paint delay, and asks the source
             // to bypass its memo. Never set on Cairo, where bootHome is also a
             // click listener and receives an Event.
-            // Preview a secret rank's unlock popup without reaching it:
-            // Home.aspx#gius-rank-preview=gohome (or =missing), optionally
-            // &account=first.last to see that account's personal version.
-            // Draws example numbers and saves nothing (no "seen" mark, no stored
-            // account, no first-use date). Changing the hash replays it.
-            function homeRankPreview() {
-                const m = String(location.hash || "").match(/^#gius-rank-preview=(missing|gohome)(?:&account=([a-z0-9._-]+))?$/i);
-                if (!m) return false;
-                const tier = m[1].toLowerCase();
-                homePreview = { tier, account: m[2] ? m[2].toLowerCase() : "" };
-                const old = document.getElementById("gius-att-unlock");
-                if (old) old.remove();
-                const up = tier === "gohome";
-                renderHomeWidget({ label: "Preview", stats: {
-                    tier, balanceHM: up ? "26:00:00" : "44:00:00", isPositiveOrZero: up, label: up ? "Extra" : "Missing",
-                    progressPercent: up ? 100 : 48, progressPercentRaw: up ? 131 : 48,
-                    presentDays: 10, absentDays: 0, absentDayDetails: []
-                } }, { preview: true });
-                return true;
-            }
-
             function bootHome(opts) {
                 if (!isHomePage()) return;
-                if (homeRankPreview()) {
-                    if (!bootHome.previewListener) {
-                        bootHome.previewListener = true;
-                        window.addEventListener("hashchange", function () { if (isHomePage()) homeRankPreview(); });
-                    }
-                    return;
-                }
                 const force = !!(SOURCE && opts && opts.force === true);
                 homeInjectStyles();
                 maybeAutoOpenSetup();
