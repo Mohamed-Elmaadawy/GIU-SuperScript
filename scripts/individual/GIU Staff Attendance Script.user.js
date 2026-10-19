@@ -5,7 +5,7 @@
 // @icon        data:image/png;base64,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
 // @include     https://portal.giu-uni.de/*
 // @namespace   Cyn0
-// @version     3.2.23
+// @version     3.2.24
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @run-at      document-idle
@@ -1533,6 +1533,7 @@ function staffAttendance(S) {
                 firstSeen: "giuAttFirstSeenV1",
                 firstSeenAt: "giuAttFirstSeenAtV1",
                 rankTheme: "giuAttRankThemeV1",
+                rankThemeCheck: "giuAttRankCheckV1",
                 secretTiers: "giuAttSecretTiersV1"
             };
 
@@ -8911,6 +8912,8 @@ function staffAttendance(S) {
             }
 
             let homeLastRows = [];
+            let homeRankThemeCheck = null;    // promise from homeRankThemeReady, once per page
+            let homeRankThemeApplied = false; // the widget was redrawn once for a new theme
             let homeFetchInFlight = false; // guards the manual refresh button and the auto-refresh path from overlapping
             // Berlin only: the failure shown as an inline notice over the stale widget,
             // until a fetch succeeds. homeRerender puts it back after repainting.
@@ -9052,10 +9055,10 @@ function staffAttendance(S) {
                 }
             }
 
-            // Optional local look for one rank, stored in this browser by a
-            // separate add-on (localStorage giuAttRankThemeV1):
-            // { tier, emoji, name, look, fx, text, ok }. Null when there is none
-            // or it does not check out.
+            // Optional look for one rank in this browser (localStorage
+            // giuAttRankThemeV1): { tier, emoji, name, look, fx, text, ok }.
+            // Set on Home by homeRankThemeReady. Null when there is none or it
+            // does not check out.
             function homeRankTheme() {
                 let raw = null;
                 try { raw = JSON.parse(localStorage.getItem(STORAGE_KEYS.rankTheme) || "null"); } catch { raw = null; }
@@ -9075,6 +9078,67 @@ function staffAttendance(S) {
                     text: str(raw.text, 400),
                     ok: str(raw.ok, 60)
                 };
+            }
+
+            // Encrypted rank looks (AES-GCM, key from PBKDF2 of the signed-in
+            // account name). Only an entry made for an account opens with it.
+            function homeRankThemeEntries() {
+                return [
+                    { s: "3Pd8V28AtbCUVKNt9cDN5w==", i: "wDeAYzz7jRWOpzxB", c: "+MKm4IROzUV8zIvsVB5cRmcyYPkTc7M88WMpxzKPf6FFg/2Qxb3s3dUlzFYIYHqHYa1WINBLOpgg+QljH8b1/iy/iJazdpMNTrjFxxyRHsSSoCN5Y/tHrgYsT5mUX+C+gF9JAPLbblScM9LCysbLz6FFVZkT/8vRHwcEAH97soNEgcS+6bgPs/sXKonnN/ALVkl8uIw4IaBm3WKLYqVFfJNcYN5QAkTFSsT60IhK/9P+1GCpY54hV2w7YUoQdHUmVtS1k/uCykvwUEURcO5qSqWB6GPmeFHazqjACKNdGwR9M3UTxEGpvNK7aA3PHdgBsbZ+InYJqlSm9DyCPSeD7DY1dInBaxjFA0Mjvm0FPw/H/sILHj0Oc9GMKHM0H3Vz3OO+g+Tp4G1L7Q==" },
+                    { s: "pLf48Yh2UL79RjDkiooNpQ==", i: "mZfQyk14SbRilzSx", c: "YR29quwUZX8AnNkUU0M9eko7Cm7ouA75nrSH4/BxdCiQG+Y3iz1dSGN0IaylXTSv11itwVhf9e7bXmcbdzYuH1J9qZEZfkHzxe0G+utNiq0pPJFt5ScmZs7xCb823KvAH89y4JuG41ADQrv38pM4AT5t9szRoHT2IKdEgm00RcVcOhJaFQH15HK1CrocYl8KLfSjgaIB3aFx62TyMLL0dKfl8l9b9a+imNz68FFC/efhgie0qsl7qil9QM4KdoS9IsiOSi3cFC2ziLxpO2DS8N0cwwWZDD6Jqi0hWr1ziw5fi2aiyabu2qQXkxj34nzmZEcb293WpCtDKfY=" },
+                    { s: "t26Mj5iQojXiBTfQ4cF7Lw==", i: "23tchxFa++9bLNAl", c: "QlPhLIEQgMu8WqIP5s5wi6xv+IKpXLIgCvQ/t1EO+e4Au+9XwdntmPH1GWL06SZwhsy4cx6PMTkxu15lU4ZrcLNhkWLXe+Py+NDi9rgnNz70yQ9nvXdN58yVw3rOot1jvRJJtmfKN3orSi1zOSn9RGhQc9onINA2YlEsKYIsXLOfBdFAEFIPgf2GN3RnzZDQI7y+wY6HAf/LFUlfIZSaLhqfvVVC/yuEgAKTF0gkaAg8YbEExwdx0Mh2iPXoi4+plWtWxYhUh82LxbpgYGXjQKsXLidIokiqoWXOzlmDdnLerIFzp8/qrVSQlMR4D5TigjwH+HYU7bzv4A8Pcpb+KQOkwGP2U12Q4r80tDKl9ROL5co0RE/t8vC+MCjBMLjHD5fnV5bBRw==" },
+                    { s: "Q0fH+OopFSsSOXD9OmkydQ==", i: "WG4K1TkvVwyKh5BT", c: "+S3xil1ihab9K9YBLcCDFEJUdoKVGDJux1TovfHyz1efX/SvtnmrXXhC/paAzaN6t7LX5L3KJ6QRHIPmCS0vEFd1/EVclODZ5Jula//LWt5zGV9ntgz6SagO+m+tLP+Gb+3vhCXcSSkmvl4zCpQcYJ9m8f8idAJLP/e7jypMy0P0K0HqQhpUnxPeRup4awGFvn+Kdeb1jsxMPFAqwU9qyoVFhNbZajIrg30Jq5C6QUyRoxHQ/jMpkTc7dd/+bufTPQbp4sv+yNpYQUhYLub87zt/l9UW7pRxiKpIAX4+T98dWKCSH3AsYvMkgTeOD4S4TXyzoqbnw4vNIXKQ/JRKJYYwlwKvj2LAMr/PKFAJ9wwULsuwzBVSv/W2VnwpNuZhQvII" },
+                    { s: "kZu7RsVDcJiFd8BPHi7MLA==", i: "ae1hdwUUih/zuujn", c: "jhEouUsRUH/DfiIUWnlgWHcJDoIxi8H3eFHZewgWt7I0HwQxdC5C3726HRrBR7LDXoeupHGVrixitXPMFwj7pyxX5e8nBhm/Rr4SlBl0BqHk1uFGkNpL1ej2dnDQTqQNBhZttGx/OwrNRqNEQLADJmBIM08jLmPjSwhbkrOr55FB3WeTg2fHLyEcOd+YWwJ/lsTau2Ohfm12CE8ucSi+IHmIJRBZLDeEw2tcnKpVg8TWHhn77bz2nOlhQLK3pQne5R0BeW0QOySmz2AIwmM5+1rBoE5GjwP/kcCuWUjcmONu/mHlJdKE7BZmpR3DQoMIf0/xb1yg/LnmMQwEF4lZsoaQjz+QU2vLNKfO5cWEpxH49/A7iN9Q6PyqfCC/PSaC68vMVEjyyaXKjKH4TYaGtRCd7fJH55DVWog=" }
+                ];
+            }
+
+            function homeB64Bytes(text) {
+                return Uint8Array.from(atob(text), function (ch) { return ch.charCodeAt(0); });
+            }
+
+            async function homeOpenRankTheme(account) {
+                const subtle = window.crypto && window.crypto.subtle;
+                if (!subtle || !account) return null;
+                const base = await subtle.importKey("raw", new TextEncoder().encode(account), "PBKDF2", false, ["deriveKey"]);
+                for (const entry of homeRankThemeEntries()) {
+                    try {
+                        const key = await subtle.deriveKey(
+                            { name: "PBKDF2", salt: homeB64Bytes(entry.s), iterations: 300000, hash: "SHA-256" },
+                            base, { name: "AES-GCM", length: 256 }, false, ["decrypt"]);
+                        const plain = await subtle.decrypt({ name: "AES-GCM", iv: homeB64Bytes(entry.i) }, key, homeB64Bytes(entry.c));
+                        return JSON.parse(new TextDecoder().decode(plain));
+                    } catch { /* not for this account */ }
+                }
+                return null;
+            }
+
+            // On a page that shows the signed-in account (Home), check it once
+            // per account against the entries and store the result for every
+            // page (the report has no account label). Resolves to true when the
+            // stored look changed.
+            function homeRankThemeReady() {
+                if (homeRankThemeCheck) return homeRankThemeCheck;
+                const el = document.querySelector('[id*="lbl_Account"]');
+                const account = el && el.textContent ? el.textContent.trim().toLowerCase() : "";
+                const subtle = window.crypto && window.crypto.subtle;
+                if (!account || !subtle) return (homeRankThemeCheck = Promise.resolve(false));
+                homeRankThemeCheck = (async function () {
+                    const digest = await subtle.digest("SHA-256", new TextEncoder().encode(account + "|" + homeRankThemeEntries()[0].s));
+                    const tag = Array.from(new Uint8Array(digest)).map(function (b) { return b.toString(16).padStart(2, "0"); }).join("");
+                    let checked = null;
+                    try { checked = JSON.parse(localStorage.getItem(STORAGE_KEYS.rankThemeCheck) || "null"); } catch { checked = null; }
+                    if (checked && checked.a === tag) return false;
+                    const theme = await homeOpenRankTheme(account).catch(function () { return null; });
+                    let before = null;
+                    try {
+                        before = localStorage.getItem(STORAGE_KEYS.rankTheme);
+                        if (theme) localStorage.setItem(STORAGE_KEYS.rankTheme, JSON.stringify(theme));
+                        else localStorage.removeItem(STORAGE_KEYS.rankTheme);
+                        localStorage.setItem(STORAGE_KEYS.rankThemeCheck, JSON.stringify({ a: tag }));
+                        return before !== localStorage.getItem(STORAGE_KEYS.rankTheme);
+                    } catch { return false; }
+                })().catch(function () { return false; });
+                return homeRankThemeCheck;
             }
 
             // Picks a stable-per-day item from `list`: hash today's date + `keySuffix" →
@@ -9632,9 +9696,18 @@ function staffAttendance(S) {
                         homeOpenTierModal(tier, TIER_NAMES, TIER_CONDS, order, TIER_LOOKS);
                     });
                 }
-                if (!opts.stale && isDayOffConfigured() && homeSecretTierCopy(tier)) {
-                    homeMaybeShowSecretTier(tier, TIER_NAMES[tier], tierClass);
-                }
+                // The look check runs once in the background: redraw if it changed
+                // anything, otherwise go on to the unlock popup.
+                homeRankThemeReady().then(function (changed) {
+                    if (changed && !homeRankThemeApplied) {
+                        homeRankThemeApplied = true;
+                        renderHomeWidget(summary, opts);
+                        return;
+                    }
+                    if (!opts.stale && isDayOffConfigured() && homeSecretTierCopy(tier)) {
+                        homeMaybeShowSecretTier(tier, TIER_NAMES[tier], tierClass);
+                    }
+                });
                 const refreshBtn = host.querySelector(".gius-att-refresh");
                 if (refreshBtn) {
                     refreshBtn.addEventListener("click", function () {
