@@ -11830,7 +11830,8 @@ function renderAttendancePlanner(S, api, host) {
             function showError(container, msg) {
                 const d = document.createElement('div');
                 d.className = 'giug-alert giug-alert-error';
-                d.innerHTML = `<span>⚠</span><span>${msg}</span>`;
+                d.innerHTML = '<span>⚠</span><span></span>';
+                d.lastElementChild.textContent = msg;   // may hold portal error text
                 container.appendChild(d);
             }
         
@@ -11908,7 +11909,7 @@ function renderAttendancePlanner(S, api, host) {
                 const hasPass = withStats.some(g => g.stats.passRate != null);
                 const rows = withStats.map(g => `
                     <tr>
-                        <td>${g.label}</td>
+                        <td>${S.escapeHtml(g.label)}</td>
                         <td class="giug-stat-num">${g.stats.min}</td>
                         <td class="giug-stat-num">${g.stats.max}</td>
                         <td class="giug-stat-num">${g.stats.avg}</td>
