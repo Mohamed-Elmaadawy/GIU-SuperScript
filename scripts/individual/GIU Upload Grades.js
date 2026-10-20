@@ -3,7 +3,7 @@
 // @description Upload/download grades per group + batch all groups via fetch chain.
 // @match       https://portal.giu-uni.de/*
 // @namespace   Cyn0
-// @version     2.4.3
+// @version     4.0
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Upload%20Grades.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Upload%20Grades.js
 // @author      Ahmed Sherif, Mo.Elmaadawy

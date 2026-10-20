@@ -10,7 +10,7 @@
 // @match       https://apps.guc.edu.eg/external/tempprojects/swiftreports.aspx*
 // @match       https://apps.guc.edu.eg/External/TempProjects/SwiftReports.aspx*
 // @namespace   Cyn0
-// @version     1.0.19
+// @version     4.0
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Berlin%20SuperScript.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Berlin%20SuperScript.js
 // @author      Mo.Elmaadawy
@@ -30,6 +30,14 @@
 
 (function () {
     'use strict';
+
+    // Server error page (e.g. IIS 401): no portal markup — inject nothing.
+    function isServerErrorPage() {
+        if (document.querySelector('form')) return false;
+        const h1 = document.querySelector('h1');
+        return /^\s*[45]\d\d\s*-/.test(document.title) || (!!h1 && /server error/i.test(h1.textContent));
+    }
+    if (isServerErrorPage()) return;
 
     // ═══════════════════════════════════════════════════════════════════════════
     //  GIU Berlin SuperScript — the Berlin portal's all-in-one bundle.

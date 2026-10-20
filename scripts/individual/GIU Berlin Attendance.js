@@ -10,7 +10,7 @@
 // @match       https://apps.guc.edu.eg/external/tempprojects/swiftreports.aspx*
 // @match       https://apps.guc.edu.eg/External/TempProjects/SwiftReports.aspx*
 // @namespace   Cyn0
-// @version     1.0.18
+// @version     4.0
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js
 // @author      Mo.Elmaadawy
@@ -62,6 +62,18 @@ function injectStyle(id, css) {
 function warn(feature, ...args) { console.warn(`[GIU-SS:${feature}]`, ...args); }
 
 function portalUrl(path) { return location.origin + path; }
+
+// IIS's own error page (e.g. "401 - Unauthorized" after a failed sign-in):
+// no portal markup at all, so nothing may be injected into it. Every real
+// portal page is an ASP.NET WebForm, so it always has a <form>.
+function isServerErrorPage() {
+    if (document.querySelector('form')) return false;
+    const h1 = document.querySelector('h1');
+    return /^\s*[45]\d\d\s*-/.test(document.title) || (!!h1 && /server error/i.test(h1.textContent));
+}
+
+    // Server error page (e.g. IIS 401): no portal markup — inject nothing.
+    if (isServerErrorPage()) return;
 
     const S = { waitFor, escapeHtml, injectStyle, warn, portalUrl };
 
