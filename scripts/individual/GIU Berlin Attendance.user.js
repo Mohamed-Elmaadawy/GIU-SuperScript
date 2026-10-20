@@ -10,7 +10,7 @@
 // @match       https://apps.guc.edu.eg/external/tempprojects/swiftreports.aspx*
 // @match       https://apps.guc.edu.eg/External/TempProjects/SwiftReports.aspx*
 // @namespace   Cyn0
-// @version     4.0
+// @version     4.1
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js
 // @author      Mo.Elmaadawy
@@ -7947,25 +7947,24 @@ function staffAttendance(S) {
 
                 // Home-widget tier — computed here so the breakpoints live with the math and
                 // never drift from the view (single source for Home + any future surface).
-                // Below 100%: gap ≤3h → "close", ≤10h → "deduct", ≤15h → "ghost", else
-                // "missing". At/above 100%: escalate by EXTRA hours banked
-                // (balanceSeconds), +3h/+8h/+15h/+20h. The two secret ranks at the
+                // Mirrored steps of 3h / 8h / 12h. Below 100%: gap ≤3h → "close",
+                // ≤8h → "deduct", ≤12h → "ghost", else "missing". At/above 100%:
+                // EXTRA hours banked (balanceSeconds) <3h "ontime", <8h "workaholic",
+                // <12h "slave", else "gohome". The two secret ranks at the
                 // ends ("missing", "gohome") need SECRET_TIER_MIN_DAYS working days
                 // (present or absent) gone; before that they stop one rank short.
                 const secretTierReady = acc.presentDays + acc.absentDays >= SECRET_TIER_MIN_DAYS;
                 let tier;
                 if (progressPercentRaw < 100) {
                     tier = progressGapSeconds <= 3 * 3600 ? "close"
-                        : progressGapSeconds <= 10 * 3600 ? "deduct"
-                        : progressGapSeconds <= 15 * 3600 || !secretTierReady ? "ghost"
+                        : progressGapSeconds <= 8 * 3600 ? "deduct"
+                        : progressGapSeconds <= 12 * 3600 || !secretTierReady ? "ghost"
                         : "missing";
                 } else if (balanceSeconds < 3 * 3600) {
                     tier = "ontime";
                 } else if (balanceSeconds < 8 * 3600) {
                     tier = "workaholic";
-                } else if (balanceSeconds < 15 * 3600) {
-                    tier = "grass";
-                } else if (balanceSeconds < 20 * 3600 || !secretTierReady) {
+                } else if (balanceSeconds < 12 * 3600 || !secretTierReady) {
                     tier = "slave";
                 } else {
                     tier = "gohome";
@@ -10419,12 +10418,12 @@ function staffAttendance(S) {
                     .gius-att-tier-ghost{background:#e2e8f0;color:#334155;} .gius-att-tier-deduct{background:#ffe4e6;color:#9f1239;} .gius-att-tier-close{background:#fff3da;color:#92600a;}
                     .gius-att-tier-ontime{background:#dcfce7;color:#166534;} .gius-att-tier-workaholic{background:#ffedd5;color:#9a3412;}
                     .gius-att-tier-grass{background:#ecfccb;color:#3f6212;} .gius-att-tier-slave{background:#fae8ff;color:#86198f;}
-                    .gius-att-tier-missing{background:#1f2937;color:#f9fafb;} .gius-att-tier-gohome{background:#e0e7ff;color:#3730a3;}
+                    .gius-att-tier-missing{background:#1f2937;color:#f9fafb;} .gius-att-tier-gohome{background:#ecfccb;color:#3f6212;}
                     .gius-att-tier-pink{background:#fce7f3;color:#be185d;}
                     html.gius-dark .gius-att-tier-ghost{background:#2a3040;color:#b6c2d9;} html.gius-dark .gius-att-tier-deduct{background:#3a1220;color:#f7a8c0;} html.gius-dark .gius-att-tier-close{background:#3a2c10;color:#f9d77e;}
                     html.gius-dark .gius-att-tier-ontime{background:#14351f;color:#a6e3a1;} html.gius-dark .gius-att-tier-workaholic{background:#3a1f10;color:#fdba74;}
                     html.gius-dark .gius-att-tier-grass{background:#1f2d0a;color:#bef264;} html.gius-dark .gius-att-tier-slave{background:#2e1230;color:#f0abfc;}
-                    html.gius-dark .gius-att-tier-missing{background:#e5e7eb;color:#111827;} html.gius-dark .gius-att-tier-gohome{background:#1e1b4b;color:#c7d2fe;}
+                    html.gius-dark .gius-att-tier-missing{background:#e5e7eb;color:#111827;} html.gius-dark .gius-att-tier-gohome{background:#1f2d0a;color:#bef264;}
                     html.gius-dark .gius-att-bar-missing{background:#e5e7eb;}
                     html.gius-dark .gius-att-tier-pink{background:#3d0f2b;color:#f9a8d4;} html.gius-dark .gius-att-bar-pink,html.gius-dark .gius-att-dot-pink{background:#f472b6;}
                 `;
@@ -10456,7 +10455,7 @@ function staffAttendance(S) {
                     .gius-att-bar-fill{height:100%;border-radius:6px;}
                     .gius-att-bar-ghost{background:#64748b;} .gius-att-bar-deduct{background:#e11d48;} .gius-att-bar-close{background:#f59e0b;} .gius-att-bar-ontime{background:#16a34a;}
                     .gius-att-bar-workaholic{background:#ea580c;} .gius-att-bar-grass{background:#65a30d;} .gius-att-bar-slave{background:#a21caf;}
-                    .gius-att-bar-missing{background:#111827;} .gius-att-bar-gohome{background:#4338ca;} .gius-att-bar-pink{background:#db2777;}
+                    .gius-att-bar-missing{background:#111827;} .gius-att-bar-gohome{background:#65a30d;} .gius-att-bar-pink{background:#db2777;}
                     .gius-att-tierwrap{margin-top:10px;}
                     .gius-att-quip{margin-top:6px;font-size:12.5px;font-style:italic;color:#6b7280;}
                     html.gius-dark .gius-att-quip{color:#9399b2;}
@@ -10480,7 +10479,7 @@ function staffAttendance(S) {
                     .gius-att-dot{flex:0 0 auto;width:14px;height:14px;border-radius:50%;margin-top:3px;}
                     .gius-att-dot-ghost{background:#64748b;} .gius-att-dot-deduct{background:#e11d48;} .gius-att-dot-close{background:#f59e0b;} .gius-att-dot-ontime{background:#16a34a;}
                     .gius-att-dot-workaholic{background:#ea580c;} .gius-att-dot-grass{background:#65a30d;} .gius-att-dot-slave{background:#a21caf;}
-                    .gius-att-dot-missing{background:#111827;} .gius-att-dot-gohome{background:#4338ca;} .gius-att-dot-pink{background:#db2777;}
+                    .gius-att-dot-missing{background:#111827;} .gius-att-dot-gohome{background:#65a30d;} .gius-att-dot-pink{background:#db2777;}
                     html.gius-dark .gius-att-dot-missing{background:#e5e7eb;}
                     .gius-att-trow-main{flex:1 1 auto;min-width:0;}
                     .gius-att-trow-name{font-weight:800;font-size:13.5px;display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
@@ -10713,7 +10712,7 @@ function staffAttendance(S) {
                     ghost: "👻 Ghosting GIU", deduct: "💸 Paycheck Hit",
                     close: "😅 Cutting It Close",
                     ontime: "✅ Perfectly Mid", workaholic: "💪 Workaholic",
-                    grass: "🌱 Get a Life", slave: "⛏️ Officially a Slave",
+                    slave: "⛏️ Officially a Slave",
                     gohome: "🏠 Go Home"
                 };
                 const themeTier = homeRankTheme();
@@ -10721,17 +10720,16 @@ function staffAttendance(S) {
                 // Colour set per rank: its own, or the local theme's.
                 const TIER_LOOKS = {};
                 if (themeTier) TIER_LOOKS[themeTier.tier] = themeTier.look;
-                const TIER_ORDER = ["missing", "ghost", "deduct", "close", "ontime", "workaholic", "grass", "slave", "gohome"];
+                const TIER_ORDER = ["missing", "ghost", "deduct", "close", "ontime", "workaholic", "slave", "gohome"];
                 const TIER_CONDS = {
-                    missing: "Behind by more than 15 hours",
-                    ghost: "Behind by 10 to 15 hours",
-                    deduct: "Behind by 3 to 10 hours",
+                    missing: "Behind by more than 12 hours",
+                    ghost: "Behind by 8 to 12 hours",
+                    deduct: "Behind by 3 to 8 hours",
                     close: "Behind by up to 3 hours",
                     ontime: "100% covered, under +3h extra",
                     workaholic: "+3 to +8 hours extra",
-                    grass: "+8 to +15 hours extra",
-                    slave: "+15 to +20 hours extra",
-                    gohome: "+20 hours extra or more"
+                    slave: "+8 to +12 hours extra",
+                    gohome: "+12 hours extra or more"
                 };
                 const TIER_QUIPS = {
                     missing: [
@@ -10768,13 +10766,8 @@ function staffAttendance(S) {
                         "Someone tell you weekends exist?",
                         "The overtime is overtiming."
                     ],
-                    grass: [
-                        "Sunlight: theoretical concept for you.",
-                        "You've banked a small vacation.",
-                        "Nobody asked for this much dedication.",
-                        "Diminishing returns on effort."
-                    ],
                     slave: [
+                        "Sunlight: theoretical concept for you.",
                         "GIU should be paying rent in your life.",
                         "At this point, bring a sleeping bag.",
                         "Officially married to the gate scanner."
@@ -10900,8 +10893,8 @@ function staffAttendance(S) {
             // The two secret ranks (hidden from the rank list until reached) and
             // their one-time popup copy; null for every other rank.
             function homeSecretTierCopy(tier) {
-                if (tier === "missing") return { emoji: "🪦", ok: "I'm on it", text: "You're more than 15 hours behind, with at least 10 working days gone. Few people find this rank, and nobody wants to keep it. A few solid days get you out: Plan my days on the full report shows when to come in and leave to catch up." };
-                if (tier === "gohome") return { emoji: "🏠", ok: "Will do", text: "You're 20 or more hours ahead, with at least 10 working days done. That's more than enough for this month, so take it easy: Plan my days on the full report shows how early you can leave and still end even." };
+                if (tier === "missing") return { emoji: "🪦", ok: "I'm on it", text: "You're more than 12 hours behind, with at least 10 working days gone. Few people find this rank, and nobody wants to keep it. A few solid days get you out: Plan my days on the full report shows when to come in and leave to catch up." };
+                if (tier === "gohome") return { emoji: "🏠", ok: "Will do", text: "You're 12 or more hours ahead, with at least 10 working days done. That's more than enough for this month, so take it easy: Plan my days on the full report shows how early you can leave and still end even." };
                 return null;
             }
 
@@ -10935,6 +10928,7 @@ function staffAttendance(S) {
             // restyles that rank. Home and the full report both use this.
             function displayTier(rawTier) {
                 let tier = rawTier || "ontime";
+                if (tier === "grass") tier = "slave"; // retired rank, still in older cached summaries
                 if (homeSecretTierCopy(tier) && !secretTiersAllowed()) tier = tier === "missing" ? "ghost" : "slave";
                 const theme = homeRankTheme();
                 return { tier, look: theme && theme.tier === tier ? theme.look : tier };

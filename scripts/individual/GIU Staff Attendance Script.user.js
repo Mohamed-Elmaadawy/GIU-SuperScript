@@ -5,7 +5,7 @@
 // @icon        data:image/png;base64,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
 // @match       https://portal.giu-uni.de/*
 // @namespace   Cyn0
-// @version     4.0
+// @version     4.1
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @grant       none
@@ -6800,25 +6800,24 @@ function staffAttendance(S) {
 
                 // Home-widget tier — computed here so the breakpoints live with the math and
                 // never drift from the view (single source for Home + any future surface).
-                // Below 100%: gap ≤3h → "close", ≤10h → "deduct", ≤15h → "ghost", else
-                // "missing". At/above 100%: escalate by EXTRA hours banked
-                // (balanceSeconds), +3h/+8h/+15h/+20h. The two secret ranks at the
+                // Mirrored steps of 3h / 8h / 12h. Below 100%: gap ≤3h → "close",
+                // ≤8h → "deduct", ≤12h → "ghost", else "missing". At/above 100%:
+                // EXTRA hours banked (balanceSeconds) <3h "ontime", <8h "workaholic",
+                // <12h "slave", else "gohome". The two secret ranks at the
                 // ends ("missing", "gohome") need SECRET_TIER_MIN_DAYS working days
                 // (present or absent) gone; before that they stop one rank short.
                 const secretTierReady = acc.presentDays + acc.absentDays >= SECRET_TIER_MIN_DAYS;
                 let tier;
                 if (progressPercentRaw < 100) {
                     tier = progressGapSeconds <= 3 * 3600 ? "close"
-                        : progressGapSeconds <= 10 * 3600 ? "deduct"
-                        : progressGapSeconds <= 15 * 3600 || !secretTierReady ? "ghost"
+                        : progressGapSeconds <= 8 * 3600 ? "deduct"
+                        : progressGapSeconds <= 12 * 3600 || !secretTierReady ? "ghost"
                         : "missing";
                 } else if (balanceSeconds < 3 * 3600) {
                     tier = "ontime";
                 } else if (balanceSeconds < 8 * 3600) {
                     tier = "workaholic";
-                } else if (balanceSeconds < 15 * 3600) {
-                    tier = "grass";
-                } else if (balanceSeconds < 20 * 3600 || !secretTierReady) {
+                } else if (balanceSeconds < 12 * 3600 || !secretTierReady) {
                     tier = "slave";
                 } else {
                     tier = "gohome";
@@ -9272,12 +9271,12 @@ function staffAttendance(S) {
                     .gius-att-tier-ghost{background:#e2e8f0;color:#334155;} .gius-att-tier-deduct{background:#ffe4e6;color:#9f1239;} .gius-att-tier-close{background:#fff3da;color:#92600a;}
                     .gius-att-tier-ontime{background:#dcfce7;color:#166534;} .gius-att-tier-workaholic{background:#ffedd5;color:#9a3412;}
                     .gius-att-tier-grass{background:#ecfccb;color:#3f6212;} .gius-att-tier-slave{background:#fae8ff;color:#86198f;}
-                    .gius-att-tier-missing{background:#1f2937;color:#f9fafb;} .gius-att-tier-gohome{background:#e0e7ff;color:#3730a3;}
+                    .gius-att-tier-missing{background:#1f2937;color:#f9fafb;} .gius-att-tier-gohome{background:#ecfccb;color:#3f6212;}
                     .gius-att-tier-pink{background:#fce7f3;color:#be185d;}
                     html.gius-dark .gius-att-tier-ghost{background:#2a3040;color:#b6c2d9;} html.gius-dark .gius-att-tier-deduct{background:#3a1220;color:#f7a8c0;} html.gius-dark .gius-att-tier-close{background:#3a2c10;color:#f9d77e;}
                     html.gius-dark .gius-att-tier-ontime{background:#14351f;color:#a6e3a1;} html.gius-dark .gius-att-tier-workaholic{background:#3a1f10;color:#fdba74;}
                     html.gius-dark .gius-att-tier-grass{background:#1f2d0a;color:#bef264;} html.gius-dark .gius-att-tier-slave{background:#2e1230;color:#f0abfc;}
-                    html.gius-dark .gius-att-tier-missing{background:#e5e7eb;color:#111827;} html.gius-dark .gius-att-tier-gohome{background:#1e1b4b;color:#c7d2fe;}
+                    html.gius-dark .gius-att-tier-missing{background:#e5e7eb;color:#111827;} html.gius-dark .gius-att-tier-gohome{background:#1f2d0a;color:#bef264;}
                     html.gius-dark .gius-att-bar-missing{background:#e5e7eb;}
                     html.gius-dark .gius-att-tier-pink{background:#3d0f2b;color:#f9a8d4;} html.gius-dark .gius-att-bar-pink,html.gius-dark .gius-att-dot-pink{background:#f472b6;}
                 `;
@@ -9309,7 +9308,7 @@ function staffAttendance(S) {
                     .gius-att-bar-fill{height:100%;border-radius:6px;}
                     .gius-att-bar-ghost{background:#64748b;} .gius-att-bar-deduct{background:#e11d48;} .gius-att-bar-close{background:#f59e0b;} .gius-att-bar-ontime{background:#16a34a;}
                     .gius-att-bar-workaholic{background:#ea580c;} .gius-att-bar-grass{background:#65a30d;} .gius-att-bar-slave{background:#a21caf;}
-                    .gius-att-bar-missing{background:#111827;} .gius-att-bar-gohome{background:#4338ca;} .gius-att-bar-pink{background:#db2777;}
+                    .gius-att-bar-missing{background:#111827;} .gius-att-bar-gohome{background:#65a30d;} .gius-att-bar-pink{background:#db2777;}
                     .gius-att-tierwrap{margin-top:10px;}
                     .gius-att-quip{margin-top:6px;font-size:12.5px;font-style:italic;color:#6b7280;}
                     html.gius-dark .gius-att-quip{color:#9399b2;}
@@ -9333,7 +9332,7 @@ function staffAttendance(S) {
                     .gius-att-dot{flex:0 0 auto;width:14px;height:14px;border-radius:50%;margin-top:3px;}
                     .gius-att-dot-ghost{background:#64748b;} .gius-att-dot-deduct{background:#e11d48;} .gius-att-dot-close{background:#f59e0b;} .gius-att-dot-ontime{background:#16a34a;}
                     .gius-att-dot-workaholic{background:#ea580c;} .gius-att-dot-grass{background:#65a30d;} .gius-att-dot-slave{background:#a21caf;}
-                    .gius-att-dot-missing{background:#111827;} .gius-att-dot-gohome{background:#4338ca;} .gius-att-dot-pink{background:#db2777;}
+                    .gius-att-dot-missing{background:#111827;} .gius-att-dot-gohome{background:#65a30d;} .gius-att-dot-pink{background:#db2777;}
                     html.gius-dark .gius-att-dot-missing{background:#e5e7eb;}
                     .gius-att-trow-main{flex:1 1 auto;min-width:0;}
                     .gius-att-trow-name{font-weight:800;font-size:13.5px;display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
@@ -9566,7 +9565,7 @@ function staffAttendance(S) {
                     ghost: "👻 Ghosting GIU", deduct: "💸 Paycheck Hit",
                     close: "😅 Cutting It Close",
                     ontime: "✅ Perfectly Mid", workaholic: "💪 Workaholic",
-                    grass: "🌱 Get a Life", slave: "⛏️ Officially a Slave",
+                    slave: "⛏️ Officially a Slave",
                     gohome: "🏠 Go Home"
                 };
                 const themeTier = homeRankTheme();
@@ -9574,17 +9573,16 @@ function staffAttendance(S) {
                 // Colour set per rank: its own, or the local theme's.
                 const TIER_LOOKS = {};
                 if (themeTier) TIER_LOOKS[themeTier.tier] = themeTier.look;
-                const TIER_ORDER = ["missing", "ghost", "deduct", "close", "ontime", "workaholic", "grass", "slave", "gohome"];
+                const TIER_ORDER = ["missing", "ghost", "deduct", "close", "ontime", "workaholic", "slave", "gohome"];
                 const TIER_CONDS = {
-                    missing: "Behind by more than 15 hours",
-                    ghost: "Behind by 10 to 15 hours",
-                    deduct: "Behind by 3 to 10 hours",
+                    missing: "Behind by more than 12 hours",
+                    ghost: "Behind by 8 to 12 hours",
+                    deduct: "Behind by 3 to 8 hours",
                     close: "Behind by up to 3 hours",
                     ontime: "100% covered, under +3h extra",
                     workaholic: "+3 to +8 hours extra",
-                    grass: "+8 to +15 hours extra",
-                    slave: "+15 to +20 hours extra",
-                    gohome: "+20 hours extra or more"
+                    slave: "+8 to +12 hours extra",
+                    gohome: "+12 hours extra or more"
                 };
                 const TIER_QUIPS = {
                     missing: [
@@ -9621,13 +9619,8 @@ function staffAttendance(S) {
                         "Someone tell you weekends exist?",
                         "The overtime is overtiming."
                     ],
-                    grass: [
-                        "Sunlight: theoretical concept for you.",
-                        "You've banked a small vacation.",
-                        "Nobody asked for this much dedication.",
-                        "Diminishing returns on effort."
-                    ],
                     slave: [
+                        "Sunlight: theoretical concept for you.",
                         "GIU should be paying rent in your life.",
                         "At this point, bring a sleeping bag.",
                         "Officially married to the gate scanner."
@@ -9753,8 +9746,8 @@ function staffAttendance(S) {
             // The two secret ranks (hidden from the rank list until reached) and
             // their one-time popup copy; null for every other rank.
             function homeSecretTierCopy(tier) {
-                if (tier === "missing") return { emoji: "🪦", ok: "I'm on it", text: "You're more than 15 hours behind, with at least 10 working days gone. Few people find this rank, and nobody wants to keep it. A few solid days get you out: Plan my days on the full report shows when to come in and leave to catch up." };
-                if (tier === "gohome") return { emoji: "🏠", ok: "Will do", text: "You're 20 or more hours ahead, with at least 10 working days done. That's more than enough for this month, so take it easy: Plan my days on the full report shows how early you can leave and still end even." };
+                if (tier === "missing") return { emoji: "🪦", ok: "I'm on it", text: "You're more than 12 hours behind, with at least 10 working days gone. Few people find this rank, and nobody wants to keep it. A few solid days get you out: Plan my days on the full report shows when to come in and leave to catch up." };
+                if (tier === "gohome") return { emoji: "🏠", ok: "Will do", text: "You're 12 or more hours ahead, with at least 10 working days done. That's more than enough for this month, so take it easy: Plan my days on the full report shows how early you can leave and still end even." };
                 return null;
             }
 
@@ -9788,6 +9781,7 @@ function staffAttendance(S) {
             // restyles that rank. Home and the full report both use this.
             function displayTier(rawTier) {
                 let tier = rawTier || "ontime";
+                if (tier === "grass") tier = "slave"; // retired rank, still in older cached summaries
                 if (homeSecretTierCopy(tier) && !secretTiersAllowed()) tier = tier === "missing" ? "ghost" : "slave";
                 const theme = homeRankTheme();
                 return { tier, look: theme && theme.tier === tier ? theme.look : tier };
