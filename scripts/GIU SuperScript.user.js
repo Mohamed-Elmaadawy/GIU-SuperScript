@@ -5,7 +5,7 @@
 // @icon        data:image/png;base64,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
 // @namespace   Cyn0
 // @match       https://portal.giu-uni.de/*
-// @version     4.1
+// @version     4.2
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @grant       none
@@ -1588,13 +1588,33 @@ function renderAttendancePlanner(S, api, host) {
             // The one change on every planned day that evens the month out.
             const per = Math.ceil(Math.abs(plan.endBalanceSeconds) / plan.pinnedDays / 60) * 60;
             const n = plan.pinnedDays + " day" + (plan.pinnedDays === 1 ? "" : "s");
-            const atCap = plan.days.every(function (d) { return !d.pinned || d.outSeconds >= d.capSeconds; });
-            hint = mins < 0
-                ? "To break even: " + (atCap ? "" : "leave about <b>" + amount(per) + "</b> later or ") +
-                    "come about <b>" + amount(per) + "</b> earlier on each of the " + n + "."
-                : "You could leave about <b>" + amount(per) + "</b> earlier on each of the " + n + " and still end even.";
+            if (mins < 0) {
+                // Only suggest what fits every planned day: leaving later stops at
+                // the cap, coming earlier at the earliest check-in.
+                const pinned = plan.days.filter(function (d) { return d.pinned; });
+                const room = function (fn) { return Math.max(0, Math.min.apply(null, pinned.map(fn))); };
+                const lateRoom = Math.floor(room(function (d) { return d.capSeconds - d.outSeconds; }) / 60) * 60;
+                const earlyRoom = Math.floor(room(function (d) { return d.inSeconds - (d.earliestSeconds || 0); }) / 60) * 60;
+                const ways = [];
+                if (lateRoom >= per) ways.push("leave about <b>" + amount(per) + "</b> later");
+                if (earlyRoom >= per) ways.push("come about <b>" + amount(per) + "</b> earlier");
+                if (ways.length) {
+                    hint = "To break even: " + ways.join(" or ") + " on each of the " + n + ".";
+                } else if (lateRoom + earlyRoom >= per) {
+                    hint = "To break even: leave about <b>" + amount(lateRoom) + "</b> later and come about <b>" +
+                        amount(per - lateRoom) + "</b> earlier on each of the " + n + ".";
+                } else {
+                    hint = "Even the earliest check-in and latest check-out on each of the " + n + " isn't enough.";
+                }
+            } else {
+                hint = "You could leave about <b>" + amount(per) + "</b> earlier on each of the " + n + " and still end even.";
+            }
         } else if (mins < 0) {
-            hint = plan.freeDays ? "Even leaving at the latest time each day isn't enough." : "Change a time above to cover it.";
+            // Check-out mode is limited by the earliest check-in, check-in mode by the cap.
+            const byOut = plan.days.some(function (d) { return !d.pinned && d.anchor === "out"; });
+            hint = !plan.freeDays ? "Change a time above to cover it."
+                : byOut ? "Even coming in at the earliest time each day isn't enough."
+                : "Even leaving at the latest time each day isn't enough.";
         } else if (plan.freeDays && extra > 0) {
             hint = "Stay about <b>" + amount(plan.perDayExtraSeconds) + "</b> longer than a normal day on each of the next " + k + ".";
         } else if (plan.freeDays && extra < 0) {
@@ -1750,6 +1770,8 @@ function renderAttendancePlanner(S, api, host) {
             //  Constants & Storage Keys
             // ═══════════════════════════════════════════════════════════
 
+            // Last-resort Ramadan when the browser has no Islamic calendar (see
+            // computeRamadanRange); every current browser has one.
             const DEFAULT_RAMADAN_START = "2026-02-19";
             const DEFAULT_RAMADAN_END = "2026-03-19";
 
@@ -2298,6 +2320,10 @@ function renderAttendancePlanner(S, api, host) {
                     rejected: 0,
                     notes: []
                 };
+                // Undo of the import restores the lists as they were before it.
+                ["holidays", "compensation", "overrides"].forEach(function (scope) { saveUndoSnapshot(scope, "Import settings"); });
+                const importedDayValid = typeof snapshot.selectedDay === "string" &&
+                    WEEKDAY_TABLE.some(function (wd) { return wd.code === snapshot.selectedDay; });
 
                 // snapshot.branch (fixed per script now) and snapshot.dayOffAutoState
                 // (removed day-off auto-detection) may appear in older files; both
@@ -2311,9 +2337,12 @@ function renderAttendancePlanner(S, api, host) {
                         report.notes.push("Campus switch date invalid.");
                     }
                 }
-                if (typeof snapshot.selectedDay === "string") {
+                if (importedDayValid) {
                     localStorage.setItem(STORAGE_KEYS.selectedDay, snapshot.selectedDay);
                     report.accepted += 1;
+                } else if (snapshot.selectedDay != null && snapshot.selectedDay !== "") {
+                    report.rejected += 1;
+                    report.notes.push("Day off invalid.");
                 }
                 if (Array.isArray(snapshot.dayOffSchedule)) {
                     const before = snapshot.dayOffSchedule.length;
@@ -2330,8 +2359,14 @@ function renderAttendancePlanner(S, api, host) {
                     report.rejected += Math.max(0, before - after);
                 }
                 if (snapshot.annualLeaveBalance != null) {
-                    setStoredAnnualLeaveBalance(snapshot.annualLeaveBalance);
-                    report.accepted += 1;
+                    const balance = Number(snapshot.annualLeaveBalance);
+                    if (Number.isFinite(balance) && balance >= 0) {
+                        setStoredAnnualLeaveBalance(balance);
+                        report.accepted += 1;
+                    } else {
+                        report.rejected += 1;
+                        report.notes.push("Annual leave balance invalid.");
+                    }
                 }
                 // Older files have no accrual rate; the stored one is kept then.
                 if (snapshot.annualLeaveAccrualRate != null) {
@@ -2375,7 +2410,7 @@ function renderAttendancePlanner(S, api, host) {
                     const end = normalizeYMD(ep.end || "");
                     const capHour = Number(ep.capHour);
                     const capMinute = Number(ep.capMinute);
-                    if (start && end && start <= end && Number.isFinite(capHour) && Number.isFinite(capMinute)) {
+                    if (start && end && start <= end && Number.isFinite(capHour) && capHour >= 12 && capHour <= 23 && Number.isFinite(capMinute)) {
                         setStoredExamPeriod(start, end, capHour, capMinute);
                         report.accepted += 1;
                     } else {
@@ -2411,7 +2446,7 @@ function renderAttendancePlanner(S, api, host) {
                 }
                 // A settings file with a day off restores a set-up state, so setup
                 // counts as done (secret ranks may unlock).
-                if (typeof snapshot.selectedDay === "string" && snapshot.selectedDay) setSetupFlag("done");
+                if (importedDayValid) setSetupFlag("done");
                 // Secret ranks already reached stay reached (merged, never removed).
                 if (snapshot.secretTiersSeen && typeof snapshot.secretTiersSeen === "object") {
                     const seen = homeSecretTiersSeen();
@@ -2425,22 +2460,60 @@ function renderAttendancePlanner(S, api, host) {
                 return report;
             }
 
+            // Ramadan (Islamic month 9, Umm al-Qura calendar) nearest to `ymd`, as
+            // { start, end } YMD strings; null when Intl lacks the calendar. Egypt can
+            // start a day later than Umm al-Qura, so users may still adjust the dates.
+            const ramadanRangeCache = {};
+            function computeRamadanRange(ymd) {
+                if (ramadanRangeCache[ymd] !== undefined) return ramadanRangeCache[ymd];
+                let result = null;
+                try {
+                    const fmt = new Intl.DateTimeFormat("en-u-ca-islamic-umalqura", { month: "numeric", timeZone: "UTC" });
+                    if (fmt.resolvedOptions().calendar !== "islamic-umalqura") throw new Error("no calendar");
+                    const month = d => Number(fmt.formatToParts(d).find(p => p.type === "month").value);
+                    const toYmd = d => d.toISOString().slice(0, 10);
+                    const base = new Date(ymd + "T00:00:00Z");
+                    const ranges = [];
+                    let start = null;
+                    // A Hijri year is ~354 days, so ±400 days always holds the
+                    // Ramadan before and after `ymd`.
+                    for (let i = -400; i <= 400; i++) {
+                        const d = new Date(base.getTime() + i * 86400000);
+                        if (month(d) === 9) { if (!start) start = d; }
+                        else if (start) { ranges.push({ start: toYmd(start), end: toYmd(new Date(d.getTime() - 86400000)) }); start = null; }
+                    }
+                    const year = ymd.slice(0, 4);
+                    const dist = r => (ymd < r.start ? Date.parse(r.start) - base : ymd > r.end ? base - Date.parse(r.end) : 0);
+                    ranges.sort((a, b) => (a.start.slice(0, 4) === year ? 0 : 1) - (b.start.slice(0, 4) === year ? 0 : 1) || dist(a) - dist(b));
+                    result = ranges[0] || null;
+                } catch { result = null; }
+                ramadanRangeCache[ymd] = result;
+                return result;
+            }
+
+            function getDefaultRamadan() {
+                return computeRamadanRange(getTodayLocalYMD()) || { start: DEFAULT_RAMADAN_START, end: DEFAULT_RAMADAN_END };
+            }
+
+            // A saved range applies only to its own year; after that the computed
+            // default for the current year takes over.
             function getStoredRamadan() {
                 try {
                     const raw = localStorage.getItem(STORAGE_KEYS.ramadan);
-                    if (!raw) return { start: DEFAULT_RAMADAN_START, end: DEFAULT_RAMADAN_END };
+                    if (!raw) return getDefaultRamadan();
                     const parsed = JSON.parse(raw);
                     if (
                         parsed &&
                         /^\d{4}-\d{2}-\d{2}$/.test(parsed.start || "") &&
                         /^\d{4}-\d{2}-\d{2}$/.test(parsed.end || "") &&
-                        parsed.start <= parsed.end
+                        parsed.start <= parsed.end &&
+                        parsed.start.slice(0, 4) === getTodayLocalYMD().slice(0, 4)
                     ) {
                         return { start: parsed.start, end: parsed.end };
                     }
-                    return { start: DEFAULT_RAMADAN_START, end: DEFAULT_RAMADAN_END };
+                    return getDefaultRamadan();
                 } catch {
-                    return { start: DEFAULT_RAMADAN_START, end: DEFAULT_RAMADAN_END };
+                    return getDefaultRamadan();
                 }
             }
 
@@ -2535,6 +2608,21 @@ function renderAttendancePlanner(S, api, host) {
                 return `${y}-${pad2(m)}-11`;
             }
 
+            // A holiday/annual entry is expired once it ends before the retention cutoff.
+            function isHolidayEntryExpired(h, cutoffStart) {
+                if (!h) return true;
+                if (h.type === "single") {
+                    const d = normalizeYMD(h.date);
+                    return !d || d < cutoffStart;
+                }
+                if (h.type === "range") {
+                    const start = normalizeYMD(h.start);
+                    const end = normalizeYMD(h.end);
+                    return !start || !end || end < cutoffStart;
+                }
+                return false;
+            }
+
             function pruneOldRecords() {
                 const cutoffStart = getRetentionCutoffStartDate();
                 if (!cutoffStart) return;
@@ -2550,7 +2638,7 @@ function renderAttendancePlanner(S, api, host) {
                         const d = normalizeYMD(h.date);
                         if (!d) return false;
                         if (d < cutoffStart) {
-                            if (h.category === "annual") prunedAnnualDays += 1;
+                            if (h.category === "annual" && isAnnualLeaveChargeable(d, holidays)) prunedAnnualDays += 1;
                             return false;
                         }
                         return true;
@@ -2561,7 +2649,9 @@ function renderAttendancePlanner(S, api, host) {
                         if (!start || !end) return false;
                         if (end < cutoffStart) {
                             if (h.category === "annual" && start <= end) {
-                                eachYmdInRange(start, end, function () { prunedAnnualDays += 1; });
+                                eachYmdInRange(start, end, function (d) {
+                                    if (isAnnualLeaveChargeable(d, holidays)) prunedAnnualDays += 1;
+                                });
                             }
                             return false;
                         }
@@ -2631,7 +2721,9 @@ function renderAttendancePlanner(S, api, host) {
                 });
                 count += getStoredOverrides().filter(function (o) { return normalizeYMD(o.date) < cutoffStart; }).length;
                 count += getStoredCompensationLeaves().filter(function (c) { return normalizeYMD(c.date) < cutoffStart; }).length;
-                count += getStoredDayOffSchedule().filter(function (s) { return normalizeYMD(s.startDate) < cutoffStart; }).length;
+                // The cleanup keeps the newest pre-cutoff day-off entry (it still
+                // decides retained dates), so it is not counted.
+                count += Math.max(0, getStoredDayOffSchedule().filter(function (s) { return normalizeYMD(s.startDate) < cutoffStart; }).length - 1);
                 return count;
             }
 
@@ -2905,12 +2997,18 @@ function renderAttendancePlanner(S, api, host) {
                     return { ok: false, message: "No action to undo yet." };
                 }
                 const snap = meta.snapshot;
+                // Entries cleaned up since the snapshot stay gone: restoring them would
+                // let the next cleanup charge their annual days to the balance again.
+                const cutoffStart = getRetentionCutoffStartDate();
+                const live = function (date) { const d = normalizeYMD(date); return !cutoffStart || (!!d && d >= cutoffStart); };
                 if (scope === "holidays") {
-                    setStoredHolidays(Array.isArray(snap.holidays) ? snap.holidays : []);
+                    setStoredHolidays((Array.isArray(snap.holidays) ? snap.holidays : []).filter(function (h) {
+                        return !cutoffStart || !isHolidayEntryExpired(h, cutoffStart);
+                    }));
                 } else if (scope === "compensation") {
-                    setStoredCompensationLeaves(Array.isArray(snap.compensationLeaves) ? snap.compensationLeaves : []);
+                    setStoredCompensationLeaves((Array.isArray(snap.compensationLeaves) ? snap.compensationLeaves : []).filter(function (c) { return c && live(c.date); }));
                 } else if (scope === "overrides") {
-                    setStoredOverrides(Array.isArray(snap.overrides) ? snap.overrides : []);
+                    setStoredOverrides((Array.isArray(snap.overrides) ? snap.overrides : []).filter(function (o) { return o && live(o.date); }));
                 } else {
                     return { ok: false, message: "Unsupported undo scope." };
                 }
@@ -3096,6 +3194,39 @@ function renderAttendancePlanner(S, api, host) {
                 const category = entry.category === "annual" ? "annual" : "holiday";
                 if (entry.type === "single") return `${category}:single:${entry.date}`;
                 return `${category}:range:${entry.start}:${entry.end}`;
+            }
+
+            // Removes one date from the holiday list: a single entry on that date
+            // goes, a range containing it is split around it.
+            function removeDateFromHolidays(holidays, date) {
+                const shift = function (ymd, days) {
+                    const d = new Date(ymd + "T00:00:00Z");
+                    d.setUTCDate(d.getUTCDate() + days);
+                    return d.toISOString().slice(0, 10);
+                };
+                const piece = function (h, start, end) {
+                    if (start > end) return null;
+                    if (start === end) return { type: "single", category: h.category, date: start };
+                    return Object.assign({}, h, { start: start, end: end });
+                };
+                const out = [];
+                (holidays || []).forEach(function (h) {
+                    if (!h) return;
+                    if (h.type === "single") {
+                        if (normalizeYMD(h.date) !== date) out.push(h);
+                        return;
+                    }
+                    if (h.type === "range") {
+                        const start = normalizeYMD(h.start);
+                        const end = normalizeYMD(h.end);
+                        if (!start || !end) return;
+                        if (date < start || date > end) { out.push(h); return; }
+                        [piece(h, start, shift(date, -1)), piece(h, shift(date, 1), end)].forEach(function (p) { if (p) out.push(p); });
+                        return;
+                    }
+                    out.push(h);
+                });
+                return out;
             }
 
             function isDateHoliday(date, holidays) {
@@ -5382,17 +5513,7 @@ function renderAttendancePlanner(S, api, host) {
                     actions.style.display = "inline-flex";
                     actions.style.gap = "4px";
                     const removeHolidayBtn = createUiButton("Drop Holiday", "giu-comp-action-btn", function () {
-                        const updated = getStoredHolidays().filter(function (h) {
-                            if (!h) return false;
-                            if (h.type === "single") return normalizeYMD(h.date) !== item.date;
-                            if (h.type === "range") {
-                                const start = normalizeYMD(h.start);
-                                const end = normalizeYMD(h.end);
-                                if (!start || !end) return false;
-                                return !(item.date >= start && item.date <= end);
-                            }
-                            return true;
-                        });
+                        const updated = removeDateFromHolidays(getStoredHolidays(), item.date);
                         saveUndoSnapshot("holidays", `Conflict quick-fix ${item.date}`);
                         setStoredHolidays(updated);
                         renderEnhancedUI();
@@ -5514,6 +5635,21 @@ function renderAttendancePlanner(S, api, host) {
                 return scheduleTableWrap;
             }
 
+            // Annual leave is charged on working days only: the fixed off-day, the
+            // weekly day off in effect on that date and public holidays are free.
+            function isAnnualLeaveChargeable(ymd, holidays) {
+                const dayName = formatDateToDayName(ymd);
+                if (!dayName) return true;
+                if (isFixedNonWorkingDay(dayName, ymd)) return false;
+                const dayOff = getDayOffFullNameForDate(ymd, getSelectedDayOffCode());
+                if (dayOff && dayName === dayOff) return false;
+                return !(holidays || []).some(function (h) {
+                    if (!h || h.category === "annual") return false;
+                    if (h.type === "single") return normalizeYMD(h.date) === ymd;
+                    return h.type === "range" && isBetweenDates(h.start, h.end, ymd);
+                });
+            }
+
             function computeAnnualUsedDays(holidayEntries) {
                 const usedSet = new Set();
                 (holidayEntries || []).forEach(function (entry) {
@@ -5530,7 +5666,9 @@ function renderAttendancePlanner(S, api, host) {
                         eachYmdInRange(s, e, function (d) { usedSet.add(d); });
                     }
                 });
-                return usedSet.size;
+                let used = 0;
+                usedSet.forEach(function (d) { if (isAnnualLeaveChargeable(d, holidayEntries)) used += 1; });
+                return used;
             }
 
             function createAnnualLeaveBalanceBox() {
@@ -5809,6 +5947,10 @@ function renderAttendancePlanner(S, api, host) {
                     let capH24 = capH12;
                     if (ampm === "AM" && capH12 === 12) capH24 = 0;
                     if (ampm === "PM" && capH12 !== 12) capH24 = capH12 + 12;
+                    if (capH24 < 12) {
+                        alert("The exam cap must be 12:00 PM or later.");
+                        return;
+                    }
                     setStoredExamPeriod(startInput.value, endInput.value, capH24, capM);
                     renderEnhancedUI();
                 });
@@ -6036,6 +6178,37 @@ function renderAttendancePlanner(S, api, host) {
                 return container;
             }
 
+            // A missing day sent here by a "Mission" button (report or Home). The
+            // override form opens with the date and reason filled; the user picks
+            // the type (and hours) and clicks Add.
+            const MISSION_PENDING_KEY = "giuAttPendingMissionV1";
+            let pendingMissionDate = "";
+
+            function openMissionOverride(date) {
+                const ymd = normalizeYMD(date);
+                if (!ymd) return;
+                pendingMissionDate = ymd;
+                setSectionExpanded("overrides", true);
+                renderEnhancedUI();
+                expandSettingsPanelForGuide();
+                const section = document.querySelector("#giu-attendance-container .giu-override-section");
+                if (section) {
+                    section.scrollIntoView({ behavior: "smooth", block: "center" });
+                    const type = section.querySelector("#giu-override-type");
+                    if (type) type.focus({ preventScroll: true });
+                }
+            }
+
+            // Home hands the date over in sessionStorage and opens the report.
+            function takePendingMissionFromHome() {
+                let date = "";
+                try {
+                    date = sessionStorage.getItem(MISSION_PENDING_KEY) || "";
+                    sessionStorage.removeItem(MISSION_PENDING_KEY);
+                } catch { /* storage blocked */ }
+                if (date) setTimeout(function () { openMissionOverride(date); }, 0);
+            }
+
             function createOverrideSection() {
                 const section = document.createElement("div");
                 section.className = "giu-override-section";
@@ -6064,6 +6237,12 @@ function renderAttendancePlanner(S, api, host) {
                 });
                 const reasonInput = createUiInput("text", "giu-override-reason", { placeholder: "Reason (optional)" });
                 const noteInput = createUiInput("text", "giu-override-note", { placeholder: "Note (optional)" });
+
+                if (pendingMissionDate) {
+                    dateInput.value = pendingMissionDate;
+                    reasonInput.value = "Mission";
+                    pendingMissionDate = "";
+                }
 
                 typeSelect.addEventListener("change", function () {
                     const show = typeSelect.value === "custom_actual" ? "" : "none";
@@ -6815,6 +6994,9 @@ function renderAttendancePlanner(S, api, host) {
                         if (firstInSeconds !== null && firstInSeconds < cap) {
                             const cappedDuration = cap - firstInSeconds;
                             durationSeconds = Math.min(durationSeconds, cappedDuration);
+                        } else if (firstInSeconds !== null) {
+                            // The whole stay is after the cap: HR counts none of it.
+                            durationSeconds = 0;
                         }
                     }
                 }
@@ -7158,7 +7340,8 @@ function renderAttendancePlanner(S, api, host) {
                 const holidayDateSet = getHolidayDatesInPeriod(holidays, periodStart, periodEnd);
                 const annualDateSet = getAnnualLeaveDateSet(holidays, periodStart, periodEnd);
                 const holidayDays = holidayDateSet.size - annualDateSet.size;
-                const annualLeaveDays = annualDateSet.size;
+                let annualLeaveDays = 0;
+                annualDateSet.forEach(function (d) { if (isAnnualLeaveChargeable(d, holidays)) annualLeaveDays += 1; });
 
                 const { rowByDate, overrideByDate, compensationByDate } =
                     buildDateLookupMaps(periodRows, overrides, compensationLeaves);
@@ -7747,12 +7930,18 @@ function renderAttendancePlanner(S, api, host) {
 
                 // "Add as:" and its pills stay together as one group, so a narrow
                 // box moves the whole group to its own line.
+                const missionBtn = createUiButton("Mission", "giu-absent-holiday-btn giu-absent-mission-btn", stopProp(function () {
+                    openMissionOverride(date);
+                }));
+                missionBtn.title = "Open Attendance Overrides with this date filled in";
+
                 const addAs = document.createElement("span");
                 addAs.className = "giu-absent-addas";
                 addAs.appendChild(addAsLabel);
                 addAs.appendChild(makeHolidayBtn);
                 addAs.appendChild(makeAnnualBtn);
                 addAs.appendChild(addCompBtn);
+                addAs.appendChild(missionBtn);
 
                 right.appendChild(note);
                 right.appendChild(addAs);
@@ -9163,6 +9352,8 @@ function renderAttendancePlanner(S, api, host) {
                 reportTable.parentNode.insertBefore(container, reportTable);
                 window.scrollTo({ top: renderState.scrollY, behavior: "auto" });
 
+                takePendingMissionFromHome();
+
                 // First run: the setup wizard (it holds the guide back until it closes).
                 maybeAutoOpenSetup();
 
@@ -9533,6 +9724,9 @@ function renderAttendancePlanner(S, api, host) {
                             homeAddAbsentHolidayEntry(date, "annual");
                         } else if (action === "compensation") {
                             homeAddAbsentCompensationEntry(date);
+                        } else if (action === "mission") {
+                            try { sessionStorage.setItem(MISSION_PENDING_KEY, date); } catch { /* storage blocked */ }
+                            location.href = REPORT_VIEW_URL;
                         }
                     });
                 });
@@ -9811,7 +10005,11 @@ function renderAttendancePlanner(S, api, host) {
                 return el;
             }
 
+            // The newest widget data: a late rank-theme redraw uses it, not the data
+            // of the render that started the theme check.
+            let homeLatestWidgetArgs = null;
             function renderHomeWidget(summary, opts) {
+                homeLatestWidgetArgs = { summary: summary, opts: opts };
                 noteAttendanceFirstSeen();
                 opts = opts || {};
                 homeInjectStyles();
@@ -9928,6 +10126,7 @@ function renderAttendancePlanner(S, api, host) {
                                             <button type="button" class="gius-att-action gius-btn" data-date="${date}" data-gius-home-absent-action="holiday">Holiday</button>
                                             <button type="button" class="gius-att-action gius-btn" data-date="${date}" data-gius-home-absent-action="annual">Annual</button>
                                             <button type="button" class="gius-att-action gius-btn" data-date="${date}" data-gius-home-absent-action="compensation">Comp</button>
+                                            <button type="button" class="gius-att-action gius-btn" data-date="${date}" data-gius-home-absent-action="mission" title="Open Attendance Overrides on the report with this date filled in">Mission</button>
                                         </span>
                                     </div>`;
                                 }).join("")}
@@ -9944,7 +10143,7 @@ function renderAttendancePlanner(S, api, host) {
                             <span class="gius-att-balance ${tierClass}">${homeEsc(homeBalanceText(st))}</span></div>
                         <div class="gius-att-bar"><div class="gius-att-bar-fill ${barClass}" style="width:${barWidth}%"></div></div>
                         <div class="gius-att-meta">${pctRaw}% covered &middot; Present ${st.presentDays} &middot; Absent ${st.absentDays} &middot; ${homeEsc(summary.label || "")}</div>
-                        <div class="gius-att-tierwrap"><button type="button" class="gius-att-tier gius-att-tier-btn ${tierClass} gius-btn${tierHintSeen ? " gius-att-tier-seen" : ""}" id="gius-att-tier-btn" title="See all tiers">${tierName}</button></div>
+                        <div class="gius-att-tierwrap"><button type="button" class="gius-att-tier gius-att-tier-btn ${tierClass} gius-btn${tierHintSeen ? " gius-att-tier-seen" : ""}" id="gius-att-tier-btn" title="See all tiers">${homeEsc(tierName)}</button></div>
                         <div class="gius-att-quip">${homeEsc(tierQuip)}</div>
                         ${leaveBy ? `<div class="gius-att-plan"><span>${homeEsc(leaveBy.verb)} today by</span><b>${homeEsc(leaveBy.time)}</b></div>` : ""}
                     </div>
@@ -9988,7 +10187,8 @@ function renderAttendancePlanner(S, api, host) {
                 homeRankThemeReady().then(function (changed) {
                     if (changed && !homeRankThemeApplied) {
                         homeRankThemeApplied = true;
-                        renderHomeWidget(summary, opts);
+                        const latest = homeLatestWidgetArgs || { summary: summary, opts: opts };
+                        renderHomeWidget(latest.summary, latest.opts);
                         return;
                     }
                     if (!opts.stale && isDayOffConfigured() && homeSecretTierCopy(tier)) {
@@ -10014,7 +10214,7 @@ function renderAttendancePlanner(S, api, host) {
                 }
                 homeAttachAbsentActions(host);
                 Tips.show({ id: 'staffAttendance', el: host, title: 'Attendance — This Payroll Month',
-                    text: 'Your live attendance balance for the current payroll month. Expand absent days to file holiday, annual or compensation requests, or open the full report below.' });
+                    text: 'Your live attendance balance for the current payroll month. Expand absent days to file holiday, annual or compensation requests, mark a mission, or open the full report below.' });
             }
 
             // The two secret ranks (hidden from the rank list until reached) and
@@ -10095,7 +10295,7 @@ function renderAttendancePlanner(S, api, host) {
                     ${fx === "moon" ? '<div class="gius-att-stars"></div><div class="gius-att-bigmoon" aria-hidden="true">🌙</div>' : ""}
                     <div class="gius-att-sheet gius-att-unlock" role="dialog" aria-modal="true" aria-labelledby="gius-att-unlock-kicker">
                     ${fx === "king" ? '<div class="gius-att-shine" aria-hidden="true"></div>' : ""}
-                    <div class="gius-att-unlock-emoji" aria-hidden="true">${copy.emoji}</div>
+                    <div class="gius-att-unlock-emoji" aria-hidden="true">${homeEsc(copy.emoji)}</div>
                     <div class="gius-att-unlock-kicker" id="gius-att-unlock-kicker" aria-label="Secret rank unlocked">Secret rank unlocked</div>
                     <div><span class="gius-att-tier ${tierClass}">${homeEsc(name)}</span></div>
                     <p class="gius-att-unlock-text">${homeEsc(copy.text)}</p>
@@ -10231,7 +10431,7 @@ function renderAttendancePlanner(S, api, host) {
                     return `<div class="gius-att-trow${cur ? " cur" : ""}">
                         <span class="gius-att-dot gius-att-dot-${look}"></span>
                         <div class="gius-att-trow-main">
-                            <div class="gius-att-trow-name"><span class="gius-att-tier gius-att-tier-${look}">${names[t]}</span>${cur ? `<span class="gius-att-trow-cur">${userLabel}</span>` : ""}${homeSecretTierCopy(t) ? '<span class="gius-att-secret-tag">SECRET</span>' : ""}</div>
+                            <div class="gius-att-trow-name"><span class="gius-att-tier gius-att-tier-${look}">${homeEsc(names[t])}</span>${cur ? `<span class="gius-att-trow-cur">${userLabel}</span>` : ""}${homeSecretTierCopy(t) ? '<span class="gius-att-secret-tag">SECRET</span>' : ""}</div>
                             <div class="gius-att-trow-cond">${homeEsc(conds[t])}</div>
                         </div></div>`;
                 }).join("");
@@ -10287,6 +10487,8 @@ function renderAttendancePlanner(S, api, host) {
                     // (compensation, overrides, holidays, day-off, ramadan, exam) reflect
                     // immediately — the stored summary alone goes stale against localStorage
                     // even when the rows are current. Falls back to the summary for old caches.
+                    // The widget's leave-by line and absent-day actions read homeLastRows.
+                    if (Array.isArray(cache.rows)) homeLastRows = cache.rows;
                     const summary = Array.isArray(cache.rows)
                         ? computeCurrentMonthSummary(cache.rows)
                         : cache.summary;
@@ -10330,6 +10532,7 @@ function renderAttendancePlanner(S, api, host) {
                 const cache = loadHomeCache();
                 const rows = cache && Array.isArray(cache.rows) ? cache.rows : homeLastRows;
                 if (!rows.length) return; // nothing rendered from rows yet (loading, error, chooser)
+                homeLastRows = rows; // leave-by and the absent-day actions read these
                 const fresh = !!(cache && cache.fetchedAt &&
                     (Date.now() - cache.fetchedAt) < HOME_REFRESH_TTL_MS);
                 // A failure still current keeps the widget marked stale, with its notice on top.
@@ -10395,6 +10598,16 @@ function renderAttendancePlanner(S, api, host) {
                 createPlannerApi,
                 plannerTodayLeaveBy,
                 displayTier,
+                computeRamadanRange,
+                getStoredRamadan,
+                getEffectiveRowActualSeconds,
+                computeAnnualUsedDays,
+                pruneOldRecords,
+                saveUndoSnapshot,
+                restoreUndoSnapshot,
+                removeDateFromHolidays,
+                countRecordsToPrune,
+                openMissionOverride,
             };
 
             try {
