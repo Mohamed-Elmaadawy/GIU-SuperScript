@@ -4,7 +4,7 @@
 // @match       https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 // @match       https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx
 // @namespace   Cyn0
-// @version     4.2
+// @version     4.3
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Not%20Entered%20Sessions.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Not%20Entered%20Sessions.js
 // @author      Mo.Elmaadawy
@@ -185,7 +185,11 @@ function unenteredSessions(S) {
                 if (html.includes('Login_m.aspx') || html.includes('id="LoginPage"')) {
                     throw new Error('SESSION_EXPIRED');
                 }
-                return new DOMParser().parseFromString(html, 'text/html');
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                // A maintenance/error page (200, no sessions dropdown) must not be read
+                // as "no sessions": that would wipe the cached list for the day.
+                if (!doc.getElementById('MainContent_DDL_Sessions')) throw new Error('NOT_SOURCE_PAGE');
+                return doc;
             }
 
             // Currently selected group value — must ride along on every postback
@@ -540,6 +544,18 @@ function unenteredSessions(S) {
         if (/\/ClassAttendance_ManageStudentAttendancesH003\.aspx/i.test(location.pathname)) {
             const sessionId = new URLSearchParams(location.search).get('gius_session');
             const sel = document.getElementById('MainContent_DDL_Sessions');
+            if (sessionId) {
+                // One-shot: drop the parameter from the address and from the form's
+                // postback target, or every later postback (picking another session)
+                // would come back with it and be pulled back to this session.
+                const clean = new URL(location.href);
+                clean.searchParams.delete('gius_session');
+                history.replaceState(history.state, '', clean.href);
+                const form = sel && sel.form;
+                if (form && /gius_session=/.test(form.getAttribute('action') || '')) {
+                    form.setAttribute('action', clean.pathname + clean.search);
+                }
+            }
             if (sessionId && sel && sel.value !== sessionId) {
                 const opt = Array.from(sel.options).find(o => o.value === sessionId);
                 if (opt) {

@@ -5,7 +5,7 @@
 // @icon        data:image/png;base64,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
 // @match       https://portal.giu-uni.de/*
 // @namespace   Cyn0
-// @version     4.2
+// @version     4.3
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @grant       none
@@ -993,7 +993,8 @@ function createGiusDateField(S, opts) {
 //           today and later rows), minDaySeconds, days: [{ ymd, isToday,
 //           requiredSeconds, capSeconds, lateSeconds, earliestSeconds,
 //           inSeconds|null, outSeconds|null, fixedSeconds|null, inBase,
-//           inEdited, outEdited, inFromReport }] }
+//           inEdited, outEdited, inFromReport }], bufferSeconds }
+//  bufferSeconds: how far behind the month may end (default 0: even).
 //  inBase: the day (an override) is already in worked/required; it is
 //  shown, never counted again. A day under 4h counts as absent, as in the
 //  summary: no required hours, its hours still count.
@@ -1001,6 +1002,10 @@ function createGiusDateField(S, opts) {
 //  only a check-out (usual check-out mode) gets its check-in, never before
 //  earliestSeconds. Both set: the day is pinned.
 // ═══════════════════════════════════════════════════════════════════════════
+// The month only costs pay once it ends more than 3h behind ("Cutting It
+// Close" is fine), so the engine plans to that floor, not to 0.
+const PLANNER_BUFFER_SECONDS = 3 * 3600;
+
 function plannerParseTime(text) {
     const m = String(text || "").match(/^(\d{1,2}):(\d{2})$/);
     if (!m) return null;
@@ -1083,7 +1088,8 @@ function planAttendanceDays(input) {
         return day;
     });
 
-    let need = required - input.workedSeconds - pinnedSeconds;
+    const buffer = Math.max(0, input.bufferSeconds || 0);
+    let need = required - input.workedSeconds - pinnedSeconds - buffer;
     let open = free.slice();
     while (open.length) {
         const share = need / open.length;
@@ -1128,8 +1134,9 @@ function planAttendanceDays(input) {
         endBalanceSeconds: input.workedSeconds + planned - required,
         freeDays: free.length,
         pinnedDays: days.filter(function (d) { return d.pinned; }).length,
-        perDayExtraSeconds: free.length ? freeExtra / free.length : 0,
-    };
+            perDayExtraSeconds: free.length ? freeExtra / free.length : 0,
+            bufferSeconds: buffer,
+        };
 }
 
 // What a planned day asks of you: the check-in it worked out (usual
@@ -1308,16 +1315,30 @@ function renderAttendancePlanner(S, api, host) {
 
     // One balance on the card: where the month ends with the times above,
     // plus what to do about it when there is something to do.
-    function monthEnd(plan, both) {
+    // "even", "Extra 1:15", "Missing 2:40 (within the 3h buffer)".
+    function monthEndText(plan) {
         const mins = Math.round(plan.endBalanceSeconds / 60);
-        const text = mins === 0 ? "even" : (mins > 0 ? "Extra " : "Missing ") + plannerDuration(plan.endBalanceSeconds);
-        const end = '<span id="gius-plan-end">Month ends: <b class="' + (mins >= 0 ? "gius-plan-good" : "gius-plan-bad") + '">' + text + "</b></span>";
+        if (mins === 0) return "even";
+        const text = (mins > 0 ? "Extra " : "Missing ") + plannerDuration(plan.endBalanceSeconds);
+        const buffer = plan.bufferSeconds || 0;
+        return mins < 0 && buffer && -plan.endBalanceSeconds <= buffer
+            ? text + " (within the " + plannerDuration(buffer).replace(/:00$/, "") + "h buffer)"
+            : text;
+    }
+
+    function monthEnd(plan, both) {
+        const buffer = plan.bufferSeconds || 0;
+        // Seconds above the floor the month may end at (0 or −buffer).
+        const margin = plan.endBalanceSeconds + buffer;
+        const mins = Math.round(margin / 60);
+        const goal = buffer ? "To stay within the " + plannerDuration(buffer).replace(/:00$/, "") + "h buffer" : "To break even";
+        const end = '<span id="gius-plan-end">Month ends: <b class="' + (mins >= 0 ? "gius-plan-good" : "gius-plan-bad") + '">' + monthEndText(plan) + "</b></span>";
         const k = plan.freeDays + " working day" + (plan.freeDays === 1 ? "" : "s");
         const extra = Math.round(plan.perDayExtraSeconds / 60);
         let hint = "";
-        if (both && plan.pinnedDays && mins !== 0) {
-            // The one change on every planned day that evens the month out.
-            const per = Math.ceil(Math.abs(plan.endBalanceSeconds) / plan.pinnedDays / 60) * 60;
+        if (both && plan.pinnedDays && (mins < 0 || plan.endBalanceSeconds > 0)) {
+            // The one change on every planned day that brings the month to its floor.
+            const per = Math.ceil(Math.abs(margin) / plan.pinnedDays / 60) * 60;
             const n = plan.pinnedDays + " day" + (plan.pinnedDays === 1 ? "" : "s");
             if (mins < 0) {
                 // Only suggest what fits every planned day: leaving later stops at
@@ -1330,15 +1351,16 @@ function renderAttendancePlanner(S, api, host) {
                 if (lateRoom >= per) ways.push("leave about <b>" + amount(per) + "</b> later");
                 if (earlyRoom >= per) ways.push("come about <b>" + amount(per) + "</b> earlier");
                 if (ways.length) {
-                    hint = "To break even: " + ways.join(" or ") + " on each of the " + n + ".";
+                    hint = goal + ": " + ways.join(" or ") + " on each of the " + n + ".";
                 } else if (lateRoom + earlyRoom >= per) {
-                    hint = "To break even: leave about <b>" + amount(lateRoom) + "</b> later and come about <b>" +
+                    hint = goal + ": leave about <b>" + amount(lateRoom) + "</b> later and come about <b>" +
                         amount(per - lateRoom) + "</b> earlier on each of the " + n + ".";
                 } else {
                     hint = "Even the earliest check-in and latest check-out on each of the " + n + " isn't enough.";
                 }
             } else {
-                hint = "You could leave about <b>" + amount(per) + "</b> earlier on each of the " + n + " and still end even.";
+                hint = "You could leave about <b>" + amount(per) + "</b> earlier on each of the " + n +
+                    (buffer ? " and still stay within the buffer." : " and still end even.");
             }
         } else if (mins < 0) {
             // Check-out mode is limited by the earliest check-in, check-in mode by the cap.
@@ -1366,8 +1388,7 @@ function renderAttendancePlanner(S, api, host) {
         const today = plan ? plan.days.find(function (d) { return d.isToday && !d.locked; }) : null;
         let peek = "";
         if (!expanded && plan && both) {
-            const m = Math.round(plan.endBalanceSeconds / 60);
-            peek = '<span class="gius-plan-peek">Month ends: ' + (m === 0 ? "even" : (m > 0 ? "Extra " : "Missing ") + plannerDuration(plan.endBalanceSeconds)) + "</span>";
+            peek = '<span class="gius-plan-peek">Month ends: ' + monthEndText(plan) + "</span>";
         } else if (!expanded && today) {
             peek = '<span class="gius-plan-peek">' + plannerDayAnswer(today).verb + " today by " + plannerDayAnswer(today).time + "</span>";
         }
@@ -1676,7 +1697,7 @@ function staffAttendance(S) {
             // ───────────────────────────────────────────────────────────────────────────
             //  Persisted Data Contracts (canonical shapes used across the app)
             // ───────────────────────────────────────────────────────────────────────────
-            //  HolidayEntry      { type: "single"|"range", category: "holiday"|"annual",
+            //  HolidayEntry      { type: "single"|"range", category: "holiday"|"annual"|"sick",
             //                      date?: "YYYY-MM-DD", start?, end? }
             //  OverrideEntry     { date: "YYYY-MM-DD", type: "full_day"|"custom_actual",
             //                      actualSeconds?: number, reason?: string, note?: string }
@@ -2795,7 +2816,7 @@ function staffAttendance(S) {
                     addMarker(item.date, "Compensation");
                 });
                 holidays.forEach(function (item) {
-                    const markerLabel = item.category === "annual" ? "Annual Leave" : "Holiday";
+                    const markerLabel = holidayCategoryLabel(item.category);
                     if (item.type === "single") {
                         addMarker(item.date, markerLabel);
                         return;
@@ -2884,11 +2905,19 @@ function staffAttendance(S) {
             //  Holiday Helpers
             // ═══════════════════════════════════════════════════════════
 
+            // Holiday list categories. Sick leave excuses the day like a holiday and is
+            // never charged to the annual leave balance.
+            const HOLIDAY_CATEGORY_LABELS = { holiday: "Holiday", annual: "Annual Leave", sick: "Sick Leave" };
+            function normalizeHolidayCategory(value) {
+                return Object.prototype.hasOwnProperty.call(HOLIDAY_CATEGORY_LABELS, value) ? value : "holiday";
+            }
+            function holidayCategoryLabel(value) {
+                return HOLIDAY_CATEGORY_LABELS[normalizeHolidayCategory(value)];
+            }
+
             function normalizeHolidayEntry(entry) {
                 if (!entry) return null;
-                const normalizeCategory = function (value) {
-                    return value === "annual" ? "annual" : "holiday";
-                };
+                const normalizeCategory = normalizeHolidayCategory;
 
                 if (typeof entry === "string") {
                     const value = normalizeYMD(entry);
@@ -2917,7 +2946,7 @@ function staffAttendance(S) {
             }
 
             function holidayEntryToKey(entry) {
-                const category = entry.category === "annual" ? "annual" : "holiday";
+                const category = normalizeHolidayCategory(entry.category);
                 if (entry.type === "single") return `${category}:single:${entry.date}`;
                 return `${category}:range:${entry.start}:${entry.end}`;
             }
@@ -2977,14 +3006,15 @@ function staffAttendance(S) {
                 return `${entry.start} → ${entry.end}`;
             }
 
-            function getAnnualLeaveDateSet(holidays, periodStart, periodEnd) {
+            function getAnnualLeaveDateSet(holidays, periodStart, periodEnd, category) {
+                const wanted = category || "annual";
                 const dates = new Set();
                 const normalizedStart = normalizeYMD(periodStart);
                 const normalizedEnd = normalizeYMD(periodEnd);
                 if (!normalizedStart || !normalizedEnd) return dates;
 
                 (holidays || []).forEach(function (holiday) {
-                    if (!holiday || holiday.category !== "annual") return;
+                    if (!holiday || holiday.category !== wanted) return;
                     if (holiday.type === "single") {
                         const singleDate = normalizeYMD(holiday.date);
                         if (singleDate && isBetweenDates(normalizedStart, normalizedEnd, singleDate)) {
@@ -4737,7 +4767,8 @@ function staffAttendance(S) {
                 const typeFilter = createUiSelect("", [
                     { value: "", label: "All categories" },
                     { value: "holiday", label: "Holiday" },
-                    { value: "annual", label: "Annual Leave" }
+                    { value: "annual", label: "Annual Leave" },
+                    { value: "sick", label: "Sick Leave" }
                 ], initialTypeFilter);
                 const dateFilter = createUiInput("text", "", { placeholder: "Filter by date (YYYY-MM)", value: initialDateFilter });
                 dateFilter.style.minWidth = "160px";
@@ -4797,7 +4828,7 @@ function staffAttendance(S) {
                     pickTd.appendChild(pick);
 
                     const categoryTd = document.createElement("td");
-                    categoryTd.textContent = holiday.category === "annual" ? "Annual Leave" : "Holiday";
+                    categoryTd.textContent = holidayCategoryLabel(holiday.category);
 
                     const typeTd = document.createElement("td");
                     typeTd.textContent = holiday.type === "single" ? "Single" : "Range";
@@ -5465,7 +5496,7 @@ function staffAttendance(S) {
 
                 const holidayTitle = document.createElement("div");
                 holidayTitle.className = "giu-holiday-title";
-                holidayTitle.textContent = "Holidays & Annual Leaves";
+                holidayTitle.textContent = "Holidays, Annual & Sick Leaves";
                 holidaySection.appendChild(holidayTitle);
 
                 const controls = document.createElement("div");
@@ -5473,7 +5504,8 @@ function staffAttendance(S) {
 
                 const categorySelect = createUiSelect("giu-holiday-category", [
                     { value: "holiday", label: "Holiday" },
-                    { value: "annual", label: "Annual Leave" }
+                    { value: "annual", label: "Annual Leave" },
+                    { value: "sick", label: "Sick Leave" }
                 ]);
                 const modeSelect = createUiSelect("giu-holiday-mode", [
                     { value: "single", label: "Single Date" },
@@ -6964,7 +6996,7 @@ function staffAttendance(S) {
 
             // Formats the accumulator + holiday counts into the public stats object
             // returned by `buildPeriodStats`.
-            function finalizePeriodStats(acc, holidayDays, annualLeaveDays) {
+            function finalizePeriodStats(acc, holidayDays, annualLeaveDays, sickLeaveDays) {
                 const balanceSeconds = acc.actualSeconds - acc.requiredSeconds;
                 const compensationBalanceSeconds = acc.compensationEarnedSeconds - acc.compensationUsedSeconds;
                 const balanceHMS = secondsToHMS(balanceSeconds);
@@ -7020,6 +7052,7 @@ function staffAttendance(S) {
                     lateDayDetails: acc.lateDayDetails,
                     holidayDays,
                     annualLeaveDays,
+                    sickLeaveDays: sickLeaveDays || 0,
                     overriddenDays: acc.overriddenDays,
                     overriddenDayDetails: acc.overriddenDayDetails,
                     compensationEarnedSeconds: acc.compensationEarnedSeconds,
@@ -7065,7 +7098,10 @@ function staffAttendance(S) {
 
                 const holidayDateSet = getHolidayDatesInPeriod(holidays, periodStart, periodEnd);
                 const annualDateSet = getAnnualLeaveDateSet(holidays, periodStart, periodEnd);
-                const holidayDays = holidayDateSet.size - annualDateSet.size;
+                const sickDateSet = getAnnualLeaveDateSet(holidays, periodStart, periodEnd, "sick");
+                let holidayDays = 0;
+                holidayDateSet.forEach(function (d) { if (!annualDateSet.has(d) && !sickDateSet.has(d)) holidayDays += 1; });
+                const sickLeaveDays = sickDateSet.size;
                 let annualLeaveDays = 0;
                 annualDateSet.forEach(function (d) { if (isAnnualLeaveChargeable(d, holidays)) annualLeaveDays += 1; });
 
@@ -7329,7 +7365,7 @@ function staffAttendance(S) {
                     pushExcludedAudit(date, flags, 0, null);
                 });
 
-                return finalizePeriodStats(acc, holidayDays, annualLeaveDays);
+                return finalizePeriodStats(acc, holidayDays, annualLeaveDays, sickLeaveDays);
             }
 
             // ═══════════════════════════════════════════════════════════
@@ -7637,6 +7673,13 @@ function staffAttendance(S) {
                     });
                 }));
 
+                const makeSickBtn = createUiButton("Sick leave", "giu-absent-holiday-btn", stopProp(function () {
+                    addAbsentHolidayEntry(date, "sick", "Add sick leave from absent quick action", {
+                        invalid: "Invalid date. Could not create sick leave.",
+                        exists: "This date is already saved as sick leave."
+                    });
+                }));
+
                 const addCompBtn = createUiButton("Compensation", "giu-absent-holiday-btn", stopProp(function () {
                     const selectedDayOffFullName = getSelectedDayOffFullName(getSelectedDayOffCode());
                     const periods = groupRowsByPayrollPeriod(getAttendanceRows());
@@ -7666,6 +7709,7 @@ function staffAttendance(S) {
                 addAs.appendChild(addAsLabel);
                 addAs.appendChild(makeHolidayBtn);
                 addAs.appendChild(makeAnnualBtn);
+                addAs.appendChild(makeSickBtn);
                 addAs.appendChild(addCompBtn);
                 addAs.appendChild(missionBtn);
 
@@ -7771,6 +7815,7 @@ function staffAttendance(S) {
                 statList.appendChild(createStatRow("\ud83d\udcc5", "Present Days", String(stats.presentDays)));
                 statList.appendChild(createStatRow("\ud83c\udf89", "Holidays", String(stats.holidayDays)));
                 statList.appendChild(createStatRow("\ud83c\udf1f", "Annual Leave Days", String(stats.annualLeaveDays || 0)));
+                if (stats.sickLeaveDays) statList.appendChild(createStatRow("\ud83e\udd12", "Sick Leave Days", String(stats.sickLeaveDays)));
                 statList.appendChild(createStatRow("\u23f0", "Actual Hours", stats.actualHM));
                 statList.appendChild(createStatRow("\ud83d\udd52", "Required Hours", stats.requiredHM));
                 statList.appendChild(createStatRow(stats.isPositiveOrZero ? "\u25b2" : "\u25bc", "Balance", stats.balanceHM + " (" + stats.label + ")", stats.isPositiveOrZero ? "giu-balance-positive" : "giu-balance-negative"));
@@ -8868,6 +8913,7 @@ function staffAttendance(S) {
                     workedSeconds: past.actualSeconds,
                     requiredSeconds: past.requiredSeconds,
                     minDaySeconds: MIN_WORKING_DAY_SECONDS,
+                    bufferSeconds: PLANNER_BUFFER_SECONDS,
                     days
                 };
             }
@@ -9402,14 +9448,15 @@ function staffAttendance(S) {
             }
 
             function homeAddAbsentHolidayEntry(date, category) {
-                const isAnnual = category === "annual";
+                const cat = normalizeHolidayCategory(category);
+                const what = { holiday: "holiday", annual: "annual leave", sick: "sick leave" }[cat];
                 const result = saveAbsentHolidayEntry(
                     date,
-                    isAnnual ? "annual" : "holiday",
-                    isAnnual ? "Add annual leave from home absent quick action" : "Add holiday from home absent quick action",
+                    cat,
+                    "Add " + what + " from home absent quick action",
                     {
-                        invalid: isAnnual ? "Invalid date. Could not create annual leave." : "Invalid date. Could not create holiday.",
-                        exists: isAnnual ? "This date is already saved as annual leave." : "This date is already saved as a holiday."
+                        invalid: "Invalid date. Could not create " + what + ".",
+                        exists: "This date is already saved as " + (cat === "holiday" ? "a holiday" : what) + "."
                     }
                 );
                 if (!result.ok) {
@@ -9448,6 +9495,8 @@ function staffAttendance(S) {
                             homeAddAbsentHolidayEntry(date, "holiday");
                         } else if (action === "annual") {
                             homeAddAbsentHolidayEntry(date, "annual");
+                        } else if (action === "sick") {
+                            homeAddAbsentHolidayEntry(date, "sick");
                         } else if (action === "compensation") {
                             homeAddAbsentCompensationEntry(date);
                         } else if (action === "mission") {
@@ -9851,6 +9900,7 @@ function staffAttendance(S) {
                                         <span class="gius-att-actions">
                                             <button type="button" class="gius-att-action gius-btn" data-date="${date}" data-gius-home-absent-action="holiday">Holiday</button>
                                             <button type="button" class="gius-att-action gius-btn" data-date="${date}" data-gius-home-absent-action="annual">Annual</button>
+                                            <button type="button" class="gius-att-action gius-btn" data-date="${date}" data-gius-home-absent-action="sick">Sick</button>
                                             <button type="button" class="gius-att-action gius-btn" data-date="${date}" data-gius-home-absent-action="compensation">Comp</button>
                                             <button type="button" class="gius-att-action gius-btn" data-date="${date}" data-gius-home-absent-action="mission" title="Open Attendance Overrides on the report with this date filled in">Mission</button>
                                         </span>
@@ -9940,7 +9990,7 @@ function staffAttendance(S) {
                 }
                 homeAttachAbsentActions(host);
                 Tips.show({ id: 'staffAttendance', el: host, title: 'Attendance — This Payroll Month',
-                    text: 'Your live attendance balance for the current payroll month. Expand absent days to file holiday, annual or compensation requests, mark a mission, or open the full report below.' });
+                    text: 'Your live attendance balance for the current payroll month. Expand absent days to file holiday, annual, sick or compensation requests, mark a mission, or open the full report below.' });
             }
 
             // The two secret ranks (hidden from the rank list until reached) and

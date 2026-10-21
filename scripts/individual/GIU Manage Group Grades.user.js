@@ -3,7 +3,7 @@
 // @description Upload and download grades CSV on the Manage Group Grade page.
 // @match       https://portal.giu-uni.de/GIUb/INTStaff/ManageGroupGrade_m.aspx
 // @namespace   Cyn0
-// @version     4.2
+// @version     4.3
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Manage%20Group%20Grades.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Manage%20Group%20Grades.js
 // @author      Mo.Elmaadawy
@@ -12,387 +12,473 @@
 // @run-at      document-idle
 // ==/UserScript==
 
+(function () {
+    'use strict';
 
-// ── Style injection ──────────────────────────────────────────────────────────
-
-function injectGradeStyles() {
-    if (document.getElementById('gius-mgg-styles')) return;
-    const style = document.createElement('style');
-    style.id = 'gius-mgg-styles';
-    style.textContent = `
-        @keyframes gmggSlide {
-            from { opacity: 0; transform: translateY(-14px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes gmggFadeIn {
-            from { opacity: 0; }
-            to   { opacity: 1; }
+function waitFor(selector, cb, { root = document, timeout = 15000 } = {}) {
+            const existing = root.querySelector(selector);
+            if (existing) { cb(existing); return () => {}; }
+            const obs = new MutationObserver(() => {
+                const el = root.querySelector(selector);
+                if (el) { obs.disconnect(); cb(el); }
+            });
+            obs.observe(root.documentElement || root, { childList: true, subtree: true });
+            if (timeout) setTimeout(() => obs.disconnect(), timeout);
+            return () => obs.disconnect();
         }
 
-        .gmgg-panel {
-            background: #ffffff;
-            border: 1px solid #eeeeee;
-            border-radius: 6px;
-            box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
-            position: relative;
-            overflow: hidden;
-            margin: 20px 0 14px;
-            animation: gmggSlide 0.38s cubic-bezier(0.25,0.46,0.45,0.94);
-            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+function escapeHtml(str) {
+            return String(str == null ? '' : str)
+                .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
         }
-        .gmgg-panel::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 3px;
-            background: #ffc107;
-            z-index: 1;
-        }
-        .gmgg-panel-header {
-            background: #272c33;
-            color: #fff;
-            padding: 10px 14px;
-            border-bottom: 2px solid #ffc107;
-        }
-        .gmgg-panel-title {
-            margin: 0;
-            font-size: 14px;
-            font-weight: 700;
-            color: #fff;
-        }
-        .gmgg-panel-subtitle {
-            margin: 3px 0 0;
-            font-size: 12px;
-            color: rgba(255,255,255,0.7);
-        }
-        .gmgg-panel-body {
-            padding: 14px 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .gmgg-btn-row {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .gmgg-btn {
-            height: 32px;
-            padding: 0 14px;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 700;
-            cursor: pointer;
-            border: 1px solid transparent;
-            transition: all 0.2s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            white-space: nowrap;
-            font-family: 'Open Sans', Arial, sans-serif;
-        }
-        .gmgg-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none !important;
-            box-shadow: none !important;
-        }
-        .gmgg-btn-upload {
-            background: #1B59C6;
-            border-color: #1648a8;
-            color: #fff;
-        }
-        .gmgg-btn-upload:not(:disabled):hover {
-            background: #1648a8;
-            transform: translateY(-1px);
-            box-shadow: 0 3px 10px rgba(27,89,198,0.35);
-        }
-        .gmgg-btn-download {
-            background: #fff;
-            border-color: #d1d5db;
-            color: #374151;
-        }
-        .gmgg-btn-download:not(:disabled):hover {
-            background: #f9fafb;
-            border-color: #9ca3af;
-        }
-        .gmgg-feedback {
-            font-size: 13px;
-            font-family: 'Open Sans', sans-serif;
-            padding: 8px 10px;
-            border-radius: 6px;
-            animation: gmggFadeIn 0.25s ease;
-        }
-        .gmgg-feedback-success {
-            background: #e8f5e9;
-            color: #15803d;
-            border: 1px solid #a5d6a7;
-        }
-        .gmgg-feedback-error {
-            background: #fee2e2;
-            color: #991b1b;
-            border: 1px solid #fca5a5;
-        }
-        .gmgg-stats {
-            animation: gmggFadeIn 0.35s ease;
-        }
-        .gmgg-stats-title {
-            font-size: 11px;
-            font-weight: 700;
-            color: #6b7280;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-            margin-bottom: 8px;
-            font-family: 'Open Sans', sans-serif;
-        }
-        .gmgg-stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6px;
-        }
-        .gmgg-stat-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 10px;
-            background: #e5e7eb;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            font-size: 13px;
-        }
-        .gmgg-stat-label {
-            font-weight: 600;
-            color: #374151;
-            font-family: 'Open Sans', sans-serif;
-        }
-        .gmgg-stat-val {
-            font-weight: 700;
-            color: #111827;
-            font-family: 'Open Sans', sans-serif;
-        }
-    `;
-    document.head.appendChild(style);
-}
 
-// ── Stats helpers ─────────────────────────────────────────────────────────────
-
-function computeStats(values) {
-    const nums = values.filter(v => v !== '' && Number.isFinite(+v)).map(Number);
-    if (!nums.length) return null;
-    const min = Math.min(...nums);
-    const max = Math.max(...nums);
-    const avg = nums.reduce((a, b) => a + b, 0) / nums.length;
-    return {
-        min:   min.toFixed(1),
-        max:   max.toFixed(1),
-        avg:   avg.toFixed(1),
-        range: (max - min).toFixed(1),
-        count: nums.length
-    };
-}
-
-function getTableGrades() {
-    const grades = [];
-    document.querySelectorAll('#Table1 tbody tr').forEach((row, i) => {
-        if (i === 0) return;
-        const val = row.cells[2]?.querySelector('input')?.value;
-        if (val !== undefined && val !== '') grades.push(val);
-    });
-    return grades;
-}
-
-function renderStats(body) {
-    body.querySelector('.gmgg-stats')?.remove();
-    const stats = computeStats(getTableGrades());
-    if (!stats || stats.count < 2) return;
-
-    const el = document.createElement('div');
-    el.className = 'gmgg-stats';
-    el.innerHTML = `
-        <div class="gmgg-stats-title">Grade Statistics — ${stats.count} students</div>
-        <div class="gmgg-stats-grid">
-            <div class="gmgg-stat-row">
-                <span class="gmgg-stat-label">Min</span>
-                <span class="gmgg-stat-val">${stats.min}</span>
-            </div>
-            <div class="gmgg-stat-row">
-                <span class="gmgg-stat-label">Max</span>
-                <span class="gmgg-stat-val">${stats.max}</span>
-            </div>
-            <div class="gmgg-stat-row">
-                <span class="gmgg-stat-label">Avg</span>
-                <span class="gmgg-stat-val">${stats.avg}</span>
-            </div>
-            <div class="gmgg-stat-row">
-                <span class="gmgg-stat-label">Range</span>
-                <span class="gmgg-stat-val">${stats.range}</span>
-            </div>
-        </div>
-    `;
-    body.appendChild(el);
-}
-
-// ── CSV helper ────────────────────────────────────────────────────────────────
-
-function parseGradeCSV(text) {
-    const map = {};
-    text.trim().split(/\r?\n/).forEach(line => {
-        const cols  = line.split(',').map(v => v.trim());
-        const name  = cols[0] || '';
-        const grade = cols[cols.length - 1];
-        const m     = name.match(/\((\d+)\)/);
-        if (m && grade !== '' && !isNaN(grade)) map[m[1]] = grade;
-    });
-    return map;
-}
-
-// ── UI ────────────────────────────────────────────────────────────────────────
-
-function createGradeButtons(table) {
-    injectGradeStyles();
-
-    const panel = document.createElement('div');
-    panel.className = 'gmgg-panel';
-
-    const fileInput    = document.createElement('input');
-    fileInput.type     = 'file';
-    fileInput.accept   = '.csv';
-    fileInput.style.display = 'none';
-
-    const uploadBtn       = document.createElement('button');
-    uploadBtn.type        = 'button';
-    uploadBtn.textContent = 'Upload Grades CSV';
-    uploadBtn.className   = 'gmgg-btn gmgg-btn-upload';
-
-    const downloadBtn       = document.createElement('button');
-    downloadBtn.type        = 'button';
-    downloadBtn.textContent = 'Download Grades CSV';
-    downloadBtn.className   = 'gmgg-btn gmgg-btn-download';
-
-    let feedbackEl = null;
-
-    function showFeedback(msg, type = 'success') {
-        if (feedbackEl) feedbackEl.remove();
-        feedbackEl = document.createElement('div');
-        feedbackEl.className = `gmgg-feedback gmgg-feedback-${type}`;
-        feedbackEl.textContent = msg;
-        body.appendChild(feedbackEl);
-        setTimeout(() => { if (feedbackEl) { feedbackEl.remove(); feedbackEl = null; } }, 4000);
-    }
-
-    uploadBtn.onclick = () => fileInput.click();
-
-    downloadBtn.onclick = () => {
-        const rows = document.querySelectorAll('#Table1 tbody tr');
-        const csv  = [['Name', 'Grade']];
-
-        rows.forEach((row, index) => {
-            if (index === 0) return;
-            let name = '';
-            try { name = row.cells[0]?.querySelector('span').textContent; } catch (err) {}
-            const grade = row.cells[2]?.querySelector('input')?.value;
-            csv.push([name, grade]);
-        });
-
-        const blob = new Blob([csv.join('\n')], { type: 'text/csv' });
-        const url  = URL.createObjectURL(blob);
-
-        const csvTitleId = document.getElementById('MainContent_crntLbl');
-        const csvTitle   = csvTitleId.textContent
-            .split('||')[0].replace(/\s+/g, '').trim();
-
-        const a    = document.createElement('a');
-        a.href     = url;
-        a.download = csvTitle;
-        a.click();
-        URL.revokeObjectURL(url);
-        showFeedback('✓ CSV downloaded successfully');
-        renderStats(body);
-    };
-
-    fileInput.addEventListener('change', async () => {
-        const file = fileInput.files[0];
-        if (!file) return;
-        fileInput.value = '';
-
-        const grades  = parseGradeCSV(await file.text());
-        let applied   = 0;
-        let missing   = 0;
-
-        document.querySelectorAll('#Table1 tbody tr').forEach((row, index) => {
-            if (index === 0) return;
-            const input    = row.cells[2]?.querySelector('input');
-            const nameText = row.cells[0]?.querySelector('span')?.textContent || '';
-            const m        = nameText.match(/\((\d+)\)/);
-            if (!input || !m) return;
-            if (grades[m[1]] !== undefined) {
-                input.value = grades[m[1]];
-                applied++;
-            } else {
-                missing++;
+function injectStyle(id, css) {
+            let el = document.getElementById(id);
+            if (!el) {
+                el = document.createElement('style');
+                el.id = id;
+                (document.head || document.documentElement).appendChild(el);
             }
-        });
-
-        const msg = missing > 0
-            ? `✓ Applied ${applied} grade(s) — ${missing} student(s) not in CSV`
-            : `✓ Grades applied to ${applied} student(s)`;
-        showFeedback(msg, missing > 0 ? 'error' : 'success');
-        renderStats(body);
-    });
-
-    panel.innerHTML = `
-        <div class="gmgg-panel-header">
-            <h4 class="gmgg-panel-title">Group Grades</h4>
-            <p class="gmgg-panel-subtitle">Upload or download grades for this tutorial group</p>
-        </div>
-    `;
-
-    const btnRow = document.createElement('div');
-    btnRow.className = 'gmgg-btn-row';
-    btnRow.append(uploadBtn, fileInput, downloadBtn);
-
-    const body = document.createElement('div');
-    body.className = 'gmgg-panel-body';
-    body.appendChild(btnRow);
-    panel.appendChild(body);
-
-    const labelEl = document.getElementById('MainContent_crntLbl');
-    (labelEl ?? table).insertAdjacentElement('afterend', panel);
-
-    renderStats(body);
-
-    return panel;
-}
-
-// ── Entry point ───────────────────────────────────────────────────────────────
-
-try {
-    if (location.pathname === '/GIUb/INTStaff/ManageGroupGrade_m.aspx') {
-        let activeCard = null;
-
-        function checkTableVisibility() {
-            const gradeTable = document.querySelector('#MainContent_nttTb');
-            const visible    = gradeTable !== null && gradeTable.offsetParent !== null;
-
-            if (visible && !activeCard) {
-                activeCard = createGradeButtons(document.querySelector('#Table1'));
-            } else if (!visible && activeCard) {
-                activeCard.remove();
-                activeCard = null;
-            }
+            el.textContent = css;
+            return el;
         }
 
-        const observer = new MutationObserver(checkTableVisibility);
-        observer.observe(document.body, {
-            childList:       true,
-            subtree:         true,
-            attributes:      true,
-            attributeFilter: ['style', 'class', 'hidden']
-        });
+function warn(feature, ...args) { console.warn(`[GIU-SS:${feature}]`, ...args); }
 
-        checkTableVisibility();
-    }
-} catch (err) {
-    console.log('err message', err.message);
+function portalUrl(path) { return location.origin + path; }
+
+// IIS's own error page (e.g. "401 - Unauthorized" after a failed sign-in):
+// no portal markup at all, so nothing may be injected into it. Every real
+// portal page is an ASP.NET WebForm, so it always has a <form>.
+function isServerErrorPage() {
+    if (document.querySelector('form')) return false;
+    const h1 = document.querySelector('h1');
+    return /^\s*[45]\d\d\s*-/.test(document.title) || (!!h1 && /server error/i.test(h1.textContent));
 }
+
+    // Server error page (e.g. IIS 401): no portal markup — inject nothing.
+    if (isServerErrorPage()) return;
+
+    const S = { waitFor, escapeHtml, injectStyle, warn, portalUrl };
+
+function manageGroupGrades(S) {
+            function injectGradeStyles() {
+                S.injectStyle('gius-mgg-styles', `
+                    @keyframes gmggSlide {
+                        from { opacity: 0; transform: translateY(-14px); }
+                        to   { opacity: 1; transform: translateY(0); }
+                    }
+                    @keyframes gmggFadeIn {
+                        from { opacity: 0; }
+                        to   { opacity: 1; }
+                    }
+
+                    .gmgg-panel {
+                        background: #ffffff;
+                        border: 1px solid #eeeeee;
+                        border-radius: 6px;
+                        box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
+                        position: relative;
+                        overflow: hidden;
+                        margin: 20px 0 14px;
+                        animation: gmggSlide 0.38s cubic-bezier(0.25,0.46,0.45,0.94);
+                        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+                    }
+                    .gmgg-panel::before {
+                        content: "";
+                        position: absolute;
+                        top: 0; left: 0;
+                        width: 100%; height: 3px;
+                        background: #ffc107;
+                        z-index: 1;
+                    }
+                    .gmgg-panel-header {
+                        background: #272c33;
+                        color: #fff;
+                        padding: 10px 14px;
+                        border-bottom: 2px solid #ffc107;
+                    }
+                    .gmgg-panel-title {
+                        margin: 0;
+                        font-size: 14px;
+                        font-weight: 700;
+                        color: #fff;
+                    }
+                    .gmgg-panel-subtitle {
+                        margin: 3px 0 0;
+                        font-size: 12px;
+                        color: rgba(255,255,255,0.7);
+                    }
+                    .gmgg-panel-body {
+                        padding: 14px 16px;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 12px;
+                    }
+                    .gmgg-btn-row {
+                        display: flex;
+                        align-items: center;
+                        flex-wrap: wrap;
+                        gap: 8px;
+                    }
+                    .gmgg-btn {
+                        height: 32px;
+                        padding: 0 14px;
+                        border-radius: 6px;
+                        font-size: 13px;
+                        font-weight: 700;
+                        cursor: pointer;
+                        border: 1px solid transparent;
+                        transition: all 0.2s ease;
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 5px;
+                        white-space: nowrap;
+                        font-family: 'Open Sans', Arial, sans-serif;
+                    }
+                    .gmgg-btn:disabled {
+                        opacity: 0.5;
+                        cursor: not-allowed;
+                        transform: none !important;
+                        box-shadow: none !important;
+                    }
+                    .gmgg-btn-upload {
+                        background: #1B59C6;
+                        border-color: #1648a8;
+                        color: #fff;
+                    }
+                    .gmgg-btn-upload:not(:disabled):hover {
+                        background: #1648a8;
+                        transform: translateY(-1px);
+                        box-shadow: 0 3px 10px rgba(27,89,198,0.35);
+                    }
+                    .gmgg-btn-download {
+                        background: #fff;
+                        border-color: #d1d5db;
+                        color: #374151;
+                    }
+                    .gmgg-btn-download:not(:disabled):hover {
+                        background: #f9fafb;
+                        border-color: #9ca3af;
+                    }
+                    .gmgg-feedback {
+                        font-size: 13px;
+                        font-family: 'Open Sans', sans-serif;
+                        padding: 8px 10px;
+                        border-radius: 6px;
+                        animation: gmggFadeIn 0.25s ease;
+                    }
+                    .gmgg-feedback-success {
+                        background: #e8f5e9;
+                        color: #15803d;
+                        border: 1px solid #a5d6a7;
+                    }
+                    .gmgg-feedback-error {
+                        background: #fee2e2;
+                        color: #991b1b;
+                        border: 1px solid #fca5a5;
+                    }
+                    .gmgg-stats {
+                        animation: gmggFadeIn 0.35s ease;
+                    }
+                    .gmgg-stats-title {
+                        font-size: 11px;
+                        font-weight: 700;
+                        color: #6b7280;
+                        text-transform: uppercase;
+                        letter-spacing: 0.6px;
+                        margin-bottom: 8px;
+                        font-family: 'Open Sans', sans-serif;
+                    }
+                    .gmgg-stats-grid {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 6px;
+                    }
+                    .gmgg-stat-row {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 8px 10px;
+                        background: #e5e7eb;
+                        border: 1px solid #d1d5db;
+                        border-radius: 6px;
+                        font-size: 13px;
+                    }
+                    .gmgg-stat-label {
+                        font-weight: 600;
+                        color: #374151;
+                        font-family: 'Open Sans', sans-serif;
+                    }
+                    .gmgg-stat-val {
+                        font-weight: 700;
+                        color: #111827;
+                        font-family: 'Open Sans', sans-serif;
+                    }
+                `);
+            }
+
+            function computeStats(values) {
+                const nums = values.filter(v => v !== '' && Number.isFinite(+v)).map(Number);
+                if (!nums.length) return null;
+                const min = Math.min(...nums);
+                const max = Math.max(...nums);
+                const avg = nums.reduce((a, b) => a + b, 0) / nums.length;
+                return {
+                    min:   min.toFixed(1),
+                    max:   max.toFixed(1),
+                    avg:   avg.toFixed(1),
+                    range: (max - min).toFixed(1),
+                    count: nums.length
+                };
+            }
+
+            function getTableGrades() {
+                const grades = [];
+                document.querySelectorAll('#Table1 tbody tr').forEach((row, i) => {
+                    if (i === 0) return;
+                    const val = row.cells[2]?.querySelector('input')?.value;
+                    if (val !== undefined && val !== '') grades.push(val);
+                });
+                return grades;
+            }
+
+            function renderStats(body) {
+                body.querySelector('.gmgg-stats')?.remove();
+                const stats = computeStats(getTableGrades());
+                if (!stats || stats.count < 2) return;
+
+                const el = document.createElement('div');
+                el.className = 'gmgg-stats';
+                el.innerHTML = `
+                    <div class="gmgg-stats-title">Grade Statistics — ${stats.count} students</div>
+                    <div class="gmgg-stats-grid">
+                        <div class="gmgg-stat-row">
+                            <span class="gmgg-stat-label">Min</span>
+                            <span class="gmgg-stat-val">${stats.min}</span>
+                        </div>
+                        <div class="gmgg-stat-row">
+                            <span class="gmgg-stat-label">Max</span>
+                            <span class="gmgg-stat-val">${stats.max}</span>
+                        </div>
+                        <div class="gmgg-stat-row">
+                            <span class="gmgg-stat-label">Avg</span>
+                            <span class="gmgg-stat-val">${stats.avg}</span>
+                        </div>
+                        <div class="gmgg-stat-row">
+                            <span class="gmgg-stat-label">Range</span>
+                            <span class="gmgg-stat-val">${stats.range}</span>
+                        </div>
+                    </div>
+                `;
+                body.appendChild(el);
+            }
+
+            // Grade CSV → { map: { studentId: grade }, skipped: [row labels] }.
+            // Handles a BOM, ";" files (Excel in Arabic/German locales), quoted fields
+            // with commas or line breaks, and decimal commas ("8,5"). The grade is the
+            // last column; rows with an ID but no numeric grade are reported as skipped.
+            function parseGradeCsvText(text) {
+                const src = String(text ?? '').replace(/^\uFEFF/, '');
+                const firstLine = src.split(/\r?\n/, 1)[0] || '';
+                const delim = firstLine.split(';').length > firstLine.split(',').length ? ';' : ',';
+                const rows = [];
+                let row = [], field = '', quoted = false;
+                for (let i = 0; i < src.length; i++) {
+                    const c = src[i];
+                    if (quoted) {
+                        if (c === '"') {
+                            if (src[i + 1] === '"') { field += '"'; i++; } else quoted = false;
+                        } else field += c;
+                    } else if (c === '"') quoted = true;
+                    else if (c === delim) { row.push(field); field = ''; }
+                    else if (c === '\n' || c === '\r') {
+                        if (c === '\r' && src[i + 1] === '\n') i++;
+                        row.push(field); rows.push(row); row = []; field = '';
+                    } else field += c;
+                }
+                if (field !== '' || row.length) { row.push(field); rows.push(row); }
+
+                const headerLen = rows.length ? rows[0].length : 0;
+                const map = {};
+                const skipped = [];
+                rows.forEach(cols => {
+                    const label = (cols[0] || '').trim();
+                    const m = label.match(/\((\d+)\)/);
+                    if (!m) return; // header or a non-student row
+                    let raw = (cols[cols.length - 1] || '').trim();
+                    // An unquoted "8,5" in a comma file splits into one extra column.
+                    if (delim === ',' && cols.length === headerLen + 1 && /^\d+$/.test(raw) && /^-?\d+$/.test((cols[cols.length - 2] || '').trim())) {
+                        raw = cols[cols.length - 2].trim() + '.' + raw;
+                    }
+                    raw = raw.replace(/^(-?\d+),(\d+)$/, '$1.$2');
+                    if (raw === '' || !Number.isFinite(+raw)) { skipped.push(label); return; }
+                    map[m[1]] = raw;
+                });
+                return { map, skipped };
+            }
+
+            function createGradeButtons(table) {
+                injectGradeStyles();
+
+                const panel = document.createElement('div');
+                panel.className = 'gmgg-panel';
+
+                const fileInput    = document.createElement('input');
+                fileInput.type     = 'file';
+                fileInput.accept   = '.csv';
+                fileInput.style.display = 'none';
+
+                const uploadBtn       = document.createElement('button');
+                uploadBtn.type        = 'button';
+                uploadBtn.textContent = 'Upload Grades CSV';
+                uploadBtn.className   = 'gmgg-btn gmgg-btn-upload';
+
+                const downloadBtn       = document.createElement('button');
+                downloadBtn.type        = 'button';
+                downloadBtn.textContent = 'Download Grades CSV';
+                downloadBtn.className   = 'gmgg-btn gmgg-btn-download';
+
+                let feedbackEl = null;
+
+                function showFeedback(msg, type = 'success') {
+                    if (feedbackEl) feedbackEl.remove();
+                    feedbackEl = document.createElement('div');
+                    feedbackEl.className = `gmgg-feedback gmgg-feedback-${type}`;
+                    feedbackEl.textContent = msg;
+                    body.appendChild(feedbackEl);
+                    setTimeout(() => { if (feedbackEl) { feedbackEl.remove(); feedbackEl = null; } }, 4000);
+                }
+
+                uploadBtn.onclick = () => fileInput.click();
+
+                downloadBtn.onclick = () => {
+                    const rows = document.querySelectorAll('#Table1 tbody tr');
+                    const csv  = [['Name', 'Grade']];
+
+                    rows.forEach((row, index) => {
+                        if (index === 0) return;
+                        const name = row.cells[0]?.querySelector('span')?.textContent || '';
+                        const grade = row.cells[2]?.querySelector('input')?.value;
+                        csv.push([name, grade]);
+                    });
+
+                    // Every field quoted (names contain commas); BOM so Excel reads Arabic names.
+                    const field = v => '"' + String(v ?? '').replace(/"/g, '""') + '"';
+                    const text  = '\uFEFF' + csv.map(r => r.map(field).join(',')).join('\r\n');
+                    const blob  = new Blob([text], { type: 'text/csv;charset=utf-8' });
+                    const url   = URL.createObjectURL(blob);
+
+                    const csvTitleId = document.getElementById('MainContent_crntLbl');
+                    const csvTitle   = (csvTitleId?.textContent ?? '')
+                        .split('||')[0].replace(/\s+/g, '').replace(/[/\\?%*:|"<>]/g, '_').trim() || 'grades';
+
+                    const a    = document.createElement('a');
+                    a.href     = url;
+                    a.download = csvTitle + '.csv';
+                    a.click();
+                    URL.revokeObjectURL(url);
+                    showFeedback('✓ CSV downloaded successfully');
+                    renderStats(body);
+                };
+
+                fileInput.addEventListener('change', async () => {
+                    const file = fileInput.files[0];
+                    if (!file) return;
+                    fileInput.value = '';
+
+                    const parsed  = parseGradeCsvText(await file.text());
+                    const grades  = parsed.map;
+                    let applied   = 0;
+                    let missing   = 0;
+
+                    document.querySelectorAll('#Table1 tbody tr').forEach((row, index) => {
+                        if (index === 0) return;
+                        const input    = row.cells[2]?.querySelector('input');
+                        const nameText = row.cells[0]?.querySelector('span')?.textContent || '';
+                        const m        = nameText.match(/\((\d+)\)/);
+                        if (!input || !m) return;
+                        if (grades[m[1]] !== undefined) {
+                            input.value = grades[m[1]];
+                            applied++;
+                        } else {
+                            missing++;
+                        }
+                    });
+
+                    const skippedMsg = parsed.skipped.length
+                        ? ` — ${parsed.skipped.length} CSV row(s) had no numeric grade`
+                        : '';
+                    const msg = missing > 0
+                        ? `✓ Applied ${applied} grade(s) — ${missing} student(s) not in CSV${skippedMsg}`
+                        : `✓ Grades applied to ${applied} student(s)${skippedMsg}`;
+                    showFeedback(msg, missing > 0 || parsed.skipped.length ? 'error' : 'success');
+                    renderStats(body);
+                });
+
+                panel.innerHTML = `
+                    <div class="gmgg-panel-header">
+                        <h4 class="gmgg-panel-title">Group Grades</h4>
+                        <p class="gmgg-panel-subtitle">Upload or download grades for this tutorial group</p>
+                    </div>
+                `;
+
+                const btnRow = document.createElement('div');
+                btnRow.className = 'gmgg-btn-row';
+                btnRow.append(uploadBtn, fileInput, downloadBtn);
+
+                const body = document.createElement('div');
+                body.className = 'gmgg-panel-body';
+                body.appendChild(btnRow);
+                panel.appendChild(body);
+
+                const labelEl = document.getElementById('MainContent_crntLbl');
+                (labelEl ?? table).insertAdjacentElement('afterend', panel);
+
+                renderStats(body);
+                Tips.show({ id: 'manageGroupGrades', el: panel, title: 'Group Grades Tools',
+                    text: 'CSV upload and download plus live statistics for the visible grade table.' });
+
+                return panel;
+            }
+
+            // Entry: watch grade-table visibility, mount/unmount the panel.
+            let activeCard = null;
+
+            function checkTableVisibility() {
+                const gradeTable = document.querySelector('#MainContent_nttTb');
+                const visible    = gradeTable !== null && gradeTable.offsetParent !== null;
+
+                if (visible && !activeCard) {
+                    activeCard = createGradeButtons(document.querySelector('#Table1'));
+                } else if (!visible && activeCard) {
+                    activeCard.remove();
+                    activeCard = null;
+                }
+            }
+
+            let visibilityRaf = null;
+            const observer = new MutationObserver(() => {
+                if (visibilityRaf !== null) return;
+                visibilityRaf = requestAnimationFrame(() => {
+                    visibilityRaf = null;
+                    checkTableVisibility();
+                });
+            });
+            observer.observe(document.body, {
+                childList:       true,
+                subtree:         true,
+                attributes:      true,
+                attributeFilter: ['style', 'class', 'hidden']
+            });
+
+            checkTableVisibility();
+        }
+
+    // Tips is the bundle's first-run tooltip system; this script ships without it.
+    const Tips = { show() {} };
+    if (/\/ManageGroupGrade_m\.aspx$/i.test(location.pathname)) {
+        manageGroupGrades(S);
+    }
+})();

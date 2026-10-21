@@ -5,7 +5,7 @@
 // @icon        data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKgAAACUCAMAAAAwLZJQAAAAzFBMVEX////VlyYkHiAAAADTHyj36ereiIr8/vzIGSPPAAj//fziu4HTlRbnyp3x49HRHSTTkgzw8PD29vbl5eXV1NRjX2HWY2vUr2zMAADn1rfJjguzsrMfGRsaEBPltLX6+u/OmB67u7vIyMgyLC5sbGycnJypqKmLi4tYWFh9e3wWExXkoJ1HRUaUkpM3NjY+Pj4PAAe/AADIDxPYGiAnJicZGhn27df17eDXqE329uBVYF7AZ2jZjGvOWgTNlSzf0J7lw7PWozvqxcLZsl8WTjZKAAAHBElEQVR4nO2Ya3fbNhJAIWG92tJ2YwzApg6kTQDhQagkpXZlR/t03fz//7QDgo71jqQ0Pf2Ae45tipKlq8FgMAAhmUwmk8lkMplMJpPJZDKZTCaTyWQymUwmk8lkMpnMqRTAENi4dXUV710xvB6979n+v3R39IcoMmGrdkyR2bgtLX/Rvfr5uzdvfvnlx7/i9fc3g8EAf27IltNtfOLuetR9A22CEWB84Cp4C2A5IbzBj3B4IRU+kEAuhCk/pXQyHibGE0rnIb4viv7tH39BkujdoONm+/9v75Jo9HcPgghFqONga/4gWWsJ8TUQTtHWU0W4v1RUVRMaJWcxoJNedkFtEn0TRb9bF73bEe0jWmC46qa7haLEVrBUfEoJr+YcP2WJomYmuL1MlFVJbjEtJee6XPaqi4OiuxF9FRVLjbacUBO4m7YOR712Tg8FKeNTnmFMXXGJp17SLoKzININYbrwDieHRG8+HMrRl4gGU8zQ15Z4oZSjllGhjawMCQAhDdW5qOWs86SvGQ6OdjQHRO+OiRJJFZhAqJe8aTl1FvNVEyorRjQV+Ju1/oKIihS9h5lYv8udRfRFooQ5dMRAKs4F4YIzgrNS8PgBmgkMB+Pne7I2xfNBHnrF+aLfgsLP0rwJB19ytqjWRMewCe20VFxJCUpiCYghBQwoaMIkJi4XcdY1Dd4W3VMkPkVA7ot3P/Dj4eF6cbaoMaSssGp6IanVikpVzLx6EAozlXmGOcyYMrXi+ELXclYHYpeYI6HAv5gmVO+xMIsuoGna/F6igYSpAVyLGJYjTVlB5g5w1s9bgaLQzHDSNwZLQ+APOgZLyHbOuSfgxxJFxa4Eo31tP5Ldl4h6MfOsFx0bA3VVKaKUWXIHQjqMd2MARTXFDwaKGVJVwhKlfdgvammfoUdWinPraBdRDFNwhA1jRPG9a7NUxOmifPBgjccSm0RFlEIzJ2CONcuHMBZ7Rcu0BtGDU36/6OALOTrCcVXUdemmqOBkaO0Dx2rH2pKVMKpC4UsojCnwS2HNLTym6NLwAKxuOFWcbTmweZpK433pe0z03fFZX2CHRJQgDNc6ERoPXkHQKk5vKTAo2oO0UDiMeeODxfmFGaAldjJEeWYavx1T0SbR+Z5gHxU91pR8C3TfJ1XHVor9ET0iyuMEwbKJ14wVHNJjJgReClGQQmsADgLXLR4H+YRlSiXRSbWdE18lGnDxEJ7ULnbJfMktvj1W/dpbUXmsnd41WtTChtrLUMaXfhE53iPK14BLRE0SbXGKSo1zOE6phruqIHyKVZ+3MVeXHLs2IHqmw7EoHREFM5x+RnyFaOmoUIIvcFNimCWytY63NjRQzhwTU+yjUZSYpfuyJ1Hj3RwFsxj3TBZfI1oRPw1RFNdMjcGtMSPn1Ri7vIa6z6JiX9XcQUzTrG/XXgym7+9jqHdEb06Y9aHGfZMj+NvQrnyzOW6YbM2At6oMOM8aG4deTYDsX4d26OvocL2OromOd0QfP4seqaPcBNsAMfG9BIulz+Pi7qrG8UrrWnvrucBB1HWMaH2KKKn6lWktT/qh3y/6cdDvmbY39ht1FAsSfo+Y9wBdlcI/8SYrGBSMxZoE2KlA9wp+0j5P0n42vb4awjyy3Cv6fpVCevfPrcp+ZsHHbfUo/Yy2x2Y/kESH64nS1SVRzfaJjq779ul+642+eYfv+/ap3LrP9ouS+37obw+LinKTf/37h03+83aT61O+Hav7LFWnib6M/erjQVFNt/j5x03+++HdBv876cxKpz3TpN5ccQ+Jkqe+I306KMrlFn/f4tf7LU47W+t751m9MfsOio6eb1Lr/HhI9CgX7JNfTYfd6NOhXlM9KEoen/uJ/7ReotZEQaUFOXW/sV/APeYI9/JYqsBz3NMzBd2k5xCnvThZXqUjnck4vNT9QtjYqe6N6Oh+kExvPt2/qI4+vh28RlSlL6yxo+O4UeYkbouJULxQTCmNs6E/k0nf6IyDKF52B47jybIKVsrG1G1X8cc7a338EuT7d32e3qze3t7fP12/XT0PXkV5atuAKx+PRyQHpwng1o4RAdxy3OVJZR0BJwFko/Q5h6UitAuKgz1ZdOeOqDmjdNF2zcqWKPL+enDXR/UuEk928erD81M8HxWNwxnkvONGWy8FY9ZK65RyMgSwTBN85J1srHLOSaf0WWeQQob5ek2ZGytF9w5XfXn5LDoixeP1qjfsFPFqdX17/9inQjxJF9jKYdQgralMq4LExZOnhMQWKh5oxzvnn5QCw3GyTdNYiW3k6zk+/JT47VU0HuY/3l9/Wq2eV6tPOP6PH7drIfZIsOYAB7rj4uIz8iNs5vzo4IM/HX9uu0wmk8lkMplMJpPJZDKZTCaTyWQymUwmk8lkMplMJpPJHOP/Lb7en38r1wIAAAAASUVORK5CYII=
 // @namespace   Cyn0
 // @match       https://portal.giu-uni.de/*
-// @version     4.2
+// @version     4.3
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @grant       none
@@ -1262,7 +1262,8 @@ function createGiusDateField(S, opts) {
 //           today and later rows), minDaySeconds, days: [{ ymd, isToday,
 //           requiredSeconds, capSeconds, lateSeconds, earliestSeconds,
 //           inSeconds|null, outSeconds|null, fixedSeconds|null, inBase,
-//           inEdited, outEdited, inFromReport }] }
+//           inEdited, outEdited, inFromReport }], bufferSeconds }
+//  bufferSeconds: how far behind the month may end (default 0: even).
 //  inBase: the day (an override) is already in worked/required; it is
 //  shown, never counted again. A day under 4h counts as absent, as in the
 //  summary: no required hours, its hours still count.
@@ -1270,6 +1271,10 @@ function createGiusDateField(S, opts) {
 //  only a check-out (usual check-out mode) gets its check-in, never before
 //  earliestSeconds. Both set: the day is pinned.
 // ═══════════════════════════════════════════════════════════════════════════
+// The month only costs pay once it ends more than 3h behind ("Cutting It
+// Close" is fine), so the engine plans to that floor, not to 0.
+const PLANNER_BUFFER_SECONDS = 3 * 3600;
+
 function plannerParseTime(text) {
     const m = String(text || "").match(/^(\d{1,2}):(\d{2})$/);
     if (!m) return null;
@@ -1352,7 +1357,8 @@ function planAttendanceDays(input) {
         return day;
     });
 
-    let need = required - input.workedSeconds - pinnedSeconds;
+    const buffer = Math.max(0, input.bufferSeconds || 0);
+    let need = required - input.workedSeconds - pinnedSeconds - buffer;
     let open = free.slice();
     while (open.length) {
         const share = need / open.length;
@@ -1397,8 +1403,9 @@ function planAttendanceDays(input) {
         endBalanceSeconds: input.workedSeconds + planned - required,
         freeDays: free.length,
         pinnedDays: days.filter(function (d) { return d.pinned; }).length,
-        perDayExtraSeconds: free.length ? freeExtra / free.length : 0,
-    };
+            perDayExtraSeconds: free.length ? freeExtra / free.length : 0,
+            bufferSeconds: buffer,
+        };
 }
 
 // What a planned day asks of you: the check-in it worked out (usual
@@ -1577,16 +1584,30 @@ function renderAttendancePlanner(S, api, host) {
 
     // One balance on the card: where the month ends with the times above,
     // plus what to do about it when there is something to do.
-    function monthEnd(plan, both) {
+    // "even", "Extra 1:15", "Missing 2:40 (within the 3h buffer)".
+    function monthEndText(plan) {
         const mins = Math.round(plan.endBalanceSeconds / 60);
-        const text = mins === 0 ? "even" : (mins > 0 ? "Extra " : "Missing ") + plannerDuration(plan.endBalanceSeconds);
-        const end = '<span id="gius-plan-end">Month ends: <b class="' + (mins >= 0 ? "gius-plan-good" : "gius-plan-bad") + '">' + text + "</b></span>";
+        if (mins === 0) return "even";
+        const text = (mins > 0 ? "Extra " : "Missing ") + plannerDuration(plan.endBalanceSeconds);
+        const buffer = plan.bufferSeconds || 0;
+        return mins < 0 && buffer && -plan.endBalanceSeconds <= buffer
+            ? text + " (within the " + plannerDuration(buffer).replace(/:00$/, "") + "h buffer)"
+            : text;
+    }
+
+    function monthEnd(plan, both) {
+        const buffer = plan.bufferSeconds || 0;
+        // Seconds above the floor the month may end at (0 or −buffer).
+        const margin = plan.endBalanceSeconds + buffer;
+        const mins = Math.round(margin / 60);
+        const goal = buffer ? "To stay within the " + plannerDuration(buffer).replace(/:00$/, "") + "h buffer" : "To break even";
+        const end = '<span id="gius-plan-end">Month ends: <b class="' + (mins >= 0 ? "gius-plan-good" : "gius-plan-bad") + '">' + monthEndText(plan) + "</b></span>";
         const k = plan.freeDays + " working day" + (plan.freeDays === 1 ? "" : "s");
         const extra = Math.round(plan.perDayExtraSeconds / 60);
         let hint = "";
-        if (both && plan.pinnedDays && mins !== 0) {
-            // The one change on every planned day that evens the month out.
-            const per = Math.ceil(Math.abs(plan.endBalanceSeconds) / plan.pinnedDays / 60) * 60;
+        if (both && plan.pinnedDays && (mins < 0 || plan.endBalanceSeconds > 0)) {
+            // The one change on every planned day that brings the month to its floor.
+            const per = Math.ceil(Math.abs(margin) / plan.pinnedDays / 60) * 60;
             const n = plan.pinnedDays + " day" + (plan.pinnedDays === 1 ? "" : "s");
             if (mins < 0) {
                 // Only suggest what fits every planned day: leaving later stops at
@@ -1599,15 +1620,16 @@ function renderAttendancePlanner(S, api, host) {
                 if (lateRoom >= per) ways.push("leave about <b>" + amount(per) + "</b> later");
                 if (earlyRoom >= per) ways.push("come about <b>" + amount(per) + "</b> earlier");
                 if (ways.length) {
-                    hint = "To break even: " + ways.join(" or ") + " on each of the " + n + ".";
+                    hint = goal + ": " + ways.join(" or ") + " on each of the " + n + ".";
                 } else if (lateRoom + earlyRoom >= per) {
-                    hint = "To break even: leave about <b>" + amount(lateRoom) + "</b> later and come about <b>" +
+                    hint = goal + ": leave about <b>" + amount(lateRoom) + "</b> later and come about <b>" +
                         amount(per - lateRoom) + "</b> earlier on each of the " + n + ".";
                 } else {
                     hint = "Even the earliest check-in and latest check-out on each of the " + n + " isn't enough.";
                 }
             } else {
-                hint = "You could leave about <b>" + amount(per) + "</b> earlier on each of the " + n + " and still end even.";
+                hint = "You could leave about <b>" + amount(per) + "</b> earlier on each of the " + n +
+                    (buffer ? " and still stay within the buffer." : " and still end even.");
             }
         } else if (mins < 0) {
             // Check-out mode is limited by the earliest check-in, check-in mode by the cap.
@@ -1635,8 +1657,7 @@ function renderAttendancePlanner(S, api, host) {
         const today = plan ? plan.days.find(function (d) { return d.isToday && !d.locked; }) : null;
         let peek = "";
         if (!expanded && plan && both) {
-            const m = Math.round(plan.endBalanceSeconds / 60);
-            peek = '<span class="gius-plan-peek">Month ends: ' + (m === 0 ? "even" : (m > 0 ? "Extra " : "Missing ") + plannerDuration(plan.endBalanceSeconds)) + "</span>";
+            peek = '<span class="gius-plan-peek">Month ends: ' + monthEndText(plan) + "</span>";
         } else if (!expanded && today) {
             peek = '<span class="gius-plan-peek">' + plannerDayAnswer(today).verb + " today by " + plannerDayAnswer(today).time + "</span>";
         }
@@ -1950,7 +1971,7 @@ function renderAttendancePlanner(S, api, host) {
             // ───────────────────────────────────────────────────────────────────────────
             //  Persisted Data Contracts (canonical shapes used across the app)
             // ───────────────────────────────────────────────────────────────────────────
-            //  HolidayEntry      { type: "single"|"range", category: "holiday"|"annual",
+            //  HolidayEntry      { type: "single"|"range", category: "holiday"|"annual"|"sick",
             //                      date?: "YYYY-MM-DD", start?, end? }
             //  OverrideEntry     { date: "YYYY-MM-DD", type: "full_day"|"custom_actual",
             //                      actualSeconds?: number, reason?: string, note?: string }
@@ -3069,7 +3090,7 @@ function renderAttendancePlanner(S, api, host) {
                     addMarker(item.date, "Compensation");
                 });
                 holidays.forEach(function (item) {
-                    const markerLabel = item.category === "annual" ? "Annual Leave" : "Holiday";
+                    const markerLabel = holidayCategoryLabel(item.category);
                     if (item.type === "single") {
                         addMarker(item.date, markerLabel);
                         return;
@@ -3158,11 +3179,19 @@ function renderAttendancePlanner(S, api, host) {
             //  Holiday Helpers
             // ═══════════════════════════════════════════════════════════
 
+            // Holiday list categories. Sick leave excuses the day like a holiday and is
+            // never charged to the annual leave balance.
+            const HOLIDAY_CATEGORY_LABELS = { holiday: "Holiday", annual: "Annual Leave", sick: "Sick Leave" };
+            function normalizeHolidayCategory(value) {
+                return Object.prototype.hasOwnProperty.call(HOLIDAY_CATEGORY_LABELS, value) ? value : "holiday";
+            }
+            function holidayCategoryLabel(value) {
+                return HOLIDAY_CATEGORY_LABELS[normalizeHolidayCategory(value)];
+            }
+
             function normalizeHolidayEntry(entry) {
                 if (!entry) return null;
-                const normalizeCategory = function (value) {
-                    return value === "annual" ? "annual" : "holiday";
-                };
+                const normalizeCategory = normalizeHolidayCategory;
 
                 if (typeof entry === "string") {
                     const value = normalizeYMD(entry);
@@ -3191,7 +3220,7 @@ function renderAttendancePlanner(S, api, host) {
             }
 
             function holidayEntryToKey(entry) {
-                const category = entry.category === "annual" ? "annual" : "holiday";
+                const category = normalizeHolidayCategory(entry.category);
                 if (entry.type === "single") return `${category}:single:${entry.date}`;
                 return `${category}:range:${entry.start}:${entry.end}`;
             }
@@ -3251,14 +3280,15 @@ function renderAttendancePlanner(S, api, host) {
                 return `${entry.start} → ${entry.end}`;
             }
 
-            function getAnnualLeaveDateSet(holidays, periodStart, periodEnd) {
+            function getAnnualLeaveDateSet(holidays, periodStart, periodEnd, category) {
+                const wanted = category || "annual";
                 const dates = new Set();
                 const normalizedStart = normalizeYMD(periodStart);
                 const normalizedEnd = normalizeYMD(periodEnd);
                 if (!normalizedStart || !normalizedEnd) return dates;
 
                 (holidays || []).forEach(function (holiday) {
-                    if (!holiday || holiday.category !== "annual") return;
+                    if (!holiday || holiday.category !== wanted) return;
                     if (holiday.type === "single") {
                         const singleDate = normalizeYMD(holiday.date);
                         if (singleDate && isBetweenDates(normalizedStart, normalizedEnd, singleDate)) {
@@ -5011,7 +5041,8 @@ function renderAttendancePlanner(S, api, host) {
                 const typeFilter = createUiSelect("", [
                     { value: "", label: "All categories" },
                     { value: "holiday", label: "Holiday" },
-                    { value: "annual", label: "Annual Leave" }
+                    { value: "annual", label: "Annual Leave" },
+                    { value: "sick", label: "Sick Leave" }
                 ], initialTypeFilter);
                 const dateFilter = createUiInput("text", "", { placeholder: "Filter by date (YYYY-MM)", value: initialDateFilter });
                 dateFilter.style.minWidth = "160px";
@@ -5071,7 +5102,7 @@ function renderAttendancePlanner(S, api, host) {
                     pickTd.appendChild(pick);
 
                     const categoryTd = document.createElement("td");
-                    categoryTd.textContent = holiday.category === "annual" ? "Annual Leave" : "Holiday";
+                    categoryTd.textContent = holidayCategoryLabel(holiday.category);
 
                     const typeTd = document.createElement("td");
                     typeTd.textContent = holiday.type === "single" ? "Single" : "Range";
@@ -5739,7 +5770,7 @@ function renderAttendancePlanner(S, api, host) {
 
                 const holidayTitle = document.createElement("div");
                 holidayTitle.className = "giu-holiday-title";
-                holidayTitle.textContent = "Holidays & Annual Leaves";
+                holidayTitle.textContent = "Holidays, Annual & Sick Leaves";
                 holidaySection.appendChild(holidayTitle);
 
                 const controls = document.createElement("div");
@@ -5747,7 +5778,8 @@ function renderAttendancePlanner(S, api, host) {
 
                 const categorySelect = createUiSelect("giu-holiday-category", [
                     { value: "holiday", label: "Holiday" },
-                    { value: "annual", label: "Annual Leave" }
+                    { value: "annual", label: "Annual Leave" },
+                    { value: "sick", label: "Sick Leave" }
                 ]);
                 const modeSelect = createUiSelect("giu-holiday-mode", [
                     { value: "single", label: "Single Date" },
@@ -7238,7 +7270,7 @@ function renderAttendancePlanner(S, api, host) {
 
             // Formats the accumulator + holiday counts into the public stats object
             // returned by `buildPeriodStats`.
-            function finalizePeriodStats(acc, holidayDays, annualLeaveDays) {
+            function finalizePeriodStats(acc, holidayDays, annualLeaveDays, sickLeaveDays) {
                 const balanceSeconds = acc.actualSeconds - acc.requiredSeconds;
                 const compensationBalanceSeconds = acc.compensationEarnedSeconds - acc.compensationUsedSeconds;
                 const balanceHMS = secondsToHMS(balanceSeconds);
@@ -7294,6 +7326,7 @@ function renderAttendancePlanner(S, api, host) {
                     lateDayDetails: acc.lateDayDetails,
                     holidayDays,
                     annualLeaveDays,
+                    sickLeaveDays: sickLeaveDays || 0,
                     overriddenDays: acc.overriddenDays,
                     overriddenDayDetails: acc.overriddenDayDetails,
                     compensationEarnedSeconds: acc.compensationEarnedSeconds,
@@ -7339,7 +7372,10 @@ function renderAttendancePlanner(S, api, host) {
 
                 const holidayDateSet = getHolidayDatesInPeriod(holidays, periodStart, periodEnd);
                 const annualDateSet = getAnnualLeaveDateSet(holidays, periodStart, periodEnd);
-                const holidayDays = holidayDateSet.size - annualDateSet.size;
+                const sickDateSet = getAnnualLeaveDateSet(holidays, periodStart, periodEnd, "sick");
+                let holidayDays = 0;
+                holidayDateSet.forEach(function (d) { if (!annualDateSet.has(d) && !sickDateSet.has(d)) holidayDays += 1; });
+                const sickLeaveDays = sickDateSet.size;
                 let annualLeaveDays = 0;
                 annualDateSet.forEach(function (d) { if (isAnnualLeaveChargeable(d, holidays)) annualLeaveDays += 1; });
 
@@ -7603,7 +7639,7 @@ function renderAttendancePlanner(S, api, host) {
                     pushExcludedAudit(date, flags, 0, null);
                 });
 
-                return finalizePeriodStats(acc, holidayDays, annualLeaveDays);
+                return finalizePeriodStats(acc, holidayDays, annualLeaveDays, sickLeaveDays);
             }
 
             // ═══════════════════════════════════════════════════════════
@@ -7911,6 +7947,13 @@ function renderAttendancePlanner(S, api, host) {
                     });
                 }));
 
+                const makeSickBtn = createUiButton("Sick leave", "giu-absent-holiday-btn", stopProp(function () {
+                    addAbsentHolidayEntry(date, "sick", "Add sick leave from absent quick action", {
+                        invalid: "Invalid date. Could not create sick leave.",
+                        exists: "This date is already saved as sick leave."
+                    });
+                }));
+
                 const addCompBtn = createUiButton("Compensation", "giu-absent-holiday-btn", stopProp(function () {
                     const selectedDayOffFullName = getSelectedDayOffFullName(getSelectedDayOffCode());
                     const periods = groupRowsByPayrollPeriod(getAttendanceRows());
@@ -7940,6 +7983,7 @@ function renderAttendancePlanner(S, api, host) {
                 addAs.appendChild(addAsLabel);
                 addAs.appendChild(makeHolidayBtn);
                 addAs.appendChild(makeAnnualBtn);
+                addAs.appendChild(makeSickBtn);
                 addAs.appendChild(addCompBtn);
                 addAs.appendChild(missionBtn);
 
@@ -8045,6 +8089,7 @@ function renderAttendancePlanner(S, api, host) {
                 statList.appendChild(createStatRow("\ud83d\udcc5", "Present Days", String(stats.presentDays)));
                 statList.appendChild(createStatRow("\ud83c\udf89", "Holidays", String(stats.holidayDays)));
                 statList.appendChild(createStatRow("\ud83c\udf1f", "Annual Leave Days", String(stats.annualLeaveDays || 0)));
+                if (stats.sickLeaveDays) statList.appendChild(createStatRow("\ud83e\udd12", "Sick Leave Days", String(stats.sickLeaveDays)));
                 statList.appendChild(createStatRow("\u23f0", "Actual Hours", stats.actualHM));
                 statList.appendChild(createStatRow("\ud83d\udd52", "Required Hours", stats.requiredHM));
                 statList.appendChild(createStatRow(stats.isPositiveOrZero ? "\u25b2" : "\u25bc", "Balance", stats.balanceHM + " (" + stats.label + ")", stats.isPositiveOrZero ? "giu-balance-positive" : "giu-balance-negative"));
@@ -9142,6 +9187,7 @@ function renderAttendancePlanner(S, api, host) {
                     workedSeconds: past.actualSeconds,
                     requiredSeconds: past.requiredSeconds,
                     minDaySeconds: MIN_WORKING_DAY_SECONDS,
+                    bufferSeconds: PLANNER_BUFFER_SECONDS,
                     days
                 };
             }
@@ -9676,14 +9722,15 @@ function renderAttendancePlanner(S, api, host) {
             }
 
             function homeAddAbsentHolidayEntry(date, category) {
-                const isAnnual = category === "annual";
+                const cat = normalizeHolidayCategory(category);
+                const what = { holiday: "holiday", annual: "annual leave", sick: "sick leave" }[cat];
                 const result = saveAbsentHolidayEntry(
                     date,
-                    isAnnual ? "annual" : "holiday",
-                    isAnnual ? "Add annual leave from home absent quick action" : "Add holiday from home absent quick action",
+                    cat,
+                    "Add " + what + " from home absent quick action",
                     {
-                        invalid: isAnnual ? "Invalid date. Could not create annual leave." : "Invalid date. Could not create holiday.",
-                        exists: isAnnual ? "This date is already saved as annual leave." : "This date is already saved as a holiday."
+                        invalid: "Invalid date. Could not create " + what + ".",
+                        exists: "This date is already saved as " + (cat === "holiday" ? "a holiday" : what) + "."
                     }
                 );
                 if (!result.ok) {
@@ -9722,6 +9769,8 @@ function renderAttendancePlanner(S, api, host) {
                             homeAddAbsentHolidayEntry(date, "holiday");
                         } else if (action === "annual") {
                             homeAddAbsentHolidayEntry(date, "annual");
+                        } else if (action === "sick") {
+                            homeAddAbsentHolidayEntry(date, "sick");
                         } else if (action === "compensation") {
                             homeAddAbsentCompensationEntry(date);
                         } else if (action === "mission") {
@@ -10125,6 +10174,7 @@ function renderAttendancePlanner(S, api, host) {
                                         <span class="gius-att-actions">
                                             <button type="button" class="gius-att-action gius-btn" data-date="${date}" data-gius-home-absent-action="holiday">Holiday</button>
                                             <button type="button" class="gius-att-action gius-btn" data-date="${date}" data-gius-home-absent-action="annual">Annual</button>
+                                            <button type="button" class="gius-att-action gius-btn" data-date="${date}" data-gius-home-absent-action="sick">Sick</button>
                                             <button type="button" class="gius-att-action gius-btn" data-date="${date}" data-gius-home-absent-action="compensation">Comp</button>
                                             <button type="button" class="gius-att-action gius-btn" data-date="${date}" data-gius-home-absent-action="mission" title="Open Attendance Overrides on the report with this date filled in">Mission</button>
                                         </span>
@@ -10214,7 +10264,7 @@ function renderAttendancePlanner(S, api, host) {
                 }
                 homeAttachAbsentActions(host);
                 Tips.show({ id: 'staffAttendance', el: host, title: 'Attendance — This Payroll Month',
-                    text: 'Your live attendance balance for the current payroll month. Expand absent days to file holiday, annual or compensation requests, mark a mission, or open the full report below.' });
+                    text: 'Your live attendance balance for the current payroll month. Expand absent days to file holiday, annual, sick or compensation requests, mark a mission, or open the full report below.' });
             }
 
             // The two secret ranks (hidden from the rank list until reached) and
@@ -10964,7 +11014,10 @@ function renderAttendancePlanner(S, api, host) {
             }
         
             function getMaxGrade(evalPicker) {
-                const text = evalPicker?.options[evalPicker.selectedIndex]?.text ?? '';
+                const opt = evalPicker?.options[evalPicker.selectedIndex];
+                const kept = opt?.dataset?.max;
+                if (kept != null && kept !== '' && Number.isFinite(parseFloat(kept))) return parseFloat(kept);
+                const text = opt?.text ?? '';
                 const after = text.split('||')[1];
                 return after != null && after !== '' ? parseFloat(after) : null;
             }
@@ -11052,12 +11105,19 @@ function renderAttendancePlanner(S, api, host) {
                 return m ? m[1] : null;
             }
         
+            // One CSV field, always quoted (names contain commas).
+            function csvField(value) {
+                return '"' + String(value ?? '').replace(/"/g, '""') + '"';
+            }
+
+            // BOM so Excel reads Arabic names as UTF-8.
             function downloadCSV(lines, filename) {
-                const blob = new Blob([lines.join('\n')], { type: 'text/csv' });
+                const blob = new Blob(['\uFEFF' + lines.join('\r\n')], { type: 'text/csv;charset=utf-8' });
                 const url  = URL.createObjectURL(blob);
                 const a    = document.createElement('a');
                 a.href = url;
-                a.download = filename.replace(/[/\\?%*:|"<>]/g, '_').replace(/\s+/g, '_');
+                const base = filename.replace(/[/\\?%*:|"<>]/g, '_').replace(/\s+/g, '_');
+                a.download = /\.csv$/i.test(base) ? base : base + '.csv';
                 document.body.appendChild(a);
                 a.click();
                 a.remove();
@@ -11090,8 +11150,13 @@ function renderAttendancePlanner(S, api, host) {
                     console.error('[GIU] HTTP', resp.status, 'EVENTTARGET=', eventTarget, '\n', msg);
                     throw new Error(`HTTP ${resp.status}: ${msg.substring(0, 120)}`);
                 }
-                return new DOMParser().parseFromString(await resp.text(), 'text/html');
-            }
+                    const doc = new DOMParser().parseFromString(await resp.text(), 'text/html');
+                    // A sign-in page (redirect or login form) means the session ended.
+                    if ((resp.redirected && /login/i.test(resp.url)) || doc.querySelector('#LoginPage, input[type="password"]')) {
+                        throw new Error('SESSION_EXPIRED');
+                    }
+                    return doc;
+                }
         
             function isValidId(val) {
                 return /^\d+$/.test(String(val)) && +val > 0;
@@ -11117,24 +11182,58 @@ function renderAttendancePlanner(S, api, host) {
                 return rows.map(row => {
                     const name  = row.cells[0]?.querySelector('span')?.textContent?.trim() ?? '';
                     const grade = row.cells[2]?.querySelector('input')?.value ?? '';
-                    return `"${name.replace(/"/g, '""')}",${groupLabel},${grade}`;
+                    return [name, groupLabel, grade].map(csvField).join(',');
                 });
             }
         
+            // Grade CSV → { map: { studentId: grade }, skipped: [row labels] }.
+            // Handles a BOM, ";" files (Excel in Arabic/German locales), quoted fields
+            // with commas or line breaks, and decimal commas ("8,5"). The grade is the
+            // last column; rows with an ID but no numeric grade are reported as skipped.
+            function parseGradeCsvText(text) {
+                const src = String(text ?? '').replace(/^\uFEFF/, '');
+                const firstLine = src.split(/\r?\n/, 1)[0] || '';
+                const delim = firstLine.split(';').length > firstLine.split(',').length ? ';' : ',';
+                const rows = [];
+                let row = [], field = '', quoted = false;
+                for (let i = 0; i < src.length; i++) {
+                    const c = src[i];
+                    if (quoted) {
+                        if (c === '"') {
+                            if (src[i + 1] === '"') { field += '"'; i++; } else quoted = false;
+                        } else field += c;
+                    } else if (c === '"') quoted = true;
+                    else if (c === delim) { row.push(field); field = ''; }
+                    else if (c === '\n' || c === '\r') {
+                        if (c === '\r' && src[i + 1] === '\n') i++;
+                        row.push(field); rows.push(row); row = []; field = '';
+                    } else field += c;
+                }
+                if (field !== '' || row.length) { row.push(field); rows.push(row); }
+
+                const headerLen = rows.length ? rows[0].length : 0;
+                const map = {};
+                const skipped = [];
+                rows.forEach(cols => {
+                    const label = (cols[0] || '').trim();
+                    const m = label.match(/\((\d+)\)/);
+                    if (!m) return; // header or a non-student row
+                    let raw = (cols[cols.length - 1] || '').trim();
+                    // An unquoted "8,5" in a comma file splits into one extra column.
+                    if (delim === ',' && cols.length === headerLen + 1 && /^\d+$/.test(raw) && /^-?\d+$/.test((cols[cols.length - 2] || '').trim())) {
+                        raw = cols[cols.length - 2].trim() + '.' + raw;
+                    }
+                    raw = raw.replace(/^(-?\d+),(\d+)$/, '$1.$2');
+                    if (raw === '' || !Number.isFinite(+raw)) { skipped.push(label); return; }
+                    map[m[1]] = raw;
+                });
+                return { map, skipped };
+            }
+
             function parseCSV(file) {
                 return new Promise((resolve, reject) => {
                     const reader = new FileReader();
-                    reader.onload = e => {
-                        const map = {};
-                        e.target.result.trim().split(/\r?\n/).forEach((line, i) => {
-                            if (i === 0 || !line.trim()) return;
-                            const cols  = line.split(',').map(v => v.trim().replace(/^"|"$/g, '').replace(/""/g, '"'));
-                            const id    = extractId(cols[0]);
-                            const grade = cols[cols.length - 1];
-                            if (id && grade !== '' && Number.isFinite(+grade)) map[id] = grade;
-                        });
-                        resolve(map);
-                    };
+                    reader.onload = e => resolve(parseGradeCsvText(e.target.result));
                     reader.onerror = reject;
                     reader.readAsText(file);
                 });
@@ -11177,14 +11276,18 @@ function renderAttendancePlanner(S, api, host) {
                         const grades = rows.map(row => row.cells[2]?.querySelector('input')?.value ?? '');
                         groupStats.push({ label: group.label, stats: computeStats(grades) });
         
-                    } catch (err) {
-                        errors++;
-                        groupStats.push({ label: group.label, stats: null });
-                        showError(toolbar, `Group "${group.label}": ${err.message}`);
+                        } catch (err) {
+                            if (err.message === 'SESSION_EXPIRED') {
+                                showError(toolbar, `Your session expired at group ${i + 1} of ${groups.length}. Sign in again and retry.`);
+                                return;
+                            }
+                            errors++;
+                            groupStats.push({ label: group.label, stats: null });
+                            showError(toolbar, `Group "${group.label}": ${err.message}`);
+                        }
                     }
-                }
-        
-                if (allLines.length > 1) {
+
+                    if (allLines.length > 1) {
                     downloadCSV(allLines, `All-Groups-${evalLabel}.csv`);
                     showInfo(toolbar, `Done — ${groups.length - errors} group(s) collected${errors ? `, ${errors} failed` : ''}.`, false);
                     renderBatchStats(toolbar, groupStats);
@@ -11194,6 +11297,12 @@ function renderAttendancePlanner(S, api, host) {
                 }
             }
         
+            // " N row(s) skipped (no numeric grade): a, b, …" or "".
+            function skippedNote(skipped) {
+                if (!skipped.length) return '';
+                return ` ${skipped.length} row(s) skipped (no numeric grade): ${skipped.slice(0, 5).join(', ')}${skipped.length > 5 ? ', …' : ''}`;
+            }
+
             function validateCsvMap(csvMap, maxGrade) {
                 const errors = [];
                 for (const [id, raw] of Object.entries(csvMap)) {
@@ -11260,18 +11369,26 @@ function renderAttendancePlanner(S, api, host) {
                                 : gradeEl.value;
                         });
         
-                        await doPostBack(doc2Hidden, saveBtnEl.name, gradeOverrides);
+                        const savedDoc = await doPostBack(doc2Hidden, saveBtnEl.name, gradeOverrides);
+                        // The portal re-shows the grade grid after a save; anything else
+                        // (an error page) means this group's grades may not be saved.
+                        if (!getRows(savedDoc).length) throw new Error('the portal did not confirm the save — check this group');
         
                         groupStats.push({ label: group.label, stats: computeStats(Object.values(gradeOverrides), maxGrade) });
                         saved++;
-                    } catch (err) {
-                        errors++;
-                        groupStats.push({ label: group.label, stats: null });
-                        showError(toolbar, `Group "${group.label}": ${err.message}`);
+                        } catch (err) {
+                            if (err.message === 'SESSION_EXPIRED') {
+                                showError(toolbar, `Your session expired at group ${i + 1} of ${groups.length}: ${saved} group(s) were saved, the rest were not touched. Sign in again and retry.`);
+                                renderBatchStats(toolbar, groupStats);
+                                return;
+                            }
+                            errors++;
+                            groupStats.push({ label: group.label, stats: null });
+                            showError(toolbar, `Group "${group.label}": ${err.message}`);
+                        }
                     }
-                }
-        
-                showInfo(toolbar, `Done — ${saved} group(s) saved${errors ? `, ${errors} failed` : ''}.`, false);
+
+                    showInfo(toolbar, `Done — ${saved} group(s) saved${errors ? `, ${errors} failed` : ''}.`, false);
                 renderBatchStats(toolbar, groupStats);
             }
         
@@ -11309,6 +11426,9 @@ function renderAttendancePlanner(S, api, host) {
                     const opt = document.createElement('option');
                     opt.value = o.value;
                     opt.textContent = o.text.split('||')[0].trim();
+                    // The page shows the max after "||"; keep it for validation and pass %.
+                    const max = (o.text.split('||')[1] ?? '').trim();
+                    if (max !== '') opt.dataset.max = max;
                     evalPicker.appendChild(opt);
                 });
         
@@ -11332,8 +11452,10 @@ function renderAttendancePlanner(S, api, host) {
                 fileInput.onchange = async () => {
                     const file = fileInput.files[0];
                     if (!file) return;
-                    csvMap = await parseCSV(file);
-                    showInfo(card, `CSV loaded — ${Object.keys(csvMap).length} student grade(s) ready.`);
+                    fileInput.value = ''; // the same file can be picked again after editing it
+                    const parsed = await parseCSV(file);
+                    csvMap = parsed.map;
+                    showInfo(card, `CSV loaded — ${Object.keys(csvMap).length} student grade(s) ready.${skippedNote(parsed.skipped)}`);
                     batchUpBtn.disabled = !isValidId(evalPicker.value);
                     const maxGrade = getMaxGrade(evalPicker);
                     const previewStats = computeStats(Object.values(csvMap), maxGrade);
@@ -11396,7 +11518,10 @@ function renderAttendancePlanner(S, api, host) {
                 fileInput.onchange = async () => {
                     const file = fileInput.files[0];
                     if (!file) return;
-                    const csvMap = await parseCSV(file);
+                    fileInput.value = ''; // the same file can be picked again after editing it
+                    const parsed = await parseCSV(file);
+                    const csvMap = parsed.map;
+                    if (parsed.skipped.length) showInfo(card, `Grades applied.${skippedNote(parsed.skipped)}`, false);
                     getRows().forEach(row => {
                         const id      = extractId(row.cells[0]?.querySelector('span')?.textContent ?? '');
                         const gradeEl = row.cells[2]?.querySelector('input');
@@ -11485,6 +11610,21 @@ function renderAttendancePlanner(S, api, host) {
             const CACHE_KEY = 'giuTeachingLoadV1';
             // TODO: name cache has no TTL; clear it if a fresh schedule fetch starts failing to find the staff id.
             const NAME_CACHE_KEY = 'giuTeachingLoadNameV1';
+            const NAME_OWNER_KEY = 'giuTeachingLoadNameOwnerV1';
+            // The signed-in account ("first.last", from the page's account label), or ""
+            // on pages without one. Personal caches carry it, so a shared PC never shows
+            // the previous user's data.
+            function currentAccount() {
+                try {
+                    const el = document.querySelector('[id*="lbl_Account"]');
+                    return el && el.textContent ? el.textContent.trim().toLowerCase() : '';
+                } catch { return ''; }
+            }
+            // A cache saved for another account is not ours (unknown on either side: keep).
+            function ownedByOther(owner) {
+                const me = currentAccount();
+                return !!(me && owner && owner !== me);
+            }
             const TTL_MS = 7 * 24 * 60 * 60 * 1000;  // 7d — schedule changes ~once per semester; ⟳ button forces refresh
             const IFRAME_TIMEOUT_MS = 20000;
             const FETCH_TIMEOUT_MS = 15000;
@@ -11587,7 +11727,12 @@ function renderAttendancePlanner(S, api, host) {
             }
 
             async function fetchFullName() {
-                const cached = (() => { try { return localStorage.getItem(NAME_CACHE_KEY) || ''; } catch { return ''; } })();
+                const cached = (() => {
+                    try {
+                        if (ownedByOther(localStorage.getItem(NAME_OWNER_KEY))) return '';
+                        return localStorage.getItem(NAME_CACHE_KEY) || '';
+                    } catch { return ''; }
+                })();
                 if (cached) return cached;
                 const ctrl = new AbortController();
                 const timer = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS);
@@ -11597,7 +11742,10 @@ function renderAttendancePlanner(S, api, host) {
                     const doc = new DOMParser().parseFromString(await resp.text(), 'text/html');
                     const name = readNameFromDoc(doc);
                     if (!name) throw new Error('name-not-found');
-                    try { localStorage.setItem(NAME_CACHE_KEY, name); } catch { /* quota */ }
+                    try {
+                        localStorage.setItem(NAME_CACHE_KEY, name);
+                        localStorage.setItem(NAME_OWNER_KEY, currentAccount());
+                    } catch { /* quota */ }
                     return name;
                 } finally {
                     clearTimeout(timer);
@@ -11669,14 +11817,14 @@ function renderAttendancePlanner(S, api, host) {
             }
 
             function saveCache(sessions) {
-                const payload = { fetchedAt: Date.now(), sessions };
+                const payload = { fetchedAt: Date.now(), owner: currentAccount(), sessions };
                 try { localStorage.setItem(CACHE_KEY, JSON.stringify(payload)); } catch { /* quota */ }
             }
 
             function loadCache() {
                 try {
                     const raw = JSON.parse(localStorage.getItem(CACHE_KEY));
-                    if (!raw || !Array.isArray(raw.sessions)) return null;
+                    if (!raw || !Array.isArray(raw.sessions) || ownedByOther(raw.owner)) return null;
                     return raw;
                 } catch { return null; }
             }
@@ -11689,12 +11837,19 @@ function renderAttendancePlanner(S, api, host) {
             function findStaffId(win, fullName) {
                 const tas = win.tas;
                 if (!Array.isArray(tas)) return null;
-                const norm = s => String(s).replace(/\s+/g, ' ').trim().toLowerCase();
+                // Titles stripped on both sides; an exact name wins, otherwise only a
+                // single unambiguous partial match is accepted (never a guess between
+                // several staff, never an empty entry).
+                const norm = s => String(s ?? '').replace(/\s+/g, ' ').trim().toLowerCase()
+                    .replace(/^(miss|ms\.?|mrs\.?|mr\.?|dr\.?|prof\.?|eng\.?)\s+/, '');
                 const want = norm(fullName);
-                const m = tas.find(x => norm(x.value) === want)
-                    || tas.find(x => norm(x.value).includes(want))
-                    || tas.find(x => want.includes(norm(x.value)));
-                return m ? m.id : null;
+                if (!want) return null;
+                const named = tas.filter(x => x && norm(x.value));
+                const exact = named.filter(x => norm(x.value) === want);
+                if (exact.length === 1) return exact[0].id;
+                if (exact.length > 1) return null;
+                const partial = named.filter(x => norm(x.value).includes(want) || want.includes(norm(x.value)));
+                return partial.length === 1 ? partial[0].id : null;
             }
 
             // Inject the staff id as the `ta[]` form field the server expects, then submit.
@@ -11724,7 +11879,7 @@ function renderAttendancePlanner(S, api, host) {
                     iframe.style.cssText = 'position:absolute;left:-9999px;top:-9999px;width:0;height:0;border:0;';
                     iframe.src = SCHEDULE_URL;
 
-                    let done = false, submitted = false;
+                    let done = false, submitted = false, submittedDoc = null;
                     const started = Date.now();
                     const cleanup = () => { try { iframe.remove(); } catch {} };
                     const finish = (fn, arg) => { if (done) return; done = true; clearInterval(poll); cleanup(); fn(arg); };
@@ -11735,11 +11890,15 @@ function renderAttendancePlanner(S, api, host) {
                         try { win = iframe.contentWindow; if (!win || !win.document) return; } catch { return; }
                         // If a populated schedule is already present, parse and resolve.
                         const sessions = parseScheduleDoc(win.document);
-                        if (sessions.length) { finish(resolve, sessions); return; }
+                        // An empty schedule looks like the form before submitting, so the page
+                        // that loads after our submit counts as the answer even with no sessions.
+                        // (a different document than the one we submitted from, fully loaded).
+                        const resultLoaded = submitted && win.document !== submittedDoc && win.document.readyState === 'complete';
+                        if (sessions.length || resultLoaded) { finish(resolve, sessions); return; }
                         // Otherwise, once `tas` is available, submit our staff id exactly once.
                         if (!submitted) {
                             const id = findStaffId(win, fullName);
-                            if (id) { try { if (submitStaff(win, id)) submitted = true; } catch { /* retry next tick */ } }
+                            if (id) { try { if (submitStaff(win, id)) { submitted = true; submittedDoc = win.document; } } catch { /* retry next tick */ } }
                         }
                     }, 300);
 
@@ -11893,8 +12052,17 @@ function renderAttendancePlanner(S, api, host) {
                 return /SearchAcademicScheduled_001_m\.aspx$/i.test(location.pathname || '');
             }
 
+            // Set just before our submit; the reloaded result page sees it and stops
+            // (an empty schedule would otherwise look unsubmitted and loop forever).
+            const AUTO_SUBMIT_KEY = 'giuTlAutoSubmittedV1';
+
             async function autoFillSchedulePage() {
-                if (parseScheduleDoc(document).length) return; // already submitted
+                let justSubmitted = false;
+                try {
+                    justSubmitted = Date.now() - Number(sessionStorage.getItem(AUTO_SUBMIT_KEY) || 0) < 60000;
+                    sessionStorage.removeItem(AUTO_SUBMIT_KEY);
+                } catch { /* storage blocked */ }
+                if (justSubmitted || parseScheduleDoc(document).length) return; // already submitted
                 let name;
                 try { name = await fetchFullName(); } catch { return; }
                 const win = (typeof unsafeWindow !== 'undefined') ? unsafeWindow : window;
@@ -11907,6 +12075,7 @@ function renderAttendancePlanner(S, api, host) {
                     const id = findStaffId(win, name);
                     if (id) {
                         clearInterval(poll);
+                        try { sessionStorage.setItem(AUTO_SUBMIT_KEY, String(Date.now())); } catch { /* storage blocked */ }
                         try { submitStaff(win, id); } catch { /* leave page as-is */ }
                     }
                 }, 300);
@@ -12034,9 +12203,25 @@ function renderAttendancePlanner(S, api, host) {
                 return future.length ? future[0] : null;
             }
 
+            // The signed-in account ("first.last", from the page's account label), or ""
+            // on pages without one. Personal caches carry it, so a shared PC never shows
+            // the previous user's data.
+            function currentAccount() {
+                try {
+                    const el = document.querySelector('[id*="lbl_Account"]');
+                    return el && el.textContent ? el.textContent.trim().toLowerCase() : '';
+                } catch { return ''; }
+            }
+            // A cache saved for another account is not ours (unknown on either side: keep).
+            function ownedByOther(owner) {
+                const me = currentAccount();
+                return !!(me && owner && owner !== me);
+            }
+
             function saveCache(sessions) {
                 const payload = {
                     fetchedAt: Date.now(),
+                    owner: currentAccount(),
                     sessions: sessions.map(s => ({ ...s, start: s.start.toISOString(), end: s.end.toISOString() })),
                 };
                 try { localStorage.setItem(CACHE_KEY, JSON.stringify(payload)); } catch { /* quota */ }
@@ -12045,7 +12230,7 @@ function renderAttendancePlanner(S, api, host) {
             function loadCache() {
                 try {
                     const raw = JSON.parse(localStorage.getItem(CACHE_KEY));
-                    if (!raw || !Array.isArray(raw.sessions)) return null;
+                    if (!raw || !Array.isArray(raw.sessions) || ownedByOther(raw.owner)) return null;
                     raw.sessions = raw.sessions.map(s => ({ ...s, start: new Date(s.start), end: new Date(s.end) }));
                     return raw;
                 } catch { return null; }
@@ -12082,8 +12267,11 @@ function renderAttendancePlanner(S, api, host) {
             }
             function sessionCode(s) { return s.courseCode || 'session'; }
             function sessionTitle(s) { return [s.courseCode, s.examName].filter(Boolean).join(' '); }
+            // Hall included: two duties for the same course and start (two halls, or
+            // your own plus a cover) must stay two calendar events.
             function sessionUID(s) {
-                return `giu-${sessionCode(s)}-${icsDate(s.start)}@portal.giu-uni.de`;
+                const hall = String(s.hall || '').replace(/[^A-Za-z0-9]+/g, '');
+                return `giu-${sessionCode(s)}-${icsDate(s.start)}${hall ? '-' + hall : ''}@portal.giu-uni.de`;
             }
             function dutyLabel(s) {
                 return s.type === 'Supervisor' ? 'Supervising' : 'Proctoring';
@@ -12580,7 +12768,11 @@ function renderAttendancePlanner(S, api, host) {
                 if (html.includes('Login_m.aspx') || html.includes('id="LoginPage"')) {
                     throw new Error('SESSION_EXPIRED');
                 }
-                return new DOMParser().parseFromString(html, 'text/html');
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                // A maintenance/error page (200, no sessions dropdown) must not be read
+                // as "no sessions": that would wipe the cached list for the day.
+                if (!doc.getElementById('MainContent_DDL_Sessions')) throw new Error('NOT_SOURCE_PAGE');
+                return doc;
             }
 
             // Currently selected group value — must ride along on every postback
@@ -12932,12 +13124,24 @@ function renderAttendancePlanner(S, api, host) {
         
             const TITLE_RE = /^(Miss|Ms\.|Mrs\.|Mr\.|Dr\.|Prof\.|Eng\.)\s*/i;
             function stripTitle(s) { return s ? s.replace(/ /g, ' ').trim().replace(TITLE_RE, '').trim() : s; }
+            // "1:30 PM" → "13:30", the form the live schedule's slot keys use.
+            function to24h(t) {
+                const m = String(t || '').trim().match(/^(\d{1,2}):(\d{2})(?::\d{2})?\s*([AP]M)$/i);
+                if (!m) return String(t || '').trim();
+                let h = Number(m[1]) % 12;
+                if (/p/i.test(m[3])) h += 12;
+                return String(h).padStart(2, '0') + ':' + m[2];
+            }
+
             function normalizeRow(r) {
                 const p = stripTitle(r.proctor);
                 const c = stripTitle(r.coverName);
                 const patched = (p !== r.proctor || c !== r.coverName) ? { ...r, proctor: p, coverName: c } : r;
-                if (patched.slotKey) return patched;
-                return { ...patched, slotKey: (patched.dateKey || '') + '|' + (patched.timeSort || patched.startTime || '') };
+                // Rows from a CSV (or cached from one) have no 24h time key; "Take"
+                // matches the live schedule by date|HH:MM, so rebuild it.
+                if (patched.slotKey && !/[AP]M$/i.test(patched.slotKey)) return patched;
+                const timeSort = patched.timeSort || to24h(patched.startTime);
+                return { ...patched, timeSort, slotKey: (patched.dateKey || '') + '|' + timeSort };
             }
         
             // ── Cache ─────────────────────────────────────────────────────────────────
@@ -12950,11 +13154,7 @@ function renderAttendancePlanner(S, api, host) {
             function saveCache(rows) {
                 localStorage.setItem(CACHE_KEY, JSON.stringify({ rows, scrapedAt: new Date().toISOString() }));
             }
-        
-            function clearCache() {
-                localStorage.removeItem(CACHE_KEY);
-            }
-        
+
             function formatCacheAge(isoStr) {
                 const scraped = new Date(isoStr);
                 const today = new Date();
@@ -13087,8 +13287,9 @@ function renderAttendancePlanner(S, api, host) {
                                 .catch(() => { results[i] = null; })
                                 .finally(() => {
                                     running--;
-                                    if (index < tasks.length) next();
-                                    else if (running === 0) resolve(results);
+                                    if (index < tasks.length && !shouldAbort()) next();
+                                    // Done, or stopped (expired session, cancelled fetch) with nothing in flight.
+                                    if (running === 0 && (index >= tasks.length || shouldAbort())) resolve(results);
                                 });
                         }
                     }
@@ -13246,7 +13447,8 @@ function renderAttendancePlanner(S, api, host) {
             // ── Scrape orchestrator ───────────────────────────────────────────────────
         
             async function scrapeAll(cb, scope) {
-                // cb: { onProgress(stats), onRows(rows), onError(type), onComplete(rows) }
+                // cb: { onProgress(stats), onRows(rows), onError(type), onComplete(rows, stats),
+                //       onAbort(), isCancelled() }
                 // scope: optional { value, label } to fetch a single department; falsy = all
                 const baseState = extractFormState(document);
                 const deptEl = document.getElementById('MainContent_acdmcDpLst');
@@ -13267,8 +13469,9 @@ function renderAttendancePlanner(S, api, host) {
                 const poolCtrl = {
                     isPaused: () => _paused,
                     onSetResume: fn => { _resumeFn = fn; },
-                    shouldAbort: () => aborted,
-                };
+                        shouldAbort: () => aborted || !!(cb.isCancelled && cb.isCancelled()),
+                    };
+                    const stopped = () => aborted || !!(cb.isCancelled && cb.isCancelled());
         
                 // Phase 1 — departments
                 await runPool(depts, async dept => {
@@ -13284,6 +13487,7 @@ function renderAttendancePlanner(S, api, host) {
                     cb.onProgress({ ...stats });
                 }, poolCtrl);
         
+                if (stopped()) { if (aborted && cb.onAbort) cb.onAbort(); return; }
                 stats.totalProctors = allProctors.length;
         
                 // Phase 2 — proctor schedules
@@ -13302,8 +13506,10 @@ function renderAttendancePlanner(S, api, host) {
                     cb.onRows([...allRows]);
                 }, poolCtrl);
         
-                saveCache(allRows);
-                cb.onComplete(allRows);
+                if (stopped()) { if (aborted && cb.onAbort) cb.onAbort(); return; }
+                // A fetch with failed requests is shown but never replaces the saved data.
+                if (!stats.failed) saveCache(allRows);
+                cb.onComplete(allRows, stats);
             }
         
             // ── Styles ────────────────────────────────────────────────────────────────
@@ -14132,7 +14338,7 @@ function renderAttendancePlanner(S, api, host) {
                 return true;
             }
         
-            function applyFiltersAndSort() {
+            function applyFiltersAndSort({ keepPage = false } = {}) {
                 const q = buildFilterQuery();
         
                 const rows = _allRows.flatMap(r => {
@@ -14157,7 +14363,8 @@ function renderAttendancePlanner(S, api, host) {
                 });
         
                 _filteredRows = rows;
-                _currentPage = 1;
+                // Rows streaming in during a fetch keep the page the user is on.
+                _currentPage = keepPage ? Math.min(_currentPage, Math.max(1, Math.ceil(rows.length / _pageSize))) : 1;
                 renderTable(_filteredRows);
                 renderChips();
             }
@@ -14663,9 +14870,11 @@ function renderAttendancePlanner(S, api, host) {
                     if (scope && scope.error) { flagFetchDeptError(); return; }
                     document.getElementById('gius-proctor-refresh')?.classList.remove('gius-refresh-pulse');
                     _paused = false;
-                    clearCache();
-                    setAllRows([]);
                     _filters = { search: '', day: '', exam: '', proctor: '', room: '', department: '' };
+                    ['search', 'day', 'exam', 'proctor', 'room', 'department'].forEach(k => {
+                        const el = document.getElementById('gius-f-' + k);
+                        if (el) el.value = '';
+                    });
                     startScrape(scope);
                 });
         
@@ -14696,8 +14905,9 @@ function renderAttendancePlanner(S, api, host) {
                     reader.onload = ev => {
                         const rows = parseUploadedCSV(ev.target.result);
                         if (!rows.length) return;
+                        _scrapeToken++; // a running fetch stops and its results are dropped
                         _scraping = false;
-                        _paused = true;
+                        _paused = false;
                         const normalized = rows.map(normalizeRow);
                         setAllRows(normalized);
                         saveCache(normalized);
@@ -14720,7 +14930,14 @@ function renderAttendancePlanner(S, api, host) {
                 });
             }
         
+            // Each fetch has a token; a newer fetch or a CSV upload invalidates it.
+            let _scrapeToken = 0;
+
             function startScrape(scope) {
+                const token = ++_scrapeToken;
+                const current = () => token === _scrapeToken;
+                // Shown again if this fetch is stopped by an expired session.
+                const previousRows = _allRows;
                 _scraping = true;
                 _paused = false;
                 const emptyState = document.getElementById('gius-empty-state');
@@ -14754,7 +14971,9 @@ function renderAttendancePlanner(S, api, host) {
                 const scopeLabel = scope && scope.label ? ` · ${scope.label}` : '';
         
                 scrapeAll({
+                    isCancelled: () => !current(),
                     onProgress(stats) {
+                        if (!current()) return;
                         const pct = stats.totalProctors
                             ? Math.round((stats.proctorsDone / stats.totalProctors) * 100)
                             : Math.round((stats.depts / stats.totalDepts) * 50);
@@ -14771,20 +14990,34 @@ function renderAttendancePlanner(S, api, host) {
                         }
                     },
                     onRows(rows) {
-                        if (!_scraping) return;
+                        if (!_scraping || !current()) return;
                         setAllRows(rows);
+                        applyFiltersAndSort({ keepPage: true });
+                    },
+                    onAbort() {
+                        if (!current()) return;
+                        _scraping = false;
+                        _paused = false;
+                        setAllRows(previousRows);
+                        if (progSec)    progSec.style.display = 'none';
+                        if (refreshBtn) refreshBtn.disabled = false;
+                        if (pauseBtn)   { pauseBtn.style.display = 'none'; pauseBtn.innerHTML = '&#x23F8; Pause'; }
                         applyFiltersAndSort();
                     },
                     onError(type) {
                         if (type === 'SESSION_EXPIRED') {
                             if (warnEl) {
                                 warnEl.style.display = '';
-                                warnEl.innerHTML = '<span class="gius-warn-pill">⚠ Session expired — reload page</span>';
+                                warnEl.innerHTML = '<span class="gius-warn-pill">⚠ Session expired — sign in again, then Refresh</span>';
                             }
                         }
                     },
-                    onComplete(rows) {
-                        if (!_scraping) return;
+                    onComplete(rows, stats) {
+                        if (!_scraping || !current()) return;
+                        if (stats && stats.failed && warnEl) {
+                            warnEl.style.display = '';
+                            warnEl.innerHTML = `<span class="gius-warn-pill">⚠ ${stats.failed} request(s) failed — results may be incomplete and were not saved</span>`;
+                        }
                         _scraping = false;
                         _paused = false;
                         setAllRows(rows);
@@ -14864,7 +15097,26 @@ function renderAttendancePlanner(S, api, host) {
                 catch { return null; }
             }
         
+            // A queue left untouched this long was interrupted (closed tab, expired
+            // session): it is reported, never resumed. A queue another tab touched
+            // within OTHER_TAB_MS is that tab's; this tab leaves it alone.
+            const QUEUE_STALE_MS = 15 * 60 * 1000;
+            const OTHER_TAB_MS   = 60 * 1000;
+            const TAB_ID_KEY     = 'giuBatchNotifyTabV1';
+
+            function tabId() {
+                try {
+                    let id = sessionStorage.getItem(TAB_ID_KEY);
+                    if (!id) { id = Math.random().toString(36).slice(2); sessionStorage.setItem(TAB_ID_KEY, id); }
+                    return id;
+                } catch { return 'tab'; }
+            }
+
             function saveQueue(q) {
+                const now = Date.now();
+                q.createdAt = q.createdAt || now;
+                q.updatedAt = now;
+                q.tabId     = tabId();
                 localStorage.setItem(QUEUE_KEY, JSON.stringify(q));
             }
         
@@ -15363,6 +15615,12 @@ function renderAttendancePlanner(S, api, host) {
                         advanceOrDone(queue);
                         return;
                     }
+                    const selected = getEl('MainContent_DDL_Group');
+                    if (!selected || selected.value !== group.value) {
+                        queue.results.push({ label: group.label, status: 'failed', info: 'Group was not selected — not sent' });
+                        advanceOrDone(queue);
+                        return;
+                    }
                     subjectEl.value = group.subject || sharedSubject;
                     bodyEl.value    = group.body    || sharedBody;
                     queue.step = 'advance';
@@ -15374,11 +15632,12 @@ function renderAttendancePlanner(S, api, host) {
                 if (step === 'advance') {
                     const infoEl   = getEl('MainContent_L_SendInfo');
                     const infoText = infoEl ? infoEl.textContent.trim() : '';
-                    const failed   = /error|fail|could not|invalid/i.test(infoText);
+                    const failed   = /error|fail|could not|invalid|not sent/i.test(infoText);
+                    // No message at all: the send may never have reached the portal.
                     queue.results.push({
                         label:  group.label,
-                        status: failed ? 'failed' : 'sent',
-                        info:   infoText || 'Sent'
+                        status: !infoText ? 'unknown' : failed ? 'failed' : 'sent',
+                        info:   infoText || 'No confirmation from the portal — check before resending'
                     });
                     advanceOrDone(queue);
                     return;
@@ -15574,7 +15833,7 @@ function renderAttendancePlanner(S, api, host) {
         
                 const resultRows = queue.results.map((r, i) => {
                     const cls  = r.status === 'sent' ? 'gius-icon-sent' : r.status === 'failed' ? 'gius-icon-failed' : 'gius-icon-cancelled';
-                    const icon = r.status === 'sent' ? '✓' : r.status === 'failed' ? '✕' : '–';
+                    const icon = r.status === 'sent' ? '✓' : r.status === 'failed' ? '✕' : r.status === 'unknown' ? '?' : '–';
                     return `
                         <div class="gius-result-row" style="animation-delay:${i * 0.05}s">
                             <span class="gius-result-icon ${cls}">${icon}</span>
@@ -15627,7 +15886,8 @@ function renderAttendancePlanner(S, api, host) {
                 const sent      = results.filter(r => r.status === 'sent').length;
                 const failed    = results.filter(r => r.status === 'failed').length;
                 const cancelled = results.filter(r => r.status === 'cancelled').length;
-                const hasErrors = failed > 0;
+                const unknown   = results.filter(r => r.status === 'unknown').length;
+                const hasErrors = failed > 0 || unknown > 0 || cancelled > 0;
         
                 const rows = results.map((r, i) => {
                     const cls  = r.status === 'sent' ? 'gius-icon-sent' : r.status === 'failed' ? 'gius-icon-failed' : 'gius-icon-cancelled';
@@ -15642,7 +15902,7 @@ function renderAttendancePlanner(S, api, host) {
         
                 const hdrClass = hasErrors ? 'gius-hdr-danger' : 'gius-hdr-success';
                 const titleIcon = hasErrors ? '⚠' : '✓';
-                const titleText = hasErrors ? 'Sent with Errors' : 'Batch Complete';
+                const titleText = failed > 0 ? 'Sent with Errors' : hasErrors ? 'Check the Results' : 'Batch Complete';
         
                 const card = document.createElement('div');
                 card.id = 'giu-batch-summary';
@@ -15656,7 +15916,8 @@ function renderAttendancePlanner(S, api, host) {
                                 <span class="gius-lbl">Sent</span>
                             </div>
                             ${failed > 0 ? `<div class="gius-stat-pill"><span class="gius-num">${failed}</span><span class="gius-lbl">Failed</span></div>` : ''}
-                            ${cancelled > 0 ? `<div class="gius-stat-pill"><span class="gius-num">${cancelled}</span><span class="gius-lbl">Cancelled</span></div>` : ''}
+                            ${cancelled > 0 ? `<div class="gius-stat-pill"><span class="gius-num">${cancelled}</span><span class="gius-lbl">Not sent</span></div>` : ''}
+                            ${unknown > 0 ? `<div class="gius-stat-pill"><span class="gius-num">${unknown}</span><span class="gius-lbl">Unconfirmed</span></div>` : ''}
                         </div>
                     </div>
                     <div class="gius-card-body">
@@ -15690,6 +15951,20 @@ function renderAttendancePlanner(S, api, host) {
         
             // ── Entry point ──────────────────────────────────────────────────────────────
         
+            function renderOtherTabNotice() {
+                injectStyles();
+                const card = document.createElement('div');
+                card.id = 'giu-batch-other-tab';
+                card.className = 'gius-card';
+                card.innerHTML = `
+                    <div class="gius-card-header gius-hdr-danger">
+                        <h4 class="gius-card-title">Batch running in another tab</h4>
+                    </div>
+                    <div class="gius-card-body">A batch send is in progress in another tab. Let it finish there, then reload this page.</div>`;
+                const anchor = getInjectionAnchor();
+                if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(card, anchor);
+            }
+
             function init() {
                 const queue = loadQueue();
         
@@ -15704,7 +15979,24 @@ function renderAttendancePlanner(S, api, host) {
                     injectPanel();
                     return;
                 }
-        
+
+                const age = Date.now() - (queue.updatedAt || 0);
+                if (queue.tabId && queue.tabId !== tabId() && age < OTHER_TAB_MS) {
+                    renderOtherTabNotice();
+                    return;
+                }
+                if (!queue.updatedAt || age > QUEUE_STALE_MS || (queue.tabId && queue.tabId !== tabId())) {
+                    // Interrupted: report what happened, send nothing.
+                    const results = (queue.results || []).slice();
+                    (queue.groups || []).slice(results.length).forEach(g => {
+                        results.push({ label: g.label, status: 'cancelled', info: 'Not sent — the batch was interrupted' });
+                    });
+                    clearQueue();
+                    renderSummary(results);
+                    injectPanel();
+                    return;
+                }
+
                 renderProgress(queue);
                 runQueueStep(queue);
             }
@@ -15925,16 +16217,48 @@ function renderAttendancePlanner(S, api, host) {
                 body.appendChild(el);
             }
 
-            function parseGradeCSV(text) {
+            // Grade CSV → { map: { studentId: grade }, skipped: [row labels] }.
+            // Handles a BOM, ";" files (Excel in Arabic/German locales), quoted fields
+            // with commas or line breaks, and decimal commas ("8,5"). The grade is the
+            // last column; rows with an ID but no numeric grade are reported as skipped.
+            function parseGradeCsvText(text) {
+                const src = String(text ?? '').replace(/^\uFEFF/, '');
+                const firstLine = src.split(/\r?\n/, 1)[0] || '';
+                const delim = firstLine.split(';').length > firstLine.split(',').length ? ';' : ',';
+                const rows = [];
+                let row = [], field = '', quoted = false;
+                for (let i = 0; i < src.length; i++) {
+                    const c = src[i];
+                    if (quoted) {
+                        if (c === '"') {
+                            if (src[i + 1] === '"') { field += '"'; i++; } else quoted = false;
+                        } else field += c;
+                    } else if (c === '"') quoted = true;
+                    else if (c === delim) { row.push(field); field = ''; }
+                    else if (c === '\n' || c === '\r') {
+                        if (c === '\r' && src[i + 1] === '\n') i++;
+                        row.push(field); rows.push(row); row = []; field = '';
+                    } else field += c;
+                }
+                if (field !== '' || row.length) { row.push(field); rows.push(row); }
+
+                const headerLen = rows.length ? rows[0].length : 0;
                 const map = {};
-                text.trim().split(/\r?\n/).forEach(line => {
-                    const cols  = line.split(',').map(v => v.trim());
-                    const name  = cols[0] || '';
-                    const grade = cols[cols.length - 1];
-                    const m     = name.match(/\((\d+)\)/);
-                    if (m && grade !== '' && !isNaN(grade)) map[m[1]] = grade;
+                const skipped = [];
+                rows.forEach(cols => {
+                    const label = (cols[0] || '').trim();
+                    const m = label.match(/\((\d+)\)/);
+                    if (!m) return; // header or a non-student row
+                    let raw = (cols[cols.length - 1] || '').trim();
+                    // An unquoted "8,5" in a comma file splits into one extra column.
+                    if (delim === ',' && cols.length === headerLen + 1 && /^\d+$/.test(raw) && /^-?\d+$/.test((cols[cols.length - 2] || '').trim())) {
+                        raw = cols[cols.length - 2].trim() + '.' + raw;
+                    }
+                    raw = raw.replace(/^(-?\d+),(\d+)$/, '$1.$2');
+                    if (raw === '' || !Number.isFinite(+raw)) { skipped.push(label); return; }
+                    map[m[1]] = raw;
                 });
-                return map;
+                return { map, skipped };
             }
 
             function createGradeButtons(table) {
@@ -15982,16 +16306,19 @@ function renderAttendancePlanner(S, api, host) {
                         csv.push([name, grade]);
                     });
 
-                    const blob = new Blob([csv.join('\n')], { type: 'text/csv' });
-                    const url  = URL.createObjectURL(blob);
+                    // Every field quoted (names contain commas); BOM so Excel reads Arabic names.
+                    const field = v => '"' + String(v ?? '').replace(/"/g, '""') + '"';
+                    const text  = '\uFEFF' + csv.map(r => r.map(field).join(',')).join('\r\n');
+                    const blob  = new Blob([text], { type: 'text/csv;charset=utf-8' });
+                    const url   = URL.createObjectURL(blob);
 
                     const csvTitleId = document.getElementById('MainContent_crntLbl');
-                    const csvTitle   = csvTitleId.textContent
-                        .split('||')[0].replace(/\s+/g, '').trim();
+                    const csvTitle   = (csvTitleId?.textContent ?? '')
+                        .split('||')[0].replace(/\s+/g, '').replace(/[/\\?%*:|"<>]/g, '_').trim() || 'grades';
 
                     const a    = document.createElement('a');
                     a.href     = url;
-                    a.download = csvTitle;
+                    a.download = csvTitle + '.csv';
                     a.click();
                     URL.revokeObjectURL(url);
                     showFeedback('✓ CSV downloaded successfully');
@@ -16003,7 +16330,8 @@ function renderAttendancePlanner(S, api, host) {
                     if (!file) return;
                     fileInput.value = '';
 
-                    const grades  = parseGradeCSV(await file.text());
+                    const parsed  = parseGradeCsvText(await file.text());
+                    const grades  = parsed.map;
                     let applied   = 0;
                     let missing   = 0;
 
@@ -16021,10 +16349,13 @@ function renderAttendancePlanner(S, api, host) {
                         }
                     });
 
+                    const skippedMsg = parsed.skipped.length
+                        ? ` — ${parsed.skipped.length} CSV row(s) had no numeric grade`
+                        : '';
                     const msg = missing > 0
-                        ? `✓ Applied ${applied} grade(s) — ${missing} student(s) not in CSV`
-                        : `✓ Grades applied to ${applied} student(s)`;
-                    showFeedback(msg, missing > 0 ? 'error' : 'success');
+                        ? `✓ Applied ${applied} grade(s) — ${missing} student(s) not in CSV${skippedMsg}`
+                        : `✓ Grades applied to ${applied} student(s)${skippedMsg}`;
+                    showFeedback(msg, missing > 0 || parsed.skipped.length ? 'error' : 'success');
                     renderStats(body);
                 });
 
@@ -16560,7 +16891,7 @@ function renderAttendancePlanner(S, api, host) {
                 panel.className = 'gius-att-panel';
                 panel.innerHTML = `
                 <div class="gius-att-header">
-                    <span class="gius-att-title"><i class="fa fa-chevron-down gius-att-chevron"></i>Group Attendance Report — <strong>${Shared.escapeHtml(groupLabel)}</strong></span>
+                    <span class="gius-att-title"><i class="fa fa-chevron-down gius-att-chevron"></i>Group Attendance Report — <strong>${S.escapeHtml(groupLabel)}</strong></span>
                     <span class="gius-att-meta"></span>
                     <button class="gius-att-refresh" type="button"><i class="fa fa-refresh"></i> Refresh</button>
                 </div>
@@ -16664,8 +16995,8 @@ function renderAttendancePlanner(S, api, host) {
                         : '';
                     return `<tr class="gius-att-data-row" data-idx="${idx}">
                     <td><span class="gius-att-badge ${pillCls}">${rule.badge}</span></td>
-                    <td>${Shared.escapeHtml(s.name)}${partial}</td>
-                    <td>${Shared.escapeHtml(s.id)}</td>
+                    <td>${S.escapeHtml(s.name)}${partial}</td>
+                    <td>${S.escapeHtml(s.id)}</td>
                     <td>${absentSess}</td>
                     <td>${pct(s.absenceRate)}</td>
                 </tr>`;
@@ -16726,7 +17057,7 @@ function renderAttendancePlanner(S, api, host) {
                             const state = overrides.get(`${student.id}:${sess.id}`) ?? null;
                             const btnStyle = val => (state === val && isDark) ? ` style="${DARK_ACTIVE[val]}"` : '';
                             return `<div class="gius-att-missing-item"
-                                         data-sid="${Shared.escapeHtml(student.id)}" data-session-id="${sess.id}" data-hours="${sess.durationHours}">
+                                         data-sid="${S.escapeHtml(student.id)}" data-session-id="${sess.id}" data-hours="${sess.durationHours}">
                                 <span class="gius-att-missing-date">${fmtSessionDate(sess.date)} · ${sess.durationHours}h</span>
                                 <div class="gius-att-miss-grp">
                                     <button type="button" class="gius-att-miss-btn${state === 'attended' ? ' active' : ''}" data-val="attended"${btnStyle('attended')}>✓ Attended</button>
@@ -17243,6 +17574,18 @@ function renderAttendancePlanner(S, api, host) {
         if (/\/ClassAttendance_ManageStudentAttendancesH003\.aspx/i.test(path)) {
             const sessionId = new URLSearchParams(location.search).get('gius_session');
             const sel = document.getElementById('MainContent_DDL_Sessions');
+            if (sessionId) {
+                // One-shot: drop the parameter from the address and from the form's
+                // postback target, or every later postback (picking another session)
+                // would come back with it and be pulled back to this session.
+                const clean = new URL(location.href);
+                clean.searchParams.delete('gius_session');
+                history.replaceState(history.state, '', clean.href);
+                const form = sel && sel.form;
+                if (form && /gius_session=/.test(form.getAttribute('action') || '')) {
+                    form.setAttribute('action', clean.pathname + clean.search);
+                }
+            }
             if (sessionId && sel && sel.value !== sessionId) {
                 const opt = Array.from(sel.options).find(o => o.value === sessionId);
                 if (opt) {

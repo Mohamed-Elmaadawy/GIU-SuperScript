@@ -10,7 +10,7 @@
 // @match       https://apps.guc.edu.eg/external/tempprojects/swiftreports.aspx*
 // @match       https://apps.guc.edu.eg/External/TempProjects/SwiftReports.aspx*
 // @namespace   Cyn0
-// @version     4.2
+// @version     4.3
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js
 // @author      Mo.Elmaadawy
@@ -134,7 +134,13 @@ function parseGucSessions(doc) {
     const table = doc.getElementById(GUC_GRID_ID);
     if (!table) throw timesheetError('no-grid');
     const rows = Array.from(table.rows || []);
-    // Row 0 is the pager; the header row is the first one with a "Date" cell.
+    // Row 0 is the pager. An enabled "Next" (a link) means the month spans more
+    // pages than this one; reading only page 1 would silently under-count.
+    const pager = rows[0];
+    if (pager && Array.from(pager.querySelectorAll('a')).some(a => /next/i.test(a.textContent))) {
+        throw timesheetError('truncated');
+    }
+    // The header row is the first one with a "Date" cell.
     const headerIndex = rows.findIndex(r => Array.from(r.cells).some(c => gucCellText(c).toLowerCase() === 'date'));
     if (headerIndex < 0) throw timesheetError('layout', { missing: GUC_REQUIRED_HEADERS.slice() });
     const headers = Array.from(rows[headerIndex].cells).map(c => gucCellText(c).toLowerCase());
@@ -243,6 +249,9 @@ function gmGet(url) {
             onload: res => resolve(res),
             onerror: () => reject(timesheetError('network')),
             ontimeout: () => reject(timesheetError('timeout')),
+            // Without this an aborted request never settles and every later
+            // fetch (Retry included) would wait on it until a reload.
+            onabort: () => reject(timesheetError('network')),
         });
     });
 }
@@ -291,8 +300,9 @@ function gucReportUrl(host) {
     return 'https://' + host + GUC_REPORT_PATH;
 }
 
-function gucSignInUrl() {
-    return gucReportUrl(readGucHost() || GUC_HOSTS[0]);
+// `host`: the server that answered with a login challenge, when known.
+function gucSignInUrl(host) {
+    return gucReportUrl((GUC_HOSTS.includes(host) && host) || readGucHost() || GUC_HOSTS[0]);
 }
 
 // Which *.guc.edu.eg host serves the staff report is not fixed, so probe the
@@ -875,7 +885,8 @@ function berlinErrorCopy(err, label) {
         case 'server':
         case 'http': return { title: `${label} portal error (HTTP ${err.status})`, body: 'The Cairo portal failed on its side. Try again later.', signIn: false };
         case 'layout': return { title: `The ${label} attendance page changed`, body: `Missing columns: ${(err.missing || []).join(', ') || 'unknown'}. This script needs an update.`, signIn: false };
-        case 'no-grant': return { title: 'Cross-site access blocked', body: `Tampermonkey did not give this script network access. Check that the script is enabled and that its @connect hosts are allowed in Tampermonkey's settings, then reload this page.`, signIn: false };
+        case 'truncated': return { title: `The ${label} report has more than one page`, body: 'This script reads only one page, so it would under-count your hours. Please report this to the script maintainer.', signIn: false };
+        case 'no-grant': return {title: 'Cross-site access blocked', body: `Tampermonkey did not give this script network access. Check that the script is enabled and that its @connect hosts are allowed in Tampermonkey's settings, then reload this page.`, signIn: false };
         default: return { title: `Couldn't load attendance from ${label}`, body: 'Unexpected error. Press Retry.', signIn: false };
     }
 }
@@ -1231,6 +1242,34 @@ const UNIVERSITY_LABELS = { giu: 'GIU Cairo', guc: 'GUC Cairo' };
 // after the view's request failed. Only a user action (force, Retry, a
 // university pick) bypasses it.
 const DOC_MEMO_MS = 60 * 1000;
+// The memo above lives in one page; this one survives reloads and other
+// tabs. After a failed Cairo request, passive loads (every Home visit,
+// every postback) answer with that failure for FAIL_COOLDOWN_MS instead of
+// asking Cairo again — repeated failed NTLM logons can lock the account.
+// Retry, Refresh, sign-in and a university pick clear it.
+const FAIL_KEY = 'giuBerlinCairoFailV1';
+const FAIL_COOLDOWN_MS = 10 * 60 * 1000;
+const COOLDOWN_KINDS = ['auth', 'no-grid', 'network', 'timeout', 'server', 'http', 'truncated'];
+
+function readCairoFailure(univ) {
+    try {
+        const f = JSON.parse(localStorage.getItem(FAIL_KEY) || 'null');
+        if (!f || f.univ !== univ || !COOLDOWN_KINDS.includes(f.kind)) return null;
+        if (!(Date.now() - f.at < FAIL_COOLDOWN_MS)) return null;
+        return f;
+    } catch { return null; }
+}
+
+function rememberCairoFailure(univ, err) {
+    if (!err || !COOLDOWN_KINDS.includes(err.kind)) return;
+    try {
+        localStorage.setItem(FAIL_KEY, JSON.stringify({ univ, kind: err.kind, status: err.status || 0, host: err.host || '', at: Date.now() }));
+    } catch { /* ignore */ }
+}
+
+function clearCairoFailure() {
+    try { localStorage.removeItem(FAIL_KEY); } catch { /* ignore */ }
+}
 // The engine's Berlin start date (staffAttendance.js STORAGE_KEYS.branchStart):
 // rows before it are Cairo days and keep Cairo's clock.
 const BRANCH_START_KEY = 'giuBranchStartV1';
@@ -1261,6 +1300,7 @@ function createBerlinSource(S) {
     // university (the view, if open, reloads itself through its own callback).
     function resetCaches() {
         last = null;
+        clearCairoFailure();
         // Drop the reference (not the promise itself — a caller already
         // holding it still settles, as 'superseded'); the next fetchReportDoc
         // must start a fresh request rather than adopt one for the university
@@ -1309,7 +1349,7 @@ function createBerlinSource(S) {
     }
 
     function label() { return UNIVERSITY_LABELS[getUniversity()] || 'Cairo'; }
-    function signInUrl() { return getUniversity() === 'guc' ? gucSignInUrl() : GIU_BOOTSTRAP_URL; }
+    function signInUrl(err) { return getUniversity() === 'guc' ? gucSignInUrl(err && err.host) : GIU_BOOTSTRAP_URL; }
 
     // A result that arrives after the university changed belongs to the one
     // left behind: callers get the silent 'superseded' kind instead, which
@@ -1334,6 +1374,13 @@ function createBerlinSource(S) {
         if (!force && last && last.univ === univ && Date.now() - last.at < DOC_MEMO_MS) {
             return last.err ? Promise.reject(last.err) : Promise.resolve(localizeDoc(last.doc));
         }
+        if (force) clearCairoFailure();
+        else if (!inflight) {
+            const failed = readCairoFailure(univ);
+            if (failed) {
+                return Promise.reject(timesheetError(failed.kind, { status: failed.status, host: failed.host || undefined, cooldown: true }));
+            }
+        }
         if (inflight) return forUniversity(univ, inflight);
         const request = (univ === 'guc'
             ? fetchGucReportDoc().then(doc => buildCanonicalReportDoc(aggregateGucDays(parseGucSessions(doc))))
@@ -1348,12 +1395,14 @@ function createBerlinSource(S) {
             if (inflight === thisRequest) {
                 inflight = null;
                 last = { univ, doc, at: Date.now() };
+                clearCairoFailure();
             }
             return doc;
         }, err => {
             if (inflight === thisRequest) {
                 inflight = null;
                 last = { univ, err, at: Date.now() };
+                rememberCairoFailure(univ, err);
             }
             S.warn('berlinAttendance', err && err.kind ? err.kind : err);
             throw err;
@@ -1372,11 +1421,11 @@ function createBerlinSource(S) {
             renderUniversityChooser(S, host, value => { setUniversity(value); onRetry(); });
             return;
         }
-        const retry = () => { last = null; onRetry(); };
+        const retry = () => { last = null; clearCairoFailure(); onRetry(); };
         // The popup's completion is one Retry click: at most one attempt, and
         // only because the user started the sign-in.
-        const onSignIn = e => { if (openCairoSignIn(signInUrl(), retry)) e.preventDefault(); };
-        renderBerlinError(S, host, err, { label: label(), signInUrl: signInUrl(), onRetry: retry, onSignIn, inline: !!(opts && opts.inline) });
+        const onSignIn = e => { if (openCairoSignIn(signInUrl(err), retry)) e.preventDefault(); };
+        renderBerlinError(S, host, err, { label: label(), signInUrl: signInUrl(err), onRetry: retry, onSignIn, inline: !!(opts && opts.inline) });
     }
 
     const reportViewUrl = location.origin + '/GIUb/INTStaff/Home.aspx' + BERLIN_VIEW_HASH;
@@ -2140,7 +2189,8 @@ function createGiusDateField(S, opts) {
 //           today and later rows), minDaySeconds, days: [{ ymd, isToday,
 //           requiredSeconds, capSeconds, lateSeconds, earliestSeconds,
 //           inSeconds|null, outSeconds|null, fixedSeconds|null, inBase,
-//           inEdited, outEdited, inFromReport }] }
+//           inEdited, outEdited, inFromReport }], bufferSeconds }
+//  bufferSeconds: how far behind the month may end (default 0: even).
 //  inBase: the day (an override) is already in worked/required; it is
 //  shown, never counted again. A day under 4h counts as absent, as in the
 //  summary: no required hours, its hours still count.
@@ -2148,6 +2198,10 @@ function createGiusDateField(S, opts) {
 //  only a check-out (usual check-out mode) gets its check-in, never before
 //  earliestSeconds. Both set: the day is pinned.
 // ═══════════════════════════════════════════════════════════════════════════
+// The month only costs pay once it ends more than 3h behind ("Cutting It
+// Close" is fine), so the engine plans to that floor, not to 0.
+const PLANNER_BUFFER_SECONDS = 3 * 3600;
+
 function plannerParseTime(text) {
     const m = String(text || "").match(/^(\d{1,2}):(\d{2})$/);
     if (!m) return null;
@@ -2230,7 +2284,8 @@ function planAttendanceDays(input) {
         return day;
     });
 
-    let need = required - input.workedSeconds - pinnedSeconds;
+    const buffer = Math.max(0, input.bufferSeconds || 0);
+    let need = required - input.workedSeconds - pinnedSeconds - buffer;
     let open = free.slice();
     while (open.length) {
         const share = need / open.length;
@@ -2275,8 +2330,9 @@ function planAttendanceDays(input) {
         endBalanceSeconds: input.workedSeconds + planned - required,
         freeDays: free.length,
         pinnedDays: days.filter(function (d) { return d.pinned; }).length,
-        perDayExtraSeconds: free.length ? freeExtra / free.length : 0,
-    };
+            perDayExtraSeconds: free.length ? freeExtra / free.length : 0,
+            bufferSeconds: buffer,
+        };
 }
 
 // What a planned day asks of you: the check-in it worked out (usual
@@ -2455,16 +2511,30 @@ function renderAttendancePlanner(S, api, host) {
 
     // One balance on the card: where the month ends with the times above,
     // plus what to do about it when there is something to do.
-    function monthEnd(plan, both) {
+    // "even", "Extra 1:15", "Missing 2:40 (within the 3h buffer)".
+    function monthEndText(plan) {
         const mins = Math.round(plan.endBalanceSeconds / 60);
-        const text = mins === 0 ? "even" : (mins > 0 ? "Extra " : "Missing ") + plannerDuration(plan.endBalanceSeconds);
-        const end = '<span id="gius-plan-end">Month ends: <b class="' + (mins >= 0 ? "gius-plan-good" : "gius-plan-bad") + '">' + text + "</b></span>";
+        if (mins === 0) return "even";
+        const text = (mins > 0 ? "Extra " : "Missing ") + plannerDuration(plan.endBalanceSeconds);
+        const buffer = plan.bufferSeconds || 0;
+        return mins < 0 && buffer && -plan.endBalanceSeconds <= buffer
+            ? text + " (within the " + plannerDuration(buffer).replace(/:00$/, "") + "h buffer)"
+            : text;
+    }
+
+    function monthEnd(plan, both) {
+        const buffer = plan.bufferSeconds || 0;
+        // Seconds above the floor the month may end at (0 or −buffer).
+        const margin = plan.endBalanceSeconds + buffer;
+        const mins = Math.round(margin / 60);
+        const goal = buffer ? "To stay within the " + plannerDuration(buffer).replace(/:00$/, "") + "h buffer" : "To break even";
+        const end = '<span id="gius-plan-end">Month ends: <b class="' + (mins >= 0 ? "gius-plan-good" : "gius-plan-bad") + '">' + monthEndText(plan) + "</b></span>";
         const k = plan.freeDays + " working day" + (plan.freeDays === 1 ? "" : "s");
         const extra = Math.round(plan.perDayExtraSeconds / 60);
         let hint = "";
-        if (both && plan.pinnedDays && mins !== 0) {
-            // The one change on every planned day that evens the month out.
-            const per = Math.ceil(Math.abs(plan.endBalanceSeconds) / plan.pinnedDays / 60) * 60;
+        if (both && plan.pinnedDays && (mins < 0 || plan.endBalanceSeconds > 0)) {
+            // The one change on every planned day that brings the month to its floor.
+            const per = Math.ceil(Math.abs(margin) / plan.pinnedDays / 60) * 60;
             const n = plan.pinnedDays + " day" + (plan.pinnedDays === 1 ? "" : "s");
             if (mins < 0) {
                 // Only suggest what fits every planned day: leaving later stops at
@@ -2477,15 +2547,16 @@ function renderAttendancePlanner(S, api, host) {
                 if (lateRoom >= per) ways.push("leave about <b>" + amount(per) + "</b> later");
                 if (earlyRoom >= per) ways.push("come about <b>" + amount(per) + "</b> earlier");
                 if (ways.length) {
-                    hint = "To break even: " + ways.join(" or ") + " on each of the " + n + ".";
+                    hint = goal + ": " + ways.join(" or ") + " on each of the " + n + ".";
                 } else if (lateRoom + earlyRoom >= per) {
-                    hint = "To break even: leave about <b>" + amount(lateRoom) + "</b> later and come about <b>" +
+                    hint = goal + ": leave about <b>" + amount(lateRoom) + "</b> later and come about <b>" +
                         amount(per - lateRoom) + "</b> earlier on each of the " + n + ".";
                 } else {
                     hint = "Even the earliest check-in and latest check-out on each of the " + n + " isn't enough.";
                 }
             } else {
-                hint = "You could leave about <b>" + amount(per) + "</b> earlier on each of the " + n + " and still end even.";
+                hint = "You could leave about <b>" + amount(per) + "</b> earlier on each of the " + n +
+                    (buffer ? " and still stay within the buffer." : " and still end even.");
             }
         } else if (mins < 0) {
             // Check-out mode is limited by the earliest check-in, check-in mode by the cap.
@@ -2513,8 +2584,7 @@ function renderAttendancePlanner(S, api, host) {
         const today = plan ? plan.days.find(function (d) { return d.isToday && !d.locked; }) : null;
         let peek = "";
         if (!expanded && plan && both) {
-            const m = Math.round(plan.endBalanceSeconds / 60);
-            peek = '<span class="gius-plan-peek">Month ends: ' + (m === 0 ? "even" : (m > 0 ? "Extra " : "Missing ") + plannerDuration(plan.endBalanceSeconds)) + "</span>";
+            peek = '<span class="gius-plan-peek">Month ends: ' + monthEndText(plan) + "</span>";
         } else if (!expanded && today) {
             peek = '<span class="gius-plan-peek">' + plannerDayAnswer(today).verb + " today by " + plannerDayAnswer(today).time + "</span>";
         }
@@ -2823,7 +2893,7 @@ function staffAttendance(S) {
             // ───────────────────────────────────────────────────────────────────────────
             //  Persisted Data Contracts (canonical shapes used across the app)
             // ───────────────────────────────────────────────────────────────────────────
-            //  HolidayEntry      { type: "single"|"range", category: "holiday"|"annual",
+            //  HolidayEntry      { type: "single"|"range", category: "holiday"|"annual"|"sick",
             //                      date?: "YYYY-MM-DD", start?, end? }
             //  OverrideEntry     { date: "YYYY-MM-DD", type: "full_day"|"custom_actual",
             //                      actualSeconds?: number, reason?: string, note?: string }
@@ -3942,7 +4012,7 @@ function staffAttendance(S) {
                     addMarker(item.date, "Compensation");
                 });
                 holidays.forEach(function (item) {
-                    const markerLabel = item.category === "annual" ? "Annual Leave" : "Holiday";
+                    const markerLabel = holidayCategoryLabel(item.category);
                     if (item.type === "single") {
                         addMarker(item.date, markerLabel);
                         return;
@@ -4031,11 +4101,19 @@ function staffAttendance(S) {
             //  Holiday Helpers
             // ═══════════════════════════════════════════════════════════
 
+            // Holiday list categories. Sick leave excuses the day like a holiday and is
+            // never charged to the annual leave balance.
+            const HOLIDAY_CATEGORY_LABELS = { holiday: "Holiday", annual: "Annual Leave", sick: "Sick Leave" };
+            function normalizeHolidayCategory(value) {
+                return Object.prototype.hasOwnProperty.call(HOLIDAY_CATEGORY_LABELS, value) ? value : "holiday";
+            }
+            function holidayCategoryLabel(value) {
+                return HOLIDAY_CATEGORY_LABELS[normalizeHolidayCategory(value)];
+            }
+
             function normalizeHolidayEntry(entry) {
                 if (!entry) return null;
-                const normalizeCategory = function (value) {
-                    return value === "annual" ? "annual" : "holiday";
-                };
+                const normalizeCategory = normalizeHolidayCategory;
 
                 if (typeof entry === "string") {
                     const value = normalizeYMD(entry);
@@ -4064,7 +4142,7 @@ function staffAttendance(S) {
             }
 
             function holidayEntryToKey(entry) {
-                const category = entry.category === "annual" ? "annual" : "holiday";
+                const category = normalizeHolidayCategory(entry.category);
                 if (entry.type === "single") return `${category}:single:${entry.date}`;
                 return `${category}:range:${entry.start}:${entry.end}`;
             }
@@ -4124,14 +4202,15 @@ function staffAttendance(S) {
                 return `${entry.start} → ${entry.end}`;
             }
 
-            function getAnnualLeaveDateSet(holidays, periodStart, periodEnd) {
+            function getAnnualLeaveDateSet(holidays, periodStart, periodEnd, category) {
+                const wanted = category || "annual";
                 const dates = new Set();
                 const normalizedStart = normalizeYMD(periodStart);
                 const normalizedEnd = normalizeYMD(periodEnd);
                 if (!normalizedStart || !normalizedEnd) return dates;
 
                 (holidays || []).forEach(function (holiday) {
-                    if (!holiday || holiday.category !== "annual") return;
+                    if (!holiday || holiday.category !== wanted) return;
                     if (holiday.type === "single") {
                         const singleDate = normalizeYMD(holiday.date);
                         if (singleDate && isBetweenDates(normalizedStart, normalizedEnd, singleDate)) {
@@ -5884,7 +5963,8 @@ function staffAttendance(S) {
                 const typeFilter = createUiSelect("", [
                     { value: "", label: "All categories" },
                     { value: "holiday", label: "Holiday" },
-                    { value: "annual", label: "Annual Leave" }
+                    { value: "annual", label: "Annual Leave" },
+                    { value: "sick", label: "Sick Leave" }
                 ], initialTypeFilter);
                 const dateFilter = createUiInput("text", "", { placeholder: "Filter by date (YYYY-MM)", value: initialDateFilter });
                 dateFilter.style.minWidth = "160px";
@@ -5944,7 +6024,7 @@ function staffAttendance(S) {
                     pickTd.appendChild(pick);
 
                     const categoryTd = document.createElement("td");
-                    categoryTd.textContent = holiday.category === "annual" ? "Annual Leave" : "Holiday";
+                    categoryTd.textContent = holidayCategoryLabel(holiday.category);
 
                     const typeTd = document.createElement("td");
                     typeTd.textContent = holiday.type === "single" ? "Single" : "Range";
@@ -6612,7 +6692,7 @@ function staffAttendance(S) {
 
                 const holidayTitle = document.createElement("div");
                 holidayTitle.className = "giu-holiday-title";
-                holidayTitle.textContent = "Holidays & Annual Leaves";
+                holidayTitle.textContent = "Holidays, Annual & Sick Leaves";
                 holidaySection.appendChild(holidayTitle);
 
                 const controls = document.createElement("div");
@@ -6620,7 +6700,8 @@ function staffAttendance(S) {
 
                 const categorySelect = createUiSelect("giu-holiday-category", [
                     { value: "holiday", label: "Holiday" },
-                    { value: "annual", label: "Annual Leave" }
+                    { value: "annual", label: "Annual Leave" },
+                    { value: "sick", label: "Sick Leave" }
                 ]);
                 const modeSelect = createUiSelect("giu-holiday-mode", [
                     { value: "single", label: "Single Date" },
@@ -8111,7 +8192,7 @@ function staffAttendance(S) {
 
             // Formats the accumulator + holiday counts into the public stats object
             // returned by `buildPeriodStats`.
-            function finalizePeriodStats(acc, holidayDays, annualLeaveDays) {
+            function finalizePeriodStats(acc, holidayDays, annualLeaveDays, sickLeaveDays) {
                 const balanceSeconds = acc.actualSeconds - acc.requiredSeconds;
                 const compensationBalanceSeconds = acc.compensationEarnedSeconds - acc.compensationUsedSeconds;
                 const balanceHMS = secondsToHMS(balanceSeconds);
@@ -8167,6 +8248,7 @@ function staffAttendance(S) {
                     lateDayDetails: acc.lateDayDetails,
                     holidayDays,
                     annualLeaveDays,
+                    sickLeaveDays: sickLeaveDays || 0,
                     overriddenDays: acc.overriddenDays,
                     overriddenDayDetails: acc.overriddenDayDetails,
                     compensationEarnedSeconds: acc.compensationEarnedSeconds,
@@ -8212,7 +8294,10 @@ function staffAttendance(S) {
 
                 const holidayDateSet = getHolidayDatesInPeriod(holidays, periodStart, periodEnd);
                 const annualDateSet = getAnnualLeaveDateSet(holidays, periodStart, periodEnd);
-                const holidayDays = holidayDateSet.size - annualDateSet.size;
+                const sickDateSet = getAnnualLeaveDateSet(holidays, periodStart, periodEnd, "sick");
+                let holidayDays = 0;
+                holidayDateSet.forEach(function (d) { if (!annualDateSet.has(d) && !sickDateSet.has(d)) holidayDays += 1; });
+                const sickLeaveDays = sickDateSet.size;
                 let annualLeaveDays = 0;
                 annualDateSet.forEach(function (d) { if (isAnnualLeaveChargeable(d, holidays)) annualLeaveDays += 1; });
 
@@ -8476,7 +8561,7 @@ function staffAttendance(S) {
                     pushExcludedAudit(date, flags, 0, null);
                 });
 
-                return finalizePeriodStats(acc, holidayDays, annualLeaveDays);
+                return finalizePeriodStats(acc, holidayDays, annualLeaveDays, sickLeaveDays);
             }
 
             // ═══════════════════════════════════════════════════════════
@@ -8784,6 +8869,13 @@ function staffAttendance(S) {
                     });
                 }));
 
+                const makeSickBtn = createUiButton("Sick leave", "giu-absent-holiday-btn", stopProp(function () {
+                    addAbsentHolidayEntry(date, "sick", "Add sick leave from absent quick action", {
+                        invalid: "Invalid date. Could not create sick leave.",
+                        exists: "This date is already saved as sick leave."
+                    });
+                }));
+
                 const addCompBtn = createUiButton("Compensation", "giu-absent-holiday-btn", stopProp(function () {
                     const selectedDayOffFullName = getSelectedDayOffFullName(getSelectedDayOffCode());
                     const periods = groupRowsByPayrollPeriod(getAttendanceRows());
@@ -8813,6 +8905,7 @@ function staffAttendance(S) {
                 addAs.appendChild(addAsLabel);
                 addAs.appendChild(makeHolidayBtn);
                 addAs.appendChild(makeAnnualBtn);
+                addAs.appendChild(makeSickBtn);
                 addAs.appendChild(addCompBtn);
                 addAs.appendChild(missionBtn);
 
@@ -8918,6 +9011,7 @@ function staffAttendance(S) {
                 statList.appendChild(createStatRow("\ud83d\udcc5", "Present Days", String(stats.presentDays)));
                 statList.appendChild(createStatRow("\ud83c\udf89", "Holidays", String(stats.holidayDays)));
                 statList.appendChild(createStatRow("\ud83c\udf1f", "Annual Leave Days", String(stats.annualLeaveDays || 0)));
+                if (stats.sickLeaveDays) statList.appendChild(createStatRow("\ud83e\udd12", "Sick Leave Days", String(stats.sickLeaveDays)));
                 statList.appendChild(createStatRow("\u23f0", "Actual Hours", stats.actualHM));
                 statList.appendChild(createStatRow("\ud83d\udd52", "Required Hours", stats.requiredHM));
                 statList.appendChild(createStatRow(stats.isPositiveOrZero ? "\u25b2" : "\u25bc", "Balance", stats.balanceHM + " (" + stats.label + ")", stats.isPositiveOrZero ? "giu-balance-positive" : "giu-balance-negative"));
@@ -10015,6 +10109,7 @@ function staffAttendance(S) {
                     workedSeconds: past.actualSeconds,
                     requiredSeconds: past.requiredSeconds,
                     minDaySeconds: MIN_WORKING_DAY_SECONDS,
+                    bufferSeconds: PLANNER_BUFFER_SECONDS,
                     days
                 };
             }
@@ -10549,14 +10644,15 @@ function staffAttendance(S) {
             }
 
             function homeAddAbsentHolidayEntry(date, category) {
-                const isAnnual = category === "annual";
+                const cat = normalizeHolidayCategory(category);
+                const what = { holiday: "holiday", annual: "annual leave", sick: "sick leave" }[cat];
                 const result = saveAbsentHolidayEntry(
                     date,
-                    isAnnual ? "annual" : "holiday",
-                    isAnnual ? "Add annual leave from home absent quick action" : "Add holiday from home absent quick action",
+                    cat,
+                    "Add " + what + " from home absent quick action",
                     {
-                        invalid: isAnnual ? "Invalid date. Could not create annual leave." : "Invalid date. Could not create holiday.",
-                        exists: isAnnual ? "This date is already saved as annual leave." : "This date is already saved as a holiday."
+                        invalid: "Invalid date. Could not create " + what + ".",
+                        exists: "This date is already saved as " + (cat === "holiday" ? "a holiday" : what) + "."
                     }
                 );
                 if (!result.ok) {
@@ -10595,6 +10691,8 @@ function staffAttendance(S) {
                             homeAddAbsentHolidayEntry(date, "holiday");
                         } else if (action === "annual") {
                             homeAddAbsentHolidayEntry(date, "annual");
+                        } else if (action === "sick") {
+                            homeAddAbsentHolidayEntry(date, "sick");
                         } else if (action === "compensation") {
                             homeAddAbsentCompensationEntry(date);
                         } else if (action === "mission") {
@@ -10998,6 +11096,7 @@ function staffAttendance(S) {
                                         <span class="gius-att-actions">
                                             <button type="button" class="gius-att-action gius-btn" data-date="${date}" data-gius-home-absent-action="holiday">Holiday</button>
                                             <button type="button" class="gius-att-action gius-btn" data-date="${date}" data-gius-home-absent-action="annual">Annual</button>
+                                            <button type="button" class="gius-att-action gius-btn" data-date="${date}" data-gius-home-absent-action="sick">Sick</button>
                                             <button type="button" class="gius-att-action gius-btn" data-date="${date}" data-gius-home-absent-action="compensation">Comp</button>
                                             <button type="button" class="gius-att-action gius-btn" data-date="${date}" data-gius-home-absent-action="mission" title="Open Attendance Overrides on the report with this date filled in">Mission</button>
                                         </span>
@@ -11087,7 +11186,7 @@ function staffAttendance(S) {
                 }
                 homeAttachAbsentActions(host);
                 Tips.show({ id: 'staffAttendance', el: host, title: 'Attendance — This Payroll Month',
-                    text: 'Your live attendance balance for the current payroll month. Expand absent days to file holiday, annual or compensation requests, mark a mission, or open the full report below.' });
+                    text: 'Your live attendance balance for the current payroll month. Expand absent days to file holiday, annual, sick or compensation requests, mark a mission, or open the full report below.' });
             }
 
             // The two secret ranks (hidden from the rank list until reached) and
