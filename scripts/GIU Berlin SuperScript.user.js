@@ -10,7 +10,7 @@
 // @match       https://apps.guc.edu.eg/external/tempprojects/swiftreports.aspx*
 // @match       https://apps.guc.edu.eg/External/TempProjects/SwiftReports.aspx*
 // @namespace   Cyn0
-// @version     4.5
+// @version     4.6
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Berlin%20SuperScript.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Berlin%20SuperScript.js
 // @author      Mo.Elmaadawy
@@ -123,21 +123,127 @@
         courses: {
             map: {"AD 601":"Architectural Design Studio VI","AD 602":"Architectural Design Working Drawings II","AD 603":"Conservation and Restoration","AD 604":"Housing","AD 605":"Project Management and Building Economics","AD 1001":"Elective - Theme: Smart Architecture","AD 1090":"Advanced Architectural Design Studio II","AD 1099":"Research proposal and Seminar","AE 101":"Introduction to Academic English","ARCH 102":"Manual Visualization","ARCH 104":"History of Architecture I","ARCH 202":"Design Studio II","ARCH 203":"Descriptive Geometry","ARCH 204":"Architectonics II","ARCH 205":"3D Modeling","ARCH 206":"History II","ARCH 213":"Design Studio IV","ARCH 214":"Theories of Architecture II","ARCH 215":"Ecology and Environmental Design","ARCH 216":"Architectonics IV","ARCH 217":"CAD II","ARCH 218":"Structure II","ARCH 601":"CAD IV","ARCH 609":"Cairo Waterfronts","ARCH 610":"BIM and Beyond : Digital Delivery in Building Technology","ARCH 611":"Pixels & Places: Reimagining Urban Spaces through Gamification and VR","ARCH 613":"Design with Nature: Crafting outdoor Living Spaces","ARCH 700":"Bachelor Thesis","ARCH 802":"Professional Practice:Legislations and Contracts","ARCH 803":"Business Ethics and Workplace Readiness","AS 101":"English for Academic Purposes","BINF 401":"Digital Marketing","BINF 402":"Digital Transformation","BINF 601":"IT Project Management","BINF 602":"Business Intelligence and Analytics","BINF 1001":"Advanced Data Management & Mining","BINF 1002":"Digital Innovation and Entrepreneurship","BINF 1003":"Advanced IT Project Management","BINF 1004":"Advanced Research Methodology for BI","BIOM 601":"Ergonomics","BIOT 305":"Statistics","BIOT 601":"Bioinformatics","BIOT 602":"Industrial Biotechnology & Bioprocess Technology","BIOT 603":"Downstream Processing","BIOT 700":"Bachelor Thesis","BIOT 801":"Intellectual Property Management and IP Contract Law","BIOT 1001":"Bioethics and Biotechnology","BIOT 1002":"Biosafety","BIOT 1003":"Vaccine and Sera Process Technology","BIOT 1004":"Nutrigenomics","BIOT 1005":"Systems Biology","BIOT 1006":"Master Thesis Preparatory Courses","BSAD 102":"Microeconomics","BSAD 103":"Marketing","BSAD 105":"Cost Accounting","BSAD 406":"Macroeconomics","BSAD 407":"Principles of Corporate Finance","BSAD 408":"Innovation Management","BSAD 409":"Applied Statistics","BSAD 410":"Managing Organizations","BSAD 501":"Management Accounting","BSAD 503":"Research Methodology","BSAD 601":"Company Taxation","BSAD 602":"Information Management","BSAD 603":"Project management","BSAD 604":"Project management","BSAD 700":"Bachelor Thesis","BSAD 701":"Business Simulation","BSDM 502":"Marketing Analytics","BSDM 601":"Market Research","BSDM 602":"Communication Strategies and Consumer Behavior","BSDM 603":"Product and Distribution Management","BSEN 601":"Managing SMEs","BSEN 602":"Business Management and Entrepreneurship","BSEN 603":"SMEs Production Management and Marketing","BSFA 502":"Capital Markets","BSFA 601":"Financial Markets, Institutions and Investments","BSFA 602":"Financial Analysis and Evaluation","BSFA 603":"Corporate Finance","BSIB 502":"Regional Studies","BSIB 601":"Strategic Management","BSIB 602":"Applied International Sustainability Management","BSIB 603":"International Marketing","BSIN 102":"Programming I for Business Informatics","BSIN 103":"Business Process Management","BSIN 104":"Math II for Business Informatics","BSIN 105":"Programming II for Business Informatics","BSIN 301":"Data Structures & Algorithms","BSSC 601":"Auditing and Accountability","BSSC 602":"Distribution and Transportation Management","BSSC 603":"Production and Supply Chain Management","BTGN 601":"Research Methodology","BUAD 301":"Management Accounting for BI","BUAD 405":"Applied Econometrics","BUAD 406":"Human Resources Management for BI","BUAD 407":"Innovation Management for BI","BUAD 524":"Business Law and Technology Governance","BUAD 618":"Real Estate Finance & Investments","BUAD 619":"Digital Transformation of Real Estate Management","BUAD 620":"Marketing and Sales in Real Estate","BUAD 624":"Financial Derivatives","BUAD 625":"Fixed Income Securities","BUAD 626":"Investment Banking","BUAD 627":"Intermediate Macroeconomics","BUAD 705":"Business Simulation","BUAD 912":"Supply Chain Finance","BUAD 1001":"Advanced Research Methodology","BUAD 1002":"Industry Global Competitiveness","BUAD 1003":"Advanced Sustainability Management","BUAD 1004":"Current Issues in Marketing","BUAD 1005":"Brand Management","BUAD 1006":"Financial Modeling","BUAD 1007":"Digital Accounting","CNET 101":"Computer Networks","CPS 402":"Communication & Presentation Skills (A2)","CSBA 201":"Computer Science II","CSEN 102":"Computer Science I","CSEN 103":"Digital Logic Design","CSEN 104":"Programming I","CSEN 204":"Computer Science II","CSEN 303":"Software Engineering","CSEN 406":"Software  Engineering","CSIS 101":"Introduction to Computer Science I","CSIS 102":"Theoretical Computer Science","CSIS 201":"Programming II","CSMR 101":"Computer Organization","CTRL 101":"Financial Accounting I","DE 101":"German 1","DE 202":"German 2","DE 303":"German 3","DE 404":"German 4","DESN 1001":"General Design Project Review","DESN 1002":"Master Thesis Preparatory Courses","DMES 201":"Digital Media Design Essentials","DMES 202":"Digital Storytelling","DMES 203":"Creative Coding","DMES 204":"Basic Typography and Layout","DMES 206":"Basics of 2D Animation","DRAW 101":"Technical Drawing","DSFD 201":"Jewelry Design Workshop I","DSFD 401":"Jewelry Design Workshop III","DSFD 601":"Jewelry Design Workshop V","DSGN 601":"General Studies: Ethic and Law","DSGN 700":"Bachelor Thesis","DSGN 701":"Design Concept","DSTH 101":"Design Theory I (Art & Design History)","ECON 101":"Introduction to Economics","ECON 201":"Principles of Economics","ELCT 101":"Electrical Engineering I","ELCT 403":"Electric Machines and Drives","ELEC 905":"Advanced Electrical Energy Systems","ELEC 1001":"AI-Based Intelligent Control Systems","ELEC 1002":"Power System Operation and Planning","ELEC 1005":"Computational Intelligence","ENAU 601":"Automation/Control Engineering Project","ENAU 602":"Computer-Controlled Systems","ENAU 603":"Special Electric Machines","ENEE 502":"Power Electronics I","ENEE 504":"Modelling and Control of Renewable Energy Systems","ENEP 601":"Electric Power Systems Project","ENEP 602":"Electric Power Systems II","ENEP 604":"Power Electronics II","ENGN 101":"Sensors and Metrology","ENGN 105":"Mechanics I","ENGN 108":"Electrical Engineering II","ENGN 109":"Engineering Design I","ENGN 112":"Electrical Engineering and Electronics","ENGN 113":"Machining processes","ENGN 401":"Electronics II","ENGN 415":"Microcontroller","ENGN 501":"Control Engineering","ENGN 503":"Electric Power,Machines & Drives","ENGN 601":"Introduction to AI","ENGN 700":"Bachelor Thesis","ENGN 701":"Research Methodology","ENGN 1001":"Smart Sensors and Actuators","ENGN 1099":"Master Thesis Preparatory Project","ENME 405":"Mechanics II","ENME 406":"Mechanics of materials","ENME 407":"Classic Control Engineering","ENME 408":"Control System Lab","ENME 501":"Control Systems for Mechatronics Engineers","ENME 503":"Electric Drives","ENME 506":"Introduction to Computer Networks","ENME 601":"Mechatronics Engineering Project","ENMF 601":"Quality Control","ENMF 602":"Production Operations Management","ENMR 601":"Vehicle Dynamics","ENMR 602":"Signal and Image Processing","ENMR 603":"Vehicle Powertrain","ENMR 604":"Fluid Mechanics and Thermodynamics","ENRB 601":"Industrial Robots","ENRB 602":"Parallel Kinematics & Kinetics","ENRB 603":"Industrial Automation & PLC Programming","ENRB 604":"Facility Design","FAPR 406":"Design Short Term Project I","FASD 405":"Main Collection Project I (Concept, Prototyping)","FASD 407":"Fashion Technology III: CAD/Fashion II, Portfolio, Technical Drawing","FASD 408":"CAD-Pattern I, 3D Prototyping","FASD 601":"Fashion Management and Marketing","FASD 602":"Design Short Term Project II","FASD 603":"Main Collection Project III","FDDS 101":"Design Basics I (Fashion Design)","FDFT 101":"Fashion Technology I","FINA 201":"Financial Accounting II","FJDS 1001":"Design Project- FD","HRMG 101":"Human Resources Management","HUMA 801":"Business Ethics","IA 601":"Interior Architecture Studio VI","IA 602":"Interior Architecture Working Drawings II","IA 603":"Furniture Design","IA 604":"Light Design","IA 605":"Project Management and Interior Design Economics","IA 1001":"Elective - Theme: Smart Interior Architecture","IA 1090":"Advanced Interior Architecture Studio II","IA 1099":"Research proposal and Seminar","ICS 502":"Database Programming","ICS 507":"Digital Forensics","ICS 512":"Human Computer Interaction","ICS 602":"Big Data and NoSQL","ICS 603":"Advanced Machine Learning","ICS 604":"Introduction to Image Processing and Computer Vision","ICS 605":"Network Security","ICS 606":"Business Continuity and Risk Management","ICS 607":"Ethical Hacking and Penetration Testing","ICS 608":"Software Cloud Computing","ICS 609":"Software Mobile Development","ICS 610":"Software Project II","ICS 611":"3D Design","ICS 612":"Mobile Development","ICS 613":"Media Informatics Project","IDDS 101":"Design Basics I (Industrial Design)","IDDS 201":"Design Basics II (Industrial Design)","IDDS 403":"Design Main Project I: Design, Presentation & Documentation","IDDS 405":"Material/Sustainable Manufacturing","IDDS 406":"CAD 3D Modeling","IDDS 601":"Universal Design Thinking and Intercultural Competence","IDDS 602":"Design Short Term Project II","IDDS 603":"Design Main Project III: Business Management","IDES 1001":"Design Project- ID","IDPR 404":"Design Short Term Project I","INCS 101":"Programming III","INCS 102":"Operating Systems","INCS 103":"Databases","INCS 104":"Data Structures & Algorithms","INCS 402":"Analysis & Design of Algorithms","INCS 406":"Distributed &Web-based Systems","INCS 407":"Information Security","INCS 408":"Introduction to Data Science","INCS 409":"Introduction to Media Informatics","INCS 410":"Cloud Computing","INCS 515":"Databases","INCS 614":"Cybersecurity","INCS 615":"Big Data and NoSQL","INCS 616":"Business Continuity and Risk Management","INCS 617":"Software Engineering","INCS 700":"Bachelor Thesis","INCS 902":"Research Project I","INCS 1001":"Seminar - Selected Major-specific Topics","INCS 1002":"Research Project II","INCS 1003":"Analytics in the Cloud","INCS 1004":"Statistical Modeling for Data Science Applications","INCS 1005":"Social-Legal & Ethical issues in IT Security","INCS 1006":"Secure Systems Engineering","INCS 1007":"Software Game Development","INCS 1008":"Software Engineering Studio","INCS 1009":"Advanced Game Development and AI in Gaming","INCS 1010":"Digital Video and Sound Processing","INGN 601":"Research Methodology","LAWS 101":"Introduction to Law","MATH 101":"Mathematics & Statistics I","MATH 102":"Mathematics I for Pharmaceutical Engineering and Technology","MATH 103":"Mathematics I","MATH 104":"Mathematics I for Biotechnology","MATH 106":"Mathematics I for Architecture","MATH 108":"Math I for Business Informatics","MATH 109":"Mathematics I","MATH 203":"Mathematics II","MATH 204":"Mathematics II","MATH 205":"Mathematics II Business & Economics","MATH 302":"Mathematics II","MATH 303":"Math III - Probability & Statistics","MATH 304":"Mathematics III","MATH 401":"Biostatistics","MATH 403":"Mathematics IV","MECH 613":"CAD/CAM/CAE in Mechanical Engineering","MECH 907":"Autonomous Vehicle Systems","MECH 1001":"Automotive Electronics","MECH 1002":"Industrial Robots II","MECH 1003":"Robotics in manufacturing","MECH 1005":"Manufacturing Ergonomics","MGMT 401":"Introduction to Management and Economics","MNGT 101":"Introduction to Management","NETW 401":"Signals and Systems","NETW 402":"Modelling & Simulation of dynamic systems","PHEN 302":"Statistics","PHEN 303":"Fundamentals of Electrical Engineering","PHEN 401":"Fluid Mechanics","PHEN 402":"Chemical Reaction Engineering","PHEN 403":"Introduction to Process Engineering","PHEN 405":"Sensors,Metrology and Instrumentation Systems","PHEN 601":"Pharmaceutical Process Validation","PHEN 602":"Industrial Automation & PLC Programming","PHEN 603":"Water & Air Systems","PHEN 604":"Digitalization in Pharmaceutical Industry","PHEN 605":"Industrial Planning & Project Management","PHEN 606":"Pharmaceutical Processing Technology II","PHEN 608":"Cosmetics Technology","PHEN 700":"Bachelor Thesis","PHEN 1001":"Sustainability and Environmental Impact in the Pharmaceutical Industry","PHEN 1002":"Quality by Design and Advanced Quality Management","PHEN 1007":"Special Topics in Pharmaceutical Engineering II","PHEN 1099":"Master Thesis Preparatory Project","PHGN 601":"Research Methodology","PHTH 102":"Biophysics for Physiotherapy","PHTH 104":"Anatomy I for Physiotherapy","PHTH 105":"Physiology I for Physiotherapy","PHTH 213":"Anatomy II","PHTH 214":"Physiology II","PHTH 217":"Tests & Measurements I","PHTH 218":"Ethics & Law","PHTH 219":"kinesiology","PHTH 221":"First Aid in Hygienic Issue for PT","PHTH 222":"Psychology and Therapeutic Communication","PHTH 401":"Neuroanatomy","PHTH 402":"Neurophysiology","PHTH 403":"Biomechanics II","PHTH 404":"Therapeutic exercise II","PHTH 405":"Electrotherapy II","PHTH 406":"Hydrotherapy","PHTH 408":"Exercise physiology","PHYS 101":"Physics","PHYS 102":"Physics Lab","PTOR 601":"Traumatology","PTOR 602":"Physical Therapy for Traumatology","PTOR 603":"Orthopedic diseases and Surgeries","PTOR 604":"Physical Therapy for Orthopedic diseases and Surgeries","PTOR 605":"Physical Therapy for Sport Injury","PTSR 601":"General Surgery & Oncology","PTSR 602":"Physical Therapy for General Surgery & Oncology","RPW 401":"Research Paper Writing (A2)","SM 101":"Scientific Methods"},
             normalizeCode(code) { return String(code == null ? '' : code).trim(); },
-            // The map's own key, or for a GIU Berlin "ICS n" with no entry of its own
-            // the Cairo "INCS n" (Berlin's CS courses use ICS). Same number is assumed
-            // to be the same course; where they differ the ICS entry itself wins.
-            key(code) {
-                const key = this.normalizeCode(code);
-                if (Object.prototype.hasOwnProperty.call(this.map, key)) return key;
-                const m = key.match(/^ICS\s*(\d+)$/i);
-                const alt = m ? 'INCS ' + m[1] : '';
-                return alt && Object.prototype.hasOwnProperty.call(this.map, alt) ? alt : null;
+            // Names this portal lists itself (its Academic Schedule page's course list),
+            // cached per portal for a week. They come first: GIU Berlin's courses are
+            // not in the built-in map, which was scraped from Cairo.
+            portal: null,
+            PORTAL_TTL_MS: 7 * 24 * 3600 * 1000,
+            portalKey() { return 'giuCourseNamesV2:' + location.host; },
+            portalCache() {
+                if (this.portal) return this.portal;
+                try { this.portal = JSON.parse(localStorage.getItem(this.portalKey()) || 'null'); } catch { this.portal = null; }
+                if (!this.portal || typeof this.portal.names !== 'object') this.portal = { at: 0, names: {} };
+                return this.portal;
+            },
+            // Course names in a portal page: the Academic Schedule page's script list
+            // ('value': 'ICS 501: Name'), or a course dropdown like the Faculty Process
+            // Map's ("GIU-Cairo.Informatics ... - Data Science 5th - Software Project I ICS501").
+            parsePortalNames(html) {
+                const names = {};
+                const put = (letters, digits, name) => {
+                    if (name) names[letters.toUpperCase() + ' ' + digits] = name.trim();
+                };
+                const re = /'value':\s*'((?:[^'\\]|\\.)*)'/g;
+                let m;
+                while ((m = re.exec(html))) {
+                    const e = m[1].replace(/\\'/g, "'").match(/^\s*([A-Za-z]+)\s*(\d+[A-Za-z]?)\s*:\s*(.+?)\s*$/);
+                    if (e) put(e[1], e[2], e[3]);
+                }
+                const opt = /<option[^>]*>([^<]*)<\/option>/gi;
+                while ((m = opt.exec(html))) {
+                    const text = m[1].replace(/&amp;/g, '&').replace(/&#39;|&#039;/g, "'").replace(/\s+/g, ' ').trim();
+                    const last = text.split(' - ').pop();
+                    const e = text.includes(' - ') && last.match(/^(.+?)\s+([A-Za-z]{2,8})\s?(\d{3,4}[A-Za-z]?)$/);
+                    if (e) put(e[2], e[3], e[1]);
+                }
+                return names;
+            },
+            // A page whose course list depends on a semester dropdown (Manage Group
+            // Grade, Faculty Process Map): select each wanted semester the way the
+            // page's own onchange does (ASP.NET postback) and read the courses. The
+            // semester the page opens on was already read from the GET.
+            // `seasons`: semester names like "Winter 2026"; none matching → this and
+            // last year's semesters.
+            async seasonPostbacks(url, html, seasons, fetchOpts) {
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                const isSeason = t => /^(winter|summer|spring|fall|autumn)\b.*\d{4}/i.test(t);
+                const select = Array.from(doc.querySelectorAll('select[name]'))
+                    .find(s => Array.from(s.options).filter(o => isSeason(o.textContent.trim())).length >= 1);
+                if (!select) return {};
+                const norm = t => String(t || '').replace(/\s+/g, ' ').trim().toLowerCase();
+                const options = Array.from(select.options).filter(o => o.value && isSeason(o.textContent.trim()));
+                const wanted = new Set((seasons || []).map(norm));
+                let picks = options.filter(o => wanted.has(norm(o.textContent)));
+                if (!picks.length) {
+                    const y = new Date().getFullYear();
+                    picks = options.filter(o => new RegExp('\\b(' + y + '|' + (y - 1) + ')\\b').test(o.textContent)).slice(0, 4);
+                }
+                picks = picks.filter(o => !o.defaultSelected);
+                const form = select.form || doc.forms[0];
+                const base = {};
+                (form ? Array.from(form.elements) : []).forEach(el => {
+                    if (!el.name || el.disabled) return;
+                    if (el.type === 'hidden' || el.tagName === 'SELECT') base[el.name] = el.value;
+                });
+                const names = {};
+                for (const o of picks) {
+                    const body = new URLSearchParams(Object.assign({}, base, {
+                        __EVENTTARGET: select.name, __EVENTARGUMENT: '', [select.name]: o.value,
+                    }));
+                    const resp = await fetch(url, Object.assign({}, fetchOpts, {
+                        method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body.toString(),
+                    }));
+                    if (resp.ok) Object.assign(names, this.parsePortalNames(await resp.text()));
+                }
+                return names;
+            },
+            // Reads the first of `urls` that lists courses (a GET each; a semester
+            // postback where the page has a semester dropdown) unless the cache is
+            // fresh and `opts.force` is not set. Resolves true when names were
+            // stored; never rejects. opts: { timeoutMs, seasons, force }.
+            async refreshPortal(urls, opts) {
+                const o = typeof opts === 'number' ? { timeoutMs: opts } : (opts || {});
+                const cache = this.portalCache();
+                if (!o.force && Date.now() - cache.at < this.PORTAL_TTL_MS) return false;
+                for (const src of [].concat(urls)) {
+                    // A source is a URL, or { url, bySeason: true } for a page whose
+                    // course list follows a semester dropdown.
+                    const url = typeof src === 'string' ? src : src.url;
+                    const ctrl = typeof AbortController === 'function' ? new AbortController() : null;
+                    const timer = ctrl ? setTimeout(() => ctrl.abort(), o.timeoutMs || 10000) : null;
+                    const fetchOpts = { credentials: 'include', signal: ctrl ? ctrl.signal : undefined };
+                    try {
+                        const resp = await fetch(url, fetchOpts);
+                        if (!resp.ok) continue;
+                        const html = await resp.text();
+                        const names = this.parsePortalNames(html);
+                        if (src.bySeason) Object.assign(names, await this.seasonPostbacks(url, html, o.seasons, fetchOpts));
+                        if (!Object.keys(names).length) continue;
+                        this.portal = { at: Date.now(), names: Object.assign({}, cache.names, names) };
+                        try { localStorage.setItem(this.portalKey(), JSON.stringify(this.portal)); } catch { /* quota */ }
+                        return true;
+                    } catch { /* try the next page */ } finally { if (timer) clearTimeout(timer); }
+                }
+                // Remember the attempt so a portal without a list is not asked on every visit.
+                this.portal = { at: Date.now(), names: cache.names };
+                try { localStorage.setItem(this.portalKey(), JSON.stringify(this.portal)); } catch { /* quota */ }
+                return false;
+            },
+            // The course name for a code, or null: this portal's own list, then the
+            // built-in map, then for a GIU Berlin "ICS n" the Cairo "INCS n".
+            name(code) {
+                const key = this.normalizeCode(code).replace(/^([A-Za-z]+)\s*(\d)/, '$1 $2');
+                const own = this.portalCache().names;
+                if (Object.prototype.hasOwnProperty.call(own, key)) return own[key];
+                if (Object.prototype.hasOwnProperty.call(this.map, key)) return this.map[key];
+                const m = key.match(/^ICS (\d+)$/i);
+                return m && Object.prototype.hasOwnProperty.call(this.map, 'INCS ' + m[1]) ? this.map['INCS ' + m[1]] : null;
             },
             lookup(code) {
-                const key = this.key(code);
-                return key ? this.map[key] : this.normalizeCode(code);
+                const name = this.name(code);
+                return name !== null ? name : this.normalizeCode(code);
             },
-            has(code) { return this.key(code) !== null; },
+            has(code) { return this.name(code) !== null; },
         },
 
         warn(feature, ...args) { console.warn(`[GIU-SS:${feature}]`, ...args); },
@@ -13406,25 +13512,37 @@ function renderAttendancePlanner(S, api, host) {
                     .replace(/'/g, '&#039;');
             }
         
+            // A group label's parts by shape, not position: GIU Cairo writes
+            // "Spring 2026  - INCS 406 - 4INF12 (Practical)"; another portal may drop
+            // the semester ("ICS 501 - 5Dsc1 (Practical)").
+            const COURSE_CODE_RE = /^[A-Za-z]{2,8}\s?\d{3,4}[A-Za-z]?$/;
+            const SEASON_RE = /^(winter|summer|spring|fall|autumn)\b.*\d{4}/i;
+            function labelParts(label) {
+                const parts = label.split(' - ').map(p => p.trim());
+                const codeAt = parts.findIndex(p => COURSE_CODE_RE.test(p) && !SEASON_RE.test(p));
+                return {
+                    parts,
+                    codeAt,
+                    code: codeAt >= 0 ? parts[codeAt] : null,
+                    season: parts.find(p => SEASON_RE.test(p)) || null,
+                };
+            }
+
             function extractCourseCode(label) {
-                const parts = label.split(' - ');
-                return parts.length >= 2 ? parts[1].trim() : null;
+                return labelParts(label).code;
             }
         
             function getCourseLabel(code) {
                 const name = S.courses.lookup(code);
                 if (!S.courses.has(code)) return code;
-                const short = name.length > 20 ? name.slice(0, 19) + '…' : name;
-                return `${code} – ${short}`;
+                return `${name} – ${code}`;
             }
         
             function formatGroupLabel(label) {
-                const code = extractCourseCode(label);
-                const parts = label.split(' - ');
-                if (parts.length < 3) return label;
-                const name = (code && S.courses.lookup(code)) || parts[1];
-                // Drop season (parts[0]), replace code with course name: "Course Name - Group..."
-                return [name, ...parts.slice(2)].join(' - ');
+                const { parts, codeAt, code } = labelParts(label);
+                if (codeAt < 0) return label;
+                // Drop the semester, replace the code with the course name: "Course Name - Group..."
+                return [S.courses.lookup(code), ...parts.slice(codeAt + 1)].join(' - ');
             }
         
             function getCourseTitle(label) {
@@ -13783,7 +13901,8 @@ function renderAttendancePlanner(S, api, host) {
                         cursor: pointer;
                         font-family: 'Open Sans', sans-serif;
                         flex: 1;
-                        max-width: 260px;
+                        min-width: 0;
+                        max-width: 100%; /* full course names: grow with the panel */
                         transition: border-color 0.2s ease;
                     }
                     .gius-course-filter:focus {
@@ -14240,9 +14359,35 @@ function renderAttendancePlanner(S, api, host) {
 
             function init() {
                 const queue = loadQueue();
-        
+
                 if (!queue) {
-                    injectPanel();
+                    // Course names from this portal's own list (GIU Berlin's are not in
+                    // the built-in one). With a cached list the panel shows at once;
+                    // otherwise it waits up to 3 s for the first fetch.
+                    // GIU Berlin has no course list on the schedule page; Manage Group
+                    // Grade's course dropdown lists every course you teach instead.
+                    const listUrl = [
+                        S.portalUrl('/GIUb/INTStaff/SearchAcademicScheduled_001_m.aspx'),
+                        { url: S.portalUrl('/GIUb/INTStaff/ManageGroupGrade_m.aspx'), bySeason: true },
+                    ];
+                    // The groups name their semester ("Winter 2026 - ICS 501 - 5Dsc1"):
+                    // fetch that semester's courses; ask again (at most daily) when a group's
+                    // course has no name yet, e.g. after a new semester starts.
+                    const labels = getGroupOptions().map(g => g.label);
+                    const seasons = Array.from(new Set(labels.map(l => labelParts(l).season).filter(Boolean)));
+                    const unnamed = labels.some(l => { const code = extractCourseCode(l); return code && !S.courses.has(code); });
+                    const age = Date.now() - S.courses.portalCache().at;
+                    // A course without a name asks again after an hour (not every visit).
+                    const fresh = age < S.courses.PORTAL_TTL_MS && !(unnamed && age > 3600 * 1000);
+                    if (fresh) { injectPanel(); return; }
+                    let shown = false;
+                    const show = () => { if (!shown) { shown = true; injectPanel(); } };
+                    setTimeout(show, 3000);
+                    S.courses.refreshPortal(listUrl, { timeoutMs: 10000, seasons, force: true }).then(found => {
+                        const still = labels.map(extractCourseCode).filter(c => c && !S.courses.has(c));
+                        if (!found || still.length) S.warn('notificationBatch', 'course names: list found =', found, '· semesters =', seasons, '· still unnamed =', still);
+                        show();
+                    }, show);
                     return;
                 }
         

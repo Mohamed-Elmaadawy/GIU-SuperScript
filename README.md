@@ -37,7 +37,7 @@ Each SuperScript has a **Control Center** card on the portal Home page where you
 | Notification Batch Send | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Notification%20Batch%20Send.user.js) |
 | Berlin Session Form Filler | Berlin (Microsoft Form) | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Session%20Form%20Filler.user.js) |
 
-All scripts share one version number. Current release: **4.5**.
+All scripts share one version number. Current release: **4.6**.
 
 </details>
 
