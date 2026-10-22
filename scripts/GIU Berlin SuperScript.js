@@ -10,7 +10,7 @@
 // @match       https://apps.guc.edu.eg/external/tempprojects/swiftreports.aspx*
 // @match       https://apps.guc.edu.eg/External/TempProjects/SwiftReports.aspx*
 // @namespace   Cyn0
-// @version     4.3
+// @version     4.4
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Berlin%20SuperScript.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Berlin%20SuperScript.js
 // @author      Mo.Elmaadawy
@@ -2994,7 +2994,6 @@ function renderAttendancePlanner(S, api, host) {
 
             const REQUIRED_SECONDS_NORMAL = (8 * 60 + 24) * 60;   // 30240s = 8h24m
             const REQUIRED_SECONDS_RAMADAN = 6 * 3600;              // 21600s = 6h
-            const SECRET_TIER_MIN_DAYS = 10;                         // working days gone before a secret rank can show
             const MIN_WORKING_DAY_SECONDS = 4 * 3600;               // 14400s = 4h minimum to count day as worked
             const SINGLE_ENTRY_MAX_PER_PERIOD = 2;                  // single-entry days credited as full days per payroll month
             const LATE_THRESHOLD_SECONDS_NORMAL = (10 * 60 + 30) * 60;  // 10:30 AM
@@ -8455,21 +8454,20 @@ function renderAttendancePlanner(S, api, host) {
                 // Mirrored steps of 3h / 8h / 12h. Below 100%: gap ≤3h → "close",
                 // ≤8h → "deduct", ≤12h → "ghost", else "missing". At/above 100%:
                 // EXTRA hours banked (balanceSeconds) <3h "ontime", <8h "workaholic",
-                // <12h "slave", else "gohome". The two secret ranks at the
-                // ends ("missing", "gohome") need SECRET_TIER_MIN_DAYS working days
-                // (present or absent) gone; before that they stop one rank short.
-                const secretTierReady = acc.presentDays + acc.absentDays >= SECRET_TIER_MIN_DAYS;
+                // <12h "slave", else "gohome". The two secret ranks at the ends
+                // ("missing", "gohome") show once the hours are reached; Home still hides
+                // them until setup is done (displayTier / secretTiersAllowed).
                 let tier;
                 if (progressPercentRaw < 100) {
                     tier = progressGapSeconds <= 3 * 3600 ? "close"
                         : progressGapSeconds <= 8 * 3600 ? "deduct"
-                        : progressGapSeconds <= 12 * 3600 || !secretTierReady ? "ghost"
+                        : progressGapSeconds <= 12 * 3600 ? "ghost"
                         : "missing";
                 } else if (balanceSeconds < 3 * 3600) {
                     tier = "ontime";
                 } else if (balanceSeconds < 8 * 3600) {
                     tier = "workaholic";
-                } else if (balanceSeconds < 12 * 3600 || !secretTierReady) {
+                } else if (balanceSeconds < 12 * 3600) {
                     tier = "slave";
                 } else {
                     tier = "gohome";
@@ -11434,8 +11432,8 @@ function renderAttendancePlanner(S, api, host) {
             // The two secret ranks (hidden from the rank list until reached) and
             // their one-time popup copy; null for every other rank.
             function homeSecretTierCopy(tier) {
-                if (tier === "missing") return { emoji: "🪦", ok: "I'm on it", text: "You're more than 12 hours behind, with at least 10 working days gone. Few people find this rank, and nobody wants to keep it. A few solid days get you out: Plan my days on the full report shows when to come in and leave to catch up." };
-                if (tier === "gohome") return { emoji: "🏠", ok: "Will do", text: "You're 12 or more hours ahead, with at least 10 working days done. That's more than enough for this month, so take it easy: Plan my days on the full report shows how early you can leave and still end even." };
+                if (tier === "missing") return { emoji: "🪦", ok: "I'm on it", text: "You're more than 12 hours behind this payroll month. Few people find this rank, and nobody wants to keep it. A few solid days get you out: Plan my days on the full report shows when to come in and leave to catch up." };
+                if (tier === "gohome") return { emoji: "🏠", ok: "Will do", text: "You're 12 or more hours ahead this payroll month. That's more than enough for this month, so take it easy: Plan my days on the full report shows how early you can leave and still end even." };
                 return null;
             }
 
