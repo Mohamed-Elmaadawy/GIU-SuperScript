@@ -10,7 +10,7 @@
 // @match       https://apps.guc.edu.eg/external/tempprojects/swiftreports.aspx*
 // @match       https://apps.guc.edu.eg/External/TempProjects/SwiftReports.aspx*
 // @namespace   Cyn0
-// @version     4.4
+// @version     4.5
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js
 // @author      Mo.Elmaadawy
@@ -2279,6 +2279,8 @@ function planAttendanceDays(input) {
             day.outSeconds = day.inSeconds + room;
             day.warn = "short-cap";
         }
+        // An extra day off has nothing required: no "counts as absent" warning.
+        if (day.extra && /^short/.test(day.warn)) day.warn = "";
         if (day.hours < minDay) required -= day.requiredSeconds;   // absent day
         pinnedSeconds += day.hours;
         return day;
@@ -2416,6 +2418,12 @@ function renderAttendancePlanner(S, api, host) {
         html.gius-dark .gius-plan-good{color:#a6e3a1;}
         html.gius-dark .gius-plan-link,html.gius-dark .gius-plan-undo{color:#89b4fa;}
         html.gius-dark .gius-plan-undo:hover{background:#1e3a5f;}
+        .gius-plan-extra{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#475569;margin-right:12px;}
+        .gius-plan-extra select{font:inherit;padding:2px 6px;border:1px solid #cbd5e1;border-radius:6px;background:#fff;color:#0f172a;}
+        .gius-plan-extra-x{margin-left:6px;border:0;background:none;color:#94a3b8;cursor:pointer;font-size:14px;line-height:1;padding:0 2px;}
+        .gius-plan-extra-x:hover{color:#dc2626;}
+        html.gius-dark .gius-plan-extra{color:#a6adc8;}
+        html.gius-dark .gius-plan-extra select{background:#313244;border-color:#45475a;color:#cdd6f4;}
     `);
 
     const dayLabel = function (ymd) {
@@ -2447,7 +2455,7 @@ function renderAttendancePlanner(S, api, host) {
 
     function row(d) {
         const label = d.isToday ? "Today" : dayLabel(d.ymd);
-        const warn = warnText(d);
+        const warn = d.extra && !d.warn ? "Day off — extra hours" : warnText(d);
         let cells;
         if (d.locked) {
             cells = '<span class="gius-plan-cell"></span><span class="gius-plan-cell"><span class="gius-plan-fixed">' +
@@ -2461,7 +2469,8 @@ function renderAttendancePlanner(S, api, host) {
         return '<div class="gius-plan-row' + (d.isToday ? " gius-plan-today" : "") + '" data-ymd="' + esc(d.ymd) + '">' +
             // Late is for information only (HR takes nothing off): grey, not red.
             '<span class="gius-plan-day"><b>' + esc(label) + "</b>" +
-            (warn ? "<small" + (d.warn === "late" ? ' class="gius-plan-note"' : "") + ">" + esc(warn) + "</small>" : "") + "</span>" +
+            (d.extra ? '<button type="button" class="gius-plan-extra-x" data-ymd="' + esc(d.ymd) + '" aria-label="Remove ' + esc(dayLabel(d.ymd)) + ' from the plan" title="Remove this day off from the plan">×</button>' : "") +
+            (warn ? "<small" + (d.warn === "late" || (d.extra && !d.warn) ? ' class="gius-plan-note"' : "") + ">" + esc(warn) + "</small>" : "") + "</span>" +
             cells + "</div>";
     }
 
@@ -2617,12 +2626,21 @@ function renderAttendancePlanner(S, api, host) {
         const focusKey = active && host.contains(active) ? (active.id || active.dataset.ymd + "|" + active.dataset.kind) : null;
 
         const hasEdits = Object.keys(prefs.edits).length > 0;
+        // Pick a day off to work: its hours lower what the other days need.
+        const offDays = input.offDays || [];
+        const extraPicker = offDays.length
+            ? '<label class="gius-plan-extra">Work a day off: <select id="gius-plan-extra"><option value="">Add a day…</option>' +
+                offDays.map(function (o) {
+                    return '<option value="' + esc(o.ymd) + '">' + esc(dayLabel(o.ymd)) + (o.kind === "holiday" ? " (holiday)" : "") + "</option>";
+                }).join("") + "</select></label>"
+            : "";
         // Answer on the left, day list on the right when the card is wide.
         host.innerHTML = '<section class="gius-plan">' + head + bodyOpen +
             '<div class="gius-plan-side">' +
             (both ? heroBoth(plan, prefs) : hero(plan)) +
             '<p class="gius-plan-sentence">' + monthEnd(plan, both) + "</p>" +
-            (hasEdits ? '<div class="gius-plan-foot"><button type="button" class="gius-plan-link" id="gius-plan-reset">Undo all changes</button></div>' : "") +
+            (hasEdits || extraPicker ? '<div class="gius-plan-foot">' + extraPicker +
+                (hasEdits ? '<button type="button" class="gius-plan-link" id="gius-plan-reset">Undo all changes</button>' : "") + "</div>" : "") +
             "</div>" +
             (plan.days.length
                 ? '<div class="gius-plan-days"><div class="gius-plan-th"><span>Day</span><span class="gius-plan-cell">In</span><span class="gius-plan-cell">Out</span></div>' +
@@ -2643,6 +2661,10 @@ function renderAttendancePlanner(S, api, host) {
     let pending = false;
     host.addEventListener("change", function (e) {
         const el = e.target;
+        if (el.id === "gius-plan-extra") {
+            if (el.value) { api.addExtraDay(el.value); render(); }
+            return;
+        }
         if (el.id === "gius-plan-usual") api.setUsualTime(el.value);
         else if (el.id === "gius-plan-usual-out") api.setUsualTime(el.value, "out");
         else if (el.id === "gius-plan-today-in" || el.dataset.today === "1") api.setTodayIn(el.value);
@@ -2676,6 +2698,8 @@ function renderAttendancePlanner(S, api, host) {
             if (modeBtn.getAttribute("aria-pressed") !== "true") { api.setUsualMode(modeBtn.dataset.mode); render(modeBtn); }
             return;
         }
+        const extraX = e.target.closest(".gius-plan-extra-x");
+        if (extraX) { pending = false; api.removeExtraDay(extraX.dataset.ymd); render(); return; }
         const undo = e.target.closest(".gius-plan-undo");
         if (undo) { pending = false; api.setEdit(undo.dataset.ymd, undo.dataset.kind, null); render(); return; }
         if (e.target.closest("#gius-plan-reset")) { pending = false; api.clearEdits(); render(); }
@@ -10003,9 +10027,13 @@ function staffAttendance(S) {
                     const clean = {};
                     if (plannerParseTime(e.in) !== null) clean.in = e.in;
                     if (plannerParseTime(e.out) !== null) clean.out = e.out;
-                    if (clean.in || clean.out) edits[ymd] = clean;
-                });
-                return { usualMode, usualIn, usualOut, todayIn, edits };
+                        if (clean.in || clean.out) edits[ymd] = clean;
+                    });
+                    // Days off the user plans to work (weekly day off or public holiday).
+                    const extraDays = Array.isArray(raw.extraDays)
+                        ? raw.extraDays.filter(function (ymd, i, all) { return YMD_RE.test(ymd) && ymd >= today && all.indexOf(ymd) === i; }).sort()
+                        : [];
+                    return { usualMode, usualIn, usualOut, todayIn, edits, extraDays };
             }
 
             function setPlannerPrefs(prefs) {
@@ -10014,9 +10042,10 @@ function staffAttendance(S) {
                         usualMode: prefs.usualMode,
                         usualIn: prefs.usualIn,
                         usualOut: prefs.usualOut,
-                        today: prefs.todayIn ? { date: getTodayLocalYMD(), in: prefs.todayIn } : null,
-                        edits: prefs.edits
-                    }));
+                            today: prefs.todayIn ? { date: getTodayLocalYMD(), in: prefs.todayIn } : null,
+                            edits: prefs.edits,
+                            extraDays: prefs.extraDays || []
+                        }));
                 } catch { /* quota */ }
             }
 
@@ -10047,13 +10076,32 @@ function staffAttendance(S) {
                 const outMode = prefs.usualMode === "out";
                 const bothMode = prefs.usualMode === "both";
                 const days = [];
+                // Days off that can be added to the plan as extra work days. Only the
+                // weekly day off and public holidays: the report counts hours there as
+                // extra (nothing required). Work on the fixed off-day (Friday/Sunday)
+                // earns a compensation day instead, and leave days are leave.
+                const extraDays = new Set(prefs.extraDays);
+                const offDays = [];
+                const leaveOn = function (date) {
+                    return holidays.some(function (h) {
+                        if (!h || h.category === "holiday") return false;
+                        if (h.type === "single") return normalizeYMD(h.date) === date;
+                        return h.type === "range" && isBetweenDates(h.start, h.end, date);
+                    });
+                };
                 eachYmdInRange(today, bounds.end, function (date) {
                     const dayName = formatDateToDayName(date);
                     if (!dayName) return;
                     if (isFixedNonWorkingDay(dayName, date)) return;
+                    if (compDates.has(date) || leaveOn(date)) return;
                     const effectiveDayOff = getDayOffFullNameForDate(date, getSelectedDayOffCode());
-                    if (effectiveDayOff && dayName === effectiveDayOff) return;
-                    if (isDateHoliday(date, holidays) || compDates.has(date)) return;   // holidays include annual leave
+                    const isDayOff = !!(effectiveDayOff && dayName === effectiveDayOff);
+                    const isHoliday = isDateHoliday(date, holidays);
+                    const extra = (isDayOff || isHoliday) && extraDays.has(date);
+                    if ((isDayOff || isHoliday) && !extra) {
+                        offDays.push({ ymd: date, dayName, kind: isHoliday ? "holiday" : "dayoff" });
+                        return;
+                    }
 
                     const isToday = date === today;
                     const edit = prefs.edits[date] || {};
@@ -10061,7 +10109,8 @@ function staffAttendance(S) {
                         ymd: date,
                         dayName,
                         isToday,
-                        requiredSeconds: getRequiredSecondsBySeason(date, ramadan),
+                        extra,
+                        requiredSeconds: extra ? 0 : getRequiredSecondsBySeason(date, ramadan),
                         capSeconds: getLastOutCapForDate(date, ramadan, examPeriod),
                         lateSeconds: isBetweenDates(ramadan.start, ramadan.end, date)
                             ? LATE_THRESHOLD_SECONDS_RAMADAN : LATE_THRESHOLD_SECONDS_NORMAL,
@@ -10107,9 +10156,10 @@ function staffAttendance(S) {
                     workedSeconds: past.actualSeconds,
                     requiredSeconds: past.requiredSeconds,
                     minDaySeconds: MIN_WORKING_DAY_SECONDS,
-                    bufferSeconds: PLANNER_BUFFER_SECONDS,
-                    days
-                };
+                        bufferSeconds: PLANNER_BUFFER_SECONDS,
+                        days,
+                        offDays
+                    };
             }
 
             function createPlannerApi(getRows) {
@@ -10149,6 +10199,19 @@ function staffAttendance(S) {
                     clearEdits: function () {
                         const p = getPlannerPrefs();
                         p.edits = {};
+                        setPlannerPrefs(p);
+                    },
+                    // Plan to work a day off (adds its hours) / take it back out.
+                    addExtraDay: function (ymd) {
+                        if (!YMD_RE.test(ymd || "")) return;
+                        const p = getPlannerPrefs();
+                        if (p.extraDays.indexOf(ymd) === -1) p.extraDays.push(ymd);
+                        setPlannerPrefs(p);
+                    },
+                    removeExtraDay: function (ymd) {
+                        const p = getPlannerPrefs();
+                        p.extraDays = p.extraDays.filter(function (d) { return d !== ymd; });
+                        delete p.edits[ymd];
                         setPlannerPrefs(p);
                     }
                 };

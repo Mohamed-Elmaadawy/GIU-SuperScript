@@ -5,7 +5,7 @@
 // @icon        data:image/png;base64,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
 // @namespace   Cyn0
 // @match       https://portal.giu-uni.de/*
-// @version     4.4
+// @version     4.5
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @grant       none
@@ -137,11 +137,21 @@
         courses: {
             map: {"AD 601":"Architectural Design Studio VI","AD 602":"Architectural Design Working Drawings II","AD 603":"Conservation and Restoration","AD 604":"Housing","AD 605":"Project Management and Building Economics","AD 1001":"Elective - Theme: Smart Architecture","AD 1090":"Advanced Architectural Design Studio II","AD 1099":"Research proposal and Seminar","AE 101":"Introduction to Academic English","ARCH 102":"Manual Visualization","ARCH 104":"History of Architecture I","ARCH 202":"Design Studio II","ARCH 203":"Descriptive Geometry","ARCH 204":"Architectonics II","ARCH 205":"3D Modeling","ARCH 206":"History II","ARCH 213":"Design Studio IV","ARCH 214":"Theories of Architecture II","ARCH 215":"Ecology and Environmental Design","ARCH 216":"Architectonics IV","ARCH 217":"CAD II","ARCH 218":"Structure II","ARCH 601":"CAD IV","ARCH 609":"Cairo Waterfronts","ARCH 610":"BIM and Beyond : Digital Delivery in Building Technology","ARCH 611":"Pixels & Places: Reimagining Urban Spaces through Gamification and VR","ARCH 613":"Design with Nature: Crafting outdoor Living Spaces","ARCH 700":"Bachelor Thesis","ARCH 802":"Professional Practice:Legislations and Contracts","ARCH 803":"Business Ethics and Workplace Readiness","AS 101":"English for Academic Purposes","BINF 401":"Digital Marketing","BINF 402":"Digital Transformation","BINF 601":"IT Project Management","BINF 602":"Business Intelligence and Analytics","BINF 1001":"Advanced Data Management & Mining","BINF 1002":"Digital Innovation and Entrepreneurship","BINF 1003":"Advanced IT Project Management","BINF 1004":"Advanced Research Methodology for BI","BIOM 601":"Ergonomics","BIOT 305":"Statistics","BIOT 601":"Bioinformatics","BIOT 602":"Industrial Biotechnology & Bioprocess Technology","BIOT 603":"Downstream Processing","BIOT 700":"Bachelor Thesis","BIOT 801":"Intellectual Property Management and IP Contract Law","BIOT 1001":"Bioethics and Biotechnology","BIOT 1002":"Biosafety","BIOT 1003":"Vaccine and Sera Process Technology","BIOT 1004":"Nutrigenomics","BIOT 1005":"Systems Biology","BIOT 1006":"Master Thesis Preparatory Courses","BSAD 102":"Microeconomics","BSAD 103":"Marketing","BSAD 105":"Cost Accounting","BSAD 406":"Macroeconomics","BSAD 407":"Principles of Corporate Finance","BSAD 408":"Innovation Management","BSAD 409":"Applied Statistics","BSAD 410":"Managing Organizations","BSAD 501":"Management Accounting","BSAD 503":"Research Methodology","BSAD 601":"Company Taxation","BSAD 602":"Information Management","BSAD 603":"Project management","BSAD 604":"Project management","BSAD 700":"Bachelor Thesis","BSAD 701":"Business Simulation","BSDM 502":"Marketing Analytics","BSDM 601":"Market Research","BSDM 602":"Communication Strategies and Consumer Behavior","BSDM 603":"Product and Distribution Management","BSEN 601":"Managing SMEs","BSEN 602":"Business Management and Entrepreneurship","BSEN 603":"SMEs Production Management and Marketing","BSFA 502":"Capital Markets","BSFA 601":"Financial Markets, Institutions and Investments","BSFA 602":"Financial Analysis and Evaluation","BSFA 603":"Corporate Finance","BSIB 502":"Regional Studies","BSIB 601":"Strategic Management","BSIB 602":"Applied International Sustainability Management","BSIB 603":"International Marketing","BSIN 102":"Programming I for Business Informatics","BSIN 103":"Business Process Management","BSIN 104":"Math II for Business Informatics","BSIN 105":"Programming II for Business Informatics","BSIN 301":"Data Structures & Algorithms","BSSC 601":"Auditing and Accountability","BSSC 602":"Distribution and Transportation Management","BSSC 603":"Production and Supply Chain Management","BTGN 601":"Research Methodology","BUAD 301":"Management Accounting for BI","BUAD 405":"Applied Econometrics","BUAD 406":"Human Resources Management for BI","BUAD 407":"Innovation Management for BI","BUAD 524":"Business Law and Technology Governance","BUAD 618":"Real Estate Finance & Investments","BUAD 619":"Digital Transformation of Real Estate Management","BUAD 620":"Marketing and Sales in Real Estate","BUAD 624":"Financial Derivatives","BUAD 625":"Fixed Income Securities","BUAD 626":"Investment Banking","BUAD 627":"Intermediate Macroeconomics","BUAD 705":"Business Simulation","BUAD 912":"Supply Chain Finance","BUAD 1001":"Advanced Research Methodology","BUAD 1002":"Industry Global Competitiveness","BUAD 1003":"Advanced Sustainability Management","BUAD 1004":"Current Issues in Marketing","BUAD 1005":"Brand Management","BUAD 1006":"Financial Modeling","BUAD 1007":"Digital Accounting","CNET 101":"Computer Networks","CPS 402":"Communication & Presentation Skills (A2)","CSBA 201":"Computer Science II","CSEN 102":"Computer Science I","CSEN 103":"Digital Logic Design","CSEN 104":"Programming I","CSEN 204":"Computer Science II","CSEN 303":"Software Engineering","CSEN 406":"Software  Engineering","CSIS 101":"Introduction to Computer Science I","CSIS 102":"Theoretical Computer Science","CSIS 201":"Programming II","CSMR 101":"Computer Organization","CTRL 101":"Financial Accounting I","DE 101":"German 1","DE 202":"German 2","DE 303":"German 3","DE 404":"German 4","DESN 1001":"General Design Project Review","DESN 1002":"Master Thesis Preparatory Courses","DMES 201":"Digital Media Design Essentials","DMES 202":"Digital Storytelling","DMES 203":"Creative Coding","DMES 204":"Basic Typography and Layout","DMES 206":"Basics of 2D Animation","DRAW 101":"Technical Drawing","DSFD 201":"Jewelry Design Workshop I","DSFD 401":"Jewelry Design Workshop III","DSFD 601":"Jewelry Design Workshop V","DSGN 601":"General Studies: Ethic and Law","DSGN 700":"Bachelor Thesis","DSGN 701":"Design Concept","DSTH 101":"Design Theory I (Art & Design History)","ECON 101":"Introduction to Economics","ECON 201":"Principles of Economics","ELCT 101":"Electrical Engineering I","ELCT 403":"Electric Machines and Drives","ELEC 905":"Advanced Electrical Energy Systems","ELEC 1001":"AI-Based Intelligent Control Systems","ELEC 1002":"Power System Operation and Planning","ELEC 1005":"Computational Intelligence","ENAU 601":"Automation/Control Engineering Project","ENAU 602":"Computer-Controlled Systems","ENAU 603":"Special Electric Machines","ENEE 502":"Power Electronics I","ENEE 504":"Modelling and Control of Renewable Energy Systems","ENEP 601":"Electric Power Systems Project","ENEP 602":"Electric Power Systems II","ENEP 604":"Power Electronics II","ENGN 101":"Sensors and Metrology","ENGN 105":"Mechanics I","ENGN 108":"Electrical Engineering II","ENGN 109":"Engineering Design I","ENGN 112":"Electrical Engineering and Electronics","ENGN 113":"Machining processes","ENGN 401":"Electronics II","ENGN 415":"Microcontroller","ENGN 501":"Control Engineering","ENGN 503":"Electric Power,Machines & Drives","ENGN 601":"Introduction to AI","ENGN 700":"Bachelor Thesis","ENGN 701":"Research Methodology","ENGN 1001":"Smart Sensors and Actuators","ENGN 1099":"Master Thesis Preparatory Project","ENME 405":"Mechanics II","ENME 406":"Mechanics of materials","ENME 407":"Classic Control Engineering","ENME 408":"Control System Lab","ENME 501":"Control Systems for Mechatronics Engineers","ENME 503":"Electric Drives","ENME 506":"Introduction to Computer Networks","ENME 601":"Mechatronics Engineering Project","ENMF 601":"Quality Control","ENMF 602":"Production Operations Management","ENMR 601":"Vehicle Dynamics","ENMR 602":"Signal and Image Processing","ENMR 603":"Vehicle Powertrain","ENMR 604":"Fluid Mechanics and Thermodynamics","ENRB 601":"Industrial Robots","ENRB 602":"Parallel Kinematics & Kinetics","ENRB 603":"Industrial Automation & PLC Programming","ENRB 604":"Facility Design","FAPR 406":"Design Short Term Project I","FASD 405":"Main Collection Project I (Concept, Prototyping)","FASD 407":"Fashion Technology III: CAD/Fashion II, Portfolio, Technical Drawing","FASD 408":"CAD-Pattern I, 3D Prototyping","FASD 601":"Fashion Management and Marketing","FASD 602":"Design Short Term Project II","FASD 603":"Main Collection Project III","FDDS 101":"Design Basics I (Fashion Design)","FDFT 101":"Fashion Technology I","FINA 201":"Financial Accounting II","FJDS 1001":"Design Project- FD","HRMG 101":"Human Resources Management","HUMA 801":"Business Ethics","IA 601":"Interior Architecture Studio VI","IA 602":"Interior Architecture Working Drawings II","IA 603":"Furniture Design","IA 604":"Light Design","IA 605":"Project Management and Interior Design Economics","IA 1001":"Elective - Theme: Smart Interior Architecture","IA 1090":"Advanced Interior Architecture Studio II","IA 1099":"Research proposal and Seminar","ICS 502":"Database Programming","ICS 507":"Digital Forensics","ICS 512":"Human Computer Interaction","ICS 602":"Big Data and NoSQL","ICS 603":"Advanced Machine Learning","ICS 604":"Introduction to Image Processing and Computer Vision","ICS 605":"Network Security","ICS 606":"Business Continuity and Risk Management","ICS 607":"Ethical Hacking and Penetration Testing","ICS 608":"Software Cloud Computing","ICS 609":"Software Mobile Development","ICS 610":"Software Project II","ICS 611":"3D Design","ICS 612":"Mobile Development","ICS 613":"Media Informatics Project","IDDS 101":"Design Basics I (Industrial Design)","IDDS 201":"Design Basics II (Industrial Design)","IDDS 403":"Design Main Project I: Design, Presentation & Documentation","IDDS 405":"Material/Sustainable Manufacturing","IDDS 406":"CAD 3D Modeling","IDDS 601":"Universal Design Thinking and Intercultural Competence","IDDS 602":"Design Short Term Project II","IDDS 603":"Design Main Project III: Business Management","IDES 1001":"Design Project- ID","IDPR 404":"Design Short Term Project I","INCS 101":"Programming III","INCS 102":"Operating Systems","INCS 103":"Databases","INCS 104":"Data Structures & Algorithms","INCS 402":"Analysis & Design of Algorithms","INCS 406":"Distributed &Web-based Systems","INCS 407":"Information Security","INCS 408":"Introduction to Data Science","INCS 409":"Introduction to Media Informatics","INCS 410":"Cloud Computing","INCS 515":"Databases","INCS 614":"Cybersecurity","INCS 615":"Big Data and NoSQL","INCS 616":"Business Continuity and Risk Management","INCS 617":"Software Engineering","INCS 700":"Bachelor Thesis","INCS 902":"Research Project I","INCS 1001":"Seminar - Selected Major-specific Topics","INCS 1002":"Research Project II","INCS 1003":"Analytics in the Cloud","INCS 1004":"Statistical Modeling for Data Science Applications","INCS 1005":"Social-Legal & Ethical issues in IT Security","INCS 1006":"Secure Systems Engineering","INCS 1007":"Software Game Development","INCS 1008":"Software Engineering Studio","INCS 1009":"Advanced Game Development and AI in Gaming","INCS 1010":"Digital Video and Sound Processing","INGN 601":"Research Methodology","LAWS 101":"Introduction to Law","MATH 101":"Mathematics & Statistics I","MATH 102":"Mathematics I for Pharmaceutical Engineering and Technology","MATH 103":"Mathematics I","MATH 104":"Mathematics I for Biotechnology","MATH 106":"Mathematics I for Architecture","MATH 108":"Math I for Business Informatics","MATH 109":"Mathematics I","MATH 203":"Mathematics II","MATH 204":"Mathematics II","MATH 205":"Mathematics II Business & Economics","MATH 302":"Mathematics II","MATH 303":"Math III - Probability & Statistics","MATH 304":"Mathematics III","MATH 401":"Biostatistics","MATH 403":"Mathematics IV","MECH 613":"CAD/CAM/CAE in Mechanical Engineering","MECH 907":"Autonomous Vehicle Systems","MECH 1001":"Automotive Electronics","MECH 1002":"Industrial Robots II","MECH 1003":"Robotics in manufacturing","MECH 1005":"Manufacturing Ergonomics","MGMT 401":"Introduction to Management and Economics","MNGT 101":"Introduction to Management","NETW 401":"Signals and Systems","NETW 402":"Modelling & Simulation of dynamic systems","PHEN 302":"Statistics","PHEN 303":"Fundamentals of Electrical Engineering","PHEN 401":"Fluid Mechanics","PHEN 402":"Chemical Reaction Engineering","PHEN 403":"Introduction to Process Engineering","PHEN 405":"Sensors,Metrology and Instrumentation Systems","PHEN 601":"Pharmaceutical Process Validation","PHEN 602":"Industrial Automation & PLC Programming","PHEN 603":"Water & Air Systems","PHEN 604":"Digitalization in Pharmaceutical Industry","PHEN 605":"Industrial Planning & Project Management","PHEN 606":"Pharmaceutical Processing Technology II","PHEN 608":"Cosmetics Technology","PHEN 700":"Bachelor Thesis","PHEN 1001":"Sustainability and Environmental Impact in the Pharmaceutical Industry","PHEN 1002":"Quality by Design and Advanced Quality Management","PHEN 1007":"Special Topics in Pharmaceutical Engineering II","PHEN 1099":"Master Thesis Preparatory Project","PHGN 601":"Research Methodology","PHTH 102":"Biophysics for Physiotherapy","PHTH 104":"Anatomy I for Physiotherapy","PHTH 105":"Physiology I for Physiotherapy","PHTH 213":"Anatomy II","PHTH 214":"Physiology II","PHTH 217":"Tests & Measurements I","PHTH 218":"Ethics & Law","PHTH 219":"kinesiology","PHTH 221":"First Aid in Hygienic Issue for PT","PHTH 222":"Psychology and Therapeutic Communication","PHTH 401":"Neuroanatomy","PHTH 402":"Neurophysiology","PHTH 403":"Biomechanics II","PHTH 404":"Therapeutic exercise II","PHTH 405":"Electrotherapy II","PHTH 406":"Hydrotherapy","PHTH 408":"Exercise physiology","PHYS 101":"Physics","PHYS 102":"Physics Lab","PTOR 601":"Traumatology","PTOR 602":"Physical Therapy for Traumatology","PTOR 603":"Orthopedic diseases and Surgeries","PTOR 604":"Physical Therapy for Orthopedic diseases and Surgeries","PTOR 605":"Physical Therapy for Sport Injury","PTSR 601":"General Surgery & Oncology","PTSR 602":"Physical Therapy for General Surgery & Oncology","RPW 401":"Research Paper Writing (A2)","SM 101":"Scientific Methods"},
             normalizeCode(code) { return String(code == null ? '' : code).trim(); },
-            lookup(code) {
+            // The map's own key, or for a GIU Berlin "ICS n" with no entry of its own
+            // the Cairo "INCS n" (Berlin's CS courses use ICS). Same number is assumed
+            // to be the same course; where they differ the ICS entry itself wins.
+            key(code) {
                 const key = this.normalizeCode(code);
-                return this.map[key] || key;
+                if (Object.prototype.hasOwnProperty.call(this.map, key)) return key;
+                const m = key.match(/^ICS\s*(\d+)$/i);
+                const alt = m ? 'INCS ' + m[1] : '';
+                return alt && Object.prototype.hasOwnProperty.call(this.map, alt) ? alt : null;
             },
-            has(code) { return Object.prototype.hasOwnProperty.call(this.map, this.normalizeCode(code)); },
+            lookup(code) {
+                const key = this.key(code);
+                return key ? this.map[key] : this.normalizeCode(code);
+            },
+            has(code) { return this.key(code) !== null; },
         },
 
         warn(feature, ...args) { console.warn(`[GIU-SS:${feature}]`, ...args); },
@@ -1352,6 +1362,8 @@ function planAttendanceDays(input) {
             day.outSeconds = day.inSeconds + room;
             day.warn = "short-cap";
         }
+        // An extra day off has nothing required: no "counts as absent" warning.
+        if (day.extra && /^short/.test(day.warn)) day.warn = "";
         if (day.hours < minDay) required -= day.requiredSeconds;   // absent day
         pinnedSeconds += day.hours;
         return day;
@@ -1489,6 +1501,12 @@ function renderAttendancePlanner(S, api, host) {
         html.gius-dark .gius-plan-good{color:#a6e3a1;}
         html.gius-dark .gius-plan-link,html.gius-dark .gius-plan-undo{color:#89b4fa;}
         html.gius-dark .gius-plan-undo:hover{background:#1e3a5f;}
+        .gius-plan-extra{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#475569;margin-right:12px;}
+        .gius-plan-extra select{font:inherit;padding:2px 6px;border:1px solid #cbd5e1;border-radius:6px;background:#fff;color:#0f172a;}
+        .gius-plan-extra-x{margin-left:6px;border:0;background:none;color:#94a3b8;cursor:pointer;font-size:14px;line-height:1;padding:0 2px;}
+        .gius-plan-extra-x:hover{color:#dc2626;}
+        html.gius-dark .gius-plan-extra{color:#a6adc8;}
+        html.gius-dark .gius-plan-extra select{background:#313244;border-color:#45475a;color:#cdd6f4;}
     `);
 
     const dayLabel = function (ymd) {
@@ -1520,7 +1538,7 @@ function renderAttendancePlanner(S, api, host) {
 
     function row(d) {
         const label = d.isToday ? "Today" : dayLabel(d.ymd);
-        const warn = warnText(d);
+        const warn = d.extra && !d.warn ? "Day off — extra hours" : warnText(d);
         let cells;
         if (d.locked) {
             cells = '<span class="gius-plan-cell"></span><span class="gius-plan-cell"><span class="gius-plan-fixed">' +
@@ -1534,7 +1552,8 @@ function renderAttendancePlanner(S, api, host) {
         return '<div class="gius-plan-row' + (d.isToday ? " gius-plan-today" : "") + '" data-ymd="' + esc(d.ymd) + '">' +
             // Late is for information only (HR takes nothing off): grey, not red.
             '<span class="gius-plan-day"><b>' + esc(label) + "</b>" +
-            (warn ? "<small" + (d.warn === "late" ? ' class="gius-plan-note"' : "") + ">" + esc(warn) + "</small>" : "") + "</span>" +
+            (d.extra ? '<button type="button" class="gius-plan-extra-x" data-ymd="' + esc(d.ymd) + '" aria-label="Remove ' + esc(dayLabel(d.ymd)) + ' from the plan" title="Remove this day off from the plan">×</button>' : "") +
+            (warn ? "<small" + (d.warn === "late" || (d.extra && !d.warn) ? ' class="gius-plan-note"' : "") + ">" + esc(warn) + "</small>" : "") + "</span>" +
             cells + "</div>";
     }
 
@@ -1690,12 +1709,21 @@ function renderAttendancePlanner(S, api, host) {
         const focusKey = active && host.contains(active) ? (active.id || active.dataset.ymd + "|" + active.dataset.kind) : null;
 
         const hasEdits = Object.keys(prefs.edits).length > 0;
+        // Pick a day off to work: its hours lower what the other days need.
+        const offDays = input.offDays || [];
+        const extraPicker = offDays.length
+            ? '<label class="gius-plan-extra">Work a day off: <select id="gius-plan-extra"><option value="">Add a day…</option>' +
+                offDays.map(function (o) {
+                    return '<option value="' + esc(o.ymd) + '">' + esc(dayLabel(o.ymd)) + (o.kind === "holiday" ? " (holiday)" : "") + "</option>";
+                }).join("") + "</select></label>"
+            : "";
         // Answer on the left, day list on the right when the card is wide.
         host.innerHTML = '<section class="gius-plan">' + head + bodyOpen +
             '<div class="gius-plan-side">' +
             (both ? heroBoth(plan, prefs) : hero(plan)) +
             '<p class="gius-plan-sentence">' + monthEnd(plan, both) + "</p>" +
-            (hasEdits ? '<div class="gius-plan-foot"><button type="button" class="gius-plan-link" id="gius-plan-reset">Undo all changes</button></div>' : "") +
+            (hasEdits || extraPicker ? '<div class="gius-plan-foot">' + extraPicker +
+                (hasEdits ? '<button type="button" class="gius-plan-link" id="gius-plan-reset">Undo all changes</button>' : "") + "</div>" : "") +
             "</div>" +
             (plan.days.length
                 ? '<div class="gius-plan-days"><div class="gius-plan-th"><span>Day</span><span class="gius-plan-cell">In</span><span class="gius-plan-cell">Out</span></div>' +
@@ -1716,6 +1744,10 @@ function renderAttendancePlanner(S, api, host) {
     let pending = false;
     host.addEventListener("change", function (e) {
         const el = e.target;
+        if (el.id === "gius-plan-extra") {
+            if (el.value) { api.addExtraDay(el.value); render(); }
+            return;
+        }
         if (el.id === "gius-plan-usual") api.setUsualTime(el.value);
         else if (el.id === "gius-plan-usual-out") api.setUsualTime(el.value, "out");
         else if (el.id === "gius-plan-today-in" || el.dataset.today === "1") api.setTodayIn(el.value);
@@ -1749,6 +1781,8 @@ function renderAttendancePlanner(S, api, host) {
             if (modeBtn.getAttribute("aria-pressed") !== "true") { api.setUsualMode(modeBtn.dataset.mode); render(modeBtn); }
             return;
         }
+        const extraX = e.target.closest(".gius-plan-extra-x");
+        if (extraX) { pending = false; api.removeExtraDay(extraX.dataset.ymd); render(); return; }
         const undo = e.target.closest(".gius-plan-undo");
         if (undo) { pending = false; api.setEdit(undo.dataset.ymd, undo.dataset.kind, null); render(); return; }
         if (e.target.closest("#gius-plan-reset")) { pending = false; api.clearEdits(); render(); }
@@ -9081,9 +9115,13 @@ function renderAttendancePlanner(S, api, host) {
                     const clean = {};
                     if (plannerParseTime(e.in) !== null) clean.in = e.in;
                     if (plannerParseTime(e.out) !== null) clean.out = e.out;
-                    if (clean.in || clean.out) edits[ymd] = clean;
-                });
-                return { usualMode, usualIn, usualOut, todayIn, edits };
+                        if (clean.in || clean.out) edits[ymd] = clean;
+                    });
+                    // Days off the user plans to work (weekly day off or public holiday).
+                    const extraDays = Array.isArray(raw.extraDays)
+                        ? raw.extraDays.filter(function (ymd, i, all) { return YMD_RE.test(ymd) && ymd >= today && all.indexOf(ymd) === i; }).sort()
+                        : [];
+                    return { usualMode, usualIn, usualOut, todayIn, edits, extraDays };
             }
 
             function setPlannerPrefs(prefs) {
@@ -9092,9 +9130,10 @@ function renderAttendancePlanner(S, api, host) {
                         usualMode: prefs.usualMode,
                         usualIn: prefs.usualIn,
                         usualOut: prefs.usualOut,
-                        today: prefs.todayIn ? { date: getTodayLocalYMD(), in: prefs.todayIn } : null,
-                        edits: prefs.edits
-                    }));
+                            today: prefs.todayIn ? { date: getTodayLocalYMD(), in: prefs.todayIn } : null,
+                            edits: prefs.edits,
+                            extraDays: prefs.extraDays || []
+                        }));
                 } catch { /* quota */ }
             }
 
@@ -9125,13 +9164,32 @@ function renderAttendancePlanner(S, api, host) {
                 const outMode = prefs.usualMode === "out";
                 const bothMode = prefs.usualMode === "both";
                 const days = [];
+                // Days off that can be added to the plan as extra work days. Only the
+                // weekly day off and public holidays: the report counts hours there as
+                // extra (nothing required). Work on the fixed off-day (Friday/Sunday)
+                // earns a compensation day instead, and leave days are leave.
+                const extraDays = new Set(prefs.extraDays);
+                const offDays = [];
+                const leaveOn = function (date) {
+                    return holidays.some(function (h) {
+                        if (!h || h.category === "holiday") return false;
+                        if (h.type === "single") return normalizeYMD(h.date) === date;
+                        return h.type === "range" && isBetweenDates(h.start, h.end, date);
+                    });
+                };
                 eachYmdInRange(today, bounds.end, function (date) {
                     const dayName = formatDateToDayName(date);
                     if (!dayName) return;
                     if (isFixedNonWorkingDay(dayName, date)) return;
+                    if (compDates.has(date) || leaveOn(date)) return;
                     const effectiveDayOff = getDayOffFullNameForDate(date, getSelectedDayOffCode());
-                    if (effectiveDayOff && dayName === effectiveDayOff) return;
-                    if (isDateHoliday(date, holidays) || compDates.has(date)) return;   // holidays include annual leave
+                    const isDayOff = !!(effectiveDayOff && dayName === effectiveDayOff);
+                    const isHoliday = isDateHoliday(date, holidays);
+                    const extra = (isDayOff || isHoliday) && extraDays.has(date);
+                    if ((isDayOff || isHoliday) && !extra) {
+                        offDays.push({ ymd: date, dayName, kind: isHoliday ? "holiday" : "dayoff" });
+                        return;
+                    }
 
                     const isToday = date === today;
                     const edit = prefs.edits[date] || {};
@@ -9139,7 +9197,8 @@ function renderAttendancePlanner(S, api, host) {
                         ymd: date,
                         dayName,
                         isToday,
-                        requiredSeconds: getRequiredSecondsBySeason(date, ramadan),
+                        extra,
+                        requiredSeconds: extra ? 0 : getRequiredSecondsBySeason(date, ramadan),
                         capSeconds: getLastOutCapForDate(date, ramadan, examPeriod),
                         lateSeconds: isBetweenDates(ramadan.start, ramadan.end, date)
                             ? LATE_THRESHOLD_SECONDS_RAMADAN : LATE_THRESHOLD_SECONDS_NORMAL,
@@ -9185,9 +9244,10 @@ function renderAttendancePlanner(S, api, host) {
                     workedSeconds: past.actualSeconds,
                     requiredSeconds: past.requiredSeconds,
                     minDaySeconds: MIN_WORKING_DAY_SECONDS,
-                    bufferSeconds: PLANNER_BUFFER_SECONDS,
-                    days
-                };
+                        bufferSeconds: PLANNER_BUFFER_SECONDS,
+                        days,
+                        offDays
+                    };
             }
 
             function createPlannerApi(getRows) {
@@ -9227,6 +9287,19 @@ function renderAttendancePlanner(S, api, host) {
                     clearEdits: function () {
                         const p = getPlannerPrefs();
                         p.edits = {};
+                        setPlannerPrefs(p);
+                    },
+                    // Plan to work a day off (adds its hours) / take it back out.
+                    addExtraDay: function (ymd) {
+                        if (!YMD_RE.test(ymd || "")) return;
+                        const p = getPlannerPrefs();
+                        if (p.extraDays.indexOf(ymd) === -1) p.extraDays.push(ymd);
+                        setPlannerPrefs(p);
+                    },
+                    removeExtraDay: function (ymd) {
+                        const p = getPlannerPrefs();
+                        p.extraDays = p.extraDays.filter(function (d) { return d !== ymd; });
+                        delete p.edits[ymd];
                         setPlannerPrefs(p);
                     }
                 };
