@@ -10,7 +10,7 @@
 // @match       https://apps.guc.edu.eg/external/tempprojects/swiftreports.aspx*
 // @match       https://apps.guc.edu.eg/External/TempProjects/SwiftReports.aspx*
 // @namespace   Cyn0
-// @version     4.6
+// @version     4.7
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Berlin%20SuperScript.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Berlin%20SuperScript.js
 // @author      Mo.Elmaadawy
@@ -10994,7 +10994,9 @@ function renderAttendancePlanner(S, api, host) {
                 const subtle = window.crypto && window.crypto.subtle;
                 if (!account || !subtle) return (homeRankThemeCheck = Promise.resolve(false));
                 homeRankThemeCheck = (async function () {
-                    const digest = await subtle.digest("SHA-256", new TextEncoder().encode(account + "|" + homeRankThemeEntries()[0].s));
+                    // Every entry's salt is in the tag, so adding an entry makes
+                    // each browser check its account once more.
+                    const digest = await subtle.digest("SHA-256", new TextEncoder().encode(account + "|" + homeRankThemeEntries().map(function (e) { return e.s; }).join(",")));
                     const tag = Array.from(new Uint8Array(digest)).map(function (b) { return b.toString(16).padStart(2, "0"); }).join("");
                     let checked = null;
                     try { checked = JSON.parse(localStorage.getItem(STORAGE_KEYS.rankThemeCheck) || "null"); } catch { checked = null; }
