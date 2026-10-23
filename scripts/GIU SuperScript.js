@@ -5,7 +5,7 @@
 // @icon        data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKgAAACUCAMAAAAwLZJQAAAAzFBMVEX////VlyYkHiAAAADTHyj36ereiIr8/vzIGSPPAAj//fziu4HTlRbnyp3x49HRHSTTkgzw8PD29vbl5eXV1NRjX2HWY2vUr2zMAADn1rfJjguzsrMfGRsaEBPltLX6+u/OmB67u7vIyMgyLC5sbGycnJypqKmLi4tYWFh9e3wWExXkoJ1HRUaUkpM3NjY+Pj4PAAe/AADIDxPYGiAnJicZGhn27df17eDXqE329uBVYF7AZ2jZjGvOWgTNlSzf0J7lw7PWozvqxcLZsl8WTjZKAAAHBElEQVR4nO2Ya3fbNhJAIWG92tJ2YwzApg6kTQDhQagkpXZlR/t03fz//7QDgo71jqQ0Pf2Ae45tipKlq8FgMAAhmUwmk8lkMplMJpPJZDKZTCaTyWQymUwmk8lkMpnMqRTAENi4dXUV710xvB6979n+v3R39IcoMmGrdkyR2bgtLX/Rvfr5uzdvfvnlx7/i9fc3g8EAf27IltNtfOLuetR9A22CEWB84Cp4C2A5IbzBj3B4IRU+kEAuhCk/pXQyHibGE0rnIb4viv7tH39BkujdoONm+/9v75Jo9HcPgghFqONga/4gWWsJ8TUQTtHWU0W4v1RUVRMaJWcxoJNedkFtEn0TRb9bF73bEe0jWmC46qa7haLEVrBUfEoJr+YcP2WJomYmuL1MlFVJbjEtJee6XPaqi4OiuxF9FRVLjbacUBO4m7YOR712Tg8FKeNTnmFMXXGJp17SLoKzININYbrwDieHRG8+HMrRl4gGU8zQ15Z4oZSjllGhjawMCQAhDdW5qOWs86SvGQ6OdjQHRO+OiRJJFZhAqJe8aTl1FvNVEyorRjQV+Ju1/oKIihS9h5lYv8udRfRFooQ5dMRAKs4F4YIzgrNS8PgBmgkMB+Pne7I2xfNBHnrF+aLfgsLP0rwJB19ytqjWRMewCe20VFxJCUpiCYghBQwoaMIkJi4XcdY1Dd4W3VMkPkVA7ot3P/Dj4eF6cbaoMaSssGp6IanVikpVzLx6EAozlXmGOcyYMrXi+ELXclYHYpeYI6HAv5gmVO+xMIsuoGna/F6igYSpAVyLGJYjTVlB5g5w1s9bgaLQzHDSNwZLQ+APOgZLyHbOuSfgxxJFxa4Eo31tP5Ldl4h6MfOsFx0bA3VVKaKUWXIHQjqMd2MARTXFDwaKGVJVwhKlfdgvammfoUdWinPraBdRDFNwhA1jRPG9a7NUxOmifPBgjccSm0RFlEIzJ2CONcuHMBZ7Rcu0BtGDU36/6OALOTrCcVXUdemmqOBkaO0Dx2rH2pKVMKpC4UsojCnwS2HNLTym6NLwAKxuOFWcbTmweZpK433pe0z03fFZX2CHRJQgDNc6ERoPXkHQKk5vKTAo2oO0UDiMeeODxfmFGaAldjJEeWYavx1T0SbR+Z5gHxU91pR8C3TfJ1XHVor9ET0iyuMEwbKJ14wVHNJjJgReClGQQmsADgLXLR4H+YRlSiXRSbWdE18lGnDxEJ7ULnbJfMktvj1W/dpbUXmsnd41WtTChtrLUMaXfhE53iPK14BLRE0SbXGKSo1zOE6phruqIHyKVZ+3MVeXHLs2IHqmw7EoHREFM5x+RnyFaOmoUIIvcFNimCWytY63NjRQzhwTU+yjUZSYpfuyJ1Hj3RwFsxj3TBZfI1oRPw1RFNdMjcGtMSPn1Ri7vIa6z6JiX9XcQUzTrG/XXgym7+9jqHdEb06Y9aHGfZMj+NvQrnyzOW6YbM2At6oMOM8aG4deTYDsX4d26OvocL2OromOd0QfP4seqaPcBNsAMfG9BIulz+Pi7qrG8UrrWnvrucBB1HWMaH2KKKn6lWktT/qh3y/6cdDvmbY39ht1FAsSfo+Y9wBdlcI/8SYrGBSMxZoE2KlA9wp+0j5P0n42vb4awjyy3Cv6fpVCevfPrcp+ZsHHbfUo/Yy2x2Y/kESH64nS1SVRzfaJjq779ul+642+eYfv+/ap3LrP9ouS+37obw+LinKTf/37h03+83aT61O+Hav7LFWnib6M/erjQVFNt/j5x03+++HdBv876cxKpz3TpN5ccQ+Jkqe+I306KMrlFn/f4tf7LU47W+t751m9MfsOio6eb1Lr/HhI9CgX7JNfTYfd6NOhXlM9KEoen/uJ/7ReotZEQaUFOXW/sV/APeYI9/JYqsBz3NMzBd2k5xCnvThZXqUjnck4vNT9QtjYqe6N6Oh+kExvPt2/qI4+vh28RlSlL6yxo+O4UeYkbouJULxQTCmNs6E/k0nf6IyDKF52B47jybIKVsrG1G1X8cc7a338EuT7d32e3qze3t7fP12/XT0PXkV5atuAKx+PRyQHpwng1o4RAdxy3OVJZR0BJwFko/Q5h6UitAuKgz1ZdOeOqDmjdNF2zcqWKPL+enDXR/UuEk928erD81M8HxWNwxnkvONGWy8FY9ZK65RyMgSwTBN85J1srHLOSaf0WWeQQob5ek2ZGytF9w5XfXn5LDoixeP1qjfsFPFqdX17/9inQjxJF9jKYdQgralMq4LExZOnhMQWKh5oxzvnn5QCw3GyTdNYiW3k6zk+/JT47VU0HuY/3l9/Wq2eV6tPOP6PH7drIfZIsOYAB7rj4uIz8iNs5vzo4IM/HX9uu0wmk8lkMplMJpPJZDKZTCaTyWQymUwmk8lkMplMJpPJHOP/Lb7en38r1wIAAAAASUVORK5CYII=
 // @namespace   Cyn0
 // @match       https://portal.giu-uni.de/*
-// @version     4.8
+// @version     4.9
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @grant       none
@@ -41,6 +41,7 @@
         notificationBatch: true,
         manageGroupGrades: false,
         studentAttendance: false,
+        takeAttendance:    true,
     };
 
 
@@ -54,6 +55,7 @@
         notificationBatch: 'Notification Batch',
         manageGroupGrades: 'Manage Group Grades',
         studentAttendance: 'Student Attendance',
+        takeAttendance:    'Take Attendance',
     };
 
     // Grouping for the Control Center toggle list — display only, doesn't
@@ -62,6 +64,7 @@
     const FEATURE_CATEGORIES = {
         staffAttendance:   'Attendance',
         studentAttendance: 'Attendance',
+        takeAttendance:    'Attendance',
         unenteredSessions: 'Attendance',
         uploadGrades:      'Grades',
         manageGroupGrades: 'Grades',
@@ -74,10 +77,10 @@
 
     // Modules whose source page is only reachable from the GIU campus network
     // (VPN/on-site) — Control Center shows an info icon warning of this.
-    const NETWORK_ONLY_FEATURES = new Set(['studentAttendance', 'manageGroupGrades', 'unenteredSessions']);
+    const NETWORK_ONLY_FEATURES = new Set(['studentAttendance', 'manageGroupGrades', 'unenteredSessions', 'takeAttendance']);
 
     // First-run Control Center tip (its text depends on this bundle's defaults).
-    const CONTROL_CENTER_TIP = 'All SuperScript features are managed from this card. Only three start enabled — open it and switch on what you need. Changes apply after a reload.';
+    const CONTROL_CENTER_TIP = 'All SuperScript features are managed from this card. Only the everyday ones start enabled — open it and switch on what you need. Changes apply after a reload.';
 
     function loadFeatureToggles() {
         let saved = {};
@@ -17453,6 +17456,1359 @@ function renderAttendancePlanner(S, api, host) {
     
             init();
         },
+        takeAttendance(S) {
+            // Manage Student Attendances (Cairo …H003.aspx, Berlin …Berlin.aspx):
+            // bulk ticking, row-click toggle, unsaved-change tracking and a sticky
+            // Save / End Session bar. Nothing is saved, ended or selected for the
+            // user — the bar only clicks the portal's own buttons.
+            const table   = document.getElementById('MainContent_DG_StudentAttendance');
+            const saveBtn = document.getElementById('MainContent_B_SaveAttendance');
+            const endBtn  = document.getElementById('MainContent_B_EndSession');
+            const HIDE_FUTURE_KEY = 'giuTakeHideFutureV1';
+            const REQUESTS_KEY    = 'giuTakeRequestsV1';   // { [sessionId]: { type, at } }
+            const SHEET_KEY       = 'giuTakeSheetV1';      // paper-sheet options
+            // Styles and the session picker first: both apply before a session is picked too.
+            injectStyles();
+            try { sessionPicker(); } catch (e) { S.warn('takeAttendance', 'session picker crashed:', e); }
+            try { groupPicker(); } catch (e) { S.warn('takeAttendance', 'group picker crashed:', e); }
+            tidyPage();
+            try { requestPanel(); } catch (e) { S.warn('takeAttendance', 'request panel crashed:', e); }
+
+            // Copy buttons anywhere in SuperScript's panels.
+            document.addEventListener('click', e => {
+                const btn = e.target.closest('[data-copy-ref]');
+                if (btn) copyText(btn.dataset.copyRef, btn);
+            });
+
+            // A session is picked but not started yet: no student table on the page.
+            if (!table) {
+                try { noSessionPanel() || notStartedPanel(); } catch (e) { S.warn('takeAttendance', 'session panel crashed:', e); }
+                return;
+            }
+            if (!saveBtn) return;
+
+            // [{tr, cb, saved, text}] — `saved` is the state the page loaded with.
+            const rows = Array.from(table.querySelectorAll('tr')).slice(1).map(tr => {
+                const cb = tr.querySelector('input[type="checkbox"]');
+                if (!cb) return null;
+                const tds = tr.querySelectorAll('td');
+                const text = `${tds[2] ? tds[2].textContent : ''} ${tds[3] ? tds[3].textContent : ''}`;
+                return { tr, cb, saved: cb.checked, text: text.toLowerCase() };
+            }).filter(Boolean);
+            if (!rows.length) return;
+
+            let leaving = false;     // a real form submit (Save / End Session) is under way
+            let endConfirmed = false;
+
+            function injectStyles() {
+                S.injectStyle('gius-take-styles', `
+        #MainContent_DDL_StudentGroup, #MainContent_DDL_Sessions, #MainContent_DDL_SessionNewDate {
+            height: 32px; padding: 4px 8px; margin: 2px 0;
+            font-size: 13px; color: #111827; background-color: #fff;
+            border: 1px solid #9ca3af; border-radius: 6px;
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+            max-width: 100%; box-sizing: border-box; cursor: pointer;
+            transition: border-color 0.2s ease;
+        }
+        #MainContent_DDL_StudentGroup:hover, #MainContent_DDL_Sessions:hover, #MainContent_DDL_SessionNewDate:hover { border-color: #6b7280; }
+        #MainContent_DDL_StudentGroup:focus, #MainContent_DDL_Sessions:focus, #MainContent_DDL_SessionNewDate:focus {
+            outline: 2px solid #60a5fa; outline-offset: 1px; border-color: #1B59C6;
+        }
+        html.gius-dark #MainContent_DDL_StudentGroup, html.gius-dark #MainContent_DDL_Sessions, html.gius-dark #MainContent_DDL_SessionNewDate {
+            background-color: #1e1e2e !important; color: #cdd6f4 !important; border-color: #45475a !important;
+        }
+        select.gius-take-native-hidden, .gius-take-hide { display: none !important; }
+        .gius-take-picker { position: relative; display: inline-block; vertical-align: middle; max-width: 100%; margin: 2px 0; }
+        .gius-take-picker-btn {
+            display: inline-flex; align-items: center; justify-content: space-between; gap: 12px;
+            min-width: 320px; max-width: 100%; height: 32px; padding: 4px 10px; box-sizing: border-box;
+            font-size: 13px; font-weight: 700; color: #111827; background: #fff;
+            border: 1px solid #9ca3af; border-radius: 6px; cursor: pointer; text-align: left;
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        }
+        .gius-take-picker-btn:hover { border-color: #6b7280; }
+        .gius-take-picker-btn:focus-visible { outline: 2px solid #60a5fa; outline-offset: 1px; border-color: #1B59C6; }
+        .gius-take-picker-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .gius-take-picker-caret { color: #6b7280; font-weight: 400; }
+        .gius-take-picker-pop {
+            position: absolute; top: calc(100% + 4px); left: 0; z-index: 1000;
+            width: 440px; max-width: 92vw; background: #fff;
+            border: 1px solid #eeeeee; border-radius: 6px; overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 13px; color: #111827;
+        }
+        .gius-take-picker-pop::before { content: ""; display: block; height: 3px; background: #ffc107; }
+        .gius-take-picker-tools { display: flex; gap: 10px; align-items: center; padding: 10px 12px 6px; }
+        .gius-take-picker-tools .gius-take-input { flex: 1; width: auto; }
+        .gius-take-picker-check { display: flex; align-items: center; gap: 6px; margin: 0 !important; font-size: 12px; font-weight: 600; color: #374151; white-space: nowrap; cursor: pointer; }
+        .gius-take-picker-note { padding: 0 12px 8px; font-size: 11px; color: #92400e; }
+        .gius-take-picker-list { max-height: 340px; overflow-y: auto; border-top: 1px solid #eeeeee; }
+        .gius-take-picker-day {
+            position: sticky; top: 0; z-index: 1;
+            padding: 6px 12px; font-size: 11px; font-weight: 700; letter-spacing: 0.4px;
+            color: #6b7280; background: #f9fafb; border-bottom: 1px solid #f3f4f6;
+        }
+        .gius-take-picker-day.gius-take-today { color: #92400e; background: #fff8e1; }
+        .gius-take-picker-opt {
+            display: flex; align-items: center; justify-content: space-between; gap: 10px;
+            width: 100%; min-height: 34px; padding: 6px 12px; box-sizing: border-box;
+            border: none; border-bottom: 1px solid #f3f4f6; background: #fff;
+            font: inherit; color: inherit; text-align: left; cursor: pointer;
+        }
+        .gius-take-picker-opt:hover, .gius-take-picker-opt:focus { background: #eff6ff; outline: none; }
+        .gius-take-picker-opt.gius-take-today { background: #fffbeb; }
+        .gius-take-picker-opt.gius-take-selected { background: #dbeafe; color: #1e3a8a; font-weight: 700; }
+        .gius-take-picker-main { display: flex; flex-direction: column; }
+        .gius-take-picker-course { font-size: 12px; font-weight: 600; color: #374151; }
+        .gius-take-picker-day.gius-take-picker-coursehead {
+            padding: 8px 12px; font-size: 13px; font-weight: 700; letter-spacing: 0;
+            color: #111827; background: #f3f4f6; border-top: 1px solid #e5e7eb;
+        }
+        .gius-take-picker-empty { padding: 12px; color: #6b7280; }
+        .gius-take-picker-foot { padding: 8px 12px; border-top: 1px solid #eeeeee; font-size: 12px; color: #6b7280; }
+        .gius-take-link { background: none; border: none; padding: 0; color: #1B59C6; font: inherit; font-weight: 600; cursor: pointer; text-decoration: underline; }
+        .gius-take-meta { font-size: 12px; color: rgba(255,255,255,0.65); }
+        .gius-take-req-body { padding: 14px 16px; display: flex; flex-direction: column; gap: 12px; }
+        .gius-take-req-session { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: #374151; }
+        .gius-take-label { display: block; font-weight: 700; font-size: 12px; color: #374151; margin-bottom: 4px; }
+        .gius-take-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+        .gius-take-chip {
+            height: 28px; padding: 0 10px; border-radius: 999px; cursor: pointer;
+            font-size: 12px; font-weight: 600; font-family: 'Open Sans', Arial, sans-serif;
+            border: 1px solid #d1d5db; background: #fff; color: #374151;
+        }
+        .gius-take-chip:hover { background: #f3f4f6; }
+        .gius-take-chip.gius-take-chip-on { background: #1B59C6; border-color: #1648a8; color: #fff; }
+        .gius-take-req-remarks { display: block; margin: 0 !important; font-weight: 400; }
+        .gius-take-input.gius-take-textarea { display: block; width: 100%; max-width: 640px; height: auto !important; min-height: 64px; resize: vertical; }
+        .gius-take-req-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+        .gius-take-req-msg { font-size: 12px; font-weight: 600; color: #b91c1c; }
+        .gius-take-btn-primary { background: #1B59C6; border-color: #1648a8; color: #fff; }
+        .gius-take-btn-primary:hover { background: #1648a8; }
+        .gius-take-ok {
+            background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7;
+            border-radius: 6px; padding: 8px 12px; font-size: 12px; font-weight: 600;
+        }
+        .gius-take-req-other summary { cursor: pointer; font-size: 12px; font-weight: 600; color: #6b7280; }
+        .gius-take-req-links { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; padding-top: 6px; }
+        html.gius-dark .gius-take-req-session, html.gius-dark .gius-take-label { color: #cdd6f4 !important; }
+        html.gius-dark .gius-take-chip { background: #1e1e2e !important; color: #cdd6f4 !important; border-color: #45475a !important; }
+        html.gius-dark .gius-take-chip.gius-take-chip-on { background: #1B59C6 !important; color: #fff !important; }
+        html.gius-dark .gius-take-ok { background: #052e16 !important; color: #4ade80 !important; border-color: #14532d !important; }
+        .gius-take-ref {
+            display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+            padding: 12px 16px; background: #fffbeb; border-bottom: 1px solid #fde68a;
+        }
+        .gius-take-ref-main { display: flex; align-items: center; gap: 12px; }
+        .gius-take-ref-label { font-size: 11px; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; color: #92400e; }
+        .gius-take-ref-num {
+            font-size: 24px; font-weight: 700; color: #272c33; letter-spacing: 1px;
+            font-variant-numeric: tabular-nums; user-select: all;
+        }
+        .gius-take-btn.gius-take-ref-copy { height: 28px; padding: 0 10px; font-size: 12px; }
+        .gius-take-ref-side { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; color: #374151; }
+        html.gius-dark .gius-take-ref { background: #2d1f00 !important; border-color: #78350f !important; }
+        html.gius-dark .gius-take-ref-label { color: #fbbf24 !important; }
+        html.gius-dark .gius-take-ref-num, html.gius-dark .gius-take-ref-side { color: #cdd6f4 !important; }
+        .gius-take-modal.gius-take-modal-wide { width: 520px; }
+        .gius-take-copy-stats { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: #374151; }
+        .gius-take-copy-scroll { max-height: 280px; overflow-y: auto; }
+        .gius-take-copy-table { border-collapse: collapse; font-size: 13px; width: 100%; }
+        .gius-take-copy-table thead th {
+            position: sticky; top: 0; background: #272c33; color: #fff;
+            padding: 7px 10px; text-align: left; font-size: 12px; font-weight: 700; letter-spacing: 0.4px;
+        }
+        .gius-take-copy-table tbody tr { border-bottom: 1px solid #f3f4f6; }
+        .gius-take-copy-table tbody tr:nth-child(even) { background: #f9fafb; }
+        .gius-take-copy-table td { padding: 6px 10px; color: #374151; }
+        html.gius-dark .gius-take-copy-stats, html.gius-dark .gius-take-copy-table td { color: #cdd6f4 !important; }
+        html.gius-dark .gius-take-copy-table tbody tr:nth-child(even) { background: #181825 !important; }
+        .gius-take-session-text { font-size: 13px; color: #374151; }
+        .gius-take-btn.gius-take-btn-save[type="submit"] { height: 32px; }
+        label.gius-take-portal-radio {
+            display: inline-flex; align-items: center; margin: 2px 16px 2px 4px !important;
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 13px; font-weight: 600; color: #374151; cursor: pointer;
+        }
+        input.gius-take-portal-radio-input { width: 16px; height: 16px; margin: 0 !important; vertical-align: middle; accent-color: #1B59C6; cursor: pointer; }
+        html.gius-dark .gius-take-session-text, html.gius-dark label.gius-take-portal-radio { color: #cdd6f4 !important; }
+        .gius-take-radio { display: inline-flex; align-items: center; gap: 6px; margin: 0 14px 4px 0 !important; font-size: 13px; font-weight: 400; color: #374151; cursor: pointer; }
+        .gius-take-input.gius-take-num { width: 64px; }
+        html.gius-dark .gius-take-radio { color: #cdd6f4 !important; }
+        .gius-take-pill-grey { background: #f3f4f6; color: #374151; border: 1px solid #d1d5db; }
+        .gius-take-pill-blue { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+        html.gius-dark .gius-take-picker-btn { background: #1e1e2e !important; color: #cdd6f4 !important; border-color: #45475a !important; }
+        html.gius-dark .gius-take-picker-pop { background: #181825 !important; color: #cdd6f4 !important; border-color: #313244 !important; }
+        html.gius-dark .gius-take-picker-day { background: #11111b !important; color: #9399b2 !important; border-color: #313244 !important; }
+        html.gius-dark .gius-take-picker-day.gius-take-today { color: #fbbf24 !important; }
+        html.gius-dark .gius-take-picker-opt { background: #181825 !important; border-color: #313244 !important; }
+        html.gius-dark .gius-take-picker-opt.gius-take-today { background: #2d1f00 !important; }
+        html.gius-dark .gius-take-picker-opt:hover, html.gius-dark .gius-take-picker-opt:focus { background: #1e3a6e !important; }
+        html.gius-dark .gius-take-picker-opt.gius-take-selected { background: #1e3a8a !important; color: #e0e7ff !important; }
+        html.gius-dark .gius-take-picker-check, html.gius-dark .gius-take-picker-foot { color: #9399b2 !important; }
+        html.gius-dark .gius-take-picker-course { color: #bac2de !important; }
+        html.gius-dark .gius-take-picker-day.gius-take-picker-coursehead { color: #cdd6f4 !important; background: #1e1e2e !important; border-color: #313244 !important; }
+        .gius-take-panel {
+            background: #fff; border: 1px solid #eeeeee; border-radius: 6px;
+            box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
+            margin: 10px 0 12px; overflow: hidden; position: relative;
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 13px;
+        }
+        .gius-take-panel::before {
+            content: ""; position: absolute; top: 0; left: 0;
+            width: 100%; height: 3px; background: #ffc107;
+        }
+        .gius-take-header {
+            background: #272c33; color: #fff; padding: 10px 14px;
+            border-bottom: 2px solid #ffc107;
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 10px; flex-wrap: wrap;
+        }
+        .gius-take-title { font-size: 14px; font-weight: 700; }
+        .gius-take-pills { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+        .gius-take-body {
+            padding: 12px 16px; display: flex; gap: 8px;
+            align-items: center; justify-content: space-between; flex-wrap: wrap;
+        }
+        .gius-take-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+        .gius-take-find { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: #374151; }
+        .gius-take-input {
+            height: 32px; padding: 4px 8px; font-size: 13px; color: #111827;
+            background: #fff; border: 1px solid #9ca3af; border-radius: 6px;
+            box-sizing: border-box; width: 200px; font-family: 'Open Sans', Arial, sans-serif;
+        }
+        .gius-take-input:focus { outline: 2px solid #60a5fa; outline-offset: 1px; border-color: #1B59C6; }
+        .gius-take-btn {
+            height: 32px; padding: 0 14px; border-radius: 6px;
+            font-size: 13px; font-weight: 700; cursor: pointer;
+            border: 1px solid transparent; transition: all 0.2s ease;
+            display: inline-flex; align-items: center; gap: 5px; white-space: nowrap;
+            font-family: 'Open Sans', Arial, sans-serif;
+        }
+        .gius-take-btn-outline { background: #fff; border-color: #d1d5db; color: #374151; }
+        .gius-take-btn-outline:hover { background: #f9fafb; border-color: #9ca3af; }
+        .gius-take-btn-save { background: #16a34a; border-color: #15803d; color: #fff; }
+        .gius-take-btn-save:hover { background: #15803d; }
+        .gius-take-btn-end { background: #dc2626; border: none; color: #fff; }
+        .gius-take-btn-end:hover { background: #b91c1c; }
+        .gius-take-pill {
+            display: inline-flex; align-items: center; border-radius: 999px;
+            padding: 2px 10px; font-size: 11px; font-weight: 700; white-space: nowrap;
+        }
+        .gius-take-pill-green { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; }
+        .gius-take-pill-red   { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
+        .gius-take-pill-amber { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+        .gius-take-bar {
+            position: sticky; bottom: 0; z-index: 50; margin: 12px 0;
+            background: #272c33; border-top: 2px solid #ffc107; color: #fff;
+            border-radius: 6px 6px 0 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
+            padding: 10px 14px; display: flex; flex-wrap: wrap; gap: 10px;
+            align-items: center; justify-content: space-between;
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 12px;
+        }
+        #MainContent_DG_StudentAttendance {
+            width: 100% !important; border-collapse: collapse !important;
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif !important; font-size: 13px !important;
+        }
+        #MainContent_DG_StudentAttendance td { padding: 6px 10px !important; vertical-align: middle !important; border-color: #e5e7eb !important; }
+        #MainContent_DG_StudentAttendance tr.gius-take-head,
+        #MainContent_DG_StudentAttendance tr.gius-take-head td {
+            background: #272c33 !important; color: #fff !important;
+            font-size: 12px; font-weight: 700; letter-spacing: 0.4px;
+        }
+        #MainContent_DG_StudentAttendance tr.gius-take-head a { color: #fff !important; }
+        #MainContent_DG_StudentAttendance tr.gius-take-row { cursor: pointer; background: #fff !important; color: #374151 !important; }
+        #MainContent_DG_StudentAttendance tr.gius-take-row:nth-child(odd) td { background: #f9fafb; }
+        #MainContent_DG_StudentAttendance tr.gius-take-row:hover td { background: #eff6ff; }
+        #MainContent_DG_StudentAttendance tr.gius-take-row td > span { display: inline-flex; align-items: center; gap: 6px; }
+        #MainContent_DG_StudentAttendance tr.gius-take-row input[type="checkbox"] { width: 16px; height: 16px; margin: 0 !important; cursor: pointer; }
+        /* Bootstrap gives every label a bottom margin, which lifts it above the box. */
+        #MainContent_DG_StudentAttendance tr.gius-take-row label { font-size: 13px; font-weight: 700; line-height: 1.2; margin: 0 !important; cursor: pointer; }
+        #MainContent_DG_StudentAttendance tr.gius-take-on label  { color: #065f46; }
+        #MainContent_DG_StudentAttendance tr.gius-take-off label { color: #b91c1c; }
+        #MainContent_DG_StudentAttendance tr.gius-take-changed td { background: #fef3c7 !important; }
+        #MainContent_DG_StudentAttendance .gius-take-all { margin: 0 6px 0 0; vertical-align: middle; cursor: pointer; }
+        .gius-take-overlay {
+            position: fixed; inset: 0; z-index: 2147483646;
+            background: rgba(17, 24, 39, 0.55);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .gius-take-modal {
+            background: #fff; border-radius: 10px; width: 440px; max-width: 92vw;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3); overflow: hidden;
+            font-family: 'Open Sans', Arial, sans-serif;
+        }
+        .gius-take-modal-hdr {
+            display: flex; align-items: center; justify-content: space-between;
+            background: #272c33; color: #fff; padding: 10px 14px; font-size: 14px; font-weight: 700;
+        }
+        .gius-take-close { background: none; border: none; color: #fff; font-size: 15px; cursor: pointer; opacity: 0.7; padding: 2px 6px; }
+        .gius-take-close:hover { opacity: 1; }
+        .gius-take-modal-body { padding: 18px 16px; display: flex; flex-direction: column; gap: 14px; }
+        .gius-take-modal-text { font-size: 14px; color: #111827; margin: 0; line-height: 1.6; }
+        .gius-take-warn {
+            background: #fef3c7; color: #92400e; border: 1px solid #fde68a;
+            border-radius: 6px; padding: 8px 12px; font-size: 12px; font-weight: 600;
+        }
+        .gius-take-modal-actions { display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
+        html.gius-dark .gius-take-panel { background: #181825 !important; border-color: transparent !important; }
+        html.gius-dark .gius-take-header { background: #11111b !important; }
+        html.gius-dark .gius-take-find { color: #cdd6f4 !important; }
+        html.gius-dark .gius-take-input { background: #1e1e2e !important; color: #cdd6f4 !important; border-color: #45475a !important; }
+        html.gius-dark .gius-take-btn-outline { background: #1e1e2e !important; color: #cdd6f4 !important; border-color: #45475a !important; }
+        html.gius-dark .gius-take-bar { background: #11111b !important; }
+        html.gius-dark #MainContent_DG_StudentAttendance tr.gius-take-head,
+        html.gius-dark #MainContent_DG_StudentAttendance tr.gius-take-head td { background: #11111b !important; }
+        html.gius-dark #MainContent_DG_StudentAttendance tr.gius-take-row,
+        html.gius-dark #MainContent_DG_StudentAttendance tr.gius-take-row td { background: #181825 !important; color: #cdd6f4 !important; border-color: #313244 !important; }
+        html.gius-dark #MainContent_DG_StudentAttendance tr.gius-take-on label  { color: #86efac !important; }
+        html.gius-dark #MainContent_DG_StudentAttendance tr.gius-take-off label { color: #f38ba8 !important; }
+        html.gius-dark #MainContent_DG_StudentAttendance tr.gius-take-row:hover td { background: #1e3a6e !important; }
+        html.gius-dark #MainContent_DG_StudentAttendance tr.gius-take-changed td { background: #2d1f00 !important; color: #fbbf24 !important; }
+        html.gius-dark .gius-take-modal { background: #1e1e2e !important; }
+        html.gius-dark .gius-take-modal-hdr { background: #11111b !important; }
+        html.gius-dark .gius-take-modal-text { color: #cdd6f4 !important; }
+        `);
+            }
+
+            // A session option's long portal label, e.g. "Winter 2026 - W26 - ICS 501 -
+            // Software Project I - 5Dsc P001 Practical @2026.10.02 - Regular - Slot1 - 2h".
+            function parseSessionOption(opt) {
+                const text = opt.textContent.replace(/\s+/g, ' ').trim();
+                const dateM = text.match(/@(\d{4})\.(\d{2})\.(\d{2})/);
+                const parts = text.split('@')[0].split(' - ').map(s => s.trim()).filter(Boolean);
+                return {
+                    value:  opt.value,
+                    text,
+                    date:   dateM ? new Date(+dateM[1], +dateM[2] - 1, +dateM[3]) : null,
+                    slot:   (text.match(/\bSlot\s*(\d+)/i) || [])[1] || '',
+                    hours:  (text.match(/\b(\d+)\s*h\b/i) || [])[1] || '',
+                    status: ((text.match(/@\d{4}\.\d{2}\.\d{2}\s*-\s*([^-]+?)\s*-/) || [])[1] || '').trim(),
+                    course: parts.slice(2).join(' - '),
+                };
+            }
+
+            function dayText(d) {
+                return d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+            }
+
+            // "Slot 2 · 2h" — the part of a session name below its date.
+            function slotText(s) {
+                return [s.slot && `Slot ${s.slot}`, s.hours && `${s.hours}h`].filter(Boolean).join(' · ');
+            }
+
+            // "Fri 23 Oct · Slot 2 · 2h · Regular", or the portal label when it has no date.
+            function sessionName(s) {
+                if (!s.date) return s.text;
+                return [dayText(s.date), slotText(s), s.status].filter(Boolean).join(' · ');
+            }
+
+            function sessionLabel() {
+                const ddl = document.getElementById('MainContent_DDL_Sessions');
+                const opt = ddl && ddl.options[ddl.selectedIndex];
+                if (!opt || !opt.value || opt.value === '0') return '';
+                const s = parseSessionOption(opt);
+                return s.date ? [dayText(s.date), s.slot && `Slot ${s.slot}`].filter(Boolean).join(' · ') : s.text;
+            }
+
+            // Replaces a long portal dropdown with a readable, filterable list.
+            // Picking sets the hidden native dropdown and fires its own change, so the
+            // portal posts back exactly as before. Never picks anything by itself.
+            // cfg: { label, empty, filterHint, listName, note?, tools?, render(q) → {html, foot} }
+            function makePicker(ddl, cfg) {
+                ddl.dataset.giusPicker = '1';
+                const wrap = document.createElement('span');
+                wrap.className = 'gius-take-picker';
+                wrap.innerHTML = `
+                    <button type="button" class="gius-take-picker-btn" aria-haspopup="listbox" aria-expanded="false">
+                        <span class="gius-take-picker-label"></span><span class="gius-take-picker-caret" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="gius-take-picker-pop" hidden>
+                        <div class="gius-take-picker-tools">
+                            <input type="search" class="gius-take-input" placeholder="${S.escapeHtml(cfg.filterHint)}" aria-label="Filter ${S.escapeHtml(cfg.listName)}">
+                            ${cfg.tools || ''}
+                        </div>
+                        ${cfg.note ? `<div class="gius-take-picker-note">${S.escapeHtml(cfg.note)}</div>` : ''}
+                        <div class="gius-take-picker-list" role="listbox" aria-label="${S.escapeHtml(cfg.listName)}"></div>
+                        <div class="gius-take-picker-foot"></div>
+                    </div>`;
+                ddl.before(wrap);
+                ddl.classList.add('gius-take-native-hidden');
+
+                const btn    = wrap.querySelector('.gius-take-picker-btn');
+                const pop    = wrap.querySelector('.gius-take-picker-pop');
+                const list   = wrap.querySelector('.gius-take-picker-list');
+                const filter = wrap.querySelector('.gius-take-picker-tools input[type="search"]');
+                const foot   = wrap.querySelector('.gius-take-picker-foot');
+                wrap.querySelector('.gius-take-picker-label').textContent = cfg.label;
+
+                function render() {
+                    const out = cfg.render(filter.value.trim().toLowerCase());
+                    list.innerHTML = out.html || `<div class="gius-take-picker-empty">${S.escapeHtml(cfg.empty)}</div>`;
+                    foot.innerHTML = out.foot;
+                }
+
+                function open() {
+                    render();
+                    pop.hidden = false;
+                    btn.setAttribute('aria-expanded', 'true');
+                    (list.querySelector('.gius-take-selected') || list.querySelector('.gius-take-today'))
+                        ?.scrollIntoView({ block: 'center' });
+                    filter.focus();
+                }
+
+                function close(focusBtn) {
+                    pop.hidden = true;
+                    btn.setAttribute('aria-expanded', 'false');
+                    if (focusBtn) btn.focus();
+                }
+
+                function pick(value) {
+                    close(true);
+                    if (value === ddl.value) return;
+                    ddl.value = value;
+                    // The portal's own onchange posts back.
+                    ddl.dispatchEvent(new Event('change', { bubbles: true }));
+                }
+
+                btn.addEventListener('click', () => (pop.hidden ? open() : close(true)));
+                filter.addEventListener('input', render);
+                pop.addEventListener('click', e => {
+                    const opt = e.target.closest('.gius-take-picker-opt');
+                    if (opt) pick(opt.dataset.value);
+                });
+                // Arrow keys move between entries; Escape closes.
+                wrap.addEventListener('keydown', e => {
+                    if (e.key === 'Escape' && !pop.hidden) { e.preventDefault(); close(true); return; }
+                    if (pop.hidden || (e.key !== 'ArrowDown' && e.key !== 'ArrowUp')) return;
+                    const opts = Array.from(list.querySelectorAll('.gius-take-picker-opt'));
+                    if (!opts.length) return;
+                    e.preventDefault();
+                    const i = opts.indexOf(document.activeElement);
+                    const next = e.key === 'ArrowDown' ? Math.min(i + 1, opts.length - 1) : Math.max(i - 1, 0);
+                    opts[i < 0 ? 0 : next].focus();
+                });
+                document.addEventListener('click', e => {
+                    if (!pop.hidden && !wrap.contains(e.target)) close(false);
+                });
+                return { wrap, render };
+            }
+
+            function pickerOption(value, selected, extraCls, mainHtml, pillHtml) {
+                return `<button type="button" role="option" aria-selected="${selected}" data-value="${S.escapeHtml(value)}"
+                    class="gius-take-picker-opt${selected ? ' gius-take-selected' : ''}${extraCls}">
+                    <span class="gius-take-picker-main">${mainHtml}</span>${pillHtml}
+                </button>`;
+            }
+
+            function pill(text, cls) {
+                return text ? `<span class="gius-take-pill ${cls}">${S.escapeHtml(text)}</span>` : '';
+            }
+
+            // Sessions grouped by date; choosing one starts its timer.
+            function sessionPicker() {
+                const ddl = document.getElementById('MainContent_DDL_Sessions');
+                if (!ddl || ddl.dataset.giusPicker) return;
+                const sessions = Array.from(ddl.options)
+                    .filter(o => o.value && o.value !== '0')
+                    .map(parseSessionOption);
+                if (!sessions.length) return;
+
+                const today = new Date(); today.setHours(0, 0, 0, 0);
+                const isToday  = s => s.date && s.date.getTime() === today.getTime();
+                const isFuture = s => s.date && s.date > today;
+                const showCourse = new Set(sessions.map(s => s.course)).size > 1;
+                let hideFuture = true;
+                try { hideFuture = localStorage.getItem(HIDE_FUTURE_KEY) !== '0'; } catch { /* default */ }
+                const selected = () => sessions.find(s => s.value === ddl.value);
+                const cur = selected();
+
+                const statusCls = status => /hold/i.test(status) ? 'gius-take-pill-amber'
+                    : /regular/i.test(status) ? 'gius-take-pill-grey'
+                    : 'gius-take-pill-blue';
+
+                const picker = makePicker(ddl, {
+                    label:      cur ? sessionName(cur) : 'Choose a session',
+                    empty:      'No sessions match.',
+                    filterHint: 'Date, slot or status',
+                    listName:   'Sessions',
+                    tools:      '<label class="gius-take-picker-check"><input type="checkbox" data-hide-future> Hide future</label>',
+                    render(q) {
+                        const sel = selected();
+                        let hidden = 0;
+                        let lastDay = null;
+                        const html = [];
+                        for (const s of sessions) {
+                            if (q && !`${sessionName(s)} ${s.course}`.toLowerCase().includes(q)) continue;
+                            if (hideFuture && isFuture(s) && s !== sel) { hidden++; continue; }
+                            const day = s.date ? s.date.toDateString() : '';
+                            if (day !== lastDay) {
+                                lastDay = day;
+                                const title = s.date ? dayText(s.date).toUpperCase() : 'OTHER';
+                                html.push(`<div class="gius-take-picker-day${isToday(s) ? ' gius-take-today' : ''}">${S.escapeHtml(title)}${isToday(s) ? ' · TODAY' : ''}</div>`);
+                            }
+                            const main = S.escapeHtml(s.date ? slotText(s) || s.text : s.text)
+                                + (showCourse && s.course ? `<span class="gius-take-picker-course">${S.escapeHtml(s.course)}</span>` : '');
+                            html.push(pickerOption(s.value, s === sel, isToday(s) ? ' gius-take-today' : '', main, pill(s.status, statusCls(s.status))));
+                        }
+                        return {
+                            html: html.join(''),
+                            foot: hidden
+                                ? `${hidden} future session${hidden === 1 ? '' : 's'} hidden · <button type="button" class="gius-take-link" data-show-all>Show all ${sessions.length}</button>`
+                                : `${sessions.length} sessions`,
+                        };
+                    },
+                });
+
+                const future = picker.wrap.querySelector('[data-hide-future]');
+                future.checked = hideFuture;
+                future.addEventListener('change', () => {
+                    hideFuture = future.checked;
+                    try { localStorage.setItem(HIDE_FUTURE_KEY, hideFuture ? '1' : '0'); } catch { /* ignore */ }
+                    picker.render();
+                });
+                picker.wrap.addEventListener('click', e => {
+                    if (!e.target.closest('[data-show-all]')) return;
+                    future.checked = false;
+                    future.dispatchEvent(new Event('change'));
+                });
+            }
+
+            // Groups listed under their course: "W26 ICS 501 Software Project I - 5Dsc P001".
+            function groupPicker() {
+                const ddl = document.getElementById('MainContent_DDL_StudentGroup');
+                if (!ddl || ddl.dataset.giusPicker) return;
+                const TYPES = { L: 'Lecture', P: 'Practical', T: 'Tutorial' };
+                const groups = Array.from(ddl.options)
+                    .filter(o => o.value && o.value !== '0')
+                    .map(o => {
+                        const text = o.textContent.replace(/\s+/g, ' ').trim();
+                        const cut = text.lastIndexOf(' - ');
+                        const name = cut > 0 ? text.slice(cut + 3) : text;
+                        const typeM = name.match(/\b([LPT])\d{3}\b/);
+                        return { value: o.value, text, course: cut > 0 ? text.slice(0, cut) : '', name, type: typeM ? TYPES[typeM[1]] : '' };
+                    });
+                if (!groups.length) return;
+                const cur = groups.find(g => g.value === ddl.value);
+
+                makePicker(ddl, {
+                    label:      cur ? cur.text : 'Choose a group',
+                    empty:      'No groups match.',
+                    filterHint: 'Course or group',
+                    listName:   'Groups',
+                    render(q) {
+                        let lastCourse = null;
+                        const html = [];
+                        let shown = 0;
+                        for (const g of groups) {
+                            if (q && !g.text.toLowerCase().includes(q)) continue;
+                            shown++;
+                            if (g.course !== lastCourse) {
+                                lastCourse = g.course;
+                                html.push(`<div class="gius-take-picker-day gius-take-picker-coursehead">${S.escapeHtml(g.course || 'Other')}</div>`);
+                            }
+                            html.push(pickerOption(g.value, g.value === ddl.value, '', S.escapeHtml(g.name), pill(g.type, g.type === 'Lecture' ? 'gius-take-pill-blue' : 'gius-take-pill-grey')));
+                        }
+                        return { html: html.join(''), foot: `${shown} of ${groups.length} groups` };
+                    },
+                });
+            }
+
+            // Hides the portal's reading matter: instructions and notes, class info
+            // (IP, slot, page time), "Select a session to start" and the Duration row.
+            // Hidden, not removed — the portal's own scripts still find everything.
+            function tidyPage() {
+                const hide = el => { if (el) el.classList.add('gius-take-hide'); };
+                const classInfo = document.getElementById('MainContent_L_ClassInfo');
+                const box = classInfo && classInfo.closest('td');
+                if (box) box.querySelectorAll('p.MsoNormal').forEach(hide);
+                hide(classInfo && classInfo.closest('p'));
+                hide(document.getElementById('MainContent_Label3'));
+                hide(document.getElementById('MainContent_L_SessionDuration')?.closest('tr'));
+                // The page's title box just says "GIU".
+                const title = document.getElementById('lbl_PageTitle');
+                if (title && /^\s*GIU\s*$/.test(title.textContent)) title.textContent = 'GIU Student Attendance';
+            }
+
+            // The portal's Requests box, rebuilt around its main use: asking for a
+            // closed session to be opened. Reason buttons write the remark into the
+            // portal's own Remarks box (moved into the panel); the buttons click the
+            // portal's own links. Sent requests are remembered per session.
+            function requestPanel() {
+                const remarks = document.getElementById('MainContent_TB_Remarks');
+                const openLink = document.getElementById('MainContent_LB_RequestToOpen');
+                const sessions = document.getElementById('MainContent_DDL_Sessions');
+                const fieldset = remarks && remarks.closest('fieldset');
+                if (!remarks || !openLink || !fieldset || !sessions || !sessions.value || sessions.value === '0') return;
+
+                const sessionId = sessions.value;
+                const groupDdl = document.getElementById('MainContent_DDL_StudentGroup');
+                const groupOpt = groupDdl && groupDdl.options[groupDdl.selectedIndex];
+                const groupName = groupOpt && groupOpt.value !== '0' ? groupOpt.textContent.replace(/\s+/g, ' ').trim() : '';
+                const label = sessionLabel();
+                const REASONS = [
+                    ['Forgot to enter attendance', 'attendance was taken in class but not entered in time'],
+                    ['Portal was down',            'the portal was unavailable during the class'],
+                    ['Wrong students saved',       'the saved attendance has mistakes that need correcting'],
+                    ['Session ended too early',    'End Session was pressed before the class finished'],
+                    ['Rescheduled class',          'the class took place at a different time than scheduled'],
+                ];
+                const OTHER = [
+                    ['MainContent_LB_RequestToRemove', 'Request to remove'],
+                    ['MainContent_LB_RequestToRemoveFromTAgreeCalculation', 'Request to remove from T.Agreement'],
+                ].filter(([id]) => document.getElementById(id));
+
+                const readRequests = () => {
+                    try { return JSON.parse(localStorage.getItem(REQUESTS_KEY) || '{}') || {}; } catch { return {}; }
+                };
+                const sent = readRequests()[sessionId];
+
+                const panel = document.createElement('div');
+                panel.className = 'gius-take-panel gius-take-req';
+                panel.innerHTML = `
+                    <div class="gius-take-header">
+                        <span class="gius-take-title">Request to open</span>
+                        <span class="gius-take-meta">For a closed session you still need to enter or fix</span>
+                    </div>
+                    <div class="gius-take-req-body">
+                        <div class="gius-take-req-session">
+                            ${label ? `<span>Session <strong>${S.escapeHtml(label)}</strong></span>` : ''}
+                            ${sessionRef() ? `<span>Ref <strong>${S.escapeHtml(sessionRef())}</strong></span>` : ''}
+                            ${groupName ? `<span>Group <strong>${S.escapeHtml(groupName)}</strong></span>` : ''}
+                        </div>
+                        <div>
+                            <span class="gius-take-label">Reason — the remark is written for you</span>
+                            <div class="gius-take-chips">
+                                ${REASONS.map(([text], i) => `<button type="button" class="gius-take-chip" data-reason="${i}">${S.escapeHtml(text)}</button>`).join('')}
+                            </div>
+                        </div>
+                        <label class="gius-take-req-remarks">
+                            <span class="gius-take-label">Request remarks (you can edit)</span>
+                        </label>
+                        <div class="gius-take-req-actions">
+                            <button type="button" class="gius-take-btn gius-take-btn-primary" data-act="open">Request to open</button>
+                            <span class="gius-take-req-msg" data-msg></span>
+                        </div>
+                        <div class="gius-take-ok" data-sent ${sent ? '' : 'hidden'}></div>
+                        ${OTHER.length ? `<details class="gius-take-req-other">
+                            <summary>Other requests</summary>
+                            <div class="gius-take-req-links">
+                                ${OTHER.map(([id, text]) => `<button type="button" class="gius-take-link" data-link="${id}">${S.escapeHtml(text)}</button>`).join('')}
+                            </div>
+                        </details>` : ''}
+                    </div>`;
+                fieldset.before(panel);
+                // The portal's own fields move in (still inside the form, so they still post).
+                panel.querySelector('.gius-take-req-remarks').appendChild(remarks);
+                remarks.classList.add('gius-take-input', 'gius-take-textarea');
+                const newDate = document.getElementById('MainContent_DDL_SessionNewDate');
+                if (newDate) panel.querySelector('.gius-take-req-links')?.appendChild(newDate);
+                fieldset.classList.add('gius-take-hide');
+
+                const msg = panel.querySelector('[data-msg]');
+                const sentEl = panel.querySelector('[data-sent]');
+                const when = d => new Date(d).toLocaleString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+                const sentText = r => `${r.type === 'open' ? 'Requested to open' : r.type} on ${when(r.at)}. Remembered on this browser.`;
+                if (sent) sentEl.textContent = sentText(sent);
+
+                function remember(type) {
+                    const all = readRequests();
+                    all[sessionId] = { type, at: new Date().toISOString() };
+                    try { localStorage.setItem(REQUESTS_KEY, JSON.stringify(all)); } catch { /* ignore */ }
+                }
+
+                function send(link, type) {
+                    if (!remarks.value.trim()) {
+                        msg.textContent = 'Pick a reason or write a remark first.';
+                        remarks.focus();
+                        return;
+                    }
+                    remember(type);
+                    link.click();   // the portal's own __doPostBack link
+                }
+
+                panel.addEventListener('click', e => {
+                    const chip = e.target.closest('[data-reason]');
+                    if (chip) {
+                        const [, why] = REASONS[+chip.dataset.reason];
+                        const where = [groupName, label].filter(Boolean).join(', ');
+                        remarks.value = `Please open ${where || 'this session'}: ${why}.`.slice(0, 255);
+                        panel.querySelectorAll('[data-reason]').forEach(b => b.classList.toggle('gius-take-chip-on', b === chip));
+                        msg.textContent = '';
+                        return;
+                    }
+                    if (e.target.closest('[data-act="open"]')) { send(openLink, 'open'); return; }
+                    const other = e.target.closest('[data-link]');
+                    if (other) send(document.getElementById(other.dataset.link), other.textContent.trim());
+                });
+            }
+
+            // With the Students panel and sticky bar in place: the "Students list:"
+            // heading and the portal's own Save / End Session buttons (the bar clicks them).
+            function hideReplacedParts() {
+                const hide = el => { if (el) el.classList.add('gius-take-hide'); };
+                const heading = Array.from(table.parentElement.querySelectorAll('strong'))
+                    .find(s => /^\s*Students list:?\s*$/i.test(s.textContent));
+                if (heading) {
+                    hide(heading);
+                    if (heading.nextElementSibling?.tagName === 'BR') hide(heading.nextElementSibling);
+                }
+                hide(saveBtn.closest('p'));
+                // Session Ref and Target Agreement now live in the panel's Ref strip.
+                if (sessionRef()) hide(document.getElementById('MainContent_L_SessionId').closest('p'));
+            }
+
+            // ── Session Ref: the number staff quote in requests and emails ──────────
+            function sessionRef() {
+                return (document.getElementById('MainContent_L_SessionId')?.textContent || '').trim();
+            }
+
+            function refStripHtml() {
+                const ref = sessionRef();
+                if (!ref) return '';
+                const label = sessionLabel();
+                const target = (document.getElementById('MainContent_L_TargetAgreement')?.textContent || '').trim();
+                return `
+                <div class="gius-take-ref">
+                    <div class="gius-take-ref-main">
+                        <span class="gius-take-ref-label">Session Ref</span>
+                        <span class="gius-take-ref-num">${S.escapeHtml(ref)}</span>
+                        <button type="button" class="gius-take-btn gius-take-btn-outline gius-take-ref-copy" data-copy-ref="${S.escapeHtml(ref)}">Copy</button>
+                    </div>
+                    <div class="gius-take-ref-side">
+                        ${label ? `<span>${S.escapeHtml(label)}</span>` : ''}
+                        ${target ? `<span>Target Agreement <strong>${S.escapeHtml(target)}</strong></span>` : ''}
+                    </div>
+                </div>`;
+            }
+
+            function copyText(text, btn) {
+                const done = () => {
+                    const old = btn.textContent;
+                    btn.textContent = 'Copied';
+                    setTimeout(() => { btn.textContent = old; }, 1500);
+                };
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text).then(done, () => {});
+                    return;
+                }
+                const ta = document.createElement('textarea');
+                ta.value = text;
+                document.body.appendChild(ta);
+                ta.select();
+                try { document.execCommand('copy'); done(); } catch { /* ignore */ }
+                ta.remove();
+            }
+
+            // [{id, name, card}] from a student table (this page's, or a fetched one).
+            function rosterFrom(tbl) {
+                return Array.from(tbl.querySelectorAll('tr')).slice(1).map(tr => {
+                    const tds = tr.querySelectorAll('td');
+                    const cell = n => (tds[n] ? tds[n].textContent.replace(/\s+/g, ' ').trim() : '');
+                    return { id: cell(2), name: cell(3), card: cell(4) };
+                }).filter(p => p.id || p.name);
+            }
+
+            // The student list for a session that is not started yet: read from the
+            // group's latest past sessions in the background (the same request the
+            // portal sends when you pick one). Never touches upcoming sessions.
+            async function fetchRoster() {
+                const ddl = document.getElementById('MainContent_DDL_Sessions');
+                const form = ddl && ddl.form;
+                const cur = ddl && ddl.options[ddl.selectedIndex] ? parseSessionOption(ddl.options[ddl.selectedIndex]) : null;
+                if (!form || !cur) return [];
+                const today = new Date(); today.setHours(0, 0, 0, 0);
+                const past = Array.from(ddl.options)
+                    .filter(o => o.value && o.value !== '0' && o.value !== cur.value)
+                    .map(parseSessionOption)
+                    .filter(s => s.date && s.date < today && s.course === cur.course)
+                    .sort((a, b) => b.date - a.date)
+                    .slice(0, 3);
+                for (const s of past) {
+                    const doc = await fetchSessionDoc(s.value);
+                    const tbl = doc && doc.getElementById('MainContent_DG_StudentAttendance');
+                    const people = tbl ? rosterFrom(tbl) : [];
+                    if (people.length) return people;
+                }
+                return [];
+            }
+
+            // Another session's page, read in the background with the same postback the
+            // portal sends when you pick it. This page's own ticks are left out of the
+            // request, so nothing here is saved by it. Null on any failure.
+            async function fetchSessionDoc(sessionId) {
+                const ddl = document.getElementById('MainContent_DDL_Sessions');
+                const form = ddl && ddl.form;
+                if (!form) return null;
+                const fd = new FormData(form);
+                for (const key of Array.from(fd.keys())) if (/CB_Attended$/.test(key)) fd.delete(key);
+                fd.set('__EVENTTARGET', 'ctl00$MainContent$DDL_Sessions');
+                fd.set('__EVENTARGUMENT', '');
+                fd.set(ddl.name, sessionId);
+                try {
+                    const resp = await fetch(form.action || location.href, {
+                        method: 'POST', credentials: 'include',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: new URLSearchParams(fd).toString(),
+                    });
+                    if (!resp.ok) return null;
+                    return new DOMParser().parseFromString(await resp.text(), 'text/html');
+                } catch { return null; }
+            }
+
+            // Nothing picked yet: everything below the lists is empty or idle, so it is
+            // hidden behind one line saying what to do. True when it handled the page.
+            function noSessionPanel() {
+                const sessions = document.getElementById('MainContent_DDL_Sessions');
+                if (sessions && sessions.value && sessions.value !== '0') return false;
+                const hide = el => { if (el) el.classList.add('gius-take-hide'); };
+                const heading = Array.from(document.querySelectorAll('strong'))
+                    .find(s => /^\s*Students list:?\s*$/i.test(s.textContent));
+                const anchor = heading || saveBtn?.closest('p');
+                if (!anchor) return true;
+                const panel = document.createElement('div');
+                panel.className = 'gius-take-panel gius-take-session';
+                panel.innerHTML = `
+                    <div class="gius-take-header"><span class="gius-take-title">Take attendance</span></div>
+                    <div class="gius-take-body">
+                        <span class="gius-take-session-text">Choose a group, then a session, to see its students.</span>
+                    </div>`;
+                anchor.before(panel);
+                if (heading) {
+                    hide(heading);
+                    if (heading.nextElementSibling?.tagName === 'BR') hide(heading.nextElementSibling);
+                }
+                hide(saveBtn?.closest('p'));
+                hide(document.getElementById('MainContent_L_SessionId')?.closest('p'));
+                hide(document.getElementById('MainContent_TB_Remarks')?.closest('fieldset'));
+                hide(document.getElementById('MainContent_L_SessionStart')?.closest('tr'));
+                hide(document.getElementById('MainContent_L_SessionEnd')?.closest('tr'));
+                return true;
+            }
+
+            // Picked but not started: the Ref strip, a Print sheet button (the paper
+            // sheet is for exactly this moment) and the portal's Start Session button
+            // and its NoChange / UpdateDate choice, styled.
+            function notStartedPanel() {
+                const sessions = document.getElementById('MainContent_DDL_Sessions');
+                if (!sessions || !sessions.value || sessions.value === '0') return;
+                const hide = el => { if (el) el.classList.add('gius-take-hide'); };
+
+                const startBtn = Array.from(document.querySelectorAll('input[type="submit"], input[type="button"], button'))
+                    .find(b => /start\s*session/i.test(b.value || b.textContent || ''));
+                if (startBtn) startBtn.classList.add('gius-take-btn', 'gius-take-btn-save');
+                for (const radio of document.querySelectorAll('input[type="radio"]')) {
+                    const label = radio.id && document.querySelector(`label[for="${CSS.escape(radio.id)}"]`);
+                    if (label && /no\s*change|update\s*date/i.test(label.textContent)) {
+                        label.classList.add('gius-take-portal-radio');
+                        radio.classList.add('gius-take-portal-radio-input');
+                    }
+                }
+
+                const panel = document.createElement('div');
+                panel.className = 'gius-take-panel gius-take-session';
+                panel.innerHTML = `
+                    <div class="gius-take-header">
+                        <span class="gius-take-title">Session</span>
+                        <span class="gius-take-meta">Not started yet</span>
+                    </div>
+                    ${refStripHtml()}
+                    <div class="gius-take-body">
+                        <span class="gius-take-session-text">${startBtn ? 'Press Start Session to record the start time and load the students.' : 'The student list appears once the session starts.'}</span>
+                        <div class="gius-take-actions">
+                            <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="sheet">Print sheet</button>
+                        </div>
+                    </div>`;
+
+                const heading = Array.from(document.querySelectorAll('strong'))
+                    .find(s => /^\s*Students list:?\s*$/i.test(s.textContent));
+                const anchor = heading || saveBtn?.closest('p') || document.getElementById('MainContent_L_SessionId')?.closest('p');
+                if (!anchor) return;
+                anchor.before(panel);
+                if (heading) {
+                    hide(heading);
+                    if (heading.nextElementSibling?.tagName === 'BR') hide(heading.nextElementSibling);
+                }
+                // Nothing to save or end before the session starts.
+                hide(saveBtn?.closest('p'));
+                if (sessionRef()) hide(document.getElementById('MainContent_L_SessionId').closest('p'));
+
+                const sheetBtn = panel.querySelector('[data-act="sheet"]');
+                sheetBtn.addEventListener('click', async () => {
+                    sheetBtn.disabled = true;
+                    sheetBtn.textContent = 'Loading students…';
+                    const people = await fetchRoster();
+                    sheetBtn.disabled = false;
+                    sheetBtn.textContent = 'Print sheet';
+                    openSheetDialog(people);
+                });
+            }
+
+            function changedCount() {
+                return rows.filter(r => r.cb.checked !== r.saved).length;
+            }
+
+            const panel = document.createElement('div');
+            panel.className = 'gius-take-panel gius-take-students';
+            panel.innerHTML = `
+                <div class="gius-take-header">
+                    <span class="gius-take-title">Students</span>
+                    <span class="gius-take-pills">
+                        <span class="gius-take-pill gius-take-pill-green" data-count="present"></span>
+                        <span class="gius-take-pill gius-take-pill-red" data-count="absent"></span>
+                        <span class="gius-take-pill gius-take-pill-amber" data-count="changed" hidden></span>
+                    </span>
+                </div>
+                ${refStripHtml()}
+                <div class="gius-take-body">
+                    <div class="gius-take-actions">
+                        <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="all">Select all</button>
+                        <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="none">Clear all</button>
+                        <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="invert">Invert</button>
+                        <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="sheet">Print sheet</button>
+                        ${copySlots().map(s => `<button type="button" class="gius-take-btn gius-take-btn-outline" data-copy-slot="${S.escapeHtml(s.value)}">Copy ${S.escapeHtml(s.slot ? `Slot ${s.slot}` : 'other slot')}</button>`).join('')}
+                    </div>
+                    <label class="gius-take-find">Find
+                        <input type="search" class="gius-take-input" placeholder="Name or ID">
+                    </label>
+                </div>`;
+
+            const bar = document.createElement('div');
+            bar.className = 'gius-take-bar';
+            bar.innerHTML = `
+                <span class="gius-take-pills">
+                    <span class="gius-take-pill gius-take-pill-amber" data-count="changed" hidden></span>
+                </span>
+                <span class="gius-take-actions">
+                    <button type="button" class="gius-take-btn gius-take-btn-save" data-act="save">Save Attendance</button>
+                    ${endBtn ? '<button type="button" class="gius-take-btn gius-take-btn-end" data-act="end">End Session…</button>' : ''}
+                </span>`;
+
+            // Header "select all" box: no name, so the portal never receives it.
+            const headCell = table.querySelectorAll('tr')[0]?.querySelectorAll('td, th')[1];
+            let headBox = null;
+            if (headCell) {
+                headBox = document.createElement('input');
+                headBox.type = 'checkbox';
+                headBox.className = 'gius-take-all';
+                headBox.title = 'Select all';
+                headBox.setAttribute('aria-label', 'Select all students');
+                headCell.prepend(headBox);
+            }
+
+            function visibleRows() {
+                return rows.filter(r => r.tr.style.display !== 'none');
+            }
+
+            function update() {
+                const present = rows.filter(r => r.cb.checked).length;
+                const changed = changedCount();
+                panel.querySelector('[data-count="present"]').textContent = `${present} present`;
+                panel.querySelector('[data-count="absent"]').textContent  = `${rows.length - present} absent`;
+                for (const el of [panel, bar].map(p => p.querySelector('[data-count="changed"]'))) {
+                    el.hidden = changed === 0;
+                    el.textContent = `${changed} unsaved`;
+                }
+                for (const r of rows) {
+                    r.tr.classList.toggle('gius-take-changed', r.cb.checked !== r.saved);
+                    r.tr.classList.toggle('gius-take-on', r.cb.checked);
+                    r.tr.classList.toggle('gius-take-off', !r.cb.checked);
+                    // The portal labels every box "Attended"; show the real state.
+                    const label = r.tr.querySelector('label');
+                    if (label) label.textContent = r.cb.checked ? 'Attended' : 'Absent';
+                }
+                if (headBox) {
+                    const vis = visibleRows();
+                    const on = vis.filter(r => r.cb.checked).length;
+                    headBox.checked = vis.length > 0 && on === vis.length;
+                    headBox.indeterminate = on > 0 && on < vis.length;
+                }
+            }
+
+            // Bulk actions apply to the rows the Find box leaves visible.
+            function setAll(fn) {
+                for (const r of visibleRows()) r.cb.checked = fn(r);
+                update();
+            }
+
+            function closeModal() {
+                document.getElementById('gius-take-overlay')?.remove();
+            }
+
+            // ── Paper sheet: a blank sign-in sheet printed before class ──────────────
+            function sheetOptions() {
+                const defaults = { sort: 'name', ref: true, signature: true, card: false, notes: true, blank: 3 };
+                try { return { ...defaults, ...JSON.parse(localStorage.getItem(SHEET_KEY) || '{}') }; } catch { return defaults; }
+            }
+
+            // The selected session plus the other slots of the same course on that date.
+            function sheetSessions() {
+                const ddl = document.getElementById('MainContent_DDL_Sessions');
+                const opt = ddl && ddl.options[ddl.selectedIndex];
+                if (!opt || !opt.value || opt.value === '0') return { cur: null, slots: [] };
+                const cur = parseSessionOption(opt);
+                if (!cur.date) return { cur, slots: [cur] };
+                const slots = Array.from(ddl.options)
+                    .filter(o => o.value && o.value !== '0')
+                    .map(parseSessionOption)
+                    .filter(s => s.date && s.date.getTime() === cur.date.getTime() && s.course === cur.course)
+                    .sort((a, b) => (+a.slot || 0) - (+b.slot || 0));
+                return { cur, slots: slots.length ? slots : [cur] };
+            }
+
+            function sheetHtml(o, slotCols, roster) {
+                const groupDdl = document.getElementById('MainContent_DDL_StudentGroup');
+                const groupOpt = groupDdl && groupDdl.options[groupDdl.selectedIndex];
+                const group = groupOpt && groupOpt.value !== '0' ? groupOpt.textContent.trim() : '';
+                const { cur } = sheetSessions();
+                const dateText = cur && cur.date
+                    ? cur.date.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' })
+                    : '';
+                const people = roster.slice();
+                if (o.sort === 'name') people.sort((a, b) => a.name.localeCompare(b.name));
+                if (o.sort === 'id')   people.sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true }));
+                const blanks = Array.from({ length: Math.max(0, Math.min(20, +o.blank || 0)) }, () => ({ id: '', name: '', card: '' }));
+                const esc = S.escapeHtml;
+                const box = '<span class="box"></span>';
+                const head = `<tr><th class="n">#</th><th class="id">ID</th><th>Full Name</th>${o.card ? '<th class="id">Card ID</th>' : ''}`
+                    + slotCols.map(c => `<th class="c">${esc(c.label)}${o.ref && c.ref ? `<div class="ref">${esc(c.ref)}</div>` : ''}</th>`).join('')
+                    + `${o.signature ? '<th class="sig">Signature</th>' : ''}${o.notes ? '<th class="notes">Notes</th>' : ''}</tr>`;
+                const body = people.concat(blanks).map((p, n) => `<tr><td class="n">${n + 1}</td><td>${esc(p.id)}</td><td>${esc(p.name)}</td>`
+                    + `${o.card ? `<td>${esc(p.card)}</td>` : ''}`
+                    + slotCols.map(() => `<td class="c">${box}</td>`).join('')
+                    + `${o.signature ? '<td></td>' : ''}${o.notes ? '<td></td>' : ''}</tr>`).join('');
+                const totals = slotCols.map(c => `<span>${c.label === 'Present' ? 'Present' : `Present ${esc(c.label)}`}: ________</span>`).join('');
+                const refs = slotCols.filter(c => c.ref);
+                const refLine = o.ref && refs.length
+                    ? `<br><b>Session Ref ${refs.map(c => (refs.length > 1 ? `${esc(c.label)} ${esc(c.ref)}` : esc(c.ref))).join(' · ')}</b>`
+                    : '';
+                const slotNames = slotCols.filter(c => c.label !== 'Present').map(c => c.label);
+                const colCount = 3 + (o.card ? 1 : 0) + slotCols.length + (o.signature ? 1 : 0) + (o.notes ? 1 : 0);
+                const spacer = `<tr class="sp"><td colspan="${colCount}"></td></tr>`;
+                return `<!doctype html><html><head><meta charset="utf-8"><title>Attendance sheet</title><style>
+                    /* No page margin: the browser has nowhere to print its own date / title
+                       header and footer. The sheet keeps its own margins instead: side
+                       padding, plus spacer rows that repeat at the top and bottom of every page. */
+                    @page { size: A4 portrait; margin: 0; }
+                    body { margin: 0; padding: 14mm 14mm 10mm; font: 11px Arial, Helvetica, sans-serif; color: #000; }
+                    tr.sp td { border: none; height: 10mm; padding: 0; }
+                    tfoot { display: table-footer-group; }
+                    .top { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #000; padding-bottom: 6px; margin-bottom: 6px; }
+                    h1 { font-size: 16px; margin: 0 0 2px; }
+                    .meta { text-align: right; line-height: 1.6; }
+                    .hint { font-size: 10px; margin: 0 0 6px; }
+                    table { width: 100%; border-collapse: collapse; }
+                    thead { display: table-header-group; }
+                    tr { page-break-inside: avoid; }
+                    th, td { border: 1px solid #555; padding: 0 6px; height: 22px; text-align: left; }
+                    th { background: #e5e7eb; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+                    .n { width: 22px; } .id { width: 70px; } .c { width: 44px; text-align: center; }
+                    .sig { width: 120px; } .notes { width: 80px; }
+                    .ref { font-size: 9px; font-weight: 400; }
+                    .box { display: inline-block; width: 12px; height: 12px; border: 1.5px solid #000; vertical-align: middle; }
+                    .totals { display: flex; gap: 24px; margin-top: 10px; }
+                    .foot { display: flex; justify-content: flex-end; margin-top: 18px; font-size: 10px; border-top: 1px solid #999; padding-top: 6px; }
+                </style></head><body>
+                    <div class="top">
+                        <div><h1>Attendance sheet</h1><div>${esc(group)}</div></div>
+                        <div class="meta">${esc(dateText)}${slotNames.length ? ` · ${esc(slotNames.join(' and '))}` : ''}${refLine}<br>Room: ____________<br>Instructor: ______________________</div>
+                    </div>
+                    <p class="hint">Tick the box for each student present.${o.signature ? ' Students sign in the signature column.' : ''}</p>
+                    <table><thead>${spacer}${head}</thead><tbody>${body}</tbody><tfoot>${spacer}</tfoot></table>
+                    <div class="totals">${totals}</div>
+                    <div class="foot"><span>Instructor signature: ______________________</span></div>
+                </body></html>`;
+            }
+
+            function printSheet(o, slotCols, roster) {
+                document.getElementById('gius-take-print')?.remove();
+                const frame = document.createElement('iframe');
+                frame.id = 'gius-take-print';
+                frame.setAttribute('aria-hidden', 'true');
+                frame.style.cssText = 'position:fixed;right:0;bottom:0;width:0;height:0;border:0;visibility:hidden;';
+                frame.addEventListener('load', () => {
+                    try { frame.contentWindow.focus(); frame.contentWindow.print(); } catch (e) { S.warn('takeAttendance', 'print failed:', e); }
+                }, { once: true });
+                frame.srcdoc = sheetHtml(o, slotCols, roster);
+                document.body.appendChild(frame);
+            }
+
+            function openSheetDialog(roster) {
+                closeModal();
+                const o = sheetOptions();
+                const { slots } = sheetSessions();
+                const slotLabel = s => (s.slot ? `Slot ${s.slot}` : 'Present');
+                const seg = (name, value, text) =>
+                    `<label class="gius-take-radio"><input type="radio" name="gius-sheet-${name}" value="${value}"${String(o[name]) === value ? ' checked' : ''}> ${text}</label>`;
+                const overlay = document.createElement('div');
+                overlay.id = 'gius-take-overlay';
+                overlay.className = 'gius-take-overlay';
+                overlay.innerHTML = `
+                    <div class="gius-take-modal" role="dialog" aria-modal="true" aria-labelledby="gius-take-sheet-title">
+                        <div class="gius-take-modal-hdr">
+                            <span id="gius-take-sheet-title">Print attendance sheet</span>
+                            <button type="button" class="gius-take-close" aria-label="Close">✕</button>
+                        </div>
+                        <div class="gius-take-modal-body">
+                            <p class="gius-take-modal-text">A blank sheet to tick in class, then enter here: Select all, untick the absent students, Save.</p>
+                            ${roster.length ? '' : '<div class="gius-take-warn">Could not load the student list — the sheet will have blank rows only.</div>'}
+                            ${slots.length > 1 ? `<div><span class="gius-take-label">Slots</span>
+                                ${slots.map((s, i) => `<label class="gius-take-radio"><input type="checkbox" data-slot="${i}" checked> ${S.escapeHtml(slotLabel(s))}</label>`).join('')}
+                            </div>` : ''}
+                            <div><span class="gius-take-label">Sort by</span>
+                                ${seg('sort', 'name', 'Name')}${seg('sort', 'id', 'ID')}${seg('sort', 'portal', 'Portal order')}
+                            </div>
+                            <div><span class="gius-take-label">Show</span>
+                                <label class="gius-take-radio"><input type="checkbox" data-opt="ref"${o.ref ? ' checked' : ''}> Session Ref</label>
+                            </div>
+                            <div><span class="gius-take-label">Columns</span>
+                                <label class="gius-take-radio"><input type="checkbox" data-opt="signature"${o.signature ? ' checked' : ''}> Student signature</label>
+                                <label class="gius-take-radio"><input type="checkbox" data-opt="card"${o.card ? ' checked' : ''}> Card ID</label>
+                                <label class="gius-take-radio"><input type="checkbox" data-opt="notes"${o.notes ? ' checked' : ''}> Notes</label>
+                            </div>
+                            <label class="gius-take-radio">Blank rows for students not on the list
+                                <input type="number" class="gius-take-input gius-take-num" min="0" max="20" value="${+o.blank || 0}" data-opt="blank">
+                            </label>
+                            <div class="gius-take-modal-actions">
+                                <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="cancel">Cancel</button>
+                                <button type="button" class="gius-take-btn gius-take-btn-primary" data-act="print">Print / Save as PDF</button>
+                            </div>
+                        </div>
+                    </div>`;
+                document.body.appendChild(overlay);
+                overlay.addEventListener('click', e => {
+                    const act = e.target.closest('[data-act]')?.dataset.act;
+                    if (e.target === overlay || e.target.closest('.gius-take-close') || act === 'cancel') { closeModal(); return; }
+                    if (act !== 'print') return;
+                    const next = {
+                        sort:      overlay.querySelector('input[name="gius-sheet-sort"]:checked')?.value || 'name',
+                        ref:       overlay.querySelector('[data-opt="ref"]').checked,
+                        signature: overlay.querySelector('[data-opt="signature"]').checked,
+                        card:      overlay.querySelector('[data-opt="card"]').checked,
+                        notes:     overlay.querySelector('[data-opt="notes"]').checked,
+                        blank:     Math.max(0, Math.min(20, +overlay.querySelector('[data-opt="blank"]').value || 0)),
+                    };
+                    try { localStorage.setItem(SHEET_KEY, JSON.stringify(next)); } catch { /* ignore */ }
+                    // A session's option value is its Session Ref.
+                    const col = s => ({ label: slotLabel(s), ref: s.value });
+                    const picked = Array.from(overlay.querySelectorAll('[data-slot]')).filter(b => b.checked).map(b => slots[+b.dataset.slot]);
+                    const cols = slots.length > 1
+                        ? (picked.length ? picked : [slots[0]]).map(col)
+                        : [{ label: 'Present', ref: slots[0] ? slots[0].value : sessionRef() }];
+                    closeModal();
+                    printSheet(next, cols, roster);
+                });
+                overlay.querySelector('[data-act="print"]').focus();
+            }
+
+            // ── Copy attendance from the other slot of the same date ────────────────
+            // Berlin only for now: there, reading a session never starts it (starting
+            // takes the Start Session button). Not yet checked on Cairo.
+            function copySlots() {
+                if (!/ManageStudentAttendancesBerlin\.aspx/i.test(location.pathname)) return [];
+                const { cur, slots } = sheetSessions();
+                return cur ? slots.filter(s => s.value !== cur.value) : [];
+            }
+
+            const rowName = r => (r.tr.querySelectorAll('td')[3]?.textContent || '').replace(/\s+/g, ' ').trim();
+            const rowId   = r => (r.tr.querySelectorAll('td')[2]?.textContent || '').trim();
+
+            async function copyFromSlot(sessionId, btn) {
+                const src = sheetSessions().slots.find(s => s.value === sessionId);
+                const name = src && src.slot ? `Slot ${src.slot}` : 'the other slot';
+                const old = btn.textContent;
+                btn.disabled = true;
+                btn.textContent = `Reading ${name}…`;
+                const doc = await fetchSessionDoc(sessionId);
+                btn.disabled = false;
+                btn.textContent = old;
+
+                const tbl = doc && doc.getElementById('MainContent_DG_StudentAttendance');
+                if (!doc) { openCopyDialog(name, null, `Could not read ${name}. Check your connection and try again.`); return; }
+                if (!tbl) { openCopyDialog(name, null, `${name} has not been started yet — nothing to copy.`); return; }
+                const theirs = new Map();
+                for (const tr of Array.from(tbl.querySelectorAll('tr')).slice(1)) {
+                    const id = (tr.querySelectorAll('td')[2]?.textContent || '').trim();
+                    const cb = tr.querySelector('input[type="checkbox"]');
+                    if (id && cb) theirs.set(id, cb.checked);
+                }
+                if (!theirs.size || ![...theirs.values()].some(Boolean)) {
+                    openCopyDialog(name, null, `${name} has no attendance entered yet — nothing to copy.`);
+                    return;
+                }
+                const changes = [];
+                let same = 0, missing = 0;
+                for (const r of rows) {
+                    const v = theirs.get(rowId(r));
+                    if (v === undefined) missing++;
+                    else if (v === r.cb.checked) same++;
+                    else changes.push({ r, to: v });
+                }
+                openCopyDialog(name, { changes, same, missing });
+            }
+
+            function openCopyDialog(name, plan, message) {
+                closeModal();
+                const esc = S.escapeHtml;
+                const stateHtml = on => `<span class="gius-take-pill ${on ? 'gius-take-pill-green">Attended' : 'gius-take-pill-red">Absent'}</span>`;
+                const handEdited = plan ? plan.changes.filter(c => c.r.cb.checked !== c.r.saved).length : 0;
+                let body;
+                if (!plan) {
+                    body = `<p class="gius-take-modal-text">${esc(message)}</p>`;
+                } else if (!plan.changes.length) {
+                    body = `<p class="gius-take-modal-text">This list already matches ${esc(name)} — nothing to change.</p>`;
+                } else {
+                    body = `
+                        <p class="gius-take-modal-text">Only the ticks change — you still press Save.</p>
+                        <div class="gius-take-copy-stats">
+                            <span>Same as now <strong>${plan.same}</strong></span>
+                            <span>Become present <strong>${plan.changes.filter(c => c.to).length}</strong></span>
+                            <span>Become absent <strong>${plan.changes.filter(c => !c.to).length}</strong></span>
+                            ${plan.missing ? `<span>Not in ${esc(name)} <strong>${plan.missing}</strong></span>` : ''}
+                        </div>
+                        <div class="gius-take-copy-scroll">
+                            <table class="gius-take-copy-table">
+                                <thead><tr><th>Student</th><th>Now</th><th>After copy</th></tr></thead>
+                                <tbody>${plan.changes.map(c => `<tr><td>${esc(rowName(c.r))}</td><td>${stateHtml(c.r.cb.checked)}</td><td>${stateHtml(c.to)}</td></tr>`).join('')}</tbody>
+                            </table>
+                        </div>
+                        ${handEdited ? `<label class="gius-take-radio"><input type="checkbox" data-keep checked> Keep the ${handEdited} row${handEdited === 1 ? '' : 's'} I already changed by hand</label>` : ''}`;
+                }
+                const canCopy = plan && plan.changes.length;
+                const overlay = document.createElement('div');
+                overlay.id = 'gius-take-overlay';
+                overlay.className = 'gius-take-overlay';
+                overlay.innerHTML = `
+                    <div class="gius-take-modal gius-take-modal-wide" role="dialog" aria-modal="true" aria-labelledby="gius-take-copy-title">
+                        <div class="gius-take-modal-hdr">
+                            <span id="gius-take-copy-title">Copy attendance from ${esc(name)}</span>
+                            <button type="button" class="gius-take-close" aria-label="Close">✕</button>
+                        </div>
+                        <div class="gius-take-modal-body">
+                            ${body}
+                            <div class="gius-take-modal-actions">
+                                <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="cancel">${canCopy ? 'Cancel' : 'Close'}</button>
+                                ${canCopy ? `<button type="button" class="gius-take-btn gius-take-btn-primary" data-act="copy">Copy ${plan.changes.length} change${plan.changes.length === 1 ? '' : 's'}</button>` : ''}
+                            </div>
+                        </div>
+                    </div>`;
+                document.body.appendChild(overlay);
+                overlay.addEventListener('click', e => {
+                    const act = e.target.closest('[data-act]')?.dataset.act;
+                    if (e.target === overlay || e.target.closest('.gius-take-close') || act === 'cancel') { closeModal(); return; }
+                    if (act !== 'copy') return;
+                    const keep = overlay.querySelector('[data-keep]')?.checked;
+                    for (const c of plan.changes) {
+                        if (keep && c.r.cb.checked !== c.r.saved) continue;
+                        c.r.cb.checked = c.to;
+                    }
+                    closeModal();
+                    update();
+                });
+                overlay.querySelector(canCopy ? '[data-act="copy"]' : '[data-act="cancel"]').focus();
+            }
+
+            function openEndConfirm() {
+                closeModal();
+                const changed = changedCount();
+                const label = sessionLabel();
+                const overlay = document.createElement('div');
+                overlay.id = 'gius-take-overlay';
+                overlay.className = 'gius-take-overlay';
+                overlay.innerHTML = `
+                    <div class="gius-take-modal" role="dialog" aria-modal="true" aria-labelledby="gius-take-modal-title">
+                        <div class="gius-take-modal-hdr">
+                            <span id="gius-take-modal-title">End this session?</span>
+                            <button type="button" class="gius-take-close" aria-label="Close">✕</button>
+                        </div>
+                        <div class="gius-take-modal-body">
+                            ${label ? `<p class="gius-take-modal-text">${S.escapeHtml(label)}</p>` : ''}
+                            ${changed ? `<div class="gius-take-warn">${changed} unsaved change${changed === 1 ? '' : 's'} — save them first.</div>` : ''}
+                            <div class="gius-take-modal-actions">
+                                <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="cancel">Not yet</button>
+                                ${changed ? '<button type="button" class="gius-take-btn gius-take-btn-save" data-act="save">Save Attendance</button>' : ''}
+                                <button type="button" class="gius-take-btn gius-take-btn-end" data-act="end">End Session</button>
+                            </div>
+                        </div>
+                    </div>`;
+                document.body.appendChild(overlay);
+                overlay.addEventListener('click', e => {
+                    const act = e.target.closest('[data-act]')?.dataset.act;
+                    if (e.target === overlay || e.target.closest('.gius-take-close') || act === 'cancel') { closeModal(); return; }
+                    if (act === 'save') { closeModal(); saveBtn.click(); return; }
+                    if (act === 'end') {
+                        closeModal();
+                        endConfirmed = true;
+                        endBtn.click();
+                    }
+                });
+                overlay.querySelector('[data-act="cancel"]').focus();
+            }
+
+            function init() {
+                table.parentElement.insertBefore(panel, table);
+                table.after(bar);
+                for (const r of rows) r.tr.classList.add('gius-take-row');
+                table.querySelector('tr')?.classList.add('gius-take-head');
+                hideReplacedParts();
+
+                panel.addEventListener('click', e => {
+                    const act = e.target.closest('[data-act]')?.dataset.act;
+                    if (act === 'all')    setAll(() => true);
+                    if (act === 'none')   setAll(() => false);
+                    if (act === 'invert') setAll(r => !r.cb.checked);
+                    if (act === 'sheet')  openSheetDialog(rosterFrom(table));
+                    const copy = e.target.closest('[data-copy-slot]');
+                    if (copy && !copy.disabled) copyFromSlot(copy.dataset.copySlot, copy);
+                });
+                panel.querySelector('.gius-take-input').addEventListener('input', e => {
+                    const q = e.target.value.trim().toLowerCase();
+                    for (const r of rows) r.tr.style.display = !q || r.text.includes(q) ? '' : 'none';
+                    update();
+                });
+                if (headBox) headBox.addEventListener('change', () => setAll(() => headBox.checked));
+
+                // Row click: anywhere on the row switches its box; the box itself,
+                // its label and the portal's links keep their own behaviour.
+                table.addEventListener('click', e => {
+                    const tr = e.target.closest('tr');
+                    const row = rows.find(r => r.tr === tr);
+                    if (!row || e.target.closest('input, label, a, button')) return;
+                    row.cb.click();
+                });
+                table.addEventListener('change', update);
+
+                bar.addEventListener('click', e => {
+                    const act = e.target.closest('[data-act]')?.dataset.act;
+                    if (act === 'save') saveBtn.click();
+                    if (act === 'end') openEndConfirm();
+                });
+
+                // The portal's own End Session button asks first too.
+                if (endBtn) {
+                    endBtn.addEventListener('click', e => {
+                        if (endConfirmed) return;
+                        e.preventDefault();
+                        openEndConfirm();
+                    });
+                }
+
+                // Save / End Session submit the form: no warning for those. Other
+                // postbacks (changing group or session) go through form.submit(),
+                // which skips this event, so they still warn.
+                document.addEventListener('submit', () => { leaving = true; }, true);
+                window.addEventListener('beforeunload', e => {
+                    if (leaving || changedCount() === 0) return;
+                    e.preventDefault();
+                    e.returnValue = '';
+                });
+
+                update();
+                Tips.show({ id: 'takeAttendance', el: panel, title: 'Attendance Tools',
+                    text: 'Select all, then untick the absent students. Click any row to switch it; changed rows stay amber until you save.' });
+            }
+
+            init();
+        },
     };
 
     // ═══════════════════════════════════════════════════════════════════════════
@@ -17473,6 +18829,7 @@ function renderAttendancePlanner(S, api, host) {
         notificationBatch: Shared.portalUrl('/GIUb/INTStaff/NotificationSystem_SendEmail_m.aspx'),
         manageGroupGrades: Shared.portalUrl('/GIUb/INTStaff/ManageGroupGrade_m.aspx'),
         studentAttendance: Shared.portalUrl('/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx'),
+        takeAttendance:    Shared.portalUrl('/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx'),
     };
 
     const ROUTES = [
@@ -17488,6 +18845,8 @@ function renderAttendancePlanner(S, api, host) {
         { id: 'notificationBatch', test: (p) => /\/NotificationSystem_SendEmail_m\.aspx$/i.test(p) },
         { id: 'manageGroupGrades', test: (p) => /\/ManageGroupGrade_m\.aspx$/i.test(p) },
         { id: 'studentAttendance', test: (p) => /\/ClassAttendance_ManageStudentAttendancesH003\.aspx/i.test(p) },
+        // After studentAttendance: both mount above the student table; this one sits closest.
+        { id: 'takeAttendance',    test: (p) => /\/ClassAttendance_ManageStudentAttendancesH003\.aspx/i.test(p) },
     ];
 
     function renderHomeFeatureToggles() {

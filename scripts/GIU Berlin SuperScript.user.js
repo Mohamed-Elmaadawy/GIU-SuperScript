@@ -10,7 +10,7 @@
 // @match       https://apps.guc.edu.eg/external/tempprojects/swiftreports.aspx*
 // @match       https://apps.guc.edu.eg/External/TempProjects/SwiftReports.aspx*
 // @namespace   Cyn0
-// @version     4.8
+// @version     4.9
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Berlin%20SuperScript.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Berlin%20SuperScript.js
 // @author      Mo.Elmaadawy
@@ -14452,7 +14452,7 @@ function renderAttendancePlanner(S, api, host) {
 
             // A session is picked but not started yet: no student table on the page.
             if (!table) {
-                try { notStartedPanel(); } catch (e) { S.warn('takeAttendance', 'session panel crashed:', e); }
+                try { noSessionPanel() || notStartedPanel(); } catch (e) { S.warn('takeAttendance', 'session panel crashed:', e); }
                 return;
             }
             if (!saveBtn) return;
@@ -14994,6 +14994,9 @@ function renderAttendancePlanner(S, api, host) {
                 hide(classInfo && classInfo.closest('p'));
                 hide(document.getElementById('MainContent_Label3'));
                 hide(document.getElementById('MainContent_L_SessionDuration')?.closest('tr'));
+                // The page's title box just says "GIU".
+                const title = document.getElementById('lbl_PageTitle');
+                if (title && /^\s*GIU\s*$/.test(title.textContent)) title.textContent = 'GIU Student Attendance';
             }
 
             // The portal's Requests box, rebuilt around its main use: asking for a
@@ -15220,6 +15223,36 @@ function renderAttendancePlanner(S, api, host) {
                     if (!resp.ok) return null;
                     return new DOMParser().parseFromString(await resp.text(), 'text/html');
                 } catch { return null; }
+            }
+
+            // Nothing picked yet: everything below the lists is empty or idle, so it is
+            // hidden behind one line saying what to do. True when it handled the page.
+            function noSessionPanel() {
+                const sessions = document.getElementById('MainContent_DDL_Sessions');
+                if (sessions && sessions.value && sessions.value !== '0') return false;
+                const hide = el => { if (el) el.classList.add('gius-take-hide'); };
+                const heading = Array.from(document.querySelectorAll('strong'))
+                    .find(s => /^\s*Students list:?\s*$/i.test(s.textContent));
+                const anchor = heading || saveBtn?.closest('p');
+                if (!anchor) return true;
+                const panel = document.createElement('div');
+                panel.className = 'gius-take-panel gius-take-session';
+                panel.innerHTML = `
+                    <div class="gius-take-header"><span class="gius-take-title">Take attendance</span></div>
+                    <div class="gius-take-body">
+                        <span class="gius-take-session-text">Choose a group, then a session, to see its students.</span>
+                    </div>`;
+                anchor.before(panel);
+                if (heading) {
+                    hide(heading);
+                    if (heading.nextElementSibling?.tagName === 'BR') hide(heading.nextElementSibling);
+                }
+                hide(saveBtn?.closest('p'));
+                hide(document.getElementById('MainContent_L_SessionId')?.closest('p'));
+                hide(document.getElementById('MainContent_TB_Remarks')?.closest('fieldset'));
+                hide(document.getElementById('MainContent_L_SessionStart')?.closest('tr'));
+                hide(document.getElementById('MainContent_L_SessionEnd')?.closest('tr'));
+                return true;
             }
 
             // Picked but not started: the Ref strip, a Print sheet button (the paper
