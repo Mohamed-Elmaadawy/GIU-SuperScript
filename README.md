@@ -37,7 +37,7 @@ Each SuperScript has a **Control Center** card on the portal Home page where you
 | Notification Batch Send | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Notification%20Batch%20Send.user.js) |
 | Berlin Session Form Filler | Berlin (Microsoft Form) | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Session%20Form%20Filler.user.js) |
 
-All scripts share one version number. Current release: **4.7**.
+All scripts share one version number. Current release: **4.8**.
 
 </details>
 
@@ -138,6 +138,22 @@ A pasted copy doesn't auto-update. Reinstall it once from the install link above
 You can **Skip** at any step; **Settings → Run setup again** reopens it any time. Your day off is never guessed — until it's set, the Home widget shows **Set your day off**.
 
 Where it appears: Cairo — Home page and the [attendance report](https://portal.giu-uni.de/GIUb/EXT/SwiftReports_m.aspx?swiftreportid=866&executereport=1). Berlin — Home page and **My Attendance** in the sidebar (see [Berlin portal](#berlin-portal)).
+
+### Taking attendance — 🅑
+
+**Take Attendance** — 🅑 · Manage Student Attendances page. Makes entering class attendance quicker. (Berlin only for now; the Cairo version comes once it has been tested there.)
+
+- **Group and Session lists** that are easy to read: sessions grouped by date as **Fri 23 Oct · Slot 2 · 2h · Regular**, today highlighted, On Hold / Compensation marked, future sessions hidden (one click shows them); groups listed under their course.
+- **Session Ref** shown large, with a **Copy** button.
+- **Select all / Clear all / Invert** and a select-all box in the table header — most students there? Select all, then untick the absent ones. **Find** filters by name or ID.
+- Click anywhere on a row to tick or untick it. Each row says **Attended** or **Absent**; changed rows stay amber until you save, and leaving the page with unsaved changes warns you.
+- A bar at the bottom with **Save Attendance** and **End Session** (which asks first, and offers to save unsaved changes).
+- **Copy Slot 2** (or Slot 1): copy the ticks from the other slot of the same day. You see what would change first; nothing is saved until you press Save.
+- **Print sheet:** a blank A4 sign-in sheet to tick on paper — one column per slot, the Session Ref, optional signature, card ID and notes columns, blank rows for extra students. Works before the session is started too. Save it as PDF from the print window.
+- **Request to open:** pick a reason and the remark is written for you; the request is remembered per session.
+- The page's long instructions and other unneeded text are hidden.
+
+Nothing is saved, started or ended for you — the buttons only press the portal's own buttons.
 
 ### Teaching & exams
 

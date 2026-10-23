@@ -3,7 +3,7 @@
 // @description Aggregates all proctor exam assignments across departments into a live dashboard
 // @match       https://portal.giu-uni.de/GIUb/INTStaff/ProctorExchange_m.aspx
 // @namespace   Cyn0
-// @version     4.7
+// @version     4.8
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Proctor%20Schedule%20Aggregator.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Proctor%20Schedule%20Aggregator.js
 // @author      Mo.Elmaadawy
