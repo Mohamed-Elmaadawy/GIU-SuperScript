@@ -37,7 +37,7 @@ Each SuperScript has a **Control Center** card on the portal Home page where you
 | Notification Batch Send | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Notification%20Batch%20Send.user.js) |
 | Berlin Session Form Filler | Berlin (Microsoft Form) | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Session%20Form%20Filler.user.js) |
 
-All scripts share one version number. Current release: **4.9**.
+All scripts share one version number. Current release: **4.10**.
 
 </details>
 
@@ -149,7 +149,7 @@ Where it appears: Cairo — Home page and the [attendance report](https://portal
 - Click anywhere on a row to tick or untick it. Each row says **Attended** or **Absent**; changed rows stay amber until you save, and leaving the page with unsaved changes warns you.
 - A bar at the bottom with **Save Attendance** and **End Session** (which asks first, and offers to save unsaved changes).
 - **Copy Slot 2** (or Slot 1) — 🅑 for now: copy the ticks from the other slot of the same day. You see what would change first; nothing is saved until you press Save.
-- **Print sheet:** a blank A4 sign-in sheet to tick on paper — one column per slot, the Session Ref, optional signature, card ID and notes columns, blank rows for extra students. Works before the session is started too. Save it as PDF from the print window.
+- **Print sheet:** the GIU attendance sheet with your campus logo, ready to mark on paper — course, group, date, slot, session type (circled), Session Ref. ID and the student list already filled in (the week is left to write in); one page per slot. Works before the session is started too, and **Print blank sheet** prints one page with just the course, group, date, session type and students, leaving week, slot and Ref to write in (also before any session is picked). Save it as PDF from the print window.
 - **Request to open:** pick a reason and the remark is written for you; the request is remembered per session.
 - The page's long instructions and other unneeded text are hidden.
 
@@ -167,7 +167,7 @@ Nothing is saved, started or ended for you — the buttons only press the portal
 
 **Berlin Session Form Filler** — 🅑 separate script · the Berlin session attendance Microsoft Form. Save your name once and a preset per course / session type / group; one click fills name, course, session type and group. You still enter the session date and Ref. ID, attach the attendance sheet and press Submit yourself.
 
-**Student Attendance Report** — 🅒 · Manage Student Attendances page. For the selected group: absence level per student (Level 0 → 3 / drop), group averages, and an at-risk list you can expand to see the missed sessions.
+**Student Attendance Report** — 🅒 single-feature script only for now (not in the SuperScript) · Manage Student Attendances page. For the selected group: absence level per student (Level 0 → 3 / drop), group averages, and an at-risk list you can expand to see the missed sessions.
 
 | Teaching Load | Proctoring Reminder | Not Entered Sessions |
 | --- | --- | --- |

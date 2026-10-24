@@ -10,7 +10,7 @@
 // @match       https://apps.guc.edu.eg/external/tempprojects/swiftreports.aspx*
 // @match       https://apps.guc.edu.eg/External/TempProjects/SwiftReports.aspx*
 // @namespace   Cyn0
-// @version     4.9
+// @version     4.10
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Berlin%20SuperScript.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Berlin%20SuperScript.js
 // @author      Mo.Elmaadawy
@@ -11446,10 +11446,10 @@ function renderAttendancePlanner(S, api, host) {
                     ghost: "Behind by 8 to 12 hours",
                     deduct: "Behind by 3 to 8 hours",
                     close: "Behind by up to 3 hours",
-                    ontime: "100% covered, under +3h extra",
-                    workaholic: "+3 to +8 hours extra",
-                    slave: "+8 to +12 hours extra",
-                    gohome: "+12 hours extra or more"
+                    ontime: "Even, or ahead by up to 3 hours",
+                    workaholic: "Ahead by 3 to 8 hours",
+                    slave: "Ahead by 8 to 12 hours",
+                    gohome: "Ahead by 12 hours or more"
                 };
                 const TIER_QUIPS = {
                     missing: [
@@ -11574,7 +11574,8 @@ function renderAttendancePlanner(S, api, host) {
                         tierBtn.classList.add("gius-att-tier-seen");
                         // A secret rank is listed once it has been reached.
                         const unlocked = homeSecretTiersSeen();
-                        const order = TIER_ORDER.filter(function (t) { return !homeSecretTierCopy(t) || t === tier || unlocked[t]; });
+                        // Listed top-down from the most hours ahead to the most behind.
+                        const order = TIER_ORDER.filter(function (t) { return !homeSecretTierCopy(t) || t === tier || unlocked[t]; }).reverse();
                         homeOpenTierModal(tier, TIER_NAMES, TIER_CONDS, order, TIER_LOOKS);
                     });
                 }
@@ -14437,6 +14438,7 @@ function renderAttendancePlanner(S, api, host) {
             const HIDE_FUTURE_KEY = 'giuTakeHideFutureV1';
             const REQUESTS_KEY    = 'giuTakeRequestsV1';   // { [sessionId]: { type, at } }
             const SHEET_KEY       = 'giuTakeSheetV1';      // paper-sheet options
+            const SHEET_ROWS      = 25;                    // paper-sheet rows per page, as on the template
             // Styles and the session picker first: both apply before a session is picked too.
             injectStyles();
             try { sessionPicker(); } catch (e) { S.warn('takeAttendance', 'session picker crashed:', e); }
@@ -14912,14 +14914,18 @@ function renderAttendancePlanner(S, api, host) {
                             if (hideFuture && isFuture(s) && s !== sel) { hidden++; continue; }
                             const day = s.date ? s.date.toDateString() : '';
                             if (day !== lastDay) {
+                                // One section per day: its sticky header is pushed off by the
+                                // next day's instead of sliding over it.
+                                if (lastDay !== null) html.push('</div>');
                                 lastDay = day;
                                 const title = s.date ? dayText(s.date).toUpperCase() : 'OTHER';
-                                html.push(`<div class="gius-take-picker-day${isToday(s) ? ' gius-take-today' : ''}">${S.escapeHtml(title)}${isToday(s) ? ' · TODAY' : ''}</div>`);
+                                html.push(`<div class="gius-take-picker-sec"><div class="gius-take-picker-day${isToday(s) ? ' gius-take-today' : ''}">${S.escapeHtml(title)}${isToday(s) ? ' · TODAY' : ''}</div>`);
                             }
                             const main = S.escapeHtml(s.date ? slotText(s) || s.text : s.text)
                                 + (showCourse && s.course ? `<span class="gius-take-picker-course">${S.escapeHtml(s.course)}</span>` : '');
                             html.push(pickerOption(s.value, s === sel, isToday(s) ? ' gius-take-today' : '', main, pill(s.status, statusCls(s.status))));
                         }
+                        if (lastDay !== null) html.push('</div>');
                         return {
                             html: html.join(''),
                             foot: hidden
@@ -14973,11 +14979,14 @@ function renderAttendancePlanner(S, api, host) {
                             if (q && !g.text.toLowerCase().includes(q)) continue;
                             shown++;
                             if (g.course !== lastCourse) {
+                                // One section per course (see the session list).
+                                if (lastCourse !== null) html.push('</div>');
                                 lastCourse = g.course;
-                                html.push(`<div class="gius-take-picker-day gius-take-picker-coursehead">${S.escapeHtml(g.course || 'Other')}</div>`);
+                                html.push(`<div class="gius-take-picker-sec"><div class="gius-take-picker-day gius-take-picker-coursehead">${S.escapeHtml(g.course || 'Other')}</div>`);
                             }
                             html.push(pickerOption(g.value, g.value === ddl.value, '', S.escapeHtml(g.name), pill(g.type, g.type === 'Lecture' ? 'gius-take-pill-blue' : 'gius-take-pill-grey')));
                         }
+                        if (lastCourse !== null) html.push('</div>');
                         return { html: html.join(''), foot: `${shown} of ${groups.length} groups` };
                     },
                 });
@@ -15184,13 +15193,23 @@ function renderAttendancePlanner(S, api, host) {
             async function fetchRoster() {
                 const ddl = document.getElementById('MainContent_DDL_Sessions');
                 const form = ddl && ddl.form;
-                const cur = ddl && ddl.options[ddl.selectedIndex] ? parseSessionOption(ddl.options[ddl.selectedIndex]) : null;
-                if (!form || !cur) return [];
+                const sel = ddl && ddl.options[ddl.selectedIndex];
+                const cur = sel && sel.value && sel.value !== '0' ? parseSessionOption(sel) : null;
+                if (!form) return [];
+                // No session picked: the chosen group's sessions (the list may hold other
+                // groups' too), matched on its course code and group code.
+                const groupDdl = document.getElementById('MainContent_DDL_StudentGroup');
+                const groupOpt = groupDdl && groupDdl.options[groupDdl.selectedIndex];
+                const groupText = groupOpt && groupOpt.value !== '0' ? groupOpt.textContent.replace(/\s+/g, ' ').trim() : '';
+                const groupCode = groupText.slice(groupText.lastIndexOf(' - ') + 3);
+                const courseCode = (groupText.match(/\b[A-Z]{2,5} ?\d{3}\b/) || [''])[0];
+                const sameGroup = s => (cur ? s.course === cur.course
+                    : !!groupText && s.text.includes(groupCode) && (!courseCode || s.text.includes(courseCode)));
                 const today = new Date(); today.setHours(0, 0, 0, 0);
                 const past = Array.from(ddl.options)
-                    .filter(o => o.value && o.value !== '0' && o.value !== cur.value)
+                    .filter(o => o.value && o.value !== '0' && (!cur || o.value !== cur.value))
                     .map(parseSessionOption)
-                    .filter(s => s.date && s.date < today && s.course === cur.course)
+                    .filter(s => s.date && s.date < today && sameGroup(s))
                     .sort((a, b) => b.date - a.date)
                     .slice(0, 3);
                 for (const s of past) {
@@ -15241,7 +15260,11 @@ function renderAttendancePlanner(S, api, host) {
                     <div class="gius-take-header"><span class="gius-take-title">Take attendance</span></div>
                     <div class="gius-take-body">
                         <span class="gius-take-session-text">Choose a group, then a session, to see its students.</span>
+                        <div class="gius-take-actions">
+                            <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="blank-sheet">Print blank sheet</button>
+                        </div>
                     </div>`;
+                panel.querySelector('[data-act="blank-sheet"]').addEventListener('click', e => printBlankSheet(e.currentTarget));
                 anchor.before(panel);
                 if (heading) {
                     hide(heading);
@@ -15286,6 +15309,7 @@ function renderAttendancePlanner(S, api, host) {
                         <span class="gius-take-session-text">${startBtn ? 'Press Start Session to record the start time and load the students.' : 'The student list appears once the session starts.'}</span>
                         <div class="gius-take-actions">
                             <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="sheet">Print sheet</button>
+                            <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="blank-sheet">Print blank sheet</button>
                         </div>
                     </div>`;
 
@@ -15303,6 +15327,7 @@ function renderAttendancePlanner(S, api, host) {
                 if (sessionRef()) hide(document.getElementById('MainContent_L_SessionId').closest('p'));
 
                 const sheetBtn = panel.querySelector('[data-act="sheet"]');
+                panel.querySelector('[data-act="blank-sheet"]').addEventListener('click', e => printBlankSheet(e.currentTarget));
                 sheetBtn.addEventListener('click', async () => {
                     sheetBtn.disabled = true;
                     sheetBtn.textContent = 'Loading students…';
@@ -15335,6 +15360,7 @@ function renderAttendancePlanner(S, api, host) {
                         <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="none">Clear all</button>
                         <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="invert">Invert</button>
                         <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="sheet">Print sheet</button>
+                        <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="blank-sheet">Print blank sheet</button>
                         ${copySlots().map(s => `<button type="button" class="gius-take-btn gius-take-btn-outline" data-copy-slot="${S.escapeHtml(s.value)}">Copy ${S.escapeHtml(s.slot ? `Slot ${s.slot}` : 'other slot')}</button>`).join('')}
                     </div>
                     <label class="gius-take-find">Find
@@ -15404,9 +15430,9 @@ function renderAttendancePlanner(S, api, host) {
                 document.getElementById('gius-take-overlay')?.remove();
             }
 
-            // ── Paper sheet: a blank sign-in sheet printed before class ──────────────
+            // ── Paper sheet: the GIU attendance-sheet template, printed before class ─
             function sheetOptions() {
-                const defaults = { sort: 'name', ref: true, signature: true, card: false, notes: true, blank: 3 };
+                const defaults = { sort: 'name', ref: true };
                 try { return { ...defaults, ...JSON.parse(localStorage.getItem(SHEET_KEY) || '{}') }; } catch { return defaults; }
             }
 
@@ -15425,71 +15451,139 @@ function renderAttendancePlanner(S, api, host) {
                 return { cur, slots: slots.length ? slots : [cur] };
             }
 
-            function sheetHtml(o, slotCols, roster) {
-                const groupDdl = document.getElementById('MainContent_DDL_StudentGroup');
-                const groupOpt = groupDdl && groupDdl.options[groupDdl.selectedIndex];
-                const group = groupOpt && groupOpt.value !== '0' ? groupOpt.textContent.trim() : '';
-                const { cur } = sheetSessions();
-                const dateText = cur && cur.date
-                    ? cur.date.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' })
-                    : '';
-                const people = roster.slice();
-                if (o.sort === 'name') people.sort((a, b) => a.name.localeCompare(b.name));
-                if (o.sort === 'id')   people.sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true }));
-                const blanks = Array.from({ length: Math.max(0, Math.min(20, +o.blank || 0)) }, () => ({ id: '', name: '', card: '' }));
-                const esc = S.escapeHtml;
-                const box = '<span class="box"></span>';
-                const head = `<tr><th class="n">#</th><th class="id">ID</th><th>Full Name</th>${o.card ? '<th class="id">Card ID</th>' : ''}`
-                    + slotCols.map(c => `<th class="c">${esc(c.label)}${o.ref && c.ref ? `<div class="ref">${esc(c.ref)}</div>` : ''}</th>`).join('')
-                    + `${o.signature ? '<th class="sig">Signature</th>' : ''}${o.notes ? '<th class="notes">Notes</th>' : ''}</tr>`;
-                const body = people.concat(blanks).map((p, n) => `<tr><td class="n">${n + 1}</td><td>${esc(p.id)}</td><td>${esc(p.name)}</td>`
-                    + `${o.card ? `<td>${esc(p.card)}</td>` : ''}`
-                    + slotCols.map(() => `<td class="c">${box}</td>`).join('')
-                    + `${o.signature ? '<td></td>' : ''}${o.notes ? '<td></td>' : ''}</tr>`).join('');
-                const totals = slotCols.map(c => `<span>${c.label === 'Present' ? 'Present' : `Present ${esc(c.label)}`}: ________</span>`).join('');
-                const refs = slotCols.filter(c => c.ref);
-                const refLine = o.ref && refs.length
-                    ? `<br><b>Session Ref ${refs.map(c => (refs.length > 1 ? `${esc(c.label)} ${esc(c.ref)}` : esc(c.ref))).join(' · ')}</b>`
-                    : '';
-                const slotNames = slotCols.filter(c => c.label !== 'Present').map(c => c.label);
-                const colCount = 3 + (o.card ? 1 : 0) + slotCols.length + (o.signature ? 1 : 0) + (o.notes ? 1 : 0);
-                const spacer = `<tr class="sp"><td colspan="${colCount}"></td></tr>`;
-                return `<!doctype html><html><head><meta charset="utf-8"><title>Attendance sheet</title><style>
-                    /* No page margin: the browser has nowhere to print its own date / title
-                       header and footer. The sheet keeps its own margins instead: side
-                       padding, plus spacer rows that repeat at the top and bottom of every page. */
-                    @page { size: A4 portrait; margin: 0; }
-                    body { margin: 0; padding: 14mm 14mm 10mm; font: 11px Arial, Helvetica, sans-serif; color: #000; }
-                    tr.sp td { border: none; height: 10mm; padding: 0; }
-                    tfoot { display: table-footer-group; }
-                    .top { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #000; padding-bottom: 6px; margin-bottom: 6px; }
-                    h1 { font-size: 16px; margin: 0 0 2px; }
-                    .meta { text-align: right; line-height: 1.6; }
-                    .hint { font-size: 10px; margin: 0 0 6px; }
-                    table { width: 100%; border-collapse: collapse; }
-                    thead { display: table-header-group; }
-                    tr { page-break-inside: avoid; }
-                    th, td { border: 1px solid #555; padding: 0 6px; height: 22px; text-align: left; }
-                    th { background: #e5e7eb; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-                    .n { width: 22px; } .id { width: 70px; } .c { width: 44px; text-align: center; }
-                    .sig { width: 120px; } .notes { width: 80px; }
-                    .ref { font-size: 9px; font-weight: 400; }
-                    .box { display: inline-block; width: 12px; height: 12px; border: 1.5px solid #000; vertical-align: middle; }
-                    .totals { display: flex; gap: 24px; margin-top: 10px; }
-                    .foot { display: flex; justify-content: flex-end; margin-top: 18px; font-size: 10px; border-top: 1px solid #999; padding-top: 6px; }
-                </style></head><body>
-                    <div class="top">
-                        <div><h1>Attendance sheet</h1><div>${esc(group)}</div></div>
-                        <div class="meta">${esc(dateText)}${slotNames.length ? ` · ${esc(slotNames.join(' and '))}` : ''}${refLine}<br>Room: ____________<br>Instructor: ______________________</div>
-                    </div>
-                    <p class="hint">Tick the box for each student present.${o.signature ? ' Students sign in the signature column.' : ''}</p>
-                    <table><thead>${spacer}${head}</thead><tbody>${body}</tbody><tfoot>${spacer}</tfoot></table>
-                    <div class="totals">${totals}</div>
-                    <div class="foot"><span>Instructor signature: ______________________</span></div>
-                </body></html>`;
+            // Lecture / Tutorial / Practical: the portal's own word in the session
+            // name, else the group code's letter (L / T / P).
+            function sessionType(s, group) {
+                const word = ((s && s.text.match(/\b(Lecture|Tutorial|Practical)\b/i)) || [])[1];
+                if (word) return word[0].toUpperCase() + word.slice(1).toLowerCase();
+                const code = (group.match(/\b([LPT])\d{3}\b/) || [])[1];
+                return { L: 'Lecture', T: 'Tutorial', P: 'Practical' }[code] || '';
             }
 
-            function printSheet(o, slotCols, roster) {
+            // One page per selected slot (each has its own slot number and Ref); a
+            // group longer than the 25 template rows continues on more pages.
+            function sheetHtml(o, picked, roster) {
+                const esc = S.escapeHtml;
+                const groupDdl = document.getElementById('MainContent_DDL_StudentGroup');
+                const groupOpt = groupDdl && groupDdl.options[groupDdl.selectedIndex];
+                // o.template: one page with the course, date, session type and students;
+                // week, slot and Ref are left to fill in by hand.
+                const group = groupOpt && groupOpt.value !== '0' ? groupOpt.textContent.replace(/\s+/g, ' ').trim() : '';
+                const people = roster.slice();
+                if (o.template) picked = [{ text: picked[0] ? picked[0].text : '', date: picked[0] && picked[0].date }];
+                if (o.sort === 'name') people.sort((a, b) => a.name.localeCompare(b.name));
+                if (o.sort === 'id')   people.sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true }));
+                // Full pages only: the empty rows left on the last page are the room for
+                // students not on the list (never a whole extra page just for them).
+                const total = Math.max(SHEET_ROWS, Math.ceil(people.length / SHEET_ROWS) * SHEET_ROWS);
+                const rowsAll = Array.from({ length: total }, (_, i) => people[i] || { id: '', name: '' });
+                const field = (label, value) => `<span class="f"><b>${label}</b> <span class="v">${esc(value || '')}</span></span>`;
+                // "W26 ICS 501 Software Project I - 5Dsc P001": course (without the term
+                // prefix) and group go in separate fields.
+                const cut = group.lastIndexOf(' - ');
+                const courseName = (cut > 0 ? group.slice(0, cut) : group).replace(/^[A-Z]\d{2}\s+/, '');
+                const groupName = cut > 0 ? group.slice(cut + 3) : '';
+
+                const pages = [];
+                for (const s of picked) {
+                    const type = sessionType(s, group);
+                    const dateText = s.date
+                        ? s.date.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
+                        : '';
+                    const types = ['Lecture', 'Tutorial', 'Practical']
+                        .map(t => `<span class="t${t === type ? ' on' : ''}">${t}</span>`).join('');
+                    for (let start = 0; start < rowsAll.length; start += SHEET_ROWS) {
+                        const body = rowsAll.slice(start, start + SHEET_ROWS).map((p, i) =>
+                            `<tr><td class="sr">${start + i + 1}</td><td>${esc(p.id)}</td><td class="name${p.name.length > 43 ? ' long' : ''}">${esc(p.name)}</td><td></td><td></td></tr>`).join('');
+                        pages.push(`<div class="page"><div class="frame">
+                            ${o.logo ? `<div class="logo"><img src="${esc(o.logo)}" alt=""></div>` : ''}
+                            <h1>Attendance sheet</h1>
+                            <div class="grid">
+                                ${field('Course Name:', courseName)}${field('Week:', '')}
+                                ${field('Group:', groupName)}${field('Slot No:', s.slot)}
+                                ${field('Date:', dateText)}
+                            </div>
+                            <div class="line"><b>Session type (Circle the correct one):</b>${types}</div>
+                            <div class="line">${field('Session Ref. ID:', o.ref ? s.value : '')}</div>
+                            <table>
+                                <thead><tr><th class="sr">Sr.</th><th class="id">Student ID</th><th>Student Name</th><th class="att">Attendance</th><th class="notes">Notes</th></tr></thead>
+                                <tbody>${body}</tbody>
+                            </table>
+                            <div class="sig"><b>TA Signature:</b></div>
+                        </div></div>`);
+                    }
+                }
+                return `<!doctype html><html><head><meta charset="utf-8"><title>Attendance sheet</title><style>
+                    /* No page margin: the browser has nowhere to print its own date / title
+                       header and footer. Each page draws its own frame instead. */
+                    @page { size: A4 portrait; margin: 0; }
+                    body { margin: 0; font: 12px Verdana, Geneva, Arial, sans-serif; color: #000; }
+                    .page { width: 210mm; height: 297mm; box-sizing: border-box; padding: 10mm; page-break-after: always; break-after: page; }
+                    .page:last-child { page-break-after: auto; break-after: auto; }
+                    /* The frame is a column: header, table, then TA Signature pushed to the
+                       bottom. Fixed row heights keep 25 rows inside one A4 frame. */
+                    .frame { display: flex; flex-direction: column; height: 100%; box-sizing: border-box; border: 1px solid #000; padding: 8mm 14mm 10mm; overflow: hidden; }
+                    /* Logos fit one box, so the tall Berlin logo and the wide Cairo
+                       one print at a similar size (as on the template). */
+                    .logo { height: 15mm; margin-bottom: 1mm; display: flex; align-items: flex-end; }
+                    .logo img { max-height: 15mm; max-width: 42mm; width: auto; height: auto; }
+                    h1 { margin: 0 0 4mm; text-align: center; font-size: 19px; text-decoration: underline; }
+                    .grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 3mm 8mm; margin-bottom: 3mm; }
+                    .line { margin-bottom: 3mm; }
+                    .f { display: flex; gap: 2mm; align-items: baseline; }
+                    .f .v { flex: 1; font-weight: 400; }
+                    .t { display: inline-block; margin-left: 5mm; padding: 0 2mm; font-weight: 700; }
+                    .t.on { border: 1.5px solid #000; border-radius: 50%; padding: 0.5mm 2.5mm; }
+                    table { width: 100%; border-collapse: collapse; margin-top: 2mm; table-layout: fixed; }
+                    th, td { border: 1px solid #000; height: 6.8mm; padding: 0 2mm; text-align: left;
+                             white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+                    td.name { font-size: 10px; }
+                    /* Long names: two smaller lines inside the same fixed-height row. */
+                    td.name.long { font-size: 8.5px; line-height: 1.15; white-space: normal; text-overflow: clip; }
+                    th { font-weight: 700; }
+                    td.sr, th.sr { width: 9mm; font-weight: 700; }
+                    .id { width: 23mm; } .att { width: 22mm; } .notes { width: 20mm; }
+                    .sig { margin-top: auto; padding-top: 6mm; font-family: Calibri, Arial, sans-serif; font-size: 14px; }
+                </style></head><body>${pages.join('')}</body></html>`;
+            }
+
+            // The blank sheet: course, date, session type and students filled in, the
+            // rest left empty. Students come from this page, or else from a past
+            // session of the group.
+            async function printBlankSheet(btn, roster) {
+                const { cur } = sheetSessions();
+                let people = roster;
+                if (!people) {
+                    const old = btn.textContent;
+                    btn.disabled = true;
+                    btn.textContent = 'Loading students…';
+                    people = await fetchRoster();
+                    btn.disabled = false;
+                    btn.textContent = old;
+                }
+                printSheet({ template: true, sort: sheetOptions().sort }, cur ? [cur] : [], people);
+            }
+
+            // The campus logo from the portal's own header: each portal serves its
+            // own GIU_600x159.jpg (Cairo: GIU, Berlin: GIU Berlin). Copied as a data
+            // URL so the print frame never has to fetch it; the plain URL otherwise.
+            function portalLogo() {
+                const img = document.querySelector('img[src*="GIU_600x159"]');
+                if (!img) return '';
+                if (!img.complete || !img.naturalWidth) return img.src;
+                try {
+                    const c = document.createElement('canvas');
+                    c.width = img.naturalWidth;
+                    c.height = img.naturalHeight;
+                    const ctx = c.getContext('2d');
+                    ctx.fillStyle = '#fff';
+                    ctx.fillRect(0, 0, c.width, c.height);
+                    ctx.drawImage(img, 0, 0);
+                    return c.toDataURL('image/jpeg', 0.92);
+                } catch { return img.src; }
+            }
+
+            function printSheet(o, picked, roster) {
                 document.getElementById('gius-take-print')?.remove();
                 const frame = document.createElement('iframe');
                 frame.id = 'gius-take-print';
@@ -15498,7 +15592,7 @@ function renderAttendancePlanner(S, api, host) {
                 frame.addEventListener('load', () => {
                     try { frame.contentWindow.focus(); frame.contentWindow.print(); } catch (e) { S.warn('takeAttendance', 'print failed:', e); }
                 }, { once: true });
-                frame.srcdoc = sheetHtml(o, slotCols, roster);
+                frame.srcdoc = sheetHtml({ ...o, logo: portalLogo() }, picked, roster);
                 document.body.appendChild(frame);
             }
 
@@ -15506,7 +15600,7 @@ function renderAttendancePlanner(S, api, host) {
                 closeModal();
                 const o = sheetOptions();
                 const { slots } = sheetSessions();
-                const slotLabel = s => (s.slot ? `Slot ${s.slot}` : 'Present');
+                const slotLabel = s => (s.slot ? `Slot ${s.slot}` : 'This session');
                 const seg = (name, value, text) =>
                     `<label class="gius-take-radio"><input type="radio" name="gius-sheet-${name}" value="${value}"${String(o[name]) === value ? ' checked' : ''}> ${text}</label>`;
                 const overlay = document.createElement('div');
@@ -15519,25 +15613,17 @@ function renderAttendancePlanner(S, api, host) {
                             <button type="button" class="gius-take-close" aria-label="Close">✕</button>
                         </div>
                         <div class="gius-take-modal-body">
-                            <p class="gius-take-modal-text">A blank sheet to tick in class, then enter here: Select all, untick the absent students, Save.</p>
-                            ${roster.length ? '' : '<div class="gius-take-warn">Could not load the student list — the sheet will have blank rows only.</div>'}
-                            ${slots.length > 1 ? `<div><span class="gius-take-label">Slots</span>
+                            <p class="gius-take-modal-text">The GIU attendance sheet with the course, date, slot, session type and students filled in. Mark attendance on it in class, then enter it here.</p>
+                            ${roster.length ? '' : '<div class="gius-take-warn">Could not load the student list — the sheet will have empty rows only.</div>'}
+                            ${slots.length > 1 ? `<div><span class="gius-take-label">Slots (one page each)</span>
                                 ${slots.map((s, i) => `<label class="gius-take-radio"><input type="checkbox" data-slot="${i}" checked> ${S.escapeHtml(slotLabel(s))}</label>`).join('')}
                             </div>` : ''}
                             <div><span class="gius-take-label">Sort by</span>
                                 ${seg('sort', 'name', 'Name')}${seg('sort', 'id', 'ID')}${seg('sort', 'portal', 'Portal order')}
                             </div>
-                            <div><span class="gius-take-label">Show</span>
-                                <label class="gius-take-radio"><input type="checkbox" data-opt="ref"${o.ref ? ' checked' : ''}> Session Ref</label>
+                            <div><span class="gius-take-label">Fill in</span>
+                                <label class="gius-take-radio"><input type="checkbox" data-opt="ref"${o.ref ? ' checked' : ''}> Session Ref. ID</label>
                             </div>
-                            <div><span class="gius-take-label">Columns</span>
-                                <label class="gius-take-radio"><input type="checkbox" data-opt="signature"${o.signature ? ' checked' : ''}> Student signature</label>
-                                <label class="gius-take-radio"><input type="checkbox" data-opt="card"${o.card ? ' checked' : ''}> Card ID</label>
-                                <label class="gius-take-radio"><input type="checkbox" data-opt="notes"${o.notes ? ' checked' : ''}> Notes</label>
-                            </div>
-                            <label class="gius-take-radio">Blank rows for students not on the list
-                                <input type="number" class="gius-take-input gius-take-num" min="0" max="20" value="${+o.blank || 0}" data-opt="blank">
-                            </label>
                             <div class="gius-take-modal-actions">
                                 <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="cancel">Cancel</button>
                                 <button type="button" class="gius-take-btn gius-take-btn-primary" data-act="print">Print / Save as PDF</button>
@@ -15550,22 +15636,14 @@ function renderAttendancePlanner(S, api, host) {
                     if (e.target === overlay || e.target.closest('.gius-take-close') || act === 'cancel') { closeModal(); return; }
                     if (act !== 'print') return;
                     const next = {
-                        sort:      overlay.querySelector('input[name="gius-sheet-sort"]:checked')?.value || 'name',
-                        ref:       overlay.querySelector('[data-opt="ref"]').checked,
-                        signature: overlay.querySelector('[data-opt="signature"]').checked,
-                        card:      overlay.querySelector('[data-opt="card"]').checked,
-                        notes:     overlay.querySelector('[data-opt="notes"]').checked,
-                        blank:     Math.max(0, Math.min(20, +overlay.querySelector('[data-opt="blank"]').value || 0)),
+                        sort: overlay.querySelector('input[name="gius-sheet-sort"]:checked')?.value || 'name',
+                        ref:  overlay.querySelector('[data-opt="ref"]').checked,
                     };
                     try { localStorage.setItem(SHEET_KEY, JSON.stringify(next)); } catch { /* ignore */ }
-                    // A session's option value is its Session Ref.
-                    const col = s => ({ label: slotLabel(s), ref: s.value });
-                    const picked = Array.from(overlay.querySelectorAll('[data-slot]')).filter(b => b.checked).map(b => slots[+b.dataset.slot]);
-                    const cols = slots.length > 1
-                        ? (picked.length ? picked : [slots[0]]).map(col)
-                        : [{ label: 'Present', ref: slots[0] ? slots[0].value : sessionRef() }];
+                    const chosen = Array.from(overlay.querySelectorAll('[data-slot]')).filter(b => b.checked).map(b => slots[+b.dataset.slot]);
+                    const picked = chosen.length ? chosen : slots.slice(0, 1);
                     closeModal();
-                    printSheet(next, cols, roster);
+                    printSheet(next, picked, roster);
                 });
                 overlay.querySelector('[data-act="print"]').focus();
             }
@@ -15727,6 +15805,7 @@ function renderAttendancePlanner(S, api, host) {
                     if (act === 'none')   setAll(() => false);
                     if (act === 'invert') setAll(r => !r.cb.checked);
                     if (act === 'sheet')  openSheetDialog(rosterFrom(table));
+                    if (act === 'blank-sheet') printBlankSheet(e.target.closest('[data-act]'), rosterFrom(table));
                     const copy = e.target.closest('[data-copy-slot]');
                     if (copy && !copy.disabled) copyFromSlot(copy.dataset.copySlot, copy);
                 });

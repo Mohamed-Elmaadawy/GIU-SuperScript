@@ -5,7 +5,7 @@
 // @icon        data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKgAAACUCAMAAAAwLZJQAAAAzFBMVEX////VlyYkHiAAAADTHyj36ereiIr8/vzIGSPPAAj//fziu4HTlRbnyp3x49HRHSTTkgzw8PD29vbl5eXV1NRjX2HWY2vUr2zMAADn1rfJjguzsrMfGRsaEBPltLX6+u/OmB67u7vIyMgyLC5sbGycnJypqKmLi4tYWFh9e3wWExXkoJ1HRUaUkpM3NjY+Pj4PAAe/AADIDxPYGiAnJicZGhn27df17eDXqE329uBVYF7AZ2jZjGvOWgTNlSzf0J7lw7PWozvqxcLZsl8WTjZKAAAHBElEQVR4nO2Ya3fbNhJAIWG92tJ2YwzApg6kTQDhQagkpXZlR/t03fz//7QDgo71jqQ0Pf2Ae45tipKlq8FgMAAhmUwmk8lkMplMJpPJZDKZTCaTyWQymUwmk8lkMpnMqRTAENi4dXUV710xvB6979n+v3R39IcoMmGrdkyR2bgtLX/Rvfr5uzdvfvnlx7/i9fc3g8EAf27IltNtfOLuetR9A22CEWB84Cp4C2A5IbzBj3B4IRU+kEAuhCk/pXQyHibGE0rnIb4viv7tH39BkujdoONm+/9v75Jo9HcPgghFqONga/4gWWsJ8TUQTtHWU0W4v1RUVRMaJWcxoJNedkFtEn0TRb9bF73bEe0jWmC46qa7haLEVrBUfEoJr+YcP2WJomYmuL1MlFVJbjEtJee6XPaqi4OiuxF9FRVLjbacUBO4m7YOR712Tg8FKeNTnmFMXXGJp17SLoKzININYbrwDieHRG8+HMrRl4gGU8zQ15Z4oZSjllGhjawMCQAhDdW5qOWs86SvGQ6OdjQHRO+OiRJJFZhAqJe8aTl1FvNVEyorRjQV+Ju1/oKIihS9h5lYv8udRfRFooQ5dMRAKs4F4YIzgrNS8PgBmgkMB+Pne7I2xfNBHnrF+aLfgsLP0rwJB19ytqjWRMewCe20VFxJCUpiCYghBQwoaMIkJi4XcdY1Dd4W3VMkPkVA7ot3P/Dj4eF6cbaoMaSssGp6IanVikpVzLx6EAozlXmGOcyYMrXi+ELXclYHYpeYI6HAv5gmVO+xMIsuoGna/F6igYSpAVyLGJYjTVlB5g5w1s9bgaLQzHDSNwZLQ+APOgZLyHbOuSfgxxJFxa4Eo31tP5Ldl4h6MfOsFx0bA3VVKaKUWXIHQjqMd2MARTXFDwaKGVJVwhKlfdgvammfoUdWinPraBdRDFNwhA1jRPG9a7NUxOmifPBgjccSm0RFlEIzJ2CONcuHMBZ7Rcu0BtGDU36/6OALOTrCcVXUdemmqOBkaO0Dx2rH2pKVMKpC4UsojCnwS2HNLTym6NLwAKxuOFWcbTmweZpK433pe0z03fFZX2CHRJQgDNc6ERoPXkHQKk5vKTAo2oO0UDiMeeODxfmFGaAldjJEeWYavx1T0SbR+Z5gHxU91pR8C3TfJ1XHVor9ET0iyuMEwbKJ14wVHNJjJgReClGQQmsADgLXLR4H+YRlSiXRSbWdE18lGnDxEJ7ULnbJfMktvj1W/dpbUXmsnd41WtTChtrLUMaXfhE53iPK14BLRE0SbXGKSo1zOE6phruqIHyKVZ+3MVeXHLs2IHqmw7EoHREFM5x+RnyFaOmoUIIvcFNimCWytY63NjRQzhwTU+yjUZSYpfuyJ1Hj3RwFsxj3TBZfI1oRPw1RFNdMjcGtMSPn1Ri7vIa6z6JiX9XcQUzTrG/XXgym7+9jqHdEb06Y9aHGfZMj+NvQrnyzOW6YbM2At6oMOM8aG4deTYDsX4d26OvocL2OromOd0QfP4seqaPcBNsAMfG9BIulz+Pi7qrG8UrrWnvrucBB1HWMaH2KKKn6lWktT/qh3y/6cdDvmbY39ht1FAsSfo+Y9wBdlcI/8SYrGBSMxZoE2KlA9wp+0j5P0n42vb4awjyy3Cv6fpVCevfPrcp+ZsHHbfUo/Yy2x2Y/kESH64nS1SVRzfaJjq779ul+642+eYfv+/ap3LrP9ouS+37obw+LinKTf/37h03+83aT61O+Hav7LFWnib6M/erjQVFNt/j5x03+++HdBv876cxKpz3TpN5ccQ+Jkqe+I306KMrlFn/f4tf7LU47W+t751m9MfsOio6eb1Lr/HhI9CgX7JNfTYfd6NOhXlM9KEoen/uJ/7ReotZEQaUFOXW/sV/APeYI9/JYqsBz3NMzBd2k5xCnvThZXqUjnck4vNT9QtjYqe6N6Oh+kExvPt2/qI4+vh28RlSlL6yxo+O4UeYkbouJULxQTCmNs6E/k0nf6IyDKF52B47jybIKVsrG1G1X8cc7a338EuT7d32e3qze3t7fP12/XT0PXkV5atuAKx+PRyQHpwng1o4RAdxy3OVJZR0BJwFko/Q5h6UitAuKgz1ZdOeOqDmjdNF2zcqWKPL+enDXR/UuEk928erD81M8HxWNwxnkvONGWy8FY9ZK65RyMgSwTBN85J1srHLOSaf0WWeQQob5ek2ZGytF9w5XfXn5LDoixeP1qjfsFPFqdX17/9inQjxJF9jKYdQgralMq4LExZOnhMQWKh5oxzvnn5QCw3GyTdNYiW3k6zk+/JT47VU0HuY/3l9/Wq2eV6tPOP6PH7drIfZIsOYAB7rj4uIz8iNs5vzo4IM/HX9uu0wmk8lkMplMJpPJZDKZTCaTyWQymUwmk8lkMplMJpPJHOP/Lb7en38r1wIAAAAASUVORK5CYII=
 // @namespace   Cyn0
 // @match       https://portal.giu-uni.de/*
-// @version     4.9
+// @version     4.10
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @grant       none
@@ -40,7 +40,6 @@
         proctorAggregator: false,
         notificationBatch: true,
         manageGroupGrades: false,
-        studentAttendance: false,
         takeAttendance:    true,
     };
 
@@ -54,7 +53,6 @@
         proctorAggregator: 'Proctor Exchange',
         notificationBatch: 'Notification Batch',
         manageGroupGrades: 'Manage Group Grades',
-        studentAttendance: 'Student Attendance',
         takeAttendance:    'Take Attendance',
     };
 
@@ -63,7 +61,6 @@
     // any id missing from FEATURE_CATEGORIES falls into "Other".
     const FEATURE_CATEGORIES = {
         staffAttendance:   'Attendance',
-        studentAttendance: 'Attendance',
         takeAttendance:    'Attendance',
         unenteredSessions: 'Attendance',
         uploadGrades:      'Grades',
@@ -77,7 +74,7 @@
 
     // Modules whose source page is only reachable from the GIU campus network
     // (VPN/on-site) — Control Center shows an info icon warning of this.
-    const NETWORK_ONLY_FEATURES = new Set(['studentAttendance', 'manageGroupGrades', 'unenteredSessions', 'takeAttendance']);
+    const NETWORK_ONLY_FEATURES = new Set(['manageGroupGrades', 'unenteredSessions', 'takeAttendance']);
 
     // First-run Control Center tip (its text depends on this bundle's defaults).
     const CONTROL_CENTER_TIP = 'All SuperScript features are managed from this card. Only the everyday ones start enabled — open it and switch on what you need. Changes apply after a reload.';
@@ -10282,10 +10279,10 @@ function renderAttendancePlanner(S, api, host) {
                     ghost: "Behind by 8 to 12 hours",
                     deduct: "Behind by 3 to 8 hours",
                     close: "Behind by up to 3 hours",
-                    ontime: "100% covered, under +3h extra",
-                    workaholic: "+3 to +8 hours extra",
-                    slave: "+8 to +12 hours extra",
-                    gohome: "+12 hours extra or more"
+                    ontime: "Even, or ahead by up to 3 hours",
+                    workaholic: "Ahead by 3 to 8 hours",
+                    slave: "Ahead by 8 to 12 hours",
+                    gohome: "Ahead by 12 hours or more"
                 };
                 const TIER_QUIPS = {
                     missing: [
@@ -10410,7 +10407,8 @@ function renderAttendancePlanner(S, api, host) {
                         tierBtn.classList.add("gius-att-tier-seen");
                         // A secret rank is listed once it has been reached.
                         const unlocked = homeSecretTiersSeen();
-                        const order = TIER_ORDER.filter(function (t) { return !homeSecretTierCopy(t) || t === tier || unlocked[t]; });
+                        // Listed top-down from the most hours ahead to the most behind.
+                        const order = TIER_ORDER.filter(function (t) { return !homeSecretTierCopy(t) || t === tier || unlocked[t]; }).reverse();
                         homeOpenTierModal(tier, TIER_NAMES, TIER_CONDS, order, TIER_LOOKS);
                     });
                 }
@@ -16638,824 +16636,6 @@ function renderAttendancePlanner(S, api, host) {
 
             checkTableVisibility();
         },
-        studentAttendance(S) {
-            const PAGE_URL       = S.portalUrl('/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx');
-            const CACHE_PREFIX   = 'giuAttendanceGroupV1_';
-            const CACHE_TTL_MS   = Infinity;
-            const MAX_CONCURRENT = 5;
-            const LEVEL_RULES = [
-                { min: 0.25, exclusive: true,  level: 3, badge: 'DROP',        label: 'Will Be Dropped' },
-                { min: 0.20, exclusive: false, level: 2, badge: '2nd Warning', label: 'Second Warning'  },
-                { min: 0.10, exclusive: false, level: 1, badge: '1st Warning', label: 'First Warning'   },
-                { min: 0,    exclusive: false, level: 0, badge: 'OK',          label: 'OK'              },
-            ];
-            let _abortCtrl = null;
-    
-            // Returns [{id, label, date, status, durationHours}] — skips the "[Choose …]" option (value "0")
-            function parseSessionOptions(ddl) {
-                return Array.from(ddl.options)
-                    .filter(opt => opt.value && opt.value !== '0')
-                    .map(opt => {
-                        const text     = opt.textContent;
-                        const dateM    = text.match(/@(\d{4})\.(\d{2})\.(\d{2})/);
-                        const durM     = text.match(/\b(\d+)h\b/i);
-                        const status   = /On Hold/i.test(text)    ? 'onHold'
-                                    : /Compensation/i.test(text) ? 'compensation'
-                                    : 'regular';
-                        return {
-                            id:            opt.value,
-                            label:         text.trim(),
-                            date:          dateM ? `${dateM[1]}-${dateM[2]}-${dateM[3]}` : null,
-                            status,
-                            durationHours: durM ? parseInt(durM[1], 10) : 2,
-                        };
-                    });
-            }
-    
-            // Extracts season+year from first session label for cache key (e.g. "Spring 2026" → "S2026")
-            function extractSeasonYear(sessions) {
-                if (!sessions.length) return 'unknown';
-                const m = sessions[0].label.match(/([A-Za-z]+)\s+(\d{4})/);
-                return m ? `${m[1][0].toUpperCase()}${m[2]}` : 'unknown';
-            }
-    
-            // Captures all hidden ASP.NET form fields from the live DOM
-            function snapshotForm() {
-                const get = id => { const el = document.getElementById(id); return el ? el.value : ''; };
-                return {
-                    __VIEWSTATE:          get('__VIEWSTATE'),
-                    __VIEWSTATEGENERATOR: get('__VIEWSTATEGENERATOR'),
-                    __EVENTVALIDATION:    get('__EVENTVALIDATION'),
-                    __SCROLLPOSITIONX:    '0',
-                    __SCROLLPOSITIONY:    '0',
-                    MainContent_H_AlertText: '',
-                };
-            }
-    
-            // Parses the student attendance DataGrid from a response document.
-            // Returns [{id, name, attended}] — empty array if table not found.
-            function parseStudentTable(doc) {
-                const table = doc.getElementById('MainContent_DG_StudentAttendance');
-                if (!table) return [];
-                return Array.from(table.querySelectorAll('tr'))
-                    .slice(1) // skip header row
-                    .map(tr => {
-                        const tds = tr.querySelectorAll('td');
-                        if (tds.length < 4) return null;
-                        const cb = tds[1].querySelector('input[type="checkbox"]');
-                        return {
-                            id:       tds[2].textContent.trim(),
-                            name:     tds[3].textContent.trim(),
-                            attended: cb ? cb.checked : false,
-                        };
-                    })
-                    .filter(Boolean);
-            }
-    
-            // A session where every student is unchecked most likely has no attendance entered.
-            // Exclude these sessions from absence calculations.
-            function isUnrecorded(students) {
-                return students.length > 0 && students.every(s => !s.attended);
-            }
-    
-            // Returns [{id, name, attended}] on success.
-            // Returns {error: 'expired'} if session has expired.
-            // Returns {error: 'network'} on fetch failure.
-            // Returns {error: 'aborted'} if signal was aborted.
-            async function fetchSessionStudents(sessionId, groupId, formState, signal) {
-                const body = new URLSearchParams({
-                    __EVENTTARGET:                        'ctl00$MainContent$DDL_Sessions',
-                    __EVENTARGUMENT:                      '',
-                    __LASTFOCUS:                          '',
-                    __VIEWSTATE:                          formState.__VIEWSTATE,
-                    __VIEWSTATEGENERATOR:                 formState.__VIEWSTATEGENERATOR,
-                    __EVENTVALIDATION:                    formState.__EVENTVALIDATION,
-                    __SCROLLPOSITIONX:                    formState.__SCROLLPOSITIONX,
-                    __SCROLLPOSITIONY:                    formState.__SCROLLPOSITIONY,
-                    'ctl00$MainContent$H_AlertText':      '',
-                    'ctl00$MainContent$DDL_StudentGroup': groupId,
-                    'ctl00$MainContent$DDL_Sessions':     sessionId,
-                });
-    
-                let resp;
-                try {
-                    resp = await fetch(PAGE_URL, {
-                        method:      'POST',
-                        credentials: 'include',
-                        headers:     { 'Content-Type': 'application/x-www-form-urlencoded' },
-                        body:        body.toString(),
-                        signal,
-                    });
-                } catch (e) {
-                    return { error: e.name === 'AbortError' ? 'aborted' : 'network' };
-                }
-    
-                if (!resp.ok) return { error: 'network' };
-    
-                const html = await resp.text();
-                if (html.includes('Login_m.aspx') || html.includes('id="LoginPage"')) {
-                    return { error: 'expired' };
-                }
-    
-                const doc = new DOMParser().parseFromString(html, 'text/html');
-                return parseStudentTable(doc);
-            }
-    
-            // Runs worker(task, index) for each task with at most maxConcurrent in-flight.
-            // Calls onProgress(completedCount, totalCount) after each task finishes.
-            // Respects signal: stops launching new tasks when signal.aborted is true.
-            // Always resolves (never rejects) — individual failures become null entries.
-            function runPool(tasks, worker, { maxConcurrent = 5, onProgress, signal } = {}) {
-                return new Promise(resolve => {
-                    if (!tasks.length) { resolve([]); return; }
-                    let running = 0, index = 0, done = 0;
-                    const results = new Array(tasks.length);
-    
-                    function next() {
-                        if (signal && signal.aborted) {
-                            if (running === 0) resolve(results);
-                            return;
-                        }
-                        while (running < maxConcurrent && index < tasks.length) {
-                            const i = index++;
-                            running++;
-                            worker(tasks[i], i)
-                                .then(r  => { results[i] = r; })
-                                .catch(() => { results[i] = null; })
-                                .finally(() => {
-                                    running--;
-                                    done++;
-                                    if (onProgress) onProgress(done, tasks.length);
-                                    if (signal && signal.aborted) {
-                                        if (running === 0) resolve(results);
-                                    } else if (index < tasks.length) {
-                                        next();
-                                    } else if (running === 0) {
-                                        resolve(results);
-                                    }
-                                });
-                        }
-                    }
-                    next();
-                });
-            }
-    
-            // Returns absence level 0-3 based on hour-weighted absence rate.
-            // > 25% → 3 (Drop), >= 20% → 2 (Second Warning), >= 10% → 1 (First Warning), else 0.
-            function classifyLevel(rate) {
-                if (rate > 0.25) return 3;
-                if (rate >= 0.20) return 2;
-                if (rate >= 0.10) return 1;
-                return 0;
-            }
-    
-            // Aggregates per-student hour-weighted absence data across all sessions.
-            // Returns {students, atRisk, levelCounts, avgRate, eligibleCount, errorCount, unrecordedCount, total}.
-            function buildReport(sessions, sessionResults) {
-                const map = new Map(); // studentId → {id, name, absentHours, totalHours, sessionCount, appearedIn, absentSessions}
-    
-                const eligibleSessions = sessions.filter((_, i) => Array.isArray(sessionResults[i]));
-                const eligibleCount    = eligibleSessions.length;
-    
-                sessions.forEach((session, i) => {
-                    const result = sessionResults[i];
-                    if (!Array.isArray(result)) return;
-    
-                    result.forEach(student => {
-                        if (!map.has(student.id)) {
-                            map.set(student.id, { id: student.id, name: student.name, absentHours: 0, totalHours: 0, sessionCount: 0, appearedIn: new Set(), absentSessions: [] });
-                        }
-                        const s = map.get(student.id);
-                        s.totalHours += session.durationHours;
-                        s.sessionCount++;
-                        s.appearedIn.add(session.id);
-                        if (!student.attended) {
-                            s.absentHours += session.durationHours;
-                            s.absentSessions.push({ date: session.date, durationHours: session.durationHours, status: session.status });
-                        }
-                    });
-                });
-    
-                const students = Array.from(map.values()).map(s => {
-                    const { appearedIn, ...rest } = s;
-                    const missingSessions = eligibleSessions.filter(sess => !appearedIn.has(sess.id))
-                        .map(sess => ({ id: sess.id, date: sess.date, durationHours: sess.durationHours }));
-                    const partialData = missingSessions.length > 0;
-                    const rate  = rest.totalHours > 0 ? rest.absentHours / rest.totalHours : 0;
-                    const level = classifyLevel(rate);
-                    return { ...rest, missingSessions, absenceRate: rate, level, partialData };
-                }).sort((a, b) => b.absenceRate - a.absenceRate);
-    
-                const levelCounts = { 0: 0, 1: 0, 2: 0, 3: 0 };
-                students.forEach(s => levelCounts[s.level]++);
-    
-                const atRisk   = students.filter(s => s.level >= 2);
-                const avgRate  = students.length > 0
-                    ? students.reduce((acc, s) => acc + s.absenceRate, 0) / students.length
-                    : 0;
-    
-                const errorCount      = sessionResults.filter(r => r === null).length;
-                const unrecordedCount = sessionResults.filter(r => r === 'unrecorded').length;
-    
-                return { students, atRisk, levelCounts, avgRate, eligibleCount, errorCount, unrecordedCount, total: students.length };
-            }
-    
-            function makeCacheKey(groupId, sessions) {
-                return `${CACHE_PREFIX}${groupId}_${extractSeasonYear(sessions)}`;
-            }
-    
-            function makeOverridesKey(groupId, sessions) {
-                return `giuAttOverridesV1_${groupId}_${extractSeasonYear(sessions)}`;
-            }
-    
-            // Loads persisted overrides. Returns empty Map if session count changed (new week added).
-            function loadOverrides(key, sessions) {
-                try {
-                    const raw = localStorage.getItem(key);
-                    if (!raw) return new Map();
-                    const data = JSON.parse(raw);
-                    if (!data || data.sessionCount !== sessions.length) return new Map();
-                    return new Map(Object.entries(data.overrides || {}));
-                } catch { return new Map(); }
-            }
-    
-            function saveOverrides(key, overridesMap, sessions) {
-                try {
-                    localStorage.setItem(key, JSON.stringify({
-                        overrides:    Object.fromEntries(overridesMap),
-                        sessionCount: sessions.length,
-                    }));
-                } catch { /* quota */ }
-            }
-    
-            function clearOverrides(key) {
-                try { localStorage.removeItem(key); } catch { /* ignore */ }
-            }
-    
-            // Returns cached data object if exists and within TTL, otherwise null.
-            function readCache(key) {
-                try {
-                    const raw = localStorage.getItem(key);
-                    if (!raw) return null;
-                    const data = JSON.parse(raw);
-                    if (!data || !data.ts) return null;
-                    if (Date.now() - data.ts > CACHE_TTL_MS) return null;
-                    return data;
-                } catch { return null; }
-            }
-    
-            // Stores payload with a timestamp. Silently ignores quota errors.
-            function writeCache(key, payload) {
-                try {
-                    localStorage.setItem(key, JSON.stringify({ ...payload, ts: Date.now() }));
-                } catch { /* storage quota exceeded */ }
-            }
-    
-            function clearCacheEntry(key) {
-                try { localStorage.removeItem(key); } catch { /* ignore */ }
-            }
-    
-            // Returns human-readable cache age string.
-            function formatCacheAge(ts) {
-                const sec = Math.floor((Date.now() - ts) / 1000);
-                if (sec < 60)   return `${sec}s ago`;
-                if (sec < 3600) return `${Math.floor(sec / 60)}m ago`;
-                return `${Math.floor(sec / 3600)}h ago`;
-            }
-    
-            // "2026-02-14" → "Feb 14"
-            function fmtSessionDate(dateStr) {
-                if (!dateStr) return '?';
-                const d = new Date(dateStr + 'T00:00:00');
-                return isNaN(d) ? dateStr : d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-            }
-    
-            function injectStyles() {
-                if (document.getElementById('gius-att-styles')) return;
-                const style = document.createElement('style');
-                style.id = 'gius-att-styles';
-                style.textContent = `
-        @keyframes giusAttSlideDown {
-            from { opacity: 0; transform: translateY(-14px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        /* ── Panel container ─────────────────────────────────────────── */
-        .gius-att-panel {
-            background: #fff;
-            border: 1px solid #eeeeee;
-            border-radius: 6px;
-            box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
-            margin-bottom: 20px;
-            margin-top: 10px;
-            animation: giusAttSlideDown 0.38s cubic-bezier(0.25,0.46,0.45,0.94);
-            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-            font-size: 13px;
-            overflow: hidden;
-            position: relative;
-        }
-        .gius-att-panel::before {
-            content: "";
-            position: absolute; top: 0; left: 0;
-            width: 100%; height: 3px;
-            background: #ffc107;
-        }
-        /* ── Header bar ──────────────────────────────────────────────── */
-        .gius-att-header {
-            background: #272c33;
-            color: #fff;
-            padding: 10px 14px;
-            border-bottom: 2px solid #ffc107;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            flex-wrap: wrap;
-            cursor: pointer;
-        }
-        .gius-att-title { font-size: 14px; font-weight: 700; flex: 1; }
-        .gius-att-chevron { transition: transform 0.25s ease; margin-right: 5px; font-size: 11px; }
-        .gius-att-panel.gius-att-collapsed .gius-att-body { display: none; }
-        .gius-att-panel.gius-att-collapsed .gius-att-chevron { transform: rotate(-90deg); }
-        .gius-att-meta  { font-size: 12px; color: rgba(255,255,255,0.65); }
-        .gius-att-refresh {
-            height: 26px; padding: 0 10px; border-radius: 6px;
-            font-size: 12px; font-weight: 700; cursor: pointer;
-            border: 1px solid rgba(255,255,255,0.3);
-            background: rgba(255,255,255,0.1);
-            color: #fff;
-            transition: all 0.2s ease;
-            display: inline-flex; align-items: center; gap: 4px;
-            font-family: 'Open Sans', Arial, sans-serif;
-        }
-        .gius-att-refresh:hover { background: rgba(255,255,255,0.22); }
-        /* ── Body ────────────────────────────────────────────────────── */
-        .gius-att-body { padding: 14px 16px; }
-        /* ── Progress bar ────────────────────────────────────────────── */
-        .gius-att-progress { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
-        .gius-att-progress-bar  { flex: 1; height: 8px; background: #e5e7eb; border-radius: 999px; overflow: hidden; }
-        .gius-att-progress-fill { height: 100%; background: #1B59C6; border-radius: 999px; width: 0%; transition: width 0.45s ease; }
-        .gius-att-progress-text { font-size: 12px; color: #6b7280; white-space: nowrap; min-width: 150px; }
-        /* ── Error banner ────────────────────────────────────────────── */
-        .gius-att-error {
-            background: #fef3c7; color: #92400e; border: 1px solid #fde68a;
-            border-radius: 6px; padding: 8px 12px; font-size: 12px; font-weight: 600;
-        }
-        /* ── Stats grid ──────────────────────────────────────────────── */
-        .gius-att-stats { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; }
-        .gius-att-stat  { font-size: 12px; color: #374151; }
-        .gius-att-stat-val { font-weight: 700; }
-        /* ── At-risk table ───────────────────────────────────────────── */
-        .gius-att-atrisk-title { font-size: 12px; font-weight: 700; color: #374151; margin: 6px 0 6px; }
-        .gius-att-atrisk-table { border-collapse: collapse; font-size: 13px; width: 100%; max-width: 680px; }
-        .gius-att-atrisk-table thead th {
-            background: #272c33; color: #fff;
-            padding: 7px 10px; text-align: left;
-            font-size: 12px; font-weight: 700; letter-spacing: 0.4px;
-        }
-        .gius-att-atrisk-table tbody tr { border-bottom: 1px solid #f3f4f6; }
-        .gius-att-atrisk-table tbody tr:nth-child(even) { background: #f9fafb; }
-        .gius-att-atrisk-table tbody tr:hover { background: #eff6ff; }
-        .gius-att-atrisk-table td { padding: 6px 10px; color: #374151; }
-        /* ── Level badge pills ───────────────────────────────────────── */
-        .gius-att-badge {
-            display: inline-flex; align-items: center;
-            border-radius: 999px; padding: 2px 10px;
-            font-size: 11px; font-weight: 700; white-space: nowrap;
-        }
-        .gius-att-badge-red   { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
-        .gius-att-badge-amber { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
-        /* ── Partial-data warning ───────────────────────────────────── */
-        .gius-att-partial {
-            display: inline-flex; align-items: center; gap: 3px;
-            color: #d97706; font-size: 11px; font-weight: 700;
-            cursor: help; margin-left: 4px;
-        }
-        html.gius-dark .gius-att-partial { color: #fbbf24 !important; }
-        /* ── Absent detail row ───────────────────────────────────────── */
-        .gius-att-data-row { cursor: pointer; }
-        .gius-att-detail-row td {
-            font-size: 12px;
-            padding: 6px 10px 6px 20px !important;
-            border-top: 1px solid #a5b4fc !important;
-            border-left: 4px solid #6366f1 !important;
-            background: #eef2ff !important;
-            color: #1e3a8a !important;
-        }
-        .gius-att-detail-label { font-weight: 700; display: block; margin-bottom: 3px; color: #4338ca; }
-        .gius-att-detail-list { margin: 0; padding: 0 0 0 16px; list-style: disc; }
-        .gius-att-detail-list li { margin: 1px 0; }
-        /* ── Missing-session override controls ──────────────────────── */
-        .gius-att-missing-section { margin-top: 8px; border-top: 1px dashed #a5b4fc; padding-top: 6px; }
-        .gius-att-missing-item { display: flex; align-items: center; gap: 10px; padding: 3px 0; }
-        .gius-att-missing-date { font-size: 12px; min-width: 90px; }
-        .gius-att-miss-grp {
-            display: inline-flex; border-radius: 5px; overflow: hidden;
-            border: 1px solid #d1d5db; flex-shrink: 0;
-        }
-        .gius-att-miss-btn {
-            padding: 3px 10px; font-size: 11px; font-weight: 600; cursor: pointer;
-            border: none; border-left: 1px solid #d1d5db;
-            background: transparent; color: #9ca3af;
-            font-family: 'Open Sans', Arial, sans-serif;
-            transition: background 0.15s, color 0.15s; white-space: nowrap;
-        }
-        .gius-att-miss-btn:first-child { border-left: none; }
-        .gius-att-miss-btn:not(.active):hover { background: #f3f4f6; color: #374151; }
-        .gius-att-miss-btn.active[data-val="attended"] { background: #d1fae5; color: #065f46; }
-        .gius-att-miss-btn.active[data-val="absent"]   { background: #fee2e2; color: #991b1b; }
-        .gius-att-miss-btn.active[data-val="onHold"]   { background: #fef3c7; color: #92400e; }
-        .gius-att-adjusted { font-size: 12px; margin-top: 6px; font-weight: 700; color: #4338ca; }
-        html.gius-dark .gius-att-missing-section { border-top-color: #4338ca !important; }
-        html.gius-dark .gius-att-miss-grp { border-color: #45475a !important; }
-        html.gius-dark tr.gius-att-detail-row td button.gius-att-miss-btn { border-left-color: #45475a !important; color: #9399b2 !important; background: transparent !important; }
-        html.gius-dark tr.gius-att-detail-row td button.gius-att-miss-btn:not(.active):hover { background: #313244 !important; color: #cdd6f4 !important; }
-        html.gius-dark tr.gius-att-detail-row td button.gius-att-miss-btn.active[data-val="attended"] { background: #166534 !important; color: #86efac !important; }
-        html.gius-dark tr.gius-att-detail-row td button.gius-att-miss-btn.active[data-val="absent"]   { background: #7f1d1d !important; color: #fca5a5 !important; }
-        html.gius-dark tr.gius-att-detail-row td button.gius-att-miss-btn.active[data-val="onHold"]   { background: #78350f !important; color: #fcd34d !important; }
-        html.gius-dark .gius-att-adjusted { color: #a5b4fc !important; }
-        /* ── Dark mode ───────────────────────────────────────────────── */
-        html.gius-dark .gius-att-panel { background: #181825 !important; border-color: transparent !important; }
-        html.gius-dark .gius-att-header { background: #11111b !important; }
-        html.gius-dark .gius-att-body   { color: #cdd6f4 !important; }
-        html.gius-dark .gius-att-progress-bar  { background: #313244 !important; }
-        html.gius-dark .gius-att-progress-fill { background: #89b4fa !important; }
-        html.gius-dark .gius-att-progress-text { color: #cdd6f4 !important; }
-        html.gius-dark .gius-att-error { background: #45475a !important; color: #f38ba8 !important; border-color: transparent !important; }
-        html.gius-dark .gius-att-stat  { color: #cdd6f4 !important; }
-        html.gius-dark .gius-att-atrisk-title { color: #cdd6f4 !important; }
-        html.gius-dark .gius-att-atrisk-table tbody tr { border-bottom-color: #313244 !important; }
-        html.gius-dark .gius-att-atrisk-table tbody tr:nth-child(even) { background: #181825 !important; }
-        html.gius-dark .gius-att-atrisk-table tbody tr:hover { background: #1e3a6e !important; }
-        html.gius-dark .gius-att-atrisk-table td { color: #cdd6f4 !important; }
-        html.gius-dark .gius-att-badge-red   { background: #3d1218 !important; color: #f38ba8 !important; border-color: #7f1d1d !important; }
-        html.gius-dark .gius-att-badge-amber { background: #2d1f00 !important; color: #fbbf24 !important; border-color: #78350f !important; }
-        html.gius-dark .gius-att-detail-row td { background: #1e2050 !important; color: #e0e7ff !important; border-top-color: #4338ca !important; border-left-color: #818cf8 !important; }
-        html.gius-dark .gius-att-detail-label { color: #a5b4fc !important; }
-        /* ── Idle / fetch state ─────────────────────────────────────────── */
-        .gius-att-idle { display: flex; align-items: center; gap: 10px; padding: 4px 0; }
-        .gius-att-idle-text { font-size: 12px; color: #6b7280; }
-        .gius-att-fetch-btn {
-            height: 28px; padding: 0 14px; border-radius: 6px;
-            font-size: 12px; font-weight: 700; cursor: pointer;
-            border: none; background: #ffc107; color: #272c33;
-            display: inline-flex; align-items: center; gap: 4px;
-        }
-        .gius-att-fetch-btn:hover { background: #e6ac00; }
-        html.gius-dark .gius-att-idle-text { color: #cdd6f4 !important; }
-        `;
-                document.head.appendChild(style);
-            }
-    
-            // Creates and returns the panel DOM element (not yet inserted into the page).
-            function buildPanel(groupLabel) {
-                const panel = document.createElement('div');
-                panel.className = 'gius-att-panel';
-                panel.innerHTML = `
-                <div class="gius-att-header">
-                    <span class="gius-att-title"><i class="fa fa-chevron-down gius-att-chevron"></i>Group Attendance Report — <strong>${S.escapeHtml(groupLabel)}</strong></span>
-                    <span class="gius-att-meta"></span>
-                    <button class="gius-att-refresh" type="button"><i class="fa fa-refresh"></i> Refresh</button>
-                </div>
-                <div class="gius-att-body">
-                    <div class="gius-att-progress" hidden>
-                        <div class="gius-att-progress-bar">
-                            <div class="gius-att-progress-fill"></div>
-                        </div>
-                        <span class="gius-att-progress-text">Preparing…</span>
-                    </div>
-                    <div class="gius-att-idle" hidden>
-                        <span class="gius-att-idle-text">Attendance data not loaded.</span>
-                        <button class="gius-att-fetch-btn" type="button">Fetch</button>
-                    </div>
-                    <div class="gius-att-error" hidden></div>
-                    <div class="gius-att-report" hidden>
-                        <div class="gius-att-stats"></div>
-                        <div class="gius-att-atrisk" hidden>
-                            <div class="gius-att-atrisk-title">AT-RISK STUDENTS (Level 2+)</div>
-                            <table class="gius-att-atrisk-table">
-                                <thead><tr>
-                                    <th>Level</th><th>Name</th><th>ID</th><th>Absent</th><th>%</th>
-                                </tr></thead>
-                                <tbody class="gius-att-atrisk-body"></tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>`;
-                return panel;
-            }
-    
-            function showIdle(panel) {
-                panel.querySelector('.gius-att-idle').hidden     = false;
-                panel.querySelector('.gius-att-progress').hidden = true;
-                panel.querySelector('.gius-att-error').hidden    = true;
-                panel.querySelector('.gius-att-report').hidden   = true;
-                panel.querySelector('.gius-att-meta').textContent = '';
-            }
-    
-            function showProgress(panel, done, total) {
-                panel.querySelector('.gius-att-idle').hidden     = true;
-                panel.querySelector('.gius-att-progress').hidden = false;
-                panel.querySelector('.gius-att-error').hidden    = true;
-                panel.querySelector('.gius-att-report').hidden   = true;
-    
-                const pct  = total > 0 ? Math.round((done / total) * 100) : 0;
-                panel.querySelector('.gius-att-progress-fill').style.width = `${pct}%`;
-                panel.querySelector('.gius-att-progress-text').textContent =
-                    `${done} / ${total} sessions scraped…`;
-                panel.querySelector('.gius-att-meta').textContent = '';
-            }
-    
-            function showError(panel, message) {
-                panel.querySelector('.gius-att-idle').hidden     = true;
-                panel.querySelector('.gius-att-progress').hidden = true;
-                panel.querySelector('.gius-att-error').hidden    = false;
-                panel.querySelector('.gius-att-report').hidden   = true;
-    
-                panel.querySelector('.gius-att-error').textContent = message;
-                panel.querySelector('.gius-att-meta').textContent  = '';
-            }
-    
-            function renderReport(panel, report, { ts, sessions, overridesKey }) {
-                panel.querySelector('.gius-att-idle').hidden     = true;
-                panel.querySelector('.gius-att-progress').hidden = true;
-                panel.querySelector('.gius-att-error').hidden    = true;
-                panel.querySelector('.gius-att-report').hidden   = false;
-    
-                // Header meta line
-                const scrapedNote = report.errorCount > 0
-                    ? `${report.eligibleCount}/${sessions.length} sessions (${report.errorCount} failed)`
-                    : `${sessions.length} sessions`;
-                panel.querySelector('.gius-att-meta').textContent =
-                    `${scrapedNote} · cached ${formatCacheAge(ts)}`;
-    
-                // Stats
-                const pct = n => `${(n * 100).toFixed(1)}%`;
-                panel.querySelector('.gius-att-stats').innerHTML = `
-                <span class="gius-att-stat"><span class="gius-att-stat-val">${report.total}</span> students</span>
-                <span class="gius-att-stat"><span class="gius-att-stat-val">${report.levelCounts[0] + report.levelCounts[1]}</span> OK / Level 1</span>
-                <span class="gius-att-stat"><span class="gius-att-stat-val">${report.levelCounts[2]}</span> Second Warning</span>
-                <span class="gius-att-stat"><span class="gius-att-stat-val">${report.levelCounts[3]}</span> Drop</span>
-                <span class="gius-att-stat">Group avg: <span class="gius-att-stat-val">${pct(report.avgRate)}</span> absent</span>
-                ${report.unrecordedCount > 0 ? `<span class="gius-att-stat" style="opacity:.7">(${report.unrecordedCount} unrecorded sessions excluded)</span>` : ''}
-            `;
-    
-                // At-risk table
-                const atRiskEl = panel.querySelector('.gius-att-atrisk');
-                if (report.atRisk.length === 0) {
-                    atRiskEl.hidden = true;
-                    return;
-                }
-                atRiskEl.hidden = false;
-                const tbody = panel.querySelector('.gius-att-atrisk-body');
-                tbody.innerHTML = report.atRisk.map((s, idx) => {
-                    const rule      = LEVEL_RULES.find(r => r.level === s.level);
-                    const pillCls   = s.level === 3 ? 'gius-att-badge-red' : 'gius-att-badge-amber';
-                    const absentSess = `${s.absentSessions.length}/${s.sessionCount}`;
-                    const partial    = s.partialData
-                        ? `<span class="gius-att-partial" title="Only ${s.sessionCount} of ${report.eligibleCount} sessions found in this group — student may have attended another group's session(s). Actual absence rate could be lower.">⚠ ${s.sessionCount}/${report.eligibleCount}</span>`
-                        : '';
-                    return `<tr class="gius-att-data-row" data-idx="${idx}">
-                    <td><span class="gius-att-badge ${pillCls}">${rule.badge}</span></td>
-                    <td>${S.escapeHtml(s.name)}${partial}</td>
-                    <td>${S.escapeHtml(s.id)}</td>
-                    <td>${absentSess}</td>
-                    <td>${pct(s.absenceRate)}</td>
-                </tr>`;
-                }).join('');
-    
-                // overrides: studentId:sessionId → 'attended' | 'absent' | 'onHold' — persisted in localStorage
-                const overrides = overridesKey ? loadOverrides(overridesKey, sessions) : new Map();
-    
-                function computeAdjusted(student) {
-                    let extraTotal = 0, extraAbsent = 0, extraTotalSess = 0, extraAbsentSess = 0;
-                    (student.missingSessions || []).forEach(sess => {
-                        const state = overrides.get(`${student.id}:${sess.id}`) ?? null;
-                        if (state === null || state === 'onHold') return;
-                        extraTotal += sess.durationHours;
-                        extraTotalSess++;
-                        if (state === 'absent') { extraAbsent += sess.durationHours; extraAbsentSess++; }
-                    });
-                    const adjTotal      = student.totalHours + extraTotal;
-                    const adjAbsent     = student.absentHours + extraAbsent;
-                    const adjRate       = adjTotal > 0 ? adjAbsent / adjTotal : 0;
-                    const adjTotalSess  = student.sessionCount + extraTotalSess;
-                    const adjAbsentSess = student.absentSessions.length + extraAbsentSess;
-                    return { adjTotal, adjAbsent, adjRate, adjLevel: classifyLevel(adjRate), adjTotalSess, adjAbsentSess };
-                }
-    
-                function refreshDataRow(dataTr, student) {
-                    const adj     = computeAdjusted(student);
-                    const rule    = LEVEL_RULES.find(r => r.level === adj.adjLevel);
-                    const pillCls = adj.adjLevel === 3 ? 'gius-att-badge-red' : 'gius-att-badge-amber';
-                    const tds     = dataTr.querySelectorAll('td');
-                    tds[0].innerHTML = `<span class="gius-att-badge ${pillCls}">${rule.badge}</span>`;
-                    tds[3].textContent = `${adj.adjAbsentSess}/${adj.adjTotalSess}`;
-                    tds[4].textContent = pct(adj.adjRate);
-                    const adjEl = dataTr.nextElementSibling && dataTr.nextElementSibling.querySelector('[data-adjusted]');
-                    if (adjEl) adjEl.textContent = `Adjusted: ${adj.adjAbsentSess}/${adj.adjTotalSess} sessions = ${pct(adj.adjRate)} → ${rule.label}`;
-                }
-    
-                function buildDetailHtml(student) {
-                    const items = (student.absentSessions || [])
-                        .map(s => `<li>${fmtSessionDate(s.date)} · ${s.durationHours}h</li>`)
-                        .join('');
-                    const absentHtml = student.absentSessions.length
-                        ? `<span class="gius-att-detail-label">Absent sessions (${student.absentSessions.length}):</span>
-                           <ul class="gius-att-detail-list">${items}</ul>`
-                        : '';
-    
-                    let missingHtml = '';
-                    if (student.partialData && (student.missingSessions || []).length) {
-                        const adj     = computeAdjusted(student);
-                        const rule    = LEVEL_RULES.find(r => r.level === adj.adjLevel);
-                        const isDark  = document.documentElement.classList.contains('gius-dark');
-                        const DARK_ACTIVE = {
-                            attended: 'background:#166534;color:#86efac',
-                            absent:   'background:#7f1d1d;color:#fca5a5',
-                            onHold:   'background:#78350f;color:#fcd34d',
-                        };
-                        const missItems = student.missingSessions.map(sess => {
-                            const state = overrides.get(`${student.id}:${sess.id}`) ?? null;
-                            const btnStyle = val => (state === val && isDark) ? ` style="${DARK_ACTIVE[val]}"` : '';
-                            return `<div class="gius-att-missing-item"
-                                         data-sid="${S.escapeHtml(student.id)}" data-session-id="${sess.id}" data-hours="${sess.durationHours}">
-                                <span class="gius-att-missing-date">${fmtSessionDate(sess.date)} · ${sess.durationHours}h</span>
-                                <div class="gius-att-miss-grp">
-                                    <button type="button" class="gius-att-miss-btn${state === 'attended' ? ' active' : ''}" data-val="attended"${btnStyle('attended')}>✓ Attended</button>
-                                    <button type="button" class="gius-att-miss-btn${state === 'absent'   ? ' active' : ''}" data-val="absent"${btnStyle('absent')}>✗ Absent</button>
-                                    <button type="button" class="gius-att-miss-btn${state === 'onHold'   ? ' active' : ''}" data-val="onHold"${btnStyle('onHold')}>⏸ On Hold</button>
-                                </div>
-                            </div>`;
-                        }).join('');
-                        missingHtml = `<div class="gius-att-missing-section">
-                            <span class="gius-att-detail-label" style="color:#d97706">Missing sessions — mark attendance:</span>
-                            ${missItems}
-                            <div class="gius-att-adjusted" data-adjusted>Adjusted: ${adj.adjAbsentSess}/${adj.adjTotalSess} sessions = ${pct(adj.adjRate)} → ${rule.label}</div>
-                        </div>`;
-                    }
-                    return `<td colspan="5">${absentHtml}${missingHtml}</td>`;
-                }
-    
-                tbody.onclick = e => {
-                    // Toggle button inside missing-session section
-                    const btn = e.target.closest('.gius-att-miss-btn');
-                    if (btn) {
-                        const item      = btn.closest('.gius-att-missing-item');
-                        const studentId = item.dataset.sid;
-                        const sessId    = item.dataset.sessionId;
-                        overrides.set(`${studentId}:${sessId}`, btn.dataset.val);
-                        if (overridesKey) saveOverrides(overridesKey, overrides, sessions);
-                        const isDark = document.documentElement.classList.contains('gius-dark');
-                        const DARK_ACTIVE = { attended:'background:#166534;color:#86efac', absent:'background:#7f1d1d;color:#fca5a5', onHold:'background:#78350f;color:#fcd34d' };
-                        item.querySelectorAll('.gius-att-miss-btn').forEach(b => {
-                            const isActive = b.dataset.val === btn.dataset.val;
-                            b.classList.toggle('active', isActive);
-                            b.style.cssText = (isActive && isDark) ? DARK_ACTIVE[b.dataset.val] : '';
-                        });
-                        const dataTr  = item.closest('tr.gius-att-detail-row').previousElementSibling;
-                        const idx     = parseInt(dataTr.dataset.idx, 10);
-                        refreshDataRow(dataTr, report.atRisk[idx]);
-                        return;
-                    }
-    
-                    // Expand / collapse row
-                    const tr = e.target.closest('tr.gius-att-data-row');
-                    if (!tr) return;
-                    const idx     = parseInt(tr.dataset.idx, 10);
-                    const student = report.atRisk[idx];
-                    if (!student) return;
-                    const existing = tr.nextElementSibling;
-                    if (existing && existing.classList.contains('gius-att-detail-row')) {
-                        existing.remove();
-                        return;
-                    }
-                    const detailTr = document.createElement('tr');
-                    detailTr.className = 'gius-att-detail-row';
-                    detailTr.innerHTML = buildDetailHtml(student);
-                    tr.insertAdjacentElement('afterend', detailTr);
-                };
-    
-                // Apply any saved overrides to the already-rendered rows immediately
-                report.atRisk.forEach((student, idx) => {
-                    if (!student.partialData) return;
-                    const hasOverride = (student.missingSessions || []).some(sess =>
-                        overrides.has(`${student.id}:${sess.id}`));
-                    if (!hasOverride) return;
-                    const dataTr = tbody.querySelector(`tr[data-idx="${idx}"]`);
-                    if (dataTr) refreshDataRow(dataTr, student);
-                });
-            }
-    
-            // Finds the best insertion point and inserts panel. Returns panel element or null.
-            function mountPanel(groupLabel) {
-                const studentTable = document.getElementById('MainContent_DG_StudentAttendance');
-                const sessionInfoEl = document.getElementById('MainContent_L_SessionStart');
-    
-                const anchor = studentTable
-                    || sessionInfoEl?.closest('table')?.nextSibling
-                    || null;
-    
-                if (!anchor || !anchor.parentElement) return null;
-    
-                injectStyles();
-                const panel = buildPanel(groupLabel);
-                anchor.parentElement.insertBefore(panel, anchor);
-                Tips.show({ id: 'studentAttendance', el: panel, title: 'Group Attendance Report',
-                    text: 'Scans every session for this group and flags students near the absence limit. Click a student to see their absent sessions.' });
-                return panel;
-            }
-    
-            async function runScrape(signal, panel, sessions, groupId, formState, cacheKey, groupLabel, preloadedSessionId, overridesKey) {
-                const worker = async (session) => {
-                    let result;
-                    if (session.id === preloadedSessionId) {
-                        // This session is already rendered on the page — read DOM directly.
-                        // Re-fetching it would send no-change postback → ASP.NET returns empty table.
-                        result = parseStudentTable(document);
-                    } else {
-                        result = await fetchSessionStudents(session.id, groupId, formState, signal);
-                    }
-                    if (Array.isArray(result)) {
-                        // On Hold / Compensation: portal counts hours in denominator but no absences
-                        if (session.status === 'onHold' || session.status === 'compensation') {
-                            return result.map(s => ({ ...s, attended: true }));
-                        }
-                        return isUnrecorded(result) ? 'unrecorded' : result;
-                    }
-                    if (result && result.error === 'expired') return { error: 'expired' };
-                    return null;
-                };
-    
-                const rawResults = await runPool(sessions, worker, {
-                    maxConcurrent: MAX_CONCURRENT,
-                    signal,
-                    onProgress: (done, total) => {
-                        if (!signal.aborted) showProgress(panel, done, total);
-                    },
-                });
-    
-                if (signal.aborted) return;
-    
-                if (rawResults.some(r => r && r.error === 'expired')) {
-                    showError(panel, 'Session may have expired — please reload the page.');
-                    return;
-                }
-    
-                const report = buildReport(sessions, rawResults);
-                writeCache(cacheKey, { report, sessions, groupLabel });
-                renderReport(panel, report, { ts: Date.now(), sessions, overridesKey });
-            }
-    
-            function init() {
-                const groupDdl   = document.getElementById('MainContent_DDL_StudentGroup');
-                const sessionDdl = document.getElementById('MainContent_DDL_Sessions');
-                if (!groupDdl || !sessionDdl) return;
-    
-                const groupId    = groupDdl.value;
-                const groupLabel = groupDdl.options[groupDdl.selectedIndex]?.textContent?.trim() ?? '';
-                if (!groupId || groupId === '0') return;
-    
-                const sessions = parseSessionOptions(sessionDdl);
-                if (!sessions.length) return;
-    
-                const panel = mountPanel(groupLabel);
-                if (!panel) return;
-    
-                const cacheKey          = makeCacheKey(groupId, sessions);
-                const overridesKey      = makeOverridesKey(groupId, sessions);
-                const formState         = snapshotForm();
-                const selectedSessionId = sessionDdl.value !== '0' ? sessionDdl.value : null;
-    
-                function startScrape() {
-                    if (_abortCtrl) _abortCtrl.abort();
-                    _abortCtrl = new AbortController();
-                    showProgress(panel, 0, sessions.length);
-                    runScrape(_abortCtrl.signal, panel, sessions, groupId, formState, cacheKey, groupLabel, selectedSessionId, overridesKey);
-                }
-    
-                panel.querySelector('.gius-att-header').addEventListener('click', e => {
-                    if (e.target.closest('button, input, a')) return;
-                    panel.classList.toggle('gius-att-collapsed');
-                });
-    
-                panel.querySelector('.gius-att-refresh').addEventListener('click', () => {
-                    clearCacheEntry(cacheKey);
-                    clearOverrides(overridesKey);
-                    startScrape();
-                });
-    
-                panel.querySelector('.gius-att-fetch-btn').addEventListener('click', startScrape);
-    
-                const cached = readCache(cacheKey);
-                if (cached && cached.report && cached.sessions) {
-                    renderReport(panel, cached.report, { ts: cached.ts, sessions: cached.sessions, overridesKey });
-                } else {
-                    showIdle(panel);
-                }
-            }
-    
-            init();
-        },
         takeAttendance(S) {
             // Manage Student Attendances (Cairo …H003.aspx, Berlin …Berlin.aspx):
             // bulk ticking, row-click toggle, unsaved-change tracking and a sticky
@@ -17467,6 +16647,7 @@ function renderAttendancePlanner(S, api, host) {
             const HIDE_FUTURE_KEY = 'giuTakeHideFutureV1';
             const REQUESTS_KEY    = 'giuTakeRequestsV1';   // { [sessionId]: { type, at } }
             const SHEET_KEY       = 'giuTakeSheetV1';      // paper-sheet options
+            const SHEET_ROWS      = 25;                    // paper-sheet rows per page, as on the template
             // Styles and the session picker first: both apply before a session is picked too.
             injectStyles();
             try { sessionPicker(); } catch (e) { S.warn('takeAttendance', 'session picker crashed:', e); }
@@ -17942,14 +17123,18 @@ function renderAttendancePlanner(S, api, host) {
                             if (hideFuture && isFuture(s) && s !== sel) { hidden++; continue; }
                             const day = s.date ? s.date.toDateString() : '';
                             if (day !== lastDay) {
+                                // One section per day: its sticky header is pushed off by the
+                                // next day's instead of sliding over it.
+                                if (lastDay !== null) html.push('</div>');
                                 lastDay = day;
                                 const title = s.date ? dayText(s.date).toUpperCase() : 'OTHER';
-                                html.push(`<div class="gius-take-picker-day${isToday(s) ? ' gius-take-today' : ''}">${S.escapeHtml(title)}${isToday(s) ? ' · TODAY' : ''}</div>`);
+                                html.push(`<div class="gius-take-picker-sec"><div class="gius-take-picker-day${isToday(s) ? ' gius-take-today' : ''}">${S.escapeHtml(title)}${isToday(s) ? ' · TODAY' : ''}</div>`);
                             }
                             const main = S.escapeHtml(s.date ? slotText(s) || s.text : s.text)
                                 + (showCourse && s.course ? `<span class="gius-take-picker-course">${S.escapeHtml(s.course)}</span>` : '');
                             html.push(pickerOption(s.value, s === sel, isToday(s) ? ' gius-take-today' : '', main, pill(s.status, statusCls(s.status))));
                         }
+                        if (lastDay !== null) html.push('</div>');
                         return {
                             html: html.join(''),
                             foot: hidden
@@ -18003,11 +17188,14 @@ function renderAttendancePlanner(S, api, host) {
                             if (q && !g.text.toLowerCase().includes(q)) continue;
                             shown++;
                             if (g.course !== lastCourse) {
+                                // One section per course (see the session list).
+                                if (lastCourse !== null) html.push('</div>');
                                 lastCourse = g.course;
-                                html.push(`<div class="gius-take-picker-day gius-take-picker-coursehead">${S.escapeHtml(g.course || 'Other')}</div>`);
+                                html.push(`<div class="gius-take-picker-sec"><div class="gius-take-picker-day gius-take-picker-coursehead">${S.escapeHtml(g.course || 'Other')}</div>`);
                             }
                             html.push(pickerOption(g.value, g.value === ddl.value, '', S.escapeHtml(g.name), pill(g.type, g.type === 'Lecture' ? 'gius-take-pill-blue' : 'gius-take-pill-grey')));
                         }
+                        if (lastCourse !== null) html.push('</div>');
                         return { html: html.join(''), foot: `${shown} of ${groups.length} groups` };
                     },
                 });
@@ -18214,13 +17402,23 @@ function renderAttendancePlanner(S, api, host) {
             async function fetchRoster() {
                 const ddl = document.getElementById('MainContent_DDL_Sessions');
                 const form = ddl && ddl.form;
-                const cur = ddl && ddl.options[ddl.selectedIndex] ? parseSessionOption(ddl.options[ddl.selectedIndex]) : null;
-                if (!form || !cur) return [];
+                const sel = ddl && ddl.options[ddl.selectedIndex];
+                const cur = sel && sel.value && sel.value !== '0' ? parseSessionOption(sel) : null;
+                if (!form) return [];
+                // No session picked: the chosen group's sessions (the list may hold other
+                // groups' too), matched on its course code and group code.
+                const groupDdl = document.getElementById('MainContent_DDL_StudentGroup');
+                const groupOpt = groupDdl && groupDdl.options[groupDdl.selectedIndex];
+                const groupText = groupOpt && groupOpt.value !== '0' ? groupOpt.textContent.replace(/\s+/g, ' ').trim() : '';
+                const groupCode = groupText.slice(groupText.lastIndexOf(' - ') + 3);
+                const courseCode = (groupText.match(/\b[A-Z]{2,5} ?\d{3}\b/) || [''])[0];
+                const sameGroup = s => (cur ? s.course === cur.course
+                    : !!groupText && s.text.includes(groupCode) && (!courseCode || s.text.includes(courseCode)));
                 const today = new Date(); today.setHours(0, 0, 0, 0);
                 const past = Array.from(ddl.options)
-                    .filter(o => o.value && o.value !== '0' && o.value !== cur.value)
+                    .filter(o => o.value && o.value !== '0' && (!cur || o.value !== cur.value))
                     .map(parseSessionOption)
-                    .filter(s => s.date && s.date < today && s.course === cur.course)
+                    .filter(s => s.date && s.date < today && sameGroup(s))
                     .sort((a, b) => b.date - a.date)
                     .slice(0, 3);
                 for (const s of past) {
@@ -18271,7 +17469,11 @@ function renderAttendancePlanner(S, api, host) {
                     <div class="gius-take-header"><span class="gius-take-title">Take attendance</span></div>
                     <div class="gius-take-body">
                         <span class="gius-take-session-text">Choose a group, then a session, to see its students.</span>
+                        <div class="gius-take-actions">
+                            <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="blank-sheet">Print blank sheet</button>
+                        </div>
                     </div>`;
+                panel.querySelector('[data-act="blank-sheet"]').addEventListener('click', e => printBlankSheet(e.currentTarget));
                 anchor.before(panel);
                 if (heading) {
                     hide(heading);
@@ -18316,6 +17518,7 @@ function renderAttendancePlanner(S, api, host) {
                         <span class="gius-take-session-text">${startBtn ? 'Press Start Session to record the start time and load the students.' : 'The student list appears once the session starts.'}</span>
                         <div class="gius-take-actions">
                             <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="sheet">Print sheet</button>
+                            <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="blank-sheet">Print blank sheet</button>
                         </div>
                     </div>`;
 
@@ -18333,6 +17536,7 @@ function renderAttendancePlanner(S, api, host) {
                 if (sessionRef()) hide(document.getElementById('MainContent_L_SessionId').closest('p'));
 
                 const sheetBtn = panel.querySelector('[data-act="sheet"]');
+                panel.querySelector('[data-act="blank-sheet"]').addEventListener('click', e => printBlankSheet(e.currentTarget));
                 sheetBtn.addEventListener('click', async () => {
                     sheetBtn.disabled = true;
                     sheetBtn.textContent = 'Loading students…';
@@ -18365,6 +17569,7 @@ function renderAttendancePlanner(S, api, host) {
                         <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="none">Clear all</button>
                         <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="invert">Invert</button>
                         <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="sheet">Print sheet</button>
+                        <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="blank-sheet">Print blank sheet</button>
                         ${copySlots().map(s => `<button type="button" class="gius-take-btn gius-take-btn-outline" data-copy-slot="${S.escapeHtml(s.value)}">Copy ${S.escapeHtml(s.slot ? `Slot ${s.slot}` : 'other slot')}</button>`).join('')}
                     </div>
                     <label class="gius-take-find">Find
@@ -18434,9 +17639,9 @@ function renderAttendancePlanner(S, api, host) {
                 document.getElementById('gius-take-overlay')?.remove();
             }
 
-            // ── Paper sheet: a blank sign-in sheet printed before class ──────────────
+            // ── Paper sheet: the GIU attendance-sheet template, printed before class ─
             function sheetOptions() {
-                const defaults = { sort: 'name', ref: true, signature: true, card: false, notes: true, blank: 3 };
+                const defaults = { sort: 'name', ref: true };
                 try { return { ...defaults, ...JSON.parse(localStorage.getItem(SHEET_KEY) || '{}') }; } catch { return defaults; }
             }
 
@@ -18455,71 +17660,139 @@ function renderAttendancePlanner(S, api, host) {
                 return { cur, slots: slots.length ? slots : [cur] };
             }
 
-            function sheetHtml(o, slotCols, roster) {
-                const groupDdl = document.getElementById('MainContent_DDL_StudentGroup');
-                const groupOpt = groupDdl && groupDdl.options[groupDdl.selectedIndex];
-                const group = groupOpt && groupOpt.value !== '0' ? groupOpt.textContent.trim() : '';
-                const { cur } = sheetSessions();
-                const dateText = cur && cur.date
-                    ? cur.date.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' })
-                    : '';
-                const people = roster.slice();
-                if (o.sort === 'name') people.sort((a, b) => a.name.localeCompare(b.name));
-                if (o.sort === 'id')   people.sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true }));
-                const blanks = Array.from({ length: Math.max(0, Math.min(20, +o.blank || 0)) }, () => ({ id: '', name: '', card: '' }));
-                const esc = S.escapeHtml;
-                const box = '<span class="box"></span>';
-                const head = `<tr><th class="n">#</th><th class="id">ID</th><th>Full Name</th>${o.card ? '<th class="id">Card ID</th>' : ''}`
-                    + slotCols.map(c => `<th class="c">${esc(c.label)}${o.ref && c.ref ? `<div class="ref">${esc(c.ref)}</div>` : ''}</th>`).join('')
-                    + `${o.signature ? '<th class="sig">Signature</th>' : ''}${o.notes ? '<th class="notes">Notes</th>' : ''}</tr>`;
-                const body = people.concat(blanks).map((p, n) => `<tr><td class="n">${n + 1}</td><td>${esc(p.id)}</td><td>${esc(p.name)}</td>`
-                    + `${o.card ? `<td>${esc(p.card)}</td>` : ''}`
-                    + slotCols.map(() => `<td class="c">${box}</td>`).join('')
-                    + `${o.signature ? '<td></td>' : ''}${o.notes ? '<td></td>' : ''}</tr>`).join('');
-                const totals = slotCols.map(c => `<span>${c.label === 'Present' ? 'Present' : `Present ${esc(c.label)}`}: ________</span>`).join('');
-                const refs = slotCols.filter(c => c.ref);
-                const refLine = o.ref && refs.length
-                    ? `<br><b>Session Ref ${refs.map(c => (refs.length > 1 ? `${esc(c.label)} ${esc(c.ref)}` : esc(c.ref))).join(' · ')}</b>`
-                    : '';
-                const slotNames = slotCols.filter(c => c.label !== 'Present').map(c => c.label);
-                const colCount = 3 + (o.card ? 1 : 0) + slotCols.length + (o.signature ? 1 : 0) + (o.notes ? 1 : 0);
-                const spacer = `<tr class="sp"><td colspan="${colCount}"></td></tr>`;
-                return `<!doctype html><html><head><meta charset="utf-8"><title>Attendance sheet</title><style>
-                    /* No page margin: the browser has nowhere to print its own date / title
-                       header and footer. The sheet keeps its own margins instead: side
-                       padding, plus spacer rows that repeat at the top and bottom of every page. */
-                    @page { size: A4 portrait; margin: 0; }
-                    body { margin: 0; padding: 14mm 14mm 10mm; font: 11px Arial, Helvetica, sans-serif; color: #000; }
-                    tr.sp td { border: none; height: 10mm; padding: 0; }
-                    tfoot { display: table-footer-group; }
-                    .top { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #000; padding-bottom: 6px; margin-bottom: 6px; }
-                    h1 { font-size: 16px; margin: 0 0 2px; }
-                    .meta { text-align: right; line-height: 1.6; }
-                    .hint { font-size: 10px; margin: 0 0 6px; }
-                    table { width: 100%; border-collapse: collapse; }
-                    thead { display: table-header-group; }
-                    tr { page-break-inside: avoid; }
-                    th, td { border: 1px solid #555; padding: 0 6px; height: 22px; text-align: left; }
-                    th { background: #e5e7eb; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-                    .n { width: 22px; } .id { width: 70px; } .c { width: 44px; text-align: center; }
-                    .sig { width: 120px; } .notes { width: 80px; }
-                    .ref { font-size: 9px; font-weight: 400; }
-                    .box { display: inline-block; width: 12px; height: 12px; border: 1.5px solid #000; vertical-align: middle; }
-                    .totals { display: flex; gap: 24px; margin-top: 10px; }
-                    .foot { display: flex; justify-content: flex-end; margin-top: 18px; font-size: 10px; border-top: 1px solid #999; padding-top: 6px; }
-                </style></head><body>
-                    <div class="top">
-                        <div><h1>Attendance sheet</h1><div>${esc(group)}</div></div>
-                        <div class="meta">${esc(dateText)}${slotNames.length ? ` · ${esc(slotNames.join(' and '))}` : ''}${refLine}<br>Room: ____________<br>Instructor: ______________________</div>
-                    </div>
-                    <p class="hint">Tick the box for each student present.${o.signature ? ' Students sign in the signature column.' : ''}</p>
-                    <table><thead>${spacer}${head}</thead><tbody>${body}</tbody><tfoot>${spacer}</tfoot></table>
-                    <div class="totals">${totals}</div>
-                    <div class="foot"><span>Instructor signature: ______________________</span></div>
-                </body></html>`;
+            // Lecture / Tutorial / Practical: the portal's own word in the session
+            // name, else the group code's letter (L / T / P).
+            function sessionType(s, group) {
+                const word = ((s && s.text.match(/\b(Lecture|Tutorial|Practical)\b/i)) || [])[1];
+                if (word) return word[0].toUpperCase() + word.slice(1).toLowerCase();
+                const code = (group.match(/\b([LPT])\d{3}\b/) || [])[1];
+                return { L: 'Lecture', T: 'Tutorial', P: 'Practical' }[code] || '';
             }
 
-            function printSheet(o, slotCols, roster) {
+            // One page per selected slot (each has its own slot number and Ref); a
+            // group longer than the 25 template rows continues on more pages.
+            function sheetHtml(o, picked, roster) {
+                const esc = S.escapeHtml;
+                const groupDdl = document.getElementById('MainContent_DDL_StudentGroup');
+                const groupOpt = groupDdl && groupDdl.options[groupDdl.selectedIndex];
+                // o.template: one page with the course, date, session type and students;
+                // week, slot and Ref are left to fill in by hand.
+                const group = groupOpt && groupOpt.value !== '0' ? groupOpt.textContent.replace(/\s+/g, ' ').trim() : '';
+                const people = roster.slice();
+                if (o.template) picked = [{ text: picked[0] ? picked[0].text : '', date: picked[0] && picked[0].date }];
+                if (o.sort === 'name') people.sort((a, b) => a.name.localeCompare(b.name));
+                if (o.sort === 'id')   people.sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true }));
+                // Full pages only: the empty rows left on the last page are the room for
+                // students not on the list (never a whole extra page just for them).
+                const total = Math.max(SHEET_ROWS, Math.ceil(people.length / SHEET_ROWS) * SHEET_ROWS);
+                const rowsAll = Array.from({ length: total }, (_, i) => people[i] || { id: '', name: '' });
+                const field = (label, value) => `<span class="f"><b>${label}</b> <span class="v">${esc(value || '')}</span></span>`;
+                // "W26 ICS 501 Software Project I - 5Dsc P001": course (without the term
+                // prefix) and group go in separate fields.
+                const cut = group.lastIndexOf(' - ');
+                const courseName = (cut > 0 ? group.slice(0, cut) : group).replace(/^[A-Z]\d{2}\s+/, '');
+                const groupName = cut > 0 ? group.slice(cut + 3) : '';
+
+                const pages = [];
+                for (const s of picked) {
+                    const type = sessionType(s, group);
+                    const dateText = s.date
+                        ? s.date.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
+                        : '';
+                    const types = ['Lecture', 'Tutorial', 'Practical']
+                        .map(t => `<span class="t${t === type ? ' on' : ''}">${t}</span>`).join('');
+                    for (let start = 0; start < rowsAll.length; start += SHEET_ROWS) {
+                        const body = rowsAll.slice(start, start + SHEET_ROWS).map((p, i) =>
+                            `<tr><td class="sr">${start + i + 1}</td><td>${esc(p.id)}</td><td class="name${p.name.length > 43 ? ' long' : ''}">${esc(p.name)}</td><td></td><td></td></tr>`).join('');
+                        pages.push(`<div class="page"><div class="frame">
+                            ${o.logo ? `<div class="logo"><img src="${esc(o.logo)}" alt=""></div>` : ''}
+                            <h1>Attendance sheet</h1>
+                            <div class="grid">
+                                ${field('Course Name:', courseName)}${field('Week:', '')}
+                                ${field('Group:', groupName)}${field('Slot No:', s.slot)}
+                                ${field('Date:', dateText)}
+                            </div>
+                            <div class="line"><b>Session type (Circle the correct one):</b>${types}</div>
+                            <div class="line">${field('Session Ref. ID:', o.ref ? s.value : '')}</div>
+                            <table>
+                                <thead><tr><th class="sr">Sr.</th><th class="id">Student ID</th><th>Student Name</th><th class="att">Attendance</th><th class="notes">Notes</th></tr></thead>
+                                <tbody>${body}</tbody>
+                            </table>
+                            <div class="sig"><b>TA Signature:</b></div>
+                        </div></div>`);
+                    }
+                }
+                return `<!doctype html><html><head><meta charset="utf-8"><title>Attendance sheet</title><style>
+                    /* No page margin: the browser has nowhere to print its own date / title
+                       header and footer. Each page draws its own frame instead. */
+                    @page { size: A4 portrait; margin: 0; }
+                    body { margin: 0; font: 12px Verdana, Geneva, Arial, sans-serif; color: #000; }
+                    .page { width: 210mm; height: 297mm; box-sizing: border-box; padding: 10mm; page-break-after: always; break-after: page; }
+                    .page:last-child { page-break-after: auto; break-after: auto; }
+                    /* The frame is a column: header, table, then TA Signature pushed to the
+                       bottom. Fixed row heights keep 25 rows inside one A4 frame. */
+                    .frame { display: flex; flex-direction: column; height: 100%; box-sizing: border-box; border: 1px solid #000; padding: 8mm 14mm 10mm; overflow: hidden; }
+                    /* Logos fit one box, so the tall Berlin logo and the wide Cairo
+                       one print at a similar size (as on the template). */
+                    .logo { height: 15mm; margin-bottom: 1mm; display: flex; align-items: flex-end; }
+                    .logo img { max-height: 15mm; max-width: 42mm; width: auto; height: auto; }
+                    h1 { margin: 0 0 4mm; text-align: center; font-size: 19px; text-decoration: underline; }
+                    .grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 3mm 8mm; margin-bottom: 3mm; }
+                    .line { margin-bottom: 3mm; }
+                    .f { display: flex; gap: 2mm; align-items: baseline; }
+                    .f .v { flex: 1; font-weight: 400; }
+                    .t { display: inline-block; margin-left: 5mm; padding: 0 2mm; font-weight: 700; }
+                    .t.on { border: 1.5px solid #000; border-radius: 50%; padding: 0.5mm 2.5mm; }
+                    table { width: 100%; border-collapse: collapse; margin-top: 2mm; table-layout: fixed; }
+                    th, td { border: 1px solid #000; height: 6.8mm; padding: 0 2mm; text-align: left;
+                             white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+                    td.name { font-size: 10px; }
+                    /* Long names: two smaller lines inside the same fixed-height row. */
+                    td.name.long { font-size: 8.5px; line-height: 1.15; white-space: normal; text-overflow: clip; }
+                    th { font-weight: 700; }
+                    td.sr, th.sr { width: 9mm; font-weight: 700; }
+                    .id { width: 23mm; } .att { width: 22mm; } .notes { width: 20mm; }
+                    .sig { margin-top: auto; padding-top: 6mm; font-family: Calibri, Arial, sans-serif; font-size: 14px; }
+                </style></head><body>${pages.join('')}</body></html>`;
+            }
+
+            // The blank sheet: course, date, session type and students filled in, the
+            // rest left empty. Students come from this page, or else from a past
+            // session of the group.
+            async function printBlankSheet(btn, roster) {
+                const { cur } = sheetSessions();
+                let people = roster;
+                if (!people) {
+                    const old = btn.textContent;
+                    btn.disabled = true;
+                    btn.textContent = 'Loading students…';
+                    people = await fetchRoster();
+                    btn.disabled = false;
+                    btn.textContent = old;
+                }
+                printSheet({ template: true, sort: sheetOptions().sort }, cur ? [cur] : [], people);
+            }
+
+            // The campus logo from the portal's own header: each portal serves its
+            // own GIU_600x159.jpg (Cairo: GIU, Berlin: GIU Berlin). Copied as a data
+            // URL so the print frame never has to fetch it; the plain URL otherwise.
+            function portalLogo() {
+                const img = document.querySelector('img[src*="GIU_600x159"]');
+                if (!img) return '';
+                if (!img.complete || !img.naturalWidth) return img.src;
+                try {
+                    const c = document.createElement('canvas');
+                    c.width = img.naturalWidth;
+                    c.height = img.naturalHeight;
+                    const ctx = c.getContext('2d');
+                    ctx.fillStyle = '#fff';
+                    ctx.fillRect(0, 0, c.width, c.height);
+                    ctx.drawImage(img, 0, 0);
+                    return c.toDataURL('image/jpeg', 0.92);
+                } catch { return img.src; }
+            }
+
+            function printSheet(o, picked, roster) {
                 document.getElementById('gius-take-print')?.remove();
                 const frame = document.createElement('iframe');
                 frame.id = 'gius-take-print';
@@ -18528,7 +17801,7 @@ function renderAttendancePlanner(S, api, host) {
                 frame.addEventListener('load', () => {
                     try { frame.contentWindow.focus(); frame.contentWindow.print(); } catch (e) { S.warn('takeAttendance', 'print failed:', e); }
                 }, { once: true });
-                frame.srcdoc = sheetHtml(o, slotCols, roster);
+                frame.srcdoc = sheetHtml({ ...o, logo: portalLogo() }, picked, roster);
                 document.body.appendChild(frame);
             }
 
@@ -18536,7 +17809,7 @@ function renderAttendancePlanner(S, api, host) {
                 closeModal();
                 const o = sheetOptions();
                 const { slots } = sheetSessions();
-                const slotLabel = s => (s.slot ? `Slot ${s.slot}` : 'Present');
+                const slotLabel = s => (s.slot ? `Slot ${s.slot}` : 'This session');
                 const seg = (name, value, text) =>
                     `<label class="gius-take-radio"><input type="radio" name="gius-sheet-${name}" value="${value}"${String(o[name]) === value ? ' checked' : ''}> ${text}</label>`;
                 const overlay = document.createElement('div');
@@ -18549,25 +17822,17 @@ function renderAttendancePlanner(S, api, host) {
                             <button type="button" class="gius-take-close" aria-label="Close">✕</button>
                         </div>
                         <div class="gius-take-modal-body">
-                            <p class="gius-take-modal-text">A blank sheet to tick in class, then enter here: Select all, untick the absent students, Save.</p>
-                            ${roster.length ? '' : '<div class="gius-take-warn">Could not load the student list — the sheet will have blank rows only.</div>'}
-                            ${slots.length > 1 ? `<div><span class="gius-take-label">Slots</span>
+                            <p class="gius-take-modal-text">The GIU attendance sheet with the course, date, slot, session type and students filled in. Mark attendance on it in class, then enter it here.</p>
+                            ${roster.length ? '' : '<div class="gius-take-warn">Could not load the student list — the sheet will have empty rows only.</div>'}
+                            ${slots.length > 1 ? `<div><span class="gius-take-label">Slots (one page each)</span>
                                 ${slots.map((s, i) => `<label class="gius-take-radio"><input type="checkbox" data-slot="${i}" checked> ${S.escapeHtml(slotLabel(s))}</label>`).join('')}
                             </div>` : ''}
                             <div><span class="gius-take-label">Sort by</span>
                                 ${seg('sort', 'name', 'Name')}${seg('sort', 'id', 'ID')}${seg('sort', 'portal', 'Portal order')}
                             </div>
-                            <div><span class="gius-take-label">Show</span>
-                                <label class="gius-take-radio"><input type="checkbox" data-opt="ref"${o.ref ? ' checked' : ''}> Session Ref</label>
+                            <div><span class="gius-take-label">Fill in</span>
+                                <label class="gius-take-radio"><input type="checkbox" data-opt="ref"${o.ref ? ' checked' : ''}> Session Ref. ID</label>
                             </div>
-                            <div><span class="gius-take-label">Columns</span>
-                                <label class="gius-take-radio"><input type="checkbox" data-opt="signature"${o.signature ? ' checked' : ''}> Student signature</label>
-                                <label class="gius-take-radio"><input type="checkbox" data-opt="card"${o.card ? ' checked' : ''}> Card ID</label>
-                                <label class="gius-take-radio"><input type="checkbox" data-opt="notes"${o.notes ? ' checked' : ''}> Notes</label>
-                            </div>
-                            <label class="gius-take-radio">Blank rows for students not on the list
-                                <input type="number" class="gius-take-input gius-take-num" min="0" max="20" value="${+o.blank || 0}" data-opt="blank">
-                            </label>
                             <div class="gius-take-modal-actions">
                                 <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="cancel">Cancel</button>
                                 <button type="button" class="gius-take-btn gius-take-btn-primary" data-act="print">Print / Save as PDF</button>
@@ -18580,22 +17845,14 @@ function renderAttendancePlanner(S, api, host) {
                     if (e.target === overlay || e.target.closest('.gius-take-close') || act === 'cancel') { closeModal(); return; }
                     if (act !== 'print') return;
                     const next = {
-                        sort:      overlay.querySelector('input[name="gius-sheet-sort"]:checked')?.value || 'name',
-                        ref:       overlay.querySelector('[data-opt="ref"]').checked,
-                        signature: overlay.querySelector('[data-opt="signature"]').checked,
-                        card:      overlay.querySelector('[data-opt="card"]').checked,
-                        notes:     overlay.querySelector('[data-opt="notes"]').checked,
-                        blank:     Math.max(0, Math.min(20, +overlay.querySelector('[data-opt="blank"]').value || 0)),
+                        sort: overlay.querySelector('input[name="gius-sheet-sort"]:checked')?.value || 'name',
+                        ref:  overlay.querySelector('[data-opt="ref"]').checked,
                     };
                     try { localStorage.setItem(SHEET_KEY, JSON.stringify(next)); } catch { /* ignore */ }
-                    // A session's option value is its Session Ref.
-                    const col = s => ({ label: slotLabel(s), ref: s.value });
-                    const picked = Array.from(overlay.querySelectorAll('[data-slot]')).filter(b => b.checked).map(b => slots[+b.dataset.slot]);
-                    const cols = slots.length > 1
-                        ? (picked.length ? picked : [slots[0]]).map(col)
-                        : [{ label: 'Present', ref: slots[0] ? slots[0].value : sessionRef() }];
+                    const chosen = Array.from(overlay.querySelectorAll('[data-slot]')).filter(b => b.checked).map(b => slots[+b.dataset.slot]);
+                    const picked = chosen.length ? chosen : slots.slice(0, 1);
                     closeModal();
-                    printSheet(next, cols, roster);
+                    printSheet(next, picked, roster);
                 });
                 overlay.querySelector('[data-act="print"]').focus();
             }
@@ -18757,6 +18014,7 @@ function renderAttendancePlanner(S, api, host) {
                     if (act === 'none')   setAll(() => false);
                     if (act === 'invert') setAll(r => !r.cb.checked);
                     if (act === 'sheet')  openSheetDialog(rosterFrom(table));
+                    if (act === 'blank-sheet') printBlankSheet(e.target.closest('[data-act]'), rosterFrom(table));
                     const copy = e.target.closest('[data-copy-slot]');
                     if (copy && !copy.disabled) copyFromSlot(copy.dataset.copySlot, copy);
                 });
@@ -18828,7 +18086,6 @@ function renderAttendancePlanner(S, api, host) {
         proctorAggregator: Shared.portalUrl('/GIUb/INTStaff/ProctorExchange_m.aspx'),
         notificationBatch: Shared.portalUrl('/GIUb/INTStaff/NotificationSystem_SendEmail_m.aspx'),
         manageGroupGrades: Shared.portalUrl('/GIUb/INTStaff/ManageGroupGrade_m.aspx'),
-        studentAttendance: Shared.portalUrl('/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx'),
         takeAttendance:    Shared.portalUrl('/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx'),
     };
 
@@ -18844,8 +18101,6 @@ function renderAttendancePlanner(S, api, host) {
         { id: 'proctorAggregator', test: (p) => /\/ProctorExchange_m\.aspx$/i.test(p) },
         { id: 'notificationBatch', test: (p) => /\/NotificationSystem_SendEmail_m\.aspx$/i.test(p) },
         { id: 'manageGroupGrades', test: (p) => /\/ManageGroupGrade_m\.aspx$/i.test(p) },
-        { id: 'studentAttendance', test: (p) => /\/ClassAttendance_ManageStudentAttendancesH003\.aspx/i.test(p) },
-        // After studentAttendance: both mount above the student table; this one sits closest.
         { id: 'takeAttendance',    test: (p) => /\/ClassAttendance_ManageStudentAttendancesH003\.aspx/i.test(p) },
     ];
 

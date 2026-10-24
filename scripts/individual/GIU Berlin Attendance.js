@@ -10,7 +10,7 @@
 // @match       https://apps.guc.edu.eg/external/tempprojects/swiftreports.aspx*
 // @match       https://apps.guc.edu.eg/External/TempProjects/SwiftReports.aspx*
 // @namespace   Cyn0
-// @version     4.9
+// @version     4.10
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js
 // @author      Mo.Elmaadawy
@@ -11085,10 +11085,10 @@ function staffAttendance(S) {
                     ghost: "Behind by 8 to 12 hours",
                     deduct: "Behind by 3 to 8 hours",
                     close: "Behind by up to 3 hours",
-                    ontime: "100% covered, under +3h extra",
-                    workaholic: "+3 to +8 hours extra",
-                    slave: "+8 to +12 hours extra",
-                    gohome: "+12 hours extra or more"
+                    ontime: "Even, or ahead by up to 3 hours",
+                    workaholic: "Ahead by 3 to 8 hours",
+                    slave: "Ahead by 8 to 12 hours",
+                    gohome: "Ahead by 12 hours or more"
                 };
                 const TIER_QUIPS = {
                     missing: [
@@ -11213,7 +11213,8 @@ function staffAttendance(S) {
                         tierBtn.classList.add("gius-att-tier-seen");
                         // A secret rank is listed once it has been reached.
                         const unlocked = homeSecretTiersSeen();
-                        const order = TIER_ORDER.filter(function (t) { return !homeSecretTierCopy(t) || t === tier || unlocked[t]; });
+                        // Listed top-down from the most hours ahead to the most behind.
+                        const order = TIER_ORDER.filter(function (t) { return !homeSecretTierCopy(t) || t === tier || unlocked[t]; }).reverse();
                         homeOpenTierModal(tier, TIER_NAMES, TIER_CONDS, order, TIER_LOOKS);
                     });
                 }
