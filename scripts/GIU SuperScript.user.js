@@ -5,7 +5,7 @@
 // @icon        data:image/png;base64,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
 // @namespace   Cyn0
 // @match       https://portal.giu-uni.de/*
-// @version     4.10
+// @version     4.10.1
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @grant       none
@@ -17392,7 +17392,9 @@ function renderAttendancePlanner(S, api, host) {
                 return Array.from(tbl.querySelectorAll('tr')).slice(1).map(tr => {
                     const tds = tr.querySelectorAll('td');
                     const cell = n => (tds[n] ? tds[n].textContent.replace(/\s+/g, ' ').trim() : '');
-                    return { id: cell(2), name: cell(3), card: cell(4) };
+                    // defaultChecked: the attendance as the portal saved it (not unsaved ticks).
+                    const cb = tr.querySelector('input[type="checkbox"]');
+                    return { id: cell(2), name: cell(3), card: cell(4), attended: !!(cb && cb.defaultChecked) };
                 }).filter(p => p.id || p.name);
             }
 
@@ -17641,7 +17643,7 @@ function renderAttendancePlanner(S, api, host) {
 
             // ── Paper sheet: the GIU attendance-sheet template, printed before class ─
             function sheetOptions() {
-                const defaults = { sort: 'name', ref: true };
+                const defaults = { sort: 'name', ref: true, marks: true };
                 try { return { ...defaults, ...JSON.parse(localStorage.getItem(SHEET_KEY) || '{}') }; } catch { return defaults; }
             }
 
@@ -17671,7 +17673,9 @@ function renderAttendancePlanner(S, api, host) {
 
             // One page per selected slot (each has its own slot number and Ref); a
             // group longer than the 25 template rows continues on more pages.
-            function sheetHtml(o, picked, roster) {
+            // marks: { [sessionId]: Map(studentId → attended) } for sessions whose
+            // attendance is already entered; their sheets get a ✓ per attended student.
+            function sheetHtml(o, picked, roster, marks = {}) {
                 const esc = S.escapeHtml;
                 const groupDdl = document.getElementById('MainContent_DDL_StudentGroup');
                 const groupOpt = groupDdl && groupDdl.options[groupDdl.selectedIndex];
@@ -17696,6 +17700,8 @@ function renderAttendancePlanner(S, api, host) {
                 const pages = [];
                 for (const s of picked) {
                     const type = sessionType(s, group);
+                    const entered = s.value ? marks[s.value] : null;
+                    const mark = p => (entered && p.id && entered.get(p.id) ? '✓' : '');
                     const dateText = s.date
                         ? s.date.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
                         : '';
@@ -17703,7 +17709,7 @@ function renderAttendancePlanner(S, api, host) {
                         .map(t => `<span class="t${t === type ? ' on' : ''}">${t}</span>`).join('');
                     for (let start = 0; start < rowsAll.length; start += SHEET_ROWS) {
                         const body = rowsAll.slice(start, start + SHEET_ROWS).map((p, i) =>
-                            `<tr><td class="sr">${start + i + 1}</td><td>${esc(p.id)}</td><td class="name${p.name.length > 43 ? ' long' : ''}">${esc(p.name)}</td><td></td><td></td></tr>`).join('');
+                            `<tr><td class="sr">${start + i + 1}</td><td>${esc(p.id)}</td><td class="name${p.name.length > 43 ? ' long' : ''}">${esc(p.name)}</td><td class="att">${mark(p)}</td><td></td></tr>`).join('');
                         pages.push(`<div class="page"><div class="frame">
                             ${o.logo ? `<div class="logo"><img src="${esc(o.logo)}" alt=""></div>` : ''}
                             <h1>Attendance sheet</h1>
@@ -17748,6 +17754,7 @@ function renderAttendancePlanner(S, api, host) {
                              white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
                     td.name { font-size: 10px; }
                     /* Long names: two smaller lines inside the same fixed-height row. */
+                    td.att { text-align: center; font-size: 15px; font-weight: 700; font-family: 'Segoe UI Symbol', 'DejaVu Sans', Arial, sans-serif; }
                     td.name.long { font-size: 8.5px; line-height: 1.15; white-space: normal; text-overflow: clip; }
                     th { font-weight: 700; }
                     td.sr, th.sr { width: 9mm; font-weight: 700; }
@@ -17792,7 +17799,28 @@ function renderAttendancePlanner(S, api, host) {
                 } catch { return img.src; }
             }
 
-            function printSheet(o, picked, roster) {
+            // Attendance already entered for the sessions on the sheet: this page's own
+            // session as the portal saved it, and on Berlin the other slots too (read
+            // in the background like Copy Slot; not yet on Cairo). Unentered sessions
+            // (nobody ticked) are left out, so their sheets stay blank.
+            async function sessionMarks(picked) {
+                const ddl = document.getElementById('MainContent_DDL_Sessions');
+                const marks = {};
+                for (const s of picked) {
+                    let tbl = null;
+                    if (table && ddl && s.value === ddl.value) tbl = table;
+                    else if (/ManageStudentAttendancesBerlin\.aspx/i.test(location.pathname)) {
+                        const doc = await fetchSessionDoc(s.value);
+                        tbl = doc && doc.getElementById('MainContent_DG_StudentAttendance');
+                    }
+                    if (!tbl) continue;
+                    const people = rosterFrom(tbl);
+                    if (people.some(p => p.attended)) marks[s.value] = new Map(people.map(p => [p.id, p.attended]));
+                }
+                return marks;
+            }
+
+            function printSheet(o, picked, roster, marks) {
                 document.getElementById('gius-take-print')?.remove();
                 const frame = document.createElement('iframe');
                 frame.id = 'gius-take-print';
@@ -17801,7 +17829,7 @@ function renderAttendancePlanner(S, api, host) {
                 frame.addEventListener('load', () => {
                     try { frame.contentWindow.focus(); frame.contentWindow.print(); } catch (e) { S.warn('takeAttendance', 'print failed:', e); }
                 }, { once: true });
-                frame.srcdoc = sheetHtml({ ...o, logo: portalLogo() }, picked, roster);
+                frame.srcdoc = sheetHtml({ ...o, logo: portalLogo() }, picked, roster, marks);
                 document.body.appendChild(frame);
             }
 
@@ -17832,6 +17860,7 @@ function renderAttendancePlanner(S, api, host) {
                             </div>
                             <div><span class="gius-take-label">Fill in</span>
                                 <label class="gius-take-radio"><input type="checkbox" data-opt="ref"${o.ref ? ' checked' : ''}> Session Ref. ID</label>
+                                <label class="gius-take-radio"><input type="checkbox" data-opt="marks"${o.marks ? ' checked' : ''}> Attendance already entered (✓ for each attended student)</label>
                             </div>
                             <div class="gius-take-modal-actions">
                                 <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="cancel">Cancel</button>
@@ -17840,19 +17869,27 @@ function renderAttendancePlanner(S, api, host) {
                         </div>
                     </div>`;
                 document.body.appendChild(overlay);
-                overlay.addEventListener('click', e => {
+                overlay.addEventListener('click', async e => {
                     const act = e.target.closest('[data-act]')?.dataset.act;
                     if (e.target === overlay || e.target.closest('.gius-take-close') || act === 'cancel') { closeModal(); return; }
                     if (act !== 'print') return;
                     const next = {
-                        sort: overlay.querySelector('input[name="gius-sheet-sort"]:checked')?.value || 'name',
-                        ref:  overlay.querySelector('[data-opt="ref"]').checked,
+                        sort:  overlay.querySelector('input[name="gius-sheet-sort"]:checked')?.value || 'name',
+                        ref:   overlay.querySelector('[data-opt="ref"]').checked,
+                        marks: overlay.querySelector('[data-opt="marks"]').checked,
                     };
                     try { localStorage.setItem(SHEET_KEY, JSON.stringify(next)); } catch { /* ignore */ }
                     const chosen = Array.from(overlay.querySelectorAll('[data-slot]')).filter(b => b.checked).map(b => slots[+b.dataset.slot]);
                     const picked = chosen.length ? chosen : slots.slice(0, 1);
+                    let marks = {};
+                    if (next.marks) {
+                        const btn = overlay.querySelector('[data-act="print"]');
+                        btn.disabled = true;
+                        btn.textContent = 'Reading attendance…';
+                        marks = await sessionMarks(picked);
+                    }
                     closeModal();
-                    printSheet(next, picked, roster);
+                    printSheet(next, picked, roster, marks);
                 });
                 overlay.querySelector('[data-act="print"]').focus();
             }

@@ -10,7 +10,7 @@
 // @match       https://apps.guc.edu.eg/external/tempprojects/swiftreports.aspx*
 // @match       https://apps.guc.edu.eg/External/TempProjects/SwiftReports.aspx*
 // @namespace   Cyn0
-// @version     4.10
+// @version     4.10.1
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Berlin%20SuperScript.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Berlin%20SuperScript.js
 // @author      Mo.Elmaadawy
@@ -15183,7 +15183,9 @@ function renderAttendancePlanner(S, api, host) {
                 return Array.from(tbl.querySelectorAll('tr')).slice(1).map(tr => {
                     const tds = tr.querySelectorAll('td');
                     const cell = n => (tds[n] ? tds[n].textContent.replace(/\s+/g, ' ').trim() : '');
-                    return { id: cell(2), name: cell(3), card: cell(4) };
+                    // defaultChecked: the attendance as the portal saved it (not unsaved ticks).
+                    const cb = tr.querySelector('input[type="checkbox"]');
+                    return { id: cell(2), name: cell(3), card: cell(4), attended: !!(cb && cb.defaultChecked) };
                 }).filter(p => p.id || p.name);
             }
 
@@ -15432,7 +15434,7 @@ function renderAttendancePlanner(S, api, host) {
 
             // ── Paper sheet: the GIU attendance-sheet template, printed before class ─
             function sheetOptions() {
-                const defaults = { sort: 'name', ref: true };
+                const defaults = { sort: 'name', ref: true, marks: true };
                 try { return { ...defaults, ...JSON.parse(localStorage.getItem(SHEET_KEY) || '{}') }; } catch { return defaults; }
             }
 
@@ -15462,7 +15464,9 @@ function renderAttendancePlanner(S, api, host) {
 
             // One page per selected slot (each has its own slot number and Ref); a
             // group longer than the 25 template rows continues on more pages.
-            function sheetHtml(o, picked, roster) {
+            // marks: { [sessionId]: Map(studentId → attended) } for sessions whose
+            // attendance is already entered; their sheets get a ✓ per attended student.
+            function sheetHtml(o, picked, roster, marks = {}) {
                 const esc = S.escapeHtml;
                 const groupDdl = document.getElementById('MainContent_DDL_StudentGroup');
                 const groupOpt = groupDdl && groupDdl.options[groupDdl.selectedIndex];
@@ -15487,6 +15491,8 @@ function renderAttendancePlanner(S, api, host) {
                 const pages = [];
                 for (const s of picked) {
                     const type = sessionType(s, group);
+                    const entered = s.value ? marks[s.value] : null;
+                    const mark = p => (entered && p.id && entered.get(p.id) ? '✓' : '');
                     const dateText = s.date
                         ? s.date.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
                         : '';
@@ -15494,7 +15500,7 @@ function renderAttendancePlanner(S, api, host) {
                         .map(t => `<span class="t${t === type ? ' on' : ''}">${t}</span>`).join('');
                     for (let start = 0; start < rowsAll.length; start += SHEET_ROWS) {
                         const body = rowsAll.slice(start, start + SHEET_ROWS).map((p, i) =>
-                            `<tr><td class="sr">${start + i + 1}</td><td>${esc(p.id)}</td><td class="name${p.name.length > 43 ? ' long' : ''}">${esc(p.name)}</td><td></td><td></td></tr>`).join('');
+                            `<tr><td class="sr">${start + i + 1}</td><td>${esc(p.id)}</td><td class="name${p.name.length > 43 ? ' long' : ''}">${esc(p.name)}</td><td class="att">${mark(p)}</td><td></td></tr>`).join('');
                         pages.push(`<div class="page"><div class="frame">
                             ${o.logo ? `<div class="logo"><img src="${esc(o.logo)}" alt=""></div>` : ''}
                             <h1>Attendance sheet</h1>
@@ -15539,6 +15545,7 @@ function renderAttendancePlanner(S, api, host) {
                              white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
                     td.name { font-size: 10px; }
                     /* Long names: two smaller lines inside the same fixed-height row. */
+                    td.att { text-align: center; font-size: 15px; font-weight: 700; font-family: 'Segoe UI Symbol', 'DejaVu Sans', Arial, sans-serif; }
                     td.name.long { font-size: 8.5px; line-height: 1.15; white-space: normal; text-overflow: clip; }
                     th { font-weight: 700; }
                     td.sr, th.sr { width: 9mm; font-weight: 700; }
@@ -15583,7 +15590,28 @@ function renderAttendancePlanner(S, api, host) {
                 } catch { return img.src; }
             }
 
-            function printSheet(o, picked, roster) {
+            // Attendance already entered for the sessions on the sheet: this page's own
+            // session as the portal saved it, and on Berlin the other slots too (read
+            // in the background like Copy Slot; not yet on Cairo). Unentered sessions
+            // (nobody ticked) are left out, so their sheets stay blank.
+            async function sessionMarks(picked) {
+                const ddl = document.getElementById('MainContent_DDL_Sessions');
+                const marks = {};
+                for (const s of picked) {
+                    let tbl = null;
+                    if (table && ddl && s.value === ddl.value) tbl = table;
+                    else if (/ManageStudentAttendancesBerlin\.aspx/i.test(location.pathname)) {
+                        const doc = await fetchSessionDoc(s.value);
+                        tbl = doc && doc.getElementById('MainContent_DG_StudentAttendance');
+                    }
+                    if (!tbl) continue;
+                    const people = rosterFrom(tbl);
+                    if (people.some(p => p.attended)) marks[s.value] = new Map(people.map(p => [p.id, p.attended]));
+                }
+                return marks;
+            }
+
+            function printSheet(o, picked, roster, marks) {
                 document.getElementById('gius-take-print')?.remove();
                 const frame = document.createElement('iframe');
                 frame.id = 'gius-take-print';
@@ -15592,7 +15620,7 @@ function renderAttendancePlanner(S, api, host) {
                 frame.addEventListener('load', () => {
                     try { frame.contentWindow.focus(); frame.contentWindow.print(); } catch (e) { S.warn('takeAttendance', 'print failed:', e); }
                 }, { once: true });
-                frame.srcdoc = sheetHtml({ ...o, logo: portalLogo() }, picked, roster);
+                frame.srcdoc = sheetHtml({ ...o, logo: portalLogo() }, picked, roster, marks);
                 document.body.appendChild(frame);
             }
 
@@ -15623,6 +15651,7 @@ function renderAttendancePlanner(S, api, host) {
                             </div>
                             <div><span class="gius-take-label">Fill in</span>
                                 <label class="gius-take-radio"><input type="checkbox" data-opt="ref"${o.ref ? ' checked' : ''}> Session Ref. ID</label>
+                                <label class="gius-take-radio"><input type="checkbox" data-opt="marks"${o.marks ? ' checked' : ''}> Attendance already entered (✓ for each attended student)</label>
                             </div>
                             <div class="gius-take-modal-actions">
                                 <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="cancel">Cancel</button>
@@ -15631,19 +15660,27 @@ function renderAttendancePlanner(S, api, host) {
                         </div>
                     </div>`;
                 document.body.appendChild(overlay);
-                overlay.addEventListener('click', e => {
+                overlay.addEventListener('click', async e => {
                     const act = e.target.closest('[data-act]')?.dataset.act;
                     if (e.target === overlay || e.target.closest('.gius-take-close') || act === 'cancel') { closeModal(); return; }
                     if (act !== 'print') return;
                     const next = {
-                        sort: overlay.querySelector('input[name="gius-sheet-sort"]:checked')?.value || 'name',
-                        ref:  overlay.querySelector('[data-opt="ref"]').checked,
+                        sort:  overlay.querySelector('input[name="gius-sheet-sort"]:checked')?.value || 'name',
+                        ref:   overlay.querySelector('[data-opt="ref"]').checked,
+                        marks: overlay.querySelector('[data-opt="marks"]').checked,
                     };
                     try { localStorage.setItem(SHEET_KEY, JSON.stringify(next)); } catch { /* ignore */ }
                     const chosen = Array.from(overlay.querySelectorAll('[data-slot]')).filter(b => b.checked).map(b => slots[+b.dataset.slot]);
                     const picked = chosen.length ? chosen : slots.slice(0, 1);
+                    let marks = {};
+                    if (next.marks) {
+                        const btn = overlay.querySelector('[data-act="print"]');
+                        btn.disabled = true;
+                        btn.textContent = 'Reading attendance…';
+                        marks = await sessionMarks(picked);
+                    }
                     closeModal();
-                    printSheet(next, picked, roster);
+                    printSheet(next, picked, roster, marks);
                 });
                 overlay.querySelector('[data-act="print"]').focus();
             }
