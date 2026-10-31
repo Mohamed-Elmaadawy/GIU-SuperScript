@@ -10,13 +10,15 @@ Works on the **Cairo portal** ([portal.giu-uni.de](https://portal.giu-uni.de)) a
 
 ## Which script do I need?
 
-| You work on… | Install | Optional |
-| --- | --- | --- |
-| **Cairo portal** | [GIU SuperScript](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.user.js) — all Cairo features in one script | [GIU Theme](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Theme.user.js) — light/dark themes |
-| **Berlin portal** | [GIU Berlin SuperScript](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Berlin%20SuperScript.user.js) — the Berlin features in one script | — |
-| **Both** | Both SuperScripts — they run on different portals, so they don't clash | GIU Theme |
+| You work on… | Install |
+| --- | --- |
+| **Cairo portal** | [GIU SuperScript](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.user.js) — all Cairo features in one script |
+| **Berlin portal** | [GIU Berlin SuperScript](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Berlin%20SuperScript.user.js) — the Berlin features in one script |
+| **Both** | Both SuperScripts — they run on different portals, so they don't clash |
 
-Each SuperScript has a **Control Center** card on the portal Home page where you can switch individual features on or off.
+Each SuperScript has a **Control Center** card on the portal Home page where you can switch individual features on or off. Since 5.0 each SuperScript also gives the portal a new look with a **dark mode** — see **Portal look & dark mode** under [Features](#features).
+
+> **Using GIU Theme?** Remove it (Tampermonkey Dashboard → bin icon next to it). Dark mode is now built into the SuperScripts, and GIU Theme no longer gets updates.
 
 > **One rule:** per portal, install the SuperScript **or** the single-feature scripts below — never both. Both would add every widget twice.
 
@@ -38,7 +40,7 @@ Each SuperScript has a **Control Center** card on the portal Home page where you
 | Berlin Session Form Filler | Berlin (Microsoft Form) | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Session%20Form%20Filler.user.js) |
 | CMS Download All | Cairo + Berlin (CMS) | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20CMS%20Download%20All.user.js) |
 
-All scripts share one version number. Current release: **4.10.1**.
+All scripts share one version number. Current release: **5.0**.
 
 </details>
 
@@ -60,7 +62,6 @@ Install it from Tampermonkey instead: Tampermonkey icon → **Dashboard** → **
 | --- | --- |
 | GIU SuperScript | `https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.user.js` |
 | GIU Berlin SuperScript | `https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Berlin%20SuperScript.user.js` |
-| GIU Theme | `https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Theme.user.js` |
 
 Single-feature scripts: same address pattern with `scripts/individual/<file name>.user.js` (spaces written as `%20`).
 
@@ -162,7 +163,7 @@ Nothing is saved, started or ended for you — the buttons only press the portal
 
 **Proctoring Reminder** — 🅒 🅑 · Home page. Your next proctoring/supervising duty with countdown, hall and time; the remaining exams on expand; add any session (or all) to your calendar (`.ics`, Google Calendar) or email yourself a reminder.
 
-**Proctor Schedule Aggregator** — 🅒 · Proctor Exchange page. All proctor assignments across departments in one searchable, filterable table; **Take** a colleague's duty directly (with the portal's confirmation step).
+**Proctor Schedule Aggregator** — 🅒 🅑 · Proctor Exchange page. Off by default; switch it on in the Control Center. All proctor assignments across departments in one searchable, filterable table; **Take** a colleague's duty directly (with the portal's confirmation step).
 
 **Not Entered Sessions** — 🅒 · Home page. Lists Regular sessions 1–21 days old with no attendance entered yet; click one to open it on the attendance page, already selected. Hidden when there's nothing to enter.
 
@@ -197,15 +198,15 @@ Students are matched by the ID in brackets, so row order doesn't matter.
 
 ![Notification Batch Send](screenshots/notification-batch-send.gif)
 
-### Appearance — separate script
+### Portal look & dark mode — 🅒 🅑
 
-**GIU Theme** · every Cairo portal page. A picker on the right edge switches between **Off**, **Light**, **Slate** (dark) and **Plum**. The portal and all SuperScript widgets follow the theme. Install it next to the SuperScript (it's separate on purpose — it must load before the page).
+**Portal look** · every portal page, on by default since 5.0. A cleaner, calmer portal: the sidebar marks the page you're on, Home becomes a row of cards, and tables, fields, drop-downs and buttons share one style. The pages the SuperScript works on (attendance, grades, proctoring, reports and more) get the full look; any other page gets the new header and sidebar and is otherwise left as it is. Nothing about how the portal works changes — it's styling only.
 
-> Replaces the old "GIU Dark Mode" script: remove that one and install GIU Theme once.
+**Dark mode** · the moon button in the portal header, next to your account name (it pulses until you've tried it once). Click it again (sun) for light mode. Your choice is remembered in this browser, and every SuperScript widget, pop-up and report follows it.
 
-| Light | Dark |
-| --- | --- |
-| ![Home light](screenshots/dark-mode-home-light.png) | ![Home dark](screenshots/dark-mode-home-dark.png) |
+Prefer the old portal? Control Center → **Appearance** → switch **Portal look** off (dark mode goes with it).
+
+> Replaces **GIU Theme**: remove that script — it no longer gets updates, and running both mixes two dark modes.
 
 ---
 
@@ -234,6 +235,8 @@ Staff of **GIU and GUC** in Berlin use the Berlin portal, but the attendance tim
 | Attendance numbers are grey | Your day off isn't set yet — click **Set your day off**. |
 | Moving to a new computer/browser | In attendance **Settings**, export your settings (`.json`); on the new browser, import it in the first-run wizard. |
 | Want a feature off | Use the **Control Center** card on the portal Home page. |
+| A portal page looks broken with the new look | Switch **Portal look** off in the Control Center (Appearance) and send me the page's address. |
+| Colours look mixed in dark mode | You still have GIU Theme installed. Remove it. |
 
 **Requirements:** Tampermonkey 4.x or later; Chrome, Edge, Brave or Firefox (the Berlin scripts are tested on Chrome); an active portal login.
 

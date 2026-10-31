@@ -4,7 +4,7 @@
 // @match       https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 // @match       https://portal.giu-uni.de/GIUb/INTStaff/SearchAcademicScheduled_001_m.aspx
 // @namespace   Cyn0
-// @version     4.10.1
+// @version     5.0
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Teaching%20Load.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Teaching%20Load.js
 // @icon        data:image/png;base64,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
@@ -45,6 +45,180 @@ function injectStyle(id, css) {
             return el;
         }
 
+// The one button style every SuperScript feature uses (mock board 1), injected once: `gs-btn` (white),
+// `gs-btn--primary` (yellow, the one main action), `gs-btn--danger` (solid red), `gs-btn--quiet` (blue
+// text), `gs-btn--sm` (compact). Colours come from the 5.0 tokens when the portal look is on, with the
+// light values as fallback, so a token theme (dark) reaches every button. Features keep their own old
+// class names next to it as hooks for their code.
+function uiStyles() {
+            if (document.getElementById('gius-ui-styles')) return;
+            const style = document.createElement('style');
+            style.id = 'gius-ui-styles';
+            const B = ':is(button, a, input).gs-btn.gs-btn';
+            style.textContent = `
+                ${B} {
+                    display: inline-flex; align-items: center; justify-content: center; gap: 6px; box-sizing: border-box;
+                    height: 36px; min-height: 0; padding: 0 14px; border: 1px solid var(--gs-line, #d0d7de); border-radius: 6px;
+                    background: var(--gs-card, #ffffff); color: var(--gs-text, #1f2328); box-shadow: none; transform: none;
+                    font: 600 13px/1 var(--gs-font, system-ui, 'Segoe UI', Roboto, Arial, sans-serif); letter-spacing: normal; text-transform: none;
+                    text-decoration: none; white-space: nowrap; vertical-align: middle; cursor: pointer; opacity: 1; transition: background-color .12s, border-color .12s;
+                }
+                ${B}:hover:not(:disabled) { background: var(--gs-sunk, #f6f8fa); border-color: var(--gs-line-2, #afb8c1); color: var(--gs-text, #1f2328); box-shadow: none; transform: none; }
+                ${B}:focus-visible { outline: 2px solid var(--gs-focus, #0969da); outline-offset: 2px; }
+                ${B}.gs-btn--primary { border-color: var(--gs-accent-line, #d9a400); background: var(--gs-accent, #ffc107); color: var(--gs-accent-fg, #1a1a1a); }
+                ${B}.gs-btn--primary:hover:not(:disabled) { border-color: var(--gs-accent-line, #d9a400); background: var(--gs-accent-h, #ffb300); color: var(--gs-accent-fg, #1a1a1a); }
+                ${B}.gs-btn--danger { border-color: var(--gs-danger, #cf222e); background: var(--gs-danger, #cf222e); color: #ffffff; }
+                ${B}.gs-btn--danger:hover:not(:disabled) { border-color: var(--gs-danger-h, #a40e26); background: var(--gs-danger-h, #a40e26); color: #ffffff; }
+                ${B}.gs-btn--quiet { height: auto; padding: 2px 0; border-color: transparent; background: transparent; color: var(--gs-focus, #0969da); }
+                ${B}.gs-btn--quiet:hover:not(:disabled) { border-color: transparent; background: transparent; color: var(--gs-focus, #0969da); text-decoration: underline; }
+                ${B}.gs-btn--sm { height: 30px; padding: 0 10px; font-size: 12px; }
+                ${B}:disabled { border-color: var(--gs-line, #d0d7de); background: var(--gs-disabled-bg, #eaeef2); color: var(--gs-disabled-fg, #6e7781); cursor: not-allowed; }`;
+            (document.head || document.documentElement).appendChild(style);
+        }
+
+// The one dialog every feature uses, in the 5.0 look (mock: Feedback board): a title, an optional ✕,
+// a body (a line of text, HTML or a node) and a row of actions, the primary one yellow. Escape, the ✕
+// and a click outside dismiss it; Tab stays inside. Options:
+//   title; text (one muted line) or html / node (the body); actions: [{ label, value, primary, danger,
+//   id, disabled }]; wide; closeX (default true); id (layer id); layerClass; dialogClass; focus (a
+//   selector, else the primary action); onAction(value, dlg): return false (or a promise of false) to
+//   keep it open.
+// Returns { el, body, result, setBody(html | node), setActions(list), button(value), close(value) };
+// `result` resolves with the value it closed with (null when dismissed).
+function openDialog(opts) {
+            const o = Object.assign({ actions: [], closeX: true }, opts);
+            uiStyles();
+            if (!document.getElementById('gius-dialog-style')) {
+                const style = document.createElement('style');
+                style.id = 'gius-dialog-style';
+                const font = "system-ui, 'Segoe UI', Roboto, Arial, sans-serif";
+                style.textContent = `
+                    .gius-dialog-layer { position: fixed; inset: 0; z-index: 2147483647; display: flex; align-items: center; justify-content: center; padding: 16px; background: rgba(31, 35, 40, .45); font-family: ${font}; }
+                    .gius-dialog { display: flex; flex-direction: column; box-sizing: border-box; width: 100%; max-width: 420px; max-height: calc(100vh - 32px); background: #ffffff; border-radius: 10px; box-shadow: 0 16px 40px rgba(31, 35, 40, .3); color: #1f2328; text-align: left; font: 400 14px/1.5 ${font}; }
+                    .gius-dialog.gius-dialog--wide { max-width: 560px; }
+                    .gius-dialog-hdr { display: flex; align-items: flex-start; gap: 12px; padding: 18px 20px 0; }
+                    .gius-dialog-title { flex: 1; margin: 0; font: 700 16px/1.35 ${font}; color: #1f2328; }
+                    .gius-dialog-x { flex: none; width: 28px; height: 28px; margin: -4px -6px 0 0; padding: 0; border: 0; border-radius: 6px; background: transparent; color: #59636e; font: 400 15px/28px ${font}; cursor: pointer; }
+                    .gius-dialog-x:hover { background: #f6f8fa; color: #1f2328; }
+                    .gius-dialog-body { display: flex; flex-direction: column; gap: 12px; padding: 8px 20px 4px; overflow-y: auto; overflow-wrap: anywhere; }
+                    .gius-dialog-body:empty { display: none; }
+                    .gius-dialog-text { margin: 0; color: #59636e; font-size: 13px; white-space: pre-line; }
+                    .gius-dialog-field { display: grid; gap: 4px; font: 600 13px ${font}; color: #59636e; }
+                    .gius-dialog-field input { box-sizing: border-box; height: 36px; padding: 0 10px; border: 1px solid #d0d7de; border-radius: 6px; font: 400 14px ${font}; color: #1f2328; }
+                    .gius-dialog-field input:focus { border-color: #0969da; box-shadow: 0 0 0 3px rgba(9, 105, 218, .25); outline: 0; }
+                    .gius-dialog-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 10px; padding: 16px 20px 20px; }
+                    .gius-dialog-actions:empty { display: none; }
+                    .gius-dialog input:is([type="checkbox"], [type="radio"]) { width: 18px; height: 18px; margin: 0; accent-color: #272c33; vertical-align: -4px; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog { background: var(--gs-dk-card, #1e1e2e); color: var(--gs-dk-text, #cdd6f4); }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog-title { color: var(--gs-dk-text, #cdd6f4); }
+                    html:is(.gius-dark, [data-gius-dark]) :is(.gius-dialog-text, .gius-dialog-field, .gius-dialog-x) { color: var(--gs-dk-muted, #a6adc8); }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog-x:hover { background: var(--gs-dk-line, #313244); }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog-field input { background: var(--gs-dk-card, #1e1e2e); border-color: var(--gs-dk-line-2, #45475a); color: var(--gs-dk-text, #cdd6f4); }
+                    /* 5.0 dark mode (portal look): the same parts in its tokens. */
+                    html[data-gius-dark] .gius-dialog { background: var(--gs-card); color: var(--gs-text); }
+                    html[data-gius-dark] .gius-dialog-title { color: var(--gs-text); }
+                    html[data-gius-dark] :is(.gius-dialog-text, .gius-dialog-field, .gius-dialog-x) { color: var(--gs-muted); }
+                    html[data-gius-dark] .gius-dialog-x:hover { background: var(--gs-sunk); }
+                    html[data-gius-dark] .gius-dialog-field input { background: var(--gs-sunk); border-color: var(--gs-line); color: var(--gs-text); }
+                    html[data-gius-dark] .gius-dialog input:is([type="checkbox"], [type="radio"]) { accent-color: var(--gs-accent); }`;
+                (document.head || document.documentElement).appendChild(style);
+            }
+            const layer = document.createElement('div');
+            layer.className = 'gius-dialog-layer' + (o.layerClass ? ' ' + o.layerClass : '');
+            if (o.id) layer.id = o.id;
+            layer.innerHTML = '<div class="gius-dialog" role="dialog" aria-modal="true"><div class="gius-dialog-hdr"><h2 class="gius-dialog-title"></h2></div>'
+                + '<div class="gius-dialog-body"></div><div class="gius-dialog-actions"></div></div>';
+            const box = layer.firstElementChild;
+            if (o.wide) box.classList.add('gius-dialog--wide');
+            if (o.dialogClass) box.className += ' ' + o.dialogClass;
+            const titleEl = box.querySelector('.gius-dialog-title');
+            titleEl.id = 'gius-dialog-title-' + Math.random().toString(36).slice(2, 8);
+            titleEl.textContent = o.title || '';
+            box.setAttribute('aria-labelledby', titleEl.id);
+            if (o.closeX) {
+                const x = document.createElement('button');
+                x.type = 'button';
+                x.className = 'gius-dialog-x';
+                x.setAttribute('aria-label', 'Close');
+                x.textContent = '✕';
+                box.querySelector('.gius-dialog-hdr').appendChild(x);
+            }
+            const body = box.querySelector('.gius-dialog-body');
+            const actionsEl = box.querySelector('.gius-dialog-actions');
+            let settle;
+            const result = new Promise(resolve => { settle = resolve; });
+            const before = document.activeElement;
+            let closed = false;
+            // Only the topmost dialog answers the keyboard.
+            const onKey = e => {
+                const layers = document.querySelectorAll('.gius-dialog-layer');
+                if (layers[layers.length - 1] !== layer) return;
+                if (e.key === 'Escape') { e.preventDefault(); e.stopImmediatePropagation(); dlg.close(null); return; }
+                if (e.key !== 'Tab') return;
+                const stops = Array.from(box.querySelectorAll('button, input, select, textarea, a[href], [tabindex]:not([tabindex="-1"])'))
+                    .filter(el => !el.disabled && el.offsetParent !== null);
+                if (!stops.length) return;
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                const i = stops.indexOf(document.activeElement);
+                stops[(i + (e.shiftKey ? -1 : 1) + stops.length) % stops.length].focus();
+            };
+            const dlg = {
+                el: box,
+                body,
+                result,
+                setBody(content) {
+                    if (content == null) body.textContent = '';
+                    else if (typeof content === 'string') body.innerHTML = content;
+                    else body.replaceChildren(content);
+                },
+                setActions(list) {
+                    actionsEl.textContent = '';
+                    (list || []).forEach(a => {
+                        const b = document.createElement('button');
+                        b.type = 'button';
+                        b.className = 'gius-dialog-btn gs-btn' + (a.primary ? ' gius-dialog-btn--primary gs-btn--primary' : '') + (a.danger ? ' gius-dialog-btn--danger gs-btn--danger' : '');
+                        b.dataset.act = String(a.value);
+                        if (a.id) b.id = a.id;
+                        if (a.disabled) b.disabled = true;
+                        b.textContent = a.label;
+                        b.addEventListener('click', async () => {
+                            const keep = o.onAction ? await o.onAction(a.value, dlg) : undefined;
+                            if (keep !== false) dlg.close(a.value);
+                        });
+                        actionsEl.appendChild(b);
+                    });
+                },
+                button(value) { return actionsEl.querySelector(`[data-act="${String(value)}"]`); },
+                close(value = null) {
+                    if (closed) return;
+                    closed = true;
+                    document.removeEventListener('keydown', onKey, true);
+                    layer.remove();
+                    if (before && typeof before.focus === 'function' && document.contains(before)) before.focus();
+                    settle(value);
+                },
+            };
+            if (o.node) dlg.setBody(o.node);
+            else if (o.html != null) dlg.setBody(o.html);
+            else if (o.text) {
+                const p = document.createElement('p');
+                p.className = 'gius-dialog-text';
+                p.textContent = o.text;
+                body.appendChild(p);
+            }
+            dlg.setActions(o.actions);
+            layer.addEventListener('click', e => {
+                if (e.target === layer || e.target.closest('.gius-dialog-x')) dlg.close(null);
+            });
+            document.addEventListener('keydown', onKey, true);
+            document.body.appendChild(layer);
+            const first = (o.focus && box.querySelector(o.focus)) || actionsEl.querySelector('.gius-dialog-btn--primary:not(:disabled)')
+                || actionsEl.querySelector('.gius-dialog-btn:not(:disabled)');
+            if (first) first.focus();
+            return dlg;
+        }
+
 function warn(feature, ...args) { console.warn(`[GIU-SS:${feature}]`, ...args); }
 
 function portalUrl(path) { return location.origin + path; }
@@ -61,7 +235,7 @@ function isServerErrorPage() {
     // Server error page (e.g. IIS 401): no portal markup — inject nothing.
     if (isServerErrorPage()) return;
 
-    const S = { waitFor, escapeHtml, injectStyle, warn, portalUrl };
+    const S = { waitFor, escapeHtml, injectStyle, warn, portalUrl, openDialog, uiStyles };
 
     S.courses = ({ courses: {
             map: {"AD 601":"Architectural Design Studio VI","AD 602":"Architectural Design Working Drawings II","AD 603":"Conservation and Restoration","AD 604":"Housing","AD 605":"Project Management and Building Economics","AD 1001":"Elective - Theme: Smart Architecture","AD 1090":"Advanced Architectural Design Studio II","AD 1099":"Research proposal and Seminar","AE 101":"Introduction to Academic English","ARCH 102":"Manual Visualization","ARCH 104":"History of Architecture I","ARCH 202":"Design Studio II","ARCH 203":"Descriptive Geometry","ARCH 204":"Architectonics II","ARCH 205":"3D Modeling","ARCH 206":"History II","ARCH 213":"Design Studio IV","ARCH 214":"Theories of Architecture II","ARCH 215":"Ecology and Environmental Design","ARCH 216":"Architectonics IV","ARCH 217":"CAD II","ARCH 218":"Structure II","ARCH 601":"CAD IV","ARCH 609":"Cairo Waterfronts","ARCH 610":"BIM and Beyond : Digital Delivery in Building Technology","ARCH 611":"Pixels & Places: Reimagining Urban Spaces through Gamification and VR","ARCH 613":"Design with Nature: Crafting outdoor Living Spaces","ARCH 700":"Bachelor Thesis","ARCH 802":"Professional Practice:Legislations and Contracts","ARCH 803":"Business Ethics and Workplace Readiness","AS 101":"English for Academic Purposes","BINF 401":"Digital Marketing","BINF 402":"Digital Transformation","BINF 601":"IT Project Management","BINF 602":"Business Intelligence and Analytics","BINF 1001":"Advanced Data Management & Mining","BINF 1002":"Digital Innovation and Entrepreneurship","BINF 1003":"Advanced IT Project Management","BINF 1004":"Advanced Research Methodology for BI","BIOM 601":"Ergonomics","BIOT 305":"Statistics","BIOT 601":"Bioinformatics","BIOT 602":"Industrial Biotechnology & Bioprocess Technology","BIOT 603":"Downstream Processing","BIOT 700":"Bachelor Thesis","BIOT 801":"Intellectual Property Management and IP Contract Law","BIOT 1001":"Bioethics and Biotechnology","BIOT 1002":"Biosafety","BIOT 1003":"Vaccine and Sera Process Technology","BIOT 1004":"Nutrigenomics","BIOT 1005":"Systems Biology","BIOT 1006":"Master Thesis Preparatory Courses","BSAD 102":"Microeconomics","BSAD 103":"Marketing","BSAD 105":"Cost Accounting","BSAD 406":"Macroeconomics","BSAD 407":"Principles of Corporate Finance","BSAD 408":"Innovation Management","BSAD 409":"Applied Statistics","BSAD 410":"Managing Organizations","BSAD 501":"Management Accounting","BSAD 503":"Research Methodology","BSAD 601":"Company Taxation","BSAD 602":"Information Management","BSAD 603":"Project management","BSAD 604":"Project management","BSAD 700":"Bachelor Thesis","BSAD 701":"Business Simulation","BSDM 502":"Marketing Analytics","BSDM 601":"Market Research","BSDM 602":"Communication Strategies and Consumer Behavior","BSDM 603":"Product and Distribution Management","BSEN 601":"Managing SMEs","BSEN 602":"Business Management and Entrepreneurship","BSEN 603":"SMEs Production Management and Marketing","BSFA 502":"Capital Markets","BSFA 601":"Financial Markets, Institutions and Investments","BSFA 602":"Financial Analysis and Evaluation","BSFA 603":"Corporate Finance","BSIB 502":"Regional Studies","BSIB 601":"Strategic Management","BSIB 602":"Applied International Sustainability Management","BSIB 603":"International Marketing","BSIN 102":"Programming I for Business Informatics","BSIN 103":"Business Process Management","BSIN 104":"Math II for Business Informatics","BSIN 105":"Programming II for Business Informatics","BSIN 301":"Data Structures & Algorithms","BSSC 601":"Auditing and Accountability","BSSC 602":"Distribution and Transportation Management","BSSC 603":"Production and Supply Chain Management","BTGN 601":"Research Methodology","BUAD 301":"Management Accounting for BI","BUAD 405":"Applied Econometrics","BUAD 406":"Human Resources Management for BI","BUAD 407":"Innovation Management for BI","BUAD 524":"Business Law and Technology Governance","BUAD 618":"Real Estate Finance & Investments","BUAD 619":"Digital Transformation of Real Estate Management","BUAD 620":"Marketing and Sales in Real Estate","BUAD 624":"Financial Derivatives","BUAD 625":"Fixed Income Securities","BUAD 626":"Investment Banking","BUAD 627":"Intermediate Macroeconomics","BUAD 705":"Business Simulation","BUAD 912":"Supply Chain Finance","BUAD 1001":"Advanced Research Methodology","BUAD 1002":"Industry Global Competitiveness","BUAD 1003":"Advanced Sustainability Management","BUAD 1004":"Current Issues in Marketing","BUAD 1005":"Brand Management","BUAD 1006":"Financial Modeling","BUAD 1007":"Digital Accounting","CNET 101":"Computer Networks","CPS 402":"Communication & Presentation Skills (A2)","CSBA 201":"Computer Science II","CSEN 102":"Computer Science I","CSEN 103":"Digital Logic Design","CSEN 104":"Programming I","CSEN 204":"Computer Science II","CSEN 303":"Software Engineering","CSEN 406":"Software  Engineering","CSIS 101":"Introduction to Computer Science I","CSIS 102":"Theoretical Computer Science","CSIS 201":"Programming II","CSMR 101":"Computer Organization","CTRL 101":"Financial Accounting I","DE 101":"German 1","DE 202":"German 2","DE 303":"German 3","DE 404":"German 4","DESN 1001":"General Design Project Review","DESN 1002":"Master Thesis Preparatory Courses","DMES 201":"Digital Media Design Essentials","DMES 202":"Digital Storytelling","DMES 203":"Creative Coding","DMES 204":"Basic Typography and Layout","DMES 206":"Basics of 2D Animation","DRAW 101":"Technical Drawing","DSFD 201":"Jewelry Design Workshop I","DSFD 401":"Jewelry Design Workshop III","DSFD 601":"Jewelry Design Workshop V","DSGN 601":"General Studies: Ethic and Law","DSGN 700":"Bachelor Thesis","DSGN 701":"Design Concept","DSTH 101":"Design Theory I (Art & Design History)","ECON 101":"Introduction to Economics","ECON 201":"Principles of Economics","ELCT 101":"Electrical Engineering I","ELCT 403":"Electric Machines and Drives","ELEC 905":"Advanced Electrical Energy Systems","ELEC 1001":"AI-Based Intelligent Control Systems","ELEC 1002":"Power System Operation and Planning","ELEC 1005":"Computational Intelligence","ENAU 601":"Automation/Control Engineering Project","ENAU 602":"Computer-Controlled Systems","ENAU 603":"Special Electric Machines","ENEE 502":"Power Electronics I","ENEE 504":"Modelling and Control of Renewable Energy Systems","ENEP 601":"Electric Power Systems Project","ENEP 602":"Electric Power Systems II","ENEP 604":"Power Electronics II","ENGN 101":"Sensors and Metrology","ENGN 105":"Mechanics I","ENGN 108":"Electrical Engineering II","ENGN 109":"Engineering Design I","ENGN 112":"Electrical Engineering and Electronics","ENGN 113":"Machining processes","ENGN 401":"Electronics II","ENGN 415":"Microcontroller","ENGN 501":"Control Engineering","ENGN 503":"Electric Power,Machines & Drives","ENGN 601":"Introduction to AI","ENGN 700":"Bachelor Thesis","ENGN 701":"Research Methodology","ENGN 1001":"Smart Sensors and Actuators","ENGN 1099":"Master Thesis Preparatory Project","ENME 405":"Mechanics II","ENME 406":"Mechanics of materials","ENME 407":"Classic Control Engineering","ENME 408":"Control System Lab","ENME 501":"Control Systems for Mechatronics Engineers","ENME 503":"Electric Drives","ENME 506":"Introduction to Computer Networks","ENME 601":"Mechatronics Engineering Project","ENMF 601":"Quality Control","ENMF 602":"Production Operations Management","ENMR 601":"Vehicle Dynamics","ENMR 602":"Signal and Image Processing","ENMR 603":"Vehicle Powertrain","ENMR 604":"Fluid Mechanics and Thermodynamics","ENRB 601":"Industrial Robots","ENRB 602":"Parallel Kinematics & Kinetics","ENRB 603":"Industrial Automation & PLC Programming","ENRB 604":"Facility Design","FAPR 406":"Design Short Term Project I","FASD 405":"Main Collection Project I (Concept, Prototyping)","FASD 407":"Fashion Technology III: CAD/Fashion II, Portfolio, Technical Drawing","FASD 408":"CAD-Pattern I, 3D Prototyping","FASD 601":"Fashion Management and Marketing","FASD 602":"Design Short Term Project II","FASD 603":"Main Collection Project III","FDDS 101":"Design Basics I (Fashion Design)","FDFT 101":"Fashion Technology I","FINA 201":"Financial Accounting II","FJDS 1001":"Design Project- FD","HRMG 101":"Human Resources Management","HUMA 801":"Business Ethics","IA 601":"Interior Architecture Studio VI","IA 602":"Interior Architecture Working Drawings II","IA 603":"Furniture Design","IA 604":"Light Design","IA 605":"Project Management and Interior Design Economics","IA 1001":"Elective - Theme: Smart Interior Architecture","IA 1090":"Advanced Interior Architecture Studio II","IA 1099":"Research proposal and Seminar","ICS 502":"Database Programming","ICS 507":"Digital Forensics","ICS 512":"Human Computer Interaction","ICS 602":"Big Data and NoSQL","ICS 603":"Advanced Machine Learning","ICS 604":"Introduction to Image Processing and Computer Vision","ICS 605":"Network Security","ICS 606":"Business Continuity and Risk Management","ICS 607":"Ethical Hacking and Penetration Testing","ICS 608":"Software Cloud Computing","ICS 609":"Software Mobile Development","ICS 610":"Software Project II","ICS 611":"3D Design","ICS 612":"Mobile Development","ICS 613":"Media Informatics Project","IDDS 101":"Design Basics I (Industrial Design)","IDDS 201":"Design Basics II (Industrial Design)","IDDS 403":"Design Main Project I: Design, Presentation & Documentation","IDDS 405":"Material/Sustainable Manufacturing","IDDS 406":"CAD 3D Modeling","IDDS 601":"Universal Design Thinking and Intercultural Competence","IDDS 602":"Design Short Term Project II","IDDS 603":"Design Main Project III: Business Management","IDES 1001":"Design Project- ID","IDPR 404":"Design Short Term Project I","INCS 101":"Programming III","INCS 102":"Operating Systems","INCS 103":"Databases","INCS 104":"Data Structures & Algorithms","INCS 402":"Analysis & Design of Algorithms","INCS 406":"Distributed &Web-based Systems","INCS 407":"Information Security","INCS 408":"Introduction to Data Science","INCS 409":"Introduction to Media Informatics","INCS 410":"Cloud Computing","INCS 515":"Databases","INCS 614":"Cybersecurity","INCS 615":"Big Data and NoSQL","INCS 616":"Business Continuity and Risk Management","INCS 617":"Software Engineering","INCS 700":"Bachelor Thesis","INCS 902":"Research Project I","INCS 1001":"Seminar - Selected Major-specific Topics","INCS 1002":"Research Project II","INCS 1003":"Analytics in the Cloud","INCS 1004":"Statistical Modeling for Data Science Applications","INCS 1005":"Social-Legal & Ethical issues in IT Security","INCS 1006":"Secure Systems Engineering","INCS 1007":"Software Game Development","INCS 1008":"Software Engineering Studio","INCS 1009":"Advanced Game Development and AI in Gaming","INCS 1010":"Digital Video and Sound Processing","INGN 601":"Research Methodology","LAWS 101":"Introduction to Law","MATH 101":"Mathematics & Statistics I","MATH 102":"Mathematics I for Pharmaceutical Engineering and Technology","MATH 103":"Mathematics I","MATH 104":"Mathematics I for Biotechnology","MATH 106":"Mathematics I for Architecture","MATH 108":"Math I for Business Informatics","MATH 109":"Mathematics I","MATH 203":"Mathematics II","MATH 204":"Mathematics II","MATH 205":"Mathematics II Business & Economics","MATH 302":"Mathematics II","MATH 303":"Math III - Probability & Statistics","MATH 304":"Mathematics III","MATH 401":"Biostatistics","MATH 403":"Mathematics IV","MECH 613":"CAD/CAM/CAE in Mechanical Engineering","MECH 907":"Autonomous Vehicle Systems","MECH 1001":"Automotive Electronics","MECH 1002":"Industrial Robots II","MECH 1003":"Robotics in manufacturing","MECH 1005":"Manufacturing Ergonomics","MGMT 401":"Introduction to Management and Economics","MNGT 101":"Introduction to Management","NETW 401":"Signals and Systems","NETW 402":"Modelling & Simulation of dynamic systems","PHEN 302":"Statistics","PHEN 303":"Fundamentals of Electrical Engineering","PHEN 401":"Fluid Mechanics","PHEN 402":"Chemical Reaction Engineering","PHEN 403":"Introduction to Process Engineering","PHEN 405":"Sensors,Metrology and Instrumentation Systems","PHEN 601":"Pharmaceutical Process Validation","PHEN 602":"Industrial Automation & PLC Programming","PHEN 603":"Water & Air Systems","PHEN 604":"Digitalization in Pharmaceutical Industry","PHEN 605":"Industrial Planning & Project Management","PHEN 606":"Pharmaceutical Processing Technology II","PHEN 608":"Cosmetics Technology","PHEN 700":"Bachelor Thesis","PHEN 1001":"Sustainability and Environmental Impact in the Pharmaceutical Industry","PHEN 1002":"Quality by Design and Advanced Quality Management","PHEN 1007":"Special Topics in Pharmaceutical Engineering II","PHEN 1099":"Master Thesis Preparatory Project","PHGN 601":"Research Methodology","PHTH 102":"Biophysics for Physiotherapy","PHTH 104":"Anatomy I for Physiotherapy","PHTH 105":"Physiology I for Physiotherapy","PHTH 213":"Anatomy II","PHTH 214":"Physiology II","PHTH 217":"Tests & Measurements I","PHTH 218":"Ethics & Law","PHTH 219":"kinesiology","PHTH 221":"First Aid in Hygienic Issue for PT","PHTH 222":"Psychology and Therapeutic Communication","PHTH 401":"Neuroanatomy","PHTH 402":"Neurophysiology","PHTH 403":"Biomechanics II","PHTH 404":"Therapeutic exercise II","PHTH 405":"Electrotherapy II","PHTH 406":"Hydrotherapy","PHTH 408":"Exercise physiology","PHYS 101":"Physics","PHYS 102":"Physics Lab","PTOR 601":"Traumatology","PTOR 602":"Physical Therapy for Traumatology","PTOR 603":"Orthopedic diseases and Surgeries","PTOR 604":"Physical Therapy for Orthopedic diseases and Surgeries","PTOR 605":"Physical Therapy for Sport Injury","PTSR 601":"General Surgery & Oncology","PTSR 602":"Physical Therapy for General Surgery & Oncology","RPW 401":"Research Paper Writing (A2)","SM 101":"Scientific Methods"},
@@ -285,19 +459,19 @@ function teachingLoad(S) {
                     .gius-tl-row + .gius-tl-row{margin-top:6px;}
                     .gius-tl-empty{font-size:13px;opacity:.85;padding:6px 0;}
 
-                    /* Dark mode — reacts to GIU Dark Mode (html.gius-dark, Catppuccin Mocha). */
-                    html.gius-dark .gius-tl-widget{background:#1e1e2e;color:#cdd6f4;box-shadow:0 2px 10px rgba(0,0,0,.45);}
-                    html.gius-dark .gius-tl-today{background:#181825;border-color:#313244;border-left-color:#f9e2af;}
-                    html.gius-dark .gius-tl-today-head{color:#cdd6f4;}
-                    html.gius-dark .gius-tl-card{background:#11111b;box-shadow:none;}
-                    html.gius-dark .gius-tl-slot{color:#f9e2af;background:#2a2410;}
-                    html.gius-dark .gius-tl-tutorial{color:#cdd6f4;}
-                    html.gius-dark .gius-tl-empty{color:#cdd6f4;opacity:1;}
-                    html.gius-dark .gius-tl-loc{color:#f9e2af;}
-                    html.gius-dark .gius-tl-item{background:#181825;}
-                    html.gius-dark .gius-tl-day-head{color:#cdd6f4;}
-                    html.gius-dark .gius-tl-toggle{color:#cdd6f4;}
-                    html.gius-dark .gius-tl-stale{color:#f9e2af;}`;
+                    /* Dark mode — reacts to GIU Dark Mode (html:is(.gius-dark, [data-gius-dark]), Catppuccin Mocha). */
+                    html:is(.gius-dark, [data-gius-dark]) .gius-tl-widget{background:var(--gs-dk-card, #1e1e2e);color:var(--gs-dk-text, #cdd6f4);box-shadow:0 2px 10px rgba(0,0,0,.45);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-tl-today{background:var(--gs-dk-sunk, #181825);border-color:var(--gs-dk-line, #313244);border-left-color:var(--gs-dk-warn, #f9e2af);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-tl-today-head{color:var(--gs-dk-text, #cdd6f4);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-tl-card{background:var(--gs-dk-bg, #11111b);box-shadow:none;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-tl-slot{color:var(--gs-dk-warn, #f9e2af);background:#2a2410;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-tl-tutorial{color:var(--gs-dk-text, #cdd6f4);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-tl-empty{color:var(--gs-dk-text, #cdd6f4);opacity:1;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-tl-loc{color:var(--gs-dk-warn, #f9e2af);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-tl-item{background:var(--gs-dk-sunk, #181825);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-tl-day-head{color:var(--gs-dk-text, #cdd6f4);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-tl-toggle{color:var(--gs-dk-text, #cdd6f4);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-tl-stale{color:var(--gs-dk-warn, #f9e2af);}`;
                 const style = document.createElement('style');
                 style.id = 'gius-tl-style';
                 style.textContent = css;

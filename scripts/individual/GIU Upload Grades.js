@@ -3,7 +3,7 @@
 // @description Upload/download grades per group + batch all groups via fetch chain.
 // @match       https://portal.giu-uni.de/*
 // @namespace   Cyn0
-// @version     4.10.1
+// @version     5.0
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Upload%20Grades.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Upload%20Grades.js
 // @author      Ahmed Sherif, Mo.Elmaadawy
@@ -44,6 +44,180 @@ function injectStyle(id, css) {
             return el;
         }
 
+// The one button style every SuperScript feature uses (mock board 1), injected once: `gs-btn` (white),
+// `gs-btn--primary` (yellow, the one main action), `gs-btn--danger` (solid red), `gs-btn--quiet` (blue
+// text), `gs-btn--sm` (compact). Colours come from the 5.0 tokens when the portal look is on, with the
+// light values as fallback, so a token theme (dark) reaches every button. Features keep their own old
+// class names next to it as hooks for their code.
+function uiStyles() {
+            if (document.getElementById('gius-ui-styles')) return;
+            const style = document.createElement('style');
+            style.id = 'gius-ui-styles';
+            const B = ':is(button, a, input).gs-btn.gs-btn';
+            style.textContent = `
+                ${B} {
+                    display: inline-flex; align-items: center; justify-content: center; gap: 6px; box-sizing: border-box;
+                    height: 36px; min-height: 0; padding: 0 14px; border: 1px solid var(--gs-line, #d0d7de); border-radius: 6px;
+                    background: var(--gs-card, #ffffff); color: var(--gs-text, #1f2328); box-shadow: none; transform: none;
+                    font: 600 13px/1 var(--gs-font, system-ui, 'Segoe UI', Roboto, Arial, sans-serif); letter-spacing: normal; text-transform: none;
+                    text-decoration: none; white-space: nowrap; vertical-align: middle; cursor: pointer; opacity: 1; transition: background-color .12s, border-color .12s;
+                }
+                ${B}:hover:not(:disabled) { background: var(--gs-sunk, #f6f8fa); border-color: var(--gs-line-2, #afb8c1); color: var(--gs-text, #1f2328); box-shadow: none; transform: none; }
+                ${B}:focus-visible { outline: 2px solid var(--gs-focus, #0969da); outline-offset: 2px; }
+                ${B}.gs-btn--primary { border-color: var(--gs-accent-line, #d9a400); background: var(--gs-accent, #ffc107); color: var(--gs-accent-fg, #1a1a1a); }
+                ${B}.gs-btn--primary:hover:not(:disabled) { border-color: var(--gs-accent-line, #d9a400); background: var(--gs-accent-h, #ffb300); color: var(--gs-accent-fg, #1a1a1a); }
+                ${B}.gs-btn--danger { border-color: var(--gs-danger, #cf222e); background: var(--gs-danger, #cf222e); color: #ffffff; }
+                ${B}.gs-btn--danger:hover:not(:disabled) { border-color: var(--gs-danger-h, #a40e26); background: var(--gs-danger-h, #a40e26); color: #ffffff; }
+                ${B}.gs-btn--quiet { height: auto; padding: 2px 0; border-color: transparent; background: transparent; color: var(--gs-focus, #0969da); }
+                ${B}.gs-btn--quiet:hover:not(:disabled) { border-color: transparent; background: transparent; color: var(--gs-focus, #0969da); text-decoration: underline; }
+                ${B}.gs-btn--sm { height: 30px; padding: 0 10px; font-size: 12px; }
+                ${B}:disabled { border-color: var(--gs-line, #d0d7de); background: var(--gs-disabled-bg, #eaeef2); color: var(--gs-disabled-fg, #6e7781); cursor: not-allowed; }`;
+            (document.head || document.documentElement).appendChild(style);
+        }
+
+// The one dialog every feature uses, in the 5.0 look (mock: Feedback board): a title, an optional ✕,
+// a body (a line of text, HTML or a node) and a row of actions, the primary one yellow. Escape, the ✕
+// and a click outside dismiss it; Tab stays inside. Options:
+//   title; text (one muted line) or html / node (the body); actions: [{ label, value, primary, danger,
+//   id, disabled }]; wide; closeX (default true); id (layer id); layerClass; dialogClass; focus (a
+//   selector, else the primary action); onAction(value, dlg): return false (or a promise of false) to
+//   keep it open.
+// Returns { el, body, result, setBody(html | node), setActions(list), button(value), close(value) };
+// `result` resolves with the value it closed with (null when dismissed).
+function openDialog(opts) {
+            const o = Object.assign({ actions: [], closeX: true }, opts);
+            uiStyles();
+            if (!document.getElementById('gius-dialog-style')) {
+                const style = document.createElement('style');
+                style.id = 'gius-dialog-style';
+                const font = "system-ui, 'Segoe UI', Roboto, Arial, sans-serif";
+                style.textContent = `
+                    .gius-dialog-layer { position: fixed; inset: 0; z-index: 2147483647; display: flex; align-items: center; justify-content: center; padding: 16px; background: rgba(31, 35, 40, .45); font-family: ${font}; }
+                    .gius-dialog { display: flex; flex-direction: column; box-sizing: border-box; width: 100%; max-width: 420px; max-height: calc(100vh - 32px); background: #ffffff; border-radius: 10px; box-shadow: 0 16px 40px rgba(31, 35, 40, .3); color: #1f2328; text-align: left; font: 400 14px/1.5 ${font}; }
+                    .gius-dialog.gius-dialog--wide { max-width: 560px; }
+                    .gius-dialog-hdr { display: flex; align-items: flex-start; gap: 12px; padding: 18px 20px 0; }
+                    .gius-dialog-title { flex: 1; margin: 0; font: 700 16px/1.35 ${font}; color: #1f2328; }
+                    .gius-dialog-x { flex: none; width: 28px; height: 28px; margin: -4px -6px 0 0; padding: 0; border: 0; border-radius: 6px; background: transparent; color: #59636e; font: 400 15px/28px ${font}; cursor: pointer; }
+                    .gius-dialog-x:hover { background: #f6f8fa; color: #1f2328; }
+                    .gius-dialog-body { display: flex; flex-direction: column; gap: 12px; padding: 8px 20px 4px; overflow-y: auto; overflow-wrap: anywhere; }
+                    .gius-dialog-body:empty { display: none; }
+                    .gius-dialog-text { margin: 0; color: #59636e; font-size: 13px; white-space: pre-line; }
+                    .gius-dialog-field { display: grid; gap: 4px; font: 600 13px ${font}; color: #59636e; }
+                    .gius-dialog-field input { box-sizing: border-box; height: 36px; padding: 0 10px; border: 1px solid #d0d7de; border-radius: 6px; font: 400 14px ${font}; color: #1f2328; }
+                    .gius-dialog-field input:focus { border-color: #0969da; box-shadow: 0 0 0 3px rgba(9, 105, 218, .25); outline: 0; }
+                    .gius-dialog-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 10px; padding: 16px 20px 20px; }
+                    .gius-dialog-actions:empty { display: none; }
+                    .gius-dialog input:is([type="checkbox"], [type="radio"]) { width: 18px; height: 18px; margin: 0; accent-color: #272c33; vertical-align: -4px; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog { background: var(--gs-dk-card, #1e1e2e); color: var(--gs-dk-text, #cdd6f4); }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog-title { color: var(--gs-dk-text, #cdd6f4); }
+                    html:is(.gius-dark, [data-gius-dark]) :is(.gius-dialog-text, .gius-dialog-field, .gius-dialog-x) { color: var(--gs-dk-muted, #a6adc8); }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog-x:hover { background: var(--gs-dk-line, #313244); }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog-field input { background: var(--gs-dk-card, #1e1e2e); border-color: var(--gs-dk-line-2, #45475a); color: var(--gs-dk-text, #cdd6f4); }
+                    /* 5.0 dark mode (portal look): the same parts in its tokens. */
+                    html[data-gius-dark] .gius-dialog { background: var(--gs-card); color: var(--gs-text); }
+                    html[data-gius-dark] .gius-dialog-title { color: var(--gs-text); }
+                    html[data-gius-dark] :is(.gius-dialog-text, .gius-dialog-field, .gius-dialog-x) { color: var(--gs-muted); }
+                    html[data-gius-dark] .gius-dialog-x:hover { background: var(--gs-sunk); }
+                    html[data-gius-dark] .gius-dialog-field input { background: var(--gs-sunk); border-color: var(--gs-line); color: var(--gs-text); }
+                    html[data-gius-dark] .gius-dialog input:is([type="checkbox"], [type="radio"]) { accent-color: var(--gs-accent); }`;
+                (document.head || document.documentElement).appendChild(style);
+            }
+            const layer = document.createElement('div');
+            layer.className = 'gius-dialog-layer' + (o.layerClass ? ' ' + o.layerClass : '');
+            if (o.id) layer.id = o.id;
+            layer.innerHTML = '<div class="gius-dialog" role="dialog" aria-modal="true"><div class="gius-dialog-hdr"><h2 class="gius-dialog-title"></h2></div>'
+                + '<div class="gius-dialog-body"></div><div class="gius-dialog-actions"></div></div>';
+            const box = layer.firstElementChild;
+            if (o.wide) box.classList.add('gius-dialog--wide');
+            if (o.dialogClass) box.className += ' ' + o.dialogClass;
+            const titleEl = box.querySelector('.gius-dialog-title');
+            titleEl.id = 'gius-dialog-title-' + Math.random().toString(36).slice(2, 8);
+            titleEl.textContent = o.title || '';
+            box.setAttribute('aria-labelledby', titleEl.id);
+            if (o.closeX) {
+                const x = document.createElement('button');
+                x.type = 'button';
+                x.className = 'gius-dialog-x';
+                x.setAttribute('aria-label', 'Close');
+                x.textContent = '✕';
+                box.querySelector('.gius-dialog-hdr').appendChild(x);
+            }
+            const body = box.querySelector('.gius-dialog-body');
+            const actionsEl = box.querySelector('.gius-dialog-actions');
+            let settle;
+            const result = new Promise(resolve => { settle = resolve; });
+            const before = document.activeElement;
+            let closed = false;
+            // Only the topmost dialog answers the keyboard.
+            const onKey = e => {
+                const layers = document.querySelectorAll('.gius-dialog-layer');
+                if (layers[layers.length - 1] !== layer) return;
+                if (e.key === 'Escape') { e.preventDefault(); e.stopImmediatePropagation(); dlg.close(null); return; }
+                if (e.key !== 'Tab') return;
+                const stops = Array.from(box.querySelectorAll('button, input, select, textarea, a[href], [tabindex]:not([tabindex="-1"])'))
+                    .filter(el => !el.disabled && el.offsetParent !== null);
+                if (!stops.length) return;
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                const i = stops.indexOf(document.activeElement);
+                stops[(i + (e.shiftKey ? -1 : 1) + stops.length) % stops.length].focus();
+            };
+            const dlg = {
+                el: box,
+                body,
+                result,
+                setBody(content) {
+                    if (content == null) body.textContent = '';
+                    else if (typeof content === 'string') body.innerHTML = content;
+                    else body.replaceChildren(content);
+                },
+                setActions(list) {
+                    actionsEl.textContent = '';
+                    (list || []).forEach(a => {
+                        const b = document.createElement('button');
+                        b.type = 'button';
+                        b.className = 'gius-dialog-btn gs-btn' + (a.primary ? ' gius-dialog-btn--primary gs-btn--primary' : '') + (a.danger ? ' gius-dialog-btn--danger gs-btn--danger' : '');
+                        b.dataset.act = String(a.value);
+                        if (a.id) b.id = a.id;
+                        if (a.disabled) b.disabled = true;
+                        b.textContent = a.label;
+                        b.addEventListener('click', async () => {
+                            const keep = o.onAction ? await o.onAction(a.value, dlg) : undefined;
+                            if (keep !== false) dlg.close(a.value);
+                        });
+                        actionsEl.appendChild(b);
+                    });
+                },
+                button(value) { return actionsEl.querySelector(`[data-act="${String(value)}"]`); },
+                close(value = null) {
+                    if (closed) return;
+                    closed = true;
+                    document.removeEventListener('keydown', onKey, true);
+                    layer.remove();
+                    if (before && typeof before.focus === 'function' && document.contains(before)) before.focus();
+                    settle(value);
+                },
+            };
+            if (o.node) dlg.setBody(o.node);
+            else if (o.html != null) dlg.setBody(o.html);
+            else if (o.text) {
+                const p = document.createElement('p');
+                p.className = 'gius-dialog-text';
+                p.textContent = o.text;
+                body.appendChild(p);
+            }
+            dlg.setActions(o.actions);
+            layer.addEventListener('click', e => {
+                if (e.target === layer || e.target.closest('.gius-dialog-x')) dlg.close(null);
+            });
+            document.addEventListener('keydown', onKey, true);
+            document.body.appendChild(layer);
+            const first = (o.focus && box.querySelector(o.focus)) || actionsEl.querySelector('.gius-dialog-btn--primary:not(:disabled)')
+                || actionsEl.querySelector('.gius-dialog-btn:not(:disabled)');
+            if (first) first.focus();
+            return dlg;
+        }
+
 function warn(feature, ...args) { console.warn(`[GIU-SS:${feature}]`, ...args); }
 
 function portalUrl(path) { return location.origin + path; }
@@ -60,7 +234,7 @@ function isServerErrorPage() {
     // Server error page (e.g. IIS 401): no portal markup — inject nothing.
     if (isServerErrorPage()) return;
 
-    const S = { waitFor, escapeHtml, injectStyle, warn, portalUrl };
+    const S = { waitFor, escapeHtml, injectStyle, warn, portalUrl, openDialog, uiStyles };
 
 function uploadGrades(S) {
             const SEL = {
@@ -70,12 +244,14 @@ function uploadGrades(S) {
                 eval:    '#MainContent_evalMethIdLst',
                 crntLbl: '#MainContent_crntLbl',
                 saveBtn: '#MainContent_saveBtn',
+                startOver: '#MainContent_strOvrBtn',
                 rows:    '#data tbody tr',
             };
         
             // ── Style injection ──────────────────────────────────────────────────────────
         
             function injectStyles() {
+                S.uiStyles();
                 if (document.getElementById('gius-upload-styles')) return;
                 const style = document.createElement('style');
                 style.id = 'gius-upload-styles';
@@ -157,55 +333,6 @@ function uploadGrades(S) {
                         outline: 2px solid #60a5fa;
                         outline-offset: 1px;
                         border-color: #1B59C6;
-                    }
-                    .giug-btn {
-                        height: 32px;
-                        padding: 0 14px;
-                        border-radius: 6px;
-                        font-size: 13px;
-                        font-weight: 700;
-                        cursor: pointer;
-                        border: 1px solid transparent;
-                        transition: all 0.2s ease;
-                        display: inline-flex;
-                        align-items: center;
-                        gap: 5px;
-                        white-space: nowrap;
-                        font-family: 'Open Sans', Arial, sans-serif;
-                    }
-                    .giug-btn:disabled {
-                        opacity: 0.5;
-                        cursor: not-allowed;
-                        transform: none !important;
-                        box-shadow: none !important;
-                    }
-                    .giug-btn-primary {
-                        background: #1B59C6;
-                        border-color: #1648a8;
-                        color: #fff;
-                    }
-                    .giug-btn-primary:not(:disabled):hover {
-                        background: #1648a8;
-                        transform: translateY(-1px);
-                        box-shadow: 0 3px 10px rgba(27,89,198,0.35);
-                    }
-                    .giug-btn-success {
-                        background: #fff;
-                        border-color: #d1d5db;
-                        color: #374151;
-                    }
-                    .giug-btn-success:not(:disabled):hover {
-                        background: #f9fafb;
-                        border-color: #9ca3af;
-                    }
-                    .giug-btn-outline {
-                        background: #fff;
-                        border-color: #d1d5db;
-                        color: #374151;
-                    }
-                    .giug-btn-outline:not(:disabled):hover {
-                        background: #f9fafb;
-                        border-color: #9ca3af;
                     }
                     .giug-alert {
                         padding: 8px 10px;
@@ -308,6 +435,10 @@ function uploadGrades(S) {
                         font-weight: 700;
                         color: #111827;
                     }
+                    #data input.giug-grade-bad {
+                        border-color: var(--gs-err, #cf222e) !important;
+                        box-shadow: 0 0 0 2px rgba(207, 34, 46, .2) !important;
+                    }
                 `;
                 document.head.appendChild(style);
             }
@@ -318,7 +449,7 @@ function uploadGrades(S) {
                 const b = document.createElement('button');
                 b.type = 'button';
                 b.textContent = text;
-                b.className = `giug-btn giug-btn-${style}`;
+                b.className = `giug-btn giug-btn-${style} gs-btn`;
                 b.disabled = disabled;
                 return b;
             }
@@ -794,7 +925,7 @@ function uploadGrades(S) {
                     fileInput.value = ''; // the same file can be picked again after editing it
                     const parsed = await parseCSV(file);
                     csvMap = parsed.map;
-                    showInfo(card, `CSV loaded — ${Object.keys(csvMap).length} student grade(s) ready.${skippedNote(parsed.skipped)}`);
+                    showInfo(card, `CSV loaded — ${Object.keys(csvMap).length} student grade(s) ready.${skippedNote(parsed.skipped)}`, false);
                     batchUpBtn.disabled = !isValidId(evalPicker.value);
                     const maxGrade = getMaxGrade(evalPicker);
                     const previewStats = computeStats(Object.values(csvMap), maxGrade);
@@ -914,8 +1045,52 @@ function uploadGrades(S) {
                     text: 'Upload grades from a CSV or download the current sheet, with instant grade statistics.' });
             }
         
+            // ── Start Over ───────────────────────────────────────────────────────────
+            // The portal's Start Over posts back with validation on, so a single grade
+            // the validators reject (out of range, not a number) makes it silently do
+            // nothing — and it is the only way back to the filters from the table view.
+            // Reload the page fresh instead, as the sidebar's Manage Uploaded Grades
+            // link does: same result, no validation in the way.
+            function fixStartOver() {
+                const link = document.querySelector(SEL.startOver);
+                if (!link) return;
+                link.addEventListener('click', e => {
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+                    location.href = location.pathname;
+                }, true);
+            }
+
+            // ── Live grade checks ────────────────────────────────────────────────────
+            // The portal checks a grade box only when you leave it, and its maximum
+            // message always reads "Must Be Less Than 20" whatever the element's
+            // maximum (the row's hidden mxPt field). Each box is checked as you type
+            // instead, against its own maximum, showing the portal's own three messages
+            // (Required, Not Valid Number, the maximum, now with the right number), so
+            // what shows is what Save would reject.
+            function liveGradeChecks(table) {
+                table.querySelectorAll('input[type="text"][id*="_grd_"]').forEach(input => {
+                    const near = part => document.getElementById(input.id.replace('_grd_', `_${part}_`));
+                    const max = parseFloat(near('mxPt')?.value);
+                    const required = near('rqrdGrd');
+                    const notNumber = near('rgexGrd');
+                    const tooBig = near('cmprGrdLMxPt');
+                    if (tooBig && Number.isFinite(max)) tooBig.textContent = `Must be at most ${max}`;
+                    input.addEventListener('input', () => {
+                        const v = input.value.trim();
+                        const empty = v === '';
+                        const bad = !empty && !/^((\.[0-9]+)|([0-9]+(\.[0-9]*)?))$/.test(v);
+                        const over = !empty && !bad && Number.isFinite(max) && parseFloat(v) > max;
+                        [[required, empty], [notNumber, bad], [tooBig, over]].forEach(([el, on]) => {
+                            if (el) el.style.visibility = on ? 'visible' : 'hidden';
+                        });
+                        input.classList.toggle('giug-grade-bad', empty || bad || over);
+                    });
+                });
+            }
+
             // ── Entry point ──────────────────────────────────────────────────────────
-        
+
             function init() {
         
                 const groupEl = document.querySelector(SEL.group);
@@ -927,6 +1102,8 @@ function uploadGrades(S) {
                 const table = document.getElementById('data');
                 if (table?.tagName === 'TABLE') {
                     injectPerGroupToolbar(table);
+                    fixStartOver();
+                    liveGradeChecks(table);
                 }
             }
         

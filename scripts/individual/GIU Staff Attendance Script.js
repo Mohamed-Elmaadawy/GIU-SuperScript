@@ -5,7 +5,7 @@
 // @icon        data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKgAAACUCAMAAAAwLZJQAAAAzFBMVEX////VlyYkHiAAAADTHyj36ereiIr8/vzIGSPPAAj//fziu4HTlRbnyp3x49HRHSTTkgzw8PD29vbl5eXV1NRjX2HWY2vUr2zMAADn1rfJjguzsrMfGRsaEBPltLX6+u/OmB67u7vIyMgyLC5sbGycnJypqKmLi4tYWFh9e3wWExXkoJ1HRUaUkpM3NjY+Pj4PAAe/AADIDxPYGiAnJicZGhn27df17eDXqE329uBVYF7AZ2jZjGvOWgTNlSzf0J7lw7PWozvqxcLZsl8WTjZKAAAHBElEQVR4nO2Ya3fbNhJAIWG92tJ2YwzApg6kTQDhQagkpXZlR/t03fz//7QDgo71jqQ0Pf2Ae45tipKlq8FgMAAhmUwmk8lkMplMJpPJZDKZTCaTyWQymUwmk8lkMpnMqRTAENi4dXUV710xvB6979n+v3R39IcoMmGrdkyR2bgtLX/Rvfr5uzdvfvnlx7/i9fc3g8EAf27IltNtfOLuetR9A22CEWB84Cp4C2A5IbzBj3B4IRU+kEAuhCk/pXQyHibGE0rnIb4viv7tH39BkujdoONm+/9v75Jo9HcPgghFqONga/4gWWsJ8TUQTtHWU0W4v1RUVRMaJWcxoJNedkFtEn0TRb9bF73bEe0jWmC46qa7haLEVrBUfEoJr+YcP2WJomYmuL1MlFVJbjEtJee6XPaqi4OiuxF9FRVLjbacUBO4m7YOR712Tg8FKeNTnmFMXXGJp17SLoKzININYbrwDieHRG8+HMrRl4gGU8zQ15Z4oZSjllGhjawMCQAhDdW5qOWs86SvGQ6OdjQHRO+OiRJJFZhAqJe8aTl1FvNVEyorRjQV+Ju1/oKIihS9h5lYv8udRfRFooQ5dMRAKs4F4YIzgrNS8PgBmgkMB+Pne7I2xfNBHnrF+aLfgsLP0rwJB19ytqjWRMewCe20VFxJCUpiCYghBQwoaMIkJi4XcdY1Dd4W3VMkPkVA7ot3P/Dj4eF6cbaoMaSssGp6IanVikpVzLx6EAozlXmGOcyYMrXi+ELXclYHYpeYI6HAv5gmVO+xMIsuoGna/F6igYSpAVyLGJYjTVlB5g5w1s9bgaLQzHDSNwZLQ+APOgZLyHbOuSfgxxJFxa4Eo31tP5Ldl4h6MfOsFx0bA3VVKaKUWXIHQjqMd2MARTXFDwaKGVJVwhKlfdgvammfoUdWinPraBdRDFNwhA1jRPG9a7NUxOmifPBgjccSm0RFlEIzJ2CONcuHMBZ7Rcu0BtGDU36/6OALOTrCcVXUdemmqOBkaO0Dx2rH2pKVMKpC4UsojCnwS2HNLTym6NLwAKxuOFWcbTmweZpK433pe0z03fFZX2CHRJQgDNc6ERoPXkHQKk5vKTAo2oO0UDiMeeODxfmFGaAldjJEeWYavx1T0SbR+Z5gHxU91pR8C3TfJ1XHVor9ET0iyuMEwbKJ14wVHNJjJgReClGQQmsADgLXLR4H+YRlSiXRSbWdE18lGnDxEJ7ULnbJfMktvj1W/dpbUXmsnd41WtTChtrLUMaXfhE53iPK14BLRE0SbXGKSo1zOE6phruqIHyKVZ+3MVeXHLs2IHqmw7EoHREFM5x+RnyFaOmoUIIvcFNimCWytY63NjRQzhwTU+yjUZSYpfuyJ1Hj3RwFsxj3TBZfI1oRPw1RFNdMjcGtMSPn1Ri7vIa6z6JiX9XcQUzTrG/XXgym7+9jqHdEb06Y9aHGfZMj+NvQrnyzOW6YbM2At6oMOM8aG4deTYDsX4d26OvocL2OromOd0QfP4seqaPcBNsAMfG9BIulz+Pi7qrG8UrrWnvrucBB1HWMaH2KKKn6lWktT/qh3y/6cdDvmbY39ht1FAsSfo+Y9wBdlcI/8SYrGBSMxZoE2KlA9wp+0j5P0n42vb4awjyy3Cv6fpVCevfPrcp+ZsHHbfUo/Yy2x2Y/kESH64nS1SVRzfaJjq779ul+642+eYfv+/ap3LrP9ouS+37obw+LinKTf/37h03+83aT61O+Hav7LFWnib6M/erjQVFNt/j5x03+++HdBv876cxKpz3TpN5ccQ+Jkqe+I306KMrlFn/f4tf7LU47W+t751m9MfsOio6eb1Lr/HhI9CgX7JNfTYfd6NOhXlM9KEoen/uJ/7ReotZEQaUFOXW/sV/APeYI9/JYqsBz3NMzBd2k5xCnvThZXqUjnck4vNT9QtjYqe6N6Oh+kExvPt2/qI4+vh28RlSlL6yxo+O4UeYkbouJULxQTCmNs6E/k0nf6IyDKF52B47jybIKVsrG1G1X8cc7a338EuT7d32e3qze3t7fP12/XT0PXkV5atuAKx+PRyQHpwng1o4RAdxy3OVJZR0BJwFko/Q5h6UitAuKgz1ZdOeOqDmjdNF2zcqWKPL+enDXR/UuEk928erD81M8HxWNwxnkvONGWy8FY9ZK65RyMgSwTBN85J1srHLOSaf0WWeQQob5ek2ZGytF9w5XfXn5LDoixeP1qjfsFPFqdX17/9inQjxJF9jKYdQgralMq4LExZOnhMQWKh5oxzvnn5QCw3GyTdNYiW3k6zk+/JT47VU0HuY/3l9/Wq2eV6tPOP6PH7drIfZIsOYAB7rj4uIz8iNs5vzo4IM/HX9uu0wmk8lkMplMJpPJZDKZTCaTyWQymUwmk8lkMplMJpPJHOP/Lb7en38r1wIAAAAASUVORK5CYII=
 // @match       https://portal.giu-uni.de/*
 // @namespace   Cyn0
-// @version     4.10.1
+// @version     5.0
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Staff%20Attendance%20Script.js
 // @grant       none
@@ -45,6 +45,180 @@ function injectStyle(id, css) {
             return el;
         }
 
+// The one button style every SuperScript feature uses (mock board 1), injected once: `gs-btn` (white),
+// `gs-btn--primary` (yellow, the one main action), `gs-btn--danger` (solid red), `gs-btn--quiet` (blue
+// text), `gs-btn--sm` (compact). Colours come from the 5.0 tokens when the portal look is on, with the
+// light values as fallback, so a token theme (dark) reaches every button. Features keep their own old
+// class names next to it as hooks for their code.
+function uiStyles() {
+            if (document.getElementById('gius-ui-styles')) return;
+            const style = document.createElement('style');
+            style.id = 'gius-ui-styles';
+            const B = ':is(button, a, input).gs-btn.gs-btn';
+            style.textContent = `
+                ${B} {
+                    display: inline-flex; align-items: center; justify-content: center; gap: 6px; box-sizing: border-box;
+                    height: 36px; min-height: 0; padding: 0 14px; border: 1px solid var(--gs-line, #d0d7de); border-radius: 6px;
+                    background: var(--gs-card, #ffffff); color: var(--gs-text, #1f2328); box-shadow: none; transform: none;
+                    font: 600 13px/1 var(--gs-font, system-ui, 'Segoe UI', Roboto, Arial, sans-serif); letter-spacing: normal; text-transform: none;
+                    text-decoration: none; white-space: nowrap; vertical-align: middle; cursor: pointer; opacity: 1; transition: background-color .12s, border-color .12s;
+                }
+                ${B}:hover:not(:disabled) { background: var(--gs-sunk, #f6f8fa); border-color: var(--gs-line-2, #afb8c1); color: var(--gs-text, #1f2328); box-shadow: none; transform: none; }
+                ${B}:focus-visible { outline: 2px solid var(--gs-focus, #0969da); outline-offset: 2px; }
+                ${B}.gs-btn--primary { border-color: var(--gs-accent-line, #d9a400); background: var(--gs-accent, #ffc107); color: var(--gs-accent-fg, #1a1a1a); }
+                ${B}.gs-btn--primary:hover:not(:disabled) { border-color: var(--gs-accent-line, #d9a400); background: var(--gs-accent-h, #ffb300); color: var(--gs-accent-fg, #1a1a1a); }
+                ${B}.gs-btn--danger { border-color: var(--gs-danger, #cf222e); background: var(--gs-danger, #cf222e); color: #ffffff; }
+                ${B}.gs-btn--danger:hover:not(:disabled) { border-color: var(--gs-danger-h, #a40e26); background: var(--gs-danger-h, #a40e26); color: #ffffff; }
+                ${B}.gs-btn--quiet { height: auto; padding: 2px 0; border-color: transparent; background: transparent; color: var(--gs-focus, #0969da); }
+                ${B}.gs-btn--quiet:hover:not(:disabled) { border-color: transparent; background: transparent; color: var(--gs-focus, #0969da); text-decoration: underline; }
+                ${B}.gs-btn--sm { height: 30px; padding: 0 10px; font-size: 12px; }
+                ${B}:disabled { border-color: var(--gs-line, #d0d7de); background: var(--gs-disabled-bg, #eaeef2); color: var(--gs-disabled-fg, #6e7781); cursor: not-allowed; }`;
+            (document.head || document.documentElement).appendChild(style);
+        }
+
+// The one dialog every feature uses, in the 5.0 look (mock: Feedback board): a title, an optional ✕,
+// a body (a line of text, HTML or a node) and a row of actions, the primary one yellow. Escape, the ✕
+// and a click outside dismiss it; Tab stays inside. Options:
+//   title; text (one muted line) or html / node (the body); actions: [{ label, value, primary, danger,
+//   id, disabled }]; wide; closeX (default true); id (layer id); layerClass; dialogClass; focus (a
+//   selector, else the primary action); onAction(value, dlg): return false (or a promise of false) to
+//   keep it open.
+// Returns { el, body, result, setBody(html | node), setActions(list), button(value), close(value) };
+// `result` resolves with the value it closed with (null when dismissed).
+function openDialog(opts) {
+            const o = Object.assign({ actions: [], closeX: true }, opts);
+            uiStyles();
+            if (!document.getElementById('gius-dialog-style')) {
+                const style = document.createElement('style');
+                style.id = 'gius-dialog-style';
+                const font = "system-ui, 'Segoe UI', Roboto, Arial, sans-serif";
+                style.textContent = `
+                    .gius-dialog-layer { position: fixed; inset: 0; z-index: 2147483647; display: flex; align-items: center; justify-content: center; padding: 16px; background: rgba(31, 35, 40, .45); font-family: ${font}; }
+                    .gius-dialog { display: flex; flex-direction: column; box-sizing: border-box; width: 100%; max-width: 420px; max-height: calc(100vh - 32px); background: #ffffff; border-radius: 10px; box-shadow: 0 16px 40px rgba(31, 35, 40, .3); color: #1f2328; text-align: left; font: 400 14px/1.5 ${font}; }
+                    .gius-dialog.gius-dialog--wide { max-width: 560px; }
+                    .gius-dialog-hdr { display: flex; align-items: flex-start; gap: 12px; padding: 18px 20px 0; }
+                    .gius-dialog-title { flex: 1; margin: 0; font: 700 16px/1.35 ${font}; color: #1f2328; }
+                    .gius-dialog-x { flex: none; width: 28px; height: 28px; margin: -4px -6px 0 0; padding: 0; border: 0; border-radius: 6px; background: transparent; color: #59636e; font: 400 15px/28px ${font}; cursor: pointer; }
+                    .gius-dialog-x:hover { background: #f6f8fa; color: #1f2328; }
+                    .gius-dialog-body { display: flex; flex-direction: column; gap: 12px; padding: 8px 20px 4px; overflow-y: auto; overflow-wrap: anywhere; }
+                    .gius-dialog-body:empty { display: none; }
+                    .gius-dialog-text { margin: 0; color: #59636e; font-size: 13px; white-space: pre-line; }
+                    .gius-dialog-field { display: grid; gap: 4px; font: 600 13px ${font}; color: #59636e; }
+                    .gius-dialog-field input { box-sizing: border-box; height: 36px; padding: 0 10px; border: 1px solid #d0d7de; border-radius: 6px; font: 400 14px ${font}; color: #1f2328; }
+                    .gius-dialog-field input:focus { border-color: #0969da; box-shadow: 0 0 0 3px rgba(9, 105, 218, .25); outline: 0; }
+                    .gius-dialog-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 10px; padding: 16px 20px 20px; }
+                    .gius-dialog-actions:empty { display: none; }
+                    .gius-dialog input:is([type="checkbox"], [type="radio"]) { width: 18px; height: 18px; margin: 0; accent-color: #272c33; vertical-align: -4px; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog { background: var(--gs-dk-card, #1e1e2e); color: var(--gs-dk-text, #cdd6f4); }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog-title { color: var(--gs-dk-text, #cdd6f4); }
+                    html:is(.gius-dark, [data-gius-dark]) :is(.gius-dialog-text, .gius-dialog-field, .gius-dialog-x) { color: var(--gs-dk-muted, #a6adc8); }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog-x:hover { background: var(--gs-dk-line, #313244); }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog-field input { background: var(--gs-dk-card, #1e1e2e); border-color: var(--gs-dk-line-2, #45475a); color: var(--gs-dk-text, #cdd6f4); }
+                    /* 5.0 dark mode (portal look): the same parts in its tokens. */
+                    html[data-gius-dark] .gius-dialog { background: var(--gs-card); color: var(--gs-text); }
+                    html[data-gius-dark] .gius-dialog-title { color: var(--gs-text); }
+                    html[data-gius-dark] :is(.gius-dialog-text, .gius-dialog-field, .gius-dialog-x) { color: var(--gs-muted); }
+                    html[data-gius-dark] .gius-dialog-x:hover { background: var(--gs-sunk); }
+                    html[data-gius-dark] .gius-dialog-field input { background: var(--gs-sunk); border-color: var(--gs-line); color: var(--gs-text); }
+                    html[data-gius-dark] .gius-dialog input:is([type="checkbox"], [type="radio"]) { accent-color: var(--gs-accent); }`;
+                (document.head || document.documentElement).appendChild(style);
+            }
+            const layer = document.createElement('div');
+            layer.className = 'gius-dialog-layer' + (o.layerClass ? ' ' + o.layerClass : '');
+            if (o.id) layer.id = o.id;
+            layer.innerHTML = '<div class="gius-dialog" role="dialog" aria-modal="true"><div class="gius-dialog-hdr"><h2 class="gius-dialog-title"></h2></div>'
+                + '<div class="gius-dialog-body"></div><div class="gius-dialog-actions"></div></div>';
+            const box = layer.firstElementChild;
+            if (o.wide) box.classList.add('gius-dialog--wide');
+            if (o.dialogClass) box.className += ' ' + o.dialogClass;
+            const titleEl = box.querySelector('.gius-dialog-title');
+            titleEl.id = 'gius-dialog-title-' + Math.random().toString(36).slice(2, 8);
+            titleEl.textContent = o.title || '';
+            box.setAttribute('aria-labelledby', titleEl.id);
+            if (o.closeX) {
+                const x = document.createElement('button');
+                x.type = 'button';
+                x.className = 'gius-dialog-x';
+                x.setAttribute('aria-label', 'Close');
+                x.textContent = '✕';
+                box.querySelector('.gius-dialog-hdr').appendChild(x);
+            }
+            const body = box.querySelector('.gius-dialog-body');
+            const actionsEl = box.querySelector('.gius-dialog-actions');
+            let settle;
+            const result = new Promise(resolve => { settle = resolve; });
+            const before = document.activeElement;
+            let closed = false;
+            // Only the topmost dialog answers the keyboard.
+            const onKey = e => {
+                const layers = document.querySelectorAll('.gius-dialog-layer');
+                if (layers[layers.length - 1] !== layer) return;
+                if (e.key === 'Escape') { e.preventDefault(); e.stopImmediatePropagation(); dlg.close(null); return; }
+                if (e.key !== 'Tab') return;
+                const stops = Array.from(box.querySelectorAll('button, input, select, textarea, a[href], [tabindex]:not([tabindex="-1"])'))
+                    .filter(el => !el.disabled && el.offsetParent !== null);
+                if (!stops.length) return;
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                const i = stops.indexOf(document.activeElement);
+                stops[(i + (e.shiftKey ? -1 : 1) + stops.length) % stops.length].focus();
+            };
+            const dlg = {
+                el: box,
+                body,
+                result,
+                setBody(content) {
+                    if (content == null) body.textContent = '';
+                    else if (typeof content === 'string') body.innerHTML = content;
+                    else body.replaceChildren(content);
+                },
+                setActions(list) {
+                    actionsEl.textContent = '';
+                    (list || []).forEach(a => {
+                        const b = document.createElement('button');
+                        b.type = 'button';
+                        b.className = 'gius-dialog-btn gs-btn' + (a.primary ? ' gius-dialog-btn--primary gs-btn--primary' : '') + (a.danger ? ' gius-dialog-btn--danger gs-btn--danger' : '');
+                        b.dataset.act = String(a.value);
+                        if (a.id) b.id = a.id;
+                        if (a.disabled) b.disabled = true;
+                        b.textContent = a.label;
+                        b.addEventListener('click', async () => {
+                            const keep = o.onAction ? await o.onAction(a.value, dlg) : undefined;
+                            if (keep !== false) dlg.close(a.value);
+                        });
+                        actionsEl.appendChild(b);
+                    });
+                },
+                button(value) { return actionsEl.querySelector(`[data-act="${String(value)}"]`); },
+                close(value = null) {
+                    if (closed) return;
+                    closed = true;
+                    document.removeEventListener('keydown', onKey, true);
+                    layer.remove();
+                    if (before && typeof before.focus === 'function' && document.contains(before)) before.focus();
+                    settle(value);
+                },
+            };
+            if (o.node) dlg.setBody(o.node);
+            else if (o.html != null) dlg.setBody(o.html);
+            else if (o.text) {
+                const p = document.createElement('p');
+                p.className = 'gius-dialog-text';
+                p.textContent = o.text;
+                body.appendChild(p);
+            }
+            dlg.setActions(o.actions);
+            layer.addEventListener('click', e => {
+                if (e.target === layer || e.target.closest('.gius-dialog-x')) dlg.close(null);
+            });
+            document.addEventListener('keydown', onKey, true);
+            document.body.appendChild(layer);
+            const first = (o.focus && box.querySelector(o.focus)) || actionsEl.querySelector('.gius-dialog-btn--primary:not(:disabled)')
+                || actionsEl.querySelector('.gius-dialog-btn:not(:disabled)');
+            if (first) first.focus();
+            return dlg;
+        }
+
 function warn(feature, ...args) { console.warn(`[GIU-SS:${feature}]`, ...args); }
 
 function portalUrl(path) { return location.origin + path; }
@@ -61,7 +235,7 @@ function isServerErrorPage() {
     // Server error page (e.g. IIS 401): no portal markup — inject nothing.
     if (isServerErrorPage()) return;
 
-    const S = { waitFor, escapeHtml, injectStyle, warn, portalUrl };
+    const S = { waitFor, escapeHtml, injectStyle, warn, portalUrl, openDialog, uiStyles };
 
 // The styled timesheet table, shared by Berlin's full-report view (a Cairo
 // grid imported into the page) and Cairo's own report page (the portal's
@@ -297,21 +471,21 @@ function injectReportGridStyles(S) {
             background: #f3f4f6; color: #374151; font-size: 11px; font-weight: 700; line-height: 1.3; white-space: nowrap;
         }
 
-        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport {
-            background: var(--gp-card, #1e1e2e); border-color: var(--gp-border, #313244); color: var(--gp-text, #cdd6f4);
+        html:is(.gius-dark, [data-gius-dark]) .gius-berlin-grid table#MainContent_DG_SwiftReport {
+            background: var(--gp-card, var(--gs-dk-card, #1e1e2e)); border-color: var(--gp-border, var(--gs-dk-line, #313244)); color: var(--gp-text, var(--gs-dk-text, #cdd6f4));
         }
-        html.gius-dark .gius-berlin-grid caption.gius-berlin-grid-title { color: var(--gp-text, #cdd6f4); }
-        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport :is(th, td) {
-            background: var(--gp-card, #1e1e2e) !important; border-color: var(--gp-border, #313244) !important; color: var(--gp-text, #cdd6f4) !important;
+        html:is(.gius-dark, [data-gius-dark]) .gius-berlin-grid caption.gius-berlin-grid-title { color: var(--gp-text, var(--gs-dk-text, #cdd6f4)); }
+        html:is(.gius-dark, [data-gius-dark]) .gius-berlin-grid table#MainContent_DG_SwiftReport :is(th, td) {
+            background: var(--gp-card, var(--gs-dk-card, #1e1e2e)) !important; border-color: var(--gp-border, var(--gs-dk-line, #313244)) !important; color: var(--gp-text, var(--gs-dk-text, #cdd6f4)) !important;
         }
-        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row:nth-child(even) > td { background: var(--gp-surface, #181825) !important; }
-        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row:hover > td { background: #2a2410 !important; }
-        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport :is(thead th, tr.gius-berlin-grid-head > *) {
-            background: var(--gp-deep, #11111b) !important; color: var(--gp-text, #cdd6f4) !important; border-color: var(--gp-border, #313244) !important;
+        html:is(.gius-dark, [data-gius-dark]) .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row:nth-child(even) > td { background: var(--gp-surface, var(--gs-dk-sunk, #181825)) !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row:hover > td { background: #2a2410 !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-berlin-grid table#MainContent_DG_SwiftReport :is(thead th, tr.gius-berlin-grid-head > *) {
+            background: var(--gp-deep, var(--gs-dk-bg, #11111b)) !important; color: var(--gp-text, var(--gs-dk-text, #cdd6f4)) !important; border-color: var(--gp-border, var(--gs-dk-line, #313244)) !important;
         }
-        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row > td.gius-berlin-col-serial { color: var(--gp-muted, #9399b2) !important; }
-        html.gius-dark .gius-berlin-grid .gius-berlin-action {
-            background: var(--gp-surface, #313244); border-color: var(--gp-border, #45475a); color: var(--gp-text, #cdd6f4);
+        html:is(.gius-dark, [data-gius-dark]) .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row > td.gius-berlin-col-serial { color: var(--gp-muted, var(--gs-dk-muted, #9399b2)) !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-berlin-grid .gius-berlin-action {
+            background: var(--gp-surface, var(--gs-dk-line, #313244)); border-color: var(--gp-border, var(--gs-dk-line-2, #45475a)); color: var(--gp-text, var(--gs-dk-text, #cdd6f4));
         }
     `);
 }
@@ -342,6 +516,7 @@ function openAttendanceSetup(S, api, opts) {
     const prevDays = api.previousDayOptions();   // on Berlin also Sunday (a Cairo-era day off)
     const YMD = /^\d{4}-\d{2}-\d{2}$/;
 
+    S.uiStyles();
     S.injectStyle('gius-setup-style', `
         .gius-setup{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
             z-index:2147483645;background:rgba(15,23,42,.45);padding:20px;font-family:inherit;}
@@ -378,31 +553,18 @@ function openAttendanceSetup(S, api, opts) {
         .gius-setup-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
         .gius-setup-actions{display:flex;align-items:center;gap:8px;margin-top:16px;flex-wrap:wrap;}
         .gius-setup-spacer{flex:1 1 auto;}
-        .gius-setup .giu-settings-action-btn{height:32px;padding:0 10px;border:1px solid #64748b;background:#f8fafc;
-            color:#334155;border-radius:6px;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;}
-        .gius-setup .giu-settings-action-btn:hover{background:#e2e8f0;}
-        .gius-setup .giu-add-holiday-btn{height:32px;padding:0 12px;border:1px solid #d97706;background:#ffc107;
-            color:#111827;border-radius:6px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;
-            transition:all .2s ease;}
-        .gius-setup .giu-add-holiday-btn:hover{background:#f59e0b;transform:translateY(-1px);
-            box-shadow:0 3px 10px rgba(255,193,7,.4);}
-        .gius-setup .gius-setup-skip{border-color:transparent;background:transparent;text-decoration:underline;}
-        html.gius-dark .gius-setup-sheet{background:#1e1e2e;color:#cdd6f4;border-left-color:#f9e2af;box-shadow:0 18px 50px rgba(0,0,0,.6);}
-        html.gius-dark .gius-setup-step,html.gius-dark .gius-setup-sub,html.gius-dark .gius-setup-hint{color:#9399b2;}
-        html.gius-dark .gius-setup-field{color:#cdd6f4;}
-        html.gius-dark .gius-setup-input{background:#181825;border-color:#45475a;color:#cdd6f4;color-scheme:dark;}
-        html.gius-dark .gius-setup-pill{background:#181825;border-color:#313244;color:#cdd6f4;}
-        html.gius-dark .gius-setup-pill.on{background:#2a2410;border-color:#f9e2af;color:#f9e2af;}
-        html.gius-dark .gius-setup-hint.warn{color:#f9e2af;}
-        html.gius-dark .gius-setup-error{background:#3a1414;border-left-color:#f38ba8;color:#f38ba8;}
-        html.gius-dark .gius-setup-ok{background:#14351f;border-left-color:#a6e3a1;color:#a6e3a1;}
-        html.gius-dark .gius-setup-summary{background:#181825;border-color:#313244;}
-        html.gius-dark .gius-setup-summary dt{color:#9399b2;}
-        html.gius-dark .gius-setup .giu-settings-action-btn{background:#181825;border-color:#45475a;color:#cdd6f4;}
-        html.gius-dark .gius-setup .giu-settings-action-btn:hover{background:#313244;}
-        html.gius-dark .gius-setup .gius-setup-skip{background:transparent;border-color:transparent;}
-        html.gius-dark .gius-setup .giu-add-holiday-btn{background:#f9e2af;border-color:#f9e2af;color:#1e1e2e;}
-        html.gius-dark .gius-setup .giu-add-holiday-btn:hover{background:#f5d38a;}`);
+        html:is(.gius-dark, [data-gius-dark]) .gius-setup-sheet{background:var(--gs-dk-card, #1e1e2e);color:var(--gs-dk-text, #cdd6f4);border-left-color:var(--gs-dk-warn, #f9e2af);box-shadow:0 18px 50px rgba(0,0,0,.6);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-setup-step,html:is(.gius-dark, [data-gius-dark]) .gius-setup-sub,html:is(.gius-dark, [data-gius-dark]) .gius-setup-hint{color:var(--gs-dk-muted, #9399b2);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-setup-field{color:var(--gs-dk-text, #cdd6f4);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-setup-input{background:var(--gs-dk-sunk, #181825);border-color:var(--gs-dk-line-2, #45475a);color:var(--gs-dk-text, #cdd6f4);color-scheme:dark;}
+        html:is(.gius-dark, [data-gius-dark]) .gius-setup-pill{background:var(--gs-dk-sunk, #181825);border-color:var(--gs-dk-line, #313244);color:var(--gs-dk-text, #cdd6f4);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-setup-pill.on{background:#2a2410;border-color:var(--gs-dk-warn, #f9e2af);color:var(--gs-dk-warn, #f9e2af);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-setup-hint.warn{color:var(--gs-dk-warn, #f9e2af);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-setup-error{background:#3a1414;border-left-color:var(--gs-dk-err, #f38ba8);color:var(--gs-dk-err, #f38ba8);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-setup-ok{background:#14351f;border-left-color:var(--gs-dk-ok, #a6e3a1);color:var(--gs-dk-ok, #a6e3a1);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-setup-summary{background:var(--gs-dk-sunk, #181825);border-color:var(--gs-dk-line, #313244);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-setup-summary dt{color:var(--gs-dk-muted, #9399b2);}
+        `);
 
     // ── Answers (strings, as typed); nothing is written until Finish ──
     function fromValues(v, keepDayOff) {
@@ -428,6 +590,7 @@ function openAttendanceSetup(S, api, opts) {
     let index = 0;
     let dirty = false;          // anything entered by the user (Escape then asks)
     let importedOnce = false;   // an import already saved settings
+    let asking = false;         // the Leave setup? dialog is open
     const opener = document.activeElement;   // focus goes back here on close
 
     const layer = document.createElement('div');
@@ -440,10 +603,10 @@ function openAttendanceSetup(S, api, opts) {
         <div class="gius-setup-body"></div>
         <div class="gius-setup-msg" role="alert"></div>
         <div class="gius-setup-actions">
-            <button type="button" class="giu-settings-action-btn gius-setup-skip gius-btn">Skip setup</button>
+            <button type="button" class="giu-settings-action-btn gius-setup-skip gius-btn gs-btn gs-btn--quiet">Skip setup</button>
             <span class="gius-setup-spacer"></span>
-            <button type="button" class="giu-settings-action-btn gius-setup-back gius-btn">Back</button>
-            <button type="button" class="giu-add-holiday-btn gius-setup-next gius-btn">Next</button>
+            <button type="button" class="giu-settings-action-btn gius-setup-back gius-btn gs-btn">Back</button>
+            <button type="button" class="giu-add-holiday-btn gius-setup-next gius-btn gs-btn gs-btn--primary">Next</button>
         </div></div>`;
     const sheet = layer.querySelector('.gius-setup-sheet');
     const $ = sel => layer.querySelector(sel);
@@ -507,7 +670,7 @@ function openAttendanceSetup(S, api, opts) {
                         <input type="file" class="gius-setup-input" id="gius-setup-file" accept=".json,application/json,text/json"></div>
                     <div class="gius-setup-field" style="margin-top:8px;">or paste its contents
                         <textarea class="gius-setup-input" id="gius-setup-paste" spellcheck="false">${esc(state.importText)}</textarea></div>
-                    <div class="gius-setup-row" style="margin-top:8px;"><button type="button" class="giu-add-holiday-btn gius-btn" id="gius-setup-import">Import</button></div>
+                    <div class="gius-setup-row" style="margin-top:8px;"><button type="button" class="giu-add-holiday-btn gius-btn gs-btn" id="gius-setup-import">Import</button></div>
                 </div>`,
             bind() {
                 layer.querySelectorAll('input[name="gius-setup-choice"]').forEach(r => r.addEventListener('change', () => {
@@ -639,8 +802,8 @@ function openAttendanceSetup(S, api, opts) {
                 rows.push(['Monthly accrual', String(v.accrualRate) + ' day(s)']);
                 return `<dl class="gius-setup-summary">${rows.map(r => `<dt>${esc(r[0])}</dt><dd>${esc(r[1])}</dd>`).join('')}</dl>
                     <div class="gius-setup-row">
-                        <button type="button" class="giu-settings-action-btn gius-btn" id="gius-setup-download">Download settings (.json)</button>
-                        <button type="button" class="giu-settings-action-btn gius-btn" id="gius-setup-copy">Copy</button>
+                        <button type="button" class="giu-settings-action-btn gius-btn gs-btn" id="gius-setup-download">Download settings (.json)</button>
+                        <button type="button" class="giu-settings-action-btn gius-btn gs-btn" id="gius-setup-copy">Copy</button>
                     </div>`;
             },
             bind() {
@@ -829,6 +992,7 @@ function openAttendanceSetup(S, api, opts) {
     }
 
     function onKey(e) {
+        if (asking) return;
         if (e.key === 'Tab') {
             // Keep keyboard focus inside the dialog.
             const els = tabStops();
@@ -848,10 +1012,20 @@ function openAttendanceSetup(S, api, opts) {
         // One Escape is the wizard's alone (no tip or tour under it reacts).
         e.preventDefault();
         e.stopImmediatePropagation();
-        const question = importedOnce
-            ? 'Leave setup? Your imported settings are kept; nothing else you entered here will be saved.'
-            : 'Leave setup? Nothing you entered here will be saved.';
-        if (!dirty || window.confirm(question)) skip();
+        if (!dirty) { skip(); return; }
+        // The dialog takes the keyboard until it closes (this handler stands aside meanwhile).
+        asking = true;
+        S.openDialog({
+            title: 'Leave setup?',
+            text: importedOnce
+                ? 'Your imported settings are kept; nothing else you entered here will be saved.'
+                : 'Nothing you entered here will be saved.',
+            closeX: false,
+            actions: [{ label: 'Keep going', value: 'stay' }, { label: 'Leave setup', value: 'leave', primary: true }],
+        }).result.then(choice => {
+            asking = false;
+            if (choice === 'leave') skip();
+        });
     }
 
     body.addEventListener('input', () => { dirty = true; });
@@ -909,7 +1083,7 @@ function createGiusDateField(S, opts) {
     S.injectStyle('gius-date-style', `
         .gius-date{position:relative;display:inline-flex;flex-wrap:wrap;align-items:stretch;gap:6px;vertical-align:middle;}
         .gius-date .gius-date-hint{flex:0 0 100%;font-size:11.5px;line-height:1.3;color:#6b7280;margin-top:-2px;}
-        html.gius-dark .gius-date .gius-date-hint{color:#a6adc8;}
+        html:is(.gius-dark, [data-gius-dark]) .gius-date .gius-date-hint{color:var(--gs-dk-muted, #a6adc8);}
         .gius-date .gius-date-text{width:130px;min-width:0;}
         .gius-setup .gius-date{display:flex;}
         .gius-setup .gius-date .gius-date-text{width:auto;flex:1 1 auto;}
@@ -922,9 +1096,9 @@ function createGiusDateField(S, opts) {
         .gius-date input.gius-date-native{position:absolute !important;right:0 !important;bottom:0 !important;
             width:1px !important;height:1px !important;min-width:0 !important;margin:0 !important;padding:0 !important;
             border:0 !important;opacity:0 !important;pointer-events:none !important;}
-        html.gius-dark .gius-date .gius-date-btn{background:#181825;border-color:#45475a;color:#cdd6f4;}
-        html.gius-dark .gius-date .gius-date-btn:hover{background:#313244;border-color:#6c7086;}
-        html.gius-dark .gius-date .gius-date-btn:focus-visible{outline-color:#89b4fa;}`);
+        html:is(.gius-dark, [data-gius-dark]) .gius-date .gius-date-btn{background:var(--gs-dk-sunk, #181825);border-color:var(--gs-dk-line-2, #45475a);color:var(--gs-dk-text, #cdd6f4);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-date .gius-date-btn:hover{background:var(--gs-dk-line, #313244);border-color:var(--gs-dk-muted, #6c7086);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-date .gius-date-btn:focus-visible{outline-color:var(--gs-dk-accent, #89b4fa);}`);
 
     const wrap = document.createElement('span');
     wrap.className = 'gius-date';
@@ -1162,7 +1336,10 @@ function renderAttendancePlanner(S, api, host) {
         .gius-plan-chev{display:inline-block;transition:transform .15s;}
         .gius-plan-toggle[aria-expanded="false"] .gius-plan-chev{transform:rotate(-90deg);}
         .gius-plan-peek{font-size:12px;font-weight:600;background:#374151;border:1px solid #4b5563;color:#f9fafb;padding:2px 8px;border-radius:999px;}
-        @media (prefers-reduced-motion: reduce){.gius-plan-chev{transition:none;}}
+        .gius-plan-fold{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease-out;}
+        .gius-plan-fold.is-open{grid-template-rows:1fr;}
+        .gius-plan-fold-in{overflow:hidden;min-height:0;}
+        @media (prefers-reduced-motion: reduce){.gius-plan-chev,.gius-plan-fold{transition:none;}}
         .gius-plan-usual{font-size:12px;color:#f9fafb;display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:0;padding:3px 4px 3px 10px;border:1px solid #6b7280;border-radius:999px;background:#374151;font-weight:600;}
         .gius-plan-seg{display:inline-flex;border:1px solid #6b7280;border-radius:999px;overflow:hidden;}
         .gius-plan-mode{border:0;margin:0;background:none;color:#d1d5db;font:inherit;font-size:12px;font-weight:600;padding:2px 9px;cursor:pointer;}
@@ -1207,27 +1384,27 @@ function renderAttendancePlanner(S, api, host) {
         .gius-plan-foot{display:flex;justify-content:flex-end;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px;color:#6b7280;}
         .gius-plan-foot b{color:#111827;}
         .gius-plan-link{border:0;background:none;color:#1B59C6;font:inherit;font-weight:600;cursor:pointer;padding:0;text-decoration:underline;}
-        html.gius-dark .gius-plan{background:#181825;border-color:#313244;color:#cdd6f4;}
-        html.gius-dark .gius-plan-big,html.gius-dark .gius-plan-foot b{color:#cdd6f4;}
-        html.gius-dark .gius-plan-q,html.gius-dark .gius-plan-th,html.gius-dark .gius-plan-foot,html.gius-dark .gius-plan-fixed{color:#9399b2;}
-        html.gius-dark .gius-plan-sentence{background:#313244;}
-        html.gius-dark .gius-plan-hint{color:#9399b2;}
-        html.gius-dark .gius-plan-row{border-top-color:#313244;}
-        html.gius-dark .gius-plan-row.gius-plan-today{background:rgba(249,226,175,.08);}
-        html.gius-dark .gius-plan input[type=time]:hover,html.gius-dark .gius-plan input[type=time]:focus-visible{background:#313244;border-color:#585b70;color:#cdd6f4;}
-        html.gius-dark .gius-plan-edited input[type=time]{background:#1e3a5f;color:#89b4fa;}
-        html.gius-dark .gius-plan input[type=time]::-webkit-calendar-picker-indicator{filter:invert(1);}
-        html.gius-dark .gius-plan-bad,html.gius-dark .gius-plan-day small{color:#f38ba8;}
-        html.gius-dark .gius-plan-day small.gius-plan-note{color:#9399b2;}
-        html.gius-dark .gius-plan-good{color:#a6e3a1;}
-        html.gius-dark .gius-plan-link,html.gius-dark .gius-plan-undo{color:#89b4fa;}
-        html.gius-dark .gius-plan-undo:hover{background:#1e3a5f;}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan{background:var(--gs-dk-sunk, #181825);border-color:var(--gs-dk-line, #313244);color:var(--gs-dk-text, #cdd6f4);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-big,html:is(.gius-dark, [data-gius-dark]) .gius-plan-foot b{color:var(--gs-dk-text, #cdd6f4);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-q,html:is(.gius-dark, [data-gius-dark]) .gius-plan-th,html:is(.gius-dark, [data-gius-dark]) .gius-plan-foot,html:is(.gius-dark, [data-gius-dark]) .gius-plan-fixed{color:var(--gs-dk-muted, #9399b2);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-sentence{background:var(--gs-dk-line, #313244);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-hint{color:var(--gs-dk-muted, #9399b2);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-row{border-top-color:var(--gs-dk-line, #313244);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-row.gius-plan-today{background:rgba(249,226,175,.08);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan input[type=time]:hover,html:is(.gius-dark, [data-gius-dark]) .gius-plan input[type=time]:focus-visible{background:var(--gs-dk-line, #313244);border-color:var(--gs-dk-line-2, #585b70);color:var(--gs-dk-text, #cdd6f4);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-edited input[type=time]{background:#1e3a5f;color:var(--gs-dk-accent, #89b4fa);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan input[type=time]::-webkit-calendar-picker-indicator{filter:invert(1);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-bad,html:is(.gius-dark, [data-gius-dark]) .gius-plan-day small{color:var(--gs-dk-err, #f38ba8);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-day small.gius-plan-note{color:var(--gs-dk-muted, #9399b2);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-good{color:var(--gs-dk-ok, #a6e3a1);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-link,html:is(.gius-dark, [data-gius-dark]) .gius-plan-undo{color:var(--gs-dk-accent, #89b4fa);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-undo:hover{background:#1e3a5f;}
         .gius-plan-extra{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#475569;margin-right:12px;}
         .gius-plan-extra select{font:inherit;padding:2px 6px;border:1px solid #cbd5e1;border-radius:6px;background:#fff;color:#0f172a;}
         .gius-plan-extra-x{margin-left:6px;border:0;background:none;color:#94a3b8;cursor:pointer;font-size:14px;line-height:1;padding:0 2px;}
         .gius-plan-extra-x:hover{color:#dc2626;}
-        html.gius-dark .gius-plan-extra{color:#a6adc8;}
-        html.gius-dark .gius-plan-extra select{background:#313244;border-color:#45475a;color:#cdd6f4;}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-extra{color:var(--gs-dk-muted, #a6adc8);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-extra select{background:var(--gs-dk-line, #313244);border-color:var(--gs-dk-line-2, #45475a);color:var(--gs-dk-text, #cdd6f4);}
     `);
 
     const dayLabel = function (ymd) {
@@ -1386,11 +1563,14 @@ function renderAttendancePlanner(S, api, host) {
     }
 
 
-    function render(focusTarget) {
+    // wasExpanded (title click only): build the fold in its old state, then
+    // let it animate to the new one like the other folding cards.
+    function render(focusTarget, wasExpanded) {
         const prefs = api.prefs();
         const input = api.input();
         const plan = input ? planAttendanceDays(input) : null;
         const expanded = api.isExpanded();
+        const animate = typeof wasExpanded === "boolean";
         // Folded, the header still answers the main question.
         const mode = prefs.usualMode;
         const both = mode === "both";
@@ -1420,9 +1600,13 @@ function renderAttendancePlanner(S, api, host) {
             '<div class="gius-plan-usual" id="gius-plan-usual-box" role="group" aria-label="Plan by">Plan by' +
             '<span class="gius-plan-seg">' + modeBtn("in", "Check-in") + modeBtn("out", "Check-out") + modeBtn("both", "Both") + "</span>" +
             times + '<span class="gius-plan-pen" aria-hidden="true">✎</span></div></div>';
-        const bodyOpen = '<div class="gius-plan-body" id="gius-plan-body"' + (expanded ? "" : " hidden") + ">";
+        const foldOpen = animate ? wasExpanded : expanded;
+        const bodyOpen = '<div class="gius-plan-fold' + (foldOpen ? " is-open" : "") + '"><div class="gius-plan-fold-in">' +
+            '<div class="gius-plan-body" id="gius-plan-body"' + (expanded || animate ? "" : " hidden") + ">";
+        const bodyClose = "</div></div></div>";
         if (!plan) {
-            host.innerHTML = '<section class="gius-plan">' + head + bodyOpen + '<p class="gius-plan-sentence">Set your weekly day off to see your plan.</p></div></section>';
+            host.innerHTML = '<section class="gius-plan">' + head + bodyOpen + '<p class="gius-plan-sentence">Set your weekly day off to see your plan.</p>' + bodyClose + "</section>";
+            if (animate) runFold(expanded);
             return;
         }
         // Keep focus on the same field across the re-render.
@@ -1450,7 +1634,8 @@ function renderAttendancePlanner(S, api, host) {
                 ? '<div class="gius-plan-days"><div class="gius-plan-th"><span>Day</span><span class="gius-plan-cell">In</span><span class="gius-plan-cell">Out</span></div>' +
                     plan.days.map(row).join("") + "</div>"
                 : "") +
-            "</div></section>";
+            bodyClose + "</section>";
+        if (animate) runFold(expanded);
 
         if (focusKey) {
             const el = focusKey.indexOf("|") === -1
@@ -1458,6 +1643,25 @@ function renderAttendancePlanner(S, api, host) {
                 : host.querySelector('[data-ymd="' + focusKey.split("|")[0] + '"][data-kind="' + focusKey.split("|")[1] + '"]');
             if (el) el.focus();
         }
+    }
+
+    // Slides the fold to `open`; once folded, the body is hidden so nothing
+    // inside it can be tabbed to.
+    function runFold(open) {
+        const fold = host.querySelector(".gius-plan-fold");
+        if (!fold) return;
+        void fold.offsetHeight;
+        fold.classList.toggle("is-open", open);
+        if (open) return;
+        let done = false;
+        const hide = function () {
+            if (done) return;
+            done = true;
+            const body = host.querySelector("#gius-plan-body");
+            if (body && !api.isExpanded()) body.hidden = true;
+        };
+        fold.addEventListener("transitionend", hide, { once: true });
+        setTimeout(hide, 400);
     }
 
     // Chrome fires change on every segment typed into a time field; rebuilding
@@ -1492,8 +1696,9 @@ function renderAttendancePlanner(S, api, host) {
     host.addEventListener("click", function (e) {
         if (e.target.closest("#gius-plan-toggle")) {
             pending = false;
-            api.setExpanded(!api.isExpanded());
-            render();
+            const was = api.isExpanded();
+            api.setExpanded(!was);
+            render(null, was);
             return;
         }
         const modeBtn = e.target.closest(".gius-plan-mode");
@@ -2803,7 +3008,7 @@ function staffAttendance(S) {
             function createScopedUndoButton(scope, emptyLabel, readyPrefix, extraClass) {
                 const btn = document.createElement("button");
                 btn.type = "button";
-                btn.className = "giu-settings-action-btn giu-undo-btn";
+                btn.className = "giu-settings-action-btn giu-undo-btn gs-btn";
                 if (extraClass) btn.classList.add(extraClass);
                 const meta = getUndoSnapshotMeta(scope);
                 btn.textContent = meta ? `${readyPrefix}: ${meta.label}` : emptyLabel;
@@ -3064,6 +3269,7 @@ function staffAttendance(S) {
             // ═══════════════════════════════════════════════════════════
 
             function injectStyles() {
+                S.uiStyles();
                 if (document.getElementById("giu-attendance-enhanced-style")) return;
 
                 const style = document.createElement("style");
@@ -3233,24 +3439,7 @@ function staffAttendance(S) {
                         align-items: center;
                     }
 
-                    .giu-add-holiday-btn {
-                        height: 32px;
-                        padding: 0 12px;
-                        border: 1px solid #d97706;
-                        background: #ffc107;
-                        color: #111827;
-                        border-radius: 6px;
-                        font-size: 13px;
-                        font-weight: 700;
-                        cursor: pointer;
-                        transition: all 0.2s ease;
-                    }
 
-                    .giu-add-holiday-btn:hover {
-                        background: #f59e0b;
-                        transform: translateY(-1px);
-                        box-shadow: 0 3px 10px rgba(255,193,7,0.4);
-                    }
 
                     .giu-table-tools {
                         margin-top: 6px;
@@ -3364,43 +3553,10 @@ function staffAttendance(S) {
                         font-size: 12px;
                     }
 
-                    .giu-pagination-btn {
-                        height: 28px;
-                        padding: 0 10px;
-                        border: 1px solid #d1d5db;
-                        background: #f9fafb;
-                        color: #1f2937;
-                        border-radius: 6px;
-                        font-size: 12px;
-                        font-weight: 600;
-                        cursor: pointer;
-                    }
 
-                    .giu-pagination-btn:hover:not(:disabled) {
-                        background: #f3f4f6;
-                        border-color: #9ca3af;
-                    }
 
-                    .giu-pagination-btn:disabled {
-                        opacity: 0.5;
-                        cursor: not-allowed;
-                    }
 
-                    .giu-remove-holiday-btn {
-                        height: 28px;
-                        padding: 0 10px;
-                        border: 1px solid #dc2626;
-                        background: #fee2e2;
-                        color: #991b1b;
-                        border-radius: 6px;
-                        font-size: 12px;
-                        font-weight: 700;
-                        cursor: pointer;
-                    }
 
-                    .giu-remove-holiday-btn:hover {
-                        background: #fecaca;
-                    }
 
                     .giu-summary-grid {
                         display: grid;
@@ -3582,18 +3738,6 @@ function staffAttendance(S) {
                         transition: width 0.4s ease-out;
                     }
 
-                    .giu-progress-fill-green {
-                        background: linear-gradient(90deg, #22c55e, #16a34a);
-                    }
-
-                    .giu-progress-fill-amber {
-                        background: linear-gradient(90deg, #ffc107, #e5ac00);
-                    }
-
-                    .giu-progress-fill-red {
-                        background: linear-gradient(90deg, #f87171, #dc2626);
-                    }
-
                     .giu-progress-pct-green { color: #16a34a; }
                     .giu-progress-pct-amber { color: #92400e; }
                     .giu-progress-pct-red { color: #dc2626; }
@@ -3687,37 +3831,9 @@ function staffAttendance(S) {
                         color: #374151;
                     }
 
-                    .giu-save-ramadan-btn {
-                        height: 32px;
-                        padding: 0 12px;
-                        border: 1px solid #7c3aed;
-                        background: #8b5cf6;
-                        color: #ffffff;
-                        border-radius: 6px;
-                        font-size: 13px;
-                        font-weight: 700;
-                        cursor: pointer;
-                    }
 
-                    .giu-save-ramadan-btn:hover {
-                        background: #7c3aed;
-                    }
 
-                    .giu-reset-ramadan-btn {
-                        height: 32px;
-                        padding: 0 12px;
-                        border: 1px solid #c4b5fd;
-                        background: #f5f3ff;
-                        color: #6d28d9;
-                        border-radius: 6px;
-                        font-size: 13px;
-                        font-weight: 700;
-                        cursor: pointer;
-                    }
 
-                    .giu-reset-ramadan-btn:hover {
-                        background: #ede9fe;
-                    }
 
                     .giu-ramadan-badge {
                         padding: 6px 10px;
@@ -3764,40 +3880,9 @@ function staffAttendance(S) {
                         color: #374151;
                     }
 
-                    .giu-save-exam-btn {
-                        height: 32px;
-                        padding: 0 12px;
-                        border: 1px solid #1648a8;
-                        background: #1B59C6;
-                        color: #ffffff;
-                        border-radius: 6px;
-                        font-size: 13px;
-                        font-weight: 700;
-                        cursor: pointer;
-                        transition: all 0.2s ease;
-                    }
 
-                    .giu-save-exam-btn:hover {
-                        background: #1648a8;
-                        transform: translateY(-1px);
-                        box-shadow: 0 4px 10px rgba(27,89,198,0.35);
-                    }
 
-                    .giu-clear-exam-btn {
-                        height: 32px;
-                        padding: 0 12px;
-                        border: 1px solid #93c5fd;
-                        background: #eff6ff;
-                        color: #1e40af;
-                        border-radius: 6px;
-                        font-size: 13px;
-                        font-weight: 700;
-                        cursor: pointer;
-                    }
 
-                    .giu-clear-exam-btn:hover {
-                        background: #dbeafe;
-                    }
 
                     .giu-exam-badge {
                         padding: 6px 10px;
@@ -3830,23 +3915,7 @@ function staffAttendance(S) {
                         gap: 8px;
                     }
 
-                    .giu-restart-guide-btn {
-                        height: 26px;
-                        padding: 0 10px;
-                        border-radius: 999px;
-                        border: 1px solid #0284c7;
-                        background: #e0f2fe;
-                        color: #075985;
-                        font-size: 11px;
-                        font-weight: 700;
-                        cursor: pointer;
-                        transition: background 0.15s, border-color 0.15s;
-                    }
 
-                    .giu-restart-guide-btn:hover {
-                        background: #bae6fd;
-                        border-color: #0369a1;
-                    }
 
                     .giu-collapse-arrow {
                         font-size: 12px;
@@ -3969,24 +4038,7 @@ function staffAttendance(S) {
                         width: 150px;
                     }
 
-                    .giu-add-override-btn {
-                        height: 32px;
-                        padding: 0 12px;
-                        border: 1px solid #1648a8;
-                        background: #1B59C6;
-                        color: #ffffff;
-                        border-radius: 6px;
-                        font-size: 13px;
-                        font-weight: 700;
-                        cursor: pointer;
-                        transition: all 0.2s ease;
-                    }
 
-                    .giu-add-override-btn:hover {
-                        background: #1648a8;
-                        transform: translateY(-1px);
-                        box-shadow: 0 4px 10px rgba(27,89,198,0.35);
-                    }
 
                     .giu-comp-balance-box {
                         padding: 8px 10px;
@@ -4042,54 +4094,14 @@ function staffAttendance(S) {
                         color: #991b1b;
                     }
 
-                    .giu-edit-annual-btn {
-                        height: 32px;
-                        padding: 0 12px;
-                        border: 1px solid #be185d;
-                        background: #ec4899;
-                        color: #ffffff;
-                        border-radius: 6px;
-                        font-size: 13px;
-                        font-weight: 700;
-                        cursor: pointer;
-                    }
 
-                    .giu-edit-annual-btn:hover {
-                        background: #db2777;
-                    }
 
-                    .giu-add-comp-btn {
-                        height: 32px;
-                        padding: 0 12px;
-                        border: 1px solid #0f766e;
-                        background: #14b8a6;
-                        color: #ffffff;
-                        border-radius: 6px;
-                        font-size: 13px;
-                        font-weight: 700;
-                        cursor: pointer;
-                    }
 
-                    .giu-add-comp-btn:hover {
-                        background: #0d9488;
-                    }
 
                     .giu-comp-action-btn {
-                        height: 28px;
-                        padding: 0 8px;
-                        border: 1px solid #5eead4;
-                        background: #f0fdfa;
-                        color: #0f766e;
-                        border-radius: 6px;
-                        font-size: 12px;
-                        font-weight: 700;
-                        cursor: pointer;
                         margin-right: 6px;
                     }
 
-                    .giu-comp-action-btn:hover {
-                        background: #ccfbf1;
-                    }
 
                     /* Absent-day rows: the "Add as" actions wrap onto their own line
                     (right-aligned) when the box is narrow, instead of squeezing
@@ -4141,64 +4153,15 @@ function staffAttendance(S) {
                         outline-offset: 1px;
                     }
 
-                    .giu-settings-action-btn {
-                        height: 32px;
-                        padding: 0 10px;
-                        border: 1px solid #64748b;
-                        background: #f8fafc;
-                        color: #334155;
-                        border-radius: 6px;
-                        font-size: 12px;
-                        font-weight: 700;
-                        cursor: pointer;
-                    }
 
-                    .giu-settings-action-btn:hover {
-                        background: #e2e8f0;
-                    }
 
-                    .giu-undo-btn {
-                        border-color: #b45309;
-                        background: #fffbeb;
-                        color: #92400e;
-                    }
 
-                    .giu-undo-btn:hover {
-                        background: #fef3c7;
-                    }
 
-                    .giu-holiday-controls .giu-undo-btn {
-                        border-color: #f59e0b;
-                        background: #fffbeb;
-                        color: #b45309;
-                    }
 
-                    .giu-holiday-controls .giu-undo-btn:hover {
-                        background: #fef3c7;
-                        border-color: #d97706;
-                    }
 
-                    .giu-undo-btn-overrides {
-                        border-color: #60a5fa;
-                        background: #eff6ff;
-                        color: #1d4ed8;
-                    }
 
-                    .giu-undo-btn-overrides:hover {
-                        background: #dbeafe;
-                        border-color: #1B59C6;
-                    }
 
-                    .giu-undo-btn-compensation {
-                        border-color: #5eead4;
-                        background: #f0fdfa;
-                        color: #0f766e;
-                    }
 
-                    .giu-undo-btn-compensation:hover {
-                        background: #ccfbf1;
-                        border-color: #2dd4bf;
-                    }
 
                     .giu-conflict-box {
                         margin-top: 6px;
@@ -4384,39 +4347,10 @@ function staffAttendance(S) {
                         gap: 8px;
                     }
 
-                    .giu-guide-btn {
-                        height: 32px;
-                        padding: 0 12px;
-                        border-radius: 8px;
-                        border: 1px solid #d1d5db;
-                        background: #f8fafc;
-                        color: #1f2937;
-                        font-size: 12px;
-                        font-weight: 700;
-                        cursor: pointer;
-                        transition: all 0.15s ease;
-                    }
 
-                    .giu-guide-btn:hover {
-                        background: #e5e7eb;
-                        border-color: #9ca3af;
-                    }
 
-                    .giu-guide-btn-primary {
-                        border-color: #1648a8;
-                        background: linear-gradient(60deg, #1B59C6, #2d6fe0);
-                        color: #ffffff;
-                    }
 
-                    .giu-guide-btn-primary:hover {
-                        background: linear-gradient(60deg, #1648a8, #1B59C6);
-                        border-color: #1648a8;
-                        box-shadow: 0 4px 10px rgba(27,89,198,0.35);
-                    }
 
-                    .giu-guide-btn-ghost {
-                        background: #ffffff;
-                    }
 
                     .giu-guide-target-pulse {
                         animation: giu-guide-pulse 1.5s ease-in-out infinite;
@@ -4493,10 +4427,17 @@ function staffAttendance(S) {
             //  UI Factory Helpers (small, composable DOM builders)
             // ═══════════════════════════════════════════════════════════
 
+            // Action buttons are the shared gs-btn (white); row, pager and guide buttons the small size.
+            // The absent-day "Add as" pills keep their own look.
+            const UI_BUTTON_SMALL = /\bgiu-(pagination|remove-holiday|comp-action|restart-guide)-btn\b/;
             function createUiButton(text, className, onClick) {
                 const btn = document.createElement("button");
                 btn.type = "button";
                 if (className) btn.className = className;
+                if (!/\bgiu-absent-holiday-btn\b/.test(className || "")) {
+                    btn.classList.add("gs-btn");
+                    if (UI_BUTTON_SMALL.test(className || "")) btn.classList.add("gs-btn--sm");
+                }
                 btn.textContent = text;
                 btn.setAttribute("aria-label", String(text || "action"));
                 if (typeof onClick === "function") btn.addEventListener("click", onClick);
@@ -4560,82 +4501,49 @@ function staffAttendance(S) {
             }
 
             function createInlineModalPrompt(title, initialValue, onConfirm) {
-                const layer = document.createElement("div");
-                if (SOURCE) layer.className = "giu-inline-modal-layer"; // Berlin: the view closes it on leave (closeReportOverlays)
-                layer.style.cssText = "position:fixed;inset:0;background:rgba(15,23,42,0.45);display:flex;align-items:center;justify-content:center;z-index:2147483646;";
-                const modal = document.createElement("div");
-                modal.style.cssText = "width:min(420px,92vw);background:#fff;border:1px solid #d1d5db;border-radius:8px;padding:12px;display:grid;gap:10px;";
-                const h = document.createElement("div");
-                h.style.cssText = "font-size:14px;font-weight:700;color:#1f2937;";
-                h.textContent = title;
-                const input = document.createElement("input");
-                input.type = "text";
-                input.value = String(initialValue == null ? "" : initialValue);
-                input.style.cssText = "height:34px;padding:0 10px;border:1px solid #9ca3af;border-radius:6px;";
-                const actions = document.createElement("div");
-                actions.style.cssText = "display:flex;justify-content:flex-end;gap:8px;";
-                const cancel = createUiButton("Cancel", "giu-settings-action-btn", function () {
-                    if (layer.parentNode) layer.parentNode.removeChild(layer);
+                createInlineModalForm(title, [{ label: "", value: initialValue }], function (values) {
+                    return onConfirm(values[0]);
                 });
-                const ok = createUiButton("Save", "giu-add-holiday-btn", function () {
-                    const keep = onConfirm(input.value);
-                    if (keep !== false && layer.parentNode) layer.parentNode.removeChild(layer);
-                });
-                actions.appendChild(cancel);
-                actions.appendChild(ok);
-                modal.appendChild(h);
-                modal.appendChild(input);
-                modal.appendChild(actions);
-                layer.appendChild(modal);
-                document.body.appendChild(layer);
-                input.focus();
-                input.select();
             }
 
-            // Multi-field sibling of createInlineModalPrompt. `fields` is an array of
-            // { label, value }. onConfirm receives an array of the entered string
-            // values (same order as `fields`); return false to keep the modal open.
+            // Multi-field sibling of createInlineModalPrompt, on the shared S.openDialog. `fields` is an
+            // array of { label, value }. onConfirm receives an array of the entered string values (same
+            // order as `fields`); return false to keep the dialog open. Enter in a field saves.
             function createInlineModalForm(title, fields, onConfirm) {
-                const layer = document.createElement("div");
-                if (SOURCE) layer.className = "giu-inline-modal-layer"; // Berlin: the view closes it on leave (closeReportOverlays)
-                layer.style.cssText = "position:fixed;inset:0;background:rgba(15,23,42,0.45);display:flex;align-items:center;justify-content:center;z-index:2147483646;";
-                const modal = document.createElement("div");
-                modal.style.cssText = "width:min(420px,92vw);background:#fff;border:1px solid #d1d5db;border-radius:8px;padding:12px;display:grid;gap:10px;";
-                const h = document.createElement("div");
-                h.style.cssText = "font-size:14px;font-weight:700;color:#1f2937;";
-                h.textContent = title;
-                modal.appendChild(h);
-
+                const form = document.createDocumentFragment();
                 const inputs = (fields || []).map(function (field) {
                     const label = document.createElement("label");
-                    label.style.cssText = "display:grid;gap:4px;font-size:12.5px;font-weight:600;color:#374151;";
-                    const labelText = document.createElement("span");
-                    labelText.textContent = field.label;
+                    label.className = "gius-dialog-field";
+                    if (field.label) {
+                        const labelText = document.createElement("span");
+                        labelText.textContent = field.label;
+                        label.appendChild(labelText);
+                    }
                     const input = document.createElement("input");
                     input.type = "text";
                     input.value = String(field.value == null ? "" : field.value);
-                    input.style.cssText = "height:34px;padding:0 10px;border:1px solid #9ca3af;border-radius:6px;font-weight:400;";
-                    label.appendChild(labelText);
                     label.appendChild(input);
-                    modal.appendChild(label);
+                    form.appendChild(label);
                     return input;
                 });
-
-                const actions = document.createElement("div");
-                actions.style.cssText = "display:flex;justify-content:flex-end;gap:8px;";
-                const cancel = createUiButton("Cancel", "giu-settings-action-btn", function () {
-                    if (layer.parentNode) layer.parentNode.removeChild(layer);
+                const dlg = S.openDialog({
+                    title: title,
+                    node: form,
+                    // Berlin: the view closes these when it is left (closeReportOverlays).
+                    layerClass: "giu-inline-modal-layer",
+                    focus: "input",
+                    actions: [{ label: "Cancel", value: "cancel" }, { label: "Save", value: "save", primary: true }],
+                    onAction: function (act) {
+                        if (act !== "save") return true;
+                        return onConfirm(inputs.map(function (i) { return i.value; })) !== false;
+                    }
                 });
-                const ok = createUiButton("Save", "giu-add-holiday-btn", function () {
-                    const keep = onConfirm(inputs.map(function (i) { return i.value; }));
-                    if (keep !== false && layer.parentNode) layer.parentNode.removeChild(layer);
+                inputs.forEach(function (input) {
+                    input.addEventListener("keydown", function (e) {
+                        if (e.key === "Enter") { e.preventDefault(); dlg.button("save").click(); }
+                    });
                 });
-                actions.appendChild(cancel);
-                actions.appendChild(ok);
-                modal.appendChild(actions);
-                layer.appendChild(modal);
-                document.body.appendChild(layer);
-                if (inputs[0]) { inputs[0].focus(); inputs[0].select(); }
+                if (inputs[0]) inputs[0].select();
             }
 
             function wrapSettingsSection(sectionKey, title, bodyNode, defaultExpanded) {
@@ -7487,13 +7395,10 @@ function staffAttendance(S) {
                 const bar = document.createElement("div");
                 bar.className = "giu-progress-bar";
 
-                const fillClass = stats.progressColor === "green"
-                    ? "giu-progress-fill-green"
-                    : stats.progressColor === "amber"
-                        ? "giu-progress-fill-amber"
-                        : "giu-progress-fill-red";
+                // The bar takes the rank's colour, as the Balance box above it and
+                // the Home bar do (the percentage keeps its completion colour).
                 const fill = document.createElement("div");
-                fill.className = `giu-progress-fill ${fillClass}`;
+                fill.className = `giu-progress-fill gius-att-bar-${displayTier(stats.tier).look}`;
                 fill.style.width = `${stats.progressPercent}%`;
 
                 bar.appendChild(fill);
@@ -8074,7 +7979,8 @@ function staffAttendance(S) {
                         beforeShow: function () { expandSettingsPanelForGuide(); expandAllSettingsSubsectionsForGuide(); }
                     },
                     {
-                        selector: ".giu-settings-action-btn",
+                        // Not the Undo buttons, which share the class and come first on the page.
+                        selector: ".giu-settings-action-btn:not(.giu-undo-btn)",
                         title: "Backup & Restore",
                         description: "Export/Import full settings JSON. Import now reports accepted/rejected counts with reasons.",
                         beforeShow: function () { expandSettingsPanelForGuide(); expandAllSettingsSubsectionsForGuide(); }
@@ -8145,17 +8051,17 @@ function staffAttendance(S) {
 
                 const skipBtn = document.createElement("button");
                 skipBtn.type = "button";
-                skipBtn.className = "giu-guide-btn giu-guide-btn-ghost";
+                skipBtn.className = "giu-guide-btn giu-guide-btn-ghost gs-btn gs-btn--quiet";
                 skipBtn.textContent = "Skip";
 
                 const prevBtn = document.createElement("button");
                 prevBtn.type = "button";
-                prevBtn.className = "giu-guide-btn";
+                prevBtn.className = "giu-guide-btn gs-btn";
                 prevBtn.textContent = "Previous";
 
                 const nextBtn = document.createElement("button");
                 nextBtn.type = "button";
-                nextBtn.className = "giu-guide-btn giu-guide-btn-primary";
+                nextBtn.className = "giu-guide-btn giu-guide-btn-primary gs-btn gs-btn--primary";
                 nextBtn.textContent = "Next";
 
                 left.appendChild(skipBtn);
@@ -9570,8 +9476,8 @@ function staffAttendance(S) {
                 });
             }
 
-            // Rank colours (chip, bar and dot per rank, light and dark), shared by
-            // the Home widget and the full report so both show the same pill.
+            // Rank colours (chip and bar per rank, light and dark), shared by the
+            // Home widget and the full report so both show the same pill and bar.
             function tierPaletteCss() {
                 return `
                     .gius-att-tier-ghost{background:#e2e8f0;color:#334155;} .gius-att-tier-deduct{background:#ffe4e6;color:#9f1239;} .gius-att-tier-close{background:#fff3da;color:#92600a;}
@@ -9579,12 +9485,15 @@ function staffAttendance(S) {
                     .gius-att-tier-grass{background:#ecfccb;color:#3f6212;} .gius-att-tier-slave{background:#fae8ff;color:#86198f;}
                     .gius-att-tier-missing{background:#1f2937;color:#f9fafb;} .gius-att-tier-gohome{background:#ecfccb;color:#3f6212;}
                     .gius-att-tier-pink{background:#fce7f3;color:#be185d;}
-                    html.gius-dark .gius-att-tier-ghost{background:#2a3040;color:#b6c2d9;} html.gius-dark .gius-att-tier-deduct{background:#3a1220;color:#f7a8c0;} html.gius-dark .gius-att-tier-close{background:#3a2c10;color:#f9d77e;}
-                    html.gius-dark .gius-att-tier-ontime{background:#14351f;color:#a6e3a1;} html.gius-dark .gius-att-tier-workaholic{background:#3a1f10;color:#fdba74;}
-                    html.gius-dark .gius-att-tier-grass{background:#1f2d0a;color:#bef264;} html.gius-dark .gius-att-tier-slave{background:#2e1230;color:#f0abfc;}
-                    html.gius-dark .gius-att-tier-missing{background:#e5e7eb;color:#111827;} html.gius-dark .gius-att-tier-gohome{background:#1f2d0a;color:#bef264;}
-                    html.gius-dark .gius-att-bar-missing{background:#e5e7eb;}
-                    html.gius-dark .gius-att-tier-pink{background:#3d0f2b;color:#f9a8d4;} html.gius-dark .gius-att-bar-pink,html.gius-dark .gius-att-dot-pink{background:#f472b6;}
+                    .gius-att-bar-ghost{background:#64748b;} .gius-att-bar-deduct{background:#e11d48;} .gius-att-bar-close{background:#f59e0b;} .gius-att-bar-ontime{background:#16a34a;}
+                    .gius-att-bar-workaholic{background:#ea580c;} .gius-att-bar-grass{background:#65a30d;} .gius-att-bar-slave{background:#a21caf;}
+                    .gius-att-bar-missing{background:#111827;} .gius-att-bar-gohome{background:#65a30d;} .gius-att-bar-pink{background:#db2777;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-tier-ghost{background:#2a3040;color:var(--gs-dk-muted, #b6c2d9);} html:is(.gius-dark, [data-gius-dark]) .gius-att-tier-deduct{background:#3a1220;color:#f7a8c0;} html:is(.gius-dark, [data-gius-dark]) .gius-att-tier-close{background:#3a2c10;color:#f9d77e;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-tier-ontime{background:#14351f;color:var(--gs-dk-ok, #a6e3a1);} html:is(.gius-dark, [data-gius-dark]) .gius-att-tier-workaholic{background:#3a1f10;color:#fdba74;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-tier-grass{background:#1f2d0a;color:#bef264;} html:is(.gius-dark, [data-gius-dark]) .gius-att-tier-slave{background:#2e1230;color:#f0abfc;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-tier-missing{background:#e5e7eb;color:#111827;} html:is(.gius-dark, [data-gius-dark]) .gius-att-tier-gohome{background:#1f2d0a;color:#bef264;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-bar-missing{background:#e5e7eb;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-tier-pink{background:#3d0f2b;color:#f9a8d4;} html:is(.gius-dark, [data-gius-dark]) .gius-att-bar-pink,html:is(.gius-dark, [data-gius-dark]) .gius-att-dot-pink{background:#f472b6;}
                 `;
             }
 
@@ -9612,15 +9521,12 @@ function staffAttendance(S) {
                     .gius-att-bal-red{background:#fee2e2;color:#991b1b;}
                     .gius-att-bar{height:8px;border-radius:6px;background:#e9ecef;overflow:hidden;margin:10px 0 8px;}
                     .gius-att-bar-fill{height:100%;border-radius:6px;}
-                    .gius-att-bar-ghost{background:#64748b;} .gius-att-bar-deduct{background:#e11d48;} .gius-att-bar-close{background:#f59e0b;} .gius-att-bar-ontime{background:#16a34a;}
-                    .gius-att-bar-workaholic{background:#ea580c;} .gius-att-bar-grass{background:#65a30d;} .gius-att-bar-slave{background:#a21caf;}
-                    .gius-att-bar-missing{background:#111827;} .gius-att-bar-gohome{background:#65a30d;} .gius-att-bar-pink{background:#db2777;}
                     .gius-att-tierwrap{margin-top:10px;}
                     .gius-att-quip{margin-top:6px;font-size:12.5px;font-style:italic;color:#6b7280;}
-                    html.gius-dark .gius-att-quip{color:#9399b2;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-quip{color:var(--gs-dk-muted, #9399b2);}
                     .gius-att-plan{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:8px;padding:7px 10px;border-radius:6px;background:#f3f4f6;font-size:12px;font-weight:600;}
                     .gius-att-plan b{font-variant-numeric:tabular-nums;}
-                    html.gius-dark .gius-att-plan{background:#313244;color:#cdd6f4;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-plan{background:var(--gs-dk-line, #313244);color:var(--gs-dk-text, #cdd6f4);}
                     .gius-att-tier{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:800;padding:3px 9px;border-radius:999px;}
                     .gius-att-tier-btn{cursor:pointer;border:none;font-family:inherit;transition:filter .12s,transform .12s;}
                     .gius-att-tier-btn:hover{filter:brightness(.96);transform:translateY(-1px);}
@@ -9639,7 +9545,7 @@ function staffAttendance(S) {
                     .gius-att-dot-ghost{background:#64748b;} .gius-att-dot-deduct{background:#e11d48;} .gius-att-dot-close{background:#f59e0b;} .gius-att-dot-ontime{background:#16a34a;}
                     .gius-att-dot-workaholic{background:#ea580c;} .gius-att-dot-grass{background:#65a30d;} .gius-att-dot-slave{background:#a21caf;}
                     .gius-att-dot-missing{background:#111827;} .gius-att-dot-gohome{background:#65a30d;} .gius-att-dot-pink{background:#db2777;}
-                    html.gius-dark .gius-att-dot-missing{background:#e5e7eb;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-dot-missing{background:#e5e7eb;}
                     .gius-att-trow-main{flex:1 1 auto;min-width:0;}
                     .gius-att-trow-name{font-weight:800;font-size:13.5px;display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
                     .gius-att-trow-cur{font-size:10.5px;font-weight:800;letter-spacing:.4px;padding:1px 6px;border-radius:999px;background:#1e1e2e;color:#fff;}
@@ -9653,9 +9559,9 @@ function staffAttendance(S) {
                     .gius-att-unlock-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
                     .gius-att-unlock-go{display:inline-block;background:#1B59C6;color:#fff;border-radius:8px;padding:8px 16px;font-weight:700;font-size:13px;text-decoration:none;}
                     .gius-att-unlock-ok{border:1px solid #d0d7de;background:transparent;color:inherit;border-radius:8px;padding:8px 16px;font-weight:700;font-size:13px;cursor:pointer;font-family:inherit;}
-                    html.gius-dark .gius-att-unlock-kicker{color:#f9d77e;}
-                    html.gius-dark .gius-att-unlock-go{background:#89b4fa;color:#11111b;}
-                    html.gius-dark .gius-att-unlock-ok{border-color:#3a3a4d;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-unlock-kicker{color:#f9d77e;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-unlock-go{background:var(--gs-dk-accent, #89b4fa);color:var(--gs-dk-bg, #11111b);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-unlock-ok{border-color:var(--gs-dk-line, #3a3a4d);}
                     /* Unlock popup animations (keyframes prefixed giusU). */
                     .gius-att-unlock-modal{background:transparent;}
                     .gius-att-unlock-scrim{position:absolute;inset:0;background:rgba(0,0,0,.45);}
@@ -9688,8 +9594,8 @@ function staffAttendance(S) {
                     .gius-att-fog{position:absolute;width:140%;height:70%;left:-20%;border-radius:50%;filter:blur(30px);opacity:0;pointer-events:none;z-index:1;}
                     .gius-att-fog-a{top:45%;background:radial-gradient(closest-side,rgba(203,213,225,.85),transparent);}
                     .gius-att-fog-b{top:60%;background:radial-gradient(closest-side,rgba(148,163,184,.7),transparent);}
-                    html.gius-dark .gius-att-fog-a{background:radial-gradient(closest-side,rgba(148,163,184,.45),transparent);}
-                    html.gius-dark .gius-att-fog-b{background:radial-gradient(closest-side,rgba(100,116,139,.45),transparent);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-fog-a{background:radial-gradient(closest-side,rgba(148,163,184,.45),transparent);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-fog-b{background:radial-gradient(closest-side,rgba(100,116,139,.45),transparent);}
                     .gius-att-play .gius-att-fog-a{animation:giusUFog 2.4s ease-out both,giusUDrift 9s ease-in-out .2s infinite alternate;}
                     .gius-att-play .gius-att-fog-b{animation:giusUFog 2.4s ease-out .2s both,giusUDrift 11s ease-in-out infinite alternate-reverse;}
                     @keyframes giusUFog{0%{opacity:0;}30%{opacity:1;}100%{opacity:.55;}}
@@ -9748,12 +9654,12 @@ function staffAttendance(S) {
                     .gius-att-unlock-go{overflow:hidden;}
                     .gius-att-unlock-go:hover{transform:translateY(-2px);filter:brightness(1.08);box-shadow:0 6px 16px rgba(27,89,198,.35);}
                     .gius-att-unlock-ok:hover{transform:translateY(-2px);background:rgba(0,0,0,.05);}
-                    html.gius-dark .gius-att-unlock-ok:hover{background:rgba(255,255,255,.07);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-unlock-ok:hover{background:rgba(255,255,255,.07);}
                     .gius-att-unlock-go:active,.gius-att-unlock-ok:active{transform:translateY(0) scale(.97);}
                     .gius-att-unlock-go-gold{background:linear-gradient(135deg,#fde68a,#eab308 55%,#ca8a04);color:#3b2a00;box-shadow:0 2px 10px rgba(234,179,8,.35);}
-                    html.gius-dark .gius-att-unlock-go-gold{background:linear-gradient(135deg,#fde68a,#facc15 55%,#eab308);color:#1c1400;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-unlock-go-gold{background:linear-gradient(135deg,#fde68a,#facc15 55%,#eab308);color:#1c1400;}
                     .gius-att-unlock-go-pink{background:linear-gradient(135deg,#f472b6,#db2777);color:#fff;box-shadow:0 2px 10px rgba(219,39,119,.35);}
-                    html.gius-dark .gius-att-unlock-go-pink{background:linear-gradient(135deg,#fbcfe8,#f472b6);color:#3d0f2b;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-unlock-go-pink{background:linear-gradient(135deg,#fbcfe8,#f472b6);color:#3d0f2b;}
                     .gius-att-unlock-go-gold:hover{box-shadow:0 6px 18px rgba(234,179,8,.55);}
                     .gius-att-unlock-go-pink:hover{box-shadow:0 6px 18px rgba(219,39,119,.5);}
                     .gius-att-unlock-go-gold::after,.gius-att-unlock-go-pink::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.65),transparent);transform:skewX(-20deg);opacity:0;}
@@ -9769,11 +9675,11 @@ function staffAttendance(S) {
                         .gius-att-stars i{opacity:.8;}
                         .gius-att-unlock-go:hover,.gius-att-unlock-ok:hover{transform:none;}
                     }
-                    html.gius-dark .gius-att-sheet{background:#1e1e2e;color:#cdd6f4;}
-                    html.gius-dark .gius-att-sheet-sub,html.gius-dark .gius-att-trow-cond{color:#9399b2;}
-                    html.gius-dark .gius-att-trow{border-color:#2a2a3a;}
-                    html.gius-dark .gius-att-trow.cur{background:#181825;border-color:#3a3a4d;}
-                    html.gius-dark .gius-att-trow-cur{background:#cdd6f4;color:#1e1e2e;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-sheet{background:var(--gs-dk-card, #1e1e2e);color:var(--gs-dk-text, #cdd6f4);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-sheet-sub,html:is(.gius-dark, [data-gius-dark]) .gius-att-trow-cond{color:var(--gs-dk-muted, #9399b2);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-trow{border-color:var(--gs-dk-line-soft, #2a2a3a);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-trow.cur{background:var(--gs-dk-sunk, #181825);border-color:var(--gs-dk-line, #3a3a4d);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-trow-cur{background:var(--gs-dk-text, #cdd6f4);color:var(--gs-dk-card, #1e1e2e);}
                     ${tierPaletteCss()}
                     .gius-att-meta{font-size:13px;color:#272c33;}
                     .gius-att-toggle{margin-top:6px;font-size:13px;font-weight:700;background:transparent;border:none;
@@ -9795,16 +9701,16 @@ function staffAttendance(S) {
                     .gius-att-action:hover{background:#fff8e1;border-color:#f0c247;}
                     .gius-att-link{display:inline-block;margin-top:10px;font-size:13px;font-weight:600;color:#272c33;}
                     .gius-att-empty{font-size:13px;opacity:.85;}
-                    html.gius-dark .gius-att-widget{background:#1e1e2e;color:#cdd6f4;box-shadow:0 2px 10px rgba(0,0,0,.45);}
-                    html.gius-dark .gius-att-card{background:#181825;border-color:#313244;border-left-color:#f9e2af;}
-                    html.gius-dark .gius-att-bar{background:#313244;}
-                    html.gius-dark .gius-att-meta,html.gius-dark .gius-att-toggle,html.gius-dark .gius-att-link{color:#cdd6f4;}
-                    html.gius-dark .gius-att-absent-row{background:#11111b;}
-                    html.gius-dark .gius-att-action{background:#181825;border-color:#313244;color:#cdd6f4;}
-                    html.gius-dark .gius-att-action:hover{background:#2a2410;border-color:#f9e2af;}
-                    html.gius-dark .gius-att-bal-green{background:#14351f;color:#a6e3a1;}
-                    html.gius-dark .gius-att-bal-amber{background:#2a2410;color:#f9e2af;}
-                    html.gius-dark .gius-att-bal-red{background:#3a1414;color:#f38ba8;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-widget{background:var(--gs-dk-card, #1e1e2e);color:var(--gs-dk-text, #cdd6f4);box-shadow:0 2px 10px rgba(0,0,0,.45);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-card{background:var(--gs-dk-sunk, #181825);border-color:var(--gs-dk-line, #313244);border-left-color:var(--gs-dk-warn, #f9e2af);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-bar{background:var(--gs-dk-line, #313244);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-meta,html:is(.gius-dark, [data-gius-dark]) .gius-att-toggle,html:is(.gius-dark, [data-gius-dark]) .gius-att-link{color:var(--gs-dk-text, #cdd6f4);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-absent-row{background:var(--gs-dk-bg, #11111b);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-action{background:var(--gs-dk-sunk, #181825);border-color:var(--gs-dk-line, #313244);color:var(--gs-dk-text, #cdd6f4);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-action:hover{background:#2a2410;border-color:var(--gs-dk-warn, #f9e2af);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-bal-green{background:#14351f;color:var(--gs-dk-ok, #a6e3a1);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-bal-amber{background:#2a2410;color:var(--gs-dk-warn, #f9e2af);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-bal-red{background:#3a1414;color:var(--gs-dk-err, #f38ba8);}
                     .gius-att-dayoff{display:flex;align-items:center;gap:9px;flex-wrap:wrap;
                         border-radius:8px;padding:9px 12px;margin:0 0 12px;font-size:13.5px;
                         line-height:1.45;border-left:3px solid;}
@@ -9816,8 +9722,8 @@ function staffAttendance(S) {
                         flex:0 0 auto;}
                     .gius-att-dayoff.warn{background:#fff8e1;border-left-color:#f59e0b;color:#8a6500;}
                     .gius-att-dayoff.warn .gius-att-dayoff-btn{background:#b45309;color:#fff;}
-                    html.gius-dark .gius-att-dayoff.warn{background:#2a2410;border-left-color:#f9e2af;color:#f9e2af;}
-                    html.gius-dark .gius-att-dayoff.warn .gius-att-dayoff-btn{background:#f9e2af;color:#2a2410;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-dayoff.warn{background:#2a2410;border-left-color:var(--gs-dk-warn, #f9e2af);color:var(--gs-dk-warn, #f9e2af);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-dayoff.warn .gius-att-dayoff-btn{background:var(--gs-dk-warn, #f9e2af);color:#2a2410;}
                     .gius-att-card.gius-att-muted{opacity:.45;filter:grayscale(.6);}`;
                 const style = document.createElement("style");
                 style.id = "gius-att-style";

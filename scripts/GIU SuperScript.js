@@ -5,11 +5,11 @@
 // @icon        data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKgAAACUCAMAAAAwLZJQAAAAzFBMVEX////VlyYkHiAAAADTHyj36ereiIr8/vzIGSPPAAj//fziu4HTlRbnyp3x49HRHSTTkgzw8PD29vbl5eXV1NRjX2HWY2vUr2zMAADn1rfJjguzsrMfGRsaEBPltLX6+u/OmB67u7vIyMgyLC5sbGycnJypqKmLi4tYWFh9e3wWExXkoJ1HRUaUkpM3NjY+Pj4PAAe/AADIDxPYGiAnJicZGhn27df17eDXqE329uBVYF7AZ2jZjGvOWgTNlSzf0J7lw7PWozvqxcLZsl8WTjZKAAAHBElEQVR4nO2Ya3fbNhJAIWG92tJ2YwzApg6kTQDhQagkpXZlR/t03fz//7QDgo71jqQ0Pf2Ae45tipKlq8FgMAAhmUwmk8lkMplMJpPJZDKZTCaTyWQymUwmk8lkMpnMqRTAENi4dXUV710xvB6979n+v3R39IcoMmGrdkyR2bgtLX/Rvfr5uzdvfvnlx7/i9fc3g8EAf27IltNtfOLuetR9A22CEWB84Cp4C2A5IbzBj3B4IRU+kEAuhCk/pXQyHibGE0rnIb4viv7tH39BkujdoONm+/9v75Jo9HcPgghFqONga/4gWWsJ8TUQTtHWU0W4v1RUVRMaJWcxoJNedkFtEn0TRb9bF73bEe0jWmC46qa7haLEVrBUfEoJr+YcP2WJomYmuL1MlFVJbjEtJee6XPaqi4OiuxF9FRVLjbacUBO4m7YOR712Tg8FKeNTnmFMXXGJp17SLoKzININYbrwDieHRG8+HMrRl4gGU8zQ15Z4oZSjllGhjawMCQAhDdW5qOWs86SvGQ6OdjQHRO+OiRJJFZhAqJe8aTl1FvNVEyorRjQV+Ju1/oKIihS9h5lYv8udRfRFooQ5dMRAKs4F4YIzgrNS8PgBmgkMB+Pne7I2xfNBHnrF+aLfgsLP0rwJB19ytqjWRMewCe20VFxJCUpiCYghBQwoaMIkJi4XcdY1Dd4W3VMkPkVA7ot3P/Dj4eF6cbaoMaSssGp6IanVikpVzLx6EAozlXmGOcyYMrXi+ELXclYHYpeYI6HAv5gmVO+xMIsuoGna/F6igYSpAVyLGJYjTVlB5g5w1s9bgaLQzHDSNwZLQ+APOgZLyHbOuSfgxxJFxa4Eo31tP5Ldl4h6MfOsFx0bA3VVKaKUWXIHQjqMd2MARTXFDwaKGVJVwhKlfdgvammfoUdWinPraBdRDFNwhA1jRPG9a7NUxOmifPBgjccSm0RFlEIzJ2CONcuHMBZ7Rcu0BtGDU36/6OALOTrCcVXUdemmqOBkaO0Dx2rH2pKVMKpC4UsojCnwS2HNLTym6NLwAKxuOFWcbTmweZpK433pe0z03fFZX2CHRJQgDNc6ERoPXkHQKk5vKTAo2oO0UDiMeeODxfmFGaAldjJEeWYavx1T0SbR+Z5gHxU91pR8C3TfJ1XHVor9ET0iyuMEwbKJ14wVHNJjJgReClGQQmsADgLXLR4H+YRlSiXRSbWdE18lGnDxEJ7ULnbJfMktvj1W/dpbUXmsnd41WtTChtrLUMaXfhE53iPK14BLRE0SbXGKSo1zOE6phruqIHyKVZ+3MVeXHLs2IHqmw7EoHREFM5x+RnyFaOmoUIIvcFNimCWytY63NjRQzhwTU+yjUZSYpfuyJ1Hj3RwFsxj3TBZfI1oRPw1RFNdMjcGtMSPn1Ri7vIa6z6JiX9XcQUzTrG/XXgym7+9jqHdEb06Y9aHGfZMj+NvQrnyzOW6YbM2At6oMOM8aG4deTYDsX4d26OvocL2OromOd0QfP4seqaPcBNsAMfG9BIulz+Pi7qrG8UrrWnvrucBB1HWMaH2KKKn6lWktT/qh3y/6cdDvmbY39ht1FAsSfo+Y9wBdlcI/8SYrGBSMxZoE2KlA9wp+0j5P0n42vb4awjyy3Cv6fpVCevfPrcp+ZsHHbfUo/Yy2x2Y/kESH64nS1SVRzfaJjq779ul+642+eYfv+/ap3LrP9ouS+37obw+LinKTf/37h03+83aT61O+Hav7LFWnib6M/erjQVFNt/j5x03+++HdBv876cxKpz3TpN5ccQ+Jkqe+I306KMrlFn/f4tf7LU47W+t751m9MfsOio6eb1Lr/HhI9CgX7JNfTYfd6NOhXlM9KEoen/uJ/7ReotZEQaUFOXW/sV/APeYI9/JYqsBz3NMzBd2k5xCnvThZXqUjnck4vNT9QtjYqe6N6Oh+kExvPt2/qI4+vh28RlSlL6yxo+O4UeYkbouJULxQTCmNs6E/k0nf6IyDKF52B47jybIKVsrG1G1X8cc7a338EuT7d32e3qze3t7fP12/XT0PXkV5atuAKx+PRyQHpwng1o4RAdxy3OVJZR0BJwFko/Q5h6UitAuKgz1ZdOeOqDmjdNF2zcqWKPL+enDXR/UuEk928erD81M8HxWNwxnkvONGWy8FY9ZK65RyMgSwTBN85J1srHLOSaf0WWeQQob5ek2ZGytF9w5XfXn5LDoixeP1qjfsFPFqdX17/9inQjxJF9jKYdQgralMq4LExZOnhMQWKh5oxzvnn5QCw3GyTdNYiW3k6zk+/JT47VU0HuY/3l9/Wq2eV6tPOP6PH7drIfZIsOYAB7rj4uIz8iNs5vzo4IM/HX9uu0wmk8lkMplMJpPJZDKZTCaTyWQymUwmk8lkMplMJpPJHOP/Lb7en38r1wIAAAAASUVORK5CYII=
 // @namespace   Cyn0
 // @match       https://portal.giu-uni.de/*
-// @version     4.10.1
+// @version     5.0
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20SuperScript.js
 // @grant       none
-// @run-at      document-idle
+// @run-at      document-start
 // @noframes
 // ==/UserScript==
 
@@ -17,6 +17,400 @@
 (function () {
     'use strict';
 
+    // ═══════════════════════════════════════════════════════════════════════════
+    //  PORTAL LOOK (5.0) — CSS only, applied now (document-start) so the page
+    //  never draws in the old style first. Off unless switched on in the
+    //  Control Center; listed pages restyled, every other page gets the new
+    //  sidebar and header only (@match keeps it on this portal).
+    // ═══════════════════════════════════════════════════════════════════════════
+// SuperScript 5.0 portal look: restyles allowlisted portal pages with CSS only
+// (src/shared/ui/portalSkin.css, spliced in by the build as PORTAL_SKIN_CSS).
+//
+// applyPortalSkin(host) runs at document-start, before the page draws, and
+// before the feature bootstrap: it reads the Control Center's "Portal look"
+// switch straight from storage, and touches nothing but one attribute on
+// <html>, one <style> and two marker classes in the sidebar (plus a page's own
+// `ready` step, for what CSS cannot do alone, e.g. read a cell's value). It does nothing
+// unless the switch is on and, when `host` is given, the page is on that host
+// (the Berlin bundle passes its portal, since it also matches Cairo and GUC
+// pages; the Cairo bundle's @match already limits it to its portal). Pages listed
+// in PORTAL_SKIN_PAGES get their full restyle; every other page gets the "shell"
+// key: the new sidebar, header, ground and title, and the base layer that gives
+// the portal's grids, buttons and fields the 5.0 look. Every rule in the CSS is scoped to that attribute, so switching it
+// off leaves the portal exactly as it is.
+
+// Lower-cased page file name (no .aspx) → the page's skin key (selects its page
+// rules), the id(s) of its sidebar link, highlighted as the current page, and an
+// optional `ready` step run once the page is parsed.
+// The link id is not always the page name: Berlin's Take Attendance page is
+// reached through the same lnk_…H003 entry as Cairo's.
+const PORTAL_SKIN_PAGES = {
+    home: { key: 'home', links: ['lnk_home'] },
+    manageuploadedgrades_m: { key: 'uploadedGrades', links: ['lnk_ManageUploadedGrades_m'] },
+    managegroupgrade_m: { key: 'groupGrade', links: ['lnk_ManageGroupGrade_m'], ready: labelGroupGradeFilters },
+    managegrade_m: { key: 'manageGrade', links: ['lnk_ManageGrade_m'], ready: labelManageGradeFilters },
+    managecourseevalmethod_m: { key: 'evalMethod', links: ['lnk_ManageCourseEvalMethod_m'] },
+    viewevaluationsummary_m: { key: 'evalSummary', links: ['lnk_ViewEvaluationSummary_m'], ready: markBlankComments },
+    classattendance_managestudentattendancesh003: { key: 'takeAttendance', links: ['lnk_ClassAttendance_ManageStudentAttendancesH003'] },
+    classattendance_managestudentattendancesberlin: { key: 'takeAttendance', links: ['lnk_ClassAttendance_ManageStudentAttendancesBerlin', 'lnk_ClassAttendance_ManageStudentAttendancesH003'] },
+    notificationsystem_sendemail_m: { key: 'notification', links: ['lnk_NotificationSystem_SendEmail_m'] },
+    viewtimetable_m: { key: 'proctorSchedule', links: ['lnk_ViewTimeTable_m'] },
+    proctorexchange_m: { key: 'proctorExchange', links: ['lnk_ProctorExchange_m'] },
+    swiftreports_m: { key: 'reports', links: ['lnk_SwiftReports_m'] },
+    studentattendancereport_m: { key: 'studentReport', links: ['lnk_StudentAttendanceReport_m'], ready: markAbsenceLevels },
+    groupsschedule_b: { key: 'groupsSchedule', links: ['lnk_GroupsSchedule_b'], ready: unglueScheduleHeads },
+    searchacademicscheduled_001_m: { key: 'courseSchedule', links: ['lnk_SearchAcademicScheduled_001_m'] },
+    managestaffinfo: { key: 'staffInfo', links: ['lnk_ManageStaffInfo'] },
+    addextrasession_m: { key: 'extraSession', links: ['lnk_AddExtraSession_m'] },
+    roomschedule_m: { key: 'roomSchedule', links: ['lnk_RoomSchedule_m'] },
+    staffgrouplinkrequest_m: { key: 'groupLink', links: ['lnk_StaffGroupLinkRequest_m'] },
+    studenthistory_m: { key: 'studentHistory', links: ['lnk_StudentHistory_m'], ready: hideLinkedCampusLink },
+    facultyprocessmap_m: { key: 'processMap', links: ['lnk_FacultyProcessMap_m'] },
+    // Not the portal layout (no sidebar): "Access Denied" and other system messages.
+    systemmessage: { key: 'systemMessage', links: [], ready: buildAccessDenied },
+    accessdeniedmessage: { key: 'accessDenied', links: [], ready: buildAccessDeniedMessage },
+};
+
+// Any other page: shell and base layer only.
+const PORTAL_SKIN_SHELL = { key: 'shell', links: [] };
+
+const PORTAL_SKIN_CSS = "/* SuperScript 5.0 portal look (src/shared/portalSkin.js applies it).\n   Nothing here matches unless the script set data-gius-skin on <html>. The shell (sidebar, header, page\n   ground and title) and the base layer (the portal's grids, buttons, fields, validators) need only the\n   attribute, so they reach every portal page; restyled pages also carry their key (\"home\", …), which\n   selects their page rules; any other page carries \"shell\". Approved live on Berlin as test 0.1.7. */\n\nhtml[data-gius-skin] {\n    --gs-bg: #f4f5f7; --gs-card: #ffffff; --gs-sunk: #f6f8fa;\n    --gs-line: #d0d7de; --gs-line-2: #afb8c1; --gs-line-soft: #eaeef2;\n    --gs-text: #1f2328; --gs-muted: #59636e;\n    --gs-accent: #ffc107; --gs-accent-h: #ffb300; --gs-accent-line: #d9a400; --gs-accent-fg: #1a1a1a; --gs-accent-tint: #fff6d6;\n    --gs-nav: #272c33; --gs-nav-text: #e6edf3; --gs-nav-dim: #aab4bf;\n    --gs-focus: #0969da; --gs-err: #cf222e; --gs-ok: #1a7f37; --gs-warn: #7d4e00;\n    --gs-danger: #cf222e; --gs-danger-h: #a40e26; /* red buttons: the same red as error text in light, not in dark */\n    /* Colours that had been written out in the rules below (same values): */\n    --gs-on-strong: #ffffff; --gs-text-2: #424a53; --gs-focus-ring: rgba(9, 105, 218, .25); --gs-disabled-bg: #eaeef2;\n    --gs-disabled-fg: #6e7781; --gs-err-bg: #ffebe9; --gs-err-line: #ffcecb; --gs-err-line-2: #ff8182;\n    --gs-err-h: #a40e26; --gs-err-fg: #82071e; --gs-ok-bg: #dafbe1; --gs-ok-line: #4ac26b;\n    --gs-ok-fg: #116329; --gs-ok-strong: #0f4d22; --gs-warn-bg: #fff8c5; --gs-warn-line: #d4a72c;\n    --gs-warn-h: #fff1a8; --gs-warn-soft: #fffbea; --gs-warn-strong: #4d2d00; --gs-info-bg: #ddf4ff;\n    --gs-info-line: #54aeff; --gs-info-h: #b6e3ff; --gs-info-fg: #0550ae; --gs-info-strong: #0a3069;\n    --gs-done-bg: #fbefff; --gs-done-line: #c297ff; --gs-done-fg: #6639ba; --gs-severe-bg: #fff1e5;\n    --gs-severe-line: #fb8f44; --gs-severe-fg: #bc4c00; --gs-lvl1-bg: #fef3c7; --gs-lvl1-line: #fcd34d;\n    --gs-lvl1-fg: #92400e; --gs-lvl2-bg: #fde3c3; --gs-lvl2-line: #f59e0b; --gs-lvl2-fg: #7c2d12;\n    --gs-lvl3-bg: #fee2e2; --gs-lvl3-line: #fca5a5; --gs-lvl3-fg: #b91c1c; --gs-switch-off: #8c959f;\n    --gs-nav-strong: #24292f; --gs-nav-hover: rgba(255, 255, 255, .1); --gs-nav-hover-2: rgba(255, 255, 255, .12); --gs-accent-glow: rgba(255, 193, 7, .14);\n    --gs-shade-08: rgba(31, 35, 40, .08); --gs-shade-16: rgba(31, 35, 40, .16); --gs-shade-30: rgba(31, 35, 40, .3); --gs-backdrop: rgba(31, 35, 40, .55);\n    --gs-backdrop-2: rgba(31, 35, 40, .6);\n    /* Dropdown arrow (muted grey stroke); a theme swaps the whole image. */\n    --gs-chevron: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2359636e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E\");\n    /* The portal names Open Sans but never loads it; use the system font, no download. */\n    --gs-font: system-ui, 'Segoe UI', Roboto, Arial, sans-serif;\n}\n\n/* ── Dark mode (portalSkin.js setPortalDark; the sun / moon button in the portal header) ──\n   The same tokens with dark values: warm charcoal greys, GIU yellow accent (also for links and focus),\n   status colours as warm hues (tinted fills, light text; absence level pills solid with dark text). */\nhtml[data-gius-skin][data-gius-dark] {\n    color-scheme: dark;\n    --gs-bg: #14120e; --gs-card: #1e1b16; --gs-sunk: #29251e; /* inset parts (boxes, fields, table heads) a shade above the card */\n    --gs-line: #3e382e; --gs-line-2: #524a3d; --gs-line-soft: #2b2720;\n    --gs-text: #eee8da; --gs-muted: #ada493;\n    --gs-accent-tint: rgba(255, 193, 7, .14);\n    --gs-nav: #0b0a07; --gs-nav-text: #eee8da; --gs-nav-dim: #918877;\n    --gs-focus: #ffc107; --gs-err: #ff7b72; --gs-ok: #56d364; --gs-warn: #e3b341;\n    --gs-danger: #d20f39; --gs-danger-h: #b00c30;\n    --gs-text-2: #d6cfbf; --gs-focus-ring: rgba(255, 193, 7, .3); --gs-disabled-bg: #2b2720; --gs-disabled-fg: #918877;\n    --gs-err-bg: rgba(248, 81, 73, .16); --gs-err-line: rgba(248, 81, 73, .4); --gs-err-line-2: #f85149; --gs-err-h: #ff7b72; --gs-err-fg: #ffa198;\n    --gs-ok-bg: rgba(63, 185, 80, .16); --gs-ok-line: rgba(63, 185, 80, .5); --gs-ok-fg: #56d364; --gs-ok-strong: #7ee787;\n    --gs-warn-bg: rgba(227, 179, 65, .15); --gs-warn-line: rgba(227, 179, 65, .5); --gs-warn-h: rgba(227, 179, 65, .26); --gs-warn-soft: rgba(227, 179, 65, .08); --gs-warn-strong: #f2cc60;\n    --gs-info-bg: rgba(88, 166, 255, .15); --gs-info-line: rgba(88, 166, 255, .45); --gs-info-h: rgba(88, 166, 255, .26); --gs-info-fg: #79c0ff; --gs-info-strong: #a5d6ff;\n    --gs-done-bg: rgba(188, 140, 255, .15); --gs-done-line: rgba(188, 140, 255, .45); --gs-done-fg: #d2a8ff;\n    --gs-severe-bg: rgba(240, 136, 62, .15); --gs-severe-line: rgba(240, 136, 62, .5); --gs-severe-fg: #f0883e;\n    --gs-lvl1-bg: #e3b341; --gs-lvl1-line: #e3b341; --gs-lvl1-fg: #14120e;\n    --gs-lvl2-bg: #f0883e; --gs-lvl2-line: #f0883e; --gs-lvl2-fg: #14120e;\n    --gs-lvl3-bg: #f85149; --gs-lvl3-line: #f85149; --gs-lvl3-fg: #14120e;\n    --gs-switch-off: #5c5446; --gs-nav-strong: #eee8da;\n    --gs-nav-hover: rgba(255, 255, 255, .06); --gs-nav-hover-2: rgba(255, 255, 255, .08); --gs-accent-glow: rgba(255, 193, 7, .14);\n    --gs-shade-08: rgba(0, 0, 0, .3); --gs-shade-16: rgba(0, 0, 0, .45); --gs-shade-30: rgba(0, 0, 0, .6); --gs-backdrop: rgba(0, 0, 0, .65);\n    --gs-backdrop-2: rgba(0, 0, 0, .7);\n    --gs-chevron: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ada493' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E\");\n    /* The features' own dark rules (written for GIU Theme's gius-dark class) also apply here and take these in\n       place of their blue-grey colours: scripts/build/build.js (warmDarkRules) rewrites them to\n       var(--gs-dk-*, <old colour>), so under GIU Theme's dark modes alone they keep the old colours. */\n    --gs-dk-bg: var(--gs-bg); --gs-dk-card: var(--gs-card); --gs-dk-sunk: var(--gs-sunk);\n    --gs-dk-line: var(--gs-line); --gs-dk-line-2: var(--gs-line-2); --gs-dk-line-soft: var(--gs-line-soft);\n    --gs-dk-text: var(--gs-text); --gs-dk-text-2: var(--gs-text-2); --gs-dk-muted: var(--gs-muted);\n    --gs-dk-accent: var(--gs-accent); --gs-dk-warn: var(--gs-warn); --gs-dk-err: var(--gs-err); --gs-dk-ok: var(--gs-ok);\n}\n/* Sidebar: the darkest layer, with a thin edge. Logo: the off-white ink version (black ink would vanish). */\nhtml[data-gius-skin][data-gius-dark] aside#left-panel { box-shadow: inset -1px 0 0 #3b3429; }\nhtml[data-gius-skin][data-gius-dark] #left-panel .navbar-header .navbar-brand { background: transparent !important; }\nhtml[data-gius-skin][data-gius-dark] #left-panel .navbar-header .navbar-brand img { content: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAABfBAMAAAA0WIwqAAAAMFBMVEVMaXHu59nw6tzmzbjt6Nrt5tbt59nt59nt59nLnku1NDrcpkrWo23XmijWHynVPkQbHNBXAAAADXRSTlMA8P0m0kOtY4jVzP572W8VEAAAAAlwSFlzAAAD6AAAA+gBtXtSawAADSpJREFUeNrdnMtv48YZwGcxpMgGOZgUV/aVXFtWe6LXkmygOYgyo130RMsPGWgPklarNXpitLblo1Z+8ZgivRibngoEaK5FD4ETIECQwyIuUCCnYLv/Qi65t/2+IUVR74cpe90BTMskZc1v5nvPUIQMbHR1dZXc95Y6PjdZyzmHeuelD75stb8y3Eu/fdv3X73xrgZHSL8dCnpckTRNlqCpmqYp+1sdID+32i/s5nd++3vf//YX9+Jbv/N7hqacEVqtViu2WK3k9uHKkY1Xdht4PMc7d5/hyyPrRhiGpkrBpqlBlMEgP44FktYW6geaRWXVkBsRbeFU2yCknMFLWTwKGuLkF/H+pj09x1pJk3qapj59GRIIL8fh1SudSstkVRfVDDXihJSW8ZIUhWNEQpxNGY+16WdkV1alfg1QrFBAVqQiDjtBEEIAhDQVQgwFEdQou2EJQaT4jUAOZGlQk5dCAWlKbueo9LANQiXZxs7jqSbOELyWizcAOdCkwS0UECZInSClOAgVSlLJwEnK1SS4NX+gJqYH2Q2KFdirCUH+NQYIzySKgcynCkxH5CgR5uE0XS5D3/llDmfn8ZYkN0htOjudDvRcVvadc0MNHURQfRBZ02xRnT+I6UScAyWJzCFIJIqzRB7bm8A2HYgQ0A+NqTY91WYDAi6RSgv1Y0tUJQ10IZKpyfbjRhnE7nGDR6HL2yBu9nQgzXaf1ectpVFnAhLRGi0deaLCb67ISZmSjvarebZjJBAEdT8/DUgy0Odn/tlP1LB1JNEJkkHL+6AoqAsLpAb2y5BBCnQEEVSlNAUIn23rx8cBP18OF8TzGAGQPOj24wYxQOfzki4kVlc34UzNRhFRpwDZbM/HQn/AcEDyYIw6QNAN5sFAwfm8ZEWi6BgzDAQUaHIQIaAgncZ7XQ4VRFDnoasyA6Fofnkpht3mUJ5kO1/EWx66HqQ8BUh7QuSNrkvbapgg4HRf1E9hRjTVxKAxSppaowwagRaLvSJUjrvhYkSbGIRvT0i8580H7oWH4YDQI0NSLnQM46u24DTIutM41gk9AVlyLAdvO3b0PWb+nclNVhsk0zdVhKaHAwJtholn2zYtjprNEEBm18S2t4iS+wwSUHX7XoMYPkiC3GeQgGRtzBqkUNBJgb3eIYUdaIekDkeLPyzUoTJAD5kRfekd1uD6TkFfY+9YO99vnYej5R8Ofce3MoFk3RSkCb4hu8HieJKFnEdbpBDPa0VBU2W1CKUH5kDQZ3EYO+IdmlXDs2k5V1KfoePHjj9AZc4vMW8T7bVZcTJrkJqikxL8EGqS43pJqV8QI1Y/tgU1KoBgu4kXA8E71+uvpItjHWIXyDLAkTUXLSIyg8Shm2jGmDxt9HrDh7MHgbCjjPk4xU40ceRYhgsgmL3zKub0DKTMxGMF/16RLTBI8EKEuCOiootAEIpxMkuX3RbxVQQ/YOYzghKA/Y+1hhTzDwDZwDkAEBhM8RFLIYvMoHogLNmnMGmiihcQRFBlOwjSVhHJuhWQSha7kusA4RkI4WMSSJQAIGKCiVALRFBZrAeTJipq3AXhchqLMTM9qeEYKhIGiJnEEkkbxBUtqKeAjiw1QXpwRrgMA2yBRFxNqGGkj+OAIPmXOH0+CG17keVbAoE8sBEAUSomKPuGCP3jl1AFECRvY+brg3BuEAi5fWQOx4GDuSjryOqDCOqQgHE2ICDNy0EQ02jwqpKFzJRfQlOAICWdMfQDwXEAEDAX+N98kICuN24LBEsksQ7R4tUcVkyFJehPHHSEJiD9KvYBsSJzOA4Pinjvimy3QZIT6Xo4IFgiyXVbLbRL0DmSlS8eEXGxWkFtb+tIxtVnHUBgHA5ATeLVErD6IHmfQyGzB8m7ICDPC11WC2tbDCSJkVIy55xj5Ne2Wsx/Ayw3x6LcIsk/hVsetkEmM1pheHaTfWqie0Y4MEziEvMgbvWhrLRBKLtfgIQbQQT0JWWdvdf3I+WJjFZYIKKa6PbsPJwS3TUFMMU6UwgXZBNesNp2EtQYQUhTLlJ8b1nRWyBUGj+pCgNE1SkTYSz0kjKbkVj9HGMtsFcWAxHkDI+9TMKwM5A8gIhQbuOz8CYOuylqRXGZVZewflzH5Tpemsj63hTkqAp1B1Yyf4Egi145u4g1oBVpg0VZpJaJsNgRziEDdhfXoBQ5Bn8k2XiXi+x3UoLCmKxhJU+YKNIKObFKbbEDVDZwqRdr2+w26v52z7EX7lLzGTvbdQvdctfRxbsECbMF/KF9M5Af7xaEk/5PQNqOXbbuNchk2chtgqS2pgXRbwHkoILDBYdTFqFWdN58Qis5TOKrpAK7X4qCaSo5uGlbg1JDumJHcrlqpWJX0WifWuMU55TbAGEOmmRt1yESA4KsZfSE4NASJKtWDPAoiSNtGeoph9sQ3moNzixpMaOBKTxdHNKx/C2DsE8pW9B5nBKTLbhvouWPPGJ5uY47OaDOkoQFa4hwZZvicgpKTsYNYN4bEDxmAYSFdi5IBAuDKxAGxllRh/nzPKvosEV3BiLCzK0M83S1uwDBGWHmPsdA2FovLFK1QSSrFu8EoUaMNK2pZoQ3O1sxPJCmTio1rBy4M8I2dkBM7IPAXTX5eQcInNiKkalmRFA1OdjmwgURsBbnzggmfpDbQjBcKMBOgSjNzoNO4Gp/AISTq4/IWDMi9YB0bkbJhChaAAJDGG2BwIo0FhzKsAOmyEsLpxDlwqfDFrQACCRTjTHXpW8PxEAQEQo/HgjUGR5gfSe2U7B4ScFNdbgIuxwEgcUPfTyH2B2izBoE0ryMBwJpVR4+veTqyDxLfmH/iNIB0lTI+wTChtUFgVqcB0KNBPzdAol6u9NAc4IgNWXK6HcmICzjw2S3QtxqNmUL+G4tomW1vCJWZCKQwfW5mYCsMOeWYNYWNvLEva10m6xg4M3IQ/Qr69C1xUlEK7DuVpwG5JvJ9v2KuIVjM+qCoJNzQTj24UacrlroR0qSvmKRpKfs3FggwsAFxElBxgvjX2m5c1h3omznzybsZ9TYdlO25JYFx5URtCVYcsvU4sfQ/xXcBcxpbIjLwzcLDV6vmg0Ihc3quJzJtmfwF7BP44zt1sDrDjSbd06I4JytmyY4xHUH16kcpr3HzlCQwasKY4G0Ogrt6ztenh64FHrfQAYGW+OB/PO9ARm4yj4eyA8+yL/vGGTgou54IL/3QX66YxB+4NYgd5/WanIoyK/eG5CRW2q4oSAf+iD9+3qLIKOS3REgviN5++0dg3AjVkOHgwQ84qejQTizt33xuy/7tct+7dPpgpRxQAL297PRICtqT/v1n37zc7/2rl/7dEyXmJgCpG22/jEGSO9zKbE/fxkWyObw8u8IkBFmaySI/EVoIIFFq8zkIAFtt0aDdBZmsEl/C020RsjWCJAR2t4JkuzV9dwfw1L2UXsBR4AEgpSv73qXaSAnWZ4cpK0k/WTrVkECPrGPuo8C4b8ZZoCnAKHTgwRcyfLEIAHZ+kkPA2TvBrPX3pDS691HggRk67MwQA4aoUxJz3MXI0ECdqs33uoC2ff3tnpmZY2CMKfPvT/g5yVJ6YKOqXqlJeY0eO+Ittn2JQuTgpDftg39V9ZwEH/btOC5rE9EGH9hh53St+H4lKQJZ2dwi3VrSHnv3k2xONHDYk86L22PBAlMSTdJ65IvWnoHCCXbAgpSio2YvQvHF+RBI2JvBJWeeiBJoThJoijJTwPSlTqVRoIEp+TdV98Fl5h/6EpW+FZX3D7VyR4D8Z7dScPPc7hHtBAkqXeBpMcBCT48KcfOvP+xdi5rY4B8GJiSd1efe5PCX7953Z11+YrMNwTo7LHbOXHBVQUXhDgMhDfJGpa1iIUgwuG4IPRVgETNORf1ulORtVE5e++UvHt79fk1tDevr951p4/CMw9E5xu75zgFaZwjZw9P0TkEgXodt4Ygu+u66eCaQw5BTiv7NscXx/Lv5UC1QWbPCaijiw/eKLzuDO6urq6+6TjhgaR5D+SEb1xEdBLR16FzfPEYTjXIcwSBsiJ/YcFjCc8jeroA9movYsFHn1DTTo8HQviSOuR59v5riH2Fq0/zg8YnqzurO6nCfNpOmmsnpRMHxAWWXXdS6/Op59zL1I65T0iVwIyUzLN1dWdrp+TY8KZCZe+lw4/pYfhXg5/M15TGMBDy0dUwjquvPB2xPlEMUzJjB6AV6VXjxCiiQ0mJihl7pTQEyVROj/jzjwkuSKeM3JphGmcVHd90whvP+HG/zYIe9f/OB1mDRwfJUJBhJG87LJnfzvuvc3zMX4QQYa5VNLX3mytyZ/qADQNBktf9Ka4uv9d7n20kawcb3aeGtrMJSegefL2LGvjGBCnW8Q0vg0HIh5dXfWTqst9sbFfhC1j07lNDmzPFF+44lRaHWb3Y6vy8D/7rtf/80vvOP7wJGiuYi+vv9QFfTNR7ipIZNLqKT6Rt9Zltet1qfetxH12/uQTbCxNxeX39HbnfLYXP493yh/4PQUEuFo84HoUAAAAASUVORK5CYII=\"); }\n\n/* Berlin's logo is another picture under the same file name (the GI BERLIN mark): its own off-white version. */\nhtml[data-gius-skin][data-gius-dark][data-gius-portal=\"berlin\"] #left-panel .navbar-header .navbar-brand img { content: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAC0CAMAAACNK4pqAAAASFBMVEUAAADu6Nrbjhz08Oft59nt59nnLTT+ExP1pzT+9Q3emjfooDbwODrmODv8M1D9WS7nN0LyNkV/f3//+3HjNkHu7bj9aWmxsbEGErhjAAAAGHRSTlMA+P0SnmD3CyEEnFpipBsXol0CAtkGCATxV33FAAAV8UlEQVR42u2diZajKhBA6Qc0GrcYY/L/f/rYKXABjVk6A+dMT4zGTnOtlQIQSmwYY/uCNzpp8m3/0tye2wwKwtvPpPE3IZXcnopCwaCzJAIsgsooPpLb02iIHwkwLBTOBGUkz1JTkgZNhWGZ8A/eMpLnINlKwyDJffc5OCQSYd8zlWNtxzoOYcG1ZyX84ImVIcCUZP/rcRzDGo6JkzsanxheJUxJlpKjHN016aDctVU0sG7yVRkKFdFI7EW57eWxjsMG5YF7rAjREMkdE2XnM5Kdvq7Xp1NrvRxmYKZcAd+UYGJe5N7dZT4wWfdnV5WPVFJQwIy1z0CeoK6k3ol1K7vMylgGspNIxHrgxEzkBGsGsi+lu8pj061IBnKAvlrnIY12UisnRDKQPe5VhMeGu5X88gzkUSJkzd3d2J8ssOwZyKH2g2yPtAOBy0COtB8/e/Lp+A5vmYEc6O/u4sH7/0YzkKfIx97OvIC7ZiDH8fjZ25cXRDOQnfmSNR50xLsdBZqBbG4lXudB9g8zDS4YyUCOMug/dD8Q4EtnIOlZDkSfVUJSOmWYB6iOiQjNkNQDd6f6X+7qQyz67kebqZZ7ePszHKmw2sPDB8HF45IF5BiFtdsYt1pCWNd1uZu3aKx1hfWD8T5t1ffn8y9vTVPXrM2a6yCXd5eAMMTq+nq9/urW1H2bO/ogAdkOhKGC1c2v15o+i8gxFmSPj1V05+tv2OoWZSaPu7w7Eu/ciDe/My0TOSDLu8uEsP53tqEyByXvANLV13kgTfZ+E4gkaKyNQG7o9zeRSBjKm8iF2YP5SNNesRSIfq3PK4ZCNgHh3VL/Lra+y2bkYSBba3/a8yKP69kHwkN41qowvpSxfSuietm4vela0TRlLgFd4bw49SFxmfUk2u+IPeMmZNtsWh4SLgPhOqsAqZW2r1Xr65voXtSbN+r+1omf6pipQLOXLwQPJN5UH5eE5Wkee34DERwTkM3VcfM+rwaCrIhwUeqvTnS4KMAPnnvUuDBfXCswy3BfIOdJgLoVoniu1e1EHNrU3b9g09FtaxLrd6XVAAjzjA3rmAcEumpcHCAQqRTrVl5/Zq2w5/W3WKgEIBs1VtuvAelZCKRRGcjfhrU6FSla30ogzVlCuvJDCQEoxVoDPLOSv9X7tL/Zph8L5BwC4Tqnlp3NH/+z1E9tjeqe54oFEG5F5P9n5gERJJCRqKbjdxQCdO4zkJm2DqSeAOGHnUBx7UUHX5tWO00CRMMVoMKkgPSaeSNVVtvYeyKJLQOZ97JSgXQSSHdrO8a781pLo841FxM+rZaQFrW1AtI4IFI0egvkzFWVPP0NKitmQo72sjoGLqyVC1XXzVWgkv3cSEe3K2T+hfte6l3OEQDpABBpadgtA9kLxHaZMernplFnbrLrr40yLJLWL2fTKPtSay4QiNRi0sRID/r6DenkFwNxGssC0cOK/OlWKkgci7AE+sTnVlptA4SdHRB53bU3Ci4DmUFSL4bqTc28UV6YVUE3l3MRUR842ZjAcAaI8rXOfSPkKgOZTfayPkFADJBGpEGQUkvOhnDnygERRrszRsLKYK2BSCLX3+ZfkZA9FQ79eTEImUQs3HaoPv2VXtaVR96tSBNqVaTCQ2aBqOQ8AMLQzQzf8xDm76dOngFkKRRpvAdYAzmLTmxVpNeofLBWfPKkUms8TSJ6/Vqr3C4Ewj9+qzOQaA3QrId1m5GQM8/RtrqHZQgoUvI81S7jEB4sSne3aVsFROTYeca+cbmsG8+1afXWZBuyhQjngQIg2u3Vyaze5bLO3O9VsXfbIeD2Xs9n7iWfW5DLkqlFJotcMpA1Iiisy5I5wBX/uG6h6eG2/aq8ANn71w7UeV2NPdFAjNXKccha62AXSn+XTQIWJ0Z8eKMo2QSIdJN72f3Ql0YKiADayMEr5ZM1/b9gQ+jemQg3xg2xaueezT27XS01kFRRfTeUt76xjVuLWvzEwryLdHzPT+qLufPL9VwvkJ91Op8H9vzqbxjEPQ4I9lspAhJb/G7Gvu3ZUtxVeLhqEJ21akSd23c5kC56VhbPi+6W58V7TNj7tr0VN3GZoM4PdPAj7lKgLCHhiouwGChcpm6DrNknveRN3Oxmj3Bp7s7kbUvZmKmTyOn3eQGxbbzrBUnDE7CUalpmNdE95RAelwh9C4UnAJnZUSTSYrctNrevmBaUAORyiOrbOJOUz2ioThtbVd3+iRHDtwDhAnL6b2s7FX9fgyVUnTwPyBqRsspAlorfk20IIdt2GFm79VBUm3lUxRdUDuPHNEvgZJF0HPeoUd8mI1VVlP9KsXV53N22LNVRbFBbXDq+ISxMBIJTRSSuAe0tcUJwOJRVsvUYQPDyp9fwSDEiyX8fThOR1DsK3zeRBzfnDO6iaP5zyRr+RumFpdNdZrxjeADflzf6K0D4N6UpApL4CLOyS3N+qzIU1j+7TVzKHMMNGuCWAiSdMENJSutUeDD0RkxhPme8gIMLEruazEmIt6MpnpcW/E4gmyYZ4qOBFNWW+OMmN1wE22qADQH4G9RtSmp22HK7zPC0pbhaKQS1lYA+KQ+ITGCr/lL7Br1tnvrhRmSLDkwCUtmA0Nu2hOJgHWcSbLtBYLLOPEuKATxQF5puoA8vIPboSg5HA9lklIYEz/dUdXrZZhoqW+JJOlnY98dbrROL1IT5pBYRAma/PhtIPO2xbaJ63PHdBiTBqp9UgG7X/hc2RDsPROsqtaCdOSLgrJ3Var44v41bllBtxmgvdEDeGopsCQ0TjMg2ty1BZ2kTovtN78lEiUWA4d9JzA5CVn6IL9rY2yRCyIsVNKndXiAhmB6qs44EUqa4WcqEMPUoEAw2gNcI9KZ+5si+TdzEb2xX1cPGrkrvgOLBASG4fAWQaB++EQjv6VQgGGlNJHytC+9HZHsejfc7kJAQyA/2ZeKuDqjpem+h21cAOXKBpuHNQPybW6tBKRAM7FkYbRyw8wF1xtVcpnZh/DG4X6GycFREMPp0IEYjyVF2nku+3/39gog16to1pkjtdqnVlASjXjNMnQTxG+ptMeXH8OUVQKJWhHt8yaH6W4AwY9OJMgGEyOgPij4NnWAFQZFQCDQQTWdUwqDvTKg2US8AEtnqaNPa75fXAzlVokjVSYgVUi8OIX6IRG2/q5/qpZYW2fWjVm3GG9CBPnkJkFgskp7PSgBCDweiJMTYkMH0PLF+lWh3FG5lAoDo64D6ktEMASSNhJGXADls6V78DiClA6K2vvQiDROKGxNv43P44CujooDQSaaHAB338xoJiVoRnFrB+Hogha6rt3GIc07NIz5cUODtUvfgUxNkzAOhRmU5Ii+QkKMW700BMj4JCIzU6URlWbd3pD+eJtLbZFHj7erbqObekcOc9GUScpSIvEVCCv9X00BlmVJJDE2Ce/BBwAjDD9VcVpJi546+AshBRI4HEs0uqvF0sZU7Tsj2EtOrxAHR4yIeEC+ytBJiM8T4ryyofHkHkGLeN6F+wEtM3G571RZcSC9MP0tY97gaX1TsdFzCnesBk1dJSHwN+JSefC8QpGJCOyqoI0Si40SqokXBDRxDO8qbPmcIy2vEDzuc633ouTJCH8+gDIcb9S1ASvGgmyF08UtGbwLE4NWbyP9GDIbJBaq7V2KCgjoVuXkp/9SHlAQRHH24U2wIeqKEqKF4nDip6M+vA899xsifhd8hIaW/A6CeHRROIzLnQFlfmICYeReb0ZSwymh9G/SjiESHc2MGAL/ThogIUPXepfQLKr128Y/Fh0QbbnpTJnFcznQ/vshhFvEimAzmXQQL9cSLYZYlHga7CVQJv/GedZXxhwJBh+wgeITDemChXgIR/FiRw/FATOofzmaMTH1cagsVpZ7+W7gpMv4Blb4c0I3qVInCKla/KG++VzCO12lR3+/YWgb0NCA6XyLVLtXzfkVMR2nwnbw/kWK4fbLwsqh97NSfQzD4y+j0mSM2wryBQIjaUX3jJatxFYzhzUzB3poxSCjkoZ7JLO1LljKV6mlG3UTituO0l0LD7+S9QWgQTLqOtyl68XrAc+MqXoTpd516cNV3uiOQYIMpGPsll9fY51fQeLEbna+YxvGPPkFC5oD8CNNsgJCgA+li/ZzN/sohIP6AWSDmQ3RGQsyfRad/qU4K3G0tC4Z6BCTIloPNxJlQxKou0MjMVfAyujXM3Q9EDVXph5K68jjq6ufAlzZD7kbl6SQxBOJS7+p+mi3VGRpqtAMBGX3sxsoskBF4PkTWfdHoLhSJc9NURsI0EkwxdH/xwgyMo70sH4hSDtQoBuxe3i90rn5Od7kdD1EjDhYIhdEx1sc64+iKJrT1wdivjvwBYwIjcllQIp3wOJA03QP6fkYuKPRULpedVfwPABFd5EoSwEsrNyL4cBWmgx5DR2536wu2QFwZhK73tUAuBogbIHN07ZNN3SNhk8ie5aH4wczWiiozLPBlbgbGy4AQoLZvaKTOiqoLL3f3MBPbMWDEkCIABNTO2aJrecYA0R8fxX4rfPSR+kCMIiPus9j7vVFNjrcJiWdY7uioSS17gZhhC2dH7w6IqpLXo1bOhphRLVtHSoDKcn34o0IGCnw5f7gFBMiuGM99GfuY2JvRxJ2M8EYmCsYI8njsbUD8KqpZIP4kEls/pyY1mM+PGshIPMB4TkIgkAsDQIKSLgyrWEg6kHKLmAA/WP9felmIMlzN59lATDc7T9MBGelS/Rwxqt56UXCYlyJbKTS1IXhZQihgToytolZFJksI0hYwukADcbGoXnZJ0SjFGj2V34ptmafdQBCsopoFoketpvVzFPpMBPQdmHgyY9TVr79rCfGBKDdXAQEj/TDwocnLYI28ToNENNWIePISs2B1Jd7/p6A7+Zo9RfcSCXHjt/NAiHHJHTnQ1TY+lO+WfhjgWWJnQ6gJLFy+A2MSxJKTSJ9sAwLnthKyYMPDqyWM0+m0Vor7dAlBwNkPgcBxcYy9ChULBHQiDVPY1EgZtCEuMnEVCqCQAgAJb0Y3JjCcbQjXIPNn6btJT9XplDJF8ygg3azKurvYOgDilWtZICZjYpKTMIYg0yq1BSBemEJma+zIPBC0TUQuC9H2VEBWaTwFiC8hTAG5YVfjGwBBdFo/R11wbYC4jJMus6a23pfiqZdlIFBqXSFT+4W8guPwZrASbOu4y4U3M3p2mb9BtAOPB4JmJcQWXCwZdVWS4gJD/VAPJn1/MZ1ItT2QIy6hJXapEycFNl9yc0WPGMPMpkgC8EksFOQ6pY+xd0SMrSw89t9nALkhVxLnsrX+lM65ci2qbQizM5kIJcE8dZuC9FIn4eiejTqprmgJb2ZuQuG8j4Nbh4pD1317REK8tAgEghaAUBe76JnHF2wfeDqWmJWmPFLPiRdiMSAMMunEW4PKAeEnGXU3E8NIzI69fBmQChbJCe0uFJGOztR4qng9ggq3+fo5XVcnyuhMNq4Ul8pMtsuVmiFa96Z5B+tfSExBHh/VAuO58pz5ktgV4lFXz0e/Csgz2mVz3Y7LoH5EHRh7LxB8RNUJ27GOd2BjF9bpjq/k/YT2CRLCkmt8WHg9Cz/PZj7Kwl9TrnwBNt2oYPnoO4AUM6Mt6jWbKTnU68vNlieCcqBJVS8KKoXCGqPp7/+ERTm7dwLJ7UNsSIHmF4RD0yfcK4hHyzsJDHhy2UR60GKpnV9g9+b2BiBmjqF0UTHwgLXTqZeCo3bOiCrJMPnVi7w6mEuC7Uvl295UdlX9Bn17+Ak9i4QaYPoXsH8XiF8HEszCNSNGJsIm3gkV6pGl0i0C53u6FbdIWJ5lJ5MytDmB+1UqSyUXsU1qhAswyY6/eLPQ9fRaBKrWloEIBHCQkYA1HaYlkCpxRT4FyDtTJ1BCvAWY1DgBBEIx6DA6tyKjGVTUCAbiOBJTDkHCcTq/foXgD1jR+SOByDWWAiB6/Ghwg7FeOaPN0AfjGmJNUiuLGJx3BzbtSz9ja4A3ACljQFRVuwdEZ2iHYMTQPtI0GKq1CV3s1ghEfk2Vm/GOP0VhJY2HnMqjgQwxIGBZAOStXuae8dFbF8VJCFRxdvlASnwJ0XJlxnVBsdDbW5qK2TKmXiUCxktArH31gdhHO1jB1FNZI4b+2o9J3FKwNBdc2BS7GtEf+hlbApTxpY83qqwqYeF3tgaEkulaP2DFUrNamRli1QEK1eOsxk8DJaGjHfdyQHC4zNWHCEjK4uCHA0HrRt26ox4QO7BOg/FXOJ4Llgtzp109xAQI9hf8/YxWFp8GBIYNQI6oVwC6AkSPdpEwDpmREFfe8DGz4nnRYqwHnwNk2YbAmjcgIfrkj1enQ6DKgmvV62yIXlZ2EYgLQT4lu5hg1Z8qIbwMaAIEPN0QG1z4ElQDCWVzhwE9xcHUMroIxM1K/HeBuPEp2/0TCcF4DggGxb9g1Sw5AA+XpDNlPHKK/zcCKbe5vclFJ84F9ZdKxmAOGQCC4MrWPhATGJrSHTkRltollmeAoI8FkuBmVcWRQOx2R6Zo1pSVmwp2OfvzTkMgN+AROaGyNbIU1JXqckMx05Mu2JDyY4HwdFZMRLZUym0DQn9mdgiRHTfa3UGcyrqDTUKC6jkXbINZCcteFsHB0iIfBSSqs06HAikW1gUBq+4jl3Wa+mJ6yjKaSb8TOw5C6HT+AJjSTKAN+TQgCRt5pQOJK0BIF/YqxT4Qu0pGOIxl6goXgCB/xps3J82WKsI8olZZwwdJSDT9lF6UwFgMSDDbRA606pFcLI+oqgo1pYYIVhxiu3afvxwgVUO42ruicLlAs10M0b/B3A4EIrJw8qNWS4sakZIddi/fZcOiZBT7q+6MaFoG5EoRRvtynNT03N0sMrNF5aiKg7F3dmYVtI9q0W2KqvQ4JLat+qn8gg2i3x6KbLDqsS2jpx7bpPQHnipny+mmxUDeJ7G3S+Vkabg/ICFRS1xtABIRkDILQIIpjoUiG+Z9VlljHSEiXZW6eW3E643cqMoCkmrXDxERFrFGVZGBHBMcVmmqJuYeVEPu62Pih1Pio71u0/ldsoQkqqxyqB5PMMbctU1rQmSlVR0gIqtydipw7ugNnlZ5elRE1iu380SdbSLCIp5WPDiMpHqrsswKa5uQPGqRV29wygbk4MHcqOtbruWxDl2CP4eHxoysIClXE72nHKPvATLEiSwgKSMeVlXmmPAJ8WG1YEeYKJWosoP1lAjxFJmwOVsTVKxru8zjgfgwMqJRqc4tRWPyB19+rVwfl8o80EOTDiOp+HDpWLlm43pAOGSH96llQYqJaes4zPbpuT1iR6LT0sSCvqeqqmILaGZ7/joiSe20HrvktsG0nw7hkcPB4yZWnbJ4fFgepTg9iINPSM88jq1oPD2AI2urw4esdlt3ZTtYRnI0ktsgcuobmXB/mGe8ukzjSU1tZbGBRlHkoY+nm/c0JopGibJv9dzBdiMnK3G5itu5WzVMdrPK7RlBCbOSIrF4zWxVVb5mneHcgjFF3WT+HaQY/9EO+R/OYz2PHlmIHwAAAABJRU5ErkJggg==\"); }\n\n/* Parts whose colours are written into the portal's markup or the features' own styles (the look's light\n   rules match them as they are); in dark mode they take the tokens. */\nhtml[data-gius-skin][data-gius-dark] .chosen-container :is(.chosen-single, .chosen-drop) { background: var(--gs-card) !important; border-color: var(--gs-line) !important; color: var(--gs-text) !important; }\nhtml[data-gius-skin][data-gius-dark] .chosen-container .chosen-results li { color: var(--gs-text); }\nhtml[data-gius-skin][data-gius-dark] .chosen-container .chosen-results li.highlighted { background: var(--gs-accent-tint) !important; color: var(--gs-text) !important; }\nhtml[data-gius-skin][data-gius-dark] .chosen-container .chosen-search input { background: var(--gs-sunk) !important; border-color: var(--gs-line) !important; color: var(--gs-text) !important; }\nhtml[data-gius-skin][data-gius-dark] #right-panel .content table:not([id^=\"gius\"], [id^=\"giu-\"], [class*=\"gius-\"], [class*=\"giu-\"]) { background-color: transparent !important; }\nhtml[data-gius-skin][data-gius-dark] #right-panel .content tr:is([bgcolor=\"#DDDDDD\" i], [bgcolor=\"GhostWhite\" i]) { background-color: var(--gs-sunk) !important; }\nhtml[data-gius-skin][data-gius-dark] #right-panel .content label:not([class*=\"gius\"], [class*=\"giu-\"]),\nhtml[data-gius-skin][data-gius-dark] #right-panel .content .add_link { color: var(--gs-text) !important; }\nhtml[data-gius-skin][data-gius-dark] :is(.giug-card, .gius-card, .gius-take-panel, .gius-setup-sheet, .gius-berlin-card) { background: var(--gs-card) !important; border-color: var(--gs-line) !important; color: var(--gs-text); }\nhtml[data-gius-skin][data-gius-dark] :is(.gius-input, .gius-course-filter, .gius-take-input, .gius-take-picker-btn),\nhtml[data-gius-skin][data-gius-dark] .gius-setup-sheet :is(input:not([type=\"checkbox\"], [type=\"radio\"]), select, textarea) { background: var(--gs-sunk) !important; border-color: var(--gs-line) !important; color: var(--gs-text) !important; }\nhtml[data-gius-skin][data-gius-dark] :is(.giug-btn-outline, .gius-take-chip:not(.gius-take-chip-on), button.gius-berlin-btn.gius-berlin-univ) { background: var(--gs-card) !important; border-color: var(--gs-line) !important; color: var(--gs-text) !important; }\nhtml[data-gius-skin][data-gius-dark] :is(.giug-btn-outline, .gius-take-chip:not(.gius-take-chip-on), button.gius-berlin-btn.gius-berlin-univ):hover { background: var(--gs-sunk) !important; }\nhtml[data-gius-skin][data-gius-dark] #MainContent_DG_StudentAttendance tr.gius-take-row { background: var(--gs-card) !important; color: var(--gs-text) !important; }\nhtml[data-gius-skin][data-gius-dark] #MainContent_DG_StudentAttendance tr.gius-take-row:nth-child(odd) td { background: var(--gs-sunk) !important; }\nhtml[data-gius-skin][data-gius-dark] #MainContent_DG_StudentAttendance tr.gius-take-row:hover td { background: var(--gs-accent-tint) !important; }\nhtml[data-gius-skin][data-gius-dark] :is(.gius-att-head, .gius-pr-head, .gius-pr-empty, .gius-setup-title, .gius-berlin-error-body) { color: var(--gs-text) !important; }\nhtml[data-gius-skin][data-gius-dark] .gius-setup-field { color: var(--gs-text-2) !important; }\nhtml[data-gius-skin][data-gius-dark] :is(.gius-setup-step, .gius-setup-sub, .gius-setup-hint:not(.warn)) { color: var(--gs-muted) !important; }\n/* Ranks: the Home balance pill and rank chip, and the report's Balance box, as a soft tint of the rank's colour (fill, border) with bright text in\n   that colour, so they read on the dark card without shouting; the rank bars solid in the same colours. */\nhtml[data-gius-skin][data-gius-dark] :is(.gius-att-tier, .gius-att-balance, .giu-balance-row).gius-att-tier-ghost { background: rgba(148,163,184, .18) !important; border: 1px solid rgba(148,163,184, .5) !important; color: #94a3b8 !important; }\nhtml[data-gius-skin][data-gius-dark] :is(.gius-att-tier, .gius-att-balance, .giu-balance-row).gius-att-tier-deduct { background: rgba(251,113,133, .18) !important; border: 1px solid rgba(251,113,133, .5) !important; color: #fb7185 !important; }\nhtml[data-gius-skin][data-gius-dark] :is(.gius-att-tier, .gius-att-balance, .giu-balance-row).gius-att-tier-close { background: rgba(251,191,36, .18) !important; border: 1px solid rgba(251,191,36, .5) !important; color: #fbbf24 !important; }\nhtml[data-gius-skin][data-gius-dark] :is(.gius-att-tier, .gius-att-balance, .giu-balance-row).gius-att-tier-ontime { background: rgba(74,222,128, .18) !important; border: 1px solid rgba(74,222,128, .5) !important; color: #4ade80 !important; }\nhtml[data-gius-skin][data-gius-dark] :is(.gius-att-tier, .gius-att-balance, .giu-balance-row).gius-att-tier-workaholic { background: rgba(251,146,60, .18) !important; border: 1px solid rgba(251,146,60, .5) !important; color: #fb923c !important; }\nhtml[data-gius-skin][data-gius-dark] :is(.gius-att-tier, .gius-att-balance, .giu-balance-row).gius-att-tier-grass { background: rgba(163,230,53, .18) !important; border: 1px solid rgba(163,230,53, .5) !important; color: #a3e635 !important; }\nhtml[data-gius-skin][data-gius-dark] :is(.gius-att-tier, .gius-att-balance, .giu-balance-row).gius-att-tier-gohome { background: rgba(163,230,53, .18) !important; border: 1px solid rgba(163,230,53, .5) !important; color: #a3e635 !important; }\nhtml[data-gius-skin][data-gius-dark] :is(.gius-att-tier, .gius-att-balance, .giu-balance-row).gius-att-tier-slave { background: rgba(232,121,249, .18) !important; border: 1px solid rgba(232,121,249, .5) !important; color: #e879f9 !important; }\nhtml[data-gius-skin][data-gius-dark] :is(.gius-att-tier, .gius-att-balance, .giu-balance-row).gius-att-tier-pink { background: rgba(244,114,182, .18) !important; border: 1px solid rgba(244,114,182, .5) !important; color: #f472b6 !important; }\nhtml[data-gius-skin][data-gius-dark] :is(.gius-att-tier, .gius-att-balance, .giu-balance-row).gius-att-tier-missing { background: rgba(229,231,235, .18) !important; border: 1px solid rgba(229,231,235, .5) !important; color: #e5e7eb !important; }\nhtml[data-gius-skin][data-gius-dark] .gius-att-bar-ghost { background: #94a3b8 !important; }\nhtml[data-gius-skin][data-gius-dark] .gius-att-bar-deduct { background: #fb7185 !important; }\nhtml[data-gius-skin][data-gius-dark] .gius-att-bar-close { background: #fbbf24 !important; }\nhtml[data-gius-skin][data-gius-dark] .gius-att-bar-ontime { background: #4ade80 !important; }\nhtml[data-gius-skin][data-gius-dark] .gius-att-bar-workaholic { background: #fb923c !important; }\nhtml[data-gius-skin][data-gius-dark] .gius-att-bar-grass { background: #a3e635 !important; }\nhtml[data-gius-skin][data-gius-dark] .gius-att-bar-gohome { background: #a3e635 !important; }\nhtml[data-gius-skin][data-gius-dark] .gius-att-bar-slave { background: #e879f9 !important; }\nhtml[data-gius-skin][data-gius-dark] .gius-att-bar-pink { background: #f472b6 !important; }\nhtml[data-gius-skin][data-gius-dark] .gius-att-bar-missing { background: #e5e7eb !important; }\n/* Bootstrap's row colours (the portal marks a rejected grade row table-warning): fixed pale fills; the warm tints here. */\nhtml[data-gius-skin][data-gius-dark] #right-panel .content :is(tr.table-warning, tr.table-warning > :is(td, th)) { background-color: var(--gs-warn-bg) !important; color: var(--gs-text) !important; }\nhtml[data-gius-skin][data-gius-dark] #right-panel .content :is(tr.table-danger, tr.table-danger > :is(td, th)) { background-color: var(--gs-err-bg) !important; color: var(--gs-text) !important; }\nhtml[data-gius-skin][data-gius-dark] #right-panel .content :is(tr.table-success, tr.table-success > :is(td, th)) { background-color: var(--gs-ok-bg) !important; color: var(--gs-text) !important; }\nhtml[data-gius-skin][data-gius-dark] #right-panel .content :is(tr.table-info, tr.table-info > :is(td, th)) { background-color: var(--gs-info-bg) !important; color: var(--gs-text) !important; }\n\n/* Dark mode button (portal header, every page that has one): the menu button's shape, icon only. */\nhtml[data-gius-skin] #header .gius-dark-toggle {\n    display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; width: 36px; height: 36px; padding: 0;\n    background: var(--gs-card); border: 1px solid var(--gs-line); border-radius: 6px; color: var(--gs-muted); cursor: pointer;\n}\nhtml[data-gius-skin] #header .gius-dark-toggle:hover { background: var(--gs-sunk); border-color: var(--gs-line-2); color: var(--gs-text); }\nhtml[data-gius-skin] #header .gius-dark-toggle:focus-visible { outline: 2px solid var(--gs-focus); outline-offset: 2px; }\n/* Until it has been clicked once: a yellow ring pulses out of it (a still ring when motion is reduced). */\n@keyframes gius-dark-toggle-pulse {\n    0% { box-shadow: 0 0 0 0 rgba(255, 193, 7, .7); }\n    70% { box-shadow: 0 0 0 9px rgba(255, 193, 7, 0); }\n    100% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); }\n}\nhtml[data-gius-skin] #header .gius-dark-toggle.gius-dark-toggle-new { border-color: var(--gs-accent); color: var(--gs-text); animation: gius-dark-toggle-pulse 1.8s ease-out infinite; }\n@media (prefers-reduced-motion: reduce) {\n    html[data-gius-skin] #header .gius-dark-toggle.gius-dark-toggle-new { animation: none; box-shadow: 0 0 0 2px var(--gs-accent); }\n}\n\n/* The attendance report (staffAttendance.js, .giu-*): its own styles are light only (its dark rules are in GIU\n   Theme), so dark mode restyles it here. Status boxes take the warm tints: amber, red, green, blue, violet. Plain information (balances, the day\n   off, Ramadan and exam periods) stays neutral, with colour only in its small value pills. */\nhtml[data-gius-skin][data-gius-dark] .giu-attendance-wrap { --giu-color-text: var(--gs-text); --giu-color-muted: var(--gs-muted); --giu-color-border: var(--gs-line); --giu-color-surface: var(--gs-card); color: var(--gs-text); }\nhtml[data-gius-skin][data-gius-dark] :is(.giu-config-panel, .giu-summary-panel, .giu-summary-card, .giu-holiday-table, .giu-holiday-empty, .giu-pagination) { background: var(--gs-card) !important; border-color: var(--gs-line) !important; box-shadow: none; }\nhtml[data-gius-skin][data-gius-dark] :is(.giu-config-title, .giu-attendance-section-title, .giu-holiday-title, .giu-ramadan-title, .giu-exam-title, .giu-override-title, .giu-pagination-indicator, .giu-stat-value, .giu-dayoff-row label, .giu-guide-title) { color: var(--gs-text) !important; }\nhtml[data-gius-skin][data-gius-dark] :is(.giu-stat-label, .giu-progress-top, .giu-pagination-summary, .giu-pagination-size, .giu-holiday-empty, .giu-ramadan-controls label, .giu-exam-controls label, .giu-collapse-arrow, .giu-guide-progress, .giu-guide-description) { color: var(--gs-muted) !important; }\nhtml[data-gius-skin][data-gius-dark] .giu-attendance-wrap .giu-expand-chevron { color: inherit; }\nhtml[data-gius-skin][data-gius-dark] :is(.giu-summary-toggle-hint, .giu-detail-toggle-btn) { background: var(--gs-sunk) !important; border-color: var(--gs-line) !important; color: var(--gs-text) !important; }\nhtml[data-gius-skin][data-gius-dark] :is(.giu-summary-toggle-hint, .giu-detail-toggle-btn):hover { background: var(--gs-line-soft) !important; border-color: var(--gs-line-2) !important; }\nhtml[data-gius-skin][data-gius-dark] :is(.giu-dayoff-row, .giu-holiday-controls, .giu-ramadan-controls, .giu-exam-controls, .giu-override-controls, .giu-pagination-size) :is(input:not([type=\"checkbox\"], [type=\"radio\"]), select),\nhtml[data-gius-skin][data-gius-dark] .giu-attendance-wrap .gius-date-text { background: var(--gs-sunk) !important; border-color: var(--gs-line-2) !important; color: var(--gs-text) !important; }\nhtml[data-gius-skin][data-gius-dark] .giu-attendance-wrap input::-webkit-calendar-picker-indicator { filter: invert(.85); }\nhtml[data-gius-skin][data-gius-dark] .giu-dayoff-row { border-color: var(--gs-line) !important; }\nhtml[data-gius-skin][data-gius-dark] .giu-config-divider { background: var(--gs-line) !important; }\nhtml[data-gius-skin][data-gius-dark] .giu-attendance-wrap :is(button, input, select):focus-visible { outline-color: var(--gs-focus); }\nhtml[data-gius-skin][data-gius-dark] :is(.giu-holiday-table th, .giu-holiday-table td) { border-color: var(--gs-line) !important; }\nhtml[data-gius-skin][data-gius-dark] .giu-holiday-table th { background: var(--gs-sunk) !important; color: var(--gs-text) !important; }\nhtml[data-gius-skin][data-gius-dark] .giu-holiday-table td { background: var(--gs-card) !important; color: var(--gs-text) !important; }\nhtml[data-gius-skin][data-gius-dark] .giu-summary-card-header { background: var(--gs-sunk); color: var(--gs-text); }\nhtml[data-gius-skin][data-gius-dark] .giu-period-label { background: var(--gs-card); border-color: var(--gs-line-2); color: var(--gs-text-2); }\nhtml[data-gius-skin][data-gius-dark] :is(.giu-stat-row, .giu-progress-wrap, .giu-rule-box) { background: var(--gs-sunk) !important; border-color: var(--gs-line) !important; color: var(--gs-text); }\nhtml[data-gius-skin][data-gius-dark] .giu-progress-bar { background: var(--gs-line-soft); border-color: var(--gs-line); }\nhtml[data-gius-skin][data-gius-dark] .giu-progress-pct-green { color: var(--gs-ok-fg); }\nhtml[data-gius-skin][data-gius-dark] .giu-progress-pct-amber { color: var(--gs-warn-strong); }\nhtml[data-gius-skin][data-gius-dark] .giu-progress-pct-red { color: var(--gs-err-fg); }\nhtml[data-gius-skin][data-gius-dark] .giu-collapsible-header:hover { background: var(--gs-nav-hover); }\nhtml[data-gius-skin][data-gius-dark] .giu-late-detail-row { color: inherit; border-bottom-color: currentColor; border-bottom-color: color-mix(in srgb, currentColor 25%, transparent); }\nhtml[data-gius-skin][data-gius-dark] .giu-late-detail-row:hover { background: var(--gs-nav-hover); }\n/* amber */\nhtml[data-gius-skin][data-gius-dark] :is(.giu-extra-box, .giu-override-badge-custom, .giu-debug-box, .giu-conflict-badge) { background: var(--gs-warn-bg) !important; border-color: var(--gs-warn-line) !important; color: var(--gs-warn-strong) !important; }\n/* red */\nhtml[data-gius-skin][data-gius-dark] :is(.giu-balance-negative, .giu-extra-box-absent, .giu-comp-balance-negative, .giu-annual-balance-negative, .giu-conflict-box, .giu-conflict-empty, .giu-conflict-row, .giu-absent-holiday-btn) { background: var(--gs-err-bg) !important; border-color: var(--gs-err-line) !important; color: var(--gs-err-fg) !important; }\nhtml[data-gius-skin][data-gius-dark] .giu-absent-holiday-btn:hover { background: var(--gs-err-line) !important; border-color: var(--gs-err-line-2) !important; }\nhtml[data-gius-skin][data-gius-dark] :is(.giu-conflict-subtitle, .giu-conflict-tags, .giu-conflict-more) { color: var(--gs-err-fg); }\n/* green */\nhtml[data-gius-skin][data-gius-dark] :is(.giu-balance-positive, .giu-comp-balance-positive) { background: var(--gs-ok-bg) !important; border-color: var(--gs-ok-line) !important; color: var(--gs-ok-fg) !important; }\n/* blue */\nhtml[data-gius-skin][data-gius-dark] :is(.giu-extra-box-blue, .giu-override-badge-full) { background: var(--gs-info-bg) !important; border-color: var(--gs-info-line) !important; color: var(--gs-info-fg) !important; }\nhtml[data-gius-skin][data-gius-dark] .giu-audit-reason { color: var(--gs-info-strong); }\n/* neutral */\nhtml[data-gius-skin][data-gius-dark] :is(.giu-comp-balance-box, .giu-dayoff-badge, .giu-ramadan-badge, .giu-exam-badge) { background: var(--gs-sunk) !important; border-color: var(--gs-line) !important; color: var(--gs-text) !important; }\nhtml[data-gius-skin][data-gius-dark] .giu-comp-balance-box > :not(span) { color: inherit !important; }\nhtml[data-gius-skin][data-gius-dark] .giu-small-note { background: var(--gs-sunk) !important; border-left-color: var(--gs-line-2) !important; color: var(--gs-muted) !important; }\n/* pink */\nhtml[data-gius-skin][data-gius-dark] .giu-annual-balance-positive { background: rgba(244, 114, 182, .15); border-color: rgba(244, 114, 182, .45); color: #f9a8d4; }\n/* the guide */\nhtml[data-gius-skin][data-gius-dark] .giu-guide-tooltip { background: var(--gs-card); border-color: var(--gs-line); color: var(--gs-text); }\n/* the planner's \"You came in at\" is a <label> (the portal paints labels black) */\nhtml[data-gius-skin][data-gius-dark] label.gius-plan-came { color: inherit !important; }\n\n/* ── Shell: page ground (every page) ── */\nhtml[data-gius-skin] body,\nhtml[data-gius-skin] #right-panel { background: var(--gs-bg) !important; font-family: var(--gs-font); color: var(--gs-text); }\n/* The sidebar and this panel are table cells in a plain <div>, so the browser wraps them in an anonymous table\n   only as wide as they ask for: with the 5.0 sidebar that fell short of the window on wide screens (a grey\n   strip at the right of the header). At 100% the panel always takes what the sidebar leaves. */\nhtml[data-gius-skin] #right-panel { width: 100%; }\n/* Very wide screens (2560px): lists and forms stretched past reading width; the page content stops at 1680px\n   beside the sidebar (header still spans the window). Up to a 1920px screen nothing changes. */\nhtml[data-gius-skin] #right-panel > .content { max-width: 1680px; }\n\n/* ── Shell: sidebar (matches mock board 5) ── */\n/* The portal pads the panel 25px each side; drop it so the logo strip and rows run edge to edge. */\nhtml[data-gius-skin] aside#left-panel { padding: 0 !important; background: var(--gs-nav) !important; }\n/* At ≤1024px the portal shrinks the sidebar to 200px, which crams every row. Sidebar and content are\n   table cells, so a fixed 260px (mock 240 + room for 15px names) just narrows the content column. Phones keep the\n   portal's full-width stacked sidebar. */\n@media (min-width: 576px) {\n    html[data-gius-skin] aside#left-panel { width: 260px !important; min-width: 260px !important; max-width: 260px !important; }\n    /* Menu button: the portal toggles body.open and squeezes the sidebar to a 70px icon strip, which the\n       fixed width above overrode (the button did nothing). In this look it hides the sidebar instead; the\n       button, which hangs over the sidebar edge, moves fully into the header while it is hidden. */\n    html[data-gius-skin] body.open aside#left-panel { display: none !important; }\n    html[data-gius-skin] body.open #right-panel { margin-left: 0 !important; }\n    html[data-gius-skin] body.open #menuToggle { margin-left: 0 !important; }\n}\nhtml[data-gius-skin] #left-panel .navbar { background: var(--gs-nav) !important; padding: 0 0 16px !important; }\n\n/* Logo strip: white, full width, yellow rule, \"Staff Portal\" caption. */\nhtml[data-gius-skin] #left-panel .navbar-header {\n    display: block !important; width: 100%; box-sizing: border-box; margin: 0 0 8px !important;\n    padding: 16px 20px 12px !important; background: var(--gs-card) !important; border-bottom: 3px solid var(--gs-accent);\n    text-align: left !important;\n}\nhtml[data-gius-skin] #left-panel .navbar-header .navbar-brand:not(.hidden) { display: block !important; padding: 0 !important; margin: 0 !important; border: 0 !important; }\nhtml[data-gius-skin] #left-panel .navbar-header .navbar-brand img { display: block; max-width: 200px; width: 100%; height: auto; }\nhtml[data-gius-skin] #left-panel .navbar-header::after {\n    content: \"Staff Portal\"; display: block; margin-top: 6px;\n    font: 700 11px/1 var(--gs-font); letter-spacing: .08em; text-transform: uppercase; color: var(--gs-muted);\n}\n\n/* Each group is its own .navbar-collapse > ul.navbar-nav that Bootstrap shrink-wraps: force full width, stacked. */\nhtml[data-gius-skin] #left-panel .navbar-collapse { width: 100% !important; flex-basis: 100% !important; padding: 0 !important; }\nhtml[data-gius-skin] #left-panel .navbar-nav { display: flex !important; flex-direction: column !important; width: 100% !important; padding: 0 !important; margin: 0 !important; }\nhtml[data-gius-skin] #left-panel .navbar-nav > li { width: 100% !important; max-width: none !important; float: none !important; border: 0 !important; }\n\n/* Rows: one style for the top links (Home, Reports, …) and the groups. */\nhtml[data-gius-skin] #left-panel .navbar-nav > li > a {\n    display: flex !important; align-items: center; gap: 10px; box-sizing: border-box;\n    width: auto !important; max-width: none !important; float: none !important;\n    margin: 2px 8px !important; padding: 12px 12px !important; border-radius: 8px;\n    color: var(--gs-nav-text) !important; font: 500 15px/1.35 var(--gs-font) !important; white-space: normal;\n    text-decoration: none !important; /* some layouts (Groups Schedule's InternalMain.css) underline every link */\n}\nhtml[data-gius-skin] #left-panel .navbar-nav > li > a > span { font: inherit !important; padding: 0 !important; overflow: hidden; text-overflow: ellipsis; }\nhtml[data-gius-skin] #left-panel .navbar-nav > li > a:hover { background: var(--gs-nav-hover) !important; color: var(--gs-on-strong) !important; }\n/* Icons: one 20px slot (the portal floats group icons at 30px), grey like the text. */\nhtml[data-gius-skin] #left-panel .navbar-nav > li > a > i:first-child {\n    float: none !important; flex: 0 0 20px; width: 20px !important; margin: 0 !important;\n    font-size: 16px !important; line-height: 1 !important; text-align: center !important; color: var(--gs-nav-dim) !important;\n}\nhtml[data-gius-skin] #left-panel .navbar-nav > li > a:hover > i:first-child { color: var(--gs-on-strong) !important; }\n/* Home / Reports / Graduation icons carry an inline color:#ffc107 !important that no stylesheet can beat;\n   grey them with a filter instead, back to full colour on hover. */\nhtml[data-gius-skin] #left-panel .navbar-nav > li > a > i.fa-2x { filter: grayscale(1) brightness(1.15); opacity: .8; }\nhtml[data-gius-skin] #left-panel .navbar-nav > li > a:hover > i.fa-2x { filter: grayscale(1) brightness(2); opacity: 1; }\n/* Group arrow: the portal draws it as a:before, absolutely placed at the <li>'s right edge (outside the\n   highlight). Put it back in the row's flex flow, last, so the row's own padding keeps it off the edge.\n   The portal swaps the glyph to a down arrow when the group opens (li.show). */\nhtml[data-gius-skin] #left-panel .navbar-nav > li.menu-item-has-children > a::before {\n    position: static !important; order: 99; margin-left: auto !important; padding-left: 8px;\n    top: auto !important; right: auto !important; font-size: 14px !important; line-height: 1 !important;\n    color: var(--gs-nav-dim) !important;\n}\nhtml[data-gius-skin] #left-panel .navbar-nav > li.menu-item-has-children > a:hover::before { color: var(--gs-on-strong) !important; }\n\n/* \"Menu items\" label dropped (user's call): the heading becomes a thin divider between the top links\n   (Home, Reports, Graduation) and the groups. */\nhtml[data-gius-skin] #left-panel .menu-title {\n    width: auto !important; height: 1px !important; overflow: hidden; font-size: 0 !important; line-height: 0 !important; padding: 0 !important;\n    margin: 10px 20px !important; border: 0 !important; background: var(--gs-nav-hover-2) !important;\n}\nhtml[data-gius-skin] #left-panel .menu-title-Hidden { display: none !important; }\n/* Menu search removed (user's call): hide the portal's search field and its wrapper. */\nhtml[data-gius-skin] #left-panel .p-3:has(> #search-input) { display: none !important; }\n\n/* Open group: indented links with a thin guide line. */\nhtml[data-gius-skin] #left-panel .sub-menu {\n    background: transparent !important; border: 0 !important; box-shadow: none !important;\n    margin: 0 !important; padding: 0 0 0 10px !important;\n}\n/* Closed groups keep their (collapsed) list in the page, so indent and guide line only when open. */\nhtml[data-gius-skin] #left-panel li.show > .sub-menu {\n    border-left: 1px solid var(--gs-nav-hover-2) !important; margin: 2px 8px 8px 33px !important;\n}\nhtml[data-gius-skin] #left-panel .sub-menu > li { padding: 0 !important; display: flex; align-items: center; }\nhtml[data-gius-skin] #left-panel .sub-menu > li > i { display: none; }\nhtml[data-gius-skin] #left-panel .sub-menu > li > a {\n    display: block; flex: 1; width: 100%; box-sizing: border-box; padding: 9px 12px !important; margin: 1px 0; border-radius: 8px;\n    color: var(--gs-nav-text) !important; font: 400 14px/1.4 var(--gs-font) !important; text-decoration: none !important;\n}\nhtml[data-gius-skin] #left-panel .sub-menu > li > a:hover { background: var(--gs-nav-hover); color: var(--gs-on-strong) !important; }\n\n/* Current page: portalSkin.js marks its sidebar link (gius-skin-current) and that link's group\n   (gius-skin-current-group). The link gets the yellow pill; the group heading turns white with a yellow icon. */\nhtml[data-gius-skin] #left-panel .sub-menu > li > a.gius-skin-current,\nhtml[data-gius-skin] #left-panel .navbar-nav > li > a.gius-skin-current {\n    background: var(--gs-accent-glow) !important; color: var(--gs-on-strong) !important; font-weight: 600 !important;\n}\nhtml[data-gius-skin] #left-panel li.gius-skin-current-group > a { color: var(--gs-on-strong) !important; font-weight: 600 !important; }\nhtml[data-gius-skin] #left-panel li.gius-skin-current-group > a > i:first-child { color: var(--gs-accent) !important; }\n\n/* ── Shell: header bar ── */\nhtml[data-gius-skin] #header {\n    background: var(--gs-card) !important; border-bottom: 1px solid var(--gs-line) !important; box-shadow: none !important;\n}\n/* The portal hangs this button over the sidebar edge and lays the header out around that; moving it\n   (0.0.7) opened a grey gap live. Keep the portal's position, just lift it above the logo strip. */\nhtml[data-gius-skin] #menuToggle {\n    position: relative; z-index: 1001;\n    display: inline-flex !important; align-items: center; justify-content: center; width: 40px; height: 40px;\n    background: var(--gs-card) !important; border: 1px solid var(--gs-line) !important; border-radius: 6px !important;\n    color: var(--gs-text) !important; box-shadow: none !important;\n}\nhtml[data-gius-skin] #menuToggle:hover { background: var(--gs-sunk) !important; border-color: var(--gs-line-2) !important; }\n/* Layout like the mock: menu button left, role and account together on the right. The portal floats a\n   7/12 column (button + role) and a 5/12 one (account); a flex row with the role pushed to the end of the\n   first column puts the two side by side without moving the button. */\nhtml[data-gius-skin] #header .header-menu { display: flex !important; flex-wrap: wrap; align-items: center; column-gap: 20px; }\nhtml[data-gius-skin] #header .header-menu > .col-sm-7 {\n    display: flex !important; align-items: center; flex: 1 1 auto; width: auto !important; max-width: none !important; float: none !important;\n    padding-right: 0 !important;\n}\nhtml[data-gius-skin] #header .header-menu > .col-sm-5 { flex: 0 0 auto; width: auto !important; max-width: none !important; float: none !important; padding: 0 !important; }\nhtml[data-gius-skin] #header .header-left { margin-left: auto; }\nhtml[data-gius-skin] #header .user-area { float: none !important; }\nhtml[data-gius-skin] #lbl_UserRole > i.fa-info-circle { display: none !important; }\n/* Header icons: the mock's line icons in place of Font Awesome's, as masks so they take the text colour. */\nhtml[data-gius-skin] #menuToggle i,\nhtml[data-gius-skin] #header .user-area > a.dropdown-toggle > i {\n    display: inline-block !important; width: 16px; height: 16px; font-size: 0 !important; line-height: 0 !important;\n    background-color: currentColor; -webkit-mask: var(--gs-hd-icon) center / 16px 16px no-repeat; mask: var(--gs-hd-icon) center / 16px 16px no-repeat;\n}\nhtml[data-gius-skin] #menuToggle i::before,\nhtml[data-gius-skin] #header .user-area > a.dropdown-toggle > i::before { content: none !important; }\nhtml[data-gius-skin] #menuToggle i { color: inherit !important; --gs-hd-icon: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.25' stroke-linecap='round'%3E%3Cline x1='3' y1='6' x2='21' y2='6'/%3E%3Cline x1='3' y1='12' x2='21' y2='12'/%3E%3Cline x1='3' y1='18' x2='21' y2='18'/%3E%3C/svg%3E\"); }\nhtml[data-gius-skin] #header .user-area > a.dropdown-toggle > i { --gs-hd-icon: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E\"); }\nhtml[data-gius-skin] #lbl_UserRole { font: 400 13px var(--gs-font); color: var(--gs-muted) !important; }\nhtml[data-gius-skin] #lbl_UserRole b { color: var(--gs-text); font-weight: 600; }\nhtml[data-gius-skin] #lbl_Account { font: 600 13px var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin] #header a { text-decoration: none !important; } /* layouts like Groups Schedule's underline every link */\n/* Name sits in a <p> (a block) after the person icon: put both on one line. */\nhtml[data-gius-skin] #header .user-area > a.dropdown-toggle { display: inline-flex !important; align-items: center; gap: 8px; }\nhtml[data-gius-skin] #header .user-area > a.dropdown-toggle > p { display: inline !important; margin: 0 !important; }\nhtml[data-gius-skin] #header .user-area > a.dropdown-toggle > i { margin: 0 !important; color: var(--gs-muted) !important; }\n\n/* ── Shell: page title (same markup on every page) ── */\nhtml[data-gius-skin] .alert.alert-secondary:has(> h2 > #lbl_PageTitle) {\n    background: transparent !important; border: 0 !important; padding: 8px 0 4px !important; margin: 0 0 4px !important; text-align: left !important;\n}\nhtml[data-gius-skin] #lbl_PageTitle { font: 700 24px/1.25 var(--gs-font); color: var(--gs-text); }\n\n/* ── Base: the portal's building blocks, on every page ──\n   The same few portal parts recur on page after page: ASP.NET data grids (rules=\"all\"/\"cols\", a header row in\n   whatever colour that page picked, striped rows, X-Small type set inline), plain grey submit buttons and a few\n   Bootstrap ones, native dropdowns and text boxes, and validators hidden with visibility:hidden. They get the 5.0\n   look here, everywhere, so a page with no rules of its own still reads as 5.0. Each selector sits in :where()\n   (specificity of html[attr] only), so any page rule below wins; !important only where the portal sets the\n   property inline. SuperScript's own widgets (gius-, giu-, giug-, gmgg-, guc-) are left alone. */\n\n/* Data grids: a card, grey header, white rows with soft lines. A row the portal paints red keeps red text. */\nhtml[data-gius-skin] :where(#right-panel .content table[rules]:not([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"], :is([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"]) *)) {\n    border: 1px solid var(--gs-line) !important; border-collapse: separate !important; border-spacing: 0; border-radius: 8px;\n    overflow: hidden; background: var(--gs-card); font: 400 13px/1.4 var(--gs-font); color: var(--gs-text);\n}\nhtml[data-gius-skin] :where(#right-panel .content table[rules]:not([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"], :is([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"]) *)[style*=\"font-size\"]) { font-size: 13px !important; }\nhtml[data-gius-skin] :where(#right-panel .content table[rules]:not([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"], :is([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"]) *) > tbody > tr[style*=\"background\"]) { background-color: transparent !important; }\nhtml[data-gius-skin] :where(#right-panel .content table[rules]:not([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"], :is([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"]) *) > tbody > tr[style*=\"color\"]:not([style*=\"color:Red\"], [style*=\"color:red\"])) { color: var(--gs-text) !important; }\nhtml[data-gius-skin] :where(#right-panel .content table[rules]:not([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"], :is([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"]) *) > tbody > tr > :is(td, th)) {\n    padding: 7px 10px; border: 0; border-top: 1px solid var(--gs-line-soft); font-family: inherit; font-size: inherit; line-height: inherit; vertical-align: top;\n}\nhtml[data-gius-skin] :where(#right-panel .content table[rules]:not([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"], :is([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"]) *) > tbody > tr:first-child > :is(td, th)) {\n    border-top: 0; border-bottom: 1px solid var(--gs-line); background: var(--gs-sunk); color: var(--gs-muted);\n    font: 600 12px/1.4 var(--gs-font); vertical-align: middle;\n}\nhtml[data-gius-skin] :where(#right-panel .content table[rules]:not([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"], :is([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"]) *) > tbody > tr:first-child > :is(td, th) a) { color: inherit; }\nhtml[data-gius-skin] :where(#right-panel .content table[rules]:not([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"], :is([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"]) *) > tbody > tr:first-child + tr > :is(td, th)) { border-top: 0; }\nhtml[data-gius-skin] :where(#right-panel .content table[rules]:not([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"], :is([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"]) *) > tbody > tr:is([style*=\"color:Red\"], [style*=\"color:red\"]) > td) { color: var(--gs-err); }\n\n/* Buttons: white; a Bootstrap primary / success button is the yellow one; disabled ones greyed. A page that\n   has one main action makes it yellow in its own rules. */\nhtml[data-gius-skin] :where(#right-panel .content :is(input[type=\"submit\"], input[type=\"button\"], input[type=\"reset\"], button):not([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"], :is([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"]) *)) {\n    height: 36px; padding: 0 14px; border: 1px solid var(--gs-line); border-radius: 6px; background: var(--gs-card); box-shadow: none;\n    color: var(--gs-text); font: 600 13px var(--gs-font); cursor: pointer;\n}\nhtml[data-gius-skin][data-gius-skin] :where(#right-panel .content :is(input[type=\"submit\"], input[type=\"button\"], input[type=\"reset\"], button):not([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"], :is([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"]) *)):where(:hover:not(:disabled)) { background: var(--gs-sunk); border-color: var(--gs-line-2); color: var(--gs-text); }\nhtml[data-gius-skin] :where(#right-panel .content :is(input[type=\"submit\"], input[type=\"button\"], input[type=\"reset\"], button):not([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"], :is([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"]) *)):where(.btn-primary, .btn-success) { border-color: var(--gs-accent-line); background: var(--gs-accent); color: var(--gs-accent-fg); }\nhtml[data-gius-skin][data-gius-skin] :where(#right-panel .content :is(input[type=\"submit\"], input[type=\"button\"], input[type=\"reset\"], button):not([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"], :is([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"]) *)):where(.btn-primary, .btn-success):where(:hover:not(:disabled)) { border-color: var(--gs-accent-line); background: var(--gs-accent-h); color: var(--gs-accent-fg); }\nhtml[data-gius-skin] :where(#right-panel .content :is(input[type=\"submit\"], input[type=\"button\"], input[type=\"reset\"], button):not([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"], :is([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"]) *)):where(.btn-danger) { border-color: var(--gs-danger); background: var(--gs-danger); color: var(--gs-on-strong); }\nhtml[data-gius-skin][data-gius-skin] :where(#right-panel .content :is(input[type=\"submit\"], input[type=\"button\"], input[type=\"reset\"], button):not([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"], :is([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"]) *)):where(.btn-danger):where(:hover:not(:disabled)) { border-color: var(--gs-danger-h); background: var(--gs-danger-h); color: var(--gs-on-strong); }\nhtml[data-gius-skin] :where(#right-panel .content :is(input[type=\"submit\"], input[type=\"button\"], input[type=\"reset\"], button):not([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"], :is([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"]) *)):where(:disabled, .aspNetDisabled) { border-color: var(--gs-line); background: var(--gs-disabled-bg); color: var(--gs-disabled-fg); cursor: not-allowed; opacity: 1; }\nhtml[data-gius-skin][data-gius-skin] :where(#right-panel .content :is(input[type=\"submit\"], input[type=\"button\"], input[type=\"reset\"], button):not([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"], :is([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"]) *)):where(:focus-visible) { outline: 2px solid var(--gs-focus); outline-offset: 2px; box-shadow: none; }\n\n/* Fields: 36px text boxes, 40px dropdowns with the 5.0 chevron, read-only ones greyed. */\nhtml[data-gius-skin] :where(#right-panel .content :is(input:is([type=\"text\"], [type=\"email\"], [type=\"number\"], [type=\"password\"], [type=\"search\"], [type=\"tel\"], [type=\"date\"], :not([type])), textarea):not([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"], :is([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"]) *):not(.chosen-container *)) {\n    height: 36px; padding: 0 10px; border: 1px solid var(--gs-line); border-radius: 6px; background: var(--gs-card); box-shadow: none;\n    font: 400 14px var(--gs-font); color: var(--gs-text);\n}\nhtml[data-gius-skin] :where(#right-panel .content textarea:not([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"], :is([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"]) *)) { height: auto; min-height: 72px; padding: 8px 10px; line-height: 1.5; }\nhtml[data-gius-skin] :where(#right-panel .content :is(input:is([type=\"text\"], [type=\"email\"], [type=\"number\"], [type=\"password\"], [type=\"search\"], [type=\"tel\"], [type=\"date\"], :not([type])), textarea):not([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"], :is([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"]) *):not(.chosen-container *)):where(:disabled, [readonly]) { background: var(--gs-sunk); color: var(--gs-muted); }\nhtml[data-gius-skin] :where(#right-panel .content select:not([multiple], [size]):not([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"], :is([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"]) *)) {\n    height: 40px; padding: 0 36px 0 12px; border: 1px solid var(--gs-line); border-radius: 6px; box-shadow: none;\n    font: 400 14px var(--gs-font); color: var(--gs-text); -webkit-appearance: none; appearance: none;\n    background: var(--gs-card) var(--gs-chevron) no-repeat right 12px center;\n}\nhtml[data-gius-skin] :where(#right-panel .content select:not([multiple], [size]):not([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"], :is([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"]) *)):where(:disabled) { background-color: var(--gs-sunk); color: var(--gs-muted); }\nhtml[data-gius-skin][data-gius-skin] :where(#right-panel .content :is(input:is([type=\"text\"], [type=\"email\"], [type=\"number\"], [type=\"password\"], [type=\"search\"], [type=\"tel\"], [type=\"date\"], :not([type])), textarea):not([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"], :is([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"]) *):not(.chosen-container *), #right-panel .content select:not([multiple], [size]):not([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"], :is([id^=\"gius\"], [id^=\"giu-\"], [id^=\"giug\"], [id^=\"gmgg\"], [id^=\"guc-\"], [class*=\"gius-\"], [class*=\"giu-\"], [class*=\"giug-\"], [class*=\"gmgg-\"], [class*=\"guc-\"]) *)):where(:focus) { border-color: var(--gs-focus); box-shadow: 0 0 0 3px var(--gs-focus-ring); outline: 0; }\nhtml[data-gius-skin] :where(#right-panel .content input:is([type=\"checkbox\"], [type=\"radio\"])) { width: 18px; height: 18px; accent-color: var(--gs-nav); vertical-align: -4px; }\n\n/* Validators: ASP.NET keeps them in the layout with visibility:hidden until they fire; drop them until then. */\nhtml[data-gius-skin] :where(#right-panel .content span[style*=\"visibility:hidden\"]) { display: none !important; }\n\n/* Labels above fields (mock board 2): the label a page step lifted out of the portal's loose text, and\n   the label + field group it sits in. */\nhtml[data-gius-skin] .gs-flabel { display: block; font: 600 13px/1.4 var(--gs-font); color: var(--gs-text); white-space: nowrap; text-align: left; }\nhtml[data-gius-skin] .gs-fgroup { display: flex; flex-direction: column; gap: 6px; min-width: 0; text-align: left; }\nhtml[data-gius-skin] .gs-fgroup > select { margin: 0 !important; }\n\n/* ── Pop-ups on any page: first-use tips (gius-tips-*) and the attendance guided tour (giu-guide-*) ──\n   5.0 card: system font, thin border, the mock's shadow; the one action (\"Got it\", \"Next\"/\"Finish\") is the\n   yellow button instead of blue; secondary actions white, \"Skip\" a muted link. The tour's spotlight ring\n   is the accent yellow on a neutral scrim. */\nhtml[data-gius-skin] .gius-tips-bubble {\n    font: 400 13px/1.5 var(--gs-font); color: var(--gs-text); border: 1px solid var(--gs-line); border-radius: 10px;\n    box-shadow: 0 16px 40px var(--gs-shade-30); padding: 16px 18px;\n}\nhtml[data-gius-skin] .gius-tips-title { font: 700 15px/1.3 var(--gs-font); color: var(--gs-text); margin-bottom: 6px; }\nhtml[data-gius-skin] .gius-tips-text { color: var(--gs-muted); }\nhtml[data-gius-skin] .gius-tips-cutout { box-shadow: 0 0 0 9999px var(--gs-backdrop); }\n\nhtml[data-gius-skin] .giu-guide-spotlight { border-color: var(--gs-accent); box-shadow: 0 0 0 9999px var(--gs-backdrop-2); }\nhtml[data-gius-skin] .giu-guide-tooltip {\n    font-family: var(--gs-font); color: var(--gs-text); border: 1px solid var(--gs-line); border-radius: 10px;\n    box-shadow: 0 16px 40px var(--gs-shade-30); padding: 16px 18px;\n}\nhtml[data-gius-skin] .giu-guide-progress { font: 700 11px var(--gs-font); letter-spacing: .08em; text-transform: uppercase; color: var(--gs-muted); }\nhtml[data-gius-skin] .giu-guide-title { font: 700 16px/1.3 var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin] .giu-guide-description { font: 400 13px/1.55 var(--gs-font); color: var(--gs-muted); }\n\n/* Attendance pop-ups (Staff Attendance, Home and the report): the small prompts (inline styles, so\n   !important), the ranks sheet and the unlock pop-up get the 5.0 card; their one action is yellow, the\n   rest white. Rank colours (dots, tier chips) stay. \"Restart Guide\" becomes a small secondary button. */\n\nhtml[data-gius-skin] .gius-att-modal { background: var(--gs-backdrop); }\nhtml[data-gius-skin] .gius-att-sheet { border: 1px solid var(--gs-line); border-radius: 10px; box-shadow: 0 16px 40px var(--gs-shade-30); font-family: var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin] .gius-att-sheet-title { font: 700 16px/1.3 var(--gs-font); }\nhtml[data-gius-skin] .gius-att-sheet-sub { color: var(--gs-muted); }\nhtml[data-gius-skin] .gius-att-x { color: var(--gs-muted); }\nhtml[data-gius-skin] .gius-att-trow { border-color: var(--gs-line-soft); border-radius: 8px; }\nhtml[data-gius-skin] .gius-att-trow.cur { background: var(--gs-sunk); border-color: var(--gs-line); }\nhtml[data-gius-skin] .gius-att-trow-cond { color: var(--gs-muted); }\n/* Not the themed rank buttons (gold, pink): they keep their own colours. */\nhtml[data-gius-skin] .gius-att-unlock-go:not(.gius-att-unlock-go-gold, .gius-att-unlock-go-pink) { background: var(--gs-accent); color: var(--gs-accent-fg); border: 1px solid var(--gs-accent-line); border-radius: 6px; font-family: var(--gs-font); }\nhtml[data-gius-skin] .gius-att-unlock-go:not(.gius-att-unlock-go-gold, .gius-att-unlock-go-pink):hover { background: var(--gs-accent-h); }\nhtml[data-gius-skin] .gius-att-unlock-ok { background: var(--gs-card); border-color: var(--gs-line); border-radius: 6px; font-family: var(--gs-font); }\nhtml[data-gius-skin] .gius-att-unlock-ok:hover { background: var(--gs-sunk); }\n\n\n/* ── Page: Manage Uploaded Grades ── */\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_choiceTr {\n    background: var(--gs-card); border: 1px solid var(--gs-line); border-radius: 8px; padding: 20px !important;\n}\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_choiceTr > div {\n    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;\n}\n/* Anything that isn't a filter row (e.g. SuperScript's Batch Grades panel) gets its own full-width row. */\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_choiceTr > div > :not(.form-group) { grid-column: 1 / -1; min-width: 0; }\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_choiceTr .form-group { display: flex; flex-direction: column; gap: 6px; margin: 0 !important; min-width: 0; }\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_choiceTr .form-group > .col-sm-3 { max-width: none; flex: none; padding: 0; }\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_choiceTr label { font: 600 13px var(--gs-font); color: var(--gs-text); margin: 0; }\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_choiceTr select.form-control,\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_choiceTr .chosen-container { width: 100% !important; max-width: 100%; flex: none; }\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_choiceTr select.form-control {\n    height: 40px; padding: 0 36px 0 12px; border: 1px solid var(--gs-line); border-radius: 6px;\n    font: 400 14px var(--gs-font); color: var(--gs-text); box-shadow: none;\n    -webkit-appearance: none; appearance: none;\n    background: var(--gs-card) var(--gs-chevron) no-repeat right 12px center;\n}\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_choiceTr select.form-control:hover { border-color: var(--gs-line-2); }\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_choiceTr select.form-control:focus { border-color: var(--gs-focus); box-shadow: 0 0 0 3px var(--gs-focus-ring); outline: 0; }\nhtml[data-gius-skin] .chosen-container-single .chosen-single {\n    display: flex !important; align-items: center;\n    height: 40px !important; padding: 0 12px !important; border: 1px solid var(--gs-line); border-radius: 6px;\n    background: var(--gs-card); box-shadow: none; font: 400 14px/1.4 var(--gs-font); color: var(--gs-text);\n}\nhtml[data-gius-skin] .chosen-container-single .chosen-single span { flex: 1; line-height: 1.4; }\nhtml[data-gius-skin] .chosen-container-single .chosen-single span { font-weight: 400; }\n/* Same chevron as the native dropdowns instead of Chosen's sprite arrow. */\nhtml[data-gius-skin] .chosen-container-single .chosen-single div {\n    position: static !important; width: 16px !important; height: 16px !important; flex: 0 0 16px;\n    background: var(--gs-chevron) no-repeat center;\n}\nhtml[data-gius-skin] .chosen-container-single .chosen-single div b { display: none !important; }\nhtml[data-gius-skin] .chosen-container-active .chosen-single { border-color: var(--gs-focus); box-shadow: 0 0 0 3px var(--gs-focus-ring); }\n\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_nttTb {\n    background: var(--gs-card); border: 1px solid var(--gs-line); border-radius: 8px; padding: 0 !important; overflow: hidden;\n}\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_nttTb > .panel-heading { padding: 16px 20px; border-bottom: 1px solid var(--gs-line-soft); text-align: left; }\n/* The heading's <p align=\"center\"> (course line, Group Grades card, Start Over) has ~40px side margins. */\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_nttTb > .panel-heading > p { margin: 0 !important; text-align: left !important; }\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_crntLbl { font: 600 15px var(--gs-font) !important; color: var(--gs-text); }\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_strOvrBtn { font: 600 13px var(--gs-font) !important; color: var(--gs-focus); }\n/* Above the table the portal floats the counts and buttons right (so their visual order is the reverse\n   of the source). Lay the body out as a flex row instead, as in the mock: counts + Download All\n   top-right, the table at full width, Save Group Grades under it on the right. */\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_nttTb > .panel-body {\n    padding: 16px 20px 20px; display: flex; flex-wrap: wrap; align-items: center; gap: 0 8px;\n}\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_nttTb > .panel-body > * { float: none !important; }\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_lblCount { order: 1; margin-left: auto !important; }\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_nttTb > .panel-body > strong:nth-of-type(2) { order: 2; }\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_lblstudentsCount { order: 3; }\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_nttTb > .panel-body > strong:nth-of-type(1) { order: 4; }\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_btnDownLoadall { order: 5; }\nhtml[data-gius-skin~=\"uploadedGrades\"] table#data { order: 6; flex: 0 0 100%; margin-top: 16px !important; }\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_saveBtn { order: 7; margin: 16px 0 0 auto !important; }\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_saveBtn,\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_btnDownLoadall {\n    height: 40px; padding: 0 16px; border-radius: 6px; font: 600 14px var(--gs-font) !important; cursor: pointer;\n}\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_saveBtn { background: var(--gs-accent); color: var(--gs-accent-fg); border: 1px solid var(--gs-accent-line); }\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_saveBtn:hover { background: var(--gs-accent-h); }\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_btnDownLoadall { background: var(--gs-card); color: var(--gs-text); border: 1px solid var(--gs-line); margin-left: 12px; }\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_btnDownLoadall:hover { background: var(--gs-sunk); border-color: var(--gs-line-2); }\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_nttTb .panel-body > strong { font: 400 13px/40px var(--gs-font); color: var(--gs-muted); }\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_lblCount,\nhtml[data-gius-skin~=\"uploadedGrades\"] #MainContent_lblstudentsCount {\n    margin: 0; padding: 0 8px; height: 22px; line-height: 22px; border-radius: 999px;\n    background: var(--gs-disabled-bg); color: var(--gs-nav-strong); font: 600 12px/22px var(--gs-font);\n}\n\nhtml[data-gius-skin~=\"uploadedGrades\"] table#data { border: 1px solid var(--gs-line); border-radius: 8px; border-collapse: separate; border-spacing: 0; overflow: hidden; margin: 0; }\nhtml[data-gius-skin~=\"uploadedGrades\"] table#data th,\nhtml[data-gius-skin~=\"uploadedGrades\"] table#data td { border: 0 !important; border-bottom: 1px solid var(--gs-line-soft) !important; padding: 10px 14px; vertical-align: middle; font: 400 14px var(--gs-font); }\nhtml[data-gius-skin~=\"uploadedGrades\"] table#data tr:last-child td { border-bottom: 0 !important; }\nhtml[data-gius-skin~=\"uploadedGrades\"] table#data tr.bg-layer th {\n    background: var(--gs-sunk) !important; color: var(--gs-muted); border-bottom: 1px solid var(--gs-line) !important; font: 700 12px var(--gs-font);\n}\nhtml[data-gius-skin~=\"uploadedGrades\"] table#data tr.bg-layer th strong { font-weight: inherit; }\nhtml[data-gius-skin~=\"uploadedGrades\"] table#data tbody tr:not(.bg-layer):hover td { background: var(--gs-accent-tint); }\nhtml[data-gius-skin~=\"uploadedGrades\"] table#data input[type=text] {\n    width: 64px; height: 32px; padding: 0 8px; margin-right: 6px; border: 1px solid var(--gs-line); border-radius: 6px;\n    text-align: right; font: 400 14px var(--gs-font); font-variant-numeric: tabular-nums; color: var(--gs-text); background: var(--gs-card);\n}\nhtml[data-gius-skin~=\"uploadedGrades\"] table#data input[type=text]:focus { border-color: var(--gs-focus); box-shadow: 0 0 0 3px var(--gs-focus-ring); outline: 0; }\nhtml[data-gius-skin~=\"uploadedGrades\"] table#data td font { color: inherit !important; }\nhtml[data-gius-skin~=\"uploadedGrades\"] table#data td font b { font-weight: 600; }\nhtml[data-gius-skin~=\"uploadedGrades\"] table#data td { color: var(--gs-text); }\n/* One student can have several rows (one per grade element); only the first carries the name label.\n   Draw each student as one block: a clear line above each student's first row, none between their own rows. */\nhtml[data-gius-skin~=\"uploadedGrades\"] table#data tr[id*=\"_stdRw_\"] > td { border-bottom: 0 !important; }\nhtml[data-gius-skin~=\"uploadedGrades\"] table#data tr[id*=\"_stdRw_\"]:has(> td:first-child > span[id*=\"_stdNmLbl_\"]) > td { border-top: 1px solid var(--gs-line) !important; }\nhtml[data-gius-skin~=\"uploadedGrades\"] table#data tr.bg-layer + tr[id*=\"_stdRw_\"] > td { border-top: 0 !important; }\nhtml[data-gius-skin~=\"uploadedGrades\"] table#data tr[id*=\"_stdRw_\"]:not(:has(> td:first-child > span[id*=\"_stdNmLbl_\"])) > td { padding-top: 2px; }\nhtml[data-gius-skin~=\"uploadedGrades\"] table#data tr[id*=\"_stdRw_\"] > td:nth-child(2) { color: var(--gs-muted); }\nhtml[data-gius-skin~=\"uploadedGrades\"] table#data span[id*=\"_stdNmLbl_\"] { font-weight: 600; }\n/* ASP.NET validators: hidden ones still take space (visibility:hidden) — collapse them;\n   when the portal shows one it rewrites the inline style, so this no longer matches. */\nhtml[data-gius-skin~=\"uploadedGrades\"] table#data td > span[style*=\"visibility:hidden\"],\nhtml[data-gius-skin~=\"uploadedGrades\"] table#data td > span[style*=\"visibility: hidden\"] { display: none; }\nhtml[data-gius-skin~=\"uploadedGrades\"] table#data td > span[id*=\"_rqrdGrd_\"]:not([style*=\"hidden\"]),\nhtml[data-gius-skin~=\"uploadedGrades\"] table#data td > span[id*=\"_rgexGrd_\"]:not([style*=\"hidden\"]),\nhtml[data-gius-skin~=\"uploadedGrades\"] table#data td > span[id*=\"_cmprGrd\"]:not([style*=\"hidden\"]) { display: block; margin-top: 4px; color: var(--gs-err) !important; font: 600 12px var(--gs-font); }\nhtml[data-gius-skin~=\"uploadedGrades\"] table#data [id*=\"_lblFileSize_\"] { color: var(--gs-muted); font-size: 13px; }\nhtml[data-gius-skin~=\"uploadedGrades\"] table#data a.aspNetDisabled { color: var(--gs-disabled-fg); font-size: 13px; pointer-events: none; }\n\n/* ── Page: Manage Group Grade (ManageGroupGrade_m.aspx) ──\n   An outer table fixed at 790px (#Table1.normal) holds the filters: a bordered table (#MainContent_choiceTr)\n   with bare-text labels — Season on one row; Course (Chosen), Group and Evaluation Method in one centred\n   <p> split by <br>s. 5.0: one card, the fields in a wrapping row with their labels, full width.\n   The Group Grades panel (gmgg-*, Cairo feature): plain card, white header, buttons secondary. */\nhtml[data-gius-skin~=\"groupGrade\"] #Table1.normal { width: 100% !important; }\nhtml[data-gius-skin~=\"groupGrade\"] #Table1.normal > tbody > tr:first-child { display: none; }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_choiceTr {\n    border: 1px solid var(--gs-line) !important; border-collapse: separate; border-spacing: 0; border-radius: 8px;\n    background: var(--gs-card); font: 600 13px var(--gs-font); color: var(--gs-text);\n}\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_choiceTr td { border: 0 !important; padding: 0 20px !important; text-align: left !important; font: 600 13px var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_choiceTr tr:first-child > td { padding-top: 20px !important; }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_choiceTr tr:last-child > td { padding-bottom: 20px !important; }\n/* The <p> cannot hold Chosen's <div>, so the parser ends it there: the cell is the flex row and the\n   paragraph pieces dissolve into it. */\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_choiceTr td { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px 16px; padding-top: 12px !important; }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_choiceTr td > p { display: contents; font: inherit; }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_choiceTr td > p > br { display: none; }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_choiceTr td > br { display: none; }\n/* Course stretches to the end of its line (a <br> cannot break a flex row), so Group and Evaluation\n   Method wrap together onto the next. */\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_choiceTr .gs-fgroup:has(#MainContent_smCrsLst) { flex: 1 1 320px; }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_smCrsLst_chosen { width: 100% !important; min-width: 0; }\nhtml[data-gius-skin~=\"groupGrade\"] :is(#MainContent_dlSeason, #MainContent_grpLst, #MainContent_evalMethIdLst) { min-width: 160px; font: 400 14px var(--gs-font) !important; }\nhtml[data-gius-skin~=\"groupGrade\"] :is(#MainContent_dlSeason, #MainContent_grpLst, #MainContent_evalMethIdLst):hover { border-color: var(--gs-line-2); }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_actionLbl { font: 600 14px var(--gs-font); }\nhtml[data-gius-skin~=\"groupGrade\"] .gmgg-panel { border: 1px solid var(--gs-line); border-radius: 8px; box-shadow: none; font-family: var(--gs-font); color: var(--gs-text); animation: none; }\nhtml[data-gius-skin~=\"groupGrade\"] .gmgg-panel::before { display: none; }\nhtml[data-gius-skin~=\"groupGrade\"] .gmgg-panel-header { background: var(--gs-card); color: var(--gs-text); border-bottom: 1px solid var(--gs-line-soft); padding: 14px 18px; }\nhtml[data-gius-skin~=\"groupGrade\"] .gmgg-panel-title { font: 700 16px/1.3 var(--gs-font); color: var(--gs-text); margin: 0; }\nhtml[data-gius-skin~=\"groupGrade\"] .gmgg-panel-subtitle { font: 400 13px/1.4 var(--gs-font); color: var(--gs-muted); margin: 2px 0 0; }\nhtml[data-gius-skin~=\"groupGrade\"] .gmgg-panel-body { padding: 16px 18px; }\nhtml[data-gius-skin~=\"groupGrade\"] .gmgg-stats-title { font: 700 11px var(--gs-font); letter-spacing: .08em; color: var(--gs-muted); }\nhtml[data-gius-skin~=\"groupGrade\"] .gmgg-stat-row { background: var(--gs-sunk); border: 1px solid var(--gs-line-soft); border-radius: 8px; }\nhtml[data-gius-skin~=\"groupGrade\"] .gmgg-stat-label { font-family: var(--gs-font); color: var(--gs-muted); }\nhtml[data-gius-skin~=\"groupGrade\"] .gmgg-stat-val { font-family: var(--gs-font); color: var(--gs-text); font-variant-numeric: tabular-nums; }\nhtml[data-gius-skin~=\"groupGrade\"] .gmgg-feedback { font-family: var(--gs-font); border-radius: 6px; }\n\n/* The grade sheet (after a group and method are picked): #MainContent_nttTb holds the course line + Start\n   Over, then a bordered table (header row, one row per student per grade element, every other student\n   #DDDDDD), then Save Group Grades in a centred <p>. 5.0: one card like Manage Uploaded Grades, a student\n   per block, Save as the page's yellow action on the right. */\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_nttTb { background: var(--gs-card); border: 1px solid var(--gs-line); border-radius: 8px; border-collapse: separate; }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_nttTb > tbody > tr > td { padding: 16px 20px 20px; font: 400 14px var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_nttTb > tbody > tr > td > p:first-child { margin: 0 0 14px !important; text-align: left !important; }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_crntLbl { font: 600 15px var(--gs-font) !important; color: var(--gs-text); }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_strOvrBtn { font: 600 13px var(--gs-font) !important; color: var(--gs-focus); margin-left: 4px; }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_nttTb table[border=\"1\"] { border: 1px solid var(--gs-line) !important; border-radius: 8px; border-collapse: separate; border-spacing: 0; overflow: hidden; }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_nttTb table[border=\"1\"] td { border: 0 !important; padding: 8px 14px; vertical-align: middle; font: 400 14px var(--gs-font); color: var(--gs-text); background: var(--gs-card); }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_nttTb table[border=\"1\"] > tbody > tr:first-child > td {\n    width: auto; background: var(--gs-sunk); color: var(--gs-muted); border-bottom: 1px solid var(--gs-line) !important; font: 700 12px var(--gs-font);\n}\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_nttTb table[border=\"1\"] > tbody > tr:first-child > td strong { font-weight: inherit; }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_nttTb table[border=\"1\"] > tbody > tr:first-child > td:nth-child(2) { width: 160px; }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_nttTb table[border=\"1\"] > tbody > tr:first-child > td:nth-child(3) { width: 240px; }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_nttTb table[border=\"1\"] tr[id*=\"_stdRw_\"]:hover > td { background: var(--gs-accent-tint); }\n/* A student = their first row (it carries the name) + one row per further element: a line above each\n   student, none between their own rows. */\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_nttTb table[border=\"1\"] tr[id*=\"_stdRw_\"]:has(> td:first-child > span[id*=\"_stdNmLbl_\"]) > td { border-top: 1px solid var(--gs-line-soft) !important; padding-top: 12px; }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_nttTb table[border=\"1\"] tr:first-child + tr[id*=\"_stdRw_\"] > td { border-top: 0 !important; }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_nttTb table[border=\"1\"] tr[id*=\"_stdRw_\"]:not(:has(> td:first-child > span[id*=\"_stdNmLbl_\"])) > td { padding-top: 2px; }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_nttTb table[border=\"1\"] tr[id*=\"_stdRw_\"]:has(+ tr[id*=\"_stdRw_\"] > td:first-child > span[id*=\"_stdNmLbl_\"]) > td,\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_nttTb table[border=\"1\"] tr[id*=\"_stdRw_\"]:last-child > td { padding-bottom: 12px; }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_nttTb table[border=\"1\"] span[id*=\"_stdNmLbl_\"] { font-weight: 600; }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_nttTb table[border=\"1\"] tr[id*=\"_stdRw_\"] > td:nth-child(2) { color: var(--gs-muted); }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_nttTb table[border=\"1\"] input[type=text] {\n    width: 72px; height: 32px; padding: 0 8px; margin-right: 6px; border: 1px solid var(--gs-line); border-radius: 6px;\n    text-align: right; font: 400 14px var(--gs-font); font-variant-numeric: tabular-nums; color: var(--gs-text); background: var(--gs-card);\n}\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_nttTb table[border=\"1\"] input[type=text]:focus { border-color: var(--gs-focus); box-shadow: 0 0 0 3px var(--gs-focus-ring); outline: 0; }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_nttTb table[border=\"1\"] td font { color: inherit !important; }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_nttTb table[border=\"1\"] td font b { font-weight: 600; }\n/* ASP.NET validators: hidden ones still take space; a shown one has its inline style rewritten. */\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_nttTb table[border=\"1\"] td > span[style*=\"visibility:hidden\"],\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_nttTb table[border=\"1\"] td > span[style*=\"visibility: hidden\"] { display: none; }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_nttTb table[border=\"1\"] td > span[id*=\"Grd\"]:not([style*=\"hidden\"]) { display: block; margin-top: 4px; color: var(--gs-err) !important; font: 600 12px var(--gs-font); }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_nttTb p:has(> #MainContent_saveBtn) { margin: 16px 0 0 !important; text-align: right !important; font-size: 0; }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_nttTb p:has(> #MainContent_saveBtn) > br { display: none; }\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_saveBtn {\n    height: 40px; padding: 0 16px; border-radius: 6px; border: 1px solid var(--gs-accent-line); background: var(--gs-accent);\n    color: var(--gs-accent-fg); font: 600 14px var(--gs-font) !important; cursor: pointer;\n}\nhtml[data-gius-skin~=\"groupGrade\"] #MainContent_saveBtn:hover { background: var(--gs-accent-h); }\n\n/* ── Page: Take Attendance (Cairo …H003, Berlin …Berlin) ──\n   The Take Attendance feature styles its own parts (pickers, cards, sticky bar, request panel); this\n   only fixes the portal layout around them: the page sits in a centred, shrink-to-fit table inside\n   table.table03 > td.td02 with a 10px base font. */\nhtml[data-gius-skin~=\"takeAttendance\"] table.table03 { width: 100% !important; margin: 0 !important; }\nhtml[data-gius-skin~=\"takeAttendance\"] table.table03 > tbody > tr > td.td02 { padding: 0 !important; font: 400 13px/1.45 var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin~=\"takeAttendance\"] table.table03 td.td02 > table[align=\"center\"] { width: 100% !important; margin: 0 !important; }\n/* Group / Session / Start time / End time labels: the first cell of each control row. */\nhtml[data-gius-skin~=\"takeAttendance\"] table.table03 td.td02 > table[align=\"center\"] table:not([id]) > tbody > tr > td:first-child {\n    padding: 6px 16px 6px 0; font: 600 13px var(--gs-font); color: var(--gs-muted); white-space: nowrap; vertical-align: middle;\n}\n\n/* Start time / Duration / End time rows: removed (user's call); the Students card already shows the session.\n   Before the session starts the Start time row holds the Start Session button and its NoChange / UpdateDate\n   choice, so it stays while it has any control. */\nhtml[data-gius-skin~=\"takeAttendance\"] tr:has(> td > #MainContent_L_SessionStart):not(:has(input, button)),\nhtml[data-gius-skin~=\"takeAttendance\"] tr:has(> td > #MainContent_L_SessionDuration),\nhtml[data-gius-skin~=\"takeAttendance\"] tr:has(> td > #MainContent_L_SessionEnd) { display: none !important; }\n\n/* ── Widgets: Take Attendance feature (gius-take-*) in the 5.0 look (mock board 7) ──\n   Same switch as the portal look: with it off, the feature keeps its own pre-5.0 styles. */\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-panel,\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-bar,\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-picker-pop,\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-input,\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-chip,\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-picker-btn { font-family: var(--gs-font) !important; }\n\n/* Cards: white, thin line, no yellow strip, plain header. */\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-panel {\n    border: 1px solid var(--gs-line); border-radius: 8px; box-shadow: none; margin: 0 0 20px; color: var(--gs-text);\n}\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-panel::before { display: none; }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-header {\n    background: var(--gs-card); color: var(--gs-text); border-bottom: 1px solid var(--gs-line-soft); padding: 14px 16px;\n}\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-title { font-size: 16px; font-weight: 700; }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-meta { color: var(--gs-muted); }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-body { padding: 14px 16px; gap: 10px; }\n\n/* Status pills. */\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-pill { height: 22px; padding: 0 9px; border: 0; font-size: 12px; font-weight: 600; }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-pill-green { background: var(--gs-ok-bg); color: var(--gs-ok-fg); }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-pill-red { background: var(--gs-disabled-bg); color: var(--gs-text-2); }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-pill-amber { background: var(--gs-warn-bg); color: var(--gs-warn); }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-pill-grey { background: var(--gs-disabled-bg); color: var(--gs-text-2); border: 0; }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-pill-blue { background: var(--gs-info-bg); color: var(--gs-info-fg); border: 0; }\n\n/* Session reference strip: quiet grey band instead of yellow. */\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-ref { background: var(--gs-sunk); border-bottom: 1px solid var(--gs-line-soft); padding: 12px 16px; }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-ref-label { color: var(--gs-muted); }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-ref-num { font-size: 20px; color: var(--gs-text); }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-ref-side { color: var(--gs-muted); }\n\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-link { color: var(--gs-focus); }\n\n/* Fields. */\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-input { height: 34px; border: 1px solid var(--gs-line); border-radius: 6px; color: var(--gs-text); }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-input.gius-take-textarea { padding: 8px 10px; }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-input:focus { outline: 0; border-color: var(--gs-focus); box-shadow: 0 0 0 3px var(--gs-focus-ring); }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-find { color: var(--gs-muted); font-weight: 600; }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-label { color: var(--gs-text); font-weight: 600; font-size: 13px; }\n\n/* Group / session pickers: same field as the rest of the 5.0 look; drop-down like the restyled Chosen. */\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-picker-btn {\n    height: 40px; padding: 0 12px; border: 1px solid var(--gs-line); border-radius: 6px; font-size: 14px; font-weight: 500; color: var(--gs-text);\n}\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-picker-btn:hover { border-color: var(--gs-line-2); }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-picker-btn:focus-visible { outline: 0; border-color: var(--gs-focus); box-shadow: 0 0 0 3px var(--gs-focus-ring); }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-picker-caret { color: var(--gs-muted); }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-picker-pop { border: 1px solid var(--gs-line); border-radius: 8px; box-shadow: 0 8px 24px var(--gs-shade-16); }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-picker-pop::before { display: none; }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-picker-list { border-top-color: var(--gs-line-soft); }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-picker-day { background: var(--gs-sunk); color: var(--gs-muted); border-bottom-color: var(--gs-line-soft); }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-picker-day.gius-take-today { background: var(--gs-accent-tint); color: var(--gs-warn); }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-picker-opt { border-bottom-color: var(--gs-line-soft); }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-picker-opt:hover,\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-picker-opt:focus { background: var(--gs-accent-tint); }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-picker-opt.gius-take-today { background: var(--gs-warn-soft); }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-picker-opt.gius-take-selected { background: var(--gs-accent-tint); color: var(--gs-text); }\n\n/* Student table: grey header, thin row lines, yellow-tint hover, light amber for unsaved rows. */\nhtml[data-gius-skin~=\"takeAttendance\"] #MainContent_DG_StudentAttendance {\n    border: 1px solid var(--gs-line) !important; border-collapse: separate !important; border-spacing: 0; border-radius: 8px; overflow: hidden;\n    font-family: var(--gs-font) !important;\n}\nhtml[data-gius-skin~=\"takeAttendance\"] #MainContent_DG_StudentAttendance td {\n    padding: 7px 12px !important; border: 0 !important; border-bottom: 1px solid var(--gs-line-soft) !important;\n}\nhtml[data-gius-skin~=\"takeAttendance\"] #MainContent_DG_StudentAttendance tr:last-child td { border-bottom: 0 !important; }\nhtml[data-gius-skin~=\"takeAttendance\"] #MainContent_DG_StudentAttendance tr.gius-take-head,\nhtml[data-gius-skin~=\"takeAttendance\"] #MainContent_DG_StudentAttendance tr.gius-take-head td {\n    background: var(--gs-sunk) !important; color: var(--gs-muted) !important; letter-spacing: 0;\n}\nhtml[data-gius-skin~=\"takeAttendance\"] #MainContent_DG_StudentAttendance tr.gius-take-head td { border-bottom: 1px solid var(--gs-line) !important; }\nhtml[data-gius-skin~=\"takeAttendance\"] #MainContent_DG_StudentAttendance tr.gius-take-head a { color: var(--gs-muted) !important; }\nhtml[data-gius-skin~=\"takeAttendance\"] #MainContent_DG_StudentAttendance tr.gius-take-row { color: var(--gs-text) !important; }\nhtml[data-gius-skin~=\"takeAttendance\"] #MainContent_DG_StudentAttendance tr.gius-take-row:nth-child(odd) td { background: var(--gs-card); }\nhtml[data-gius-skin~=\"takeAttendance\"] #MainContent_DG_StudentAttendance tr.gius-take-row:hover td { background: var(--gs-accent-tint); }\nhtml[data-gius-skin~=\"takeAttendance\"] #MainContent_DG_StudentAttendance tr.gius-take-changed td { background: var(--gs-warn-soft) !important; }\nhtml[data-gius-skin~=\"takeAttendance\"] #MainContent_DG_StudentAttendance tr.gius-take-row input[type=\"checkbox\"] { width: 18px; height: 18px; accent-color: var(--gs-ok); }\nhtml[data-gius-skin~=\"takeAttendance\"] #MainContent_DG_StudentAttendance .gius-take-all { accent-color: var(--gs-ok); }\nhtml[data-gius-skin~=\"takeAttendance\"] #MainContent_DG_StudentAttendance tr.gius-take-on label { color: var(--gs-ok-fg); font-weight: 600; }\nhtml[data-gius-skin~=\"takeAttendance\"] #MainContent_DG_StudentAttendance tr.gius-take-off label { color: var(--gs-muted); font-weight: 600; }\nhtml[data-gius-skin~=\"takeAttendance\"] #MainContent_DG_StudentAttendance tr.gius-take-off td { color: var(--gs-muted) !important; }\n\n/* Sticky Save / End bar: white, thin line, soft shadow upwards. */\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-bar {\n    background: var(--gs-card); color: var(--gs-muted); border: 1px solid var(--gs-line); border-bottom: 0;\n    border-radius: 8px 8px 0 0; box-shadow: 0 -4px 16px var(--gs-shade-08); padding: 12px 16px; font-size: 13px;\n}\n\n/* Request panel. */\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-req-body { padding: 16px; gap: 14px; }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-req-session { color: var(--gs-muted); font-size: 13px; }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-chip { height: 30px; padding: 0 12px; border-color: var(--gs-line); color: var(--gs-text); font-size: 13px; }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-chip:hover { background: var(--gs-card); border-color: var(--gs-line-2); }\n/* Selected reason stays dark while hovered (it is usually still under the pointer right after the click). */\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-chip.gius-take-chip-on,\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-chip.gius-take-chip-on:hover { background: var(--gs-nav); border-color: var(--gs-nav); color: var(--gs-on-strong); }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-req-msg { color: var(--gs-err); font-size: 13px; }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-req-other summary { color: var(--gs-muted); font-size: 13px; }\n/* Other requests: the portal's links (moved in as text buttons) become secondary buttons; its new-date\n   dropdown, moved in beside them, becomes a 5.0 field of the same height. */\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-req-links { gap: 10px; padding-top: 10px; }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-req-links .gius-take-link {\n    display: inline-flex; align-items: center; height: 34px; padding: 0 14px; border: 1px solid var(--gs-line); border-radius: 6px;\n    background: var(--gs-card); color: var(--gs-text); font: 600 13px var(--gs-font); text-decoration: none;\n}\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-req-links .gius-take-link:hover { background: var(--gs-sunk); border-color: var(--gs-line-2); }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-req-links .gius-take-link:focus-visible { outline: 2px solid var(--gs-focus); outline-offset: 2px; }\n/* It sits inside SuperScript's Other requests panel, which the base layer leaves alone: the whole field look is here. */\nhtml[data-gius-skin~=\"takeAttendance\"] #MainContent_DDL_SessionNewDate { height: 34px; margin: 0; padding: 0 34px 0 12px; width: auto; border: 1px solid var(--gs-line); border-radius: 6px; font: 400 14px var(--gs-font); color: var(--gs-text); -webkit-appearance: none; appearance: none; background: var(--gs-card) var(--gs-chevron) no-repeat right 10px center; }\nhtml[data-gius-skin~=\"takeAttendance\"] #MainContent_DDL_SessionNewDate:hover { border-color: var(--gs-line-2); }\nhtml[data-gius-skin~=\"takeAttendance\"] #MainContent_DDL_SessionNewDate:focus { outline: 0; border-color: var(--gs-focus); box-shadow: 0 0 0 3px var(--gs-focus-ring); }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-ok { background: var(--gs-ok-bg); color: var(--gs-ok-strong); border-color: var(--gs-ok-line); border-radius: 8px; font-size: 13px; }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-warn { background: var(--gs-warn-bg); color: var(--gs-warn-strong); border-color: var(--gs-warn-line); border-radius: 8px; font-size: 13px; }\n\n/* Modals (End session, Copy slot…): white header, plain close button. */\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-copy-table thead th { background: var(--gs-sunk); color: var(--gs-muted); border-bottom: 1px solid var(--gs-line); letter-spacing: 0; }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-copy-table tbody tr:nth-child(even) { background: var(--gs-card); }\nhtml[data-gius-skin~=\"takeAttendance\"] .gius-take-copy-table tbody tr { border-bottom-color: var(--gs-line-soft); }\n\n/* ── Widgets: Upload Grades feature (giug-* Batch / Group Grades cards) in the 5.0 look ──\n   Same switch as the portal look: with it off, the feature keeps its own pre-5.0 styles.\n   The portal's Save Group Grades is the page's one yellow action, so every card button is secondary. */\nhtml[data-gius-skin~=\"uploadedGrades\"] .giug-card {\n    border: 1px solid var(--gs-line); border-radius: 8px; box-shadow: none; animation: none;\n    font-family: var(--gs-font); color: var(--gs-text); margin: 4px 0 16px;\n}\nhtml[data-gius-skin~=\"uploadedGrades\"] .giug-card::before { display: none; }\nhtml[data-gius-skin~=\"uploadedGrades\"] .giug-card-header {\n    background: var(--gs-card); color: var(--gs-text); border-bottom: 1px solid var(--gs-line-soft); padding: 14px 16px; text-align: left;\n}\nhtml[data-gius-skin~=\"uploadedGrades\"] .giug-card-title { color: var(--gs-text); font: 700 16px/1.3 var(--gs-font); }\nhtml[data-gius-skin~=\"uploadedGrades\"] .giug-card-category { color: var(--gs-muted); font: 400 13px/1.4 var(--gs-font); margin-top: 2px; }\nhtml[data-gius-skin~=\"uploadedGrades\"] .giug-card-body { padding: 14px 16px; }\nhtml[data-gius-skin~=\"uploadedGrades\"] .giug-btn-row { gap: 10px; }\n\nhtml[data-gius-skin~=\"uploadedGrades\"] .giug-select {\n    height: 34px; max-width: 360px; padding: 0 34px 0 12px; border: 1px solid var(--gs-line); border-radius: 6px;\n    font: 400 14px var(--gs-font); color: var(--gs-text); -webkit-appearance: none; appearance: none;\n    background: var(--gs-card) var(--gs-chevron) no-repeat right 10px center;\n}\nhtml[data-gius-skin~=\"uploadedGrades\"] .giug-select:hover { border-color: var(--gs-line-2); }\nhtml[data-gius-skin~=\"uploadedGrades\"] .giug-select:focus { outline: 0; border-color: var(--gs-focus); box-shadow: 0 0 0 3px var(--gs-focus-ring); }\n\n\nhtml[data-gius-skin~=\"uploadedGrades\"] .giug-alert { border-radius: 8px; padding: 10px 12px; font: 400 13px/1.45 var(--gs-font); }\nhtml[data-gius-skin~=\"uploadedGrades\"] .giug-alert-error { background: var(--gs-err-bg); border-color: var(--gs-err-line-2); color: var(--gs-err-fg); }\nhtml[data-gius-skin~=\"uploadedGrades\"] .giug-alert-info { background: var(--gs-info-bg); border-color: var(--gs-info-line); color: var(--gs-info-strong); }\nhtml[data-gius-skin~=\"uploadedGrades\"] .giug-spinner { border-color: var(--gs-focus-ring); border-top-color: var(--gs-focus); }\n\nhtml[data-gius-skin~=\"uploadedGrades\"] .giug-stats-section { border-top-color: var(--gs-line-soft); }\nhtml[data-gius-skin~=\"uploadedGrades\"] .giug-stats-label { color: var(--gs-muted); font-family: var(--gs-font); letter-spacing: .08em; text-align: left; }\nhtml[data-gius-skin~=\"uploadedGrades\"] .giug-stat { background: var(--gs-sunk); border-color: var(--gs-line-soft); border-radius: 6px; }\nhtml[data-gius-skin~=\"uploadedGrades\"] .giug-stat-key { color: var(--gs-muted); font-family: var(--gs-font); }\nhtml[data-gius-skin~=\"uploadedGrades\"] .giug-stat-val { color: var(--gs-text); font-family: var(--gs-font); font-variant-numeric: tabular-nums; }\nhtml[data-gius-skin~=\"uploadedGrades\"] .giug-stats-table { font-family: var(--gs-font); border: 1px solid var(--gs-line); border-radius: 8px; border-collapse: separate; border-spacing: 0; overflow: hidden; }\nhtml[data-gius-skin~=\"uploadedGrades\"] .giug-stats-table th { background: var(--gs-sunk); color: var(--gs-muted); border-bottom: 1px solid var(--gs-line); letter-spacing: 0; text-transform: none; font-size: 12px; }\nhtml[data-gius-skin~=\"uploadedGrades\"] .giug-stats-table td { background: var(--gs-card); color: var(--gs-text); border-bottom-color: var(--gs-line-soft); }\nhtml[data-gius-skin~=\"uploadedGrades\"] .giug-stat-num { color: var(--gs-text); font-variant-numeric: tabular-nums; text-align: right; }\n\n/* ── Page: Notification System ──\n   The portal's form is a table of <fieldset>s with fixed inline widths, bold-blue info labels and a\n   DataGrid coloured by inline styles (purple header, grey rows): each fieldset becomes a card,\n   fields become 5.0 fields, the grid a 5.0 table. */\nhtml[data-gius-skin~=\"notification\"] #right-panel .content table:has(fieldset) { width: 100%; border-collapse: collapse; }\nhtml[data-gius-skin~=\"notification\"] #right-panel .content table:has(fieldset) > tbody > tr > td { padding: 0; }\nhtml[data-gius-skin~=\"notification\"] #right-panel .content fieldset {\n    width: auto !important; max-width: 100%; box-sizing: border-box; margin: 0 0 16px; padding: 16px 20px 20px;\n    background: var(--gs-card); border: 1px solid var(--gs-line); border-radius: 8px;\n    font: 400 14px/1.5 var(--gs-font); color: var(--gs-text);\n}\nhtml[data-gius-skin~=\"notification\"] #right-panel .content fieldset > legend {\n    float: left; width: 100%; margin: 0 0 12px; padding: 0; border: 0;\n    font: 700 16px/1.3 var(--gs-font); color: var(--gs-text);\n}\nhtml[data-gius-skin~=\"notification\"] #right-panel .content fieldset > legend + * { clear: left; }\nhtml[data-gius-skin~=\"notification\"] #right-panel .content fieldset label { font: 400 14px var(--gs-font); color: var(--gs-text); margin: 0 0 0 6px; }\nhtml[data-gius-skin~=\"notification\"] #right-panel .content fieldset input[type=\"radio\"],\nhtml[data-gius-skin~=\"notification\"] #right-panel .content fieldset input[type=\"checkbox\"] { width: 18px; height: 18px; margin: 0; vertical-align: -3px; accent-color: var(--gs-nav); }\nhtml[data-gius-skin~=\"notification\"] #MainContent_L_GroupsInfo,\nhtml[data-gius-skin~=\"notification\"] #MainContent_L_GroupStudentsInfo,\nhtml[data-gius-skin~=\"notification\"] #MainContent_L_CourseInfo { color: var(--gs-muted) !important; font-weight: 600 !important; }\nhtml[data-gius-skin~=\"notification\"] #MainContent_L_SendInfo { color: var(--gs-ok) !important; font-weight: 600 !important; margin-left: 10px; }\nhtml[data-gius-skin~=\"notification\"] #right-panel .content fieldset select,\nhtml[data-gius-skin~=\"notification\"] #MainContent_T_Subject,\nhtml[data-gius-skin~=\"notification\"] #MainContent_TA_Body {\n    width: 100% !important; max-width: 640px; box-sizing: border-box; margin: 4px 0 8px;\n    border: 1px solid var(--gs-line); border-radius: 6px; background-color: var(--gs-card);\n    font: 400 14px var(--gs-font); color: var(--gs-text);\n}\nhtml[data-gius-skin~=\"notification\"] #right-panel .content fieldset select,\nhtml[data-gius-skin~=\"notification\"] #MainContent_T_Subject { height: 40px; padding: 0 12px; }\nhtml[data-gius-skin~=\"notification\"] #right-panel .content fieldset select { padding-right: 36px; }\nhtml[data-gius-skin~=\"notification\"] #MainContent_DD_Priority { max-width: 200px; }\nhtml[data-gius-skin~=\"notification\"] #MainContent_TA_Body { height: 168px !important; padding: 10px 12px; resize: vertical; }\nhtml[data-gius-skin~=\"notification\"] #right-panel .content fieldset select:hover,\nhtml[data-gius-skin~=\"notification\"] #MainContent_T_Subject:hover,\nhtml[data-gius-skin~=\"notification\"] #MainContent_TA_Body:hover { border-color: var(--gs-line-2); }\nhtml[data-gius-skin~=\"notification\"] #right-panel .content fieldset select:focus,\nhtml[data-gius-skin~=\"notification\"] #MainContent_T_Subject:focus,\nhtml[data-gius-skin~=\"notification\"] #MainContent_TA_Body:focus { outline: 0; border-color: var(--gs-focus); box-shadow: 0 0 0 3px var(--gs-focus-ring); }\n\n/* The Message card's fields sit in a <p> the portal indents, with plain-text labels. */\nhtml[data-gius-skin~=\"notification\"] #right-panel .content fieldset > p { clear: left; margin: 0; padding: 0; font: 600 13px/1.5 var(--gs-font); color: var(--gs-muted); }\n/* Stray <br>s between the cards and after the Body box: the cards' own margins space them now. */\nhtml[data-gius-skin~=\"notification\"] #right-panel .content table:has(fieldset) > tbody > tr > td > br,\nhtml[data-gius-skin~=\"notification\"] #right-panel .content fieldset > p > textarea ~ br,\nhtml[data-gius-skin~=\"notification\"] #right-panel .content fieldset > br:last-child { display: none; }\n/* The (unused) attachments block is hidden with visibility, which still takes space. */\nhtml[data-gius-skin~=\"notification\"] #right-panel .content div[style*=\"visibility: hidden\"] { display: none; }\n\n/* Students grid: grey header, white rows, thin lines (its colours are inline styles). */\nhtml[data-gius-skin~=\"notification\"] #MainContent_DG_GroupStudent {\n    width: 100%; margin-top: 8px; border: 1px solid var(--gs-line) !important; border-collapse: separate !important;\n    border-spacing: 0; border-radius: 8px; overflow: hidden; background: var(--gs-card) !important; font: 400 13px var(--gs-font);\n}\nhtml[data-gius-skin~=\"notification\"] #MainContent_DG_GroupStudent tr { background: var(--gs-card) !important; color: var(--gs-text) !important; }\nhtml[data-gius-skin~=\"notification\"] #MainContent_DG_GroupStudent tr:first-child { background: var(--gs-sunk) !important; color: var(--gs-muted) !important; font-weight: 700; }\nhtml[data-gius-skin~=\"notification\"] #MainContent_DG_GroupStudent td { font-size: 13px !important; padding: 8px 12px !important; border: 0 !important; border-bottom: 1px solid var(--gs-line-soft) !important; }\nhtml[data-gius-skin~=\"notification\"] #MainContent_DG_GroupStudent tr:first-child td { border-bottom-color: var(--gs-line) !important; font-size: 12px; }\nhtml[data-gius-skin~=\"notification\"] #MainContent_DG_GroupStudent tr:last-child td { border-bottom: 0 !important; }\nhtml[data-gius-skin~=\"notification\"] #MainContent_DG_GroupStudent tr:not(:first-child):hover td { background: var(--gs-accent-tint); }\n\n/* Send Message & Email: the form's one main action. */\nhtml[data-gius-skin~=\"notification\"] #MainContent_B_Send {\n    height: 40px; padding: 0 16px; border: 1px solid var(--gs-accent-line); border-radius: 6px; cursor: pointer;\n    background: var(--gs-accent); color: var(--gs-accent-fg); font: 600 14px var(--gs-font);\n}\nhtml[data-gius-skin~=\"notification\"] #MainContent_B_Send:hover { background: var(--gs-accent-h); }\n\n/* ── Widgets: Notification Batch card (gius-card / gius-btn / gius-input, this page only) in the 5.0 look ── */\nhtml[data-gius-skin~=\"notification\"] .gius-card {\n    border: 1px solid var(--gs-line); border-radius: 8px; box-shadow: none; animation: none; margin: 0 0 16px;\n    font-family: var(--gs-font); color: var(--gs-text);\n}\nhtml[data-gius-skin~=\"notification\"] .gius-card::before { display: none; }\nhtml[data-gius-skin~=\"notification\"] .gius-card-header { background: var(--gs-card); color: var(--gs-text); border-bottom: 1px solid var(--gs-line-soft); padding: 14px 16px; text-align: left; }\n/* The feature's spinner is white for its old dark header; on this white one it vanished. */\nhtml[data-gius-skin~=\"notification\"] .gius-card-header .gius-spinner { border-color: var(--gs-line); border-top-color: var(--gs-text); }\n/* Result rows (the end-of-batch pop-up and the log, both dialogs): soft grey rows, the 5.0 status colours. */\nhtml[data-gius-skin] .gius-result-row { background: var(--gs-sunk); border: 1px solid var(--gs-line-soft); }\nhtml[data-gius-skin] .gius-icon-sent { background: var(--gs-ok-bg); color: var(--gs-ok-fg); }\nhtml[data-gius-skin] .gius-icon-failed { background: var(--gs-err-bg); color: var(--gs-err-h); }\nhtml[data-gius-skin] .gius-icon-cancelled { background: var(--gs-disabled-bg); color: var(--gs-muted); }\nhtml[data-gius-skin] .gius-result-name { color: var(--gs-text); }\nhtml[data-gius-skin] .gius-result-info { color: var(--gs-muted); }\nhtml[data-gius-skin~=\"notification\"] .gius-card-title { color: var(--gs-text); font: 700 16px/1.3 var(--gs-font); }\nhtml[data-gius-skin~=\"notification\"] .gius-card-category { color: var(--gs-muted); font: 400 13px/1.4 var(--gs-font); margin-top: 2px; }\nhtml[data-gius-skin~=\"notification\"] .gius-card-body { padding: 14px 16px 16px; }\nhtml[data-gius-skin~=\"notification\"] .gius-section-label,\nhtml[data-gius-skin~=\"notification\"] .gius-field-label { color: var(--gs-muted); font-family: var(--gs-font); }\nhtml[data-gius-skin~=\"notification\"] .gius-group-list { border: 1px solid var(--gs-line); border-radius: 6px; background: var(--gs-card); }\nhtml[data-gius-skin~=\"notification\"] .gius-group-list::-webkit-scrollbar-thumb { background: var(--gs-line-2); }\nhtml[data-gius-skin~=\"notification\"] .gius-group-row:hover { background: var(--gs-accent-tint); }\nhtml[data-gius-skin~=\"notification\"] .gius-group-row label,\nhtml[data-gius-skin~=\"notification\"] .gius-toggle-label { font-family: var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin~=\"notification\"] .gius-group-row input[type=\"checkbox\"],\nhtml[data-gius-skin~=\"notification\"] .gius-toggle-label input[type=\"checkbox\"] { accent-color: var(--gs-nav); }\nhtml[data-gius-skin~=\"notification\"] .gius-divider { border-color: var(--gs-line-soft); background: var(--gs-line-soft); }\nhtml[data-gius-skin~=\"notification\"] .gius-input,\nhtml[data-gius-skin~=\"notification\"] .gius-course-filter { border: 1px solid var(--gs-line); border-radius: 6px; font-family: var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin~=\"notification\"] .gius-input:focus,\nhtml[data-gius-skin~=\"notification\"] .gius-course-filter:focus { outline: 0; border-color: var(--gs-focus); box-shadow: 0 0 0 3px var(--gs-focus-ring); }\nhtml[data-gius-skin~=\"notification\"] .gius-progress-bar { background: var(--gs-focus); }\nhtml[data-gius-skin~=\"notification\"] .gius-stat-pill { border-radius: 999px; font-family: var(--gs-font); }\n\n/* ── Page: Home ──\n   The portal's stat cards (Events Reservation, Sessions, NoUserName) float a dark icon tile over the\n   card's corner above a big light title; the Control Center copies their spacing at runtime (inline\n   styles, beaten here). 5.0: a plain card with a 44px tile on the left, bold title beside it, the\n   link line muted under the title. Target List gets a white header like every other card. */\nhtml[data-gius-skin~=\"home\"] #right-panel .content .card {\n    background: var(--gs-card); border: 1px solid var(--gs-line); border-radius: 8px; box-shadow: none; margin: 0 0 20px;\n    font-family: var(--gs-font); color: var(--gs-text);\n}\nhtml[data-gius-skin~=\"home\"] #right-panel .content .card-stats > .card-header {\n    display: grid !important; grid-template-columns: 44px minmax(0, 1fr); column-gap: 14px; row-gap: 2px; align-items: center;\n    padding: 16px 18px !important; margin: 0 !important; background: transparent !important; border: 0; text-align: left !important;\n}\nhtml[data-gius-skin~=\"home\"] #right-panel .content .card-stats .card-icon {\n    grid-row: 1 / span 2; float: none !important; position: static !important; margin: 0 !important; padding: 0 !important;\n    width: 44px; height: 44px; border-radius: 8px; box-shadow: none !important; background: var(--gs-card) !important; border: 1px solid var(--gs-line); /* outlined, like the header buttons */\n    display: flex; align-items: center; justify-content: center;\n}\nhtml[data-gius-skin~=\"home\"] #right-panel .content .card-stats .card-icon a { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; color: inherit; }\nhtml[data-gius-skin~=\"home\"] #right-panel .content .card-stats .card-icon i {\n    font-size: 18px !important; line-height: 1 !important; color: var(--gs-text) !important;\n    width: auto !important; height: auto !important; margin: 0 !important; /* portal boxes it 33x33, glyph top-left */\n}\nhtml[data-gius-skin~=\"home\"][data-gius-dark] #right-panel .content .card-stats .card-icon i { color: var(--gs-accent) !important; } /* dark: yellow icon */\nhtml[data-gius-skin~=\"home\"] #right-panel .content .card-stats .card-header-danger .card-icon { background: var(--gs-err-bg) !important; }\nhtml[data-gius-skin~=\"home\"] #right-panel .content .card-stats .card-header-danger .card-icon i { color: var(--gs-err) !important; }\nhtml[data-gius-skin~=\"home\"] #right-panel .content .card-stats .card-title {\n    margin: 0 !important; padding: 0 !important; text-align: left !important; font: 700 16px/1.3 var(--gs-font) !important; color: var(--gs-text) !important;\n}\nhtml[data-gius-skin~=\"home\"] #right-panel .content .card-stats .card-title small { font: inherit !important; color: inherit !important; }\nhtml[data-gius-skin~=\"home\"] #right-panel .content .card-stats .card-title span { font-variant-numeric: tabular-nums; margin-right: 4px; }\nhtml[data-gius-skin~=\"home\"] #right-panel .content .card-stats > .card-header > small {\n    grid-column: 2; display: block; margin: 0 !important; text-align: left !important; font: 400 13px/1.4 var(--gs-font); color: var(--gs-muted);\n}\nhtml[data-gius-skin~=\"home\"] #right-panel .content .card-stats > .card-header > small a { color: var(--gs-focus) !important; font-weight: 600; text-decoration: none; }\nhtml[data-gius-skin~=\"home\"] #right-panel .content .card-stats > .card-header > small a:hover { text-decoration: underline; }\nhtml[data-gius-skin~=\"home\"] #right-panel .content .card-stats > .card-header > small i { display: none; }\nhtml[data-gius-skin~=\"home\"] #right-panel .content .card-stats .text-dark { color: var(--gs-muted) !important; }\n\n/* Layout (mock board 6): the portal puts every stat card in its own row at a quarter width; 5.0 lays them\n   out two to a row, with Target List and the SuperScript cards full width. Rows of stat cards dissolve\n   (display: contents) so their columns become the grid's cells. The Control Center spans two rows (the\n   second one flexible) so opening it does not push the next stat card down. */\nhtml[data-gius-skin~=\"home\"] #right-panel .content .col-sm-12:has(> #MainContent_div_grid) {\n    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: min-content 1fr; column-gap: 20px; align-items: start;\n}\nhtml[data-gius-skin~=\"home\"] #right-panel .content #MainContent_div_grid > [class*=\"col-\"] { padding: 0; }\nhtml[data-gius-skin~=\"home\"] #right-panel .content .col-sm-12:has(> #MainContent_div_grid) > * { grid-column: 1 / -1; margin-left: 0; margin-right: 0; }\nhtml[data-gius-skin~=\"home\"] #right-panel .content .col-sm-12:has(> #MainContent_div_grid) > .row:not(#MainContent_div_grid) { display: contents; }\nhtml[data-gius-skin~=\"home\"] #right-panel .content .col-sm-12:has(> #MainContent_div_grid) > .row:not(#MainContent_div_grid) > [class*=\"col-\"] {\n    grid-column: auto; width: auto; max-width: none; flex: none; margin: 0; padding: 0;\n}\nhtml[data-gius-skin~=\"home\"] #right-panel .content .col-sm-12:has(> #MainContent_div_grid) > .gius-att-widget,\nhtml[data-gius-skin~=\"home\"] #right-panel .content .col-sm-12:has(> #MainContent_div_grid) > .gius-pr-widget { margin: 0 0 20px; }\n@media (max-width: 767px) {\n    html[data-gius-skin~=\"home\"] #right-panel .content .col-sm-12:has(> #MainContent_div_grid) { grid-template-columns: minmax(0, 1fr); }\n}\n\n/* Not shown in this look (user's call): the Sessions card, and Target List while the portal has no list\n   in it (it fills it from \"See Student List\" and similar links, and then it shows). */\nhtml[data-gius-skin~=\"home\"] #right-panel .content #MainContent_div_sess,\nhtml[data-gius-skin~=\"home\"] #right-panel .content #MainContent_div_grid:not(:has(table)) { display: none !important; }\n\n/* Stat card = one header row like the Control Center beside it: tile, title (Events Reservation gets a\n   subtitle), the card's link as a white button on the right. A card without a link is tile and title. */\nhtml[data-gius-skin~=\"home\"] #right-panel .content .card-stats > .card-header { grid-template-columns: 44px minmax(0, 1fr) auto; }\nhtml[data-gius-skin~=\"home\"] #right-panel .content .card-stats .card-title { grid-column: 2; grid-row: 1 / span 2; align-self: center; display: flex; align-items: baseline; gap: 6px; }\nhtml[data-gius-skin~=\"home\"] #right-panel .content .card-stats .card-title > * { float: none !important; margin: 0 !important; }\nhtml[data-gius-skin~=\"home\"] #right-panel .content .card-stats > .card-header > small:not(:has(a)):not(.gius-feature-summary) { display: none; }\nhtml[data-gius-skin~=\"home\"] #right-panel .content .card-stats > .card-header > small:has(a.guc-footer-link):not(.gius-feature-open-wrap) {\n    grid-column: 3; grid-row: 1 / span 2; align-self: center;\n}\nhtml[data-gius-skin~=\"home\"] #right-panel .content #MainContent_div_events_reservation .card-title { grid-row: 1; align-self: end; }\nhtml[data-gius-skin~=\"home\"] #right-panel .content #MainContent_div_events_reservation .card-header::after {\n    content: \"Book a room or hall\"; display: block; clear: none; grid-column: 2; grid-row: 2; align-self: start;\n    font: 400 13px/1.4 var(--gs-font); color: var(--gs-muted);\n}\n/* \"Reserve Now\" → \"Reserve\": keeps both cards on one line at the portal's 1024px layout. */\nhtml[data-gius-skin~=\"home\"] #right-panel .content #MainContent_lnk_events_reservation_1 { font-size: 0 !important; }\nhtml[data-gius-skin~=\"home\"] #right-panel .content #MainContent_lnk_events_reservation_1::after { content: \"Reserve\"; font: 600 13px var(--gs-font); }\nhtml[data-gius-skin~=\"home\"] #right-panel .content .card-stats > .card-header > small:not(.gius-feature-open-wrap) a.guc-footer-link {\n    display: inline-flex; align-items: center; height: 34px; padding: 0 14px; border-radius: 6px; font: 600 13px var(--gs-font);\n    background: var(--gs-card); border: 1px solid var(--gs-line); color: var(--gs-text) !important; text-decoration: none !important;\n}\nhtml[data-gius-skin~=\"home\"] #right-panel .content .card-stats > .card-header > small:not(.gius-feature-open-wrap) a.guc-footer-link:hover { background: var(--gs-sunk); border-color: var(--gs-line-2); }\n\nhtml[data-gius-skin~=\"home\"] #right-panel .content .card > .card-header-black {\n    background: var(--gs-card) !important; box-shadow: none !important; margin: 0 !important; border-radius: 8px 8px 0 0;\n    padding: 14px 18px !important; border-bottom: 1px solid var(--gs-line-soft);\n}\nhtml[data-gius-skin~=\"home\"] #right-panel .content .card > .card-header-black .card-title { margin: 0; font: 700 16px/1.3 var(--gs-font) !important; color: var(--gs-text) !important; }\nhtml[data-gius-skin~=\"home\"] #right-panel .content .card > .card-header-black .card-category { margin: 2px 0 0; font: 400 13px/1.4 var(--gs-font) !important; color: var(--gs-muted) !important; }\n\n/* ── Widgets: Control Center (mock board 6) ── */\n/* Header like the mock: tile, title, \"N of M features on\" under it, Open / Close on the right. The\n   card does not copy Events Reservation's mirrored spacing in this look (controlCenter.js skips it)\n   and remembers whether it was left open. */\nhtml[data-gius-skin~=\"home\"] #right-panel .content #gius-feature-panel-wrap { margin: 0 !important; grid-row: span 2; }\nhtml[data-gius-skin~=\"home\"] #gius-feature-panel .card-icon { float: none !important; }\nhtml[data-gius-skin~=\"home\"] #right-panel .content #gius-feature-panel .card-title { grid-row: 1; align-self: end; }\nhtml[data-gius-skin~=\"home\"] #gius-feature-panel .gius-feature-summary {\n    display: block; grid-column: 2; grid-row: 2; align-self: start; font: 400 13px/1.4 var(--gs-font); color: var(--gs-muted);\n}\nhtml[data-gius-skin~=\"home\"] #right-panel .content #gius-feature-panel .gius-feature-open-wrap { grid-column: 3; grid-row: 1 / span 2; align-self: center; }\nhtml[data-gius-skin~=\"home\"] #gius-feature-panel #gius-feature-edit {\n    display: inline-flex; align-items: center; height: 34px; padding: 0 14px; border-radius: 6px; font-size: 0 !important;\n    background: var(--gs-card); border: 1px solid var(--gs-line); color: var(--gs-text) !important; text-decoration: none !important;\n}\nhtml[data-gius-skin~=\"home\"] #gius-feature-panel #gius-feature-edit:hover { background: var(--gs-sunk); border-color: var(--gs-line-2); }\nhtml[data-gius-skin~=\"home\"] #gius-feature-panel #gius-feature-edit::after { content: \"Open\"; font: 600 13px var(--gs-font); }\nhtml[data-gius-skin~=\"home\"] #gius-feature-panel.gius-feature-open #gius-feature-edit::after { content: \"Close\"; }\n\nhtml[data-gius-skin~=\"home\"] .gius-feature-toggle-list { margin: 0 18px 10px; padding: 8px 0 0; border-top: 1px solid var(--gs-line-soft); }\nhtml[data-gius-skin~=\"home\"] .gius-feature-cat-header { font: 700 11px/1 var(--gs-font); letter-spacing: .08em; color: var(--gs-muted); padding: 12px 0 6px; }\nhtml[data-gius-skin~=\"home\"] .gius-feature-row { min-height: 40px; border-bottom: 1px solid var(--gs-line-soft); }\nhtml[data-gius-skin~=\"home\"] .gius-feature-label { font: 500 14px var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin~=\"home\"] a.gius-feature-page-link:hover { color: var(--gs-focus); }\nhtml[data-gius-skin~=\"home\"] .gius-feature-slider { background: var(--gs-switch-off); }\nhtml[data-gius-skin~=\"home\"] .gius-feature-switch input:checked + .gius-feature-slider { background: var(--gs-ok); }\nhtml[data-gius-skin~=\"home\"] .gius-feature-switch input:focus-visible + .gius-feature-slider { outline: 2px solid var(--gs-focus); outline-offset: 2px; }\nhtml[data-gius-skin~=\"home\"] .gius-feature-actions { margin: 4px 18px 16px; gap: 10px; }\nhtml[data-gius-skin~=\"home\"] .gius-feature-status { font: 600 13px var(--gs-font); color: var(--gs-muted); flex: 1 1 auto; }\nhtml[data-gius-skin~=\"home\"] .gius-feature-status.gius-feature-dirty { color: var(--gs-warn); }\nhtml[data-gius-skin~=\"home\"] .gius-feature-btn i { display: none; }\n\n/* ── Widgets: Home attendance and proctoring cards ──\n   Same card as everything else (thin line, no shadow); their inner boxes lose the yellow left bar\n   (always yellow, not the rank colour) for an even soft border; errors become a red alert. */\nhtml[data-gius-skin~=\"home\"] .gius-att-widget,\nhtml[data-gius-skin~=\"home\"] .gius-pr-widget,\nhtml[data-gius-skin~=\"home\"] .gius-tl-widget,\nhtml[data-gius-skin~=\"home\"] .gius-us-widget {\n    background: var(--gs-card); border: 1px solid var(--gs-line); border-radius: 8px; box-shadow: none; font-family: var(--gs-font);\n}\nhtml[data-gius-skin~=\"home\"] .gius-att-card,\nhtml[data-gius-skin~=\"home\"] .gius-tl-today,\nhtml[data-gius-skin~=\"home\"] .gius-berlin-chooser {\n    background: var(--gs-sunk); border: 1px solid var(--gs-line-soft); border-radius: 8px;\n}\n/* Next Proctoring: the box loses its yellow left bar for the soft grey, the duty cards their shadow. */\nhtml[data-gius-skin~=\"home\"] .gius-pr-next { background: var(--gs-sunk); border: 1px solid var(--gs-line-soft); border-radius: 8px; }\nhtml[data-gius-skin~=\"home\"] .gius-pr-next-card { background: var(--gs-card); border: 1px solid var(--gs-line-soft); border-radius: 8px; box-shadow: none; }\nhtml[data-gius-skin~=\"home\"] :is(.gius-pr-next-head, .gius-pr-next-time, .gius-pr-toggle:not(.gs-btn)) { color: var(--gs-text); }\nhtml[data-gius-skin~=\"home\"] .gius-pr-badge-cover { background: var(--gs-accent-tint); border-color: var(--gs-accent-line); color: var(--gs-warn); }\nhtml[data-gius-skin~=\"home\"] .gius-pr-stale { color: var(--gs-warn); }\n/* Teaching Load (Cairo): session tiles and rows on the soft grey, cards without their shadow, time slot a neutral chip. */\nhtml[data-gius-skin~=\"home\"] .gius-tl-card { box-shadow: none; border: 1px solid var(--gs-line-soft); border-radius: 8px; }\nhtml[data-gius-skin~=\"home\"] :is(.gius-tl-item, .gius-tl-row) { background: var(--gs-sunk); border: 1px solid var(--gs-line-soft); border-radius: 8px; }\nhtml[data-gius-skin~=\"home\"] .gius-tl-today-head { color: var(--gs-text); }\nhtml[data-gius-skin~=\"home\"] .gius-tl-tutorial { color: var(--gs-text); }\nhtml[data-gius-skin~=\"home\"] .gius-tl-loc { color: var(--gs-text); }\nhtml[data-gius-skin~=\"home\"] .gius-tl-slot { background: var(--gs-accent-tint); color: var(--gs-warn); }\n/* Not Entered Sessions (Cairo): rows lose the yellow left bar for the soft card, a hover tint like the tables. */\nhtml[data-gius-skin~=\"home\"] .gius-us-widget { border-radius: 8px; }\nhtml[data-gius-skin~=\"home\"] .gius-us-row { background: var(--gs-sunk); border: 1px solid var(--gs-line-soft); border-radius: 8px; }\nhtml[data-gius-skin~=\"home\"] .gius-us-row:hover { background: var(--gs-accent-tint); }\nhtml[data-gius-skin~=\"home\"] .gius-us-when { color: var(--gs-text); }\nhtml[data-gius-skin~=\"home\"] .gius-us-course { color: var(--gs-muted); opacity: 1; }\nhtml[data-gius-skin~=\"home\"] .gius-us-ago { color: var(--gs-warn); opacity: 1; }\nhtml[data-gius-skin~=\"home\"] .gius-us-slot { background: var(--gs-accent-tint); color: var(--gs-warn); }\nhtml[data-gius-skin~=\"home\"] .gius-us-badge { background: var(--gs-accent-tint); border-color: var(--gs-accent-line); color: var(--gs-warn); }\nhtml[data-gius-skin~=\"home\"] .gius-berlin-error { background: var(--gs-err-bg); border: 1px solid var(--gs-err-line-2); border-radius: 8px; }\nhtml[data-gius-skin~=\"home\"] .gius-berlin-error-title { color: var(--gs-text); }\nhtml[data-gius-skin~=\"home\"] .gius-berlin-error .gius-berlin-error-title { color: var(--gs-err-fg); }\n\n/* ── Widgets: attendance report badges, Show Details / section toggles, setup wizard pills ──\n   (Cairo and Berlin reports, the wizard dialog.) Same meanings, the 5.0 status set: day off and custom\n   overrides warm yellow, exams and full-day overrides info blue, Ramadan purple, conflicts orange,\n   balances green / red. */\nhtml[data-gius-skin] .giu-detail-toggle-btn {\n    background: var(--gs-card); border: 1px solid var(--gs-line); border-radius: 6px; color: var(--gs-text); font: 600 13px var(--gs-font);\n}\nhtml[data-gius-skin] .giu-detail-toggle-btn:hover { background: var(--gs-sunk); border-color: var(--gs-line-2); }\nhtml[data-gius-skin] .giu-detail-toggle-btn:focus-visible { outline: 2px solid var(--gs-focus); outline-offset: 2px; }\nhtml[data-gius-skin] :is(.giu-dayoff-badge, .giu-override-badge-custom) { background: var(--gs-warn-bg); border-color: var(--gs-warn-line); color: var(--gs-warn); }\nhtml[data-gius-skin] :is(.giu-exam-badge, .giu-override-badge-full) { background: var(--gs-info-bg); border-color: var(--gs-info-line); color: var(--gs-info-fg); }\nhtml[data-gius-skin] .giu-ramadan-badge { background: var(--gs-done-bg); border-color: var(--gs-done-line); color: var(--gs-done-fg); }\nhtml[data-gius-skin] .giu-conflict-badge { background: var(--gs-severe-bg); border-color: var(--gs-severe-line); color: var(--gs-severe-fg); }\nhtml[data-gius-skin] :is(.giu-comp-balance-positive, .giu-annual-balance-positive) { background: var(--gs-ok-bg); border-color: var(--gs-ok-line); color: var(--gs-ok-fg); }\nhtml[data-gius-skin] :is(.giu-comp-balance-negative, .giu-annual-balance-negative) { background: var(--gs-err-bg); border-color: var(--gs-err-line-2); color: var(--gs-err-h); }\nhtml[data-gius-skin] .gius-setup-pill { background: var(--gs-card); border-color: var(--gs-line); color: var(--gs-text); }\nhtml[data-gius-skin] .gius-setup-pill.on { background: var(--gs-accent-tint); border-color: var(--gs-accent-line); color: var(--gs-warn); }\nhtml[data-gius-skin] .gius-setup-pill input { accent-color: var(--gs-nav); }\n/* The calendar button beside each date box (settings, wizard): a 5.0 field-side button. */\nhtml[data-gius-skin] .gius-date .gius-date-btn { background: var(--gs-card); border-color: var(--gs-line); color: var(--gs-muted); }\nhtml[data-gius-skin] .gius-date .gius-date-btn:hover { background: var(--gs-sunk); border-color: var(--gs-line-2); color: var(--gs-text); }\nhtml[data-gius-skin] .gius-date .gius-date-btn:focus-visible { outline-color: var(--gs-focus); }\n\n/* ── Widgets: Berlin full attendance report (Home.aspx#gius-attendance, #gius-berlin-view) ──\n   Panels lose their yellow top bars (drawn with ::before) for the shared card; dark headers (Payroll\n   Month, Plan my days, settings tables, the timesheet) go light with grey table headers; the Plan by\n   toggle marks its choice dark like the mock's toggle groups. The Balance box keeps its rank colours. */\n:is(html[data-gius-skin~=\"home\"] #gius-berlin-view, html[data-gius-skin~=\"reports\"] #right-panel) .gius-berlin-view-head,\n:is(html[data-gius-skin~=\"home\"] #gius-berlin-view, html[data-gius-skin~=\"reports\"] #right-panel) .giu-summary-panel,\n:is(html[data-gius-skin~=\"home\"] #gius-berlin-view, html[data-gius-skin~=\"reports\"] #right-panel) .giu-config-panel,\n:is(html[data-gius-skin~=\"home\"] #gius-berlin-view, html[data-gius-skin~=\"reports\"] #right-panel) section.gius-plan {\n    background: var(--gs-card) !important; border: 1px solid var(--gs-line) !important; border-radius: 8px !important; box-shadow: none !important;\n}\n:is(html[data-gius-skin~=\"home\"] #gius-berlin-view, html[data-gius-skin~=\"reports\"] #right-panel) .gius-berlin-view-head::before,\n:is(html[data-gius-skin~=\"home\"] #gius-berlin-view, html[data-gius-skin~=\"reports\"] #right-panel) .giu-summary-panel::before,\n:is(html[data-gius-skin~=\"home\"] #gius-berlin-view, html[data-gius-skin~=\"reports\"] #right-panel) .giu-config-panel::before { display: none !important; }\n:is(html[data-gius-skin~=\"home\"] #gius-berlin-view, html[data-gius-skin~=\"reports\"] #right-panel) .gius-berlin-badge { background: var(--gs-accent-tint); border-color: var(--gs-accent-line); color: var(--gs-warn); }\n\n:is(html[data-gius-skin~=\"home\"] #gius-berlin-view, html[data-gius-skin~=\"reports\"] #right-panel) .giu-summary-card-header {\n    background: var(--gs-card); color: var(--gs-text); border-bottom: 1px solid var(--gs-line-soft);\n}\n:is(html[data-gius-skin~=\"home\"] #gius-berlin-view, html[data-gius-skin~=\"reports\"] #right-panel) .giu-period-label { background: var(--gs-sunk); border-color: var(--gs-line); color: var(--gs-muted); }\n\n:is(html[data-gius-skin~=\"home\"] #gius-berlin-view, html[data-gius-skin~=\"reports\"] #right-panel) .gius-plan-head { background: var(--gs-card); color: var(--gs-text); border-bottom: 1px solid var(--gs-line-soft); }\n:is(html[data-gius-skin~=\"home\"] #gius-berlin-view, html[data-gius-skin~=\"reports\"] #right-panel) .gius-plan-head h3,\n:is(html[data-gius-skin~=\"home\"] #gius-berlin-view, html[data-gius-skin~=\"reports\"] #right-panel) .gius-plan-toggle { color: var(--gs-text); }\n:is(html[data-gius-skin~=\"home\"] #gius-berlin-view, html[data-gius-skin~=\"reports\"] #right-panel) .gius-plan-peek,\n:is(html[data-gius-skin~=\"home\"] #gius-berlin-view, html[data-gius-skin~=\"reports\"] #right-panel) .gius-plan-usual { background: var(--gs-sunk); border-color: var(--gs-line); color: var(--gs-text); }\n:is(html[data-gius-skin~=\"home\"] #gius-berlin-view, html[data-gius-skin~=\"reports\"] #right-panel) .gius-plan-seg { border-color: var(--gs-line); background: var(--gs-card); }\n:is(html[data-gius-skin~=\"home\"] #gius-berlin-view, html[data-gius-skin~=\"reports\"] #right-panel) .gius-plan-mode { color: var(--gs-muted); }\n:is(html[data-gius-skin~=\"home\"] #gius-berlin-view, html[data-gius-skin~=\"reports\"] #right-panel) .gius-plan-mode:hover { background: var(--gs-sunk); color: var(--gs-text); }\n:is(html[data-gius-skin~=\"home\"] #gius-berlin-view, html[data-gius-skin~=\"reports\"] #right-panel) .gius-plan-mode[aria-pressed=\"true\"] { background: var(--gs-nav); color: var(--gs-on-strong); }\n:is(html[data-gius-skin~=\"home\"] #gius-berlin-view, html[data-gius-skin~=\"reports\"] #right-panel) .gius-plan-head input[type=time] { color: var(--gs-text); }\n:is(html[data-gius-skin~=\"home\"] #gius-berlin-view, html[data-gius-skin~=\"reports\"] #right-panel) .gius-plan-head .gius-plan-usual input[type=time] { background: var(--gs-card); border-color: var(--gs-line); }\n:is(html[data-gius-skin~=\"home\"] #gius-berlin-view, html[data-gius-skin~=\"reports\"] #right-panel) .gius-plan-pen { color: var(--gs-muted); }\n\n:is(html[data-gius-skin~=\"home\"] #gius-berlin-view, html[data-gius-skin~=\"reports\"] #right-panel) .giu-holiday-table th { background: var(--gs-sunk); color: var(--gs-muted); border-color: var(--gs-line); }\n:is(html[data-gius-skin~=\"home\"] #gius-berlin-view, html[data-gius-skin~=\"reports\"] #right-panel) .giu-holiday-table td { border-color: var(--gs-line-soft); }\n\n:is(html[data-gius-skin~=\"home\"] #gius-berlin-view, html[data-gius-skin~=\"reports\"] #right-panel) .gius-berlin-grid table#MainContent_DG_SwiftReport :is(thead th, tr.gius-berlin-grid-head > *) {\n    background: var(--gs-sunk) !important; color: var(--gs-muted) !important; border-color: var(--gs-line) !important;\n}\n:is(html[data-gius-skin~=\"home\"] #gius-berlin-view, html[data-gius-skin~=\"reports\"] #right-panel) .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row:hover > td { background: var(--gs-accent-tint) !important; }\n\n/* Payroll Month card: a line instead of its shadow. Setup wizard (opens on Home): no yellow left bar,\n   the mock's dialog shadow; its Next stays the yellow main action, without the glow. */\n:is(html[data-gius-skin~=\"home\"] #gius-berlin-view, html[data-gius-skin~=\"reports\"] #right-panel) .giu-summary-card { border: 1px solid var(--gs-line); border-radius: 8px; box-shadow: none; }\nhtml[data-gius-skin~=\"home\"] .gius-setup-sheet {\n    border-left: 1px solid var(--gs-line); border-radius: 10px; box-shadow: 0 16px 40px var(--gs-shade-30); font-family: var(--gs-font);\n}\n\n/* ── Page: Proctoring Schedule (ViewTimeTable_m.aspx, Cairo and Berlin) ──\n   One layout table holds two grids (Main, Cover) with a <font><strong> title above and a \"Number of\n   sessions\" line below each. 5.0: bold section titles, each grid a card with a grey header row (the\n   portal's first row is the header, plain <td>s), counts as muted lines; spacer rows dropped. */\nhtml[data-gius-skin~=\"proctorSchedule\"] #mainTbl { font-family: var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin~=\"proctorSchedule\"] #mainTbl > tbody > tr:not([height]) { display: none; }\nhtml[data-gius-skin~=\"proctorSchedule\"] #mainTbl > tbody > tr[height] { height: auto; }\nhtml[data-gius-skin~=\"proctorSchedule\"] #mainTbl > tbody > tr > td { padding: 8px 0 0; }\nhtml[data-gius-skin~=\"proctorSchedule\"] #mainTbl font[size=\"2\"] { font-size: inherit; }\nhtml[data-gius-skin~=\"proctorSchedule\"] #mainTbl font[size=\"2\"] > strong { display: block; margin: 0 0 10px; font: 700 16px/1.3 var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin~=\"proctorSchedule\"] #mainTbl p { margin: 0; }\nhtml[data-gius-skin~=\"proctorSchedule\"] #MainContent_tmTblDg,\nhtml[data-gius-skin~=\"proctorSchedule\"] #MainContent_coverDG {\n    border: 1px solid var(--gs-line) !important; border-collapse: separate !important; border-spacing: 0; border-radius: 8px;\n    overflow: hidden; background: var(--gs-card); font: 400 14px/1.4 var(--gs-font);\n}\nhtml[data-gius-skin~=\"proctorSchedule\"] #MainContent_tmTblDg td,\nhtml[data-gius-skin~=\"proctorSchedule\"] #MainContent_coverDG td { padding: 10px 14px; border: 0; border-top: 1px solid var(--gs-line-soft); vertical-align: top; }\nhtml[data-gius-skin~=\"proctorSchedule\"] #MainContent_tmTblDg tr:first-child > td,\nhtml[data-gius-skin~=\"proctorSchedule\"] #MainContent_coverDG tr:first-child > td {\n    border-top: 0; border-bottom: 1px solid var(--gs-line); background: var(--gs-sunk); color: var(--gs-muted); font-weight: 600; font-size: 13px; white-space: nowrap;\n}\nhtml[data-gius-skin~=\"proctorSchedule\"] #MainContent_tmTblDg tr:first-child:last-child > td,\nhtml[data-gius-skin~=\"proctorSchedule\"] #MainContent_coverDG tr:first-child:last-child > td { border-bottom: 0; }\nhtml[data-gius-skin~=\"proctorSchedule\"] #MainContent_tmTblDg tr:first-child + tr > td,\nhtml[data-gius-skin~=\"proctorSchedule\"] #MainContent_coverDG tr:first-child + tr > td { border-top: 0; }\nhtml[data-gius-skin~=\"proctorSchedule\"] #MainContent_tmTblDg tr:not(:first-child):hover > td,\nhtml[data-gius-skin~=\"proctorSchedule\"] #MainContent_coverDG tr:not(:first-child):hover > td { background: var(--gs-accent-tint); }\nhtml[data-gius-skin~=\"proctorSchedule\"] #mainTbl p:has(#MainContent_cntLbl),\nhtml[data-gius-skin~=\"proctorSchedule\"] #mainTbl p:has(#MainContent_cvrLbl) { margin: 8px 0 28px; font: 400 13px/1.4 var(--gs-font); color: var(--gs-muted); }\nhtml[data-gius-skin~=\"proctorSchedule\"] #MainContent_cntLbl,\nhtml[data-gius-skin~=\"proctorSchedule\"] #MainContent_cvrLbl { font-weight: 600; color: var(--gs-text); }\n\n/* ── Page: Proctor Exchange (ProctorExchange_m.aspx, Cairo) ──\n   Portal: a bordered 80% table holds the department dropdown (Chosen, styled like Grades above), then\n   after a pick the proctor list (dprtmntDg) and the picked proctor's sessions (schdlDg), each with a\n   bare count. 5.0: the picker and the two grids as cards like Proctoring Schedule; spacer rows dropped. */\nhtml[data-gius-skin~=\"proctorExchange\"] #mainTbl { font-family: var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin~=\"proctorExchange\"] #mainTbl > tbody > tr:not([height]) { display: none; }\nhtml[data-gius-skin~=\"proctorExchange\"] #mainTbl > tbody > tr[height] { height: auto; }\nhtml[data-gius-skin~=\"proctorExchange\"] #mainTbl > tbody > tr > td { padding: 8px 0 0; }\nhtml[data-gius-skin~=\"proctorExchange\"] #Table1 { width: 100% !important; border: 0 !important; border-collapse: separate; border-spacing: 0; }\nhtml[data-gius-skin~=\"proctorExchange\"] #Table1 > tbody > tr > td { border: 0 !important; padding: 0 0 20px !important; height: auto !important; }\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_lstTR > td { max-width: 420px; }\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_lstTR .chosen-container { max-width: 420px; }\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_dprtmntDg,\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_schdlDg {\n    border: 1px solid var(--gs-line) !important; border-collapse: separate !important; border-spacing: 0; border-radius: 8px;\n    overflow: hidden; background: var(--gs-card); font: 400 14px/1.4 var(--gs-font);\n}\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_dprtmntDg td,\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_schdlDg td { padding: 10px 14px; border: 0; border-top: 1px solid var(--gs-line-soft); vertical-align: top; }\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_dprtmntDg tr:first-child > td,\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_schdlDg tr:first-child > td {\n    border-top: 0; border-bottom: 1px solid var(--gs-line); background: var(--gs-sunk); color: var(--gs-muted); font-weight: 600; font-size: 13px; white-space: nowrap;\n}\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_dprtmntDg tr:first-child + tr > td,\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_schdlDg tr:first-child + tr > td { border-top: 0; }\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_dprtmntDg tr:not(:first-child):hover > td,\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_schdlDg tr:not(:first-child):hover > td { background: var(--gs-accent-tint); }\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_dprtmntDg a,\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_schdlDg a { color: var(--gs-text); font-weight: 600; text-decoration: none; }\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_dprtmntDg a:hover,\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_schdlDg a:hover { color: var(--gs-focus); text-decoration: underline; }\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_dprtmntLbl,\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_schdlLbl { display: block; margin-top: 8px; font: 400 13px/1.4 var(--gs-font); color: var(--gs-muted); }\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_dprtmntLbl::before { content: \"Proctors: \"; }\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_schdlLbl::before { content: \"Sessions: \"; }\n/* Replacement step (setTR, after a session is picked): \"I would like to replace <name> during the session on\n   <time hall>\", an \"I am sure\" checkbox and Proceed With Replacement, in the portal's default type. 5.0: a card,\n   Proceed as the step's yellow action. */\nhtml[data-gius-skin~=\"proctorExchange\"] #Table1 > tbody > #MainContent_setTR > td {\n    display: block; max-width: 760px; padding: 16px 20px !important; background: var(--gs-card); border: 1px solid var(--gs-line) !important;\n    border-radius: 8px; font: 400 14px/1.5 var(--gs-font); color: var(--gs-text);\n}\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_setTR p { margin: 0 0 12px; font: 400 14px/1.5 var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_setTR p:last-child { margin: 0; }\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_setTR :is(#MainContent_nmLbl, #MainContent_tmLbl) { font-weight: 700; }\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_setTR label { margin: 0; font: 400 14px var(--gs-font); cursor: pointer; }\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_rplcChk { width: 16px; height: 16px; margin: 0 8px 0 0; vertical-align: -3px; accent-color: var(--gs-focus); }\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_setBtn {\n    height: 38px; padding: 0 16px; border-radius: 6px; border: 1px solid var(--gs-accent-line) !important; background: var(--gs-accent);\n    color: var(--gs-accent-fg); font: 600 14px var(--gs-font) !important; cursor: pointer;\n}\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_setBtn:hover { background: var(--gs-accent-h); }\nhtml[data-gius-skin~=\"proctorExchange\"] p:has(> #MainContent_msgLbl) { text-align: left; }\nhtml[data-gius-skin~=\"proctorExchange\"] #MainContent_msgLbl { font: 600 14px var(--gs-font) !important; }\n\n/* ── Widgets: Proctor Schedule Aggregator (gius-proctor-*, gius-ex-*) in the 5.0 look ──\n   White header instead of the dark bar with its yellow rule, white toolbar buttons, grey table head,\n   5.0 fields. Yellow is kept for the one main action: the page's trigger button and \"Fetch Schedules\". */\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-card {\n    border: 1px solid var(--gs-line); border-radius: 8px; box-shadow: none; font-family: var(--gs-font); color: var(--gs-text); overflow: visible;\n}\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-card::before { display: none; }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-hdr { background: var(--gs-card); color: var(--gs-text); border-bottom: 1px solid var(--gs-line-soft); padding: 14px 18px; border-radius: 8px 8px 0 0; flex-wrap: wrap; }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-hdr:hover { opacity: 1; }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-title { font: 700 16px/1.3 var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-title .fa { color: var(--gs-muted); }\n/* Row states in the 5.0 colours: covered by someone = warm yellow, viewing a cover / co-proctors = info blue. */\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-covered-row { border-left-color: var(--gs-warn-line) !important; background: var(--gs-warn-bg) !important; }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-covered-row:hover { background: var(--gs-warn-h) !important; }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-covered-row td:first-child { color: var(--gs-warn); }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-cover-view-row { border-left-color: var(--gs-info-line) !important; background: var(--gs-info-bg) !important; }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-cover-view-row:hover { background: var(--gs-info-h) !important; }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-cover-view-row td:first-child { color: var(--gs-info-fg); }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-coproctor-row td { background: var(--gs-info-bg) !important; color: var(--gs-text) !important; border-top-color: var(--gs-info-line) !important; border-left-color: var(--gs-focus) !important; }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-coproctor-label { color: var(--gs-info-fg); }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-coproctor-dept { color: var(--gs-focus); }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-cover-status { background: var(--gs-info-bg); color: var(--gs-info-fg); }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-meta { font: 400 13px/1.4 var(--gs-font); color: var(--gs-muted); }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-hdr-btns { flex-wrap: wrap; gap: 8px; }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-body { padding: 16px 18px; }\nhtml[data-gius-skin~=\"proctorExchange\"] :is(.gius-fetch-dept-input, .gius-filter-input, .gius-filter-select, .gius-page-size-select) {\n    height: 34px; padding: 0 10px; border: 1px solid var(--gs-line); border-radius: 6px; background: var(--gs-card);\n    font: 400 13px var(--gs-font); color: var(--gs-text);\n}\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-fetch-dept-input { height: 32px; width: 240px; }\nhtml[data-gius-skin~=\"proctorExchange\"] :is(.gius-fetch-dept-input, .gius-filter-input, .gius-filter-select, .gius-page-size-select):hover { border-color: var(--gs-line-2); }\nhtml[data-gius-skin~=\"proctorExchange\"] :is(.gius-fetch-dept-input, .gius-filter-input, .gius-filter-select, .gius-page-size-select):focus {\n    border-color: var(--gs-focus); box-shadow: 0 0 0 3px var(--gs-focus-ring); outline: 0;\n}\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-fetch-dept-input.gius-fetch-dept-error { border-color: var(--gs-err); }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-filter-bar { gap: 8px; }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-chip { background: var(--gs-sunk); color: var(--gs-text); border-color: var(--gs-line); font-family: var(--gs-font); }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-progress-bar { background: var(--gs-accent); }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-progress-label, html[data-gius-skin~=\"proctorExchange\"] .gius-page-info, html[data-gius-skin~=\"proctorExchange\"] .gius-page-size-label { font-family: var(--gs-font); color: var(--gs-muted); }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-empty-state p { font-family: var(--gs-font); color: var(--gs-muted); }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-empty-hint .fa { color: var(--gs-muted); }\n\n/* Fixed column widths: the table always fits its card, so it neither widens the page (the content area is a\n   table-cell that grows to fit) nor needs a sideways scroll, whose overlay scrollbar (Edge) covered the\n   last row. Long words break inside their cell. The section's own outer border goes (box in a box). */\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-table-section { border: 0; }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-table-wrap { border: 1px solid var(--gs-line); border-radius: 8px; overflow: hidden; }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-table { table-layout: fixed; width: 100%; }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-table td { overflow-wrap: break-word; }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-table thead th:nth-child(1) { width: 13%; }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-table thead th:nth-child(2) { width: 21%; }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-table thead th:nth-child(3) { width: 9.5%; }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-table thead th:nth-child(4) { width: 8%; }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-table thead th:nth-child(5) { width: 10%; }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-table thead th:nth-child(6) { width: 17%; }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-table thead th:nth-child(7) { width: 7.5%; }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-table thead th:nth-child(8) { width: 88px; }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-table { font: 400 13px/1.4 var(--gs-font); }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-table thead th {\n    background: var(--gs-sunk); color: var(--gs-muted); font: 600 13px var(--gs-font); letter-spacing: 0;\n    border-bottom: 1px solid var(--gs-line); padding: 10px 8px; white-space: normal; position: static;\n}\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-table thead th:hover { background: var(--gs-disabled-bg); color: var(--gs-text); }\n/* Only the sorted column shows its arrow: saves a column's worth of width so the table fits at 1024px. */\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-table .gius-sort-icon:not(.active) { display: none; }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-table .gius-sort-icon.active { color: var(--gs-text); }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-table td { padding: 10px 8px; color: var(--gs-text); vertical-align: top; }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-table tbody tr { border-bottom: 1px solid var(--gs-line-soft); }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-table tbody tr:nth-child(even) { background: transparent; }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-proctor-table tbody tr:hover { background: var(--gs-accent-tint); }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-table-footer { border-top: 0; padding: 10px 0 0; }\n/* Pager on one 32px line: the \"Rows:\" <label> carries the portal's label margin-bottom, which lifted it. */\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-page-controls { gap: 8px; }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-page-size-label { display: inline-flex; align-items: center; gap: 6px; margin: 0; font: 400 13px var(--gs-font); }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-page-size-select { height: 32px; padding: 0 8px; }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-page-num { font: 400 13px/32px var(--gs-font); color: var(--gs-text); }\n\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-ex-text { color: var(--gs-text); }\nhtml[data-gius-skin~=\"proctorExchange\"] .gius-ex-exam { color: var(--gs-muted); }\n\n/* ── Page: System Reports (SwiftReports_m.aspx, Cairo and Berlin) ──\n   Three centred \"WhiteContainer1\" tables: the report picker (Chosen) + Execute, the result's title /\n   description / record count / Download Excel, then the result grid. 5.0: picker and Execute in a card\n   (Execute is the page's one yellow action), the info lines muted and left-aligned, everything full\n   width. On Cairo the attendance report's panels reuse the Berlin report rules above. */\nhtml[data-gius-skin~=\"reports\"] #right-panel .content center { text-align: left; }\nhtml[data-gius-skin~=\"reports\"] #right-panel .content :is(table.WhiteContainer1, table.WHITECONTAINER1) {\n    width: 100% !important; margin: 0 0 16px; background: transparent; border: 0; font: 400 14px/1.5 var(--gs-font); color: var(--gs-text);\n}\nhtml[data-gius-skin~=\"reports\"] #right-panel .content :is(table.WhiteContainer1, table.WHITECONTAINER1) > tbody > tr > td { padding: 0; background: transparent; }\nhtml[data-gius-skin~=\"reports\"] #right-panel .content table.WhiteContainer1:has(#MainContent_DDL_SwiftReportsList) {\n    background: var(--gs-card); border: 1px solid var(--gs-line); border-radius: 8px; border-collapse: separate; border-spacing: 0;\n}\nhtml[data-gius-skin~=\"reports\"] #right-panel .content table.WhiteContainer1:has(#MainContent_DDL_SwiftReportsList) > tbody > tr > td {\n    display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 16px 18px;\n}\nhtml[data-gius-skin~=\"reports\"] #MainContent_DDL_SwiftReportsList_chosen { width: auto !important; flex: 1 1 320px; max-width: 560px; text-align: left; }\nhtml[data-gius-skin~=\"reports\"] #MainContent_B_ExecuteReport {\n    height: 40px; padding: 0 16px; border-radius: 6px; border: 1px solid var(--gs-accent-line); background: var(--gs-accent);\n    color: var(--gs-accent-fg); font: 600 14px var(--gs-font); cursor: pointer;\n}\nhtml[data-gius-skin~=\"reports\"] #MainContent_B_ExecuteReport:hover { background: var(--gs-accent-h); }\nhtml[data-gius-skin~=\"reports\"] #right-panel .content table.WHITECONTAINER1:has(#MainContent_L_RecordCount) td { font-size: 13px; color: var(--gs-muted); }\n/* Before a report runs the portal still prints \"Record count:\" and a dead Download Excel link. */\nhtml[data-gius-skin~=\"reports\"] #right-panel .content table.WHITECONTAINER1:has(#MainContent_L_RecordCount:empty) { display: none; }\nhtml[data-gius-skin~=\"reports\"] #MainContent_L_ReportTitle { font: 700 16px/1.3 var(--gs-font) !important; color: var(--gs-text); }\nhtml[data-gius-skin~=\"reports\"] #MainContent_L_ReportDescription { font-weight: 400 !important; color: var(--gs-muted); }\nhtml[data-gius-skin~=\"reports\"] #MainContent_L_RecordCount { font-weight: 600; color: var(--gs-text); }\nhtml[data-gius-skin~=\"reports\"] #MainContent_LB_DownloadExcel { font-weight: 600; color: var(--gs-focus); }\nhtml[data-gius-skin~=\"reports\"] #MainContent_LB_DownloadExcel:not([href]) { color: var(--gs-muted); }\n/* The result grid (any report; Cairo's attendance report is rebuilt by its feature and not touched here):\n   a black header, a silver Serial column, rows alternating #EEEEEE / Gainsboro at XX-Small Tahoma, and a\n   \"<Previous Next>\" pager row above and below, squeezed into the first column. 5.0: a card that scrolls\n   sideways inside the page (a report can have many columns; the page is a table cell and would grow\n   instead), grey header, white rows at reading size, the pager only when there is another page. */\nhtml[data-gius-skin~=\"reports\"] #right-panel .content table.WHITECONTAINER1:has(> tbody > tr > td > #MainContent_DG_SwiftReport) {\n    display: block; width: 0 !important; min-width: 100%; overflow-x: auto; margin: 0 0 16px;\n    background: var(--gs-card); border: 1px solid var(--gs-line); border-radius: 8px;\n}\n/* The frame is a block (to scroll), so its row and cell would shrink to the grid's natural width and a\n   narrow report would stop short of the card's edge: make them blocks too, so the grid fills the card. */\nhtml[data-gius-skin~=\"reports\"] #right-panel .content table.WHITECONTAINER1:has(> tbody > tr > td > #MainContent_DG_SwiftReport) > tbody, html[data-gius-skin~=\"reports\"] #right-panel .content table.WHITECONTAINER1:has(> tbody > tr > td > #MainContent_DG_SwiftReport) > tbody > tr, html[data-gius-skin~=\"reports\"] #right-panel .content table.WHITECONTAINER1:has(> tbody > tr > td > #MainContent_DG_SwiftReport) > tbody > tr > td { display: block; }\nhtml[data-gius-skin~=\"reports\"] #right-panel .content table.WHITECONTAINER1:has(> tbody > tr > td > #MainContent_DG_SwiftReport) > tbody > tr > td { padding: 0; }\nhtml[data-gius-skin~=\"reports\"] #right-panel .content table.WHITECONTAINER1:has(> tbody > tr > td > #MainContent_DG_SwiftReport) > tbody > tr > td > br { display: none; }\nhtml[data-gius-skin~=\"reports\"] #right-panel .content table.WHITECONTAINER1 > tbody > tr > td > table#MainContent_DG_SwiftReport { width: 100%; border: 0 !important; border-collapse: separate !important; border-spacing: 0; font: 400 13px/1.4 var(--gs-font) !important; }\nhtml[data-gius-skin~=\"reports\"] #right-panel .content table.WHITECONTAINER1 > tbody > tr > td > table#MainContent_DG_SwiftReport tr { background: var(--gs-card) !important; color: var(--gs-text) !important; }\nhtml[data-gius-skin~=\"reports\"] #right-panel .content table.WHITECONTAINER1 > tbody > tr > td > table#MainContent_DG_SwiftReport td { padding: 8px 10px; border: 0 !important; border-bottom: 1px solid var(--gs-line-soft) !important; text-align: left; vertical-align: top; white-space: nowrap; }\nhtml[data-gius-skin~=\"reports\"] #right-panel .content table.WHITECONTAINER1 > tbody > tr > td > table#MainContent_DG_SwiftReport :is(tr:first-child:not(:has(> td[colspan])), tr:has(> td[colspan]) + tr) > td {\n    background: var(--gs-sunk) !important; color: var(--gs-muted) !important; border-bottom: 1px solid var(--gs-line) !important;\n    font: 700 12px var(--gs-font); text-align: left; vertical-align: middle;\n}\nhtml[data-gius-skin~=\"reports\"] #right-panel .content table.WHITECONTAINER1 > tbody > tr > td > table#MainContent_DG_SwiftReport :is(tr:first-child:not(:has(> td[colspan])), tr:has(> td[colspan]) + tr) > td a { color: inherit !important; text-decoration: none; }\nhtml[data-gius-skin~=\"reports\"] #right-panel .content table.WHITECONTAINER1 > tbody > tr > td > table#MainContent_DG_SwiftReport tr > td:first-child { background: transparent !important; color: var(--gs-muted) !important; text-align: right; font-variant-numeric: tabular-nums; }\nhtml[data-gius-skin~=\"reports\"] #right-panel .content table.WHITECONTAINER1 > tbody > tr > td > table#MainContent_DG_SwiftReport tr:not(:has(> td[colspan])):hover > td { background: var(--gs-accent-tint); }\nhtml[data-gius-skin~=\"reports\"] #right-panel .content table.WHITECONTAINER1 > tbody > tr > td > table#MainContent_DG_SwiftReport tr:has(> td[colspan]):not(:has(a)) { display: none; }\nhtml[data-gius-skin~=\"reports\"] #right-panel .content table.WHITECONTAINER1 > tbody > tr > td > table#MainContent_DG_SwiftReport tr:has(> td[colspan]) > td { background: transparent !important; text-align: left; font: 400 13px var(--gs-font); color: var(--gs-muted) !important; }\nhtml[data-gius-skin~=\"reports\"] #right-panel .content table.WHITECONTAINER1 > tbody > tr > td > table#MainContent_DG_SwiftReport tr:has(> td[colspan]) a { font-weight: 600; color: var(--gs-focus) !important; }\n\n/* ── Page: Student Attendance Report (StudentAttendanceReport_m.aspx, Berlin) ──\n   One paragraph holds the student box, the semester dropdown and View; a second the \"Attendance\n   Warnings Report\" link and two tiny maroon labels. 5.0: the controls as one row of fields with View\n   as the yellow action, the link and the messages at reading size. */\nhtml[data-gius-skin~=\"studentReport\"] #right-panel .content p:has(#MainContent_TB_GIUAS_StudentId) {\n    display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 8px 0 20px; padding: 16px 18px;\n    background: var(--gs-card); border: 1px solid var(--gs-line); border-radius: 8px; font: 600 13px var(--gs-font); color: var(--gs-muted);\n}\nhtml[data-gius-skin~=\"studentReport\"] #right-panel .content p:has(#MainContent_TB_GIUAS_StudentId) > br { display: none; }\nhtml[data-gius-skin~=\"studentReport\"] :is(#MainContent_TB_GIUAS_StudentId, #MainContent_DDL_Season_id) {\n    height: 40px; padding: 0 12px; border: 1px solid var(--gs-line); border-radius: 6px; background: var(--gs-card);\n    font: 400 14px var(--gs-font); color: var(--gs-text);\n}\nhtml[data-gius-skin~=\"studentReport\"] #MainContent_TB_GIUAS_StudentId { width: 200px; }\nhtml[data-gius-skin~=\"studentReport\"] #MainContent_DDL_Season_id { width: 220px; padding-right: 36px; }\nhtml[data-gius-skin~=\"studentReport\"] :is(#MainContent_TB_GIUAS_StudentId, #MainContent_DDL_Season_id):hover { border-color: var(--gs-line-2); }\nhtml[data-gius-skin~=\"studentReport\"] :is(#MainContent_TB_GIUAS_StudentId, #MainContent_DDL_Season_id):focus { border-color: var(--gs-focus); box-shadow: 0 0 0 3px var(--gs-focus-ring); outline: 0; }\nhtml[data-gius-skin~=\"studentReport\"] #MainContent_BTN_View {\n    width: auto !important; height: 40px; padding: 0 20px; border-radius: 6px; border: 1px solid var(--gs-accent-line);\n    background: var(--gs-accent); color: var(--gs-accent-fg); font: 600 14px var(--gs-font); cursor: pointer;\n}\nhtml[data-gius-skin~=\"studentReport\"] #MainContent_BTN_View:hover { background: var(--gs-accent-h); }\nhtml[data-gius-skin~=\"studentReport\"] #MainContent_L_StudentData { flex-basis: 100%; color: var(--gs-text) !important; font: 600 14px var(--gs-font); }\nhtml[data-gius-skin~=\"studentReport\"] #MainContent_L_StudentData:empty { display: none; }\nhtml[data-gius-skin~=\"studentReport\"] #MainContent_LinkButton1 { font: 600 14px var(--gs-font); color: var(--gs-focus); }\nhtml[data-gius-skin~=\"studentReport\"] :is(#MainContent_Label1, #MainContent_Label2) { font: 400 13px/1.6 var(--gs-font) !important; color: var(--gs-muted) !important; } /* column legend, not errors */\n/* Result grid (DataGrid: navy header row and #EEEEEE stripes set inline on the <tr>s, header cells are\n   <td>s, X-Small Arial). 5.0 table: card, grey header, no stripes, hover tint. A block scroll frame with zero\n   intrinsic width keeps the wide grid from widening the page (table-cell layout); bottom padding keeps\n   Edge's overlay scrollbar off the last row. */\nhtml[data-gius-skin~=\"studentReport\"] #MainContent_DTG_StudentAttendance {\n    display: block; width: 0 !important; min-width: 100%; overflow-x: auto; padding-bottom: 12px; margin: 16px 0;\n    border: 1px solid var(--gs-line) !important; border-radius: 8px; background: var(--gs-card) !important;\n    font: 400 13px/1.4 var(--gs-font) !important; color: var(--gs-text);\n}\nhtml[data-gius-skin~=\"studentReport\"] #MainContent_DTG_StudentAttendance tr { background-color: transparent !important; color: var(--gs-text) !important; font-weight: 400 !important; }\nhtml[data-gius-skin~=\"studentReport\"] #MainContent_DTG_StudentAttendance td { padding: 8px 10px; border: 0 !important; border-bottom: 1px solid var(--gs-line-soft) !important; text-align: left; white-space: nowrap; }\nhtml[data-gius-skin~=\"studentReport\"] #MainContent_DTG_StudentAttendance tr:first-child > td {\n    background: var(--gs-sunk); color: var(--gs-muted); font-weight: 600; border-bottom: 1px solid var(--gs-line) !important;\n}\nhtml[data-gius-skin~=\"studentReport\"] #MainContent_DTG_StudentAttendance tr:not(:first-child):hover > td { background: var(--gs-accent-tint); }\n/* Absence levels (after \"Attendance Warnings Report\"): a small DataGrid, dark #333 header row, #66FFCC\n   alternating rows (a stripe, not a marker). Same 5.0 table as the grid below, sized to its content. */\nhtml[data-gius-skin~=\"studentReport\"] #MainContent_DTG_Warnings002 {\n    margin: 12px 0 16px; border: 1px solid var(--gs-line) !important; border-collapse: separate !important; border-spacing: 0;\n    border-radius: 8px; overflow: hidden; background: var(--gs-card) !important; font: 400 13px/1.4 var(--gs-font) !important; color: var(--gs-text) !important;\n}\nhtml[data-gius-skin~=\"studentReport\"] #MainContent_DTG_Warnings002 tr { background-color: transparent !important; color: var(--gs-text) !important; font-family: var(--gs-font) !important; font-weight: 400 !important; }\nhtml[data-gius-skin~=\"studentReport\"] #MainContent_DTG_Warnings002 td { padding: 8px 12px; border: 0 !important; border-bottom: 1px solid var(--gs-line-soft) !important; text-align: left; }\nhtml[data-gius-skin~=\"studentReport\"] #MainContent_DTG_Warnings002 tr:last-child > td { border-bottom: 0 !important; }\nhtml[data-gius-skin~=\"studentReport\"] #MainContent_DTG_Warnings002 tr:first-child > td { background: var(--gs-sunk); color: var(--gs-muted); font-weight: 600; border-bottom: 1px solid var(--gs-line) !important; }\nhtml[data-gius-skin~=\"studentReport\"] #MainContent_DTG_Warnings002 tr:not(:first-child):hover > td { background: var(--gs-accent-tint); }\n/* Absence level pills (portalSkin.js markAbsenceLevels): None grey, warnings amber (second deeper), Drop red. */\nhtml[data-gius-skin~=\"studentReport\"] .gius-level { display: inline-flex; align-items: center; height: 22px; padding: 0 10px; border-radius: 999px; border: 1px solid; font: 600 12px var(--gs-font); white-space: nowrap; }\nhtml[data-gius-skin~=\"studentReport\"] .gius-level-0 { background: var(--gs-sunk); border-color: var(--gs-line); color: var(--gs-muted); }\nhtml[data-gius-skin~=\"studentReport\"] .gius-level-1 { background: var(--gs-lvl1-bg); border-color: var(--gs-lvl1-line); color: var(--gs-lvl1-fg); }\nhtml[data-gius-skin~=\"studentReport\"] .gius-level-2 { background: var(--gs-lvl2-bg); border-color: var(--gs-lvl2-line); color: var(--gs-lvl2-fg); }\nhtml[data-gius-skin~=\"studentReport\"] .gius-level-3 { background: var(--gs-lvl3-bg); border-color: var(--gs-lvl3-line); color: var(--gs-lvl3-fg); }\n\n/* ── Page: Groups Schedule (GroupsSchedule_b.aspx, Berlin; another portal layout) ──\n   Schedule picker (Chosen), the chosen schedule's name, a 600px notes table (with the odd/even week\n   legend) and the timetable #scdTbl, fixed at 1400px so it ran off the page. Each slot is a small table\n   (group, room, course) or a cyan #99ffff \"Free\" table. 5.0: picker field, name as a heading, notes as a\n   card, the timetable as a 5.0 table that fits the page (equal period columns, text wraps), Free slots on\n   the soft grey. The biweekly colours (#999999 odd, #66ccff even) mean something: left as the portal sets them. */\nhtml[data-gius-skin~=\"groupsSchedule\"] #scdTpLst_chosen { width: 100% !important; max-width: 480px; margin: 8px 0 16px; }\nhtml[data-gius-skin~=\"groupsSchedule\"] #right-panel .content > p:has(> #scdTpLbl) { text-align: left; margin: 8px 0 12px; }\nhtml[data-gius-skin~=\"groupsSchedule\"] #scdTpLbl { font: 700 20px/1.3 var(--gs-font) !important; color: var(--gs-text); }\nhtml[data-gius-skin~=\"groupsSchedule\"] #notesTbl {\n    width: 100% !important; margin: 0 0 20px; border: 1px solid var(--gs-line) !important; border-collapse: separate; border-radius: 8px;\n    background: var(--gs-card);\n}\nhtml[data-gius-skin~=\"groupsSchedule\"] #notesTbl > tbody > tr > td { padding: 4px 18px 14px; font: 400 13px/1.6 var(--gs-font) !important; color: var(--gs-muted); }\nhtml[data-gius-skin~=\"groupsSchedule\"] #notesTbl b { font-weight: 600; color: var(--gs-text); }\nhtml[data-gius-skin~=\"groupsSchedule\"] #notesTbl hr { border: 0; border-top: 1px solid var(--gs-line-soft); margin: 10px 0; }\nhtml[data-gius-skin~=\"groupsSchedule\"] #notesTbl hr:first-child { display: none; }\nhtml[data-gius-skin~=\"groupsSchedule\"] #notesTbl a { color: var(--gs-focus); font-weight: 600; }\nhtml[data-gius-skin~=\"groupsSchedule\"] #notesTbl #Table1 { margin: 8px 0 0 !important; }\nhtml[data-gius-skin~=\"groupsSchedule\"] #notesTbl #Table1 td { font: 400 12px var(--gs-font); color: var(--gs-muted); }\nhtml[data-gius-skin~=\"groupsSchedule\"] #notesTbl #Table1 td[bgcolor] { width: 44px !important; height: 18px; border-radius: 4px; }\n\nhtml[data-gius-skin~=\"groupsSchedule\"] #scdTbl {\n    width: 100% !important; table-layout: fixed; border-collapse: separate !important; border-spacing: 0; border: 1px solid var(--gs-line) !important;\n    border-radius: 8px; overflow: hidden; background: var(--gs-card); font-family: var(--gs-font);\n}\nhtml[data-gius-skin~=\"groupsSchedule\"] #scdTbl > tbody > tr > td { width: auto !important; border: 0 !important; border-top: 1px solid var(--gs-line-soft) !important; border-left: 1px solid var(--gs-line-soft) !important; padding: 0; vertical-align: middle; }\nhtml[data-gius-skin~=\"groupsSchedule\"] #scdTbl > tbody > tr > td:first-child { width: 92px !important; border-left: 0 !important; }\nhtml[data-gius-skin~=\"groupsSchedule\"] #scdTbl > tbody > tr:first-child > td { border-top: 0 !important; background: var(--gs-sunk); padding: 10px 6px; border-bottom: 1px solid var(--gs-line) !important; }\nhtml[data-gius-skin~=\"groupsSchedule\"] #scdTbl font { font-family: var(--gs-font) !important; }\nhtml[data-gius-skin~=\"groupsSchedule\"] #scdTbl > tbody > tr:first-child font { font-size: 13px; font-weight: 600; color: var(--gs-muted); }\nhtml[data-gius-skin~=\"groupsSchedule\"] #scdTbl > tbody > tr > td:first-child font { font-size: 13px; color: var(--gs-text); }\n/* A slot: the portal puts group, room and course side by side, which crams a period column. Stack them:\n   course on top (bold), then group and room, muted. */\nhtml[data-gius-skin~=\"groupsSchedule\"] #scdTbl > tbody > tr > td > table[bordercolor] { border: 0 !important; width: 100%; }\nhtml[data-gius-skin~=\"groupsSchedule\"] #scdTbl > tbody > tr > td > table[bordercolor] tr { display: flex; flex-direction: column; padding: 8px 8px; gap: 2px; }\nhtml[data-gius-skin~=\"groupsSchedule\"] #scdTbl > tbody > tr > td > table[bordercolor] td { display: block; width: auto !important; padding: 0; border: 0 !important; text-align: left !important; overflow-wrap: break-word; }\nhtml[data-gius-skin~=\"groupsSchedule\"] #scdTbl > tbody > tr > td > table[bordercolor] td:last-child { order: -1; }\nhtml[data-gius-skin~=\"groupsSchedule\"] #scdTbl > tbody > tr > td > table[bordercolor] font { font-size: 12px; line-height: 1.35; color: var(--gs-muted); }\nhtml[data-gius-skin~=\"groupsSchedule\"] #scdTbl > tbody > tr > td > table[bordercolor] td:last-child font { font-size: 12.5px; font-weight: 600; color: var(--gs-text); }\n/* The course cell carries the biweekly marker as a background image (background=\"…half.gif\"), tiled behind\n   the text: with the slot stacked it patched the course name grey. Drawn once, as a small swatch at the\n   end of the course line instead, like the Odd / Even legend above the timetable. */\nhtml[data-gius-skin~=\"groupsSchedule\"] #scdTbl > tbody > tr > td > table[bordercolor] td[background] {\n    padding-right: 26px !important; background-repeat: no-repeat !important; background-size: 18px 12px !important;\n    background-position: right 2px top 2px !important;\n}\n/* Free: one slot (a #99ffff table) or a whole day (a #99ffff cell spanning every period) — soft grey. */\nhtml[data-gius-skin~=\"groupsSchedule\"] #scdTbl td:has(> table[bgcolor=\"#99ffff\"]),\nhtml[data-gius-skin~=\"groupsSchedule\"] #scdTbl td[bgcolor=\"#99ffff\"] { background: var(--gs-sunk) !important; }\nhtml[data-gius-skin~=\"groupsSchedule\"] #scdTbl table[bgcolor=\"#99ffff\"] { background: transparent !important; }\nhtml[data-gius-skin~=\"groupsSchedule\"] #scdTbl table[bgcolor=\"#99ffff\"] td { padding: 8px 4px; }\nhtml[data-gius-skin~=\"groupsSchedule\"] #scdTbl table[bgcolor=\"#99ffff\"] span,\nhtml[data-gius-skin~=\"groupsSchedule\"] #scdTbl td[bgcolor=\"#99ffff\"] font { font: 500 12px var(--gs-font) !important; color: var(--gs-muted); }\nhtml[data-gius-skin~=\"groupsSchedule\"] #scdTbl td[bgcolor=\"#99ffff\"] { padding: 6px !important; }\nhtml[data-gius-skin~=\"groupsSchedule\"] #scdTbl > tbody > tr:first-child > td,\nhtml[data-gius-skin~=\"groupsSchedule\"] #scdTbl > tbody > tr:first-child div { white-space: normal !important; overflow-wrap: break-word; }\n\n/* ── Page: Manage Grade (ManageGrade_m.aspx) ──\n   A bordered table: Season; then \"Semester:<br>Course:\" in one cell beside two stacked Chosen pickers,\n   and Evaluation Method beside its dropdown. A white \"56\" (the season id) sits under it. 5.0: one card,\n   bare labels muted, the fields at 40px, each label line level with its field. */\nhtml[data-gius-skin~=\"manageGrade\"] #Table1.normal { width: 100% !important; }\nhtml[data-gius-skin~=\"manageGrade\"] #Table1.normal > tbody > tr:first-child,\nhtml[data-gius-skin~=\"manageGrade\"] #Table1.normal > tbody > tr:last-child { display: none; }\nhtml[data-gius-skin~=\"manageGrade\"] #Table1.normal table[border=\"1\"] {\n    border: 1px solid var(--gs-line) !important; border-collapse: separate; border-spacing: 0; border-radius: 8px;\n    background: var(--gs-card); font: 600 13px var(--gs-font); color: var(--gs-muted);\n}\nhtml[data-gius-skin~=\"manageGrade\"] #Table1.normal table[border=\"1\"] { display: block; padding: 16px 20px; }\nhtml[data-gius-skin~=\"manageGrade\"] #Table1.normal table[border=\"1\"] > tbody { display: flex; flex-direction: column; gap: 14px; }\nhtml[data-gius-skin~=\"manageGrade\"] #Table1.normal table[border=\"1\"] tr { display: flex; flex-direction: column; gap: 6px; }\nhtml[data-gius-skin~=\"manageGrade\"] #Table1.normal table[border=\"1\"] td { display: block; border: 0 !important; padding: 0; font: 600 13px/1.4 var(--gs-font); color: var(--gs-text); white-space: nowrap; }\nhtml[data-gius-skin~=\"manageGrade\"] #Table1.normal table[border=\"1\"] tr:last-child:has(> td:only-child:empty) { display: none; }\nhtml[data-gius-skin~=\"manageGrade\"] #Table1.normal table[border=\"1\"] #MainContent_examTR > td:first-child { display: none; }\nhtml[data-gius-skin~=\"manageGrade\"] #Table1.normal table[border=\"1\"] #MainContent_examTR > td:nth-child(2) { display: flex; flex-direction: column; gap: 6px; max-width: 560px; white-space: normal; }\nhtml[data-gius-skin~=\"manageGrade\"] #Table1.normal table[border=\"1\"] #MainContent_examTR > td:nth-child(3) { margin-top: 8px; }\nhtml[data-gius-skin~=\"manageGrade\"] #Table1.normal table[border=\"1\"] #MainContent_examTR .gs-flabel:not(:first-child) { margin-top: 8px; }\nhtml[data-gius-skin~=\"manageGrade\"] #Table1.normal table[border=\"1\"] #MainContent_examTR > td:nth-child(2) > br { display: none; }\nhtml[data-gius-skin~=\"manageGrade\"] #Table1.normal table[border=\"1\"] .chosen-container { display: block; width: 100% !important; margin: 0; }\nhtml[data-gius-skin~=\"manageGrade\"] :is(#MainContent_dlSeason, #MainContent_evMethLst) { min-width: 160px; font: 400 14px var(--gs-font) !important; }\nhtml[data-gius-skin~=\"manageGrade\"] #MainContent_evMethLst { min-width: 220px; }\nhtml[data-gius-skin~=\"manageGrade\"] #Table1.normal table[border=\"1\"] #MainContent_examTR > td:nth-child(4) { font-size: 0; }\nhtml[data-gius-skin~=\"manageGrade\"] :is(#MainContent_dlSeason, #MainContent_evMethLst):hover { border-color: var(--gs-line-2); }\nhtml[data-gius-skin~=\"manageGrade\"] #MainContent_L_ssnIdStr { display: none; }\n\n/* ── Page: Manage Course Eval Method (ManageCourseEvalMethod_m.aspx) ──\n   Season and Course dropdowns with bold labels (and a bare \"Season: 70\", the season id), then one big\n   bordered table (#Table1, 16pt bold, blue header) with a row per assessment type: its name, a Weight\n   box, \"Consider Best : n\" on yellow, a Change link and Add Evaluation Method on the left; its evaluation\n   methods in a nested table (#Table3, xx-small blue header) on the right. 5.0: the dropdowns as fields,\n   the table as a card at reading size: weight and best count as chips, every button secondary. */\nhtml[data-gius-skin~=\"evalMethod\"] #Table88 td { padding: 0; font: 600 13px var(--gs-font); color: var(--gs-muted); }\nhtml[data-gius-skin~=\"evalMethod\"] #Table88 td:has(> #MainContent_dlSeason) { padding-bottom: 12px; }\nhtml[data-gius-skin~=\"evalMethod\"] #Table88 td > strong { font-weight: 600; }\nhtml[data-gius-skin~=\"evalMethod\"] #Table88 p:has(> #MainContent_dlCourse) { margin: 0 0 20px; font-size: 0; }\nhtml[data-gius-skin~=\"evalMethod\"] #Table88 p:has(> #MainContent_dlCourse) > strong { font: 600 13px var(--gs-font); color: var(--gs-muted); margin-right: 8px; }\nhtml[data-gius-skin~=\"evalMethod\"] #Table88 p:has(> #MainContent_dlCourse) br,\nhtml[data-gius-skin~=\"evalMethod\"] #MainContent_L_Season,\nhtml[data-gius-skin~=\"evalMethod\"] #Table88 td > p:empty,\nhtml[data-gius-skin~=\"evalMethod\"] #Table88 td > p:has(> br:only-child) { display: none; }\nhtml[data-gius-skin~=\"evalMethod\"] :is(#MainContent_dlSeason, #MainContent_dlCourse) { min-width: 160px; font: 400 14px var(--gs-font) !important; }\nhtml[data-gius-skin~=\"evalMethod\"] #MainContent_dlCourse { min-width: 320px; }\nhtml[data-gius-skin~=\"evalMethod\"] :is(#MainContent_dlSeason, #MainContent_dlCourse):hover { border-color: var(--gs-line-2); }\nhtml[data-gius-skin~=\"evalMethod\"] table#Table1 {\n    width: 100%; border: 1px solid var(--gs-line) !important; border-collapse: separate; border-spacing: 0; border-radius: 8px; overflow: hidden;\n    background: var(--gs-card); font: 400 14px var(--gs-font) !important; color: var(--gs-text);\n}\nhtml[data-gius-skin~=\"evalMethod\"] table#Table1 > tbody > tr > td { border: 0 !important; border-top: 1px solid var(--gs-line-soft) !important; padding: 14px 16px; vertical-align: top; background: var(--gs-card); }\nhtml[data-gius-skin~=\"evalMethod\"] table#Table1 > tbody > tr:first-child > td {\n    border-top: 0 !important; padding: 10px 16px; background: var(--gs-sunk); color: var(--gs-muted) !important;\n    font: 700 12px var(--gs-font) !important; text-align: left; border-bottom: 1px solid var(--gs-line) !important;\n}\nhtml[data-gius-skin~=\"evalMethod\"] table#Table1 > tbody > tr:first-child + tr > td { border-top: 0 !important; }\nhtml[data-gius-skin~=\"evalMethod\"] table#Table1 > tbody > tr > td:first-child { width: 240px; border-right: 1px solid var(--gs-line-soft) !important; }\nhtml[data-gius-skin~=\"evalMethod\"] table#Table1 > tbody > tr > td:first-child > br { display: none; }\nhtml[data-gius-skin~=\"evalMethod\"] table#Table1 > tbody > tr > td:last-child > br:first-child { display: none; }\nhtml[data-gius-skin~=\"evalMethod\"] table#Table1 span[id*=\"_mnrTpLbl_\"],\nhtml[data-gius-skin~=\"evalMethod\"] table#Table1 span[id*=\"_Label1_\"] { display: block; margin-bottom: 8px; font: 600 14px var(--gs-font) !important; color: var(--gs-text); }\n/* Weight: a two-cell bordered box, shown as one grey chip \"Weight 35%\". */\nhtml[data-gius-skin~=\"evalMethod\"] table#Table1 table#Table2 { width: auto !important; display: inline-table; margin: 0 6px 8px 0; border: 0 !important; border-collapse: separate; border-radius: 999px; background: var(--gs-disabled-bg); }\nhtml[data-gius-skin~=\"evalMethod\"] table#Table1 table#Table2 td { width: auto; border: 0 !important; padding: 0 0 0 10px; height: 24px; font: 400 12px var(--gs-font) !important; color: var(--gs-muted) !important; text-align: left; }\nhtml[data-gius-skin~=\"evalMethod\"] table#Table1 table#Table2 td + td { padding: 0 10px 0 4px; font-weight: 600 !important; color: var(--gs-text) !important; }\nhtml[data-gius-skin~=\"evalMethod\"] table#Table1 table#Table2 font { font-size: inherit !important; }\nhtml[data-gius-skin~=\"evalMethod\"] table#Table1 span[id*=\"_besttitle_\"] {\n    height: 24px; margin: 0 6px 8px 0; padding: 0 10px; border: 0 !important; border-radius: 999px; background: var(--gs-warn-bg) !important;\n    color: var(--gs-warn); font: 600 12px/24px var(--gs-font) !important; vertical-align: top;\n}\nhtml[data-gius-skin~=\"evalMethod\"] table#Table1 a[id*=\"_lnkchangeBestCount_\"] { display: inline-block; font: 600 13px/24px var(--gs-font); color: var(--gs-focus); vertical-align: top; }\nhtml[data-gius-skin~=\"evalMethod\"] table#Table1 input[id*=\"_btnAdd_\"] {\n    display: block; width: auto !important; height: 34px; margin-top: 4px; padding: 0 12px; border-radius: 6px;\n    border: 1px solid var(--gs-line) !important; background: var(--gs-card); color: var(--gs-text); font: 600 13px var(--gs-font) !important; box-shadow: none;\n}\nhtml[data-gius-skin~=\"evalMethod\"] table#Table1 input[id*=\"_btnAdd_\"]:hover { background: var(--gs-sunk); border-color: var(--gs-line-2) !important; }\nhtml[data-gius-skin~=\"evalMethod\"] table#Table1 table#Table3 { border: 1px solid var(--gs-line-soft) !important; border-collapse: separate; border-spacing: 0; border-radius: 6px; overflow: hidden; }\nhtml[data-gius-skin~=\"evalMethod\"] table#Table1 table#Table3 td { border: 0 !important; border-top: 1px solid var(--gs-line-soft) !important; padding: 8px 10px; width: auto; vertical-align: middle; text-align: left; font: 400 13px var(--gs-font) !important; color: var(--gs-text) !important; }\nhtml[data-gius-skin~=\"evalMethod\"] table#Table1 table#Table3 tr:first-child td { border-top: 0 !important; background: var(--gs-sunk); color: var(--gs-muted) !important; font: 600 12px var(--gs-font) !important; }\nhtml[data-gius-skin~=\"evalMethod\"] table#Table1 table#Table3 font { font-size: inherit !important; }\nhtml[data-gius-skin~=\"evalMethod\"] table#Table1 table#Table3 a { font: 600 13px var(--gs-font) !important; color: var(--gs-focus); }\n\n/* Add / edit form (MainContent_Panel1, under the table once Add Evaluation Method is pressed): a 532px-high\n   box at 70% with the assessment type in navy and a fixed 726px bordered table of bold labels and inputs.\n   5.0: a card sized to its content, labels muted beside 36px fields, Define Entities as its yellow action. */\nhtml[data-gius-skin~=\"evalMethod\"] #MainContent_Panel1 {\n    height: auto !important; width: 100% !important; max-width: 760px; box-sizing: border-box; margin-top: 20px; padding: 16px 20px;\n    background: var(--gs-card); border: 1px solid var(--gs-line); border-radius: 8px; font: 400 14px var(--gs-font); color: var(--gs-text);\n}\nhtml[data-gius-skin~=\"evalMethod\"] #MainContent_Panel1 > font:first-child, html[data-gius-skin~=\"evalMethod\"] #MainContent_Panel1 > font:first-child * { font: 600 13px var(--gs-font) !important; color: var(--gs-muted); }\nhtml[data-gius-skin~=\"evalMethod\"] #MainContent_Panel1 #MainContent_lblEvaluationMethod { width: auto !important; height: auto !important; margin-left: 4px; font: 700 16px var(--gs-font) !important; color: var(--gs-text) !important; }\nhtml[data-gius-skin~=\"evalMethod\"] #Table88 td:has(> #MainContent_Panel1) > br, html[data-gius-skin~=\"evalMethod\"] #MainContent_Panel1 > br, html[data-gius-skin~=\"evalMethod\"] #MainContent_Panel1 > strong:has(> font[color]) { display: none; }\nhtml[data-gius-skin~=\"evalMethod\"] #MainContent_Panel1 table#Table2 { width: 100% !important; height: auto !important; margin-top: 12px; border: 0 !important; border-collapse: separate; border-spacing: 0; }\nhtml[data-gius-skin~=\"evalMethod\"] #MainContent_Panel1 table#Table2 { display: block; }\nhtml[data-gius-skin~=\"evalMethod\"] #MainContent_Panel1 table#Table2 > tbody { display: flex; flex-direction: column; gap: 14px; }\nhtml[data-gius-skin~=\"evalMethod\"] #MainContent_Panel1 table#Table2 > tbody > tr { display: flex; flex-direction: column; gap: 6px; }\nhtml[data-gius-skin~=\"evalMethod\"] #MainContent_Panel1 table#Table2 td { display: block; width: auto !important; height: auto !important; padding: 0; border: 0 !important; font: 400 14px var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin~=\"evalMethod\"] #MainContent_Panel1 table#Table2 td:first-child { font: 600 13px/1.4 var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin~=\"evalMethod\"] #MainContent_Panel1 table#Table2 td:first-child :is(strong, font) { font: inherit !important; color: inherit !important; }\nhtml[data-gius-skin~=\"evalMethod\"] #MainContent_Panel1 input[type=text] {\n    width: 120px !important; height: 36px !important; padding: 0 10px; border: 1px solid var(--gs-line); border-radius: 6px; vertical-align: middle;\n    font: 400 14px var(--gs-font) !important; color: var(--gs-text) !important; background: var(--gs-card);\n}\nhtml[data-gius-skin~=\"evalMethod\"] #MainContent_Panel1 #MainContent_lblEvalMethodName { width: 280px !important; }\nhtml[data-gius-skin~=\"evalMethod\"] #MainContent_Panel1 input[type=text]:is(:disabled, [readonly]) { background: var(--gs-sunk); color: var(--gs-muted) !important; }\nhtml[data-gius-skin~=\"evalMethod\"] #MainContent_Panel1 input[type=text]:not(:disabled, [readonly]):focus { border-color: var(--gs-focus); box-shadow: 0 0 0 3px var(--gs-focus-ring); outline: 0; }\nhtml[data-gius-skin~=\"evalMethod\"] #MainContent_Panel1 select { font: 400 14px var(--gs-font) !important; min-width: 280px; }\nhtml[data-gius-skin~=\"evalMethod\"] #MainContent_Panel1 select:disabled { background-color: var(--gs-sunk); color: var(--gs-muted); }\nhtml[data-gius-skin~=\"evalMethod\"] #MainContent_Panel1 span[id^=\"MainContent_rqrd\"]:not([style*=\"hidden\"]),\nhtml[data-gius-skin~=\"evalMethod\"] #MainContent_Panel1 span[id*=\"validator\"]:not([style*=\"hidden\"]),\nhtml[data-gius-skin~=\"evalMethod\"] #MainContent_Panel1 span[id*=\"Validator\"]:not([style*=\"hidden\"]),\nhtml[data-gius-skin~=\"evalMethod\"] #MainContent_Panel1 span[id^=\"MainContent_cmpr\"]:not([style*=\"hidden\"]) { width: auto !important; margin-left: 8px; color: var(--gs-err) !important; font: 600 12px var(--gs-font); }\nhtml[data-gius-skin~=\"evalMethod\"] #MainContent_Panel1 #MainContent_btnDefineEntities {\n    width: auto !important; height: 36px; margin-left: 10px; padding: 0 14px; border-radius: 6px; vertical-align: middle;\n    border: 1px solid var(--gs-accent-line) !important; background: var(--gs-accent); color: var(--gs-accent-fg); font: 600 13px var(--gs-font) !important; cursor: pointer;\n}\nhtml[data-gius-skin~=\"evalMethod\"] #MainContent_Panel1 #MainContent_btnDefineEntities:hover { background: var(--gs-accent-h); }\n\n/* ── Page: View Evaluation Summary (ViewEvaluationSummary_m.aspx) ──\n   Loose paragraphs in #mainTbl: Season, the staff name, \"Average Grade:\" in a dashed box, the student count,\n   a link to the per-course view; then a bordered Progress table (season, average, a blue bar on a 0-5\n   scale) and a fixed 500px bordered Comments table, some rows blank. 5.0: Season as a field, the name as a\n   heading, the average as a big number, Progress and Comments as cards, blank comments skipped\n   (gius-blank, set by the page's ready step). */\nhtml[data-gius-skin~=\"evalSummary\"] #mainTbl > tbody > tr:first-child, html[data-gius-skin~=\"evalSummary\"] #mainTbl > tbody > tr:last-child { display: none; }\nhtml[data-gius-skin~=\"evalSummary\"] #mainTbl > tbody > tr > td { font: 400 14px/1.5 var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin~=\"evalSummary\"] #mainTbl p { margin: 0 0 12px; font: 400 14px/1.5 var(--gs-font); }\nhtml[data-gius-skin~=\"evalSummary\"] #mainTbl p:empty { display: none; }\nhtml[data-gius-skin~=\"evalSummary\"] #mainTbl p:has(> #MainContent_ddlSeason) { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; margin-bottom: 20px; font: 600 13px var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin~=\"evalSummary\"] #MainContent_ddlSeason { min-width: 160px; font: 400 14px var(--gs-font) !important; margin: 0 !important; }\nhtml[data-gius-skin~=\"evalSummary\"] #MainContent_stfNmLbl { font: 700 18px var(--gs-font) !important; color: var(--gs-text); }\nhtml[data-gius-skin~=\"evalSummary\"] #mainTbl p:has(> #MainContent_avgGrdLbl) { color: var(--gs-muted); }\nhtml[data-gius-skin~=\"evalSummary\"] #MainContent_avgGrdLbl {\n    margin-left: 4px; padding: 0 10px; border: 0 !important; border-radius: 6px; background: var(--gs-accent-tint);\n    font: 700 18px/30px var(--gs-font); color: var(--gs-text); font-variant-numeric: tabular-nums;\n}\nhtml[data-gius-skin~=\"evalSummary\"] #MainContent_stfStdLbl { font-weight: 700; color: var(--gs-text); }\nhtml[data-gius-skin~=\"evalSummary\"] #MainContent_LinkButton1 { font: 600 14px var(--gs-font); color: var(--gs-focus); }\nhtml[data-gius-skin~=\"evalSummary\"] #mainTbl p > font[size=\"3\"] { display: inline-block; margin-top: 12px; font: 700 15px var(--gs-font) !important; color: var(--gs-text); }\nhtml[data-gius-skin~=\"evalSummary\"] table#Table2 {\n    width: 100% !important; margin: 0 0 8px; border: 1px solid var(--gs-line) !important; border-collapse: separate; border-spacing: 0;\n    border-radius: 8px; overflow: hidden; background: var(--gs-card);\n}\nhtml[data-gius-skin~=\"evalSummary\"] table#Table2 td { border: 0 !important; border-top: 1px solid var(--gs-line-soft) !important; padding: 8px 12px; text-align: left !important; vertical-align: middle; }\nhtml[data-gius-skin~=\"evalSummary\"] table#Table2 tr:first-child > td { border-top: 0 !important; }\nhtml[data-gius-skin~=\"evalSummary\"] table#Table2:has(td[colspan=\"6\"]) tr:first-child > td { background: var(--gs-sunk); color: var(--gs-muted); border-bottom: 1px solid var(--gs-line) !important; font: 700 12px var(--gs-font); }\nhtml[data-gius-skin~=\"evalSummary\"] table#Table2:has(td[colspan=\"6\"]) tr:first-child + tr > td { border-top: 0 !important; }\nhtml[data-gius-skin~=\"evalSummary\"] table#Table2:has(td[colspan=\"6\"]) tr:first-child > td strong { font-weight: inherit; }\nhtml[data-gius-skin~=\"evalSummary\"] table#Table2:has(td[colspan=\"6\"]) img { display: block; height: 10px; border-radius: 999px; }\nhtml[data-gius-skin~=\"evalSummary\"] table#Table2:has(td[colspan=\"6\"]) tr:last-child > td { background: var(--gs-sunk); color: var(--gs-muted); font: 400 12px var(--gs-font); }\nhtml[data-gius-skin~=\"evalSummary\"] table#Table2:has(td[colspan=\"6\"]) tr:last-child > td strong { font-weight: 600; }\nhtml[data-gius-skin~=\"evalSummary\"] table#Table2:not(:has(td[colspan])) { max-width: 760px; }\nhtml[data-gius-skin~=\"evalSummary\"] table#Table2:not(:has(td[colspan])) td { padding: 12px 16px; }\nhtml[data-gius-skin~=\"evalSummary\"] table#Table2:not(:has(td[colspan])) tr.gius-blank { display: none; }\nhtml[data-gius-skin~=\"evalSummary\"] table#Table2:not(:has(td[colspan])):not(:has(tr:not(.gius-blank))) { display: none; }\n/* View Evaluation Per Course: a bordered 100% table, one cell per course holding its name, a Silver-striped\n   X-Small objectives grid and \"Average Grade in this course\" in a dashed box. 5.0: one card per course. */\nhtml[data-gius-skin~=\"evalSummary\"] #mainTbl table:has(> tbody > tr > td > [id^=\"MainContent_crsRptr_crsLbl_\"]) { width: 100% !important; margin: 0 0 8px; border: 0 !important; border-collapse: separate; border-spacing: 0 12px; }\nhtml[data-gius-skin~=\"evalSummary\"] #mainTbl table:has(> tbody > tr > td > [id^=\"MainContent_crsRptr_crsLbl_\"]) > tbody > tr > td { background: var(--gs-card); border: 1px solid var(--gs-line) !important; border-radius: 8px; padding: 14px 16px; vertical-align: top; }\nhtml[data-gius-skin~=\"evalSummary\"] [id^=\"MainContent_crsRptr_crsLbl_\"] { display: block; margin-bottom: 10px; font: 700 15px var(--gs-font) !important; color: var(--gs-text); }\nhtml[data-gius-skin~=\"evalSummary\"] #mainTbl table[id^=\"MainContent_crsRptr_grdCrsDG_\"] font { font: inherit !important; }\nhtml[data-gius-skin~=\"evalSummary\"] #mainTbl table[id^=\"MainContent_crsRptr_grdCrsDG_\"] { width: 100%; }\nhtml[data-gius-skin~=\"evalSummary\"] #mainTbl table[id^=\"MainContent_crsRptr_grdCrsDG_\"] > tbody > tr > td:last-child { width: 72px; text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }\nhtml[data-gius-skin~=\"evalSummary\"] #mainTbl table[id^=\"MainContent_crsRptr_grdCrsDG_\"] > tbody > tr:first-child > td:last-child { font-weight: 700; }\nhtml[data-gius-skin~=\"evalSummary\"] [id^=\"MainContent_crsRptr_avgGrdCrsLbl_\"] {\n    margin-left: 4px; padding: 0 8px; border: 0 !important; border-radius: 6px; background: var(--gs-accent-tint);\n    font: 700 15px/26px var(--gs-font); color: var(--gs-text); font-variant-numeric: tabular-nums;\n}\nhtml[data-gius-skin~=\"evalSummary\"] #mainTbl table:has(> tbody > tr > td > [id^=\"MainContent_crsRptr_crsLbl_\"]) p { margin: 12px 0 0; color: var(--gs-muted); }\n\n/* ── Page: View All Course/Staff Schedules (SearchAcademicScheduled_001_m.aspx, Cairo) ──\n   A centred 460px box: usage guide, filtering tips, \"Courses: +\" / \"Staff: +\" (each + adds a red x, a filter\n   box and a select), Show Schedule; then an 80% timetable whose slots list Group / Location / Staff under\n   grey italic captions, one slot under another (a course with many groups makes the page very long). Hovering\n   a slot paints that course red and that staff member yellow. 5.0: the picker as a card (Show Schedule its\n   yellow action), the timetable fitting the page, each slot a compact chip: group on top, room · staff\n   below; the hover colours kept, softer (the guide's own \"red\" / \"yellow\" samples use the same classes). */\nhtml[data-gius-skin~=\"courseSchedule\"] #right-panel .content table.table03, html[data-gius-skin~=\"courseSchedule\"] #right-panel .content td.td02 { width: 100%; }\nhtml[data-gius-skin~=\"courseSchedule\"] #right-panel .content td.td02 > center { text-align: left; }\nhtml[data-gius-skin~=\"courseSchedule\"] table.Width460pxPaddingCenter { width: 100% !important; margin: 0 0 20px; background: var(--gs-card); border: 1px solid var(--gs-line) !important; border-radius: 8px; border-collapse: separate; }\nhtml[data-gius-skin~=\"courseSchedule\"] table.Width460pxPaddingCenter > tbody > tr > td { padding: 6px 20px 16px; font: 400 14px/1.5 var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin~=\"courseSchedule\"] table.Width460pxPaddingCenter h2:empty, html[data-gius-skin~=\"courseSchedule\"] table.Width460pxPaddingCenter p:empty { display: none; }\nhtml[data-gius-skin~=\"courseSchedule\"] table.Width460pxPaddingCenter ul { margin: 0 0 8px; padding-left: 20px; font: 400 13px/1.6 var(--gs-font); color: var(--gs-muted); }\nhtml[data-gius-skin~=\"courseSchedule\"] table.Width460pxPaddingCenter ul b { color: var(--gs-text); }\nhtml[data-gius-skin~=\"courseSchedule\"] table.Width460pxPaddingCenter p { margin: 12px 0 6px; font: 600 14px var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin~=\"courseSchedule\"] table.Width460pxPaddingCenter .icon_link { font-family: var(--gs-font); text-decoration: none; }\nhtml[data-gius-skin~=\"courseSchedule\"] table.Width460pxPaddingCenter a.add_link {\n    display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; margin-left: 6px; vertical-align: middle;\n    border: 1px solid var(--gs-line); border-radius: 6px; background: var(--gs-card); color: var(--gs-text); font: 600 18px/1 var(--gs-font);\n}\nhtml[data-gius-skin~=\"courseSchedule\"] table.Width460pxPaddingCenter a.add_link:hover { border-color: var(--gs-line-2); background: var(--gs-sunk); }\nhtml[data-gius-skin~=\"courseSchedule\"] :is(#courses_list, #teaching_assistants) > div { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 6px 0; }\nhtml[data-gius-skin~=\"courseSchedule\"] :is(#courses_list, #teaching_assistants) a.icon_link {\n    display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; margin: 0; border-radius: 6px;\n    color: var(--gs-err); font: 600 15px/1 var(--gs-font);\n}\nhtml[data-gius-skin~=\"courseSchedule\"] :is(#courses_list, #teaching_assistants) a.icon_link:hover { background: var(--gs-err-bg); }\nhtml[data-gius-skin~=\"courseSchedule\"] .filter-box { height: 36px; padding: 0 10px; border: 1px solid var(--gs-line); border-radius: 6px; background: var(--gs-card);\n    font: 400 14px var(--gs-font) !important; color: var(--gs-text); width: 200px; }\nhtml[data-gius-skin~=\"courseSchedule\"] .select-box { font: 400 14px var(--gs-font) !important; flex: 1 1 320px; max-width: 560px; min-width: 0; }\nhtml[data-gius-skin~=\"courseSchedule\"] :is(.filter-box, .select-box):focus { border-color: var(--gs-focus); box-shadow: 0 0 0 3px var(--gs-focus-ring); outline: 0; }\nhtml[data-gius-skin~=\"courseSchedule\"] #MainContent_B_ShowSchedule { height: 38px; padding: 0 16px; border-radius: 6px; border: 1px solid var(--gs-accent-line) !important; background: var(--gs-accent);\n    color: var(--gs-accent-fg); font: 600 14px var(--gs-font) !important; cursor: pointer; margin-top: 6px; }\nhtml[data-gius-skin~=\"courseSchedule\"] #MainContent_B_ShowSchedule:hover { background: var(--gs-accent-h); }\nhtml[data-gius-skin~=\"courseSchedule\"] #right-panel .content td.td02 > center > p { display: none; }\nhtml[data-gius-skin~=\"courseSchedule\"] table#MainContent_schedule {\n    width: 100% !important; table-layout: fixed; border-collapse: separate !important; border-spacing: 0; background: var(--gs-card); border: 1px solid var(--gs-line) !important; border-radius: 8px;\n    overflow: hidden; font-family: var(--gs-font);\n}\nhtml[data-gius-skin~=\"courseSchedule\"] table#MainContent_schedule tr { height: auto; }\nhtml[data-gius-skin~=\"courseSchedule\"] table#MainContent_schedule :is(th, td) { padding: 4px; border: 0 !important; border-top: 1px solid var(--gs-line-soft) !important; border-left: 1px solid var(--gs-line-soft) !important; vertical-align: top; }\nhtml[data-gius-skin~=\"courseSchedule\"] table#MainContent_schedule th { background: var(--gs-sunk); font: 600 13px var(--gs-font); color: var(--gs-muted); text-align: left; }\nhtml[data-gius-skin~=\"courseSchedule\"] table#MainContent_schedule tr > :first-child { width: 92px !important; border-left: 0 !important; vertical-align: middle; color: var(--gs-text); padding: 8px 10px; }\nhtml[data-gius-skin~=\"courseSchedule\"] table#MainContent_schedule tr:first-child > th { border-top: 0 !important; border-bottom: 1px solid var(--gs-line) !important; padding: 10px 8px; vertical-align: middle; }\nhtml[data-gius-skin~=\"courseSchedule\"] table#MainContent_schedule tr:first-child + tr > :is(th, td) { border-top: 0 !important; }\nhtml[data-gius-skin~=\"courseSchedule\"] table#MainContent_schedule th sup { font-size: 9px; }\nhtml[data-gius-skin~=\"courseSchedule\"] table#MainContent_schedule td .slot { margin: 0 0 4px; padding: 6px 8px; border-radius: 6px; background: var(--gs-sunk); cursor: crosshair; }\nhtml[data-gius-skin~=\"courseSchedule\"] table#MainContent_schedule td .slot dl { margin: 0; font: 400 12px/1.35 var(--gs-font); color: var(--gs-muted); overflow-wrap: break-word; }\nhtml[data-gius-skin~=\"courseSchedule\"] table#MainContent_schedule td .slot dt { display: none; }\nhtml[data-gius-skin~=\"courseSchedule\"] table#MainContent_schedule td .slot dd { display: inline; margin: 0; padding: 0; }\nhtml[data-gius-skin~=\"courseSchedule\"] table#MainContent_schedule td .slot dd:first-of-type { display: block; margin-bottom: 2px; font-weight: 600; font-size: 12.5px; color: var(--gs-text); }\nhtml[data-gius-skin~=\"courseSchedule\"] table#MainContent_schedule td .slot dd:nth-of-type(3)::before { content: \" · \"; }\nhtml[data-gius-skin~=\"courseSchedule\"] .active-course { background: var(--gs-err-line) !important; color: var(--gs-text) !important; border-radius: 3px; }\nhtml[data-gius-skin~=\"courseSchedule\"] .active-staff { background: var(--gs-warn-h) !important; color: var(--gs-text) !important; border-radius: 3px; }\n\n/* ── Page: HR-Staff Information (EXT/ManageStaffInfo.aspx, Cairo) ──\n   Already a Bootstrap form on a light-grey container: plain-text labels over .form-control fields, bold\n   section headings and a big blue Update. 5.0: a white card, labels muted, 36px fields, section headings\n   with soft rules, Update as the page's yellow action. */\nhtml[data-gius-skin~=\"staffInfo\"] #right-panel .content .container.bg-light { max-width: none; width: 100%; margin: 0 0 16px; padding: 4px 24px 24px; background: var(--gs-card) !important; background: var(--gs-card); border: 1px solid var(--gs-line) !important; border-radius: 8px; }\nhtml[data-gius-skin~=\"staffInfo\"] #right-panel .content .container.bg-light .row > [class*=\"col-\"] { font: 600 13px/1.5 var(--gs-font); color: var(--gs-muted); }\nhtml[data-gius-skin~=\"staffInfo\"] #right-panel .content .container.bg-light > .row > .col-12 > .row:first-child, html[data-gius-skin~=\"staffInfo\"] #right-panel .content .container.bg-light > .row > .col-12 > .row:first-child + br { display: none; }\nhtml[data-gius-skin~=\"staffInfo\"] #right-panel .content .container.bg-light h3 { margin: 8px 0 0; font: 700 20px/1.3 var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin~=\"staffInfo\"] #right-panel .content .container.bg-light h5 { margin: 8px 0 4px; font: 700 15px var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin~=\"staffInfo\"] #right-panel .content .container.bg-light hr { margin: 16px 0; border: 0; border-top: 1px solid var(--gs-line-soft); opacity: 1; }\nhtml[data-gius-skin~=\"staffInfo\"] #right-panel .content .container.bg-light .form-control { height: 36px; margin-top: 4px; padding: 0 10px; border: 1px solid var(--gs-line); border-radius: 6px; font: 400 14px var(--gs-font); color: var(--gs-text); box-shadow: none; }\nhtml[data-gius-skin~=\"staffInfo\"] #right-panel .content .container.bg-light select.form-control { padding-right: 32px; }\nhtml[data-gius-skin~=\"staffInfo\"] #right-panel .content .container.bg-light textarea.form-control { height: 120px; padding: 8px 10px; }\nhtml[data-gius-skin~=\"staffInfo\"] #right-panel .content .container.bg-light .form-control:focus { border-color: var(--gs-focus); box-shadow: 0 0 0 3px var(--gs-focus-ring); outline: 0; }\nhtml[data-gius-skin~=\"staffInfo\"] #right-panel .content .container.bg-light .form-control:is(:disabled, [readonly]) { background: var(--gs-sunk); color: var(--gs-muted); }\nhtml[data-gius-skin~=\"staffInfo\"] #right-panel .content .container.bg-light small { font: 400 12px var(--gs-font); color: var(--gs-muted); }\nhtml[data-gius-skin~=\"staffInfo\"] #right-panel .content .container.bg-light p:has(> small) { margin: 2px 0 0; }\nhtml[data-gius-skin~=\"staffInfo\"] #right-panel .content .container.bg-light .label_radio { font: 400 14px var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin~=\"staffInfo\"] #right-panel .content .container.bg-light .field-validation-error:not([style*=\"hidden\"]) { color: var(--gs-err); font: 600 12px var(--gs-font); }\nhtml[data-gius-skin~=\"staffInfo\"] #right-panel .content .container.bg-light #MainContent_btn_submit { height: 38px; padding: 0 16px; border-radius: 6px; border: 1px solid var(--gs-accent-line) !important; background: var(--gs-accent);\n    color: var(--gs-accent-fg); font: 600 14px var(--gs-font) !important; cursor: pointer; width: auto; min-width: 140px; max-width: none; flex: none; margin: 0; }\nhtml[data-gius-skin~=\"staffInfo\"] #right-panel .content .container.bg-light #MainContent_btn_submit:hover { background: var(--gs-accent-h); }\nhtml[data-gius-skin~=\"staffInfo\"] #right-panel .content .container.bg-light #MainContent_lbl_error { font: 600 13px var(--gs-font) !important; color: var(--gs-err) !important; }\nhtml[data-gius-skin~=\"staffInfo\"] #right-panel .content > .col-sm-12 > br { display: none; }\n\n/* ── Page: Add Extra Session (AddExtraSession_m.aspx, Cairo) ──\n   A 790px table: a red \"Note: One Time Reservation.\" heading, a bordered 570px form (week day, period,\n   duration, course, type, an ASP.NET month calendar with a read-only date box, Find Available Rooms) and a\n   centred Reserve Room under it; \"No reservations recorded.\" in dark red at the bottom. 5.0: the note as a\n   tinted line, the form as a card of muted labels and 40px dropdowns, the calendar as a small month grid,\n   Reserve Room as the yellow action. */\nhtml[data-gius-skin~=\"extraSession\"] table#Table1.normal { width: 100% !important; }\nhtml[data-gius-skin~=\"extraSession\"] #MainContent_noteLbl { width: auto !important; padding: 6px 10px; border-radius: 6px; background: var(--gs-accent-tint); font: 600 13px var(--gs-font) !important; color: var(--gs-warn); }\nhtml[data-gius-skin~=\"extraSession\"] h4:has(> font > #MainContent_noteLbl) { margin: 4px 0 12px; }\nhtml[data-gius-skin~=\"extraSession\"] #MainContent_lblAction { font: 600 14px var(--gs-font) !important; color: var(--gs-ok) !important; }\nhtml[data-gius-skin~=\"extraSession\"] table#Table2 { width: auto !important; max-width: 760px; background: var(--gs-card); border: 1px solid var(--gs-line) !important; border-radius: 8px; border-collapse: separate; border-spacing: 0; padding: 10px 18px; }\nhtml[data-gius-skin~=\"extraSession\"] table#Table2 { display: block; }\nhtml[data-gius-skin~=\"extraSession\"] table#Table2 > tbody { display: flex; flex-direction: column; gap: 14px; }\nhtml[data-gius-skin~=\"extraSession\"] table#Table2 > tbody > tr { display: flex; flex-direction: column; gap: 6px; }\nhtml[data-gius-skin~=\"extraSession\"] table#Table2 > tbody > tr > td { display: block; height: auto !important; padding: 0; border: 0 !important; font: 400 14px var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin~=\"extraSession\"] table#Table2 > tbody > tr > td:first-child { width: auto !important; font: 600 13px/1.4 var(--gs-font); color: var(--gs-text); white-space: nowrap; }\nhtml[data-gius-skin~=\"extraSession\"] table#Table2 select { font: 400 14px var(--gs-font) !important; min-width: 260px; }\nhtml[data-gius-skin~=\"extraSession\"] :is(#MainContent_crsLst, #MainContent_clsTp) { margin-left: -4px; }\nhtml[data-gius-skin~=\"extraSession\"] span[id^=\"MainContent_rqrd\"]:not([style*=\"hidden\"]) { margin-left: 8px; color: var(--gs-err) !important; font: 600 12px var(--gs-font); }\nhtml[data-gius-skin~=\"extraSession\"] #MainContent_dtClndr { background: var(--gs-card); border: 1px solid var(--gs-line) !important; border-radius: 8px; border-collapse: separate !important; border-spacing: 0; overflow: hidden; font: 400 13px var(--gs-font); }\nhtml[data-gius-skin~=\"extraSession\"] #MainContent_dtClndr td[colspan=\"7\"] { background: var(--gs-sunk) !important; border-bottom: 1px solid var(--gs-line); padding: 4px 6px; font: 600 13px var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin~=\"extraSession\"] #MainContent_dtClndr td[colspan=\"7\"] a { display: inline-block; padding: 2px 8px; border-radius: 4px; color: var(--gs-text) !important; text-decoration: none; font-weight: 600; }\nhtml[data-gius-skin~=\"extraSession\"] #MainContent_dtClndr td[colspan=\"7\"] a:hover { background: var(--gs-line-soft); }\nhtml[data-gius-skin~=\"extraSession\"] #MainContent_dtClndr th { padding: 6px 2px 2px; font: 600 11px var(--gs-font); color: var(--gs-muted); }\nhtml[data-gius-skin~=\"extraSession\"] #MainContent_dtClndr td:not([colspan]) { padding: 1px; }\nhtml[data-gius-skin~=\"extraSession\"] #MainContent_dtClndr td:not([colspan]) > a { display: block; width: 34px; line-height: 30px; margin: 0 auto; border-radius: 6px; text-decoration: none; text-align: center; color: var(--gs-text) !important; }\nhtml[data-gius-skin~=\"extraSession\"] #MainContent_dtClndr td:not([colspan]) > a:hover { background: var(--gs-accent-tint); }\nhtml[data-gius-skin~=\"extraSession\"] #MainContent_dtClndr td:not([colspan])[style*=\"background-color\"] { background: transparent !important; }\nhtml[data-gius-skin~=\"extraSession\"] #MainContent_dtClndr td:not([colspan])[style*=\"background-color\"] > a { background: var(--gs-accent); font-weight: 700; }\nhtml[data-gius-skin~=\"extraSession\"] #MainContent_sesnDt { height: 36px; padding: 0 10px; border: 1px solid var(--gs-line); border-radius: 6px; background: var(--gs-card);\n    font: 400 14px var(--gs-font) !important; color: var(--gs-text); display: block; width: 240px; margin-top: 8px; background: var(--gs-sunk); }\nhtml[data-gius-skin~=\"extraSession\"] table#Table2 td:has(> #MainContent_fndRmBtn) > br { display: none; }\n\nhtml[data-gius-skin~=\"extraSession\"] p:has(> #MainContent_btnAdd) { max-width: 760px; margin: 14px 0 0; text-align: right; }\nhtml[data-gius-skin~=\"extraSession\"] #MainContent_btnAdd { height: 38px; padding: 0 16px; border-radius: 6px; border: 1px solid var(--gs-accent-line) !important; background: var(--gs-accent);\n    color: var(--gs-accent-fg); font: 600 14px var(--gs-font) !important; cursor: pointer; }\nhtml[data-gius-skin~=\"extraSession\"] #MainContent_btnAdd:not(:disabled):hover { background: var(--gs-accent-h); }\nhtml[data-gius-skin~=\"extraSession\"] #MainContent_btnAdd:disabled { border-color: var(--gs-line) !important; background: var(--gs-disabled-bg); color: var(--gs-disabled-fg); cursor: not-allowed; }\nhtml[data-gius-skin~=\"extraSession\"] #MainContent_LblAlrt { display: block; margin-top: 8px; font: 400 13px var(--gs-font); color: var(--gs-muted) !important; }\n\n/* ASP.NET month calendars on any other page (e.g. Take Attendance's UpdateDate on Berlin): their colours are\n   inline (title bar, day names, date links), so they keep a light block in dark mode. 5.0: the same small\n   month grid as Add Extra Session's, in the tokens; the picked date in the accent. */\nhtml[data-gius-skin] #right-panel .content table[title=\"Calendar\"]:not(#MainContent_dtClndr) {\n    background: var(--gs-card) !important; border: 1px solid var(--gs-line) !important; border-radius: 8px;\n    border-collapse: separate !important; border-spacing: 0; overflow: hidden; font: 400 13px var(--gs-font); color: var(--gs-text) !important;\n}\nhtml[data-gius-skin] #right-panel .content table[title=\"Calendar\"]:not(#MainContent_dtClndr) td[colspan=\"7\"],\nhtml[data-gius-skin] #right-panel .content table[title=\"Calendar\"]:not(#MainContent_dtClndr) td[colspan=\"7\"] :is(table, tr, td) {\n    background: var(--gs-sunk) !important; border: 0 !important; color: var(--gs-text) !important; font: 600 13px var(--gs-font) !important;\n}\nhtml[data-gius-skin] #right-panel .content table[title=\"Calendar\"]:not(#MainContent_dtClndr) td[colspan=\"7\"] { border-bottom: 1px solid var(--gs-line) !important; padding: 4px 6px; }\nhtml[data-gius-skin] #right-panel .content table[title=\"Calendar\"]:not(#MainContent_dtClndr) td[colspan=\"7\"] a {\n    display: inline-block; padding: 2px 8px; border-radius: 4px; color: var(--gs-muted) !important; font: 600 12px var(--gs-font) !important; text-decoration: none;\n}\nhtml[data-gius-skin] #right-panel .content table[title=\"Calendar\"]:not(#MainContent_dtClndr) td[colspan=\"7\"] a:hover { background: var(--gs-line-soft); color: var(--gs-text) !important; }\nhtml[data-gius-skin] #right-panel .content table[title=\"Calendar\"]:not(#MainContent_dtClndr) tr:has(> th) { background: transparent !important; }\nhtml[data-gius-skin] #right-panel .content table[title=\"Calendar\"]:not(#MainContent_dtClndr) th {\n    padding: 6px 2px 2px; background: transparent !important; border: 0 !important; font: 600 11px var(--gs-font) !important; color: var(--gs-muted) !important;\n}\nhtml[data-gius-skin] #right-panel .content table[title=\"Calendar\"]:not(#MainContent_dtClndr) td:not([colspan]) { padding: 1px; background: transparent !important; border: 0 !important; }\nhtml[data-gius-skin] #right-panel .content table[title=\"Calendar\"]:not(#MainContent_dtClndr) td:not([colspan]) > a {\n    display: block; min-width: 30px; line-height: 28px; border-radius: 6px; text-align: center; text-decoration: none; color: var(--gs-text) !important;\n}\nhtml[data-gius-skin] #right-panel .content table[title=\"Calendar\"]:not(#MainContent_dtClndr) td:not([colspan]) > a:hover { background: var(--gs-accent-tint); }\nhtml[data-gius-skin] #right-panel .content table[title=\"Calendar\"]:not(#MainContent_dtClndr) td:not([colspan])[style*=\"background\"] > a { background: var(--gs-accent); color: var(--gs-accent-fg) !important; font-weight: 700; }\n\n/* ── Page: Room Schedule (EXT/RoomSchedule_m.aspx, Cairo) ──\n   A centred Season dropdown, a Chosen room picker, the room's name in X-Large Arial and a 1000px bordered\n   timetable: a #cccccc day column and header, and for each day a row of slots plus a cyan #99ffff \"Free\" row.\n   5.0: Season as a field, the picker in the shared Chosen look, the timetable as on Groups Schedule (fits the\n   page, Free on the soft grey); a day's slot row is hidden while it holds nothing. */\nhtml[data-gius-skin~=\"roomSchedule\"] #right-panel .content p[align=\"center\"] { margin-left: 0; text-align: left; }\nhtml[data-gius-skin~=\"roomSchedule\"] #right-panel .content p:has(> #MainContent_ddlSeason) { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }\nhtml[data-gius-skin~=\"roomSchedule\"] #MainContent_Label1 { font: 600 13px var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin~=\"roomSchedule\"] #MainContent_ddlSeason { min-width: 160px; font: 400 14px var(--gs-font) !important; margin: 0 !important; }\nhtml[data-gius-skin~=\"roomSchedule\"] #MainContent_rsrcTpLst_chosen { width: 100% !important; max-width: 480px; margin: 4px 0 16px; }\nhtml[data-gius-skin~=\"roomSchedule\"] #MainContent_scdTpLbl { display: inline-block; margin: 0 0 4px; font: 700 20px/1.3 var(--gs-font) !important; color: var(--gs-text); }\nhtml[data-gius-skin~=\"roomSchedule\"] table#Table1 {\n    width: 100% !important; table-layout: fixed; border-collapse: separate !important; border-spacing: 0; background: var(--gs-card); border: 1px solid var(--gs-line) !important; border-radius: 8px;\n    overflow: hidden; font-family: var(--gs-font);\n}\nhtml[data-gius-skin~=\"roomSchedule\"] table#Table1 > tbody > tr > td { width: auto !important; padding: 0; border: 0 !important; border-top: 1px solid var(--gs-line-soft) !important; border-left: 1px solid var(--gs-line-soft) !important; background: transparent; vertical-align: middle; }\nhtml[data-gius-skin~=\"roomSchedule\"] table#Table1 > tbody > tr > td:first-child { width: 104px !important; padding: 8px 10px; border-left: 0 !important; text-align: left; }\nhtml[data-gius-skin~=\"roomSchedule\"] table#Table1 > tbody > tr:first-child { background: var(--gs-sunk); }\nhtml[data-gius-skin~=\"roomSchedule\"] table#Table1 > tbody > tr:first-child > td { border-top: 0 !important; background: var(--gs-sunk); padding: 10px 6px; border-bottom: 1px solid var(--gs-line) !important; }\nhtml[data-gius-skin~=\"roomSchedule\"] table#Table1 font { font: 600 13px var(--gs-font) !important; color: var(--gs-muted); }\nhtml[data-gius-skin~=\"roomSchedule\"] table#Table1 > tbody > tr > td:first-child font { color: var(--gs-text); }\nhtml[data-gius-skin~=\"roomSchedule\"] table#Table1 strong { font-weight: inherit; }\nhtml[data-gius-skin~=\"roomSchedule\"] table#Table1 td > table:not(:has(td)) { display: none; }\nhtml[data-gius-skin~=\"roomSchedule\"] table#Table1 td > table { border: 0 !important; }\nhtml[data-gius-skin~=\"roomSchedule\"] table#Table1 td > table td { padding: 6px; border: 0 !important; }\nhtml[data-gius-skin~=\"roomSchedule\"] table#Table1 span[id^=\"MainContent_lbl\"] { font: 600 12px/1.35 var(--gs-font) !important; color: var(--gs-text); }\nhtml[data-gius-skin~=\"roomSchedule\"] table#Table1 tr[id^=\"MainContent_rw\"]:not(:has(table[border=\"1\"] td, span[id^=\"MainContent_lbl\"]:not(:empty))) { display: none; }\nhtml[data-gius-skin~=\"roomSchedule\"] table#Table1 td[bgcolor=\"#99ffff\"] { padding: 8px !important; background: var(--gs-sunk) !important; }\nhtml[data-gius-skin~=\"roomSchedule\"] table#Table1 td[bgcolor=\"#99ffff\"] font { font: 500 12px var(--gs-font) !important; color: var(--gs-muted); }\n\n/* ── Page: Staff Group Link Request (EXT/StaffGroupLinkRequest_m.aspx, Cairo; its title reads \"GIU\") ──\n   One cell of loose lines: username / id / season, a checkbox, the linked-group dropdown, the group's\n   schedule, Add Group Link Request, then the requests and linked groups, each an X/XX-Small grid with a\n   navy #000084 header. 5.0: a card, the grids as 5.0 tables, the request button as the yellow action. */\nhtml[data-gius-skin~=\"groupLink\"] #right-panel .content .container { max-width: none; padding: 0; }\nhtml[data-gius-skin~=\"groupLink\"] #right-panel .content .container > .row { margin: 0; }\nhtml[data-gius-skin~=\"groupLink\"] #right-panel .content .container > .row > div { padding: 0; }\nhtml[data-gius-skin~=\"groupLink\"] #right-panel .content table.table03 { width: 100%; table-layout: fixed; background: var(--gs-card); border: 1px solid var(--gs-line) !important; border-radius: 8px; border-collapse: separate; }\nhtml[data-gius-skin~=\"groupLink\"] #right-panel .content table.table03 > tbody > tr > td.td02 { padding: 6px 20px 18px; }\nhtml[data-gius-skin~=\"groupLink\"] #right-panel .content table.table03 td.td02 > table { width: 100%; table-layout: fixed; }\nhtml[data-gius-skin~=\"groupLink\"] #right-panel .content table.table03 td.td02 > table > tbody > tr > td { font: 400 14px/1.6 var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin~=\"groupLink\"] #right-panel .content table.table03 td.td02 > table > tbody > tr > td > br:nth-child(-n+3) { display: none; }\nhtml[data-gius-skin~=\"groupLink\"] #right-panel .content table.table03 td.td02 > table > tbody > tr > td > br:nth-last-child(-n+3) { display: none; }\nhtml[data-gius-skin~=\"groupLink\"] #right-panel .content table.table03 strong { font-weight: 600; }\nhtml[data-gius-skin~=\"groupLink\"] #MainContent_L_Info1 { font: 600 14px var(--gs-font) !important; color: var(--gs-focus) !important; }\nhtml[data-gius-skin~=\"groupLink\"] #MainContent_CheckBox1 { margin-right: 6px; vertical-align: middle; }\nhtml[data-gius-skin~=\"groupLink\"] #MainContent_DDL_LinkedCourses { min-width: 160px; font: 400 14px var(--gs-font) !important; width: 100%; max-width: 760px; margin: 4px 0; }\nhtml[data-gius-skin~=\"groupLink\"] table[id^=\"MainContent_DG_\"] font { font: inherit !important; }\nhtml[data-gius-skin~=\"groupLink\"] table[id^=\"MainContent_DG_\"] { margin: 4px 0; }\nhtml[data-gius-skin~=\"groupLink\"] table[id^=\"MainContent_DG_\"] a { font-weight: 600; color: var(--gs-focus); }\nhtml[data-gius-skin~=\"groupLink\"] #MainContent_B_AddGroupLinkRequest { height: 38px; padding: 0 16px; border-radius: 6px; border: 1px solid var(--gs-accent-line) !important; background: var(--gs-accent);\n    color: var(--gs-accent-fg); font: 600 14px var(--gs-font) !important; cursor: pointer; margin: 8px 0 4px; }\nhtml[data-gius-skin~=\"groupLink\"] #MainContent_B_AddGroupLinkRequest:hover { background: var(--gs-accent-h); }\n\n/* ── Page: Student History [Classic] (EXT/StudentHistory_m.aspx, Cairo) ──\n   An application-number box, a bordered 672px student panel in X-Small Verdana, then one fixed 567x254px\n   bordered grid per list (past results, current courses, credit transfer, not in the GPA, GIU Berlin\n   courses) under a blue heading, GPA / earned hours, and the graduation-portal cutoff notes. 5.0: the lookup\n   and the student as cards, every grid a 5.0 table sized to its rows, headings in the page's type. A failed\n   course stays red, as the portal marks it. */\nhtml[data-gius-skin~=\"studentHistory\"] table#Table2.normal { width: 100% !important; }\nhtml[data-gius-skin~=\"studentHistory\"] table#Table1 { width: 100% !important; border: 0 !important; border-collapse: separate; border-spacing: 0; }\nhtml[data-gius-skin~=\"studentHistory\"] table#Table1 > tbody > tr > td { padding: 0 0 16px; border: 0 !important; text-align: left; font: 400 14px/1.5 var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin~=\"studentHistory\"] #MainContent_uniqAppNotxt { grid-row: 2; grid-column: 1; }\nhtml[data-gius-skin~=\"studentHistory\"] #MainContent_btnStdAppNo { grid-row: 2; grid-column: 2; }\nhtml[data-gius-skin~=\"studentHistory\"] #MainContent_uniqAppNo > td { display: grid; grid-template-columns: max-content max-content; justify-content: start; align-items: center; gap: 6px 10px; padding: 14px 18px !important; margin-bottom: 16px; background: var(--gs-card); border: 1px solid var(--gs-line) !important; border-radius: 8px; font: 600 13px var(--gs-font) !important; color: var(--gs-text) !important; }\nhtml[data-gius-skin~=\"studentHistory\"] #MainContent_uniqAppNotxt { height: 36px; padding: 0 10px; border: 1px solid var(--gs-line); border-radius: 6px; background: var(--gs-card);\n    font: 400 14px var(--gs-font) !important; color: var(--gs-text); width: 180px; }\nhtml[data-gius-skin~=\"studentHistory\"] #MainContent_uniqAppNotxt:focus { border-color: var(--gs-focus); box-shadow: 0 0 0 3px var(--gs-focus-ring); outline: 0; }\nhtml[data-gius-skin~=\"studentHistory\"] #MainContent_btnStdAppNo { height: 38px; padding: 0 16px; border-radius: 6px; border: 1px solid var(--gs-accent-line) !important; background: var(--gs-accent);\n    color: var(--gs-accent-fg); font: 600 14px var(--gs-font) !important; cursor: pointer; }\nhtml[data-gius-skin~=\"studentHistory\"] #MainContent_btnStdAppNo:hover { background: var(--gs-accent-h); }\nhtml[data-gius-skin~=\"studentHistory\"] #MainContent_stdName > td > table, html[data-gius-skin~=\"studentHistory\"] #MainContent_stdName > td > table > tbody > tr > td { width: 100%; padding: 0; border: 0; }\nhtml[data-gius-skin~=\"studentHistory\"] #MainContent_stdName table#Table2 { width: 100% !important; background: var(--gs-card); border: 1px solid var(--gs-line) !important; border-radius: 8px; border-collapse: separate; border-spacing: 0; }\nhtml[data-gius-skin~=\"studentHistory\"] #MainContent_stdName table#Table2 td { width: auto !important; padding: 8px 14px; border: 0 !important; vertical-align: top; font: 400 14px/1.5 var(--gs-font) !important; color: var(--gs-text); }\nhtml[data-gius-skin~=\"studentHistory\"] #MainContent_stdName table#Table2 > tbody > tr + tr > td { border-top: 1px solid var(--gs-line-soft) !important; }\nhtml[data-gius-skin~=\"studentHistory\"] #MainContent_stdName table#Table2 table td { padding: 0; border: 0 !important; }\nhtml[data-gius-skin~=\"studentHistory\"] #MainContent_stdName font { font: 600 13px var(--gs-font) !important; color: var(--gs-muted); }\nhtml[data-gius-skin~=\"studentHistory\"] #MainContent_stdName strong { font-weight: 600; }\nhtml[data-gius-skin~=\"studentHistory\"] #MainContent_stdName span[id^=\"MainContent_StudentData1_\"] { width: auto !important; font: 400 14px var(--gs-font) !important; color: var(--gs-text) !important; }\nhtml[data-gius-skin~=\"studentHistory\"] #MainContent_stdName #MainContent_StudentData1_lblStudentName { display: block !important; font-weight: 700 !important; }\nhtml[data-gius-skin~=\"studentHistory\"] #MainContent_stdName p { margin: 0 0 6px; }\nhtml[data-gius-skin~=\"studentHistory\"] #MainContent_StudentData1_DataGrid1 { width: auto !important; border: 0 !important; }\nhtml[data-gius-skin~=\"studentHistory\"] #MainContent_StudentData1_DataGrid1 tr { text-decoration: none !important; }\nhtml[data-gius-skin~=\"studentHistory\"] #MainContent_StudentData1_DataGrid1 td { font: 600 13px var(--gs-font) !important; color: var(--gs-muted); text-decoration: none; }\nhtml[data-gius-skin~=\"studentHistory\"] table#Table1 > tbody > tr > td:has(> table[id^=\"MainContent_dg\"]) { text-align: left; }\nhtml[data-gius-skin~=\"studentHistory\"] table#Table1 > tbody > tr > td:has(> table[id^=\"MainContent_dg\"]) :is(span[id^=\"MainContent_lblStd\"], font[color]) { display: block; margin: 4px 0 8px; font: 700 15px var(--gs-font) !important; color: var(--gs-text) !important; text-align: left; }\nhtml[data-gius-skin~=\"studentHistory\"] table#Table1 > tbody > tr > td span[id^=\"MainContent_lblCount\"] { display: block; margin-top: 4px; font: 400 12px var(--gs-font); color: var(--gs-muted); text-align: right; }\nhtml[data-gius-skin~=\"studentHistory\"] table[id^=\"MainContent_dg\"] font { font: inherit !important; }\nhtml[data-gius-skin~=\"studentHistory\"] table[id^=\"MainContent_dg\"] { width: 100% !important; height: auto !important; }\nhtml[data-gius-skin~=\"studentHistory\"] table[id^=\"MainContent_dg\"] > tbody > tr > td[align=\"center\"] { text-align: center; white-space: nowrap; }\nhtml[data-gius-skin~=\"studentHistory\"] table[id^=\"MainContent_dg\"] > tbody > tr[style*=\"Red\"] > td { color: var(--gs-err); font-weight: 600; }\nhtml[data-gius-skin~=\"studentHistory\"] #MainContent_Tr2 td { font: 400 14px var(--gs-font); }\nhtml[data-gius-skin~=\"studentHistory\"] :is(#MainContent_lblGpa, #MainContent_lblErndHr) { font: 700 14px var(--gs-font) !important; color: var(--gs-text) !important; }\nhtml[data-gius-skin~=\"studentHistory\"] #MainContent_lblNote { width: auto !important; font: 600 12px var(--gs-font) !important; }\nhtml[data-gius-skin~=\"studentHistory\"] table#Table1 ul { font: 400 12px/1.6 var(--gs-font) !important; color: var(--gs-muted); }\n\n/* ── Page: Faculty Process Map (FacultyProcessMap_m.aspx, Berlin) ──\n   A centred bold season dropdown, a course picker (Chosen), \"Season: <id>\" and a bordered three-lane map\n   (Dean / Lecturer / Exam Office) separated by whitesmoke rows. Each step is a link in Blue: a live step is\n   a postback link; a step that cannot be done yet is disabled, painted on Red when it is still waiting.\n   5.0: pickers on the left, the season's id hidden, the map as a card with grey lane headings and thin step\n   gaps; live steps as link-buttons, waiting ones as soft red chips, other disabled ones grey. */\nhtml[data-gius-skin~=\"processMap\"] #Table1.normal { width: 100% !important; }\nhtml[data-gius-skin~=\"processMap\"] #Table1.normal > tbody > tr > td { text-align: left; }\nhtml[data-gius-skin~=\"processMap\"] #MainContent_dlSeason { min-width: 220px; margin: 4px 0 12px; font-weight: 400 !important; }\nhtml[data-gius-skin~=\"processMap\"] #Table1.normal p:has(> #MainContent_smCrsIdLst_chosen) { margin: 0 !important; padding: 0 !important; text-indent: 0; }\nhtml[data-gius-skin~=\"processMap\"] #MainContent_smCrsIdLst_chosen { max-width: 640px; margin: 0 !important; text-align: left; }\nhtml[data-gius-skin~=\"processMap\"] p:has(> #MainContent_L_Season) { display: none; }\nhtml[data-gius-skin~=\"processMap\"] table#MainContent_mapTbl {\n    width: 100% !important; margin-top: 16px; border: 1px solid var(--gs-line) !important; border-collapse: separate !important; border-spacing: 0;\n    border-radius: 8px; overflow: hidden; background: var(--gs-card); font: 400 14px/1.4 var(--gs-font); table-layout: fixed;\n}\nhtml[data-gius-skin~=\"processMap\"] table#MainContent_mapTbl td { padding: 12px; border: 0 !important; border-left: 1px solid var(--gs-line-soft) !important; vertical-align: middle; text-align: center; }\nhtml[data-gius-skin~=\"processMap\"] table#MainContent_mapTbl td:first-child { border-left: 0 !important; }\nhtml[data-gius-skin~=\"processMap\"] table#MainContent_mapTbl tr:first-child > td { padding: 10px 12px; background: var(--gs-sunk); border-bottom: 1px solid var(--gs-line) !important; font: 600 13px var(--gs-font); color: var(--gs-muted); }\nhtml[data-gius-skin~=\"processMap\"] table#MainContent_mapTbl td[colspan] { height: 0; padding: 0; font-size: 0; line-height: 0; background: transparent !important; border-left: 0 !important; border-top: 1px solid var(--gs-line-soft) !important; }\nhtml[data-gius-skin~=\"processMap\"] table#MainContent_mapTbl hr { width: 60%; margin: 10px auto; border: 0; border-top: 1px solid var(--gs-line-soft); }\nhtml[data-gius-skin~=\"processMap\"] table#MainContent_mapTbl a[id^=\"Act\"] {\n    display: inline-block; max-width: 100%; padding: 7px 12px; border: 1px solid var(--gs-line); border-radius: 6px; background: var(--gs-card) !important;\n    color: var(--gs-focus) !important; font: 600 13px/1.35 var(--gs-font); text-decoration: none !important;\n}\nhtml[data-gius-skin~=\"processMap\"] table#MainContent_mapTbl a[id^=\"Act\"][href]:hover { background: var(--gs-sunk) !important; border-color: var(--gs-line-2); }\nhtml[data-gius-skin~=\"processMap\"] table#MainContent_mapTbl a[id^=\"Act\"].aspNetDisabled { border-color: var(--gs-line-soft); background: var(--gs-sunk) !important; color: var(--gs-muted) !important; font-weight: 500; cursor: default; }\nhtml[data-gius-skin~=\"processMap\"] table#MainContent_mapTbl a[id^=\"Act\"].aspNetDisabled[style*=\"background-color:Red\"] { border-color: var(--gs-err-line); background: var(--gs-err-bg) !important; color: var(--gs-err) !important; }\n\n/* ── Page: System Message (WWW/SystemMessage.aspx, e.g. \"Access Denied!!, for Page: …\") ──\n   Not the portal layout (no sidebar or header): a Bootstrap \"wizard\" card on grey with an empty heading, the\n   message title (\"SystemMessage\") in red, the message on a yellow alert and \"Kindly login to the system…\" in\n   red; its ReLogin / Review buttons are hidden by the portal. 5.0: a narrow white card in the middle of the\n   5.0 ground, the message as its heading on a soft red box, the advice muted. */\nhtml[data-gius-skin~=\"systemMessage\"] body { background: var(--gs-bg) !important; font-family: var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin~=\"systemMessage\"] .wizard-container { max-width: 640px; margin: 72px auto 0; padding: 0 16px; }\nhtml[data-gius-skin~=\"systemMessage\"] .wizard-card {\n    min-height: 0 !important; margin: 0; padding: 28px 32px 24px; background: var(--gs-card) !important; border: 1px solid var(--gs-line);\n    border-radius: 12px; box-shadow: 0 8px 24px var(--gs-shade-08) !important;\n}\nhtml[data-gius-skin~=\"systemMessage\"] .wizard-card .wizard-header, html[data-gius-skin~=\"systemMessage\"] .wizard-card .card-body:not(:has(*:not(:empty))) { display: none; }\nhtml[data-gius-skin~=\"systemMessage\"] .wizard-card #aci > [class*=\"col-\"] { float: none; width: auto; margin: 0; padding: 0; }\nhtml[data-gius-skin~=\"systemMessage\"] .wizard-card h4:has(> .card-title > #lbl_err_title) { display: none; }\nhtml[data-gius-skin~=\"systemMessage\"] .wizard-card .alert.alert-danger {\n    display: flex; align-items: flex-start; gap: 10px; margin: 0 0 14px; padding: 14px 16px; border: 1px solid var(--gs-err-line) !important;\n    border-radius: 8px; background: var(--gs-err-bg) !important; color: var(--gs-err);\n}\nhtml[data-gius-skin~=\"systemMessage\"] .wizard-card .alert.alert-danger::before {\n    content: \"!\"; flex: 0 0 22px; height: 22px; border-radius: 50%; background: var(--gs-err); color: var(--gs-on-strong);\n    font: 700 14px/22px var(--gs-font); text-align: center;\n}\nhtml[data-gius-skin~=\"systemMessage\"] .wizard-card #lbl_err { font: 600 15px/1.45 var(--gs-font); color: var(--gs-text); overflow-wrap: anywhere; }\nhtml[data-gius-skin~=\"systemMessage\"] .wizard-card p.card-text { margin: 0; font: 400 14px/1.5 var(--gs-font); color: var(--gs-muted) !important; }\nhtml[data-gius-skin~=\"systemMessage\"] .wizard-card p.card-text cite { font-style: normal; }\n/* The portal hides its two way-out buttons (Bootstrap .hide); 5.0 shows them: ReLogin yellow, Review Accounts white. */\nhtml[data-gius-skin~=\"systemMessage\"] .wizard-card .wizard-footer { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; margin: 20px 0 0; padding: 16px 0 0; border-top: 1px solid var(--gs-line-soft); }\nhtml[data-gius-skin~=\"systemMessage\"] .wizard-card .wizard-footer > .pull-right.hide { display: block !important; float: none; }\nhtml[data-gius-skin~=\"systemMessage\"] .wizard-card .wizard-footer > .clearfix { display: none; }\nhtml[data-gius-skin~=\"systemMessage\"] .wizard-card .wizard-footer > div:has(> #lnk_manage) { order: 2; }\nhtml[data-gius-skin~=\"systemMessage\"] .wizard-card .wizard-footer .btn {\n    display: inline-flex; align-items: center; height: 38px; min-width: 0; margin: 0; padding: 0 16px; border-radius: 6px; box-shadow: none !important;\n    border: 1px solid var(--gs-line) !important; background: var(--gs-card) !important; color: var(--gs-text) !important;\n    font: 600 14px var(--gs-font) !important; text-transform: none; letter-spacing: 0; text-decoration: none;\n}\nhtml[data-gius-skin~=\"systemMessage\"] .wizard-card .wizard-footer .btn:hover { background: var(--gs-sunk) !important; }\nhtml[data-gius-skin~=\"systemMessage\"] .wizard-card .wizard-footer #lnk_manage { border-color: var(--gs-accent-line) !important; background: var(--gs-accent) !important; color: var(--gs-accent-fg) !important; }\nhtml[data-gius-skin~=\"systemMessage\"] .wizard-card .wizard-footer #lnk_manage:hover { background: var(--gs-accent-h) !important; }\n\n/* Access Denied (built by the page's ready step, mock: Feedback board): the portal's message, alert and\n   buttons give way to one centred card. ReLogin stays hidden: it does not sign anyone out. */\nhtml[data-gius-skin~=\"systemMessage\"] .wizard-card.gius-denied-card { padding: 32px 28px 26px; }\nhtml[data-gius-skin~=\"systemMessage\"] .wizard-card.gius-denied-card > :not(.gius-denied) { display: none !important; }\nhtml:is([data-gius-skin~=\"systemMessage\"], [data-gius-skin~=\"accessDenied\"]) .gius-denied { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; font-family: var(--gs-font); }\nhtml:is([data-gius-skin~=\"systemMessage\"], [data-gius-skin~=\"accessDenied\"]) .gius-denied-icon {\n    display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 50%;\n    background: var(--gs-accent-tint); color: var(--gs-warn);\n}\nhtml:is([data-gius-skin~=\"systemMessage\"], [data-gius-skin~=\"accessDenied\"]) .gius-denied-title { font: 700 18px/1.35 var(--gs-font); color: var(--gs-text); overflow-wrap: anywhere; }\nhtml:is([data-gius-skin~=\"systemMessage\"], [data-gius-skin~=\"accessDenied\"]) .gius-denied-why { max-width: 360px; font: 400 13px/1.5 var(--gs-font); color: var(--gs-muted); }\nhtml:is([data-gius-skin~=\"systemMessage\"], [data-gius-skin~=\"accessDenied\"]) .gius-denied-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 6px; }\nhtml:is([data-gius-skin~=\"systemMessage\"], [data-gius-skin~=\"accessDenied\"]) .gius-denied-btn {\n    display: inline-flex; align-items: center; height: 36px; padding: 0 16px; border: 1px solid var(--gs-line); border-radius: 6px;\n    background: var(--gs-card); color: var(--gs-text) !important; font: 600 13px var(--gs-font); text-decoration: none !important;\n}\nhtml:is([data-gius-skin~=\"systemMessage\"], [data-gius-skin~=\"accessDenied\"]) .gius-denied-btn:hover { background: var(--gs-sunk); }\nhtml:is([data-gius-skin~=\"systemMessage\"], [data-gius-skin~=\"accessDenied\"]) .gius-denied-btn--primary { border-color: var(--gs-accent-line); background: var(--gs-accent); color: var(--gs-accent-fg) !important; }\nhtml:is([data-gius-skin~=\"systemMessage\"], [data-gius-skin~=\"accessDenied\"]) .gius-denied-btn--primary:hover { background: var(--gs-accent-h); }\nhtml:is([data-gius-skin~=\"systemMessage\"], [data-gius-skin~=\"accessDenied\"]) .gius-denied-note { max-width: 380px; margin-top: 4px; font: 400 12px/1.5 var(--gs-font); color: var(--gs-muted); }\n\nhtml:is([data-gius-skin~=\"systemMessage\"], [data-gius-skin~=\"accessDenied\"]) .gius-denied-reason {\n    padding: 3px 10px; border: 1px solid var(--gs-err-line); border-radius: 999px; background: var(--gs-err-bg); color: var(--gs-err); font: 600 12px/1.5 var(--gs-font);\n}\n\n/* ── Page: Access Denied Message (EXT/AccessDeniedMessage.aspx, Cairo) ──\n   An older bare page with no portal layout or styles: \"Message:Service is closed\" in red at size 5, Student\n   / Staff buttons and a 666 x 264px \"To grant access\" fieldset in dark green. 5.0 (mock: Feedback board): the\n   Access Denied card, the portal's message as its reason; the Student / Staff switch and the instructions\n   in a second card under it. */\nhtml[data-gius-skin~=\"accessDenied\"] body { margin: 0; background: var(--gs-bg) !important; font-family: var(--gs-font); color: var(--gs-text); }\nhtml[data-gius-skin~=\"accessDenied\"] #form1 > br { display: none; }\nhtml[data-gius-skin~=\"accessDenied\"] #form1 > .gius-denied {\n    box-sizing: border-box; max-width: 560px; margin: 72px auto 0; padding: 32px 28px 26px; background: var(--gs-card);\n    border: 1px solid var(--gs-line); border-radius: 12px; box-shadow: 0 8px 24px var(--gs-shade-08);\n}\nhtml[data-gius-skin~=\"accessDenied\"] .gius-denied-more { display: block; box-sizing: border-box; max-width: 560px; margin: 16px auto 48px; text-align: left; font-family: var(--gs-font); }\nhtml[data-gius-skin~=\"accessDenied\"] .gius-denied-more > span, html[data-gius-skin~=\"accessDenied\"] .gius-denied-more > center:not(:has(table, fieldset)) { display: none; }\nhtml[data-gius-skin~=\"accessDenied\"] .gius-denied-more > center { display: block; text-align: left; }\nhtml[data-gius-skin~=\"accessDenied\"] .gius-denied-more table { margin: 0 0 10px; border-collapse: collapse; }\nhtml[data-gius-skin~=\"accessDenied\"] .gius-denied-more table td { padding: 0 8px 0 0; }\nhtml[data-gius-skin~=\"accessDenied\"] .gius-denied-more :is(#BTN_Student, #BTN_Staff) {\n    width: auto !important; height: 34px; padding: 0 14px; border: 1px solid var(--gs-line); border-radius: 6px; background: var(--gs-card);\n    color: var(--gs-text); font: 600 13px var(--gs-font); cursor: pointer;\n}\nhtml[data-gius-skin~=\"accessDenied\"] .gius-denied-more :is(#BTN_Student, #BTN_Staff):hover { background: var(--gs-sunk); }\nhtml[data-gius-skin~=\"accessDenied\"] .gius-denied-more fieldset {\n    box-sizing: border-box; width: auto !important; height: auto !important; margin: 0; padding: 16px 20px;\n    background: var(--gs-card); border: 1px solid var(--gs-line); border-radius: 8px; font: 400 14px/1.55 var(--gs-font);\n}\nhtml[data-gius-skin~=\"accessDenied\"] .gius-denied-more fieldset legend { float: left; width: 100%; margin: 0 0 4px; padding: 0; font: 700 15px var(--gs-font); }\nhtml[data-gius-skin~=\"accessDenied\"] .gius-denied-more fieldset p { clear: both; margin: 0 0 10px; }\nhtml[data-gius-skin~=\"accessDenied\"] .gius-denied-more fieldset font { font: inherit !important; color: var(--gs-muted) !important; }\nhtml[data-gius-skin~=\"accessDenied\"] .gius-denied-more fieldset :is(b, strong) font, html[data-gius-skin~=\"accessDenied\"] .gius-denied-more fieldset font :is(b, strong), html[data-gius-skin~=\"accessDenied\"] .gius-denied-more fieldset legend font { color: var(--gs-text) !important; font-weight: 600 !important; }\nhtml[data-gius-skin~=\"accessDenied\"] .gius-denied-more fieldset u { text-decoration: none; }\n";
+
+// On by default since 5.0. Before that it was opt-in, and saving any Control Center change stored
+// portalLook: false, so 5.0 turns it on once for everyone; switching it off after that sticks.
+const PORTAL_LOOK_DEFAULT_KEY = 'giuPortalLookOnV1';
+
+function portalSkinEnabled() {
+    try {
+        const saved = JSON.parse(localStorage.getItem('gius-features') || '{}');
+        if (!localStorage.getItem(PORTAL_LOOK_DEFAULT_KEY)) {
+            if (saved.portalLook === false) {
+                saved.portalLook = true;
+                localStorage.setItem('gius-features', JSON.stringify(saved));
+            }
+            localStorage.setItem(PORTAL_LOOK_DEFAULT_KEY, '1');
+        }
+        return saved.portalLook !== false;
+    }
+    catch { return true; }
+}
+
+// Dark mode (5.0 look only), switched from the button in the portal header and remembered per browser.
+// data-gius-dark on <html> swaps the --gs-* tokens to their dark values (the CSS's dark block). The features'
+// own dark rules (written for GIU Theme's gius-dark class) follow it too: the build widens them to
+// html:is(.gius-dark, [data-gius-dark]) and points their colours at the dark block's --gs-dk-* tokens. The
+// class itself is never set: the look's "not inside our widgets" checks ([class*="gius-"] *) would then
+// match the whole page.
+const PORTAL_DARK_KEY = 'giuPortalDarkV1';
+const PORTAL_DARK_ICON = {
+    moon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>',
+    sun: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>',
+};
+
+function portalDarkOn() {
+    try { return localStorage.getItem(PORTAL_DARK_KEY) === '1'; }
+    catch { return false; }
+}
+
+function setPortalDark(on) {
+    const root = document.documentElement;
+    root.toggleAttribute('data-gius-dark', on);
+    const btn = document.getElementById('gius-dark-toggle');
+    if (btn) {
+        btn.innerHTML = on ? PORTAL_DARK_ICON.sun : PORTAL_DARK_ICON.moon;
+        btn.title = on ? 'Switch to light mode' : 'Switch to dark mode';
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    }
+}
+
+// The portal header (any page that has one): a sun / moon button between the role and the account name.
+function addPortalDarkToggle() {
+    const menu = document.querySelector('#header .header-menu');
+    if (!menu || document.getElementById('gius-dark-toggle')) return;
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.id = 'gius-dark-toggle';
+    btn.className = 'gius-dark-toggle';
+    btn.setAttribute('aria-label', 'Dark mode');
+    // Pulses until it has been clicked once (any saved choice counts as clicked).
+    try { if (localStorage.getItem(PORTAL_DARK_KEY) === null) btn.classList.add('gius-dark-toggle-new'); } catch { /* storage blocked: no pulse */ }
+    btn.addEventListener('click', () => {
+        const on = !document.documentElement.hasAttribute('data-gius-dark');
+        try { localStorage.setItem(PORTAL_DARK_KEY, on ? '1' : '0'); } catch { /* storage blocked: this page only */ }
+        btn.classList.remove('gius-dark-toggle-new');
+        setPortalDark(on);
+    });
+    menu.insertBefore(btn, menu.querySelector(':scope > .col-sm-5'));
+    setPortalDark(document.documentElement.hasAttribute('data-gius-dark'));
+}
+
+// Marks the current page's sidebar link (gius-skin-current) and the group it
+// sits in (gius-skin-current-group); the CSS highlights both. Without a listed id
+// (shell pages), the sidebar link whose address is this page's (group
+// headings are skipped: they all point at Console.aspx).
+function markPortalSkinCurrent(links) {
+    const here = location.pathname.toLowerCase();
+    const link = links.map(id => document.getElementById(id)).find(Boolean) ||
+        Array.from(document.querySelectorAll('#left-panel a[href]:not(.dropdown-toggle)')).find(a => {
+            try { return a.getAttribute('href').charAt(0) !== '#' && new URL(a.href).pathname.toLowerCase() === here && !new URL(a.href).hash; }
+            catch { return false; }
+        });
+    if (!link) return;
+    link.classList.add('gius-skin-current');
+    const group = link.closest('li.menu-item-has-children');
+    if (group) group.classList.add('gius-skin-current-group');
+}
+
+// Student Attendance Report: the absence levels table's last column holds a bare
+// 0-3. Each becomes a pill naming the level (gius-level-0…3; colours in the CSS),
+// the same scale Cairo's Student Attendance Report feature uses.
+const ABSENCE_LEVEL_NAMES = ['None', 'First warning', 'Second warning', 'Drop'];
+function markAbsenceLevels() {
+    const grid = document.getElementById('MainContent_DTG_Warnings002');
+    if (!grid) return;
+    Array.from(grid.rows).slice(1).forEach(row => {
+        const cell = row.cells[row.cells.length - 1];
+        const text = cell ? cell.textContent.trim() : '';
+        if (!/^[0-3]$/.test(text)) return;
+        const pill = document.createElement('span');
+        pill.className = 'gius-level gius-level-' + text;
+        pill.textContent = text + ' · ' + ABSENCE_LEVEL_NAMES[+text];
+        cell.textContent = '';
+        cell.appendChild(pill);
+    });
+}
+
+// Groups Schedule: "Seventh&nbsp;Period" / "Eighth&nbsp;Period" cannot wrap, and the
+// timetable now fits the page, so its narrow columns would break them mid-word.
+function unglueScheduleHeads() {
+    const grid = document.getElementById('scdTbl');
+    if (!grid || !grid.rows.length) return;
+    grid.rows[0].querySelectorAll('div').forEach(div => {
+        if (div.firstChild && div.childNodes.length === 1 && div.firstChild.nodeType === 3) {
+            div.firstChild.nodeValue = div.firstChild.nodeValue.replace(/\u00a0/g, ' ');
+        }
+    });
+}
+
+// Labels above fields (mock board 2). Portal filters write a label as loose text in
+// front of its field ("Course: <select>"); CSS cannot reach a text node, so each
+// label and its field (plus the Chosen box the portal adds after a select) go into
+// one .gs-fgroup with the label as .gs-flabel, colon dropped.
+function groupFieldLabels(root) {
+    if (!root || root.dataset.giusGrouped) return;
+    root.dataset.giusGrouped = '1';
+    const blank = n => (n.nodeType === 3 && !n.nodeValue.replace(/ /g, ' ').trim()) || (n.nodeType === 1 && n.tagName === 'BR');
+    const isField = n => n && n.nodeType === 1 && n.matches('select, textarea, input:not([type="hidden"]):not([type="submit"]):not([type="button"])');
+    const nodes = Array.from(root.childNodes);
+    nodes.forEach((t, i) => {
+        if (t.nodeType !== 3) return;
+        const text = t.nodeValue.replace(/ /g, ' ').replace(/\s+/g, ' ').trim();
+        if (!text) return;
+        let j = i + 1;
+        while (j < nodes.length && blank(nodes[j])) j++;
+        if (!isField(nodes[j])) return;
+        const group = document.createElement('div');
+        group.className = 'gs-fgroup';
+        const label = document.createElement('span');
+        label.className = 'gs-flabel';
+        label.textContent = text.replace(/\s*:\s*$/, '');
+        root.insertBefore(group, t);
+        t.remove();
+        group.append(label, nodes[j]);
+        // The Chosen box follows its select, though not always as a sibling (a <p> split by the parser).
+        const chosen = nodes[j].id && document.getElementById(nodes[j].id + '_chosen');
+        if (chosen) group.appendChild(chosen);
+    });
+}
+
+// Manage Group Grade: Season, Course, Group and Evaluation Method each get their label on top.
+function labelGroupGradeFilters() {
+    document.querySelectorAll('#MainContent_choiceTr td, #MainContent_choiceTr td > p').forEach(groupFieldLabels);
+}
+
+// Manage Grade: "Semester:<br>Course:" share one cell beside the two pickers; each picker gets
+// its own label above it instead (the shared cell is hidden by the CSS).
+function labelManageGradeFilters() {
+    [['MainContent_smstrIdLst', 'Semester'], ['MainContent_crsLst', 'Course']].forEach(([id, text]) => {
+        const field = document.getElementById(id);
+        if (!field || (field.previousElementSibling && field.previousElementSibling.classList.contains('gs-flabel'))) return;
+        const label = document.createElement('span');
+        label.className = 'gs-flabel';
+        label.textContent = text;
+        field.parentNode.insertBefore(label, field);
+    });
+}
+
+// View Evaluation Summary: some comment rows hold only spaces, which CSS cannot
+// tell from text; they are marked so the comment list skips them.
+function markBlankComments() {
+    document.querySelectorAll('table#Table2:not(:has(td[colspan])) td').forEach(td => {
+        if (!td.textContent.trim()) td.parentElement.classList.add('gius-blank');
+    });
+}
+
+// Student History (Berlin): the "History From Linked Campus" link is hidden (user's call). Found by its
+// text: the saved page is Cairo's, which does not have it.
+function hideLinkedCampusLink() {
+    document.querySelectorAll('#right-panel .content a').forEach(a => {
+        if (/history\s+from\s+linked\s+campus/i.test(a.textContent)) a.style.setProperty('display', 'none', 'important');
+    });
+}
+
+// The sidebar's pages (file name → address and name), remembered from any page
+// that has the sidebar, so the Access Denied page (which has none) can name the
+// page it refused and offer to open it again.
+const PORTAL_PAGES_KEY = 'giuPortalPagesV1';
+function rememberPortalPages() {
+    const links = document.querySelectorAll('#left-panel a[href]:not(.dropdown-toggle)');
+    if (!links.length) return;
+    const pages = {};
+    links.forEach(a => {
+        try {
+            const url = new URL(a.href);
+            const m = url.origin === location.origin && url.pathname.match(/\/([^/]+)\.aspx$/i);
+            const name = a.textContent.replace(/\s+/g, ' ').trim();
+            if (m && name && !pages[m[1].toLowerCase()]) pages[m[1].toLowerCase()] = { path: url.pathname, name };
+        } catch { /* not a page link */ }
+    });
+    try {
+        const json = JSON.stringify(pages);
+        if (localStorage.getItem(PORTAL_PAGES_KEY) !== json) localStorage.setItem(PORTAL_PAGES_KEY, json);
+    } catch { /* storage full or blocked */ }
+}
+
+// "ManageGroupGrade_m" → "Manage Group Grade", for a page the sidebar never showed.
+function readablePageName(file) {
+    const part = file.replace(/(_m|_b|_\d+|H\d+|Berlin)+$/i, '').split('_').pop();
+    return part.replace(/([a-z])([A-Z])/g, '$1 $2').replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2');
+}
+
+// System Message saying "Access Denied!!, for Page: X.aspx": the portal's red title, yellow alert and a
+// ReLogin link that does not sign anyone out become one card (mock: Feedback board): which page, why it
+// may have happened, Back to Home / Try again, and how to switch accounts. Other system messages keep
+// the portal's own text.
+function rememberedPortalPages() {
+    try { return JSON.parse(localStorage.getItem(PORTAL_PAGES_KEY) || '{}') || {}; }
+    catch { return {}; }
+}
+
+// The Access Denied card (mock: Feedback board): lock, title, the portal's reason when it gave one, Back
+// to Home, Try again when the refused page's address is known, and how to switch accounts.
+function accessDeniedCard({ title, reason, retry }) {
+    const pages = rememberedPortalPages();
+    const box = document.createElement('div');
+    box.className = 'gius-denied';
+    box.innerHTML = `
+        <div class="gius-denied-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+        <strong class="gius-denied-title"></strong>
+        <span class="gius-denied-reason" hidden></span>
+        <span class="gius-denied-why">Your account has no access to this page. You may be off the university network, or not assigned to a course this season.</span>
+        <div class="gius-denied-actions"><a class="gius-denied-btn gius-denied-btn--primary" data-act="home">Back to Home</a></div>
+        <span class="gius-denied-note">Need a different account? Close every browser window, then open the portal again. The portal has no working sign-out.</span>`;
+    box.querySelector('.gius-denied-title').textContent = title;
+    if (reason) {
+        const r = box.querySelector('.gius-denied-reason');
+        r.textContent = reason;
+        r.hidden = false;
+    }
+    box.querySelector('[data-act="home"]').href = (pages.home && pages.home.path) || '/GIUb/INTStaff/Home.aspx';
+    if (retry) {
+        const again = document.createElement('a');
+        again.className = 'gius-denied-btn';
+        again.textContent = 'Try again';
+        again.href = retry;
+        box.querySelector('.gius-denied-actions').appendChild(again);
+    }
+    return box;
+}
+
+function buildAccessDenied() {
+    const err = document.getElementById('lbl_err');
+    const card = document.querySelector('.wizard-card');
+    const m = err && err.textContent.match(/access denied[\s\S]*?page\s*:\s*([\w.-]+?)(?:\.aspx)?\s*$/i);
+    if (!card || !m) return;
+    const page = rememberedPortalPages()[m[1].toLowerCase()];
+    card.classList.add('gius-denied-card');
+    card.appendChild(accessDeniedCard({
+        title: "You can't open " + (page ? page.name : readablePageName(m[1])),
+        retry: page && page.path,
+    }));
+}
+
+// AccessDeniedMessage.aspx: an older bare page (no portal layout or styles): "Message:Service is closed" in
+// red, Student / Staff buttons and a "To grant access" fieldset. It does not say which page was refused, so
+// the card names none and offers no Try again; the portal's message becomes its reason. The Student / Staff
+// switch and the instructions stay under the card (gius-denied-more).
+function buildAccessDeniedMessage() {
+    const form = document.getElementById('form1');
+    const outer = form && form.querySelector(':scope > center');
+    if (!outer) return;
+    const msg = document.getElementById('L_Message');
+    const reason = msg ? msg.textContent.replace(/^\s*message\s*:\s*/i, '').trim() : '';
+    outer.classList.add('gius-denied-more');
+    form.insertBefore(accessDeniedCard({ title: "You can't open this page", reason }), outer);
+}
+
+function applyPortalSkin(host) {
+    if ((host && location.hostname !== host) || !portalSkinEnabled()) return;
+    const file = location.pathname.split('/').pop().replace(/\.aspx$/i, '').toLowerCase();
+    const page = PORTAL_SKIN_PAGES[file] || PORTAL_SKIN_SHELL;
+    const apply = () => {
+        const root = document.documentElement;
+        root.setAttribute('data-gius-skin', page.key);
+        // Which portal: the two use different logos under one file name (dark mode swaps in a version of each).
+        if (/(^|\.)giu-berlin\.de$/.test(location.hostname)) root.setAttribute('data-gius-portal', 'berlin');
+        if (portalDarkOn()) setPortalDark(true);
+        if (document.getElementById('gius-portal-skin')) return;
+        const style = document.createElement('style');
+        style.id = 'gius-portal-skin';
+        style.textContent = PORTAL_SKIN_CSS;
+        (document.head || root).appendChild(style);
+    };
+    // At document-start <html> itself can still be missing.
+    if (document.documentElement) apply();
+    else {
+        new MutationObserver((_, obs) => {
+            if (document.documentElement) { obs.disconnect(); apply(); }
+        }).observe(document, { childList: true });
+    }
+    // The sidebar only exists once the page is parsed.
+    const mark = () => {
+        // A server error page (e.g. IIS 401, no form): take the look back off, as the features never start there.
+        if (!document.querySelector('form')) {
+            document.documentElement.removeAttribute('data-gius-skin');
+            document.documentElement.removeAttribute('data-gius-portal');
+            document.documentElement.removeAttribute('data-gius-dark');
+            const style = document.getElementById('gius-portal-skin');
+            if (style) style.remove();
+            return;
+        }
+        markPortalSkinCurrent(page.links);
+        rememberPortalPages();
+        addPortalDarkToggle();
+        if (page.ready) page.ready();
+    };
+    // Switched in another tab: follow it.
+    window.addEventListener('storage', e => {
+        if (e.key === PORTAL_DARK_KEY) setPortalDark(e.newValue === '1');
+    });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mark, { once: true });
+    else mark();
+}
+    try { applyPortalSkin(); } catch (e) { console.warn('[GIU-SS:portalLook]', e); }
+
+    // Everything else needs the parsed page. At document-start, start one tick
+    // after DOMContentLoaded so the portal's own ready handlers (jQuery, Chosen)
+    // run first — the moment the old document-idle run-at gave. Already parsed
+    // (e.g. injected into a loaded page): start right away.
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => setTimeout(start, 0), { once: true });
+    } else {
+        start();
+    }
+
+    // The feature bootstrap (body kept at its pre-5.0 indentation).
+    function start() {
     // Server error page (e.g. IIS 401): no portal markup — inject nothing.
     function isServerErrorPage() {
         if (document.querySelector('form')) return false;
@@ -24,6 +418,33 @@
         return /^\s*[45]\d\d\s*-/.test(document.title) || (!!h1 && /server error/i.test(h1.textContent));
     }
     if (isServerErrorPage()) return;
+
+    // The shared button style (gs-btn), injected once; the shared dialog calls it too.
+    function uiStyles() {
+                if (document.getElementById('gius-ui-styles')) return;
+                const style = document.createElement('style');
+                style.id = 'gius-ui-styles';
+                const B = ':is(button, a, input).gs-btn.gs-btn';
+                style.textContent = `
+                    ${B} {
+                        display: inline-flex; align-items: center; justify-content: center; gap: 6px; box-sizing: border-box;
+                        height: 36px; min-height: 0; padding: 0 14px; border: 1px solid var(--gs-line, #d0d7de); border-radius: 6px;
+                        background: var(--gs-card, #ffffff); color: var(--gs-text, #1f2328); box-shadow: none; transform: none;
+                        font: 600 13px/1 var(--gs-font, system-ui, 'Segoe UI', Roboto, Arial, sans-serif); letter-spacing: normal; text-transform: none;
+                        text-decoration: none; white-space: nowrap; vertical-align: middle; cursor: pointer; opacity: 1; transition: background-color .12s, border-color .12s;
+                    }
+                    ${B}:hover:not(:disabled) { background: var(--gs-sunk, #f6f8fa); border-color: var(--gs-line-2, #afb8c1); color: var(--gs-text, #1f2328); box-shadow: none; transform: none; }
+                    ${B}:focus-visible { outline: 2px solid var(--gs-focus, #0969da); outline-offset: 2px; }
+                    ${B}.gs-btn--primary { border-color: var(--gs-accent-line, #d9a400); background: var(--gs-accent, #ffc107); color: var(--gs-accent-fg, #1a1a1a); }
+                    ${B}.gs-btn--primary:hover:not(:disabled) { border-color: var(--gs-accent-line, #d9a400); background: var(--gs-accent-h, #ffb300); color: var(--gs-accent-fg, #1a1a1a); }
+                    ${B}.gs-btn--danger { border-color: var(--gs-danger, #cf222e); background: var(--gs-danger, #cf222e); color: #ffffff; }
+                    ${B}.gs-btn--danger:hover:not(:disabled) { border-color: var(--gs-danger-h, #a40e26); background: var(--gs-danger-h, #a40e26); color: #ffffff; }
+                    ${B}.gs-btn--quiet { height: auto; padding: 2px 0; border-color: transparent; background: transparent; color: var(--gs-focus, #0969da); }
+                    ${B}.gs-btn--quiet:hover:not(:disabled) { border-color: transparent; background: transparent; color: var(--gs-focus, #0969da); text-decoration: underline; }
+                    ${B}.gs-btn--sm { height: 30px; padding: 0 10px; font-size: 12px; }
+                    ${B}:disabled { border-color: var(--gs-line, #d0d7de); background: var(--gs-disabled-bg, #eaeef2); color: var(--gs-disabled-fg, #6e7781); cursor: not-allowed; }`;
+                (document.head || document.documentElement).appendChild(style);
+            }
 
     // ═══════════════════════════════════════════════════════════════════════════
     //  0. CONFIG — per-feature toggles
@@ -41,6 +462,8 @@
         notificationBatch: true,
         manageGroupGrades: false,
         takeAttendance:    true,
+        // 5.0 portal restyle (portalSkin.js reads it at document-start): on by default.
+        portalLook:        true,
     };
 
 
@@ -54,6 +477,7 @@
         notificationBatch: 'Notification Batch',
         manageGroupGrades: 'Manage Group Grades',
         takeAttendance:    'Take Attendance',
+        portalLook:        'Portal look',
     };
 
     // Grouping for the Control Center toggle list — display only, doesn't
@@ -69,8 +493,9 @@
         proctorReminder:   'Scheduling',
         proctorAggregator: 'Scheduling',
         notificationBatch: 'Communication',
+        portalLook:        'Appearance',
     };
-    const CATEGORY_ORDER = ['Attendance', 'Grades', 'Scheduling', 'Communication', 'Other'];
+    const CATEGORY_ORDER = ['Attendance', 'Grades', 'Scheduling', 'Communication', 'Appearance', 'Other'];
 
     // Modules whose source page is only reachable from the GIU campus network
     // (VPN/on-site) — Control Center shows an info icon warning of this.
@@ -264,6 +689,144 @@
 
         // Absolute URL on whichever portal host the script is running on.
         portalUrl(path) { return location.origin + path; },
+
+        // The one 5.0 dialog every feature uses (see core.js).
+        openDialog(opts) {
+            const o = Object.assign({ actions: [], closeX: true }, opts);
+            uiStyles();
+            if (!document.getElementById('gius-dialog-style')) {
+                const style = document.createElement('style');
+                style.id = 'gius-dialog-style';
+                const font = "system-ui, 'Segoe UI', Roboto, Arial, sans-serif";
+                style.textContent = `
+                    .gius-dialog-layer { position: fixed; inset: 0; z-index: 2147483647; display: flex; align-items: center; justify-content: center; padding: 16px; background: rgba(31, 35, 40, .45); font-family: ${font}; }
+                    .gius-dialog { display: flex; flex-direction: column; box-sizing: border-box; width: 100%; max-width: 420px; max-height: calc(100vh - 32px); background: #ffffff; border-radius: 10px; box-shadow: 0 16px 40px rgba(31, 35, 40, .3); color: #1f2328; text-align: left; font: 400 14px/1.5 ${font}; }
+                    .gius-dialog.gius-dialog--wide { max-width: 560px; }
+                    .gius-dialog-hdr { display: flex; align-items: flex-start; gap: 12px; padding: 18px 20px 0; }
+                    .gius-dialog-title { flex: 1; margin: 0; font: 700 16px/1.35 ${font}; color: #1f2328; }
+                    .gius-dialog-x { flex: none; width: 28px; height: 28px; margin: -4px -6px 0 0; padding: 0; border: 0; border-radius: 6px; background: transparent; color: #59636e; font: 400 15px/28px ${font}; cursor: pointer; }
+                    .gius-dialog-x:hover { background: #f6f8fa; color: #1f2328; }
+                    .gius-dialog-body { display: flex; flex-direction: column; gap: 12px; padding: 8px 20px 4px; overflow-y: auto; overflow-wrap: anywhere; }
+                    .gius-dialog-body:empty { display: none; }
+                    .gius-dialog-text { margin: 0; color: #59636e; font-size: 13px; white-space: pre-line; }
+                    .gius-dialog-field { display: grid; gap: 4px; font: 600 13px ${font}; color: #59636e; }
+                    .gius-dialog-field input { box-sizing: border-box; height: 36px; padding: 0 10px; border: 1px solid #d0d7de; border-radius: 6px; font: 400 14px ${font}; color: #1f2328; }
+                    .gius-dialog-field input:focus { border-color: #0969da; box-shadow: 0 0 0 3px rgba(9, 105, 218, .25); outline: 0; }
+                    .gius-dialog-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 10px; padding: 16px 20px 20px; }
+                    .gius-dialog-actions:empty { display: none; }
+                    .gius-dialog input:is([type="checkbox"], [type="radio"]) { width: 18px; height: 18px; margin: 0; accent-color: #272c33; vertical-align: -4px; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog { background: var(--gs-dk-card, #1e1e2e); color: var(--gs-dk-text, #cdd6f4); }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog-title { color: var(--gs-dk-text, #cdd6f4); }
+                    html:is(.gius-dark, [data-gius-dark]) :is(.gius-dialog-text, .gius-dialog-field, .gius-dialog-x) { color: var(--gs-dk-muted, #a6adc8); }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog-x:hover { background: var(--gs-dk-line, #313244); }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog-field input { background: var(--gs-dk-card, #1e1e2e); border-color: var(--gs-dk-line-2, #45475a); color: var(--gs-dk-text, #cdd6f4); }
+                    /* 5.0 dark mode (portal look): the same parts in its tokens. */
+                    html[data-gius-dark] .gius-dialog { background: var(--gs-card); color: var(--gs-text); }
+                    html[data-gius-dark] .gius-dialog-title { color: var(--gs-text); }
+                    html[data-gius-dark] :is(.gius-dialog-text, .gius-dialog-field, .gius-dialog-x) { color: var(--gs-muted); }
+                    html[data-gius-dark] .gius-dialog-x:hover { background: var(--gs-sunk); }
+                    html[data-gius-dark] .gius-dialog-field input { background: var(--gs-sunk); border-color: var(--gs-line); color: var(--gs-text); }
+                    html[data-gius-dark] .gius-dialog input:is([type="checkbox"], [type="radio"]) { accent-color: var(--gs-accent); }`;
+                (document.head || document.documentElement).appendChild(style);
+            }
+            const layer = document.createElement('div');
+            layer.className = 'gius-dialog-layer' + (o.layerClass ? ' ' + o.layerClass : '');
+            if (o.id) layer.id = o.id;
+            layer.innerHTML = '<div class="gius-dialog" role="dialog" aria-modal="true"><div class="gius-dialog-hdr"><h2 class="gius-dialog-title"></h2></div>'
+                + '<div class="gius-dialog-body"></div><div class="gius-dialog-actions"></div></div>';
+            const box = layer.firstElementChild;
+            if (o.wide) box.classList.add('gius-dialog--wide');
+            if (o.dialogClass) box.className += ' ' + o.dialogClass;
+            const titleEl = box.querySelector('.gius-dialog-title');
+            titleEl.id = 'gius-dialog-title-' + Math.random().toString(36).slice(2, 8);
+            titleEl.textContent = o.title || '';
+            box.setAttribute('aria-labelledby', titleEl.id);
+            if (o.closeX) {
+                const x = document.createElement('button');
+                x.type = 'button';
+                x.className = 'gius-dialog-x';
+                x.setAttribute('aria-label', 'Close');
+                x.textContent = '✕';
+                box.querySelector('.gius-dialog-hdr').appendChild(x);
+            }
+            const body = box.querySelector('.gius-dialog-body');
+            const actionsEl = box.querySelector('.gius-dialog-actions');
+            let settle;
+            const result = new Promise(resolve => { settle = resolve; });
+            const before = document.activeElement;
+            let closed = false;
+            // Only the topmost dialog answers the keyboard.
+            const onKey = e => {
+                const layers = document.querySelectorAll('.gius-dialog-layer');
+                if (layers[layers.length - 1] !== layer) return;
+                if (e.key === 'Escape') { e.preventDefault(); e.stopImmediatePropagation(); dlg.close(null); return; }
+                if (e.key !== 'Tab') return;
+                const stops = Array.from(box.querySelectorAll('button, input, select, textarea, a[href], [tabindex]:not([tabindex="-1"])'))
+                    .filter(el => !el.disabled && el.offsetParent !== null);
+                if (!stops.length) return;
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                const i = stops.indexOf(document.activeElement);
+                stops[(i + (e.shiftKey ? -1 : 1) + stops.length) % stops.length].focus();
+            };
+            const dlg = {
+                el: box,
+                body,
+                result,
+                setBody(content) {
+                    if (content == null) body.textContent = '';
+                    else if (typeof content === 'string') body.innerHTML = content;
+                    else body.replaceChildren(content);
+                },
+                setActions(list) {
+                    actionsEl.textContent = '';
+                    (list || []).forEach(a => {
+                        const b = document.createElement('button');
+                        b.type = 'button';
+                        b.className = 'gius-dialog-btn gs-btn' + (a.primary ? ' gius-dialog-btn--primary gs-btn--primary' : '') + (a.danger ? ' gius-dialog-btn--danger gs-btn--danger' : '');
+                        b.dataset.act = String(a.value);
+                        if (a.id) b.id = a.id;
+                        if (a.disabled) b.disabled = true;
+                        b.textContent = a.label;
+                        b.addEventListener('click', async () => {
+                            const keep = o.onAction ? await o.onAction(a.value, dlg) : undefined;
+                            if (keep !== false) dlg.close(a.value);
+                        });
+                        actionsEl.appendChild(b);
+                    });
+                },
+                button(value) { return actionsEl.querySelector(`[data-act="${String(value)}"]`); },
+                close(value = null) {
+                    if (closed) return;
+                    closed = true;
+                    document.removeEventListener('keydown', onKey, true);
+                    layer.remove();
+                    if (before && typeof before.focus === 'function' && document.contains(before)) before.focus();
+                    settle(value);
+                },
+            };
+            if (o.node) dlg.setBody(o.node);
+            else if (o.html != null) dlg.setBody(o.html);
+            else if (o.text) {
+                const p = document.createElement('p');
+                p.className = 'gius-dialog-text';
+                p.textContent = o.text;
+                body.appendChild(p);
+            }
+            dlg.setActions(o.actions);
+            layer.addEventListener('click', e => {
+                if (e.target === layer || e.target.closest('.gius-dialog-x')) dlg.close(null);
+            });
+            document.addEventListener('keydown', onKey, true);
+            document.body.appendChild(layer);
+            const first = (o.focus && box.querySelector(o.focus)) || actionsEl.querySelector('.gius-dialog-btn--primary:not(:disabled)')
+                || actionsEl.querySelector('.gius-dialog-btn:not(:disabled)');
+            if (first) first.focus();
+            return dlg;
+        },
+
+        // The shared button style (gs-btn); defined above, also as a plain function.
+        uiStyles,
     };
 
     // ═══════════════════════════════════════════════════════════════════════════
@@ -296,6 +859,7 @@
         let held = 0;                   // > 0 while a dialog (the attendance setup) holds tips back
 
         function injectStyles() {
+            Shared.uiStyles();
             Shared.injectStyle('gius-tips-style', `
                 .gius-tips-click{position:fixed;inset:0;z-index:2147483600;}
                 .gius-tips-cutout{position:fixed;z-index:2147483601;border-radius:10px;pointer-events:none;
@@ -308,15 +872,9 @@
                 .gius-tips-title{font-weight:700;font-size:14.5px;margin-bottom:4px;}
                 .gius-tips-actions{display:flex;align-items:center;justify-content:space-between;
                     gap:10px;margin-top:12px;}
-                .gius-tips-got{border:0;background:#1B59C6;color:#fff;border-radius:6px;
-                    padding:6px 14px;font-weight:700;font-size:12.5px;cursor:pointer;}
-                .gius-tips-skip{border:0;background:none;color:#6c757d;font-size:12px;
-                    cursor:pointer;padding:6px 0;text-decoration:underline;}
-                html.gius-dark .gius-tips-bubble{background:#1e1e2e;color:#cdd6f4;
+                html:is(.gius-dark, [data-gius-dark]) .gius-tips-bubble{background:var(--gs-dk-card, #1e1e2e);color:var(--gs-dk-text, #cdd6f4);
                     box-shadow:0 8px 28px rgba(0,0,0,.6);}
-                html.gius-dark .gius-tips-title{color:#cdd6f4;}
-                html.gius-dark .gius-tips-got{background:#89b4fa;color:#11111b;}
-                html.gius-dark .gius-tips-skip{color:#9399b2;}
+                html:is(.gius-dark, [data-gius-dark]) .gius-tips-title{color:var(--gs-dk-text, #cdd6f4);}
             `);
         }
 
@@ -378,8 +936,8 @@
                 <div class="gius-tips-title"></div>
                 <div class="gius-tips-text"></div>
                 <div class="gius-tips-actions">
-                    <button type="button" class="gius-tips-skip gius-btn">Skip all tips</button>
-                    <button type="button" class="gius-tips-got gius-btn">Got it</button>
+                    <button type="button" class="gius-tips-skip gius-btn gs-btn gs-btn--quiet">Skip all tips</button>
+                    <button type="button" class="gius-tips-got gius-btn gs-btn gs-btn--primary gs-btn--sm">Got it</button>
                 </div>`;
             bubble.querySelector('.gius-tips-title').textContent = active.title || '';
             bubble.querySelector('.gius-tips-text').textContent = active.text || '';
@@ -680,21 +1238,21 @@ function injectReportGridStyles(S) {
             background: #f3f4f6; color: #374151; font-size: 11px; font-weight: 700; line-height: 1.3; white-space: nowrap;
         }
 
-        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport {
-            background: var(--gp-card, #1e1e2e); border-color: var(--gp-border, #313244); color: var(--gp-text, #cdd6f4);
+        html:is(.gius-dark, [data-gius-dark]) .gius-berlin-grid table#MainContent_DG_SwiftReport {
+            background: var(--gp-card, var(--gs-dk-card, #1e1e2e)); border-color: var(--gp-border, var(--gs-dk-line, #313244)); color: var(--gp-text, var(--gs-dk-text, #cdd6f4));
         }
-        html.gius-dark .gius-berlin-grid caption.gius-berlin-grid-title { color: var(--gp-text, #cdd6f4); }
-        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport :is(th, td) {
-            background: var(--gp-card, #1e1e2e) !important; border-color: var(--gp-border, #313244) !important; color: var(--gp-text, #cdd6f4) !important;
+        html:is(.gius-dark, [data-gius-dark]) .gius-berlin-grid caption.gius-berlin-grid-title { color: var(--gp-text, var(--gs-dk-text, #cdd6f4)); }
+        html:is(.gius-dark, [data-gius-dark]) .gius-berlin-grid table#MainContent_DG_SwiftReport :is(th, td) {
+            background: var(--gp-card, var(--gs-dk-card, #1e1e2e)) !important; border-color: var(--gp-border, var(--gs-dk-line, #313244)) !important; color: var(--gp-text, var(--gs-dk-text, #cdd6f4)) !important;
         }
-        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row:nth-child(even) > td { background: var(--gp-surface, #181825) !important; }
-        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row:hover > td { background: #2a2410 !important; }
-        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport :is(thead th, tr.gius-berlin-grid-head > *) {
-            background: var(--gp-deep, #11111b) !important; color: var(--gp-text, #cdd6f4) !important; border-color: var(--gp-border, #313244) !important;
+        html:is(.gius-dark, [data-gius-dark]) .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row:nth-child(even) > td { background: var(--gp-surface, var(--gs-dk-sunk, #181825)) !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row:hover > td { background: #2a2410 !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-berlin-grid table#MainContent_DG_SwiftReport :is(thead th, tr.gius-berlin-grid-head > *) {
+            background: var(--gp-deep, var(--gs-dk-bg, #11111b)) !important; color: var(--gp-text, var(--gs-dk-text, #cdd6f4)) !important; border-color: var(--gp-border, var(--gs-dk-line, #313244)) !important;
         }
-        html.gius-dark .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row > td.gius-berlin-col-serial { color: var(--gp-muted, #9399b2) !important; }
-        html.gius-dark .gius-berlin-grid .gius-berlin-action {
-            background: var(--gp-surface, #313244); border-color: var(--gp-border, #45475a); color: var(--gp-text, #cdd6f4);
+        html:is(.gius-dark, [data-gius-dark]) .gius-berlin-grid table#MainContent_DG_SwiftReport tr.gius-berlin-grid-row > td.gius-berlin-col-serial { color: var(--gp-muted, var(--gs-dk-muted, #9399b2)) !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-berlin-grid .gius-berlin-action {
+            background: var(--gp-surface, var(--gs-dk-line, #313244)); border-color: var(--gp-border, var(--gs-dk-line-2, #45475a)); color: var(--gp-text, var(--gs-dk-text, #cdd6f4));
         }
     `);
 }
@@ -726,6 +1284,7 @@ function openAttendanceSetup(S, api, opts) {
     const prevDays = api.previousDayOptions();   // on Berlin also Sunday (a Cairo-era day off)
     const YMD = /^\d{4}-\d{2}-\d{2}$/;
 
+    S.uiStyles();
     S.injectStyle('gius-setup-style', `
         .gius-setup{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
             z-index:2147483645;background:rgba(15,23,42,.45);padding:20px;font-family:inherit;}
@@ -762,31 +1321,18 @@ function openAttendanceSetup(S, api, opts) {
         .gius-setup-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
         .gius-setup-actions{display:flex;align-items:center;gap:8px;margin-top:16px;flex-wrap:wrap;}
         .gius-setup-spacer{flex:1 1 auto;}
-        .gius-setup .giu-settings-action-btn{height:32px;padding:0 10px;border:1px solid #64748b;background:#f8fafc;
-            color:#334155;border-radius:6px;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;}
-        .gius-setup .giu-settings-action-btn:hover{background:#e2e8f0;}
-        .gius-setup .giu-add-holiday-btn{height:32px;padding:0 12px;border:1px solid #d97706;background:#ffc107;
-            color:#111827;border-radius:6px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;
-            transition:all .2s ease;}
-        .gius-setup .giu-add-holiday-btn:hover{background:#f59e0b;transform:translateY(-1px);
-            box-shadow:0 3px 10px rgba(255,193,7,.4);}
-        .gius-setup .gius-setup-skip{border-color:transparent;background:transparent;text-decoration:underline;}
-        html.gius-dark .gius-setup-sheet{background:#1e1e2e;color:#cdd6f4;border-left-color:#f9e2af;box-shadow:0 18px 50px rgba(0,0,0,.6);}
-        html.gius-dark .gius-setup-step,html.gius-dark .gius-setup-sub,html.gius-dark .gius-setup-hint{color:#9399b2;}
-        html.gius-dark .gius-setup-field{color:#cdd6f4;}
-        html.gius-dark .gius-setup-input{background:#181825;border-color:#45475a;color:#cdd6f4;color-scheme:dark;}
-        html.gius-dark .gius-setup-pill{background:#181825;border-color:#313244;color:#cdd6f4;}
-        html.gius-dark .gius-setup-pill.on{background:#2a2410;border-color:#f9e2af;color:#f9e2af;}
-        html.gius-dark .gius-setup-hint.warn{color:#f9e2af;}
-        html.gius-dark .gius-setup-error{background:#3a1414;border-left-color:#f38ba8;color:#f38ba8;}
-        html.gius-dark .gius-setup-ok{background:#14351f;border-left-color:#a6e3a1;color:#a6e3a1;}
-        html.gius-dark .gius-setup-summary{background:#181825;border-color:#313244;}
-        html.gius-dark .gius-setup-summary dt{color:#9399b2;}
-        html.gius-dark .gius-setup .giu-settings-action-btn{background:#181825;border-color:#45475a;color:#cdd6f4;}
-        html.gius-dark .gius-setup .giu-settings-action-btn:hover{background:#313244;}
-        html.gius-dark .gius-setup .gius-setup-skip{background:transparent;border-color:transparent;}
-        html.gius-dark .gius-setup .giu-add-holiday-btn{background:#f9e2af;border-color:#f9e2af;color:#1e1e2e;}
-        html.gius-dark .gius-setup .giu-add-holiday-btn:hover{background:#f5d38a;}`);
+        html:is(.gius-dark, [data-gius-dark]) .gius-setup-sheet{background:var(--gs-dk-card, #1e1e2e);color:var(--gs-dk-text, #cdd6f4);border-left-color:var(--gs-dk-warn, #f9e2af);box-shadow:0 18px 50px rgba(0,0,0,.6);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-setup-step,html:is(.gius-dark, [data-gius-dark]) .gius-setup-sub,html:is(.gius-dark, [data-gius-dark]) .gius-setup-hint{color:var(--gs-dk-muted, #9399b2);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-setup-field{color:var(--gs-dk-text, #cdd6f4);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-setup-input{background:var(--gs-dk-sunk, #181825);border-color:var(--gs-dk-line-2, #45475a);color:var(--gs-dk-text, #cdd6f4);color-scheme:dark;}
+        html:is(.gius-dark, [data-gius-dark]) .gius-setup-pill{background:var(--gs-dk-sunk, #181825);border-color:var(--gs-dk-line, #313244);color:var(--gs-dk-text, #cdd6f4);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-setup-pill.on{background:#2a2410;border-color:var(--gs-dk-warn, #f9e2af);color:var(--gs-dk-warn, #f9e2af);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-setup-hint.warn{color:var(--gs-dk-warn, #f9e2af);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-setup-error{background:#3a1414;border-left-color:var(--gs-dk-err, #f38ba8);color:var(--gs-dk-err, #f38ba8);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-setup-ok{background:#14351f;border-left-color:var(--gs-dk-ok, #a6e3a1);color:var(--gs-dk-ok, #a6e3a1);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-setup-summary{background:var(--gs-dk-sunk, #181825);border-color:var(--gs-dk-line, #313244);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-setup-summary dt{color:var(--gs-dk-muted, #9399b2);}
+        `);
 
     // ── Answers (strings, as typed); nothing is written until Finish ──
     function fromValues(v, keepDayOff) {
@@ -812,6 +1358,7 @@ function openAttendanceSetup(S, api, opts) {
     let index = 0;
     let dirty = false;          // anything entered by the user (Escape then asks)
     let importedOnce = false;   // an import already saved settings
+    let asking = false;         // the Leave setup? dialog is open
     const opener = document.activeElement;   // focus goes back here on close
 
     const layer = document.createElement('div');
@@ -824,10 +1371,10 @@ function openAttendanceSetup(S, api, opts) {
         <div class="gius-setup-body"></div>
         <div class="gius-setup-msg" role="alert"></div>
         <div class="gius-setup-actions">
-            <button type="button" class="giu-settings-action-btn gius-setup-skip gius-btn">Skip setup</button>
+            <button type="button" class="giu-settings-action-btn gius-setup-skip gius-btn gs-btn gs-btn--quiet">Skip setup</button>
             <span class="gius-setup-spacer"></span>
-            <button type="button" class="giu-settings-action-btn gius-setup-back gius-btn">Back</button>
-            <button type="button" class="giu-add-holiday-btn gius-setup-next gius-btn">Next</button>
+            <button type="button" class="giu-settings-action-btn gius-setup-back gius-btn gs-btn">Back</button>
+            <button type="button" class="giu-add-holiday-btn gius-setup-next gius-btn gs-btn gs-btn--primary">Next</button>
         </div></div>`;
     const sheet = layer.querySelector('.gius-setup-sheet');
     const $ = sel => layer.querySelector(sel);
@@ -891,7 +1438,7 @@ function openAttendanceSetup(S, api, opts) {
                         <input type="file" class="gius-setup-input" id="gius-setup-file" accept=".json,application/json,text/json"></div>
                     <div class="gius-setup-field" style="margin-top:8px;">or paste its contents
                         <textarea class="gius-setup-input" id="gius-setup-paste" spellcheck="false">${esc(state.importText)}</textarea></div>
-                    <div class="gius-setup-row" style="margin-top:8px;"><button type="button" class="giu-add-holiday-btn gius-btn" id="gius-setup-import">Import</button></div>
+                    <div class="gius-setup-row" style="margin-top:8px;"><button type="button" class="giu-add-holiday-btn gius-btn gs-btn" id="gius-setup-import">Import</button></div>
                 </div>`,
             bind() {
                 layer.querySelectorAll('input[name="gius-setup-choice"]').forEach(r => r.addEventListener('change', () => {
@@ -1023,8 +1570,8 @@ function openAttendanceSetup(S, api, opts) {
                 rows.push(['Monthly accrual', String(v.accrualRate) + ' day(s)']);
                 return `<dl class="gius-setup-summary">${rows.map(r => `<dt>${esc(r[0])}</dt><dd>${esc(r[1])}</dd>`).join('')}</dl>
                     <div class="gius-setup-row">
-                        <button type="button" class="giu-settings-action-btn gius-btn" id="gius-setup-download">Download settings (.json)</button>
-                        <button type="button" class="giu-settings-action-btn gius-btn" id="gius-setup-copy">Copy</button>
+                        <button type="button" class="giu-settings-action-btn gius-btn gs-btn" id="gius-setup-download">Download settings (.json)</button>
+                        <button type="button" class="giu-settings-action-btn gius-btn gs-btn" id="gius-setup-copy">Copy</button>
                     </div>`;
             },
             bind() {
@@ -1213,6 +1760,7 @@ function openAttendanceSetup(S, api, opts) {
     }
 
     function onKey(e) {
+        if (asking) return;
         if (e.key === 'Tab') {
             // Keep keyboard focus inside the dialog.
             const els = tabStops();
@@ -1232,10 +1780,20 @@ function openAttendanceSetup(S, api, opts) {
         // One Escape is the wizard's alone (no tip or tour under it reacts).
         e.preventDefault();
         e.stopImmediatePropagation();
-        const question = importedOnce
-            ? 'Leave setup? Your imported settings are kept; nothing else you entered here will be saved.'
-            : 'Leave setup? Nothing you entered here will be saved.';
-        if (!dirty || window.confirm(question)) skip();
+        if (!dirty) { skip(); return; }
+        // The dialog takes the keyboard until it closes (this handler stands aside meanwhile).
+        asking = true;
+        S.openDialog({
+            title: 'Leave setup?',
+            text: importedOnce
+                ? 'Your imported settings are kept; nothing else you entered here will be saved.'
+                : 'Nothing you entered here will be saved.',
+            closeX: false,
+            actions: [{ label: 'Keep going', value: 'stay' }, { label: 'Leave setup', value: 'leave', primary: true }],
+        }).result.then(choice => {
+            asking = false;
+            if (choice === 'leave') skip();
+        });
     }
 
     body.addEventListener('input', () => { dirty = true; });
@@ -1293,7 +1851,7 @@ function createGiusDateField(S, opts) {
     S.injectStyle('gius-date-style', `
         .gius-date{position:relative;display:inline-flex;flex-wrap:wrap;align-items:stretch;gap:6px;vertical-align:middle;}
         .gius-date .gius-date-hint{flex:0 0 100%;font-size:11.5px;line-height:1.3;color:#6b7280;margin-top:-2px;}
-        html.gius-dark .gius-date .gius-date-hint{color:#a6adc8;}
+        html:is(.gius-dark, [data-gius-dark]) .gius-date .gius-date-hint{color:var(--gs-dk-muted, #a6adc8);}
         .gius-date .gius-date-text{width:130px;min-width:0;}
         .gius-setup .gius-date{display:flex;}
         .gius-setup .gius-date .gius-date-text{width:auto;flex:1 1 auto;}
@@ -1306,9 +1864,9 @@ function createGiusDateField(S, opts) {
         .gius-date input.gius-date-native{position:absolute !important;right:0 !important;bottom:0 !important;
             width:1px !important;height:1px !important;min-width:0 !important;margin:0 !important;padding:0 !important;
             border:0 !important;opacity:0 !important;pointer-events:none !important;}
-        html.gius-dark .gius-date .gius-date-btn{background:#181825;border-color:#45475a;color:#cdd6f4;}
-        html.gius-dark .gius-date .gius-date-btn:hover{background:#313244;border-color:#6c7086;}
-        html.gius-dark .gius-date .gius-date-btn:focus-visible{outline-color:#89b4fa;}`);
+        html:is(.gius-dark, [data-gius-dark]) .gius-date .gius-date-btn{background:var(--gs-dk-sunk, #181825);border-color:var(--gs-dk-line-2, #45475a);color:var(--gs-dk-text, #cdd6f4);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-date .gius-date-btn:hover{background:var(--gs-dk-line, #313244);border-color:var(--gs-dk-muted, #6c7086);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-date .gius-date-btn:focus-visible{outline-color:var(--gs-dk-accent, #89b4fa);}`);
 
     const wrap = document.createElement('span');
     wrap.className = 'gius-date';
@@ -1547,7 +2105,10 @@ function renderAttendancePlanner(S, api, host) {
         .gius-plan-chev{display:inline-block;transition:transform .15s;}
         .gius-plan-toggle[aria-expanded="false"] .gius-plan-chev{transform:rotate(-90deg);}
         .gius-plan-peek{font-size:12px;font-weight:600;background:#374151;border:1px solid #4b5563;color:#f9fafb;padding:2px 8px;border-radius:999px;}
-        @media (prefers-reduced-motion: reduce){.gius-plan-chev{transition:none;}}
+        .gius-plan-fold{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease-out;}
+        .gius-plan-fold.is-open{grid-template-rows:1fr;}
+        .gius-plan-fold-in{overflow:hidden;min-height:0;}
+        @media (prefers-reduced-motion: reduce){.gius-plan-chev,.gius-plan-fold{transition:none;}}
         .gius-plan-usual{font-size:12px;color:#f9fafb;display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:0;padding:3px 4px 3px 10px;border:1px solid #6b7280;border-radius:999px;background:#374151;font-weight:600;}
         .gius-plan-seg{display:inline-flex;border:1px solid #6b7280;border-radius:999px;overflow:hidden;}
         .gius-plan-mode{border:0;margin:0;background:none;color:#d1d5db;font:inherit;font-size:12px;font-weight:600;padding:2px 9px;cursor:pointer;}
@@ -1592,27 +2153,27 @@ function renderAttendancePlanner(S, api, host) {
         .gius-plan-foot{display:flex;justify-content:flex-end;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px;color:#6b7280;}
         .gius-plan-foot b{color:#111827;}
         .gius-plan-link{border:0;background:none;color:#1B59C6;font:inherit;font-weight:600;cursor:pointer;padding:0;text-decoration:underline;}
-        html.gius-dark .gius-plan{background:#181825;border-color:#313244;color:#cdd6f4;}
-        html.gius-dark .gius-plan-big,html.gius-dark .gius-plan-foot b{color:#cdd6f4;}
-        html.gius-dark .gius-plan-q,html.gius-dark .gius-plan-th,html.gius-dark .gius-plan-foot,html.gius-dark .gius-plan-fixed{color:#9399b2;}
-        html.gius-dark .gius-plan-sentence{background:#313244;}
-        html.gius-dark .gius-plan-hint{color:#9399b2;}
-        html.gius-dark .gius-plan-row{border-top-color:#313244;}
-        html.gius-dark .gius-plan-row.gius-plan-today{background:rgba(249,226,175,.08);}
-        html.gius-dark .gius-plan input[type=time]:hover,html.gius-dark .gius-plan input[type=time]:focus-visible{background:#313244;border-color:#585b70;color:#cdd6f4;}
-        html.gius-dark .gius-plan-edited input[type=time]{background:#1e3a5f;color:#89b4fa;}
-        html.gius-dark .gius-plan input[type=time]::-webkit-calendar-picker-indicator{filter:invert(1);}
-        html.gius-dark .gius-plan-bad,html.gius-dark .gius-plan-day small{color:#f38ba8;}
-        html.gius-dark .gius-plan-day small.gius-plan-note{color:#9399b2;}
-        html.gius-dark .gius-plan-good{color:#a6e3a1;}
-        html.gius-dark .gius-plan-link,html.gius-dark .gius-plan-undo{color:#89b4fa;}
-        html.gius-dark .gius-plan-undo:hover{background:#1e3a5f;}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan{background:var(--gs-dk-sunk, #181825);border-color:var(--gs-dk-line, #313244);color:var(--gs-dk-text, #cdd6f4);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-big,html:is(.gius-dark, [data-gius-dark]) .gius-plan-foot b{color:var(--gs-dk-text, #cdd6f4);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-q,html:is(.gius-dark, [data-gius-dark]) .gius-plan-th,html:is(.gius-dark, [data-gius-dark]) .gius-plan-foot,html:is(.gius-dark, [data-gius-dark]) .gius-plan-fixed{color:var(--gs-dk-muted, #9399b2);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-sentence{background:var(--gs-dk-line, #313244);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-hint{color:var(--gs-dk-muted, #9399b2);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-row{border-top-color:var(--gs-dk-line, #313244);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-row.gius-plan-today{background:rgba(249,226,175,.08);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan input[type=time]:hover,html:is(.gius-dark, [data-gius-dark]) .gius-plan input[type=time]:focus-visible{background:var(--gs-dk-line, #313244);border-color:var(--gs-dk-line-2, #585b70);color:var(--gs-dk-text, #cdd6f4);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-edited input[type=time]{background:#1e3a5f;color:var(--gs-dk-accent, #89b4fa);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan input[type=time]::-webkit-calendar-picker-indicator{filter:invert(1);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-bad,html:is(.gius-dark, [data-gius-dark]) .gius-plan-day small{color:var(--gs-dk-err, #f38ba8);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-day small.gius-plan-note{color:var(--gs-dk-muted, #9399b2);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-good{color:var(--gs-dk-ok, #a6e3a1);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-link,html:is(.gius-dark, [data-gius-dark]) .gius-plan-undo{color:var(--gs-dk-accent, #89b4fa);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-undo:hover{background:#1e3a5f;}
         .gius-plan-extra{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#475569;margin-right:12px;}
         .gius-plan-extra select{font:inherit;padding:2px 6px;border:1px solid #cbd5e1;border-radius:6px;background:#fff;color:#0f172a;}
         .gius-plan-extra-x{margin-left:6px;border:0;background:none;color:#94a3b8;cursor:pointer;font-size:14px;line-height:1;padding:0 2px;}
         .gius-plan-extra-x:hover{color:#dc2626;}
-        html.gius-dark .gius-plan-extra{color:#a6adc8;}
-        html.gius-dark .gius-plan-extra select{background:#313244;border-color:#45475a;color:#cdd6f4;}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-extra{color:var(--gs-dk-muted, #a6adc8);}
+        html:is(.gius-dark, [data-gius-dark]) .gius-plan-extra select{background:var(--gs-dk-line, #313244);border-color:var(--gs-dk-line-2, #45475a);color:var(--gs-dk-text, #cdd6f4);}
     `);
 
     const dayLabel = function (ymd) {
@@ -1771,11 +2332,14 @@ function renderAttendancePlanner(S, api, host) {
     }
 
 
-    function render(focusTarget) {
+    // wasExpanded (title click only): build the fold in its old state, then
+    // let it animate to the new one like the other folding cards.
+    function render(focusTarget, wasExpanded) {
         const prefs = api.prefs();
         const input = api.input();
         const plan = input ? planAttendanceDays(input) : null;
         const expanded = api.isExpanded();
+        const animate = typeof wasExpanded === "boolean";
         // Folded, the header still answers the main question.
         const mode = prefs.usualMode;
         const both = mode === "both";
@@ -1805,9 +2369,13 @@ function renderAttendancePlanner(S, api, host) {
             '<div class="gius-plan-usual" id="gius-plan-usual-box" role="group" aria-label="Plan by">Plan by' +
             '<span class="gius-plan-seg">' + modeBtn("in", "Check-in") + modeBtn("out", "Check-out") + modeBtn("both", "Both") + "</span>" +
             times + '<span class="gius-plan-pen" aria-hidden="true">✎</span></div></div>';
-        const bodyOpen = '<div class="gius-plan-body" id="gius-plan-body"' + (expanded ? "" : " hidden") + ">";
+        const foldOpen = animate ? wasExpanded : expanded;
+        const bodyOpen = '<div class="gius-plan-fold' + (foldOpen ? " is-open" : "") + '"><div class="gius-plan-fold-in">' +
+            '<div class="gius-plan-body" id="gius-plan-body"' + (expanded || animate ? "" : " hidden") + ">";
+        const bodyClose = "</div></div></div>";
         if (!plan) {
-            host.innerHTML = '<section class="gius-plan">' + head + bodyOpen + '<p class="gius-plan-sentence">Set your weekly day off to see your plan.</p></div></section>';
+            host.innerHTML = '<section class="gius-plan">' + head + bodyOpen + '<p class="gius-plan-sentence">Set your weekly day off to see your plan.</p>' + bodyClose + "</section>";
+            if (animate) runFold(expanded);
             return;
         }
         // Keep focus on the same field across the re-render.
@@ -1835,7 +2403,8 @@ function renderAttendancePlanner(S, api, host) {
                 ? '<div class="gius-plan-days"><div class="gius-plan-th"><span>Day</span><span class="gius-plan-cell">In</span><span class="gius-plan-cell">Out</span></div>' +
                     plan.days.map(row).join("") + "</div>"
                 : "") +
-            "</div></section>";
+            bodyClose + "</section>";
+        if (animate) runFold(expanded);
 
         if (focusKey) {
             const el = focusKey.indexOf("|") === -1
@@ -1843,6 +2412,25 @@ function renderAttendancePlanner(S, api, host) {
                 : host.querySelector('[data-ymd="' + focusKey.split("|")[0] + '"][data-kind="' + focusKey.split("|")[1] + '"]');
             if (el) el.focus();
         }
+    }
+
+    // Slides the fold to `open`; once folded, the body is hidden so nothing
+    // inside it can be tabbed to.
+    function runFold(open) {
+        const fold = host.querySelector(".gius-plan-fold");
+        if (!fold) return;
+        void fold.offsetHeight;
+        fold.classList.toggle("is-open", open);
+        if (open) return;
+        let done = false;
+        const hide = function () {
+            if (done) return;
+            done = true;
+            const body = host.querySelector("#gius-plan-body");
+            if (body && !api.isExpanded()) body.hidden = true;
+        };
+        fold.addEventListener("transitionend", hide, { once: true });
+        setTimeout(hide, 400);
     }
 
     // Chrome fires change on every segment typed into a time field; rebuilding
@@ -1877,8 +2465,9 @@ function renderAttendancePlanner(S, api, host) {
     host.addEventListener("click", function (e) {
         if (e.target.closest("#gius-plan-toggle")) {
             pending = false;
-            api.setExpanded(!api.isExpanded());
-            render();
+            const was = api.isExpanded();
+            api.setExpanded(!was);
+            render(null, was);
             return;
         }
         const modeBtn = e.target.closest(".gius-plan-mode");
@@ -3193,7 +3782,7 @@ function renderAttendancePlanner(S, api, host) {
             function createScopedUndoButton(scope, emptyLabel, readyPrefix, extraClass) {
                 const btn = document.createElement("button");
                 btn.type = "button";
-                btn.className = "giu-settings-action-btn giu-undo-btn";
+                btn.className = "giu-settings-action-btn giu-undo-btn gs-btn";
                 if (extraClass) btn.classList.add(extraClass);
                 const meta = getUndoSnapshotMeta(scope);
                 btn.textContent = meta ? `${readyPrefix}: ${meta.label}` : emptyLabel;
@@ -3454,6 +4043,7 @@ function renderAttendancePlanner(S, api, host) {
             // ═══════════════════════════════════════════════════════════
 
             function injectStyles() {
+                S.uiStyles();
                 if (document.getElementById("giu-attendance-enhanced-style")) return;
 
                 const style = document.createElement("style");
@@ -3623,24 +4213,7 @@ function renderAttendancePlanner(S, api, host) {
                         align-items: center;
                     }
 
-                    .giu-add-holiday-btn {
-                        height: 32px;
-                        padding: 0 12px;
-                        border: 1px solid #d97706;
-                        background: #ffc107;
-                        color: #111827;
-                        border-radius: 6px;
-                        font-size: 13px;
-                        font-weight: 700;
-                        cursor: pointer;
-                        transition: all 0.2s ease;
-                    }
 
-                    .giu-add-holiday-btn:hover {
-                        background: #f59e0b;
-                        transform: translateY(-1px);
-                        box-shadow: 0 3px 10px rgba(255,193,7,0.4);
-                    }
 
                     .giu-table-tools {
                         margin-top: 6px;
@@ -3754,43 +4327,10 @@ function renderAttendancePlanner(S, api, host) {
                         font-size: 12px;
                     }
 
-                    .giu-pagination-btn {
-                        height: 28px;
-                        padding: 0 10px;
-                        border: 1px solid #d1d5db;
-                        background: #f9fafb;
-                        color: #1f2937;
-                        border-radius: 6px;
-                        font-size: 12px;
-                        font-weight: 600;
-                        cursor: pointer;
-                    }
 
-                    .giu-pagination-btn:hover:not(:disabled) {
-                        background: #f3f4f6;
-                        border-color: #9ca3af;
-                    }
 
-                    .giu-pagination-btn:disabled {
-                        opacity: 0.5;
-                        cursor: not-allowed;
-                    }
 
-                    .giu-remove-holiday-btn {
-                        height: 28px;
-                        padding: 0 10px;
-                        border: 1px solid #dc2626;
-                        background: #fee2e2;
-                        color: #991b1b;
-                        border-radius: 6px;
-                        font-size: 12px;
-                        font-weight: 700;
-                        cursor: pointer;
-                    }
 
-                    .giu-remove-holiday-btn:hover {
-                        background: #fecaca;
-                    }
 
                     .giu-summary-grid {
                         display: grid;
@@ -3972,18 +4512,6 @@ function renderAttendancePlanner(S, api, host) {
                         transition: width 0.4s ease-out;
                     }
 
-                    .giu-progress-fill-green {
-                        background: linear-gradient(90deg, #22c55e, #16a34a);
-                    }
-
-                    .giu-progress-fill-amber {
-                        background: linear-gradient(90deg, #ffc107, #e5ac00);
-                    }
-
-                    .giu-progress-fill-red {
-                        background: linear-gradient(90deg, #f87171, #dc2626);
-                    }
-
                     .giu-progress-pct-green { color: #16a34a; }
                     .giu-progress-pct-amber { color: #92400e; }
                     .giu-progress-pct-red { color: #dc2626; }
@@ -4077,37 +4605,9 @@ function renderAttendancePlanner(S, api, host) {
                         color: #374151;
                     }
 
-                    .giu-save-ramadan-btn {
-                        height: 32px;
-                        padding: 0 12px;
-                        border: 1px solid #7c3aed;
-                        background: #8b5cf6;
-                        color: #ffffff;
-                        border-radius: 6px;
-                        font-size: 13px;
-                        font-weight: 700;
-                        cursor: pointer;
-                    }
 
-                    .giu-save-ramadan-btn:hover {
-                        background: #7c3aed;
-                    }
 
-                    .giu-reset-ramadan-btn {
-                        height: 32px;
-                        padding: 0 12px;
-                        border: 1px solid #c4b5fd;
-                        background: #f5f3ff;
-                        color: #6d28d9;
-                        border-radius: 6px;
-                        font-size: 13px;
-                        font-weight: 700;
-                        cursor: pointer;
-                    }
 
-                    .giu-reset-ramadan-btn:hover {
-                        background: #ede9fe;
-                    }
 
                     .giu-ramadan-badge {
                         padding: 6px 10px;
@@ -4154,40 +4654,9 @@ function renderAttendancePlanner(S, api, host) {
                         color: #374151;
                     }
 
-                    .giu-save-exam-btn {
-                        height: 32px;
-                        padding: 0 12px;
-                        border: 1px solid #1648a8;
-                        background: #1B59C6;
-                        color: #ffffff;
-                        border-radius: 6px;
-                        font-size: 13px;
-                        font-weight: 700;
-                        cursor: pointer;
-                        transition: all 0.2s ease;
-                    }
 
-                    .giu-save-exam-btn:hover {
-                        background: #1648a8;
-                        transform: translateY(-1px);
-                        box-shadow: 0 4px 10px rgba(27,89,198,0.35);
-                    }
 
-                    .giu-clear-exam-btn {
-                        height: 32px;
-                        padding: 0 12px;
-                        border: 1px solid #93c5fd;
-                        background: #eff6ff;
-                        color: #1e40af;
-                        border-radius: 6px;
-                        font-size: 13px;
-                        font-weight: 700;
-                        cursor: pointer;
-                    }
 
-                    .giu-clear-exam-btn:hover {
-                        background: #dbeafe;
-                    }
 
                     .giu-exam-badge {
                         padding: 6px 10px;
@@ -4220,23 +4689,7 @@ function renderAttendancePlanner(S, api, host) {
                         gap: 8px;
                     }
 
-                    .giu-restart-guide-btn {
-                        height: 26px;
-                        padding: 0 10px;
-                        border-radius: 999px;
-                        border: 1px solid #0284c7;
-                        background: #e0f2fe;
-                        color: #075985;
-                        font-size: 11px;
-                        font-weight: 700;
-                        cursor: pointer;
-                        transition: background 0.15s, border-color 0.15s;
-                    }
 
-                    .giu-restart-guide-btn:hover {
-                        background: #bae6fd;
-                        border-color: #0369a1;
-                    }
 
                     .giu-collapse-arrow {
                         font-size: 12px;
@@ -4359,24 +4812,7 @@ function renderAttendancePlanner(S, api, host) {
                         width: 150px;
                     }
 
-                    .giu-add-override-btn {
-                        height: 32px;
-                        padding: 0 12px;
-                        border: 1px solid #1648a8;
-                        background: #1B59C6;
-                        color: #ffffff;
-                        border-radius: 6px;
-                        font-size: 13px;
-                        font-weight: 700;
-                        cursor: pointer;
-                        transition: all 0.2s ease;
-                    }
 
-                    .giu-add-override-btn:hover {
-                        background: #1648a8;
-                        transform: translateY(-1px);
-                        box-shadow: 0 4px 10px rgba(27,89,198,0.35);
-                    }
 
                     .giu-comp-balance-box {
                         padding: 8px 10px;
@@ -4432,54 +4868,14 @@ function renderAttendancePlanner(S, api, host) {
                         color: #991b1b;
                     }
 
-                    .giu-edit-annual-btn {
-                        height: 32px;
-                        padding: 0 12px;
-                        border: 1px solid #be185d;
-                        background: #ec4899;
-                        color: #ffffff;
-                        border-radius: 6px;
-                        font-size: 13px;
-                        font-weight: 700;
-                        cursor: pointer;
-                    }
 
-                    .giu-edit-annual-btn:hover {
-                        background: #db2777;
-                    }
 
-                    .giu-add-comp-btn {
-                        height: 32px;
-                        padding: 0 12px;
-                        border: 1px solid #0f766e;
-                        background: #14b8a6;
-                        color: #ffffff;
-                        border-radius: 6px;
-                        font-size: 13px;
-                        font-weight: 700;
-                        cursor: pointer;
-                    }
 
-                    .giu-add-comp-btn:hover {
-                        background: #0d9488;
-                    }
 
                     .giu-comp-action-btn {
-                        height: 28px;
-                        padding: 0 8px;
-                        border: 1px solid #5eead4;
-                        background: #f0fdfa;
-                        color: #0f766e;
-                        border-radius: 6px;
-                        font-size: 12px;
-                        font-weight: 700;
-                        cursor: pointer;
                         margin-right: 6px;
                     }
 
-                    .giu-comp-action-btn:hover {
-                        background: #ccfbf1;
-                    }
 
                     /* Absent-day rows: the "Add as" actions wrap onto their own line
                     (right-aligned) when the box is narrow, instead of squeezing
@@ -4531,64 +4927,15 @@ function renderAttendancePlanner(S, api, host) {
                         outline-offset: 1px;
                     }
 
-                    .giu-settings-action-btn {
-                        height: 32px;
-                        padding: 0 10px;
-                        border: 1px solid #64748b;
-                        background: #f8fafc;
-                        color: #334155;
-                        border-radius: 6px;
-                        font-size: 12px;
-                        font-weight: 700;
-                        cursor: pointer;
-                    }
 
-                    .giu-settings-action-btn:hover {
-                        background: #e2e8f0;
-                    }
 
-                    .giu-undo-btn {
-                        border-color: #b45309;
-                        background: #fffbeb;
-                        color: #92400e;
-                    }
 
-                    .giu-undo-btn:hover {
-                        background: #fef3c7;
-                    }
 
-                    .giu-holiday-controls .giu-undo-btn {
-                        border-color: #f59e0b;
-                        background: #fffbeb;
-                        color: #b45309;
-                    }
 
-                    .giu-holiday-controls .giu-undo-btn:hover {
-                        background: #fef3c7;
-                        border-color: #d97706;
-                    }
 
-                    .giu-undo-btn-overrides {
-                        border-color: #60a5fa;
-                        background: #eff6ff;
-                        color: #1d4ed8;
-                    }
 
-                    .giu-undo-btn-overrides:hover {
-                        background: #dbeafe;
-                        border-color: #1B59C6;
-                    }
 
-                    .giu-undo-btn-compensation {
-                        border-color: #5eead4;
-                        background: #f0fdfa;
-                        color: #0f766e;
-                    }
 
-                    .giu-undo-btn-compensation:hover {
-                        background: #ccfbf1;
-                        border-color: #2dd4bf;
-                    }
 
                     .giu-conflict-box {
                         margin-top: 6px;
@@ -4774,39 +5121,10 @@ function renderAttendancePlanner(S, api, host) {
                         gap: 8px;
                     }
 
-                    .giu-guide-btn {
-                        height: 32px;
-                        padding: 0 12px;
-                        border-radius: 8px;
-                        border: 1px solid #d1d5db;
-                        background: #f8fafc;
-                        color: #1f2937;
-                        font-size: 12px;
-                        font-weight: 700;
-                        cursor: pointer;
-                        transition: all 0.15s ease;
-                    }
 
-                    .giu-guide-btn:hover {
-                        background: #e5e7eb;
-                        border-color: #9ca3af;
-                    }
 
-                    .giu-guide-btn-primary {
-                        border-color: #1648a8;
-                        background: linear-gradient(60deg, #1B59C6, #2d6fe0);
-                        color: #ffffff;
-                    }
 
-                    .giu-guide-btn-primary:hover {
-                        background: linear-gradient(60deg, #1648a8, #1B59C6);
-                        border-color: #1648a8;
-                        box-shadow: 0 4px 10px rgba(27,89,198,0.35);
-                    }
 
-                    .giu-guide-btn-ghost {
-                        background: #ffffff;
-                    }
 
                     .giu-guide-target-pulse {
                         animation: giu-guide-pulse 1.5s ease-in-out infinite;
@@ -4883,10 +5201,17 @@ function renderAttendancePlanner(S, api, host) {
             //  UI Factory Helpers (small, composable DOM builders)
             // ═══════════════════════════════════════════════════════════
 
+            // Action buttons are the shared gs-btn (white); row, pager and guide buttons the small size.
+            // The absent-day "Add as" pills keep their own look.
+            const UI_BUTTON_SMALL = /\bgiu-(pagination|remove-holiday|comp-action|restart-guide)-btn\b/;
             function createUiButton(text, className, onClick) {
                 const btn = document.createElement("button");
                 btn.type = "button";
                 if (className) btn.className = className;
+                if (!/\bgiu-absent-holiday-btn\b/.test(className || "")) {
+                    btn.classList.add("gs-btn");
+                    if (UI_BUTTON_SMALL.test(className || "")) btn.classList.add("gs-btn--sm");
+                }
                 btn.textContent = text;
                 btn.setAttribute("aria-label", String(text || "action"));
                 if (typeof onClick === "function") btn.addEventListener("click", onClick);
@@ -4950,82 +5275,49 @@ function renderAttendancePlanner(S, api, host) {
             }
 
             function createInlineModalPrompt(title, initialValue, onConfirm) {
-                const layer = document.createElement("div");
-                if (SOURCE) layer.className = "giu-inline-modal-layer"; // Berlin: the view closes it on leave (closeReportOverlays)
-                layer.style.cssText = "position:fixed;inset:0;background:rgba(15,23,42,0.45);display:flex;align-items:center;justify-content:center;z-index:2147483646;";
-                const modal = document.createElement("div");
-                modal.style.cssText = "width:min(420px,92vw);background:#fff;border:1px solid #d1d5db;border-radius:8px;padding:12px;display:grid;gap:10px;";
-                const h = document.createElement("div");
-                h.style.cssText = "font-size:14px;font-weight:700;color:#1f2937;";
-                h.textContent = title;
-                const input = document.createElement("input");
-                input.type = "text";
-                input.value = String(initialValue == null ? "" : initialValue);
-                input.style.cssText = "height:34px;padding:0 10px;border:1px solid #9ca3af;border-radius:6px;";
-                const actions = document.createElement("div");
-                actions.style.cssText = "display:flex;justify-content:flex-end;gap:8px;";
-                const cancel = createUiButton("Cancel", "giu-settings-action-btn", function () {
-                    if (layer.parentNode) layer.parentNode.removeChild(layer);
+                createInlineModalForm(title, [{ label: "", value: initialValue }], function (values) {
+                    return onConfirm(values[0]);
                 });
-                const ok = createUiButton("Save", "giu-add-holiday-btn", function () {
-                    const keep = onConfirm(input.value);
-                    if (keep !== false && layer.parentNode) layer.parentNode.removeChild(layer);
-                });
-                actions.appendChild(cancel);
-                actions.appendChild(ok);
-                modal.appendChild(h);
-                modal.appendChild(input);
-                modal.appendChild(actions);
-                layer.appendChild(modal);
-                document.body.appendChild(layer);
-                input.focus();
-                input.select();
             }
 
-            // Multi-field sibling of createInlineModalPrompt. `fields` is an array of
-            // { label, value }. onConfirm receives an array of the entered string
-            // values (same order as `fields`); return false to keep the modal open.
+            // Multi-field sibling of createInlineModalPrompt, on the shared S.openDialog. `fields` is an
+            // array of { label, value }. onConfirm receives an array of the entered string values (same
+            // order as `fields`); return false to keep the dialog open. Enter in a field saves.
             function createInlineModalForm(title, fields, onConfirm) {
-                const layer = document.createElement("div");
-                if (SOURCE) layer.className = "giu-inline-modal-layer"; // Berlin: the view closes it on leave (closeReportOverlays)
-                layer.style.cssText = "position:fixed;inset:0;background:rgba(15,23,42,0.45);display:flex;align-items:center;justify-content:center;z-index:2147483646;";
-                const modal = document.createElement("div");
-                modal.style.cssText = "width:min(420px,92vw);background:#fff;border:1px solid #d1d5db;border-radius:8px;padding:12px;display:grid;gap:10px;";
-                const h = document.createElement("div");
-                h.style.cssText = "font-size:14px;font-weight:700;color:#1f2937;";
-                h.textContent = title;
-                modal.appendChild(h);
-
+                const form = document.createDocumentFragment();
                 const inputs = (fields || []).map(function (field) {
                     const label = document.createElement("label");
-                    label.style.cssText = "display:grid;gap:4px;font-size:12.5px;font-weight:600;color:#374151;";
-                    const labelText = document.createElement("span");
-                    labelText.textContent = field.label;
+                    label.className = "gius-dialog-field";
+                    if (field.label) {
+                        const labelText = document.createElement("span");
+                        labelText.textContent = field.label;
+                        label.appendChild(labelText);
+                    }
                     const input = document.createElement("input");
                     input.type = "text";
                     input.value = String(field.value == null ? "" : field.value);
-                    input.style.cssText = "height:34px;padding:0 10px;border:1px solid #9ca3af;border-radius:6px;font-weight:400;";
-                    label.appendChild(labelText);
                     label.appendChild(input);
-                    modal.appendChild(label);
+                    form.appendChild(label);
                     return input;
                 });
-
-                const actions = document.createElement("div");
-                actions.style.cssText = "display:flex;justify-content:flex-end;gap:8px;";
-                const cancel = createUiButton("Cancel", "giu-settings-action-btn", function () {
-                    if (layer.parentNode) layer.parentNode.removeChild(layer);
+                const dlg = S.openDialog({
+                    title: title,
+                    node: form,
+                    // Berlin: the view closes these when it is left (closeReportOverlays).
+                    layerClass: "giu-inline-modal-layer",
+                    focus: "input",
+                    actions: [{ label: "Cancel", value: "cancel" }, { label: "Save", value: "save", primary: true }],
+                    onAction: function (act) {
+                        if (act !== "save") return true;
+                        return onConfirm(inputs.map(function (i) { return i.value; })) !== false;
+                    }
                 });
-                const ok = createUiButton("Save", "giu-add-holiday-btn", function () {
-                    const keep = onConfirm(inputs.map(function (i) { return i.value; }));
-                    if (keep !== false && layer.parentNode) layer.parentNode.removeChild(layer);
+                inputs.forEach(function (input) {
+                    input.addEventListener("keydown", function (e) {
+                        if (e.key === "Enter") { e.preventDefault(); dlg.button("save").click(); }
+                    });
                 });
-                actions.appendChild(cancel);
-                actions.appendChild(ok);
-                modal.appendChild(actions);
-                layer.appendChild(modal);
-                document.body.appendChild(layer);
-                if (inputs[0]) { inputs[0].focus(); inputs[0].select(); }
+                if (inputs[0]) inputs[0].select();
             }
 
             function wrapSettingsSection(sectionKey, title, bodyNode, defaultExpanded) {
@@ -7877,13 +8169,10 @@ function renderAttendancePlanner(S, api, host) {
                 const bar = document.createElement("div");
                 bar.className = "giu-progress-bar";
 
-                const fillClass = stats.progressColor === "green"
-                    ? "giu-progress-fill-green"
-                    : stats.progressColor === "amber"
-                        ? "giu-progress-fill-amber"
-                        : "giu-progress-fill-red";
+                // The bar takes the rank's colour, as the Balance box above it and
+                // the Home bar do (the percentage keeps its completion colour).
                 const fill = document.createElement("div");
-                fill.className = `giu-progress-fill ${fillClass}`;
+                fill.className = `giu-progress-fill gius-att-bar-${displayTier(stats.tier).look}`;
                 fill.style.width = `${stats.progressPercent}%`;
 
                 bar.appendChild(fill);
@@ -8464,7 +8753,8 @@ function renderAttendancePlanner(S, api, host) {
                         beforeShow: function () { expandSettingsPanelForGuide(); expandAllSettingsSubsectionsForGuide(); }
                     },
                     {
-                        selector: ".giu-settings-action-btn",
+                        // Not the Undo buttons, which share the class and come first on the page.
+                        selector: ".giu-settings-action-btn:not(.giu-undo-btn)",
                         title: "Backup & Restore",
                         description: "Export/Import full settings JSON. Import now reports accepted/rejected counts with reasons.",
                         beforeShow: function () { expandSettingsPanelForGuide(); expandAllSettingsSubsectionsForGuide(); }
@@ -8535,17 +8825,17 @@ function renderAttendancePlanner(S, api, host) {
 
                 const skipBtn = document.createElement("button");
                 skipBtn.type = "button";
-                skipBtn.className = "giu-guide-btn giu-guide-btn-ghost";
+                skipBtn.className = "giu-guide-btn giu-guide-btn-ghost gs-btn gs-btn--quiet";
                 skipBtn.textContent = "Skip";
 
                 const prevBtn = document.createElement("button");
                 prevBtn.type = "button";
-                prevBtn.className = "giu-guide-btn";
+                prevBtn.className = "giu-guide-btn gs-btn";
                 prevBtn.textContent = "Previous";
 
                 const nextBtn = document.createElement("button");
                 nextBtn.type = "button";
-                nextBtn.className = "giu-guide-btn giu-guide-btn-primary";
+                nextBtn.className = "giu-guide-btn giu-guide-btn-primary gs-btn gs-btn--primary";
                 nextBtn.textContent = "Next";
 
                 left.appendChild(skipBtn);
@@ -9960,8 +10250,8 @@ function renderAttendancePlanner(S, api, host) {
                 });
             }
 
-            // Rank colours (chip, bar and dot per rank, light and dark), shared by
-            // the Home widget and the full report so both show the same pill.
+            // Rank colours (chip and bar per rank, light and dark), shared by the
+            // Home widget and the full report so both show the same pill and bar.
             function tierPaletteCss() {
                 return `
                     .gius-att-tier-ghost{background:#e2e8f0;color:#334155;} .gius-att-tier-deduct{background:#ffe4e6;color:#9f1239;} .gius-att-tier-close{background:#fff3da;color:#92600a;}
@@ -9969,12 +10259,15 @@ function renderAttendancePlanner(S, api, host) {
                     .gius-att-tier-grass{background:#ecfccb;color:#3f6212;} .gius-att-tier-slave{background:#fae8ff;color:#86198f;}
                     .gius-att-tier-missing{background:#1f2937;color:#f9fafb;} .gius-att-tier-gohome{background:#ecfccb;color:#3f6212;}
                     .gius-att-tier-pink{background:#fce7f3;color:#be185d;}
-                    html.gius-dark .gius-att-tier-ghost{background:#2a3040;color:#b6c2d9;} html.gius-dark .gius-att-tier-deduct{background:#3a1220;color:#f7a8c0;} html.gius-dark .gius-att-tier-close{background:#3a2c10;color:#f9d77e;}
-                    html.gius-dark .gius-att-tier-ontime{background:#14351f;color:#a6e3a1;} html.gius-dark .gius-att-tier-workaholic{background:#3a1f10;color:#fdba74;}
-                    html.gius-dark .gius-att-tier-grass{background:#1f2d0a;color:#bef264;} html.gius-dark .gius-att-tier-slave{background:#2e1230;color:#f0abfc;}
-                    html.gius-dark .gius-att-tier-missing{background:#e5e7eb;color:#111827;} html.gius-dark .gius-att-tier-gohome{background:#1f2d0a;color:#bef264;}
-                    html.gius-dark .gius-att-bar-missing{background:#e5e7eb;}
-                    html.gius-dark .gius-att-tier-pink{background:#3d0f2b;color:#f9a8d4;} html.gius-dark .gius-att-bar-pink,html.gius-dark .gius-att-dot-pink{background:#f472b6;}
+                    .gius-att-bar-ghost{background:#64748b;} .gius-att-bar-deduct{background:#e11d48;} .gius-att-bar-close{background:#f59e0b;} .gius-att-bar-ontime{background:#16a34a;}
+                    .gius-att-bar-workaholic{background:#ea580c;} .gius-att-bar-grass{background:#65a30d;} .gius-att-bar-slave{background:#a21caf;}
+                    .gius-att-bar-missing{background:#111827;} .gius-att-bar-gohome{background:#65a30d;} .gius-att-bar-pink{background:#db2777;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-tier-ghost{background:#2a3040;color:var(--gs-dk-muted, #b6c2d9);} html:is(.gius-dark, [data-gius-dark]) .gius-att-tier-deduct{background:#3a1220;color:#f7a8c0;} html:is(.gius-dark, [data-gius-dark]) .gius-att-tier-close{background:#3a2c10;color:#f9d77e;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-tier-ontime{background:#14351f;color:var(--gs-dk-ok, #a6e3a1);} html:is(.gius-dark, [data-gius-dark]) .gius-att-tier-workaholic{background:#3a1f10;color:#fdba74;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-tier-grass{background:#1f2d0a;color:#bef264;} html:is(.gius-dark, [data-gius-dark]) .gius-att-tier-slave{background:#2e1230;color:#f0abfc;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-tier-missing{background:#e5e7eb;color:#111827;} html:is(.gius-dark, [data-gius-dark]) .gius-att-tier-gohome{background:#1f2d0a;color:#bef264;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-bar-missing{background:#e5e7eb;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-tier-pink{background:#3d0f2b;color:#f9a8d4;} html:is(.gius-dark, [data-gius-dark]) .gius-att-bar-pink,html:is(.gius-dark, [data-gius-dark]) .gius-att-dot-pink{background:#f472b6;}
                 `;
             }
 
@@ -10002,15 +10295,12 @@ function renderAttendancePlanner(S, api, host) {
                     .gius-att-bal-red{background:#fee2e2;color:#991b1b;}
                     .gius-att-bar{height:8px;border-radius:6px;background:#e9ecef;overflow:hidden;margin:10px 0 8px;}
                     .gius-att-bar-fill{height:100%;border-radius:6px;}
-                    .gius-att-bar-ghost{background:#64748b;} .gius-att-bar-deduct{background:#e11d48;} .gius-att-bar-close{background:#f59e0b;} .gius-att-bar-ontime{background:#16a34a;}
-                    .gius-att-bar-workaholic{background:#ea580c;} .gius-att-bar-grass{background:#65a30d;} .gius-att-bar-slave{background:#a21caf;}
-                    .gius-att-bar-missing{background:#111827;} .gius-att-bar-gohome{background:#65a30d;} .gius-att-bar-pink{background:#db2777;}
                     .gius-att-tierwrap{margin-top:10px;}
                     .gius-att-quip{margin-top:6px;font-size:12.5px;font-style:italic;color:#6b7280;}
-                    html.gius-dark .gius-att-quip{color:#9399b2;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-quip{color:var(--gs-dk-muted, #9399b2);}
                     .gius-att-plan{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:8px;padding:7px 10px;border-radius:6px;background:#f3f4f6;font-size:12px;font-weight:600;}
                     .gius-att-plan b{font-variant-numeric:tabular-nums;}
-                    html.gius-dark .gius-att-plan{background:#313244;color:#cdd6f4;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-plan{background:var(--gs-dk-line, #313244);color:var(--gs-dk-text, #cdd6f4);}
                     .gius-att-tier{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:800;padding:3px 9px;border-radius:999px;}
                     .gius-att-tier-btn{cursor:pointer;border:none;font-family:inherit;transition:filter .12s,transform .12s;}
                     .gius-att-tier-btn:hover{filter:brightness(.96);transform:translateY(-1px);}
@@ -10029,7 +10319,7 @@ function renderAttendancePlanner(S, api, host) {
                     .gius-att-dot-ghost{background:#64748b;} .gius-att-dot-deduct{background:#e11d48;} .gius-att-dot-close{background:#f59e0b;} .gius-att-dot-ontime{background:#16a34a;}
                     .gius-att-dot-workaholic{background:#ea580c;} .gius-att-dot-grass{background:#65a30d;} .gius-att-dot-slave{background:#a21caf;}
                     .gius-att-dot-missing{background:#111827;} .gius-att-dot-gohome{background:#65a30d;} .gius-att-dot-pink{background:#db2777;}
-                    html.gius-dark .gius-att-dot-missing{background:#e5e7eb;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-dot-missing{background:#e5e7eb;}
                     .gius-att-trow-main{flex:1 1 auto;min-width:0;}
                     .gius-att-trow-name{font-weight:800;font-size:13.5px;display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
                     .gius-att-trow-cur{font-size:10.5px;font-weight:800;letter-spacing:.4px;padding:1px 6px;border-radius:999px;background:#1e1e2e;color:#fff;}
@@ -10043,9 +10333,9 @@ function renderAttendancePlanner(S, api, host) {
                     .gius-att-unlock-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
                     .gius-att-unlock-go{display:inline-block;background:#1B59C6;color:#fff;border-radius:8px;padding:8px 16px;font-weight:700;font-size:13px;text-decoration:none;}
                     .gius-att-unlock-ok{border:1px solid #d0d7de;background:transparent;color:inherit;border-radius:8px;padding:8px 16px;font-weight:700;font-size:13px;cursor:pointer;font-family:inherit;}
-                    html.gius-dark .gius-att-unlock-kicker{color:#f9d77e;}
-                    html.gius-dark .gius-att-unlock-go{background:#89b4fa;color:#11111b;}
-                    html.gius-dark .gius-att-unlock-ok{border-color:#3a3a4d;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-unlock-kicker{color:#f9d77e;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-unlock-go{background:var(--gs-dk-accent, #89b4fa);color:var(--gs-dk-bg, #11111b);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-unlock-ok{border-color:var(--gs-dk-line, #3a3a4d);}
                     /* Unlock popup animations (keyframes prefixed giusU). */
                     .gius-att-unlock-modal{background:transparent;}
                     .gius-att-unlock-scrim{position:absolute;inset:0;background:rgba(0,0,0,.45);}
@@ -10078,8 +10368,8 @@ function renderAttendancePlanner(S, api, host) {
                     .gius-att-fog{position:absolute;width:140%;height:70%;left:-20%;border-radius:50%;filter:blur(30px);opacity:0;pointer-events:none;z-index:1;}
                     .gius-att-fog-a{top:45%;background:radial-gradient(closest-side,rgba(203,213,225,.85),transparent);}
                     .gius-att-fog-b{top:60%;background:radial-gradient(closest-side,rgba(148,163,184,.7),transparent);}
-                    html.gius-dark .gius-att-fog-a{background:radial-gradient(closest-side,rgba(148,163,184,.45),transparent);}
-                    html.gius-dark .gius-att-fog-b{background:radial-gradient(closest-side,rgba(100,116,139,.45),transparent);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-fog-a{background:radial-gradient(closest-side,rgba(148,163,184,.45),transparent);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-fog-b{background:radial-gradient(closest-side,rgba(100,116,139,.45),transparent);}
                     .gius-att-play .gius-att-fog-a{animation:giusUFog 2.4s ease-out both,giusUDrift 9s ease-in-out .2s infinite alternate;}
                     .gius-att-play .gius-att-fog-b{animation:giusUFog 2.4s ease-out .2s both,giusUDrift 11s ease-in-out infinite alternate-reverse;}
                     @keyframes giusUFog{0%{opacity:0;}30%{opacity:1;}100%{opacity:.55;}}
@@ -10138,12 +10428,12 @@ function renderAttendancePlanner(S, api, host) {
                     .gius-att-unlock-go{overflow:hidden;}
                     .gius-att-unlock-go:hover{transform:translateY(-2px);filter:brightness(1.08);box-shadow:0 6px 16px rgba(27,89,198,.35);}
                     .gius-att-unlock-ok:hover{transform:translateY(-2px);background:rgba(0,0,0,.05);}
-                    html.gius-dark .gius-att-unlock-ok:hover{background:rgba(255,255,255,.07);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-unlock-ok:hover{background:rgba(255,255,255,.07);}
                     .gius-att-unlock-go:active,.gius-att-unlock-ok:active{transform:translateY(0) scale(.97);}
                     .gius-att-unlock-go-gold{background:linear-gradient(135deg,#fde68a,#eab308 55%,#ca8a04);color:#3b2a00;box-shadow:0 2px 10px rgba(234,179,8,.35);}
-                    html.gius-dark .gius-att-unlock-go-gold{background:linear-gradient(135deg,#fde68a,#facc15 55%,#eab308);color:#1c1400;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-unlock-go-gold{background:linear-gradient(135deg,#fde68a,#facc15 55%,#eab308);color:#1c1400;}
                     .gius-att-unlock-go-pink{background:linear-gradient(135deg,#f472b6,#db2777);color:#fff;box-shadow:0 2px 10px rgba(219,39,119,.35);}
-                    html.gius-dark .gius-att-unlock-go-pink{background:linear-gradient(135deg,#fbcfe8,#f472b6);color:#3d0f2b;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-unlock-go-pink{background:linear-gradient(135deg,#fbcfe8,#f472b6);color:#3d0f2b;}
                     .gius-att-unlock-go-gold:hover{box-shadow:0 6px 18px rgba(234,179,8,.55);}
                     .gius-att-unlock-go-pink:hover{box-shadow:0 6px 18px rgba(219,39,119,.5);}
                     .gius-att-unlock-go-gold::after,.gius-att-unlock-go-pink::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.65),transparent);transform:skewX(-20deg);opacity:0;}
@@ -10159,11 +10449,11 @@ function renderAttendancePlanner(S, api, host) {
                         .gius-att-stars i{opacity:.8;}
                         .gius-att-unlock-go:hover,.gius-att-unlock-ok:hover{transform:none;}
                     }
-                    html.gius-dark .gius-att-sheet{background:#1e1e2e;color:#cdd6f4;}
-                    html.gius-dark .gius-att-sheet-sub,html.gius-dark .gius-att-trow-cond{color:#9399b2;}
-                    html.gius-dark .gius-att-trow{border-color:#2a2a3a;}
-                    html.gius-dark .gius-att-trow.cur{background:#181825;border-color:#3a3a4d;}
-                    html.gius-dark .gius-att-trow-cur{background:#cdd6f4;color:#1e1e2e;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-sheet{background:var(--gs-dk-card, #1e1e2e);color:var(--gs-dk-text, #cdd6f4);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-sheet-sub,html:is(.gius-dark, [data-gius-dark]) .gius-att-trow-cond{color:var(--gs-dk-muted, #9399b2);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-trow{border-color:var(--gs-dk-line-soft, #2a2a3a);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-trow.cur{background:var(--gs-dk-sunk, #181825);border-color:var(--gs-dk-line, #3a3a4d);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-trow-cur{background:var(--gs-dk-text, #cdd6f4);color:var(--gs-dk-card, #1e1e2e);}
                     ${tierPaletteCss()}
                     .gius-att-meta{font-size:13px;color:#272c33;}
                     .gius-att-toggle{margin-top:6px;font-size:13px;font-weight:700;background:transparent;border:none;
@@ -10185,16 +10475,16 @@ function renderAttendancePlanner(S, api, host) {
                     .gius-att-action:hover{background:#fff8e1;border-color:#f0c247;}
                     .gius-att-link{display:inline-block;margin-top:10px;font-size:13px;font-weight:600;color:#272c33;}
                     .gius-att-empty{font-size:13px;opacity:.85;}
-                    html.gius-dark .gius-att-widget{background:#1e1e2e;color:#cdd6f4;box-shadow:0 2px 10px rgba(0,0,0,.45);}
-                    html.gius-dark .gius-att-card{background:#181825;border-color:#313244;border-left-color:#f9e2af;}
-                    html.gius-dark .gius-att-bar{background:#313244;}
-                    html.gius-dark .gius-att-meta,html.gius-dark .gius-att-toggle,html.gius-dark .gius-att-link{color:#cdd6f4;}
-                    html.gius-dark .gius-att-absent-row{background:#11111b;}
-                    html.gius-dark .gius-att-action{background:#181825;border-color:#313244;color:#cdd6f4;}
-                    html.gius-dark .gius-att-action:hover{background:#2a2410;border-color:#f9e2af;}
-                    html.gius-dark .gius-att-bal-green{background:#14351f;color:#a6e3a1;}
-                    html.gius-dark .gius-att-bal-amber{background:#2a2410;color:#f9e2af;}
-                    html.gius-dark .gius-att-bal-red{background:#3a1414;color:#f38ba8;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-widget{background:var(--gs-dk-card, #1e1e2e);color:var(--gs-dk-text, #cdd6f4);box-shadow:0 2px 10px rgba(0,0,0,.45);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-card{background:var(--gs-dk-sunk, #181825);border-color:var(--gs-dk-line, #313244);border-left-color:var(--gs-dk-warn, #f9e2af);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-bar{background:var(--gs-dk-line, #313244);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-meta,html:is(.gius-dark, [data-gius-dark]) .gius-att-toggle,html:is(.gius-dark, [data-gius-dark]) .gius-att-link{color:var(--gs-dk-text, #cdd6f4);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-absent-row{background:var(--gs-dk-bg, #11111b);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-action{background:var(--gs-dk-sunk, #181825);border-color:var(--gs-dk-line, #313244);color:var(--gs-dk-text, #cdd6f4);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-action:hover{background:#2a2410;border-color:var(--gs-dk-warn, #f9e2af);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-bal-green{background:#14351f;color:var(--gs-dk-ok, #a6e3a1);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-bal-amber{background:#2a2410;color:var(--gs-dk-warn, #f9e2af);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-bal-red{background:#3a1414;color:var(--gs-dk-err, #f38ba8);}
                     .gius-att-dayoff{display:flex;align-items:center;gap:9px;flex-wrap:wrap;
                         border-radius:8px;padding:9px 12px;margin:0 0 12px;font-size:13.5px;
                         line-height:1.45;border-left:3px solid;}
@@ -10206,8 +10496,8 @@ function renderAttendancePlanner(S, api, host) {
                         flex:0 0 auto;}
                     .gius-att-dayoff.warn{background:#fff8e1;border-left-color:#f59e0b;color:#8a6500;}
                     .gius-att-dayoff.warn .gius-att-dayoff-btn{background:#b45309;color:#fff;}
-                    html.gius-dark .gius-att-dayoff.warn{background:#2a2410;border-left-color:#f9e2af;color:#f9e2af;}
-                    html.gius-dark .gius-att-dayoff.warn .gius-att-dayoff-btn{background:#f9e2af;color:#2a2410;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-dayoff.warn{background:#2a2410;border-left-color:var(--gs-dk-warn, #f9e2af);color:var(--gs-dk-warn, #f9e2af);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-att-dayoff.warn .gius-att-dayoff-btn{background:var(--gs-dk-warn, #f9e2af);color:#2a2410;}
                     .gius-att-card.gius-att-muted{opacity:.45;filter:grayscale(.6);}`;
                 const style = document.createElement("style");
                 style.id = "gius-att-style";
@@ -10911,12 +11201,14 @@ function renderAttendancePlanner(S, api, host) {
                 eval:    '#MainContent_evalMethIdLst',
                 crntLbl: '#MainContent_crntLbl',
                 saveBtn: '#MainContent_saveBtn',
+                startOver: '#MainContent_strOvrBtn',
                 rows:    '#data tbody tr',
             };
         
             // ── Style injection ──────────────────────────────────────────────────────────
         
             function injectStyles() {
+                S.uiStyles();
                 if (document.getElementById('gius-upload-styles')) return;
                 const style = document.createElement('style');
                 style.id = 'gius-upload-styles';
@@ -10998,55 +11290,6 @@ function renderAttendancePlanner(S, api, host) {
                         outline: 2px solid #60a5fa;
                         outline-offset: 1px;
                         border-color: #1B59C6;
-                    }
-                    .giug-btn {
-                        height: 32px;
-                        padding: 0 14px;
-                        border-radius: 6px;
-                        font-size: 13px;
-                        font-weight: 700;
-                        cursor: pointer;
-                        border: 1px solid transparent;
-                        transition: all 0.2s ease;
-                        display: inline-flex;
-                        align-items: center;
-                        gap: 5px;
-                        white-space: nowrap;
-                        font-family: 'Open Sans', Arial, sans-serif;
-                    }
-                    .giug-btn:disabled {
-                        opacity: 0.5;
-                        cursor: not-allowed;
-                        transform: none !important;
-                        box-shadow: none !important;
-                    }
-                    .giug-btn-primary {
-                        background: #1B59C6;
-                        border-color: #1648a8;
-                        color: #fff;
-                    }
-                    .giug-btn-primary:not(:disabled):hover {
-                        background: #1648a8;
-                        transform: translateY(-1px);
-                        box-shadow: 0 3px 10px rgba(27,89,198,0.35);
-                    }
-                    .giug-btn-success {
-                        background: #fff;
-                        border-color: #d1d5db;
-                        color: #374151;
-                    }
-                    .giug-btn-success:not(:disabled):hover {
-                        background: #f9fafb;
-                        border-color: #9ca3af;
-                    }
-                    .giug-btn-outline {
-                        background: #fff;
-                        border-color: #d1d5db;
-                        color: #374151;
-                    }
-                    .giug-btn-outline:not(:disabled):hover {
-                        background: #f9fafb;
-                        border-color: #9ca3af;
                     }
                     .giug-alert {
                         padding: 8px 10px;
@@ -11149,6 +11392,10 @@ function renderAttendancePlanner(S, api, host) {
                         font-weight: 700;
                         color: #111827;
                     }
+                    #data input.giug-grade-bad {
+                        border-color: var(--gs-err, #cf222e) !important;
+                        box-shadow: 0 0 0 2px rgba(207, 34, 46, .2) !important;
+                    }
                 `;
                 document.head.appendChild(style);
             }
@@ -11159,7 +11406,7 @@ function renderAttendancePlanner(S, api, host) {
                 const b = document.createElement('button');
                 b.type = 'button';
                 b.textContent = text;
-                b.className = `giug-btn giug-btn-${style}`;
+                b.className = `giug-btn giug-btn-${style} gs-btn`;
                 b.disabled = disabled;
                 return b;
             }
@@ -11635,7 +11882,7 @@ function renderAttendancePlanner(S, api, host) {
                     fileInput.value = ''; // the same file can be picked again after editing it
                     const parsed = await parseCSV(file);
                     csvMap = parsed.map;
-                    showInfo(card, `CSV loaded — ${Object.keys(csvMap).length} student grade(s) ready.${skippedNote(parsed.skipped)}`);
+                    showInfo(card, `CSV loaded — ${Object.keys(csvMap).length} student grade(s) ready.${skippedNote(parsed.skipped)}`, false);
                     batchUpBtn.disabled = !isValidId(evalPicker.value);
                     const maxGrade = getMaxGrade(evalPicker);
                     const previewStats = computeStats(Object.values(csvMap), maxGrade);
@@ -11755,8 +12002,52 @@ function renderAttendancePlanner(S, api, host) {
                     text: 'Upload grades from a CSV or download the current sheet, with instant grade statistics.' });
             }
         
+            // ── Start Over ───────────────────────────────────────────────────────────
+            // The portal's Start Over posts back with validation on, so a single grade
+            // the validators reject (out of range, not a number) makes it silently do
+            // nothing — and it is the only way back to the filters from the table view.
+            // Reload the page fresh instead, as the sidebar's Manage Uploaded Grades
+            // link does: same result, no validation in the way.
+            function fixStartOver() {
+                const link = document.querySelector(SEL.startOver);
+                if (!link) return;
+                link.addEventListener('click', e => {
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+                    location.href = location.pathname;
+                }, true);
+            }
+
+            // ── Live grade checks ────────────────────────────────────────────────────
+            // The portal checks a grade box only when you leave it, and its maximum
+            // message always reads "Must Be Less Than 20" whatever the element's
+            // maximum (the row's hidden mxPt field). Each box is checked as you type
+            // instead, against its own maximum, showing the portal's own three messages
+            // (Required, Not Valid Number, the maximum, now with the right number), so
+            // what shows is what Save would reject.
+            function liveGradeChecks(table) {
+                table.querySelectorAll('input[type="text"][id*="_grd_"]').forEach(input => {
+                    const near = part => document.getElementById(input.id.replace('_grd_', `_${part}_`));
+                    const max = parseFloat(near('mxPt')?.value);
+                    const required = near('rqrdGrd');
+                    const notNumber = near('rgexGrd');
+                    const tooBig = near('cmprGrdLMxPt');
+                    if (tooBig && Number.isFinite(max)) tooBig.textContent = `Must be at most ${max}`;
+                    input.addEventListener('input', () => {
+                        const v = input.value.trim();
+                        const empty = v === '';
+                        const bad = !empty && !/^((\.[0-9]+)|([0-9]+(\.[0-9]*)?))$/.test(v);
+                        const over = !empty && !bad && Number.isFinite(max) && parseFloat(v) > max;
+                        [[required, empty], [notNumber, bad], [tooBig, over]].forEach(([el, on]) => {
+                            if (el) el.style.visibility = on ? 'visible' : 'hidden';
+                        });
+                        input.classList.toggle('giug-grade-bad', empty || bad || over);
+                    });
+                });
+            }
+
             // ── Entry point ──────────────────────────────────────────────────────────
-        
+
             function init() {
         
                 const groupEl = document.querySelector(SEL.group);
@@ -11768,6 +12059,8 @@ function renderAttendancePlanner(S, api, host) {
                 const table = document.getElementById('data');
                 if (table?.tagName === 'TABLE') {
                     injectPerGroupToolbar(table);
+                    fixStartOver();
+                    liveGradeChecks(table);
                 }
             }
         
@@ -11870,19 +12163,19 @@ function renderAttendancePlanner(S, api, host) {
                     .gius-tl-row + .gius-tl-row{margin-top:6px;}
                     .gius-tl-empty{font-size:13px;opacity:.85;padding:6px 0;}
 
-                    /* Dark mode — reacts to GIU Dark Mode (html.gius-dark, Catppuccin Mocha). */
-                    html.gius-dark .gius-tl-widget{background:#1e1e2e;color:#cdd6f4;box-shadow:0 2px 10px rgba(0,0,0,.45);}
-                    html.gius-dark .gius-tl-today{background:#181825;border-color:#313244;border-left-color:#f9e2af;}
-                    html.gius-dark .gius-tl-today-head{color:#cdd6f4;}
-                    html.gius-dark .gius-tl-card{background:#11111b;box-shadow:none;}
-                    html.gius-dark .gius-tl-slot{color:#f9e2af;background:#2a2410;}
-                    html.gius-dark .gius-tl-tutorial{color:#cdd6f4;}
-                    html.gius-dark .gius-tl-empty{color:#cdd6f4;opacity:1;}
-                    html.gius-dark .gius-tl-loc{color:#f9e2af;}
-                    html.gius-dark .gius-tl-item{background:#181825;}
-                    html.gius-dark .gius-tl-day-head{color:#cdd6f4;}
-                    html.gius-dark .gius-tl-toggle{color:#cdd6f4;}
-                    html.gius-dark .gius-tl-stale{color:#f9e2af;}`;
+                    /* Dark mode — reacts to GIU Dark Mode (html:is(.gius-dark, [data-gius-dark]), Catppuccin Mocha). */
+                    html:is(.gius-dark, [data-gius-dark]) .gius-tl-widget{background:var(--gs-dk-card, #1e1e2e);color:var(--gs-dk-text, #cdd6f4);box-shadow:0 2px 10px rgba(0,0,0,.45);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-tl-today{background:var(--gs-dk-sunk, #181825);border-color:var(--gs-dk-line, #313244);border-left-color:var(--gs-dk-warn, #f9e2af);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-tl-today-head{color:var(--gs-dk-text, #cdd6f4);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-tl-card{background:var(--gs-dk-bg, #11111b);box-shadow:none;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-tl-slot{color:var(--gs-dk-warn, #f9e2af);background:#2a2410;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-tl-tutorial{color:var(--gs-dk-text, #cdd6f4);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-tl-empty{color:var(--gs-dk-text, #cdd6f4);opacity:1;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-tl-loc{color:var(--gs-dk-warn, #f9e2af);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-tl-item{background:var(--gs-dk-sunk, #181825);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-tl-day-head{color:var(--gs-dk-text, #cdd6f4);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-tl-toggle{color:var(--gs-dk-text, #cdd6f4);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-tl-stale{color:var(--gs-dk-warn, #f9e2af);}`;
                 const style = document.createElement('style');
                 style.id = 'gius-tl-style';
                 style.textContent = css;
@@ -12527,9 +12820,9 @@ function renderAttendancePlanner(S, api, host) {
 
             function exportButtonsHTML(s) {
                 return `
-                    <button type="button" class="gius-pr-act gius-btn gius-pr-ics" title="Download this event as .ics">Download event</button>
-                    <a class="gius-pr-act gius-pr-gcal" target="_blank" rel="noopener" href="${googleCalUrl(s)}" title="Google Calendar">Google Calendar</a>
-                    <a class="gius-pr-act gius-pr-mail" href="${mailtoUrl(s)}" title="Email reminder">Email</a>`;
+                    <button type="button" class="gius-pr-act gius-btn gius-pr-ics gs-btn gs-btn--sm" title="Download this event as .ics">Download event</button>
+                    <a class="gius-pr-act gius-pr-gcal gs-btn gs-btn--sm" target="_blank" rel="noopener" href="${googleCalUrl(s)}" title="Google Calendar">Google Calendar</a>
+                    <a class="gius-pr-act gius-pr-mail gs-btn gs-btn--sm" href="${mailtoUrl(s)}" title="Email reminder">Email</a>`;
             }
 
             function wireExports(host) {
@@ -12677,7 +12970,7 @@ function renderAttendancePlanner(S, api, host) {
                     <div id="gius-pr-next" class="gius-pr-next">
                         <div class="gius-pr-next-head">${fmtDateOnly(next.start)} · <b>${whenLabel(next, now)}</b>${nextDay.length > 1 ? ` · ${nextDay.length} duties` : ''}</div>
                         ${nextDay.map(nextCard).join('')}
-                        ${upcoming.length > 1 ? `<button type="button" id="gius-pr-ics-all" class="gius-pr-act gius-btn gius-pr-act-all" title="Download all upcoming as .ics">Download all</button>` : ''}
+                        ${upcoming.length > 1 ? `<button type="button" id="gius-pr-ics-all" class="gius-pr-act gius-btn gius-pr-act-all gs-btn gs-btn--sm" title="Download all upcoming as .ics">Download all</button>` : ''}
                     </div>`;
 
                 // Exams left after the next session's day (the next block already shows that day).
@@ -12721,6 +13014,7 @@ function renderAttendancePlanner(S, api, host) {
             }
 
             function injectStyles() {
+                S.uiStyles();
                 if (document.getElementById('gius-pr-style')) return;
                 const css = `
                     .gius-pr-widget{font-family:inherit;display:block;width:100%;box-sizing:border-box;
@@ -12767,20 +13061,20 @@ function renderAttendancePlanner(S, api, host) {
                     .gius-pr-empty-title{font-size:15px;font-weight:700;}
                     .gius-pr-empty-sub{font-size:13px;opacity:.7;}
 
-                    /* Dark mode — reacts live to the GIU Dark Mode script's html.gius-dark class (Catppuccin Mocha). */
-                    html.gius-dark .gius-pr-widget{background:#1e1e2e;color:#cdd6f4;box-shadow:0 2px 10px rgba(0,0,0,.45);}
-                    html.gius-dark .gius-pr-next{background:#181825;border-color:#313244;border-left-color:#f9e2af;}
-                    html.gius-dark .gius-pr-next-head{color:#cdd6f4;}
-                    html.gius-dark .gius-pr-next-card{background:#11111b;box-shadow:none;}
-                    html.gius-dark .gius-pr-next-time,
-                    html.gius-dark .gius-pr-row-time{color:#f9e2af;}
-                    html.gius-dark .gius-pr-badge-cover{background:#2a2410;color:#f9e2af;border-color:#f9e2af;}
-                    html.gius-dark .gius-pr-row{background:#181825;}
-                    html.gius-dark .gius-pr-act{border-color:#45475a;color:#cdd6f4;}
-                    html.gius-dark .gius-pr-act:hover{background:#313244;}
-                    html.gius-dark .gius-pr-toggle{color:#cdd6f4;}
-                    html.gius-dark .gius-pr-stale{color:#f9e2af;}
-                    html.gius-dark .gius-pr-empty-icon{color:#f9e2af;}`;
+                    /* Dark mode — reacts live to the GIU Dark Mode script's html:is(.gius-dark, [data-gius-dark]) class (Catppuccin Mocha). */
+                    html:is(.gius-dark, [data-gius-dark]) .gius-pr-widget{background:var(--gs-dk-card, #1e1e2e);color:var(--gs-dk-text, #cdd6f4);box-shadow:0 2px 10px rgba(0,0,0,.45);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-pr-next{background:var(--gs-dk-sunk, #181825);border-color:var(--gs-dk-line, #313244);border-left-color:var(--gs-dk-warn, #f9e2af);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-pr-next-head{color:var(--gs-dk-text, #cdd6f4);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-pr-next-card{background:var(--gs-dk-bg, #11111b);box-shadow:none;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-pr-next-time,
+                    html:is(.gius-dark, [data-gius-dark]) .gius-pr-row-time{color:var(--gs-dk-warn, #f9e2af);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-pr-badge-cover{background:#2a2410;color:var(--gs-dk-warn, #f9e2af);border-color:var(--gs-dk-warn, #f9e2af);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-pr-row{background:var(--gs-dk-sunk, #181825);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-pr-act{border-color:var(--gs-dk-line-2, #45475a);color:var(--gs-dk-text, #cdd6f4);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-pr-act:hover{background:var(--gs-dk-line, #313244);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-pr-toggle{color:var(--gs-dk-text, #cdd6f4);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-pr-stale{color:var(--gs-dk-warn, #f9e2af);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-pr-empty-icon{color:var(--gs-dk-warn, #f9e2af);}`;
                 const style = document.createElement('style');
                 style.id = 'gius-pr-style';
                 style.textContent = css;
@@ -12801,7 +13095,7 @@ function renderAttendancePlanner(S, api, host) {
                     if (!cache) {
                         const host = ensureHost();
                         host.innerHTML = `<div class="gius-pr-head">Proctoring</div>
-                            <div class="gius-pr-empty">Couldn't load schedule. <button type="button" id="gius-pr-retry" class="gius-pr-toggle gius-btn">Retry</button></div>`;
+                            <div class="gius-pr-empty">Couldn't load schedule. <button type="button" id="gius-pr-retry" class="gius-pr-toggle gius-btn gs-btn gs-btn--sm">Retry</button></div>`;
                         host.querySelector('#gius-pr-retry').addEventListener('click', boot);
                     }
                 }
@@ -13118,15 +13412,15 @@ function renderAttendancePlanner(S, api, host) {
                         white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
                     .gius-us-ago{font-size:12px;font-weight:700;color:#8a6500;white-space:nowrap;opacity:.8;flex-shrink:0;}
 
-                    /* Dark mode — reacts live to the GIU Theme script's html.gius-dark class. */
-                    html.gius-dark .gius-us-widget{background:#1e1e2e;color:#cdd6f4;box-shadow:0 2px 10px rgba(0,0,0,.45);}
-                    html.gius-dark .gius-us-badge{background:#2a2410;color:#f9e2af;border-color:#f9e2af;}
-                    html.gius-dark .gius-us-row{background:#181825;border-color:#313244;border-left-color:#f9e2af;}
-                    html.gius-dark .gius-us-row:hover{background:#232334;}
-                    html.gius-dark .gius-us-slot{color:#f9e2af;background:#2a2410;}
-                    html.gius-dark .gius-us-when{color:#cdd6f4;}
-                    html.gius-dark .gius-us-course{color:#a6adc8;}
-                    html.gius-dark .gius-us-ago{color:#f9e2af;}`);
+                    /* Dark mode — reacts live to the GIU Theme script's html:is(.gius-dark, [data-gius-dark]) class. */
+                    html:is(.gius-dark, [data-gius-dark]) .gius-us-widget{background:var(--gs-dk-card, #1e1e2e);color:var(--gs-dk-text, #cdd6f4);box-shadow:0 2px 10px rgba(0,0,0,.45);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-us-badge{background:#2a2410;color:var(--gs-dk-warn, #f9e2af);border-color:var(--gs-dk-warn, #f9e2af);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-us-row{background:var(--gs-dk-sunk, #181825);border-color:var(--gs-dk-line, #313244);border-left-color:var(--gs-dk-warn, #f9e2af);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-us-row:hover{background:var(--gs-dk-line-soft, #232334);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-us-slot{color:var(--gs-dk-warn, #f9e2af);background:#2a2410;}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-us-when{color:var(--gs-dk-text, #cdd6f4);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-us-course{color:var(--gs-dk-muted, #a6adc8);}
+                    html:is(.gius-dark, [data-gius-dark]) .gius-us-ago{color:var(--gs-dk-warn, #f9e2af);}`);
             }
 
             // Insertion priority: after Next Proctoring, else Teaching Load, else
@@ -13295,6 +13589,7 @@ function renderAttendancePlanner(S, api, host) {
             }
         },
         proctorAggregator(S) {
+            let exchangeDialog = null; // the open exchange dialog (S.openDialog)
         
             const CACHE_KEY = 'giuProctorScheduleV1';
             const MAX_CONCURRENT = 20;
@@ -13695,6 +13990,7 @@ function renderAttendancePlanner(S, api, host) {
             // ── Styles ────────────────────────────────────────────────────────────────
         
             function injectStyles() {
+                S.uiStyles();
                 if (document.getElementById('gius-proctor-styles')) return;
                 const s = document.createElement('style');
                 s.id = 'gius-proctor-styles';
@@ -13777,13 +14073,20 @@ function renderAttendancePlanner(S, api, host) {
                     }
                     .gius-fetch-dept-input:focus { outline: 2px solid #60a5fa; outline-offset: 1px; border-color: #1B59C6; }
                     .gius-fetch-dept-input.gius-fetch-dept-error { border-color: #dc2626; outline-color: #f87171; }
-                    html.gius-dark .gius-fetch-dept-input {
-                        background: #313244 !important; border-color: #45475a !important; color: #cdd6f4 !important;
+                    html:is(.gius-dark, [data-gius-dark]) .gius-fetch-dept-input {
+                        background: var(--gs-dk-line, #313244) !important; border-color: var(--gs-dk-line-2, #45475a) !important; color: var(--gs-dk-text, #cdd6f4) !important;
                     }
                     .gius-proctor-body {
                         padding: 14px 16px;
+                        overflow: clip; min-height: 0; interpolate-size: allow-keywords;
+                        transition: height .3s ease-out, padding-top .3s ease-out, padding-bottom .3s ease-out, visibility 0s;
                     }
-                    .gius-proctor-body.collapsed { display: none; }
+                    /* Folds with a slide like the other cards (browsers without interpolate-size just snap). */
+                    .gius-proctor-body.collapsed {
+                        height: 0; padding-top: 0 !important; padding-bottom: 0 !important; visibility: hidden;
+                        transition: height .3s ease-out, padding-top .3s ease-out, padding-bottom .3s ease-out, visibility 0s .3s;
+                    }
+                    @media (prefers-reduced-motion: reduce) { .gius-proctor-body { transition: none !important; } }
         
                     .gius-proctor-hdr { cursor: pointer; }
                     .gius-proctor-hdr:hover { opacity: 0.92; }
@@ -13803,52 +14106,15 @@ function renderAttendancePlanner(S, api, host) {
                         padding: 8px 12px !important;
                     }
                     .gius-empty-hint .fa { color: #1B59C6; margin-right: 4px; }
-                    html.gius-dark .gius-empty-hint {
-                        background: #181825 !important; border-color: #313244 !important; color: #9399b2 !important;
+                    html:is(.gius-dark, [data-gius-dark]) .gius-empty-hint {
+                        background: var(--gs-dk-sunk, #181825) !important; border-color: var(--gs-dk-line, #313244) !important; color: var(--gs-dk-muted, #9399b2) !important;
                     }
-                    html.gius-dark .gius-empty-hint .fa { color: #89b4fa !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-empty-hint .fa { color: var(--gs-dk-accent, #89b4fa) !important; }
         
-                    .gius-btn {
-                        height: 32px; padding: 0 14px; border-radius: 6px;
-                        font-size: 13px; font-weight: 700; cursor: pointer;
-                        border: 1px solid transparent;
-                        transition: all 0.2s ease;
-                        display: inline-flex; align-items: center; gap: 5px;
-                        white-space: nowrap;
-                        font-family: 'Open Sans', Arial, sans-serif;
-                    }
-                    .gius-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-                    .gius-btn-primary  { background: #1B59C6; border-color: #1648a8; color: #fff; }
-                    .gius-btn-primary:not(:disabled):hover  { background: #1648a8; }
-                    .gius-btn-outline  { background: #fff; border-color: #d1d5db; color: #374151; }
-                    .gius-btn-outline:not(:disabled):hover  { background: #f9fafb; }
-                    .gius-btn-muted    { background: #f9fafb; border-color: #d1d5db; color: #374151; }
-                    .gius-btn-muted:not(:disabled):hover    { background: #e5e7eb; }
-                    .gius-btn-sm { height: 26px; padding: 0 10px; font-size: 12px; }
         
-                    /* Entry trigger — dark slate + gold accent, matches the panel header */
-                    #gius-proctor-trigger {
-                        margin: 10px 0 0 !important;
-                        height: 34px !important; padding: 0 16px !important;
-                        display: inline-flex !important; align-items: center; gap: 7px;
-                        background: #272c33 !important; color: #fff !important;
-                        border: 1px solid #1c2025 !important;
-                        border-left: 3px solid #ffc107 !important;
-                        border-radius: 6px !important;
-                        font: 700 13px/1 'Open Sans', Arial, sans-serif !important;
-                        cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,.15);
-                        transition: background .2s ease, transform .1s ease;
-                        animation: giusSlideDown 0.3s ease both;
-                    }
-                    #gius-proctor-trigger:hover { background: #363d47 !important; }
-                    #gius-proctor-trigger:active { transform: translateY(1px); }
-                    #gius-proctor-trigger .fa { color: #ffc107 !important; }
+                    /* Entry trigger: the page's main action (gs-btn--primary). */
+                    #gius-proctor-trigger { margin: 10px 0 0; animation: giusSlideDown 0.3s ease both; }
                     #gius-proctor-trigger.gius-hide { display: none !important; }
-                    html.gius-dark #gius-proctor-trigger {
-                        background: #11111b !important; color: #fff !important;
-                        border-color: #0b0b12 !important; border-left-color: #ffc107 !important;
-                    }
-                    html.gius-dark #gius-proctor-trigger .fa { color: #ffc107 !important; }
         
                     .gius-progress-wrap {
                         background: #e5e7eb; border-radius: 999px; height: 8px; overflow: hidden; margin-bottom: 6px;
@@ -13924,15 +14190,15 @@ function renderAttendancePlanner(S, api, host) {
                     .gius-cover-view-row { border-left: 3px solid #6366f1; background: #eef2ff !important; }
                     .gius-cover-view-row td:first-child { font-style: italic; color: #4338ca; font-weight: 600; }
                     .gius-cover-view-row:hover { background: #e0e7ff !important; }
-                    html.gius-dark .gius-cover-view-row { border-left-color: #818cf8 !important; background: #1e1e38 !important; }
-                    html.gius-dark .gius-cover-view-row td:first-child { color: #a5b4fc !important; }
-                    html.gius-dark .gius-cover-view-row:hover { background: #25254a !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-cover-view-row { border-left-color: #818cf8 !important; background: #1e1e38 !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-cover-view-row td:first-child { color: #a5b4fc !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-cover-view-row:hover { background: #25254a !important; }
                     .gius-covered-row { border-left: 3px solid #f59e0b; background: #fffbeb !important; }
                     .gius-covered-row td:first-child { color: #92400e; font-weight: 600; }
                     .gius-covered-row:hover { background: #fef3c7 !important; }
-                    html.gius-dark .gius-covered-row { border-left-color: #fbbf24 !important; background: #1c1400 !important; }
-                    html.gius-dark .gius-covered-row td:first-child { color: #fbbf24 !important; }
-                    html.gius-dark .gius-covered-row:hover { background: #2a1e00 !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-covered-row { border-left-color: #fbbf24 !important; background: #1c1400 !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-covered-row td:first-child { color: #fbbf24 !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-covered-row:hover { background: #2a1e00 !important; }
                     .gius-coproctor-row td {
                         background: #e0e7ff !important; color: #1e3a8a !important;
                         font-size: 1em; padding: 8px 16px 8px 20px !important;
@@ -13948,25 +14214,25 @@ function renderAttendancePlanner(S, api, host) {
                     }
                     .gius-coproctor-list li { margin: 2px 0; }
                     .gius-coproctor-dept { color: #6366f1; margin-left: 4px; }
-                    html.gius-dark .gius-coproctor-dept { color: #818cf8 !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-coproctor-dept { color: #818cf8 !important; }
                     .gius-cover-status {
                         display: inline-block; margin-left: 6px; font-size: 10px; font-weight: 600;
                         background: #e0e7ff; color: #4338ca; border-radius: 4px; padding: 1px 5px;
                         vertical-align: middle; letter-spacing: 0.02em;
                     }
-                    html.gius-dark .gius-cover-status { background: #1e2050 !important; color: #a5b4fc !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-cover-status { background: #1e2050 !important; color: #a5b4fc !important; }
                     .gius-original-status {
                         display: inline-block; margin-left: 6px; font-size: 10px; font-weight: 600;
                         background: #fef3c7; color: #92400e; border-radius: 4px; padding: 1px 5px;
                         vertical-align: middle; letter-spacing: 0.02em;
                     }
-                    html.gius-dark .gius-original-status { background: #451a03 !important; color: #fbbf24 !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-original-status { background: #451a03 !important; color: #fbbf24 !important; }
         
                     .gius-covering-badge {
                         display: block; font-size: 11px; color: #6366f1;
                         font-style: italic; margin-top: 2px;
                     }
-                    html.gius-dark .gius-covering-badge { color: #818cf8 !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-covering-badge { color: #818cf8 !important; }
         
                     .gius-table-footer { border-top: 1px solid #e5e7eb; padding: 6px 10px; }
                     .gius-pagination {
@@ -13982,15 +14248,8 @@ function renderAttendancePlanner(S, api, host) {
                         background: #fff; color: #374151; cursor: pointer;
                         font-family: 'Open Sans', sans-serif;
                     }
-                    .gius-page-btn {
-                        height: 26px; min-width: 26px; padding: 0 7px;
-                        border: 1px solid #d1d5db; border-radius: 4px;
-                        background: #fff; color: #374151; font-size: 14px; cursor: pointer;
-                        display: inline-flex; align-items: center; justify-content: center;
-                        font-family: 'Open Sans', sans-serif;
-                    }
-                    .gius-page-btn:hover:not(:disabled) { background: #f3f4f6; }
-                    .gius-page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+                    /* Pager arrows: square, 32px like the Rows select beside them. */
+                    button.gius-page-btn.gs-btn.gs-btn { width: 32px; height: 32px; padding: 0; font-size: 16px; }
                     .gius-page-num { font-size: 12px; color: #374151; white-space: nowrap; }
         
                     .gius-spinner {
@@ -14007,56 +14266,44 @@ function renderAttendancePlanner(S, api, host) {
                     }
         
                     /* ── Dark mode overrides ── */
-                    html.gius-dark .gius-proctor-card {
-                        background: #181825 !important; border-color: transparent !important;
+                    html:is(.gius-dark, [data-gius-dark]) .gius-proctor-card {
+                        background: var(--gs-dk-sunk, #181825) !important; border-color: transparent !important;
                     }
-                    html.gius-dark .gius-proctor-hdr { background: #11111b !important; }
-                    html.gius-dark .gius-proctor-body { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-proctor-table tbody tr { border-color: #313244 !important; }
-                    html.gius-dark .gius-proctor-table tbody tr:nth-child(even) { background: #181825 !important; }
-                    html.gius-dark .gius-proctor-table tbody tr:hover { background: #1e3a6e !important; }
-                    html.gius-dark .gius-proctor-table td { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-proctor-table td.muted { color: #9399b2 !important; }
-                    html.gius-dark .gius-progress-wrap { background: #313244 !important; }
-                    html.gius-dark .gius-progress-label { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-filter-select, html.gius-dark .gius-filter-input {
-                        background: #313244 !important; color: #cdd6f4 !important;
-                        border-color: #45475a !important;
+                    html:is(.gius-dark, [data-gius-dark]) .gius-proctor-hdr { background: var(--gs-dk-bg, #11111b) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-proctor-body { color: var(--gs-dk-text, #cdd6f4) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-proctor-table tbody tr { border-color: var(--gs-dk-line, #313244) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-proctor-table tbody tr:nth-child(even) { background: var(--gs-dk-sunk, #181825) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-proctor-table tbody tr:hover { background: #1e3a6e !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-proctor-table td { color: var(--gs-dk-text, #cdd6f4) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-proctor-table td.muted { color: var(--gs-dk-muted, #9399b2) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-progress-wrap { background: var(--gs-dk-line, #313244) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-progress-label { color: var(--gs-dk-text, #cdd6f4) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-filter-select, html:is(.gius-dark, [data-gius-dark]) .gius-filter-input {
+                        background: var(--gs-dk-line, #313244) !important; color: var(--gs-dk-text, #cdd6f4) !important;
+                        border-color: var(--gs-dk-line-2, #45475a) !important;
                     }
-                    html.gius-dark .gius-btn-outline {
-                        background: #313244 !important; border-color: #45475a !important;
-                        color: #cdd6f4 !important;
+                    html:is(.gius-dark, [data-gius-dark]) .gius-page-info  { color: var(--gs-dk-text, #cdd6f4) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-page-num   { color: var(--gs-dk-text, #cdd6f4) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-page-size-label { color: var(--gs-dk-text, #cdd6f4) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-page-size-select {
+                        background: var(--gs-dk-line, #313244) !important; color: var(--gs-dk-text, #cdd6f4) !important; border-color: var(--gs-dk-line-2, #45475a) !important;
                     }
-                    html.gius-dark .gius-btn-muted {
-                        background: #313244 !important; border-color: #45475a !important;
-                        color: #cdd6f4 !important;
-                    }
-                    html.gius-dark .gius-page-info  { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-page-num   { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-page-size-label { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-page-size-select {
-                        background: #313244 !important; color: #cdd6f4 !important; border-color: #45475a !important;
-                    }
-                    html.gius-dark .gius-page-btn {
-                        background: #313244 !important; color: #cdd6f4 !important; border-color: #45475a !important;
-                    }
-                    html.gius-dark .gius-page-btn:hover:not(:disabled) { background: #45475a !important; }
-                    html.gius-dark .gius-table-section { border-color: #45475a !important; }
-                    html.gius-dark .gius-table-footer { border-top-color: #45475a !important; }
-                    html.gius-dark .gius-empty-state p { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-chip {
-                        background: #1a2a4a !important; color: #89b4fa !important;
+                    html:is(.gius-dark, [data-gius-dark]) .gius-table-section { border-color: var(--gs-dk-line-2, #45475a) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-table-footer { border-top-color: var(--gs-dk-line-2, #45475a) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-empty-state p { color: var(--gs-dk-text, #cdd6f4) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-chip {
+                        background: #1a2a4a !important; color: var(--gs-dk-accent, #89b4fa) !important;
                         border-color: #1e3a6e !important;
                     }
-                    html.gius-dark .gius-warn-pill {
+                    html:is(.gius-dark, [data-gius-dark]) .gius-warn-pill {
                         background: #2d1f00 !important; color: #fbbf24 !important;
                         border-color: #78350f !important;
                     }
-                    html.gius-dark .gius-coproctor-row td {
+                    html:is(.gius-dark, [data-gius-dark]) .gius-coproctor-row td {
                         background: #1e2050 !important; color: #e0e7ff !important;
                         border-top-color: #4338ca !important; border-left-color: #818cf8 !important;
                     }
-                    html.gius-dark .gius-coproctor-label { color: #a5b4fc !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-coproctor-label { color: #a5b4fc !important; }
         
                     /* ── Dropdown search ── */
                     .gius-dd-wrap   { position: relative; display: inline-block; z-index: 1000; }
@@ -14075,18 +14322,18 @@ function renderAttendancePlanner(S, api, host) {
                     .gius-dd-fuzzy-mark { font-size: 10px; margin-right: 4px; color: #9ca3af; }
                     .gius-dd-empty  { padding: 6px 10px; font-size: 12px; color: #9ca3af;
                                       font-family: 'Open Sans', sans-serif; }
-                    html.gius-dark .gius-dd-panel  {
-                        background: #313244 !important; border-color: #45475a !important;
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dd-panel  {
+                        background: var(--gs-dk-line, #313244) !important; border-color: var(--gs-dk-line-2, #45475a) !important;
                         box-shadow: 0 4px 12px rgba(0,0,0,.4) !important;
                     }
-                    html.gius-dark .gius-dd-item { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-dd-item:hover,
-                    html.gius-dark .gius-dd-item.gius-dd-hi  {
-                        background: #45475a !important; color: #cdd6f4 !important;
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dd-item { color: var(--gs-dk-text, #cdd6f4) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dd-item:hover,
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dd-item.gius-dd-hi  {
+                        background: var(--gs-dk-line-2, #45475a) !important; color: var(--gs-dk-text, #cdd6f4) !important;
                     }
-                    html.gius-dark .gius-dd-fuzzy  { color: #6c7086 !important; }
-                    html.gius-dark .gius-dd-fuzzy-mark { color: #585b70 !important; }
-                    html.gius-dark .gius-dd-empty  { color: #6c7086 !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dd-fuzzy  { color: var(--gs-dk-muted, #6c7086) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dd-fuzzy-mark { color: var(--gs-dk-line-2, #585b70) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dd-empty  { color: var(--gs-dk-muted, #6c7086) !important; }
         
                     .gius-take-th { width: 1%; }
                     .gius-take-btn { white-space: nowrap; }
@@ -14097,34 +14344,11 @@ function renderAttendancePlanner(S, api, host) {
                         padding: 2px 10px; font-size: 12px; font-weight: 700;
                         font-family: 'Open Sans', sans-serif; white-space: nowrap;
                     }
-                    html.gius-dark .gius-taken-badge {
+                    html:is(.gius-dark, [data-gius-dark]) .gius-taken-badge {
                         background: #052e16 !important; color: #4ade80 !important;
                         border-color: #14532d !important;
                     }
         
-                    .gius-ex-overlay {
-                        position: fixed; inset: 0; z-index: 2147483646;
-                        background: rgba(17, 24, 39, 0.55);
-                        display: flex; align-items: center; justify-content: center;
-                        animation: giusSlideDown 0.15s ease both;
-                    }
-                    .gius-ex-modal {
-                        background: #fff; border-radius: 10px; width: 420px; max-width: 92vw;
-                        box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-                        font-family: 'Open Sans', Arial, sans-serif;
-                        overflow: hidden;
-                    }
-                    .gius-ex-hdr {
-                        display: flex; align-items: center; justify-content: space-between;
-                        background: #272c33; color: #fff;
-                        padding: 10px 14px; font-size: 14px; font-weight: 700;
-                    }
-                    .gius-ex-close {
-                        background: none; border: none; color: #fff; font-size: 15px;
-                        cursor: pointer; opacity: 0.7; padding: 2px 6px;
-                    }
-                    .gius-ex-close:hover { opacity: 1; }
-                    .gius-ex-body { padding: 18px 16px; }
                     .gius-ex-loading {
                         display: flex; align-items: center; gap: 10px;
                         color: #6b7280; font-size: 14px; padding: 10px 0;
@@ -14142,7 +14366,6 @@ function renderAttendancePlanner(S, api, host) {
                         margin: 0 0 16px; line-height: 1.5;
                     }
                     .gius-ex-check input { margin-top: 3px; cursor: pointer; }
-                    .gius-ex-actions { display: flex; justify-content: flex-end; gap: 8px; }
                     .gius-ex-result {
                         display: flex; align-items: flex-start; gap: 8px;
                         font-size: 14px; margin: 0 0 16px; line-height: 1.5;
@@ -14150,15 +14373,13 @@ function renderAttendancePlanner(S, api, host) {
                     .gius-ex-result .fa { margin-top: 2px; }
                     .gius-ex-ok  { color: #166534; }
                     .gius-ex-err { color: #b91c1c; }
-                    html.gius-dark .gius-ex-modal { background: #1e1e2e !important; }
-                    html.gius-dark .gius-ex-hdr { background: #11111b !important; }
-                    html.gius-dark .gius-ex-text { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-ex-exam { color: #9399b2 !important; }
-                    html.gius-dark .gius-ex-check { color: #bac2de !important; }
-                    html.gius-dark .gius-ex-loading { color: #9399b2 !important; }
-                    html.gius-dark .gius-ex-spinner { border-color: #313244 !important; border-top-color: #89b4fa !important; }
-                    html.gius-dark .gius-ex-ok  { color: #4ade80 !important; }
-                    html.gius-dark .gius-ex-err { color: #f87171 !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-ex-text { color: var(--gs-dk-text, #cdd6f4) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-ex-exam { color: var(--gs-dk-muted, #9399b2) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-ex-check { color: var(--gs-dk-text-2, #bac2de) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-ex-loading { color: var(--gs-dk-muted, #9399b2) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-ex-spinner { border-color: var(--gs-dk-line, #313244) !important; border-top-color: var(--gs-dk-accent, #89b4fa) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-ex-ok  { color: #4ade80 !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-ex-err { color: #f87171 !important; }
                 `;
                 document.head.appendChild(s);
             }
@@ -14422,18 +14643,18 @@ function renderAttendancePlanner(S, api, host) {
                         <div class="gius-proctor-hdr-btns">
                             <span id="gius-proctor-warn" style="display:none"></span>
                             <input class="gius-fetch-dept-input" id="gius-fetch-dept" type="text" placeholder="All Departments (type to scope)" title="Scope the fetch — type a department to fetch only it, or leave blank for all" autocomplete="off" />
-                            <button type="button" class="gius-btn gius-btn-outline gius-btn-sm" id="gius-proctor-upload" title="Load rows from a previously exported CSV">
+                            <button type="button" class="gius-btn gius-btn-outline gius-btn-sm gs-btn gs-btn--sm" id="gius-proctor-upload" title="Load rows from a previously exported CSV">
                                 <i class="fa fa-upload"></i> Upload CSV
                             </button>
                             <input type="file" id="gius-file-input" accept=".csv" style="display:none">
-                            <button type="button" class="gius-btn gius-btn-outline gius-btn-sm" id="gius-proctor-csv" title="Export filtered rows as CSV">
+                            <button type="button" class="gius-btn gius-btn-outline gius-btn-sm gs-btn gs-btn--sm" id="gius-proctor-csv" title="Export filtered rows as CSV">
                                 <i class="fa fa-download"></i> Export CSV
                             </button>
-                            <button type="button" class="gius-btn gius-btn-outline gius-btn-sm" id="gius-proctor-refresh" title="Re-fetch using the selected scope">
+                            <button type="button" class="gius-btn gius-btn-outline gius-btn-sm gs-btn gs-btn--sm" id="gius-proctor-refresh" title="Re-fetch using the selected scope">
                                 <i class="fa fa-refresh"></i> Refresh
                             </button>
-                            <button type="button" class="gius-btn gius-btn-outline gius-btn-sm" id="gius-proctor-pause" style="display:none" title="Pause or resume fetching">&#x23F8; Pause</button>
-                            <button type="button" class="gius-btn gius-btn-muted gius-btn-sm" id="gius-proctor-close">&#x2715;</button>
+                            <button type="button" class="gius-btn gius-btn-outline gius-btn-sm gs-btn gs-btn--sm" id="gius-proctor-pause" style="display:none" title="Pause or resume fetching">&#x23F8; Pause</button>
+                            <button type="button" class="gius-btn gius-btn-muted gius-btn-sm gs-btn gs-btn--sm" id="gius-proctor-close">&#x2715;</button>
                         </div>
                     </div>
                     <div class="gius-proctor-body" id="gius-proctor-body">
@@ -14450,7 +14671,7 @@ function renderAttendancePlanner(S, api, host) {
                             <input class="gius-filter-input" id="gius-f-proctor"    type="text" placeholder="All Proctors" />
                             <input class="gius-filter-input" id="gius-f-room"       type="text" placeholder="All Rooms" />
                             <input class="gius-filter-input" id="gius-f-department" type="text" placeholder="All Departments" />
-                            <button type="button" class="gius-btn gius-btn-muted gius-btn-sm" id="gius-f-clear" style="display:none">&#x2715; Clear all</button>
+                            <button type="button" class="gius-btn gius-btn-muted gius-btn-sm gs-btn gs-btn--sm" id="gius-f-clear" style="display:none">&#x2715; Clear all</button>
                         </div>
                         <div class="gius-chip-row" id="gius-chip-row"></div>
                         <div id="gius-empty-state" class="gius-empty-state" style="display:none">
@@ -14460,7 +14681,7 @@ function renderAttendancePlanner(S, api, host) {
                                 Tip: leave the <b>All Departments</b> box (top-right) blank to fetch every
                                 department, or type one to fetch just that department — much faster.
                             </p>
-                            <button type="button" class="gius-btn gius-btn-primary" id="gius-start-fetch">
+                            <button type="button" class="gius-btn gius-btn-primary gs-btn gs-btn--primary" id="gius-start-fetch">
                                 <i class="fa fa-play"></i> Fetch Schedules
                             </button>
                         </div>
@@ -14603,7 +14824,7 @@ function renderAttendancePlanner(S, api, host) {
                         <td class="${r.coverName ? '' : 'muted'}">${escHtml(r.coverName || '—')}</td>
                         <td>${r.coverName === 'You'
                             ? '<span class="gius-taken-badge"><i class="fa fa-check"></i> Taken</span>'
-                            : `<button type="button" class="gius-btn gius-btn-outline gius-btn-sm gius-take-btn" data-idx="${start + i}" title="Replace this proctor for this exam"><i class="fa fa-exchange"></i> Take</button>`}</td>
+                            : `<button type="button" class="gius-btn gius-btn-outline gius-btn-sm gius-take-btn gs-btn gs-btn--sm" data-idx="${start + i}" title="Replace this proctor for this exam"><i class="fa fa-exchange"></i> Take</button>`}</td>
                     </tr>
                 `;
                 }).join('');
@@ -14629,9 +14850,9 @@ function renderAttendancePlanner(S, api, host) {
                                     ).join('')}
                                 </select>
                             </label>
-                            <button type="button" class="gius-page-btn" id="gius-page-prev"${_currentPage <= 1 ? ' disabled' : ''}>&#x2039;</button>
+                            <button type="button" class="gius-page-btn gs-btn" id="gius-page-prev"${_currentPage <= 1 ? ' disabled' : ''}>&#x2039;</button>
                             <span class="gius-page-num" id="gius-page-num">Page ${_currentPage} / ${totalPages}</span>
-                            <button type="button" class="gius-page-btn" id="gius-page-next"${_currentPage >= totalPages ? ' disabled' : ''}>&#x203A;</button>
+                            <button type="button" class="gius-page-btn gs-btn" id="gius-page-next"${_currentPage >= totalPages ? ' disabled' : ''}>&#x203A;</button>
                         </div>
                     </div>
                 `;
@@ -14831,105 +15052,76 @@ function renderAttendancePlanner(S, api, host) {
             // ── Exchange modal ────────────────────────────────────────────────────────
         
             function closeExchangeModal() {
+                if (exchangeDialog) exchangeDialog.close();
+                exchangeDialog = null;
                 document.getElementById('gius-ex-overlay')?.remove();
-                document.removeEventListener('keydown', onExchangeEsc);
             }
-        
-            function onExchangeEsc(e) {
-                if (e.key === 'Escape') closeExchangeModal();
-            }
-        
+
+            // The shared S.openDialog: "Contacting the portal…", then the portal's replacement question with its
+            // "I am sure" box (Proceed stays off until ticked), then the portal's answer.
             function openExchangeModal(row) {
                 closeExchangeModal();
-                const overlay = document.createElement('div');
-                overlay.id = 'gius-ex-overlay';
-                overlay.className = 'gius-ex-overlay';
-                overlay.innerHTML = `
-                    <div class="gius-ex-modal" role="dialog" aria-modal="true">
-                        <div class="gius-ex-hdr">
-                            <span><i class="fa fa-exchange"></i> Proctoring Exchange</span>
-                            <button type="button" class="gius-ex-close" id="gius-ex-close" title="Close">&#x2715;</button>
-                        </div>
-                        <div class="gius-ex-body" id="gius-ex-body">
-                            <div class="gius-ex-loading">
-                                <span class="gius-ex-spinner"></span>
-                                Contacting the portal&hellip;
-                            </div>
-                        </div>
-                    </div>
-                `;
-                document.body.appendChild(overlay);
-                document.addEventListener('keydown', onExchangeEsc);
-                overlay.addEventListener('click', e => { if (e.target === overlay) closeExchangeModal(); });
-                document.getElementById('gius-ex-close')?.addEventListener('click', closeExchangeModal);
-        
-                const body = document.getElementById('gius-ex-body');
-        
-                prepareExchange(row).then(prep => {
-                    if (!document.getElementById('gius-ex-body')) return; // modal closed meanwhile
-                    body.innerHTML = `
+                const loading = text => `<div class="gius-ex-loading"><span class="gius-ex-spinner"></span> ${text}&hellip;</div>`;
+                let prep = null;
+                const dlg = exchangeDialog = S.openDialog({
+                    id: 'gius-ex-overlay',
+                    dialogClass: 'gius-ex-modal',
+                    title: 'Proctoring Exchange',
+                    html: loading('Contacting the portal'),
+                    onAction(act) {
+                        if (act !== 'go') return true;
+                        proceed();
+                        return false;
+                    },
+                });
+                const open = () => dlg.el.isConnected;
+
+                function showResult(ok, msg) {
+                    if (!open()) return;
+                    dlg.setBody(`<p class="gius-ex-result ${ok ? 'gius-ex-ok' : 'gius-ex-err'}">
+                        <i class="fa ${ok ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i> ${escHtml(msg)}</p>`);
+                    dlg.setActions([{ label: 'Close', value: 'done', id: 'gius-ex-done', primary: ok }]);
+                    dlg.button('done').focus();
+                }
+
+                function showExchangeError(err) {
+                    showResult(false, err && err.message === 'SESSION_EXPIRED'
+                        ? 'Your portal session has expired — reload the page and log in again.'
+                        : (err && err.message) || 'Something went wrong.');
+                }
+
+                function proceed() {
+                    dlg.setBody(loading('Processing replacement'));
+                    dlg.setActions([]);
+                    executeExchange(prep).then(msg => {
+                        const ok = /success/i.test(msg);
+                        showResult(ok, msg || 'No response message from the portal.');
+                        if (ok) markRowTaken(row);
+                    }).catch(showExchangeError);
+                }
+
+                prepareExchange(row).then(p => {
+                    if (!open()) return; // closed meanwhile
+                    prep = p;
+                    dlg.setBody(`
                         <p class="gius-ex-text">I would like to replace<br>
-                            <b>${escHtml(prep.nm)}</b><br>
-                            during the session on <b>${escHtml(prep.tm)}</b>.</p>
+                            <b>${escHtml(p.nm)}</b><br>
+                            during the session on <b>${escHtml(p.tm)}</b>.</p>
                         <p class="gius-ex-exam">${escHtml(row.program || row.courseCode)} &ndash; ${escHtml(row.examName)}</p>
                         <label class="gius-ex-check">
                             <input type="checkbox" id="gius-ex-sure" />
                             I am sure, I want to replace my colleague during this session.
-                        </label>
-                        <div class="gius-ex-actions">
-                            <button type="button" class="gius-btn gius-btn-muted" id="gius-ex-cancel">Cancel</button>
-                            <button type="button" class="gius-btn gius-btn-primary" id="gius-ex-go" disabled>
-                                <i class="fa fa-check"></i> Proceed With Replacement
-                            </button>
-                        </div>
-                    `;
-                    const sure = document.getElementById('gius-ex-sure');
-                    const go = document.getElementById('gius-ex-go');
-                    sure?.addEventListener('change', () => { go.disabled = !sure.checked; });
-                    document.getElementById('gius-ex-cancel')?.addEventListener('click', closeExchangeModal);
-                    go?.addEventListener('click', () => {
-                        go.disabled = true;
-                        body.innerHTML = `
-                            <div class="gius-ex-loading">
-                                <span class="gius-ex-spinner"></span>
-                                Processing replacement&hellip;
-                            </div>
-                        `;
-                        executeExchange(prep).then(msg => {
-                            const ok = /success/i.test(msg);
-                            if (!document.getElementById('gius-ex-body')) return;
-                            body.innerHTML = `
-                                <p class="gius-ex-result ${ok ? 'gius-ex-ok' : 'gius-ex-err'}">
-                                    <i class="fa ${ok ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
-                                    ${escHtml(msg || 'No response message from the portal.')}
-                                </p>
-                                <div class="gius-ex-actions">
-                                    <button type="button" class="gius-btn gius-btn-primary" id="gius-ex-done">Close</button>
-                                </div>
-                            `;
-                            document.getElementById('gius-ex-done')?.addEventListener('click', closeExchangeModal);
-                            if (ok) markRowTaken(row);
-                        }).catch(err => showExchangeError(err));
-                    });
-                }).catch(err => showExchangeError(err));
-        
-                function showExchangeError(err) {
-                    if (!document.getElementById('gius-ex-body')) return;
-                    const msg = err && err.message === 'SESSION_EXPIRED'
-                        ? 'Your portal session has expired — reload the page and log in again.'
-                        : (err && err.message) || 'Something went wrong.';
-                    body.innerHTML = `
-                        <p class="gius-ex-result gius-ex-err">
-                            <i class="fa fa-exclamation-circle"></i> ${escHtml(msg)}
-                        </p>
-                        <div class="gius-ex-actions">
-                            <button type="button" class="gius-btn gius-btn-muted" id="gius-ex-done">Close</button>
-                        </div>
-                    `;
-                    document.getElementById('gius-ex-done')?.addEventListener('click', closeExchangeModal);
-                }
+                        </label>`);
+                    dlg.setActions([
+                        { label: 'Cancel', value: 'cancel', id: 'gius-ex-cancel' },
+                        { label: 'Proceed With Replacement', value: 'go', id: 'gius-ex-go', primary: true, disabled: true },
+                    ]);
+                    const sure = dlg.el.querySelector('#gius-ex-sure');
+                    sure.addEventListener('change', () => { dlg.button('go').disabled = !sure.checked; });
+                    sure.focus();
+                }).catch(showExchangeError);
             }
-        
+
             function markRowTaken(row) {
                 _allRows.forEach(r => {
                     if (r.proctor === row.proctor && r.slotKey === row.slotKey &&
@@ -15255,16 +15447,51 @@ function renderAttendancePlanner(S, api, host) {
                 const btn = document.createElement('button');
                 btn.id = 'gius-proctor-trigger';
                 btn.type = 'button';
-                btn.className = 'gius-btn gius-btn-primary';
+                btn.className = 'gius-btn gius-btn-primary gs-btn gs-btn--primary';
                 btn.innerHTML = '<i class="fa fa-laptop"></i> View All Proctor Schedules';
                 btn.addEventListener('click', openPanel);
                 const td = row.querySelector('td') || row;
                 td.appendChild(btn);
             }
         
+            // Picking a proctor posts the page back with their schedule under the
+            // department's long name list, and picking one of their sessions adds the
+            // replacement step under that, both at the end of the page; go to the end
+            // instead of staying where the click was. The portal restores the old
+            // scroll position from window.onload, so this runs after it, and keeps
+            // to the end for a moment while the page settles, until the user scrolls.
+            const SCROLL_KEY = 'giuProctorScrollTo';
+            const PICK_TARGETS = { MainContent_dprtmntDg: 'MainContent_schdlTR', MainContent_schdlDg: 'MainContent_setTR' };
+            function scrollToPicked() {
+                document.addEventListener('click', e => {
+                    const link = e.target.closest('a[href*="__doPostBack"]');
+                    const grid = link && link.closest('#MainContent_dprtmntDg, #MainContent_schdlDg');
+                    if (!grid) return;
+                    try { sessionStorage.setItem(SCROLL_KEY, PICK_TARGETS[grid.id]); } catch { /* ignore */ }
+                }, true);
+                let target = null;
+                try { target = sessionStorage.getItem(SCROLL_KEY); sessionStorage.removeItem(SCROLL_KEY); } catch { /* ignore */ }
+                if (!target || !document.getElementById(target)) return;
+                const toEnd = () => window.scrollTo(0, document.documentElement.scrollHeight);
+                const settle = () => {
+                    toEnd();
+                    const resized = new ResizeObserver(toEnd);
+                    resized.observe(document.body);
+                    const stop = () => {
+                        resized.disconnect();
+                        ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(t => window.removeEventListener(t, stop, true));
+                    };
+                    ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(t => window.addEventListener(t, stop, true));
+                    setTimeout(stop, 1500);
+                };
+                if (document.readyState === 'complete') setTimeout(settle, 0);
+                else window.addEventListener('load', () => setTimeout(settle, 0), { once: true });
+            }
+
             function init() {
                 injectStyles();
                 injectTrigger();
+                scrollToPicked();
             }
         
             init();
@@ -15354,6 +15581,7 @@ function renderAttendancePlanner(S, api, host) {
             // ── Style injection ──────────────────────────────────────────────────────────
         
             function injectStyles() {
+                S.uiStyles();
                 if (document.getElementById('gius-notify-styles')) return;
                 const style = document.createElement('style');
                 style.id = 'gius-notify-styles';
@@ -15418,6 +15646,24 @@ function renderAttendancePlanner(S, api, host) {
                         align-items: center;
                         gap: 8px;
                     }
+                    /* The two links under the card (log, portal form): quiet buttons (gs-btn--quiet), side by side. */
+                    .gius-native-toggle { margin: 14px 18px 0 0; }
+                    .gius-log-item { border: 1px solid #d0d7de; border-radius: 8px; background: #ffffff; }
+                    .gius-log-item > summary {
+                        display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; padding: 10px 12px;
+                        cursor: pointer; font-size: 13px; color: #1f2328;
+                    }
+                    .gius-log-item[open] > summary { border-bottom: 1px solid #eaeef2; }
+                    /* Opens with a slide like the other folding cards (browsers without ::details-content just snap). */
+                    .gius-log-item { interpolate-size: allow-keywords; }
+                    .gius-log-item::details-content { height: 0; overflow: clip; transition: height .3s ease-out, content-visibility .3s allow-discrete; }
+                    .gius-log-item[open]::details-content { height: auto; }
+                    @media (prefers-reduced-motion: reduce) { .gius-log-item::details-content { transition: none; } }
+                    .gius-log-when { font-weight: 600; white-space: nowrap; }
+                    .gius-log-subject { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+                    .gius-log-counts { color: #59636e; white-space: nowrap; }
+                    .gius-log-item > .gius-result-list { padding: 4px 12px 8px; }
+                    .gius-batch-summary .gius-result-list, .gius-batch-log .gius-result-list { max-height: none; }
                     .gius-card-category {
                         margin: 3px 0 0;
                         font-size: 12px;
@@ -15542,58 +15788,6 @@ function renderAttendancePlanner(S, api, host) {
                         border-color: #1B59C6;
                     }
         
-                    .gius-btn {
-                        height: 32px;
-                        padding: 0 14px;
-                        border-radius: 6px;
-                        font-size: 13px;
-                        font-weight: 700;
-                        cursor: pointer;
-                        border: 1px solid transparent;
-                        transition: all 0.2s ease;
-                        display: inline-flex;
-                        align-items: center;
-                        gap: 5px;
-                        white-space: nowrap;
-                        font-family: 'Open Sans', Arial, sans-serif;
-                    }
-                    .gius-btn:disabled {
-                        opacity: 0.5;
-                        cursor: not-allowed;
-                        transform: none !important;
-                        box-shadow: none !important;
-                    }
-                    .gius-btn-primary {
-                        background: #1B59C6;
-                        border-color: #1648a8;
-                        color: #fff;
-                    }
-                    .gius-btn-primary:not(:disabled):hover {
-                        background: #1648a8;
-                        transform: translateY(-1px);
-                        box-shadow: 0 3px 10px rgba(27,89,198,0.35);
-                    }
-                    .gius-btn-outline {
-                        background: #fff;
-                        border-color: #d1d5db;
-                        color: #374151;
-                    }
-                    .gius-btn-outline:not(:disabled):hover {
-                        background: #f9fafb;
-                        border-color: #9ca3af;
-                    }
-                    .gius-btn-muted {
-                        background: #f9fafb;
-                        border-color: #d1d5db;
-                        color: #374151;
-                    }
-                    .gius-btn-muted:not(:disabled):hover { background: #e5e7eb; }
-                    .gius-btn-danger {
-                        background: #dc2626;
-                        color: #fff;
-                        border: none;
-                    }
-                    .gius-btn-danger:hover { background: #b91c1c; }
         
                     .gius-progress-wrap {
                         background: #e5e7eb;
@@ -15744,6 +15938,33 @@ function renderAttendancePlanner(S, api, host) {
                 if (ref && ref.nextElementSibling) return ref.nextElementSibling;
                 return getEl('form1');
             }
+
+            // The portal's own one-group form (the table the card goes in front of, and the stray "."
+            // paragraph with its hidden testing field): the card replaces it on screen. The batch still
+            // fills in and submits it behind the scenes, so it is only hidden, never removed. Returns the
+            // hidden elements (none when the page is not the one expected).
+            function hideNativeForm(anchor) {
+                const parts = [anchor, getEl('MainContent_TB_TestingEnvironmentEmail')?.closest('p')]
+                    .filter(el => el && el.id !== 'form1' && !el.classList.contains('gius-card'));
+                parts.forEach(el => { el.style.display = 'none'; el.dataset.giuNativeForm = '1'; });
+                return parts;
+            }
+
+            // "Show the portal's own form": for what the batch does not cover (single students, other
+            // recipient types). Sits at the bottom of the card; toggles the hidden form back.
+            function addNativeFormToggle(card, parts) {
+                if (!parts.length) return;
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'gius-native-toggle gs-btn gs-btn--quiet';
+                btn.textContent = 'Show the portal\'s own form';
+                btn.addEventListener('click', () => {
+                    const show = parts[0].style.display === 'none';
+                    parts.forEach(el => { el.style.display = show ? '' : 'none'; });
+                    btn.textContent = show ? 'Hide the portal\'s own form' : 'Show the portal\'s own form';
+                });
+                card.querySelector('.gius-card-body')?.appendChild(btn);
+            }
         
             // ── State machine runner ─────────────────────────────────────────────────────
         
@@ -15752,12 +15973,12 @@ function renderAttendancePlanner(S, api, host) {
                 if (queue.currentIndex >= queue.groups.length) {
                     const failedGroups = queue.groups.filter((_, i) => queue.results[i]?.status === 'failed');
                     const retryPayload = failedGroups.length > 0
-                        ? { groups: failedGroups, sharedSubject: queue.sharedSubject, sharedBody: queue.sharedBody }
+                        ? { groups: failedGroups, sharedSubject: queue.sharedSubject, sharedBody: queue.sharedBody, priority: queue.priority }
                         : null;
                     clearQueue();
                     const progress = getEl('giu-batch-progress');
                     if (progress) progress.remove();
-                    renderSummary(queue.results, retryPayload);
+                    renderSummary(queue.results, retryPayload, queue);
                     injectPanel();
                     return;
                 }
@@ -15776,7 +15997,7 @@ function renderAttendancePlanner(S, api, host) {
             }
         
             function runQueueStep(queue) {
-                const { step, currentIndex, groups, sharedSubject, sharedBody } = queue;
+                const { step, currentIndex, groups, sharedSubject, sharedBody, priority } = queue;
                 const group = groups[currentIndex];
         
                 if (step === 'select') {
@@ -15816,6 +16037,9 @@ function renderAttendancePlanner(S, api, host) {
                     }
                     subjectEl.value = group.subject || sharedSubject;
                     bodyEl.value    = group.body    || sharedBody;
+                    // Each group's postback reloads the form, so its Importance is back to the default here.
+                    const priorityEl = getEl('MainContent_DD_Priority');
+                    if (priorityEl && priority && Array.from(priorityEl.options).some(o => o.value === priority)) priorityEl.value = priority;
                     queue.step = 'advance';
                     saveQueue(queue);
                     sendBtn.click();
@@ -15845,6 +16069,12 @@ function renderAttendancePlanner(S, api, host) {
                     formatGroupLabel(a.label).localeCompare(formatGroupLabel(b.label))
                 );
         
+                // Importance: the portal's own levels, starting from what its form shows.
+                const portalPriority = getEl('MainContent_DD_Priority');
+                const priorities = portalPriority
+                    ? Array.from(portalPriority.options).map(o => ({ value: o.value, label: o.textContent.trim(), selected: o.selected }))
+                    : [];
+
                 const card = document.createElement('div');
                 card.id = 'giu-batch-panel';
                 card.className = 'gius-card';
@@ -15874,12 +16104,19 @@ function renderAttendancePlanner(S, api, host) {
                             }
                         </div>
                         <div class="gius-toolbar-row">
-                            <button type="button" id="giu-select-all" class="gius-btn gius-btn-outline">Select All</button>
+                            <button type="button" id="giu-select-all" class="gius-btn gius-btn-outline gs-btn">Select All</button>
                             <label class="gius-toggle-label">
                                 <input type="checkbox" id="giu-same-msg" checked>
                                 Same message for all groups
                             </label>
                         </div>
+                        ${priorities.length ? `
+                        <div class="gius-filter-row">
+                            <span class="gius-section-label" style="margin:0;white-space:nowrap;">Importance</span>
+                            <select id="giu-priority" class="gius-course-filter" style="flex:0 0 200px;">
+                                ${priorities.map(p => `<option value="${escapeHtml(p.value)}"${p.selected ? ' selected' : ''}>${escapeHtml(p.label)}</option>`).join('')}
+                            </select>
+                        </div>` : ''}
                         <div id="giu-shared-fields">
                             <div class="gius-divider"></div>
                             <label class="gius-field-label">Subject</label>
@@ -15890,7 +16127,7 @@ function renderAttendancePlanner(S, api, host) {
                                 style="resize:vertical;min-height:88px;font-family:'Open Sans',sans-serif;"></textarea>
                         </div>
                         <div class="gius-divider"></div>
-                        <button type="button" id="giu-start-btn" class="gius-btn gius-btn-primary" disabled>
+                        <button type="button" id="giu-start-btn" class="gius-btn gius-btn-primary gs-btn gs-btn--primary" disabled>
                             ▶ Start Batch Send (0 groups)
                         </button>
                     </div>
@@ -15964,7 +16201,7 @@ function renderAttendancePlanner(S, api, host) {
                     btn.textContent = `▶ Start Batch Send (${checked} group${checked !== 1 ? 's' : ''})`;
                 }
         
-                card.querySelector('#giu-start-btn').addEventListener('click', () => {
+                card.querySelector('#giu-start-btn').addEventListener('click', async () => {
                     const sameMsg       = card.querySelector('#giu-same-msg').checked;
                     const sharedSubject = sameMsg ? card.querySelector('#giu-shared-subject').value.trim() : '';
                     const sharedBody    = sameMsg ? card.querySelector('#giu-shared-body').value.trim()    : '';
@@ -15982,12 +16219,28 @@ function renderAttendancePlanner(S, api, host) {
                             body:    body    || null
                         });
                     });
-        
+                    if (!selectedGroups.length) return;
+
+                    // Emails cannot be called back: name the groups and ask once before the first send.
+                    // Labels read "Spring 2026 - INCS 406 - 4INF12 (Practical)": the group part is enough here.
+                    const n = selectedGroups.length;
+                    const shown = selectedGroups.slice(0, 4).map(g => String(g.label).split(' - ').pop());
+                    if (n > 4) shown.push(`${n - 4} more`);
+                    const names = shown.length > 1 ? `${shown.slice(0, -1).join(', ')} and ${shown[shown.length - 1]}` : shown[0];
+                    const go = await S.openDialog({
+                        title: `Send notification to ${n} group${n === 1 ? '' : 's'}?`,
+                        text: `${names} will get an email. This can't be undone.`,
+                        closeX: false,
+                        actions: [{ label: 'Cancel', value: 'cancel' }, { label: 'Send', value: 'send', primary: true }],
+                    }).result;
+                    if (go !== 'send') return;
+
                     saveQueue({
                         step:          'select',
                         currentIndex:  0,
                         sharedSubject,
                         sharedBody,
+                        priority:      card.querySelector('#giu-priority')?.value || null,
                         groups:        selectedGroups,
                         results:       []
                     });
@@ -16011,6 +16264,8 @@ function renderAttendancePlanner(S, api, host) {
         
                 const anchor = getInjectionAnchor();
                 if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(card, anchor);
+                addLogLink(card);
+                addNativeFormToggle(card, hideNativeForm(anchor));
                 Tips.show({ id: 'notificationBatch', el: card, title: 'Batch Notification',
                     text: 'Email several tutorial groups in one go — same message for all, or per-group subjects and bodies.' });
             }
@@ -16055,7 +16310,7 @@ function renderAttendancePlanner(S, api, host) {
                         </div>
                         <div class="gius-progress-label">${pct}% complete — ${done} of ${total} processed</div>
                         <div class="gius-result-list">${resultRows}</div>
-                        <button type="button" id="giu-cancel-btn" class="gius-btn gius-btn-danger">✕ Cancel</button>
+                        <button type="button" id="giu-cancel-btn" class="gius-btn gius-btn-danger gs-btn gs-btn--danger">✕ Cancel</button>
                     </div>
                 `;
         
@@ -16064,84 +16319,167 @@ function renderAttendancePlanner(S, api, host) {
                     remaining.forEach(g => queue.results.push({ label: g.label, status: 'cancelled', info: 'Cancelled by user' }));
                     clearQueue();
                     card.remove();
-                    renderSummary(queue.results);
+                    renderSummary(queue.results, null, queue);
                     injectPanel();
                 });
         
                 const anchor = getInjectionAnchor();
                 if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(card, anchor);
+                hideNativeForm(anchor);
             }
-        
-            // ── Completion summary ────────────────────────────────────────────────────────
-        
-            function renderSummary(results, retryPayload = null) {
-                injectStyles();
-                const sent      = results.filter(r => r.status === 'sent').length;
-                const failed    = results.filter(r => r.status === 'failed').length;
-                const cancelled = results.filter(r => r.status === 'cancelled').length;
-                const unknown   = results.filter(r => r.status === 'unknown').length;
-                const hasErrors = failed > 0 || unknown > 0 || cancelled > 0;
-        
-                const rows = results.map((r, i) => {
+
+            // ── Completion summary (a pop-up) and the log ─────────────────────────────────
+
+            // The log: every finished batch, newest first, in this browser only — when, subject, importance
+            // and each group's result (message bodies are not kept). Capped at LOG_MAX batches.
+            const LOG_KEY = 'giuBatchNotifyLogV1';
+            const LOG_MAX = 50;
+
+            function loadLog() {
+                try { const log = JSON.parse(localStorage.getItem(LOG_KEY)); return Array.isArray(log) ? log : []; }
+                catch { return []; }
+            }
+
+            function addToLog(results, queue) {
+                if (!results.length) return;
+                const subjects = queue && queue.sharedSubject ? [queue.sharedSubject]
+                    : [...new Set(((queue && queue.groups) || []).map(g => g.subject).filter(Boolean))];
+                const entry = {
+                    at: new Date().toISOString(),
+                    subject: subjects.length === 1 ? subjects[0] : subjects.length ? 'Different subject per group' : '',
+                    priority: (queue && queue.priority) || '',
+                    results: results.map(r => ({ label: r.label, status: r.status, info: r.info })),
+                };
+                try { localStorage.setItem(LOG_KEY, JSON.stringify([entry, ...loadLog()].slice(0, LOG_MAX))); }
+                catch { /* storage full or blocked: the pop-up still shows the results */ }
+                updateLogLink();
+            }
+
+            function countResults(results) {
+                const n = s => results.filter(r => r.status === s).length;
+                return { sent: n('sent'), failed: n('failed'), cancelled: n('cancelled'), unknown: n('unknown') };
+            }
+
+            function countsText(c) {
+                return [
+                    `${c.sent} sent`,
+                    c.failed ? `${c.failed} failed` : '',
+                    c.cancelled ? `${c.cancelled} not sent` : '',
+                    c.unknown ? `${c.unknown} unconfirmed` : '',
+                ].filter(Boolean).join(' · ');
+            }
+
+            function resultRowsHtml(results) {
+                return results.map(r => {
                     const cls  = r.status === 'sent' ? 'gius-icon-sent' : r.status === 'failed' ? 'gius-icon-failed' : 'gius-icon-cancelled';
                     const icon = r.status === 'sent' ? '✓' : r.status === 'failed' ? '✕' : '–';
                     return `
-                        <div class="gius-result-row" style="animation-delay:${i * 0.04}s">
+                        <div class="gius-result-row">
                             <span class="gius-result-icon ${cls}">${icon}</span>
                             <span class="gius-result-name">${escapeHtml(formatGroupLabel(r.label))}</span>
-                            <span class="gius-result-info">${escapeHtml(r.info)}</span>
+                            <span class="gius-result-info">${escapeHtml(r.info || '')}</span>
                         </div>`;
                 }).join('');
-        
-                const hdrClass = hasErrors ? 'gius-hdr-danger' : 'gius-hdr-success';
-                const titleIcon = hasErrors ? '⚠' : '✓';
-                const titleText = failed > 0 ? 'Sent with Errors' : hasErrors ? 'Check the Results' : 'Batch Complete';
-        
-                const card = document.createElement('div');
-                card.id = 'giu-batch-summary';
-                card.className = 'gius-card';
-                card.innerHTML = `
-                    <div class="gius-card-header ${hdrClass}">
-                        <h4 class="gius-card-title">${titleIcon} ${titleText}</h4>
-                        <div class="gius-summary-header-meta">
-                            <div class="gius-stat-pill">
-                                <span class="gius-num">${sent}</span>
-                                <span class="gius-lbl">Sent</span>
-                            </div>
-                            ${failed > 0 ? `<div class="gius-stat-pill"><span class="gius-num">${failed}</span><span class="gius-lbl">Failed</span></div>` : ''}
-                            ${cancelled > 0 ? `<div class="gius-stat-pill"><span class="gius-num">${cancelled}</span><span class="gius-lbl">Not sent</span></div>` : ''}
-                            ${unknown > 0 ? `<div class="gius-stat-pill"><span class="gius-num">${unknown}</span><span class="gius-lbl">Unconfirmed</span></div>` : ''}
-                        </div>
-                    </div>
-                    <div class="gius-card-body">
-                        <div class="gius-result-list">${rows}</div>
-                        <div class="gius-divider"></div>
-                        <button type="button" id="giu-dismiss-btn" class="gius-btn gius-btn-muted">Dismiss</button>
-                        ${retryPayload ? `<button type="button" id="giu-retry-btn" class="gius-btn gius-btn-danger">Retry Failed (${retryPayload.groups.length})</button>` : ''}
-                    </div>
-                `;
-        
-                card.querySelector('#giu-dismiss-btn').addEventListener('click', () => card.remove());
-        
+            }
+
+            // Done (or cancelled, or found interrupted): the results in a pop-up, and into the log.
+            function renderSummary(results, retryPayload = null, queue = null) {
+                injectStyles();
+                addToLog(results, queue);
+                const c = countResults(results);
+                const hasErrors = c.failed > 0 || c.unknown > 0 || c.cancelled > 0;
+                const title = c.failed > 0 ? 'Sent with errors' : hasErrors ? 'Check the results' : 'Batch complete';
+                const actions = [{ label: 'View log', value: 'log' }];
                 if (retryPayload) {
-                    const retryBtn = card.querySelector('#giu-retry-btn');
-                    retryBtn?.addEventListener('click', () => {
+                    actions.push({ label: 'Close', value: 'close' });
+                    actions.push({ label: `Retry failed (${retryPayload.groups.length})`, value: 'retry', primary: true, id: 'giu-retry-btn' });
+                } else {
+                    actions.push({ label: 'Close', value: 'close', primary: true, id: 'giu-dismiss-btn' });
+                }
+                S.openDialog({
+                    title,
+                    wide: true,
+                    dialogClass: 'gius-batch-summary',
+                    html: `<p class="gius-dialog-text">${escapeHtml(countsText(c))}</p>
+                        <div class="gius-result-list">${resultRowsHtml(results)}</div>`,
+                    actions,
+                }).result.then(act => {
+                    if (act === 'log') openLog();
+                    if (act === 'retry' && retryPayload) {
                         saveQueue({
                             step:          'select',
                             currentIndex:  0,
                             sharedSubject: retryPayload.sharedSubject,
                             sharedBody:    retryPayload.sharedBody,
+                            priority:      retryPayload.priority,
                             groups:        retryPayload.groups,
                             results:       [],
                         });
                         location.reload();
-                    });
-                }
-        
-                const anchor = getInjectionAnchor();
-                if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(card, anchor);
+                    }
+                });
             }
-        
+
+            function openLog() {
+                const log = loadLog();
+                const when = iso => {
+                    const d = new Date(iso);
+                    return isNaN(d) ? '' : d.toLocaleString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+                };
+                const items = log.map(e => `
+                    <details class="gius-log-item">
+                        <summary>
+                            <span class="gius-log-when">${escapeHtml(when(e.at))}</span>
+                            <span class="gius-log-subject">${escapeHtml(e.subject || '(no subject)')}</span>
+                            <span class="gius-log-counts">${escapeHtml(countsText(countResults(e.results || [])))}${e.priority ? ` · ${escapeHtml(e.priority)}` : ''}</span>
+                        </summary>
+                        <div class="gius-result-list">${resultRowsHtml(e.results || [])}</div>
+                    </details>`).join('');
+                S.openDialog({
+                    title: 'Batch notification log',
+                    wide: true,
+                    dialogClass: 'gius-batch-log',
+                    html: log.length
+                        ? `<p class="gius-dialog-text">${log.length === 1 ? 'The batch sent from this browser.' : `The last ${log.length} batches sent from this browser, newest first.`} Open one to see each group.</p>${items}`
+                        : '<p class="gius-dialog-text">No batches sent from this browser yet.</p>',
+                    actions: log.length
+                        ? [{ label: 'Clear log', value: 'clear' }, { label: 'Close', value: 'close', primary: true }]
+                        : [{ label: 'Close', value: 'close', primary: true }],
+                    focus: '[data-act="close"]',
+                    async onAction(act) {
+                        if (act !== 'clear') return true;
+                        const sure = await S.openDialog({
+                            title: 'Clear the log?',
+                            text: 'The record of past batches is removed from this browser. Sent emails are not affected.',
+                            closeX: false,
+                            actions: [{ label: 'Cancel', value: 'cancel' }, { label: 'Clear log', value: 'clear', danger: true }],
+                        }).result;
+                        if (sure !== 'clear') return false;
+                        try { localStorage.removeItem(LOG_KEY); } catch { /* ignore */ }
+                        updateLogLink();
+                        return true;
+                    },
+                });
+            }
+
+            // "View log (N)" under the Batch card.
+            function addLogLink(card) {
+                const body = card.querySelector('.gius-card-body');
+                if (!body) return;
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.id = 'giu-log-link';
+                btn.className = 'gius-native-toggle gs-btn gs-btn--quiet';
+                btn.addEventListener('click', openLog);
+                body.appendChild(btn);
+                updateLogLink();
+            }
+
+            function updateLogLink() {
+                const btn = getEl('giu-log-link');
+                if (btn) btn.textContent = `View log (${loadLog().length})`;
+            }
+
             // ── Entry point ──────────────────────────────────────────────────────────────
         
             function renderOtherTabNotice() {
@@ -16193,7 +16531,7 @@ function renderAttendancePlanner(S, api, host) {
                 }
         
                 if (queue.step === 'done') {
-                    renderSummary(queue.results);
+                    renderSummary(queue.results, null, queue);
                     clearQueue();
                     injectPanel();
                     return;
@@ -16211,7 +16549,7 @@ function renderAttendancePlanner(S, api, host) {
                         results.push({ label: g.label, status: 'cancelled', info: 'Not sent — the batch was interrupted' });
                     });
                     clearQueue();
-                    renderSummary(results);
+                    renderSummary(results, null, queue);
                     injectPanel();
                     return;
                 }
@@ -16225,6 +16563,7 @@ function renderAttendancePlanner(S, api, host) {
         // ── manageGroupGrades (from GIU Manage Group Grades v1.5) ──────────────
         manageGroupGrades(S) {
             function injectGradeStyles() {
+                S.uiStyles();
                 S.injectStyle('gius-mgg-styles', `
                     @keyframes gmggSlide {
                         from { opacity: 0; transform: translateY(-14px); }
@@ -16282,46 +16621,6 @@ function renderAttendancePlanner(S, api, host) {
                         align-items: center;
                         flex-wrap: wrap;
                         gap: 8px;
-                    }
-                    .gmgg-btn {
-                        height: 32px;
-                        padding: 0 14px;
-                        border-radius: 6px;
-                        font-size: 13px;
-                        font-weight: 700;
-                        cursor: pointer;
-                        border: 1px solid transparent;
-                        transition: all 0.2s ease;
-                        display: inline-flex;
-                        align-items: center;
-                        gap: 5px;
-                        white-space: nowrap;
-                        font-family: 'Open Sans', Arial, sans-serif;
-                    }
-                    .gmgg-btn:disabled {
-                        opacity: 0.5;
-                        cursor: not-allowed;
-                        transform: none !important;
-                        box-shadow: none !important;
-                    }
-                    .gmgg-btn-upload {
-                        background: #1B59C6;
-                        border-color: #1648a8;
-                        color: #fff;
-                    }
-                    .gmgg-btn-upload:not(:disabled):hover {
-                        background: #1648a8;
-                        transform: translateY(-1px);
-                        box-shadow: 0 3px 10px rgba(27,89,198,0.35);
-                    }
-                    .gmgg-btn-download {
-                        background: #fff;
-                        border-color: #d1d5db;
-                        color: #374151;
-                    }
-                    .gmgg-btn-download:not(:disabled):hover {
-                        background: #f9fafb;
-                        border-color: #9ca3af;
                     }
                     .gmgg-feedback {
                         font-size: 13px;
@@ -16494,12 +16793,12 @@ function renderAttendancePlanner(S, api, host) {
                 const uploadBtn       = document.createElement('button');
                 uploadBtn.type        = 'button';
                 uploadBtn.textContent = 'Upload Grades CSV';
-                uploadBtn.className   = 'gmgg-btn gmgg-btn-upload';
+                uploadBtn.className   = 'gmgg-btn gmgg-btn-upload gs-btn';
 
                 const downloadBtn       = document.createElement('button');
                 downloadBtn.type        = 'button';
                 downloadBtn.textContent = 'Download Grades CSV';
-                downloadBtn.className   = 'gmgg-btn gmgg-btn-download';
+                downloadBtn.className   = 'gmgg-btn gmgg-btn-download gs-btn';
 
                 let feedbackEl = null;
 
@@ -16637,6 +16936,9 @@ function renderAttendancePlanner(S, api, host) {
             checkTableVisibility();
         },
         takeAttendance(S) {
+            // The open dialog (the shared S.openDialog), so a new one replaces it. Declared first: some
+            // pages (session not started) return before the code further down runs.
+            let activeDialog = null;
             // Manage Student Attendances (Cairo …H003.aspx, Berlin …Berlin.aspx):
             // bulk ticking, row-click toggle, unsaved-change tracking and a sticky
             // Save / End Session bar. Nothing is saved, ended or selected for the
@@ -16646,7 +16948,8 @@ function renderAttendancePlanner(S, api, host) {
             const endBtn  = document.getElementById('MainContent_B_EndSession');
             const HIDE_FUTURE_KEY = 'giuTakeHideFutureV1';
             const REQUESTS_KEY    = 'giuTakeRequestsV1';   // { [sessionId]: { type, at } }
-            const SHEET_KEY       = 'giuTakeSheetV1';      // paper-sheet options
+            const SHEET_KEY       = 'giuTakeSheetV2';      // paper-sheet options
+            const SHEET_KEY_V1    = 'giuTakeSheetV1';      // read once: its ref / marks choices carry over
             const SHEET_ROWS      = 25;                    // paper-sheet rows per page, as on the template
             // Styles and the session picker first: both apply before a session is picked too.
             injectStyles();
@@ -16676,12 +16979,18 @@ function renderAttendancePlanner(S, api, host) {
                 const text = `${tds[2] ? tds[2].textContent : ''} ${tds[3] ? tds[3].textContent : ''}`;
                 return { tr, cb, saved: cb.checked, text: text.toLowerCase() };
             }).filter(Boolean);
-            if (!rows.length) return;
 
             let leaving = false;     // a real form submit (Save / End Session) is under way
             let endConfirmed = false;
 
+            // Started, but the portal sent no students: say so instead of its bare header row.
+            if (!rows.length) {
+                try { emptyListPanel(); } catch (e) { S.warn('takeAttendance', 'empty list panel crashed:', e); }
+                return;
+            }
+
             function injectStyles() {
+                S.uiStyles();
                 S.injectStyle('gius-take-styles', `
         #MainContent_DDL_StudentGroup, #MainContent_DDL_Sessions, #MainContent_DDL_SessionNewDate {
             height: 32px; padding: 4px 8px; margin: 2px 0;
@@ -16695,8 +17004,8 @@ function renderAttendancePlanner(S, api, host) {
         #MainContent_DDL_StudentGroup:focus, #MainContent_DDL_Sessions:focus, #MainContent_DDL_SessionNewDate:focus {
             outline: 2px solid #60a5fa; outline-offset: 1px; border-color: #1B59C6;
         }
-        html.gius-dark #MainContent_DDL_StudentGroup, html.gius-dark #MainContent_DDL_Sessions, html.gius-dark #MainContent_DDL_SessionNewDate {
-            background-color: #1e1e2e !important; color: #cdd6f4 !important; border-color: #45475a !important;
+        html:is(.gius-dark, [data-gius-dark]) #MainContent_DDL_StudentGroup, html:is(.gius-dark, [data-gius-dark]) #MainContent_DDL_Sessions, html:is(.gius-dark, [data-gius-dark]) #MainContent_DDL_SessionNewDate {
+            background-color: var(--gs-dk-card, #1e1e2e) !important; color: var(--gs-dk-text, #cdd6f4) !important; border-color: var(--gs-dk-line-2, #45475a) !important;
         }
         select.gius-take-native-hidden, .gius-take-hide { display: none !important; }
         .gius-take-picker { position: relative; display: inline-block; vertical-align: middle; max-width: 100%; margin: 2px 0; }
@@ -16764,18 +17073,21 @@ function renderAttendancePlanner(S, api, host) {
         .gius-take-input.gius-take-textarea { display: block; width: 100%; max-width: 640px; height: auto !important; min-height: 64px; resize: vertical; }
         .gius-take-req-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
         .gius-take-req-msg { font-size: 12px; font-weight: 600; color: #b91c1c; }
-        .gius-take-btn-primary { background: #1B59C6; border-color: #1648a8; color: #fff; }
-        .gius-take-btn-primary:hover { background: #1648a8; }
         .gius-take-ok {
             background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7;
             border-radius: 6px; padding: 8px 12px; font-size: 12px; font-weight: 600;
         }
         .gius-take-req-other summary { cursor: pointer; font-size: 12px; font-weight: 600; color: #6b7280; }
+        /* Opens with a slide like the other folding cards (browsers without ::details-content just snap). */
+        .gius-take-req-other { interpolate-size: allow-keywords; }
+        .gius-take-req-other::details-content { height: 0; overflow: clip; transition: height .3s ease-out, content-visibility .3s allow-discrete; }
+        .gius-take-req-other[open]::details-content { height: auto; }
+        @media (prefers-reduced-motion: reduce) { .gius-take-req-other::details-content { transition: none; } }
         .gius-take-req-links { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; padding-top: 6px; }
-        html.gius-dark .gius-take-req-session, html.gius-dark .gius-take-label { color: #cdd6f4 !important; }
-        html.gius-dark .gius-take-chip { background: #1e1e2e !important; color: #cdd6f4 !important; border-color: #45475a !important; }
-        html.gius-dark .gius-take-chip.gius-take-chip-on { background: #1B59C6 !important; color: #fff !important; }
-        html.gius-dark .gius-take-ok { background: #052e16 !important; color: #4ade80 !important; border-color: #14532d !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-take-req-session, html:is(.gius-dark, [data-gius-dark]) .gius-take-label { color: var(--gs-dk-text, #cdd6f4) !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-take-chip { background: var(--gs-dk-card, #1e1e2e) !important; color: var(--gs-dk-text, #cdd6f4) !important; border-color: var(--gs-dk-line-2, #45475a) !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-take-chip.gius-take-chip-on { background: #1B59C6 !important; color: #fff !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-take-ok { background: #052e16 !important; color: #4ade80 !important; border-color: #14532d !important; }
         .gius-take-ref {
             display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
             padding: 12px 16px; background: #fffbeb; border-bottom: 1px solid #fde68a;
@@ -16786,12 +17098,10 @@ function renderAttendancePlanner(S, api, host) {
             font-size: 24px; font-weight: 700; color: #272c33; letter-spacing: 1px;
             font-variant-numeric: tabular-nums; user-select: all;
         }
-        .gius-take-btn.gius-take-ref-copy { height: 28px; padding: 0 10px; font-size: 12px; }
         .gius-take-ref-side { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; color: #374151; }
-        html.gius-dark .gius-take-ref { background: #2d1f00 !important; border-color: #78350f !important; }
-        html.gius-dark .gius-take-ref-label { color: #fbbf24 !important; }
-        html.gius-dark .gius-take-ref-num, html.gius-dark .gius-take-ref-side { color: #cdd6f4 !important; }
-        .gius-take-modal.gius-take-modal-wide { width: 520px; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-take-ref { background: #2d1f00 !important; border-color: #78350f !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-take-ref-label { color: #fbbf24 !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-take-ref-num, html:is(.gius-dark, [data-gius-dark]) .gius-take-ref-side { color: var(--gs-dk-text, #cdd6f4) !important; }
         .gius-take-copy-stats { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: #374151; }
         .gius-take-copy-scroll { max-height: 280px; overflow-y: auto; }
         .gius-take-copy-table { border-collapse: collapse; font-size: 13px; width: 100%; }
@@ -16802,32 +17112,31 @@ function renderAttendancePlanner(S, api, host) {
         .gius-take-copy-table tbody tr { border-bottom: 1px solid #f3f4f6; }
         .gius-take-copy-table tbody tr:nth-child(even) { background: #f9fafb; }
         .gius-take-copy-table td { padding: 6px 10px; color: #374151; }
-        html.gius-dark .gius-take-copy-stats, html.gius-dark .gius-take-copy-table td { color: #cdd6f4 !important; }
-        html.gius-dark .gius-take-copy-table tbody tr:nth-child(even) { background: #181825 !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-take-copy-stats, html:is(.gius-dark, [data-gius-dark]) .gius-take-copy-table td { color: var(--gs-dk-text, #cdd6f4) !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-take-copy-table tbody tr:nth-child(even) { background: var(--gs-dk-sunk, #181825) !important; }
         .gius-take-session-text { font-size: 13px; color: #374151; }
-        .gius-take-btn.gius-take-btn-save[type="submit"] { height: 32px; }
         label.gius-take-portal-radio {
             display: inline-flex; align-items: center; margin: 2px 16px 2px 4px !important;
             font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 13px; font-weight: 600; color: #374151; cursor: pointer;
         }
         input.gius-take-portal-radio-input { width: 16px; height: 16px; margin: 0 !important; vertical-align: middle; accent-color: #1B59C6; cursor: pointer; }
-        html.gius-dark .gius-take-session-text, html.gius-dark label.gius-take-portal-radio { color: #cdd6f4 !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-take-session-text, html:is(.gius-dark, [data-gius-dark]) label.gius-take-portal-radio { color: var(--gs-dk-text, #cdd6f4) !important; }
         .gius-take-radio { display: inline-flex; align-items: center; gap: 6px; margin: 0 14px 4px 0 !important; font-size: 13px; font-weight: 400; color: #374151; cursor: pointer; }
         .gius-take-input.gius-take-num { width: 64px; }
-        html.gius-dark .gius-take-radio { color: #cdd6f4 !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-take-radio { color: var(--gs-dk-text, #cdd6f4) !important; }
         .gius-take-pill-grey { background: #f3f4f6; color: #374151; border: 1px solid #d1d5db; }
         .gius-take-pill-blue { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
-        html.gius-dark .gius-take-picker-btn { background: #1e1e2e !important; color: #cdd6f4 !important; border-color: #45475a !important; }
-        html.gius-dark .gius-take-picker-pop { background: #181825 !important; color: #cdd6f4 !important; border-color: #313244 !important; }
-        html.gius-dark .gius-take-picker-day { background: #11111b !important; color: #9399b2 !important; border-color: #313244 !important; }
-        html.gius-dark .gius-take-picker-day.gius-take-today { color: #fbbf24 !important; }
-        html.gius-dark .gius-take-picker-opt { background: #181825 !important; border-color: #313244 !important; }
-        html.gius-dark .gius-take-picker-opt.gius-take-today { background: #2d1f00 !important; }
-        html.gius-dark .gius-take-picker-opt:hover, html.gius-dark .gius-take-picker-opt:focus { background: #1e3a6e !important; }
-        html.gius-dark .gius-take-picker-opt.gius-take-selected { background: #1e3a8a !important; color: #e0e7ff !important; }
-        html.gius-dark .gius-take-picker-check, html.gius-dark .gius-take-picker-foot { color: #9399b2 !important; }
-        html.gius-dark .gius-take-picker-course { color: #bac2de !important; }
-        html.gius-dark .gius-take-picker-day.gius-take-picker-coursehead { color: #cdd6f4 !important; background: #1e1e2e !important; border-color: #313244 !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-take-picker-btn { background: var(--gs-dk-card, #1e1e2e) !important; color: var(--gs-dk-text, #cdd6f4) !important; border-color: var(--gs-dk-line-2, #45475a) !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-take-picker-pop { background: var(--gs-dk-sunk, #181825) !important; color: var(--gs-dk-text, #cdd6f4) !important; border-color: var(--gs-dk-line, #313244) !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-take-picker-day { background: var(--gs-dk-bg, #11111b) !important; color: var(--gs-dk-muted, #9399b2) !important; border-color: var(--gs-dk-line, #313244) !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-take-picker-day.gius-take-today { color: #fbbf24 !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-take-picker-opt { background: var(--gs-dk-sunk, #181825) !important; border-color: var(--gs-dk-line, #313244) !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-take-picker-opt.gius-take-today { background: #2d1f00 !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-take-picker-opt:hover, html:is(.gius-dark, [data-gius-dark]) .gius-take-picker-opt:focus { background: #1e3a6e !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-take-picker-opt.gius-take-selected { background: #1e3a8a !important; color: #e0e7ff !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-take-picker-check, html:is(.gius-dark, [data-gius-dark]) .gius-take-picker-foot { color: var(--gs-dk-muted, #9399b2) !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-take-picker-course { color: var(--gs-dk-text-2, #bac2de) !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-take-picker-day.gius-take-picker-coursehead { color: var(--gs-dk-text, #cdd6f4) !important; background: var(--gs-dk-card, #1e1e2e) !important; border-color: var(--gs-dk-line, #313244) !important; }
         .gius-take-panel {
             background: #fff; border: 1px solid #eeeeee; border-radius: 6px;
             box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
@@ -16858,19 +17167,6 @@ function renderAttendancePlanner(S, api, host) {
             box-sizing: border-box; width: 200px; font-family: 'Open Sans', Arial, sans-serif;
         }
         .gius-take-input:focus { outline: 2px solid #60a5fa; outline-offset: 1px; border-color: #1B59C6; }
-        .gius-take-btn {
-            height: 32px; padding: 0 14px; border-radius: 6px;
-            font-size: 13px; font-weight: 700; cursor: pointer;
-            border: 1px solid transparent; transition: all 0.2s ease;
-            display: inline-flex; align-items: center; gap: 5px; white-space: nowrap;
-            font-family: 'Open Sans', Arial, sans-serif;
-        }
-        .gius-take-btn-outline { background: #fff; border-color: #d1d5db; color: #374151; }
-        .gius-take-btn-outline:hover { background: #f9fafb; border-color: #9ca3af; }
-        .gius-take-btn-save { background: #16a34a; border-color: #15803d; color: #fff; }
-        .gius-take-btn-save:hover { background: #15803d; }
-        .gius-take-btn-end { background: #dc2626; border: none; color: #fff; }
-        .gius-take-btn-end:hover { background: #b91c1c; }
         .gius-take-pill {
             display: inline-flex; align-items: center; border-radius: 999px;
             padding: 2px 10px; font-size: 11px; font-weight: 700; white-space: nowrap;
@@ -16908,46 +17204,23 @@ function renderAttendancePlanner(S, api, host) {
         #MainContent_DG_StudentAttendance tr.gius-take-off label { color: #b91c1c; }
         #MainContent_DG_StudentAttendance tr.gius-take-changed td { background: #fef3c7 !important; }
         #MainContent_DG_StudentAttendance .gius-take-all { margin: 0 6px 0 0; vertical-align: middle; cursor: pointer; }
-        .gius-take-overlay {
-            position: fixed; inset: 0; z-index: 2147483646;
-            background: rgba(17, 24, 39, 0.55);
-            display: flex; align-items: center; justify-content: center;
-        }
-        .gius-take-modal {
-            background: #fff; border-radius: 10px; width: 440px; max-width: 92vw;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3); overflow: hidden;
-            font-family: 'Open Sans', Arial, sans-serif;
-        }
-        .gius-take-modal-hdr {
-            display: flex; align-items: center; justify-content: space-between;
-            background: #272c33; color: #fff; padding: 10px 14px; font-size: 14px; font-weight: 700;
-        }
-        .gius-take-close { background: none; border: none; color: #fff; font-size: 15px; cursor: pointer; opacity: 0.7; padding: 2px 6px; }
-        .gius-take-close:hover { opacity: 1; }
-        .gius-take-modal-body { padding: 18px 16px; display: flex; flex-direction: column; gap: 14px; }
-        .gius-take-modal-text { font-size: 14px; color: #111827; margin: 0; line-height: 1.6; }
         .gius-take-warn {
             background: #fef3c7; color: #92400e; border: 1px solid #fde68a;
             border-radius: 6px; padding: 8px 12px; font-size: 12px; font-weight: 600;
         }
-        .gius-take-modal-actions { display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
-        html.gius-dark .gius-take-panel { background: #181825 !important; border-color: transparent !important; }
-        html.gius-dark .gius-take-header { background: #11111b !important; }
-        html.gius-dark .gius-take-find { color: #cdd6f4 !important; }
-        html.gius-dark .gius-take-input { background: #1e1e2e !important; color: #cdd6f4 !important; border-color: #45475a !important; }
-        html.gius-dark .gius-take-btn-outline { background: #1e1e2e !important; color: #cdd6f4 !important; border-color: #45475a !important; }
-        html.gius-dark .gius-take-bar { background: #11111b !important; }
-        html.gius-dark #MainContent_DG_StudentAttendance tr.gius-take-head,
-        html.gius-dark #MainContent_DG_StudentAttendance tr.gius-take-head td { background: #11111b !important; }
-        html.gius-dark #MainContent_DG_StudentAttendance tr.gius-take-row,
-        html.gius-dark #MainContent_DG_StudentAttendance tr.gius-take-row td { background: #181825 !important; color: #cdd6f4 !important; border-color: #313244 !important; }
-        html.gius-dark #MainContent_DG_StudentAttendance tr.gius-take-on label  { color: #86efac !important; }
-        html.gius-dark #MainContent_DG_StudentAttendance tr.gius-take-off label { color: #f38ba8 !important; }
-        html.gius-dark #MainContent_DG_StudentAttendance tr.gius-take-row:hover td { background: #1e3a6e !important; }
-        html.gius-dark #MainContent_DG_StudentAttendance tr.gius-take-changed td { background: #2d1f00 !important; color: #fbbf24 !important; }
-        html.gius-dark .gius-take-modal { background: #1e1e2e !important; }
-        html.gius-dark .gius-take-modal-hdr { background: #11111b !important; }
-        html.gius-dark .gius-take-modal-text { color: #cdd6f4 !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-take-panel { background: var(--gs-dk-sunk, #181825) !important; border-color: transparent !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-take-header { background: var(--gs-dk-bg, #11111b) !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-take-find { color: var(--gs-dk-text, #cdd6f4) !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-take-input { background: var(--gs-dk-card, #1e1e2e) !important; color: var(--gs-dk-text, #cdd6f4) !important; border-color: var(--gs-dk-line-2, #45475a) !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-take-bar { background: var(--gs-dk-bg, #11111b) !important; }
+        html:is(.gius-dark, [data-gius-dark]) #MainContent_DG_StudentAttendance tr.gius-take-head,
+        html:is(.gius-dark, [data-gius-dark]) #MainContent_DG_StudentAttendance tr.gius-take-head td { background: var(--gs-dk-bg, #11111b) !important; }
+        html:is(.gius-dark, [data-gius-dark]) #MainContent_DG_StudentAttendance tr.gius-take-row,
+        html:is(.gius-dark, [data-gius-dark]) #MainContent_DG_StudentAttendance tr.gius-take-row td { background: var(--gs-dk-sunk, #181825) !important; color: var(--gs-dk-text, #cdd6f4) !important; border-color: var(--gs-dk-line, #313244) !important; }
+        html:is(.gius-dark, [data-gius-dark]) #MainContent_DG_StudentAttendance tr.gius-take-on label  { color: #86efac !important; }
+        html:is(.gius-dark, [data-gius-dark]) #MainContent_DG_StudentAttendance tr.gius-take-off label { color: var(--gs-dk-err, #f38ba8) !important; }
+        html:is(.gius-dark, [data-gius-dark]) #MainContent_DG_StudentAttendance tr.gius-take-row:hover td { background: #1e3a6e !important; }
+        html:is(.gius-dark, [data-gius-dark]) #MainContent_DG_StudentAttendance tr.gius-take-changed td { background: #2d1f00 !important; color: #fbbf24 !important; }
         `);
             }
 
@@ -17273,7 +17546,7 @@ function renderAttendancePlanner(S, api, host) {
                             <span class="gius-take-label">Request remarks (you can edit)</span>
                         </label>
                         <div class="gius-take-req-actions">
-                            <button type="button" class="gius-take-btn gius-take-btn-primary" data-act="open">Request to open</button>
+                            <button type="button" class="gius-take-btn gius-take-btn-primary gs-btn" data-act="open">Request to open</button>
                             <span class="gius-take-req-msg" data-msg></span>
                         </div>
                         <div class="gius-take-ok" data-sent ${sent ? '' : 'hidden'}></div>
@@ -17360,7 +17633,7 @@ function renderAttendancePlanner(S, api, host) {
                     <div class="gius-take-ref-main">
                         <span class="gius-take-ref-label">Session Ref</span>
                         <span class="gius-take-ref-num">${S.escapeHtml(ref)}</span>
-                        <button type="button" class="gius-take-btn gius-take-btn-outline gius-take-ref-copy" data-copy-ref="${S.escapeHtml(ref)}">Copy</button>
+                        <button type="button" class="gius-take-btn gius-take-btn-outline gius-take-ref-copy gs-btn gs-btn--sm" data-copy-ref="${S.escapeHtml(ref)}">Copy</button>
                     </div>
                     <div class="gius-take-ref-side">
                         ${label ? `<span>${S.escapeHtml(label)}</span>` : ''}
@@ -17472,7 +17745,7 @@ function renderAttendancePlanner(S, api, host) {
                     <div class="gius-take-body">
                         <span class="gius-take-session-text">Choose a group, then a session, to see its students.</span>
                         <div class="gius-take-actions">
-                            <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="blank-sheet">Print blank sheet</button>
+                            <button type="button" class="gius-take-btn gius-take-btn-outline gs-btn" data-act="blank-sheet">Print blank sheet</button>
                         </div>
                     </div>`;
                 panel.querySelector('[data-act="blank-sheet"]').addEventListener('click', e => printBlankSheet(e.currentTarget));
@@ -17499,7 +17772,7 @@ function renderAttendancePlanner(S, api, host) {
 
                 const startBtn = Array.from(document.querySelectorAll('input[type="submit"], input[type="button"], button'))
                     .find(b => /start\s*session/i.test(b.value || b.textContent || ''));
-                if (startBtn) startBtn.classList.add('gius-take-btn', 'gius-take-btn-save');
+                if (startBtn) startBtn.classList.add('gius-take-btn', 'gius-take-btn-save', 'gs-btn', 'gs-btn--primary');
                 for (const radio of document.querySelectorAll('input[type="radio"]')) {
                     const label = radio.id && document.querySelector(`label[for="${CSS.escape(radio.id)}"]`);
                     if (label && /no\s*change|update\s*date/i.test(label.textContent)) {
@@ -17519,8 +17792,8 @@ function renderAttendancePlanner(S, api, host) {
                     <div class="gius-take-body">
                         <span class="gius-take-session-text">${startBtn ? 'Press Start Session to record the start time and load the students.' : 'The student list appears once the session starts.'}</span>
                         <div class="gius-take-actions">
-                            <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="sheet">Print sheet</button>
-                            <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="blank-sheet">Print blank sheet</button>
+                            <button type="button" class="gius-take-btn gius-take-btn-outline gs-btn" data-act="sheet">Print sheet</button>
+                            <button type="button" class="gius-take-btn gius-take-btn-outline gs-btn" data-act="blank-sheet">Print blank sheet</button>
                         </div>
                     </div>`;
 
@@ -17549,6 +17822,41 @@ function renderAttendancePlanner(S, api, host) {
                 });
             }
 
+            // A started session whose list came back empty (the portal draws only the grid's header row,
+            // its own Save / End lines and the Ref block): the Ref strip, a plain message, a blank sheet
+            // to print, and End Session (a started session still has to be ended; nothing to save).
+            function emptyListPanel() {
+                const hide = el => { if (el) el.classList.add('gius-take-hide'); };
+                const panel = document.createElement('div');
+                panel.className = 'gius-take-panel gius-take-session gius-take-empty';
+                panel.innerHTML = `
+                    <div class="gius-take-header">
+                        <span class="gius-take-title">Students</span>
+                        <span class="gius-take-meta">None in this list</span>
+                    </div>
+                    ${refStripHtml()}
+                    <div class="gius-take-body">
+                        <span class="gius-take-session-text">The portal returned no students for this session. If you expected some, check the group, or ask your academic coordinator.</span>
+                        <div class="gius-take-actions">
+                            <button type="button" class="gius-take-btn gius-take-btn-outline gs-btn" data-act="blank-sheet">Print blank sheet</button>
+                            ${endBtn ? '<button type="button" class="gius-take-btn gius-take-btn-end gs-btn gs-btn--danger" data-act="end">End Session…</button>' : ''}
+                        </div>
+                    </div>`;
+                panel.querySelector('[data-act="blank-sheet"]').addEventListener('click', e => printBlankSheet(e.currentTarget));
+                panel.querySelector('[data-act="end"]')?.addEventListener('click', openEndConfirm);
+                table.before(panel);
+                hide(table);
+                const heading = Array.from(table.parentElement.querySelectorAll('strong'))
+                    .find(s => /^\s*Students list:?\s*$/i.test(s.textContent));
+                if (heading) {
+                    hide(heading);
+                    if (heading.nextElementSibling?.tagName === 'BR') hide(heading.nextElementSibling);
+                }
+                hide(saveBtn?.closest('p'));
+                hide(endBtn?.closest('p'));
+                if (sessionRef()) hide(document.getElementById('MainContent_L_SessionId').closest('p'));
+            }
+
             function changedCount() {
                 return rows.filter(r => r.cb.checked !== r.saved).length;
             }
@@ -17567,12 +17875,12 @@ function renderAttendancePlanner(S, api, host) {
                 ${refStripHtml()}
                 <div class="gius-take-body">
                     <div class="gius-take-actions">
-                        <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="all">Select all</button>
-                        <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="none">Clear all</button>
-                        <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="invert">Invert</button>
-                        <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="sheet">Print sheet</button>
-                        <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="blank-sheet">Print blank sheet</button>
-                        ${copySlots().map(s => `<button type="button" class="gius-take-btn gius-take-btn-outline" data-copy-slot="${S.escapeHtml(s.value)}">Copy ${S.escapeHtml(s.slot ? `Slot ${s.slot}` : 'other slot')}</button>`).join('')}
+                        <button type="button" class="gius-take-btn gius-take-btn-outline gs-btn" data-act="all">Select all</button>
+                        <button type="button" class="gius-take-btn gius-take-btn-outline gs-btn" data-act="none">Clear all</button>
+                        <button type="button" class="gius-take-btn gius-take-btn-outline gs-btn" data-act="invert">Invert</button>
+                        <button type="button" class="gius-take-btn gius-take-btn-outline gs-btn" data-act="sheet">Print sheet</button>
+                        <button type="button" class="gius-take-btn gius-take-btn-outline gs-btn" data-act="blank-sheet">Print blank sheet</button>
+                        ${copySlots().map(s => `<button type="button" class="gius-take-btn gius-take-btn-outline gs-btn" data-copy-slot="${S.escapeHtml(s.value)}">Copy ${S.escapeHtml(s.slot ? `Slot ${s.slot}` : 'other slot')}</button>`).join('')}
                     </div>
                     <label class="gius-take-find">Find
                         <input type="search" class="gius-take-input" placeholder="Name or ID">
@@ -17586,8 +17894,8 @@ function renderAttendancePlanner(S, api, host) {
                     <span class="gius-take-pill gius-take-pill-amber" data-count="changed" hidden></span>
                 </span>
                 <span class="gius-take-actions">
-                    <button type="button" class="gius-take-btn gius-take-btn-save" data-act="save">Save Attendance</button>
-                    ${endBtn ? '<button type="button" class="gius-take-btn gius-take-btn-end" data-act="end">End Session…</button>' : ''}
+                    <button type="button" class="gius-take-btn gius-take-btn-save gs-btn gs-btn--primary" data-act="save">Save Attendance</button>
+                    ${endBtn ? '<button type="button" class="gius-take-btn gius-take-btn-end gs-btn gs-btn--danger" data-act="end">End Session…</button>' : ''}
                 </span>`;
 
             // Header "select all" box: no name, so the portal never receives it.
@@ -17638,13 +17946,23 @@ function renderAttendancePlanner(S, api, host) {
             }
 
             function closeModal() {
+                if (activeDialog) activeDialog.close();
+                activeDialog = null;
                 document.getElementById('gius-take-overlay')?.remove();
             }
 
             // ── Paper sheet: the GIU attendance-sheet template, printed before class ─
             function sheetOptions() {
-                const defaults = { sort: 'name', ref: true, marks: true };
-                try { return { ...defaults, ...JSON.parse(localStorage.getItem(SHEET_KEY) || '{}') }; } catch { return defaults; }
+                const defaults = { sort: 'portal', ref: true, marks: true, date: true };
+                try {
+                    const saved = localStorage.getItem(SHEET_KEY);
+                    if (saved) return { ...defaults, ...JSON.parse(saved) };
+                    // V1 saved its sort on every print, so 'name' there was mostly the old
+                    // default: keep its other choices, start sort at portal order.
+                    const old = JSON.parse(localStorage.getItem(SHEET_KEY_V1) || '{}');
+                    delete old.sort;
+                    return { ...defaults, ...old };
+                } catch { return defaults; }
             }
 
             // The selected session plus the other slots of the same course on that date.
@@ -17702,14 +18020,14 @@ function renderAttendancePlanner(S, api, host) {
                     const type = sessionType(s, group);
                     const entered = s.value ? marks[s.value] : null;
                     const mark = p => (entered && p.id && entered.get(p.id) ? '✓' : '');
-                    const dateText = s.date
+                    const dateText = s.date && o.date !== false
                         ? s.date.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
                         : '';
                     const types = ['Lecture', 'Tutorial', 'Practical']
                         .map(t => `<span class="t${t === type ? ' on' : ''}">${t}</span>`).join('');
                     for (let start = 0; start < rowsAll.length; start += SHEET_ROWS) {
                         const body = rowsAll.slice(start, start + SHEET_ROWS).map((p, i) =>
-                            `<tr><td class="sr">${start + i + 1}</td><td>${esc(p.id)}</td><td class="name${p.name.length > 43 ? ' long' : ''}">${esc(p.name)}</td><td class="att">${mark(p)}</td><td></td></tr>`).join('');
+                            `<tr><td class="sr">${start + i + 1}</td><td>${esc(p.id)}</td><td class="name${p.name.length > 36 ? ' long' : ''}">${esc(p.name)}</td><td class="att">${mark(p)}</td><td></td></tr>`).join('');
                         pages.push(`<div class="page"><div class="frame">
                             ${o.logo ? `<div class="logo"><img src="${esc(o.logo)}" alt=""></div>` : ''}
                             <h1>Attendance sheet</h1>
@@ -17746,16 +18064,18 @@ function renderAttendancePlanner(S, api, host) {
                     .grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 3mm 8mm; margin-bottom: 3mm; }
                     .line { margin-bottom: 3mm; }
                     .f { display: flex; gap: 2mm; align-items: baseline; }
-                    .f .v { flex: 1; font-weight: 400; }
+                    .f .v { flex: 1; font-weight: 400; font-size: 14px; }
                     .t { display: inline-block; margin-left: 5mm; padding: 0 2mm; font-weight: 700; }
                     .t.on { border: 1.5px solid #000; border-radius: 50%; padding: 0.5mm 2.5mm; }
                     table { width: 100%; border-collapse: collapse; margin-top: 2mm; table-layout: fixed; }
                     th, td { border: 1px solid #000; height: 6.8mm; padding: 0 2mm; text-align: left;
                              white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-                    td.name { font-size: 10px; }
+                    /* Names and IDs are what gets read in class: as large as the fixed rows allow. */
+                    td { font-size: 13px; }
+                    td.name { font-size: 12.5px; }
                     /* Long names: two smaller lines inside the same fixed-height row. */
                     td.att { text-align: center; font-size: 15px; font-weight: 700; font-family: 'Segoe UI Symbol', 'DejaVu Sans', Arial, sans-serif; }
-                    td.name.long { font-size: 8.5px; line-height: 1.15; white-space: normal; text-overflow: clip; }
+                    td.name.long { font-size: 10px; line-height: 1.15; white-space: normal; text-overflow: clip; }
                     th { font-weight: 700; }
                     td.sr, th.sr { width: 9mm; font-weight: 700; }
                     .id { width: 23mm; } .att { width: 22mm; } .notes { width: 20mm; }
@@ -17777,7 +18097,8 @@ function renderAttendancePlanner(S, api, host) {
                     btn.disabled = false;
                     btn.textContent = old;
                 }
-                printSheet({ template: true, sort: sheetOptions().sort }, cur ? [cur] : [], people);
+                const { sort, date } = sheetOptions();
+                printSheet({ template: true, sort, date }, cur ? [cur] : [], people);
             }
 
             // The campus logo from the portal's own header: each portal serves its
@@ -17840,58 +18161,49 @@ function renderAttendancePlanner(S, api, host) {
                 const slotLabel = s => (s.slot ? `Slot ${s.slot}` : 'This session');
                 const seg = (name, value, text) =>
                     `<label class="gius-take-radio"><input type="radio" name="gius-sheet-${name}" value="${value}"${String(o[name]) === value ? ' checked' : ''}> ${text}</label>`;
-                const overlay = document.createElement('div');
-                overlay.id = 'gius-take-overlay';
-                overlay.className = 'gius-take-overlay';
-                overlay.innerHTML = `
-                    <div class="gius-take-modal" role="dialog" aria-modal="true" aria-labelledby="gius-take-sheet-title">
-                        <div class="gius-take-modal-hdr">
-                            <span id="gius-take-sheet-title">Print attendance sheet</span>
-                            <button type="button" class="gius-take-close" aria-label="Close">✕</button>
+                let picked = slots.slice(0, 1);
+                let next = o;
+                let marks = {};
+                activeDialog = S.openDialog({
+                    id: 'gius-take-overlay',
+                    title: 'Print attendance sheet',
+                    html: `
+                        <p class="gius-dialog-text">The GIU attendance sheet with the course, date, slot, session type and students filled in. Mark attendance on it in class, then enter it here.</p>
+                        ${roster.length ? '' : '<div class="gius-take-warn">Could not load the student list — the sheet will have empty rows only.</div>'}
+                        ${slots.length > 1 ? `<div><span class="gius-take-label">Slots (one page each)</span>
+                            ${slots.map((s, i) => `<label class="gius-take-radio"><input type="checkbox" data-slot="${i}" checked> ${S.escapeHtml(slotLabel(s))}</label>`).join('')}
+                        </div>` : ''}
+                        <div><span class="gius-take-label">Sort by</span>
+                            ${seg('sort', 'portal', 'Portal order')}${seg('sort', 'name', 'Name')}${seg('sort', 'id', 'ID')}
                         </div>
-                        <div class="gius-take-modal-body">
-                            <p class="gius-take-modal-text">The GIU attendance sheet with the course, date, slot, session type and students filled in. Mark attendance on it in class, then enter it here.</p>
-                            ${roster.length ? '' : '<div class="gius-take-warn">Could not load the student list — the sheet will have empty rows only.</div>'}
-                            ${slots.length > 1 ? `<div><span class="gius-take-label">Slots (one page each)</span>
-                                ${slots.map((s, i) => `<label class="gius-take-radio"><input type="checkbox" data-slot="${i}" checked> ${S.escapeHtml(slotLabel(s))}</label>`).join('')}
-                            </div>` : ''}
-                            <div><span class="gius-take-label">Sort by</span>
-                                ${seg('sort', 'name', 'Name')}${seg('sort', 'id', 'ID')}${seg('sort', 'portal', 'Portal order')}
-                            </div>
-                            <div><span class="gius-take-label">Fill in</span>
-                                <label class="gius-take-radio"><input type="checkbox" data-opt="ref"${o.ref ? ' checked' : ''}> Session Ref. ID</label>
-                                <label class="gius-take-radio"><input type="checkbox" data-opt="marks"${o.marks ? ' checked' : ''}> Attendance already entered (✓ for each attended student)</label>
-                            </div>
-                            <div class="gius-take-modal-actions">
-                                <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="cancel">Cancel</button>
-                                <button type="button" class="gius-take-btn gius-take-btn-primary" data-act="print">Print / Save as PDF</button>
-                            </div>
-                        </div>
-                    </div>`;
-                document.body.appendChild(overlay);
-                overlay.addEventListener('click', async e => {
-                    const act = e.target.closest('[data-act]')?.dataset.act;
-                    if (e.target === overlay || e.target.closest('.gius-take-close') || act === 'cancel') { closeModal(); return; }
-                    if (act !== 'print') return;
-                    const next = {
-                        sort:  overlay.querySelector('input[name="gius-sheet-sort"]:checked')?.value || 'name',
-                        ref:   overlay.querySelector('[data-opt="ref"]').checked,
-                        marks: overlay.querySelector('[data-opt="marks"]').checked,
-                    };
-                    try { localStorage.setItem(SHEET_KEY, JSON.stringify(next)); } catch { /* ignore */ }
-                    const chosen = Array.from(overlay.querySelectorAll('[data-slot]')).filter(b => b.checked).map(b => slots[+b.dataset.slot]);
-                    const picked = chosen.length ? chosen : slots.slice(0, 1);
-                    let marks = {};
-                    if (next.marks) {
-                        const btn = overlay.querySelector('[data-act="print"]');
-                        btn.disabled = true;
-                        btn.textContent = 'Reading attendance…';
-                        marks = await sessionMarks(picked);
-                    }
-                    closeModal();
-                    printSheet(next, picked, roster, marks);
+                        <div><span class="gius-take-label">Fill in</span>
+                            <label class="gius-take-radio"><input type="checkbox" data-opt="date"${o.date ? ' checked' : ''}> Date</label>
+                            <label class="gius-take-radio"><input type="checkbox" data-opt="ref"${o.ref ? ' checked' : ''}> Session Ref. ID</label>
+                            <label class="gius-take-radio"><input type="checkbox" data-opt="marks"${o.marks ? ' checked' : ''}> Attendance already entered (✓ for each attended student)</label>
+                        </div>`,
+                    actions: [{ label: 'Cancel', value: 'cancel' }, { label: 'Print / Save as PDF', value: 'print', primary: true }],
+                    async onAction(act, dlg) {
+                        if (act !== 'print') return true;
+                        const el = dlg.el;
+                        next = {
+                            sort:  el.querySelector('input[name="gius-sheet-sort"]:checked')?.value || 'portal',
+                            date:  el.querySelector('[data-opt="date"]').checked,
+                            ref:   el.querySelector('[data-opt="ref"]').checked,
+                            marks: el.querySelector('[data-opt="marks"]').checked,
+                        };
+                        try { localStorage.setItem(SHEET_KEY, JSON.stringify(next)); } catch { /* ignore */ }
+                        const chosen = Array.from(el.querySelectorAll('[data-slot]')).filter(b => b.checked).map(b => slots[+b.dataset.slot]);
+                        picked = chosen.length ? chosen : slots.slice(0, 1);
+                        if (next.marks) {
+                            const btn = dlg.button('print');
+                            btn.disabled = true;
+                            btn.textContent = 'Reading attendance…';
+                            marks = await sessionMarks(picked);
+                        }
+                        return true;
+                    },
                 });
-                overlay.querySelector('[data-act="print"]').focus();
+                activeDialog.result.then(act => { if (act === 'print') printSheet(next, picked, roster, marks); });
             }
 
             // ── Copy attendance from the other slot of the same date ────────────────
@@ -17947,12 +18259,12 @@ function renderAttendancePlanner(S, api, host) {
                 const handEdited = plan ? plan.changes.filter(c => c.r.cb.checked !== c.r.saved).length : 0;
                 let body;
                 if (!plan) {
-                    body = `<p class="gius-take-modal-text">${esc(message)}</p>`;
+                    body = `<p class="gius-dialog-text">${esc(message)}</p>`;
                 } else if (!plan.changes.length) {
-                    body = `<p class="gius-take-modal-text">This list already matches ${esc(name)} — nothing to change.</p>`;
+                    body = `<p class="gius-dialog-text">This list already matches ${esc(name)} — nothing to change.</p>`;
                 } else {
                     body = `
-                        <p class="gius-take-modal-text">Only the ticks change — you still press Save.</p>
+                        <p class="gius-dialog-text">Only the ticks change — you still press Save.</p>
                         <div class="gius-take-copy-stats">
                             <span>Same as now <strong>${plan.same}</strong></span>
                             <span>Become present <strong>${plan.changes.filter(c => c.to).length}</strong></span>
@@ -17968,74 +18280,50 @@ function renderAttendancePlanner(S, api, host) {
                         ${handEdited ? `<label class="gius-take-radio"><input type="checkbox" data-keep checked> Keep the ${handEdited} row${handEdited === 1 ? '' : 's'} I already changed by hand</label>` : ''}`;
                 }
                 const canCopy = plan && plan.changes.length;
-                const overlay = document.createElement('div');
-                overlay.id = 'gius-take-overlay';
-                overlay.className = 'gius-take-overlay';
-                overlay.innerHTML = `
-                    <div class="gius-take-modal gius-take-modal-wide" role="dialog" aria-modal="true" aria-labelledby="gius-take-copy-title">
-                        <div class="gius-take-modal-hdr">
-                            <span id="gius-take-copy-title">Copy attendance from ${esc(name)}</span>
-                            <button type="button" class="gius-take-close" aria-label="Close">✕</button>
-                        </div>
-                        <div class="gius-take-modal-body">
-                            ${body}
-                            <div class="gius-take-modal-actions">
-                                <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="cancel">${canCopy ? 'Cancel' : 'Close'}</button>
-                                ${canCopy ? `<button type="button" class="gius-take-btn gius-take-btn-primary" data-act="copy">Copy ${plan.changes.length} change${plan.changes.length === 1 ? '' : 's'}</button>` : ''}
-                            </div>
-                        </div>
-                    </div>`;
-                document.body.appendChild(overlay);
-                overlay.addEventListener('click', e => {
-                    const act = e.target.closest('[data-act]')?.dataset.act;
-                    if (e.target === overlay || e.target.closest('.gius-take-close') || act === 'cancel') { closeModal(); return; }
+                let keep = false;
+                activeDialog = S.openDialog({
+                    id: 'gius-take-overlay',
+                    title: `Copy attendance from ${name}`,
+                    wide: true,
+                    html: body,
+                    actions: canCopy
+                        ? [{ label: 'Cancel', value: 'cancel' }, { label: `Copy ${plan.changes.length} change${plan.changes.length === 1 ? '' : 's'}`, value: 'copy', primary: true }]
+                        : [{ label: 'Close', value: 'cancel' }],
+                    onAction(act, dlg) { keep = !!dlg.el.querySelector('[data-keep]')?.checked; },
+                });
+                activeDialog.result.then(act => {
                     if (act !== 'copy') return;
-                    const keep = overlay.querySelector('[data-keep]')?.checked;
                     for (const c of plan.changes) {
                         if (keep && c.r.cb.checked !== c.r.saved) continue;
                         c.r.cb.checked = c.to;
                     }
-                    closeModal();
                     update();
                 });
-                overlay.querySelector(canCopy ? '[data-act="copy"]' : '[data-act="cancel"]').focus();
             }
 
             function openEndConfirm() {
                 closeModal();
                 const changed = changedCount();
                 const label = sessionLabel();
-                const overlay = document.createElement('div');
-                overlay.id = 'gius-take-overlay';
-                overlay.className = 'gius-take-overlay';
-                overlay.innerHTML = `
-                    <div class="gius-take-modal" role="dialog" aria-modal="true" aria-labelledby="gius-take-modal-title">
-                        <div class="gius-take-modal-hdr">
-                            <span id="gius-take-modal-title">End this session?</span>
-                            <button type="button" class="gius-take-close" aria-label="Close">✕</button>
-                        </div>
-                        <div class="gius-take-modal-body">
-                            ${label ? `<p class="gius-take-modal-text">${S.escapeHtml(label)}</p>` : ''}
-                            ${changed ? `<div class="gius-take-warn">${changed} unsaved change${changed === 1 ? '' : 's'} — save them first.</div>` : ''}
-                            <div class="gius-take-modal-actions">
-                                <button type="button" class="gius-take-btn gius-take-btn-outline" data-act="cancel">Not yet</button>
-                                ${changed ? '<button type="button" class="gius-take-btn gius-take-btn-save" data-act="save">Save Attendance</button>' : ''}
-                                <button type="button" class="gius-take-btn gius-take-btn-end" data-act="end">End Session</button>
-                            </div>
-                        </div>
-                    </div>`;
-                document.body.appendChild(overlay);
-                overlay.addEventListener('click', e => {
-                    const act = e.target.closest('[data-act]')?.dataset.act;
-                    if (e.target === overlay || e.target.closest('.gius-take-close') || act === 'cancel') { closeModal(); return; }
-                    if (act === 'save') { closeModal(); saveBtn.click(); return; }
+                activeDialog = S.openDialog({
+                    id: 'gius-take-overlay',
+                    title: 'End this session?',
+                    html: `${label ? `<p class="gius-dialog-text">${S.escapeHtml(label)}</p>` : ''}
+                        ${changed ? `<div class="gius-take-warn">${changed} unsaved change${changed === 1 ? '' : 's'} — save them first.</div>` : ''}`,
+                    actions: [
+                        { label: 'Not yet', value: 'cancel' },
+                        ...(changed ? [{ label: 'Save Attendance', value: 'save', primary: true }] : []),
+                        { label: 'End Session', value: 'end', danger: true },
+                    ],
+                    focus: '[data-act="cancel"]',
+                });
+                activeDialog.result.then(act => {
+                    if (act === 'save') saveBtn.click();
                     if (act === 'end') {
-                        closeModal();
                         endConfirmed = true;
                         endBtn.click();
                     }
                 });
-                overlay.querySelector('[data-act="cancel"]').focus();
             }
 
             function init() {
@@ -18144,6 +18432,7 @@ function renderAttendancePlanner(S, api, host) {
     function renderHomeFeatureToggles() {
         if (!/\/Home\.aspx$/i.test(location.pathname || '')) return;
 
+        Shared.uiStyles();
         Shared.injectStyle('gius-feature-toggle-styles', `
             .gius-feature-panel{font-family:inherit;display:block;width:100%;box-sizing:border-box;}
             .gius-feature-panel *{box-sizing:border-box;}
@@ -18159,12 +18448,10 @@ function renderAttendancePlanner(S, api, host) {
             .gius-feature-open-link{white-space:normal;line-height:1.25;max-width:100%;}
             .gius-feature-count{display:inline;}
             .gius-feature-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 15px 10px;}
-            .gius-feature-btn{border:0;background:transparent;font:inherit;font-size:12px;
-                font-weight:400;padding:0;cursor:pointer;}
-            .gius-feature-btn:hover{text-decoration:underline;}
-            .gius-feature-btn:disabled{opacity:.45;cursor:not-allowed;text-decoration:none;}
-            .gius-feature-details{display:none;}
-            .gius-feature-panel.gius-feature-open .gius-feature-details{display:block;}
+            .gius-feature-details{height:0;min-height:0;overflow:clip;visibility:hidden;interpolate-size:allow-keywords;transition:height .3s ease-out,visibility 0s .3s;}
+            .gius-feature-summary{display:none;}
+            .gius-feature-panel.gius-feature-open .gius-feature-details{height:auto;visibility:visible;transition:height .3s ease-out,visibility 0s;}
+            @media (prefers-reduced-motion: reduce){.gius-feature-details{transition:none !important;}}
             .gius-feature-toggle-list{margin:0 15px 10px;padding:10px 0 0;border-top:1px solid #eeeeee;}
             .gius-feature-panel.gius-feature-open .gius-feature-toggle-list{display:block;}
             .gius-feature-cat{margin:0;}
@@ -18187,7 +18474,7 @@ function renderAttendancePlanner(S, api, host) {
             .gius-feature-network-icon:hover{color:#1B59C6;}
             a.gius-feature-page-link{text-decoration:none;cursor:pointer;}
             a.gius-feature-page-link:hover{text-decoration:underline;color:#1B59C6;}
-            html.gius-dark a.gius-feature-page-link:hover{color:#89b4fa;}
+            html:is(.gius-dark, [data-gius-dark]) a.gius-feature-page-link:hover{color:var(--gs-dk-accent, #89b4fa);}
             .gius-feature-switch{position:relative;display:inline-flex;width:38px;height:22px;flex:0 0 auto;}
             .gius-feature-switch input{opacity:0;width:0;height:0;}
             .gius-feature-slider{position:absolute;inset:0;border-radius:999px;background:#d1d5db;
@@ -18198,16 +18485,16 @@ function renderAttendancePlanner(S, api, host) {
             .gius-feature-switch input:checked + .gius-feature-slider::before{transform:translateX(16px);}
             .gius-feature-status{font-size:12px;font-weight:400;color:inherit;}
             .gius-feature-status.gius-feature-dirty{color:#8a6500;}
-            html.gius-dark .gius-feature-panel .card{background:#1e1e2e;color:#cdd6f4;box-shadow:0 2px 10px rgba(0,0,0,.45);}
-            html.gius-dark .gius-feature-label{color:#cdd6f4;}
-            html.gius-dark .gius-feature-network-icon{color:#7f849c;}
-            html.gius-dark .gius-feature-network-icon:hover{color:#89b4fa;}
-            html.gius-dark .gius-feature-details{background:#1e1e2e;}
-            html.gius-dark .gius-feature-toggle-list{border-top-color:#313244;}
-            html.gius-dark .gius-feature-cat-header{color:#7f849c;}
-            html.gius-dark .gius-feature-row{border-bottom-color:#313244;}
-            html.gius-dark .gius-feature-status{color:#cdd6f4;}
-            html.gius-dark .gius-feature-status.gius-feature-dirty{color:#f9e2af;}
+            html:is(.gius-dark, [data-gius-dark]) .gius-feature-panel .card{background:var(--gs-dk-card, #1e1e2e);color:var(--gs-dk-text, #cdd6f4);box-shadow:0 2px 10px rgba(0,0,0,.45);}
+            html:is(.gius-dark, [data-gius-dark]) .gius-feature-label{color:var(--gs-dk-text, #cdd6f4);}
+            html:is(.gius-dark, [data-gius-dark]) .gius-feature-network-icon{color:var(--gs-dk-muted, #7f849c);}
+            html:is(.gius-dark, [data-gius-dark]) .gius-feature-network-icon:hover{color:var(--gs-dk-accent, #89b4fa);}
+            html:is(.gius-dark, [data-gius-dark]) .gius-feature-details{background:var(--gs-dk-card, #1e1e2e);}
+            html:is(.gius-dark, [data-gius-dark]) .gius-feature-toggle-list{border-top-color:var(--gs-dk-line, #313244);}
+            html:is(.gius-dark, [data-gius-dark]) .gius-feature-cat-header{color:var(--gs-dk-muted, #7f849c);}
+            html:is(.gius-dark, [data-gius-dark]) .gius-feature-row{border-bottom-color:var(--gs-dk-line, #313244);}
+            html:is(.gius-dark, [data-gius-dark]) .gius-feature-status{color:var(--gs-dk-text, #cdd6f4);}
+            html:is(.gius-dark, [data-gius-dark]) .gius-feature-status.gius-feature-dirty{color:var(--gs-dk-warn, #f9e2af);}
         `);
 
         function findEventReservationsElement() {
@@ -18341,6 +18628,7 @@ function renderAttendancePlanner(S, api, host) {
                         <h3 class="card-title">
                             <small>Control Center</small>
                         </h3>
+                        <small class="gius-feature-summary"><span class="gius-feature-summary-count">${enabledCount}</span> of ${totalCount} features on</small>
                         <small class="gius-feature-open-wrap">
                             <a href="javascript:void(0)" class="guc-footer-link gius-feature-open-link" id="gius-feature-edit">
                                 <i class="fa fa-info-circle text-success"></i> Click to open
@@ -18353,10 +18641,10 @@ function renderAttendancePlanner(S, api, host) {
                             <span class="guc-footer-link gius-feature-status" id="gius-feature-status">
                                 <span id="gius-feature-count">${enabledCount}</span>/${totalCount} modules on. Changes apply after reload.
                             </span>
-                            <button type="button" class="guc-footer-link gius-feature-btn gius-btn" id="gius-feature-reload" disabled>
+                            <button type="button" class="guc-footer-link gius-feature-btn gius-btn gs-btn gs-btn--primary" id="gius-feature-reload" disabled>
                                 <i class="fa fa-refresh text-success"></i> Reload
                             </button>
-                            <button type="button" class="guc-footer-link gius-feature-btn gius-btn" id="gius-feature-reset">
+                            <button type="button" class="guc-footer-link gius-feature-btn gius-btn gs-btn" id="gius-feature-reset">
                                 <i class="fa fa-undo text-success"></i> Reset
                             </button>
                         </div>
@@ -18365,7 +18653,13 @@ function renderAttendancePlanner(S, api, host) {
             `;
 
             placePanel(panel);
-            mirrorNativeCard(panel);
+            // Portal look: the card has its own layout (mock board 6) and
+            // remembers whether it was left open.
+            const skinned = /(^|\s)home(\s|$)/.test(document.documentElement.getAttribute('data-gius-skin') || '');
+            const OPEN_KEY = 'giuControlCenterOpenV1';
+            if (skinned) {
+                try { if (localStorage.getItem(OPEN_KEY) === '1') panel.classList.add('gius-feature-open'); } catch { /* storage blocked */ }
+            } else mirrorNativeCard(panel);
             // The mirrored margins/padding are a one-time getComputedStyle()
             // snapshot of the native card — Custom.css changes them at
             // different viewport widths (e.g. card-header side padding goes
@@ -18377,7 +18671,7 @@ function renderAttendancePlanner(S, api, host) {
                 if (mirrorRafId !== null) return;
                 mirrorRafId = requestAnimationFrame(() => {
                     mirrorRafId = null;
-                    mirrorNativeCard(panel);
+                    if (!skinned) mirrorNativeCard(panel);
                 });
             }, { passive: true });
             Tips.show({ id: 'controlCenter', el: panel, title: 'Control Center',
@@ -18386,23 +18680,25 @@ function renderAttendancePlanner(S, api, host) {
             const status = panel.querySelector('#gius-feature-status');
             const reloadBtn = panel.querySelector('#gius-feature-reload');
             const countEl = panel.querySelector('#gius-feature-count');
+            const summaryCountEl = panel.querySelector('.gius-feature-summary-count');
             panel.querySelectorAll('input[data-feature-id]').forEach(input => {
                 input.addEventListener('change', () => {
                     const next = loadFeatureToggles();
                     next[input.dataset.featureId] = input.checked;
                     saveFeatureToggles(next);
                     countEl.textContent = Object.keys(FEATURE_DEFAULTS).filter(id => next[id]).length;
+                    summaryCountEl.textContent = countEl.textContent;
                     status.textContent = 'Saved. Reload to apply.';
                     status.classList.add('gius-feature-dirty');
                     reloadBtn.disabled = false;
                 });
             });
-            panel.querySelector('#gius-feature-edit').addEventListener('click', () => {
-                panel.classList.toggle('gius-feature-open');
-            });
-            panel.querySelector('#gius-feature-icon-link').addEventListener('click', () => {
-                panel.classList.toggle('gius-feature-open');
-            });
+            const toggleOpen = () => {
+                const open = panel.classList.toggle('gius-feature-open');
+                if (skinned) try { localStorage.setItem(OPEN_KEY, open ? '1' : '0'); } catch { /* storage blocked */ }
+            };
+            panel.querySelector('#gius-feature-edit').addEventListener('click', toggleOpen);
+            panel.querySelector('#gius-feature-icon-link').addEventListener('click', toggleOpen);
             reloadBtn.addEventListener('click', () => location.reload());
             panel.querySelector('#gius-feature-reset').addEventListener('click', () => {
                 resetFeatureToggles();
@@ -18465,5 +18761,6 @@ function renderAttendancePlanner(S, api, host) {
         }
     } catch (e) {
         Shared.warn('sessionDeepLink', 'crashed:', e);
+    }
     }
 })();

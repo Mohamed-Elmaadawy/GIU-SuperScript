@@ -3,7 +3,7 @@
 // @description Send emails to multiple tutorial groups at once on the GIU portal
 // @match       https://portal.giu-uni.de/GIUb/INTStaff/NotificationSystem_SendEmail_m.aspx
 // @namespace   Cyn0
-// @version     4.10.1
+// @version     5.0
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Notification%20Batch%20Send.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Notification%20Batch%20Send.js
 // @author      Mo.Elmaadawy
@@ -44,6 +44,180 @@ function injectStyle(id, css) {
             return el;
         }
 
+// The one button style every SuperScript feature uses (mock board 1), injected once: `gs-btn` (white),
+// `gs-btn--primary` (yellow, the one main action), `gs-btn--danger` (solid red), `gs-btn--quiet` (blue
+// text), `gs-btn--sm` (compact). Colours come from the 5.0 tokens when the portal look is on, with the
+// light values as fallback, so a token theme (dark) reaches every button. Features keep their own old
+// class names next to it as hooks for their code.
+function uiStyles() {
+            if (document.getElementById('gius-ui-styles')) return;
+            const style = document.createElement('style');
+            style.id = 'gius-ui-styles';
+            const B = ':is(button, a, input).gs-btn.gs-btn';
+            style.textContent = `
+                ${B} {
+                    display: inline-flex; align-items: center; justify-content: center; gap: 6px; box-sizing: border-box;
+                    height: 36px; min-height: 0; padding: 0 14px; border: 1px solid var(--gs-line, #d0d7de); border-radius: 6px;
+                    background: var(--gs-card, #ffffff); color: var(--gs-text, #1f2328); box-shadow: none; transform: none;
+                    font: 600 13px/1 var(--gs-font, system-ui, 'Segoe UI', Roboto, Arial, sans-serif); letter-spacing: normal; text-transform: none;
+                    text-decoration: none; white-space: nowrap; vertical-align: middle; cursor: pointer; opacity: 1; transition: background-color .12s, border-color .12s;
+                }
+                ${B}:hover:not(:disabled) { background: var(--gs-sunk, #f6f8fa); border-color: var(--gs-line-2, #afb8c1); color: var(--gs-text, #1f2328); box-shadow: none; transform: none; }
+                ${B}:focus-visible { outline: 2px solid var(--gs-focus, #0969da); outline-offset: 2px; }
+                ${B}.gs-btn--primary { border-color: var(--gs-accent-line, #d9a400); background: var(--gs-accent, #ffc107); color: var(--gs-accent-fg, #1a1a1a); }
+                ${B}.gs-btn--primary:hover:not(:disabled) { border-color: var(--gs-accent-line, #d9a400); background: var(--gs-accent-h, #ffb300); color: var(--gs-accent-fg, #1a1a1a); }
+                ${B}.gs-btn--danger { border-color: var(--gs-danger, #cf222e); background: var(--gs-danger, #cf222e); color: #ffffff; }
+                ${B}.gs-btn--danger:hover:not(:disabled) { border-color: var(--gs-danger-h, #a40e26); background: var(--gs-danger-h, #a40e26); color: #ffffff; }
+                ${B}.gs-btn--quiet { height: auto; padding: 2px 0; border-color: transparent; background: transparent; color: var(--gs-focus, #0969da); }
+                ${B}.gs-btn--quiet:hover:not(:disabled) { border-color: transparent; background: transparent; color: var(--gs-focus, #0969da); text-decoration: underline; }
+                ${B}.gs-btn--sm { height: 30px; padding: 0 10px; font-size: 12px; }
+                ${B}:disabled { border-color: var(--gs-line, #d0d7de); background: var(--gs-disabled-bg, #eaeef2); color: var(--gs-disabled-fg, #6e7781); cursor: not-allowed; }`;
+            (document.head || document.documentElement).appendChild(style);
+        }
+
+// The one dialog every feature uses, in the 5.0 look (mock: Feedback board): a title, an optional ✕,
+// a body (a line of text, HTML or a node) and a row of actions, the primary one yellow. Escape, the ✕
+// and a click outside dismiss it; Tab stays inside. Options:
+//   title; text (one muted line) or html / node (the body); actions: [{ label, value, primary, danger,
+//   id, disabled }]; wide; closeX (default true); id (layer id); layerClass; dialogClass; focus (a
+//   selector, else the primary action); onAction(value, dlg): return false (or a promise of false) to
+//   keep it open.
+// Returns { el, body, result, setBody(html | node), setActions(list), button(value), close(value) };
+// `result` resolves with the value it closed with (null when dismissed).
+function openDialog(opts) {
+            const o = Object.assign({ actions: [], closeX: true }, opts);
+            uiStyles();
+            if (!document.getElementById('gius-dialog-style')) {
+                const style = document.createElement('style');
+                style.id = 'gius-dialog-style';
+                const font = "system-ui, 'Segoe UI', Roboto, Arial, sans-serif";
+                style.textContent = `
+                    .gius-dialog-layer { position: fixed; inset: 0; z-index: 2147483647; display: flex; align-items: center; justify-content: center; padding: 16px; background: rgba(31, 35, 40, .45); font-family: ${font}; }
+                    .gius-dialog { display: flex; flex-direction: column; box-sizing: border-box; width: 100%; max-width: 420px; max-height: calc(100vh - 32px); background: #ffffff; border-radius: 10px; box-shadow: 0 16px 40px rgba(31, 35, 40, .3); color: #1f2328; text-align: left; font: 400 14px/1.5 ${font}; }
+                    .gius-dialog.gius-dialog--wide { max-width: 560px; }
+                    .gius-dialog-hdr { display: flex; align-items: flex-start; gap: 12px; padding: 18px 20px 0; }
+                    .gius-dialog-title { flex: 1; margin: 0; font: 700 16px/1.35 ${font}; color: #1f2328; }
+                    .gius-dialog-x { flex: none; width: 28px; height: 28px; margin: -4px -6px 0 0; padding: 0; border: 0; border-radius: 6px; background: transparent; color: #59636e; font: 400 15px/28px ${font}; cursor: pointer; }
+                    .gius-dialog-x:hover { background: #f6f8fa; color: #1f2328; }
+                    .gius-dialog-body { display: flex; flex-direction: column; gap: 12px; padding: 8px 20px 4px; overflow-y: auto; overflow-wrap: anywhere; }
+                    .gius-dialog-body:empty { display: none; }
+                    .gius-dialog-text { margin: 0; color: #59636e; font-size: 13px; white-space: pre-line; }
+                    .gius-dialog-field { display: grid; gap: 4px; font: 600 13px ${font}; color: #59636e; }
+                    .gius-dialog-field input { box-sizing: border-box; height: 36px; padding: 0 10px; border: 1px solid #d0d7de; border-radius: 6px; font: 400 14px ${font}; color: #1f2328; }
+                    .gius-dialog-field input:focus { border-color: #0969da; box-shadow: 0 0 0 3px rgba(9, 105, 218, .25); outline: 0; }
+                    .gius-dialog-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 10px; padding: 16px 20px 20px; }
+                    .gius-dialog-actions:empty { display: none; }
+                    .gius-dialog input:is([type="checkbox"], [type="radio"]) { width: 18px; height: 18px; margin: 0; accent-color: #272c33; vertical-align: -4px; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog { background: var(--gs-dk-card, #1e1e2e); color: var(--gs-dk-text, #cdd6f4); }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog-title { color: var(--gs-dk-text, #cdd6f4); }
+                    html:is(.gius-dark, [data-gius-dark]) :is(.gius-dialog-text, .gius-dialog-field, .gius-dialog-x) { color: var(--gs-dk-muted, #a6adc8); }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog-x:hover { background: var(--gs-dk-line, #313244); }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog-field input { background: var(--gs-dk-card, #1e1e2e); border-color: var(--gs-dk-line-2, #45475a); color: var(--gs-dk-text, #cdd6f4); }
+                    /* 5.0 dark mode (portal look): the same parts in its tokens. */
+                    html[data-gius-dark] .gius-dialog { background: var(--gs-card); color: var(--gs-text); }
+                    html[data-gius-dark] .gius-dialog-title { color: var(--gs-text); }
+                    html[data-gius-dark] :is(.gius-dialog-text, .gius-dialog-field, .gius-dialog-x) { color: var(--gs-muted); }
+                    html[data-gius-dark] .gius-dialog-x:hover { background: var(--gs-sunk); }
+                    html[data-gius-dark] .gius-dialog-field input { background: var(--gs-sunk); border-color: var(--gs-line); color: var(--gs-text); }
+                    html[data-gius-dark] .gius-dialog input:is([type="checkbox"], [type="radio"]) { accent-color: var(--gs-accent); }`;
+                (document.head || document.documentElement).appendChild(style);
+            }
+            const layer = document.createElement('div');
+            layer.className = 'gius-dialog-layer' + (o.layerClass ? ' ' + o.layerClass : '');
+            if (o.id) layer.id = o.id;
+            layer.innerHTML = '<div class="gius-dialog" role="dialog" aria-modal="true"><div class="gius-dialog-hdr"><h2 class="gius-dialog-title"></h2></div>'
+                + '<div class="gius-dialog-body"></div><div class="gius-dialog-actions"></div></div>';
+            const box = layer.firstElementChild;
+            if (o.wide) box.classList.add('gius-dialog--wide');
+            if (o.dialogClass) box.className += ' ' + o.dialogClass;
+            const titleEl = box.querySelector('.gius-dialog-title');
+            titleEl.id = 'gius-dialog-title-' + Math.random().toString(36).slice(2, 8);
+            titleEl.textContent = o.title || '';
+            box.setAttribute('aria-labelledby', titleEl.id);
+            if (o.closeX) {
+                const x = document.createElement('button');
+                x.type = 'button';
+                x.className = 'gius-dialog-x';
+                x.setAttribute('aria-label', 'Close');
+                x.textContent = '✕';
+                box.querySelector('.gius-dialog-hdr').appendChild(x);
+            }
+            const body = box.querySelector('.gius-dialog-body');
+            const actionsEl = box.querySelector('.gius-dialog-actions');
+            let settle;
+            const result = new Promise(resolve => { settle = resolve; });
+            const before = document.activeElement;
+            let closed = false;
+            // Only the topmost dialog answers the keyboard.
+            const onKey = e => {
+                const layers = document.querySelectorAll('.gius-dialog-layer');
+                if (layers[layers.length - 1] !== layer) return;
+                if (e.key === 'Escape') { e.preventDefault(); e.stopImmediatePropagation(); dlg.close(null); return; }
+                if (e.key !== 'Tab') return;
+                const stops = Array.from(box.querySelectorAll('button, input, select, textarea, a[href], [tabindex]:not([tabindex="-1"])'))
+                    .filter(el => !el.disabled && el.offsetParent !== null);
+                if (!stops.length) return;
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                const i = stops.indexOf(document.activeElement);
+                stops[(i + (e.shiftKey ? -1 : 1) + stops.length) % stops.length].focus();
+            };
+            const dlg = {
+                el: box,
+                body,
+                result,
+                setBody(content) {
+                    if (content == null) body.textContent = '';
+                    else if (typeof content === 'string') body.innerHTML = content;
+                    else body.replaceChildren(content);
+                },
+                setActions(list) {
+                    actionsEl.textContent = '';
+                    (list || []).forEach(a => {
+                        const b = document.createElement('button');
+                        b.type = 'button';
+                        b.className = 'gius-dialog-btn gs-btn' + (a.primary ? ' gius-dialog-btn--primary gs-btn--primary' : '') + (a.danger ? ' gius-dialog-btn--danger gs-btn--danger' : '');
+                        b.dataset.act = String(a.value);
+                        if (a.id) b.id = a.id;
+                        if (a.disabled) b.disabled = true;
+                        b.textContent = a.label;
+                        b.addEventListener('click', async () => {
+                            const keep = o.onAction ? await o.onAction(a.value, dlg) : undefined;
+                            if (keep !== false) dlg.close(a.value);
+                        });
+                        actionsEl.appendChild(b);
+                    });
+                },
+                button(value) { return actionsEl.querySelector(`[data-act="${String(value)}"]`); },
+                close(value = null) {
+                    if (closed) return;
+                    closed = true;
+                    document.removeEventListener('keydown', onKey, true);
+                    layer.remove();
+                    if (before && typeof before.focus === 'function' && document.contains(before)) before.focus();
+                    settle(value);
+                },
+            };
+            if (o.node) dlg.setBody(o.node);
+            else if (o.html != null) dlg.setBody(o.html);
+            else if (o.text) {
+                const p = document.createElement('p');
+                p.className = 'gius-dialog-text';
+                p.textContent = o.text;
+                body.appendChild(p);
+            }
+            dlg.setActions(o.actions);
+            layer.addEventListener('click', e => {
+                if (e.target === layer || e.target.closest('.gius-dialog-x')) dlg.close(null);
+            });
+            document.addEventListener('keydown', onKey, true);
+            document.body.appendChild(layer);
+            const first = (o.focus && box.querySelector(o.focus)) || actionsEl.querySelector('.gius-dialog-btn--primary:not(:disabled)')
+                || actionsEl.querySelector('.gius-dialog-btn:not(:disabled)');
+            if (first) first.focus();
+            return dlg;
+        }
+
 function warn(feature, ...args) { console.warn(`[GIU-SS:${feature}]`, ...args); }
 
 function portalUrl(path) { return location.origin + path; }
@@ -60,7 +234,7 @@ function isServerErrorPage() {
     // Server error page (e.g. IIS 401): no portal markup — inject nothing.
     if (isServerErrorPage()) return;
 
-    const S = { waitFor, escapeHtml, injectStyle, warn, portalUrl };
+    const S = { waitFor, escapeHtml, injectStyle, warn, portalUrl, openDialog, uiStyles };
 
     S.courses = ({ courses: {
             map: {"AD 601":"Architectural Design Studio VI","AD 602":"Architectural Design Working Drawings II","AD 603":"Conservation and Restoration","AD 604":"Housing","AD 605":"Project Management and Building Economics","AD 1001":"Elective - Theme: Smart Architecture","AD 1090":"Advanced Architectural Design Studio II","AD 1099":"Research proposal and Seminar","AE 101":"Introduction to Academic English","ARCH 102":"Manual Visualization","ARCH 104":"History of Architecture I","ARCH 202":"Design Studio II","ARCH 203":"Descriptive Geometry","ARCH 204":"Architectonics II","ARCH 205":"3D Modeling","ARCH 206":"History II","ARCH 213":"Design Studio IV","ARCH 214":"Theories of Architecture II","ARCH 215":"Ecology and Environmental Design","ARCH 216":"Architectonics IV","ARCH 217":"CAD II","ARCH 218":"Structure II","ARCH 601":"CAD IV","ARCH 609":"Cairo Waterfronts","ARCH 610":"BIM and Beyond : Digital Delivery in Building Technology","ARCH 611":"Pixels & Places: Reimagining Urban Spaces through Gamification and VR","ARCH 613":"Design with Nature: Crafting outdoor Living Spaces","ARCH 700":"Bachelor Thesis","ARCH 802":"Professional Practice:Legislations and Contracts","ARCH 803":"Business Ethics and Workplace Readiness","AS 101":"English for Academic Purposes","BINF 401":"Digital Marketing","BINF 402":"Digital Transformation","BINF 601":"IT Project Management","BINF 602":"Business Intelligence and Analytics","BINF 1001":"Advanced Data Management & Mining","BINF 1002":"Digital Innovation and Entrepreneurship","BINF 1003":"Advanced IT Project Management","BINF 1004":"Advanced Research Methodology for BI","BIOM 601":"Ergonomics","BIOT 305":"Statistics","BIOT 601":"Bioinformatics","BIOT 602":"Industrial Biotechnology & Bioprocess Technology","BIOT 603":"Downstream Processing","BIOT 700":"Bachelor Thesis","BIOT 801":"Intellectual Property Management and IP Contract Law","BIOT 1001":"Bioethics and Biotechnology","BIOT 1002":"Biosafety","BIOT 1003":"Vaccine and Sera Process Technology","BIOT 1004":"Nutrigenomics","BIOT 1005":"Systems Biology","BIOT 1006":"Master Thesis Preparatory Courses","BSAD 102":"Microeconomics","BSAD 103":"Marketing","BSAD 105":"Cost Accounting","BSAD 406":"Macroeconomics","BSAD 407":"Principles of Corporate Finance","BSAD 408":"Innovation Management","BSAD 409":"Applied Statistics","BSAD 410":"Managing Organizations","BSAD 501":"Management Accounting","BSAD 503":"Research Methodology","BSAD 601":"Company Taxation","BSAD 602":"Information Management","BSAD 603":"Project management","BSAD 604":"Project management","BSAD 700":"Bachelor Thesis","BSAD 701":"Business Simulation","BSDM 502":"Marketing Analytics","BSDM 601":"Market Research","BSDM 602":"Communication Strategies and Consumer Behavior","BSDM 603":"Product and Distribution Management","BSEN 601":"Managing SMEs","BSEN 602":"Business Management and Entrepreneurship","BSEN 603":"SMEs Production Management and Marketing","BSFA 502":"Capital Markets","BSFA 601":"Financial Markets, Institutions and Investments","BSFA 602":"Financial Analysis and Evaluation","BSFA 603":"Corporate Finance","BSIB 502":"Regional Studies","BSIB 601":"Strategic Management","BSIB 602":"Applied International Sustainability Management","BSIB 603":"International Marketing","BSIN 102":"Programming I for Business Informatics","BSIN 103":"Business Process Management","BSIN 104":"Math II for Business Informatics","BSIN 105":"Programming II for Business Informatics","BSIN 301":"Data Structures & Algorithms","BSSC 601":"Auditing and Accountability","BSSC 602":"Distribution and Transportation Management","BSSC 603":"Production and Supply Chain Management","BTGN 601":"Research Methodology","BUAD 301":"Management Accounting for BI","BUAD 405":"Applied Econometrics","BUAD 406":"Human Resources Management for BI","BUAD 407":"Innovation Management for BI","BUAD 524":"Business Law and Technology Governance","BUAD 618":"Real Estate Finance & Investments","BUAD 619":"Digital Transformation of Real Estate Management","BUAD 620":"Marketing and Sales in Real Estate","BUAD 624":"Financial Derivatives","BUAD 625":"Fixed Income Securities","BUAD 626":"Investment Banking","BUAD 627":"Intermediate Macroeconomics","BUAD 705":"Business Simulation","BUAD 912":"Supply Chain Finance","BUAD 1001":"Advanced Research Methodology","BUAD 1002":"Industry Global Competitiveness","BUAD 1003":"Advanced Sustainability Management","BUAD 1004":"Current Issues in Marketing","BUAD 1005":"Brand Management","BUAD 1006":"Financial Modeling","BUAD 1007":"Digital Accounting","CNET 101":"Computer Networks","CPS 402":"Communication & Presentation Skills (A2)","CSBA 201":"Computer Science II","CSEN 102":"Computer Science I","CSEN 103":"Digital Logic Design","CSEN 104":"Programming I","CSEN 204":"Computer Science II","CSEN 303":"Software Engineering","CSEN 406":"Software  Engineering","CSIS 101":"Introduction to Computer Science I","CSIS 102":"Theoretical Computer Science","CSIS 201":"Programming II","CSMR 101":"Computer Organization","CTRL 101":"Financial Accounting I","DE 101":"German 1","DE 202":"German 2","DE 303":"German 3","DE 404":"German 4","DESN 1001":"General Design Project Review","DESN 1002":"Master Thesis Preparatory Courses","DMES 201":"Digital Media Design Essentials","DMES 202":"Digital Storytelling","DMES 203":"Creative Coding","DMES 204":"Basic Typography and Layout","DMES 206":"Basics of 2D Animation","DRAW 101":"Technical Drawing","DSFD 201":"Jewelry Design Workshop I","DSFD 401":"Jewelry Design Workshop III","DSFD 601":"Jewelry Design Workshop V","DSGN 601":"General Studies: Ethic and Law","DSGN 700":"Bachelor Thesis","DSGN 701":"Design Concept","DSTH 101":"Design Theory I (Art & Design History)","ECON 101":"Introduction to Economics","ECON 201":"Principles of Economics","ELCT 101":"Electrical Engineering I","ELCT 403":"Electric Machines and Drives","ELEC 905":"Advanced Electrical Energy Systems","ELEC 1001":"AI-Based Intelligent Control Systems","ELEC 1002":"Power System Operation and Planning","ELEC 1005":"Computational Intelligence","ENAU 601":"Automation/Control Engineering Project","ENAU 602":"Computer-Controlled Systems","ENAU 603":"Special Electric Machines","ENEE 502":"Power Electronics I","ENEE 504":"Modelling and Control of Renewable Energy Systems","ENEP 601":"Electric Power Systems Project","ENEP 602":"Electric Power Systems II","ENEP 604":"Power Electronics II","ENGN 101":"Sensors and Metrology","ENGN 105":"Mechanics I","ENGN 108":"Electrical Engineering II","ENGN 109":"Engineering Design I","ENGN 112":"Electrical Engineering and Electronics","ENGN 113":"Machining processes","ENGN 401":"Electronics II","ENGN 415":"Microcontroller","ENGN 501":"Control Engineering","ENGN 503":"Electric Power,Machines & Drives","ENGN 601":"Introduction to AI","ENGN 700":"Bachelor Thesis","ENGN 701":"Research Methodology","ENGN 1001":"Smart Sensors and Actuators","ENGN 1099":"Master Thesis Preparatory Project","ENME 405":"Mechanics II","ENME 406":"Mechanics of materials","ENME 407":"Classic Control Engineering","ENME 408":"Control System Lab","ENME 501":"Control Systems for Mechatronics Engineers","ENME 503":"Electric Drives","ENME 506":"Introduction to Computer Networks","ENME 601":"Mechatronics Engineering Project","ENMF 601":"Quality Control","ENMF 602":"Production Operations Management","ENMR 601":"Vehicle Dynamics","ENMR 602":"Signal and Image Processing","ENMR 603":"Vehicle Powertrain","ENMR 604":"Fluid Mechanics and Thermodynamics","ENRB 601":"Industrial Robots","ENRB 602":"Parallel Kinematics & Kinetics","ENRB 603":"Industrial Automation & PLC Programming","ENRB 604":"Facility Design","FAPR 406":"Design Short Term Project I","FASD 405":"Main Collection Project I (Concept, Prototyping)","FASD 407":"Fashion Technology III: CAD/Fashion II, Portfolio, Technical Drawing","FASD 408":"CAD-Pattern I, 3D Prototyping","FASD 601":"Fashion Management and Marketing","FASD 602":"Design Short Term Project II","FASD 603":"Main Collection Project III","FDDS 101":"Design Basics I (Fashion Design)","FDFT 101":"Fashion Technology I","FINA 201":"Financial Accounting II","FJDS 1001":"Design Project- FD","HRMG 101":"Human Resources Management","HUMA 801":"Business Ethics","IA 601":"Interior Architecture Studio VI","IA 602":"Interior Architecture Working Drawings II","IA 603":"Furniture Design","IA 604":"Light Design","IA 605":"Project Management and Interior Design Economics","IA 1001":"Elective - Theme: Smart Interior Architecture","IA 1090":"Advanced Interior Architecture Studio II","IA 1099":"Research proposal and Seminar","ICS 502":"Database Programming","ICS 507":"Digital Forensics","ICS 512":"Human Computer Interaction","ICS 602":"Big Data and NoSQL","ICS 603":"Advanced Machine Learning","ICS 604":"Introduction to Image Processing and Computer Vision","ICS 605":"Network Security","ICS 606":"Business Continuity and Risk Management","ICS 607":"Ethical Hacking and Penetration Testing","ICS 608":"Software Cloud Computing","ICS 609":"Software Mobile Development","ICS 610":"Software Project II","ICS 611":"3D Design","ICS 612":"Mobile Development","ICS 613":"Media Informatics Project","IDDS 101":"Design Basics I (Industrial Design)","IDDS 201":"Design Basics II (Industrial Design)","IDDS 403":"Design Main Project I: Design, Presentation & Documentation","IDDS 405":"Material/Sustainable Manufacturing","IDDS 406":"CAD 3D Modeling","IDDS 601":"Universal Design Thinking and Intercultural Competence","IDDS 602":"Design Short Term Project II","IDDS 603":"Design Main Project III: Business Management","IDES 1001":"Design Project- ID","IDPR 404":"Design Short Term Project I","INCS 101":"Programming III","INCS 102":"Operating Systems","INCS 103":"Databases","INCS 104":"Data Structures & Algorithms","INCS 402":"Analysis & Design of Algorithms","INCS 406":"Distributed &Web-based Systems","INCS 407":"Information Security","INCS 408":"Introduction to Data Science","INCS 409":"Introduction to Media Informatics","INCS 410":"Cloud Computing","INCS 515":"Databases","INCS 614":"Cybersecurity","INCS 615":"Big Data and NoSQL","INCS 616":"Business Continuity and Risk Management","INCS 617":"Software Engineering","INCS 700":"Bachelor Thesis","INCS 902":"Research Project I","INCS 1001":"Seminar - Selected Major-specific Topics","INCS 1002":"Research Project II","INCS 1003":"Analytics in the Cloud","INCS 1004":"Statistical Modeling for Data Science Applications","INCS 1005":"Social-Legal & Ethical issues in IT Security","INCS 1006":"Secure Systems Engineering","INCS 1007":"Software Game Development","INCS 1008":"Software Engineering Studio","INCS 1009":"Advanced Game Development and AI in Gaming","INCS 1010":"Digital Video and Sound Processing","INGN 601":"Research Methodology","LAWS 101":"Introduction to Law","MATH 101":"Mathematics & Statistics I","MATH 102":"Mathematics I for Pharmaceutical Engineering and Technology","MATH 103":"Mathematics I","MATH 104":"Mathematics I for Biotechnology","MATH 106":"Mathematics I for Architecture","MATH 108":"Math I for Business Informatics","MATH 109":"Mathematics I","MATH 203":"Mathematics II","MATH 204":"Mathematics II","MATH 205":"Mathematics II Business & Economics","MATH 302":"Mathematics II","MATH 303":"Math III - Probability & Statistics","MATH 304":"Mathematics III","MATH 401":"Biostatistics","MATH 403":"Mathematics IV","MECH 613":"CAD/CAM/CAE in Mechanical Engineering","MECH 907":"Autonomous Vehicle Systems","MECH 1001":"Automotive Electronics","MECH 1002":"Industrial Robots II","MECH 1003":"Robotics in manufacturing","MECH 1005":"Manufacturing Ergonomics","MGMT 401":"Introduction to Management and Economics","MNGT 101":"Introduction to Management","NETW 401":"Signals and Systems","NETW 402":"Modelling & Simulation of dynamic systems","PHEN 302":"Statistics","PHEN 303":"Fundamentals of Electrical Engineering","PHEN 401":"Fluid Mechanics","PHEN 402":"Chemical Reaction Engineering","PHEN 403":"Introduction to Process Engineering","PHEN 405":"Sensors,Metrology and Instrumentation Systems","PHEN 601":"Pharmaceutical Process Validation","PHEN 602":"Industrial Automation & PLC Programming","PHEN 603":"Water & Air Systems","PHEN 604":"Digitalization in Pharmaceutical Industry","PHEN 605":"Industrial Planning & Project Management","PHEN 606":"Pharmaceutical Processing Technology II","PHEN 608":"Cosmetics Technology","PHEN 700":"Bachelor Thesis","PHEN 1001":"Sustainability and Environmental Impact in the Pharmaceutical Industry","PHEN 1002":"Quality by Design and Advanced Quality Management","PHEN 1007":"Special Topics in Pharmaceutical Engineering II","PHEN 1099":"Master Thesis Preparatory Project","PHGN 601":"Research Methodology","PHTH 102":"Biophysics for Physiotherapy","PHTH 104":"Anatomy I for Physiotherapy","PHTH 105":"Physiology I for Physiotherapy","PHTH 213":"Anatomy II","PHTH 214":"Physiology II","PHTH 217":"Tests & Measurements I","PHTH 218":"Ethics & Law","PHTH 219":"kinesiology","PHTH 221":"First Aid in Hygienic Issue for PT","PHTH 222":"Psychology and Therapeutic Communication","PHTH 401":"Neuroanatomy","PHTH 402":"Neurophysiology","PHTH 403":"Biomechanics II","PHTH 404":"Therapeutic exercise II","PHTH 405":"Electrotherapy II","PHTH 406":"Hydrotherapy","PHTH 408":"Exercise physiology","PHYS 101":"Physics","PHYS 102":"Physics Lab","PTOR 601":"Traumatology","PTOR 602":"Physical Therapy for Traumatology","PTOR 603":"Orthopedic diseases and Surgeries","PTOR 604":"Physical Therapy for Orthopedic diseases and Surgeries","PTOR 605":"Physical Therapy for Sport Injury","PTSR 601":"General Surgery & Oncology","PTSR 602":"Physical Therapy for General Surgery & Oncology","RPW 401":"Research Paper Writing (A2)","SM 101":"Scientific Methods"},
@@ -273,6 +447,7 @@ function notificationBatch(S) {
             // ── Style injection ──────────────────────────────────────────────────────────
         
             function injectStyles() {
+                S.uiStyles();
                 if (document.getElementById('gius-notify-styles')) return;
                 const style = document.createElement('style');
                 style.id = 'gius-notify-styles';
@@ -337,6 +512,24 @@ function notificationBatch(S) {
                         align-items: center;
                         gap: 8px;
                     }
+                    /* The two links under the card (log, portal form): quiet buttons (gs-btn--quiet), side by side. */
+                    .gius-native-toggle { margin: 14px 18px 0 0; }
+                    .gius-log-item { border: 1px solid #d0d7de; border-radius: 8px; background: #ffffff; }
+                    .gius-log-item > summary {
+                        display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; padding: 10px 12px;
+                        cursor: pointer; font-size: 13px; color: #1f2328;
+                    }
+                    .gius-log-item[open] > summary { border-bottom: 1px solid #eaeef2; }
+                    /* Opens with a slide like the other folding cards (browsers without ::details-content just snap). */
+                    .gius-log-item { interpolate-size: allow-keywords; }
+                    .gius-log-item::details-content { height: 0; overflow: clip; transition: height .3s ease-out, content-visibility .3s allow-discrete; }
+                    .gius-log-item[open]::details-content { height: auto; }
+                    @media (prefers-reduced-motion: reduce) { .gius-log-item::details-content { transition: none; } }
+                    .gius-log-when { font-weight: 600; white-space: nowrap; }
+                    .gius-log-subject { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+                    .gius-log-counts { color: #59636e; white-space: nowrap; }
+                    .gius-log-item > .gius-result-list { padding: 4px 12px 8px; }
+                    .gius-batch-summary .gius-result-list, .gius-batch-log .gius-result-list { max-height: none; }
                     .gius-card-category {
                         margin: 3px 0 0;
                         font-size: 12px;
@@ -461,58 +654,6 @@ function notificationBatch(S) {
                         border-color: #1B59C6;
                     }
         
-                    .gius-btn {
-                        height: 32px;
-                        padding: 0 14px;
-                        border-radius: 6px;
-                        font-size: 13px;
-                        font-weight: 700;
-                        cursor: pointer;
-                        border: 1px solid transparent;
-                        transition: all 0.2s ease;
-                        display: inline-flex;
-                        align-items: center;
-                        gap: 5px;
-                        white-space: nowrap;
-                        font-family: 'Open Sans', Arial, sans-serif;
-                    }
-                    .gius-btn:disabled {
-                        opacity: 0.5;
-                        cursor: not-allowed;
-                        transform: none !important;
-                        box-shadow: none !important;
-                    }
-                    .gius-btn-primary {
-                        background: #1B59C6;
-                        border-color: #1648a8;
-                        color: #fff;
-                    }
-                    .gius-btn-primary:not(:disabled):hover {
-                        background: #1648a8;
-                        transform: translateY(-1px);
-                        box-shadow: 0 3px 10px rgba(27,89,198,0.35);
-                    }
-                    .gius-btn-outline {
-                        background: #fff;
-                        border-color: #d1d5db;
-                        color: #374151;
-                    }
-                    .gius-btn-outline:not(:disabled):hover {
-                        background: #f9fafb;
-                        border-color: #9ca3af;
-                    }
-                    .gius-btn-muted {
-                        background: #f9fafb;
-                        border-color: #d1d5db;
-                        color: #374151;
-                    }
-                    .gius-btn-muted:not(:disabled):hover { background: #e5e7eb; }
-                    .gius-btn-danger {
-                        background: #dc2626;
-                        color: #fff;
-                        border: none;
-                    }
-                    .gius-btn-danger:hover { background: #b91c1c; }
         
                     .gius-progress-wrap {
                         background: #e5e7eb;
@@ -663,6 +804,33 @@ function notificationBatch(S) {
                 if (ref && ref.nextElementSibling) return ref.nextElementSibling;
                 return getEl('form1');
             }
+
+            // The portal's own one-group form (the table the card goes in front of, and the stray "."
+            // paragraph with its hidden testing field): the card replaces it on screen. The batch still
+            // fills in and submits it behind the scenes, so it is only hidden, never removed. Returns the
+            // hidden elements (none when the page is not the one expected).
+            function hideNativeForm(anchor) {
+                const parts = [anchor, getEl('MainContent_TB_TestingEnvironmentEmail')?.closest('p')]
+                    .filter(el => el && el.id !== 'form1' && !el.classList.contains('gius-card'));
+                parts.forEach(el => { el.style.display = 'none'; el.dataset.giuNativeForm = '1'; });
+                return parts;
+            }
+
+            // "Show the portal's own form": for what the batch does not cover (single students, other
+            // recipient types). Sits at the bottom of the card; toggles the hidden form back.
+            function addNativeFormToggle(card, parts) {
+                if (!parts.length) return;
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'gius-native-toggle gs-btn gs-btn--quiet';
+                btn.textContent = 'Show the portal\'s own form';
+                btn.addEventListener('click', () => {
+                    const show = parts[0].style.display === 'none';
+                    parts.forEach(el => { el.style.display = show ? '' : 'none'; });
+                    btn.textContent = show ? 'Hide the portal\'s own form' : 'Show the portal\'s own form';
+                });
+                card.querySelector('.gius-card-body')?.appendChild(btn);
+            }
         
             // ── State machine runner ─────────────────────────────────────────────────────
         
@@ -671,12 +839,12 @@ function notificationBatch(S) {
                 if (queue.currentIndex >= queue.groups.length) {
                     const failedGroups = queue.groups.filter((_, i) => queue.results[i]?.status === 'failed');
                     const retryPayload = failedGroups.length > 0
-                        ? { groups: failedGroups, sharedSubject: queue.sharedSubject, sharedBody: queue.sharedBody }
+                        ? { groups: failedGroups, sharedSubject: queue.sharedSubject, sharedBody: queue.sharedBody, priority: queue.priority }
                         : null;
                     clearQueue();
                     const progress = getEl('giu-batch-progress');
                     if (progress) progress.remove();
-                    renderSummary(queue.results, retryPayload);
+                    renderSummary(queue.results, retryPayload, queue);
                     injectPanel();
                     return;
                 }
@@ -695,7 +863,7 @@ function notificationBatch(S) {
             }
         
             function runQueueStep(queue) {
-                const { step, currentIndex, groups, sharedSubject, sharedBody } = queue;
+                const { step, currentIndex, groups, sharedSubject, sharedBody, priority } = queue;
                 const group = groups[currentIndex];
         
                 if (step === 'select') {
@@ -735,6 +903,9 @@ function notificationBatch(S) {
                     }
                     subjectEl.value = group.subject || sharedSubject;
                     bodyEl.value    = group.body    || sharedBody;
+                    // Each group's postback reloads the form, so its Importance is back to the default here.
+                    const priorityEl = getEl('MainContent_DD_Priority');
+                    if (priorityEl && priority && Array.from(priorityEl.options).some(o => o.value === priority)) priorityEl.value = priority;
                     queue.step = 'advance';
                     saveQueue(queue);
                     sendBtn.click();
@@ -764,6 +935,12 @@ function notificationBatch(S) {
                     formatGroupLabel(a.label).localeCompare(formatGroupLabel(b.label))
                 );
         
+                // Importance: the portal's own levels, starting from what its form shows.
+                const portalPriority = getEl('MainContent_DD_Priority');
+                const priorities = portalPriority
+                    ? Array.from(portalPriority.options).map(o => ({ value: o.value, label: o.textContent.trim(), selected: o.selected }))
+                    : [];
+
                 const card = document.createElement('div');
                 card.id = 'giu-batch-panel';
                 card.className = 'gius-card';
@@ -793,12 +970,19 @@ function notificationBatch(S) {
                             }
                         </div>
                         <div class="gius-toolbar-row">
-                            <button type="button" id="giu-select-all" class="gius-btn gius-btn-outline">Select All</button>
+                            <button type="button" id="giu-select-all" class="gius-btn gius-btn-outline gs-btn">Select All</button>
                             <label class="gius-toggle-label">
                                 <input type="checkbox" id="giu-same-msg" checked>
                                 Same message for all groups
                             </label>
                         </div>
+                        ${priorities.length ? `
+                        <div class="gius-filter-row">
+                            <span class="gius-section-label" style="margin:0;white-space:nowrap;">Importance</span>
+                            <select id="giu-priority" class="gius-course-filter" style="flex:0 0 200px;">
+                                ${priorities.map(p => `<option value="${escapeHtml(p.value)}"${p.selected ? ' selected' : ''}>${escapeHtml(p.label)}</option>`).join('')}
+                            </select>
+                        </div>` : ''}
                         <div id="giu-shared-fields">
                             <div class="gius-divider"></div>
                             <label class="gius-field-label">Subject</label>
@@ -809,7 +993,7 @@ function notificationBatch(S) {
                                 style="resize:vertical;min-height:88px;font-family:'Open Sans',sans-serif;"></textarea>
                         </div>
                         <div class="gius-divider"></div>
-                        <button type="button" id="giu-start-btn" class="gius-btn gius-btn-primary" disabled>
+                        <button type="button" id="giu-start-btn" class="gius-btn gius-btn-primary gs-btn gs-btn--primary" disabled>
                             ▶ Start Batch Send (0 groups)
                         </button>
                     </div>
@@ -883,7 +1067,7 @@ function notificationBatch(S) {
                     btn.textContent = `▶ Start Batch Send (${checked} group${checked !== 1 ? 's' : ''})`;
                 }
         
-                card.querySelector('#giu-start-btn').addEventListener('click', () => {
+                card.querySelector('#giu-start-btn').addEventListener('click', async () => {
                     const sameMsg       = card.querySelector('#giu-same-msg').checked;
                     const sharedSubject = sameMsg ? card.querySelector('#giu-shared-subject').value.trim() : '';
                     const sharedBody    = sameMsg ? card.querySelector('#giu-shared-body').value.trim()    : '';
@@ -901,12 +1085,28 @@ function notificationBatch(S) {
                             body:    body    || null
                         });
                     });
-        
+                    if (!selectedGroups.length) return;
+
+                    // Emails cannot be called back: name the groups and ask once before the first send.
+                    // Labels read "Spring 2026 - INCS 406 - 4INF12 (Practical)": the group part is enough here.
+                    const n = selectedGroups.length;
+                    const shown = selectedGroups.slice(0, 4).map(g => String(g.label).split(' - ').pop());
+                    if (n > 4) shown.push(`${n - 4} more`);
+                    const names = shown.length > 1 ? `${shown.slice(0, -1).join(', ')} and ${shown[shown.length - 1]}` : shown[0];
+                    const go = await S.openDialog({
+                        title: `Send notification to ${n} group${n === 1 ? '' : 's'}?`,
+                        text: `${names} will get an email. This can't be undone.`,
+                        closeX: false,
+                        actions: [{ label: 'Cancel', value: 'cancel' }, { label: 'Send', value: 'send', primary: true }],
+                    }).result;
+                    if (go !== 'send') return;
+
                     saveQueue({
                         step:          'select',
                         currentIndex:  0,
                         sharedSubject,
                         sharedBody,
+                        priority:      card.querySelector('#giu-priority')?.value || null,
                         groups:        selectedGroups,
                         results:       []
                     });
@@ -930,6 +1130,8 @@ function notificationBatch(S) {
         
                 const anchor = getInjectionAnchor();
                 if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(card, anchor);
+                addLogLink(card);
+                addNativeFormToggle(card, hideNativeForm(anchor));
                 Tips.show({ id: 'notificationBatch', el: card, title: 'Batch Notification',
                     text: 'Email several tutorial groups in one go — same message for all, or per-group subjects and bodies.' });
             }
@@ -974,7 +1176,7 @@ function notificationBatch(S) {
                         </div>
                         <div class="gius-progress-label">${pct}% complete — ${done} of ${total} processed</div>
                         <div class="gius-result-list">${resultRows}</div>
-                        <button type="button" id="giu-cancel-btn" class="gius-btn gius-btn-danger">✕ Cancel</button>
+                        <button type="button" id="giu-cancel-btn" class="gius-btn gius-btn-danger gs-btn gs-btn--danger">✕ Cancel</button>
                     </div>
                 `;
         
@@ -983,84 +1185,167 @@ function notificationBatch(S) {
                     remaining.forEach(g => queue.results.push({ label: g.label, status: 'cancelled', info: 'Cancelled by user' }));
                     clearQueue();
                     card.remove();
-                    renderSummary(queue.results);
+                    renderSummary(queue.results, null, queue);
                     injectPanel();
                 });
         
                 const anchor = getInjectionAnchor();
                 if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(card, anchor);
+                hideNativeForm(anchor);
             }
-        
-            // ── Completion summary ────────────────────────────────────────────────────────
-        
-            function renderSummary(results, retryPayload = null) {
-                injectStyles();
-                const sent      = results.filter(r => r.status === 'sent').length;
-                const failed    = results.filter(r => r.status === 'failed').length;
-                const cancelled = results.filter(r => r.status === 'cancelled').length;
-                const unknown   = results.filter(r => r.status === 'unknown').length;
-                const hasErrors = failed > 0 || unknown > 0 || cancelled > 0;
-        
-                const rows = results.map((r, i) => {
+
+            // ── Completion summary (a pop-up) and the log ─────────────────────────────────
+
+            // The log: every finished batch, newest first, in this browser only — when, subject, importance
+            // and each group's result (message bodies are not kept). Capped at LOG_MAX batches.
+            const LOG_KEY = 'giuBatchNotifyLogV1';
+            const LOG_MAX = 50;
+
+            function loadLog() {
+                try { const log = JSON.parse(localStorage.getItem(LOG_KEY)); return Array.isArray(log) ? log : []; }
+                catch { return []; }
+            }
+
+            function addToLog(results, queue) {
+                if (!results.length) return;
+                const subjects = queue && queue.sharedSubject ? [queue.sharedSubject]
+                    : [...new Set(((queue && queue.groups) || []).map(g => g.subject).filter(Boolean))];
+                const entry = {
+                    at: new Date().toISOString(),
+                    subject: subjects.length === 1 ? subjects[0] : subjects.length ? 'Different subject per group' : '',
+                    priority: (queue && queue.priority) || '',
+                    results: results.map(r => ({ label: r.label, status: r.status, info: r.info })),
+                };
+                try { localStorage.setItem(LOG_KEY, JSON.stringify([entry, ...loadLog()].slice(0, LOG_MAX))); }
+                catch { /* storage full or blocked: the pop-up still shows the results */ }
+                updateLogLink();
+            }
+
+            function countResults(results) {
+                const n = s => results.filter(r => r.status === s).length;
+                return { sent: n('sent'), failed: n('failed'), cancelled: n('cancelled'), unknown: n('unknown') };
+            }
+
+            function countsText(c) {
+                return [
+                    `${c.sent} sent`,
+                    c.failed ? `${c.failed} failed` : '',
+                    c.cancelled ? `${c.cancelled} not sent` : '',
+                    c.unknown ? `${c.unknown} unconfirmed` : '',
+                ].filter(Boolean).join(' · ');
+            }
+
+            function resultRowsHtml(results) {
+                return results.map(r => {
                     const cls  = r.status === 'sent' ? 'gius-icon-sent' : r.status === 'failed' ? 'gius-icon-failed' : 'gius-icon-cancelled';
                     const icon = r.status === 'sent' ? '✓' : r.status === 'failed' ? '✕' : '–';
                     return `
-                        <div class="gius-result-row" style="animation-delay:${i * 0.04}s">
+                        <div class="gius-result-row">
                             <span class="gius-result-icon ${cls}">${icon}</span>
                             <span class="gius-result-name">${escapeHtml(formatGroupLabel(r.label))}</span>
-                            <span class="gius-result-info">${escapeHtml(r.info)}</span>
+                            <span class="gius-result-info">${escapeHtml(r.info || '')}</span>
                         </div>`;
                 }).join('');
-        
-                const hdrClass = hasErrors ? 'gius-hdr-danger' : 'gius-hdr-success';
-                const titleIcon = hasErrors ? '⚠' : '✓';
-                const titleText = failed > 0 ? 'Sent with Errors' : hasErrors ? 'Check the Results' : 'Batch Complete';
-        
-                const card = document.createElement('div');
-                card.id = 'giu-batch-summary';
-                card.className = 'gius-card';
-                card.innerHTML = `
-                    <div class="gius-card-header ${hdrClass}">
-                        <h4 class="gius-card-title">${titleIcon} ${titleText}</h4>
-                        <div class="gius-summary-header-meta">
-                            <div class="gius-stat-pill">
-                                <span class="gius-num">${sent}</span>
-                                <span class="gius-lbl">Sent</span>
-                            </div>
-                            ${failed > 0 ? `<div class="gius-stat-pill"><span class="gius-num">${failed}</span><span class="gius-lbl">Failed</span></div>` : ''}
-                            ${cancelled > 0 ? `<div class="gius-stat-pill"><span class="gius-num">${cancelled}</span><span class="gius-lbl">Not sent</span></div>` : ''}
-                            ${unknown > 0 ? `<div class="gius-stat-pill"><span class="gius-num">${unknown}</span><span class="gius-lbl">Unconfirmed</span></div>` : ''}
-                        </div>
-                    </div>
-                    <div class="gius-card-body">
-                        <div class="gius-result-list">${rows}</div>
-                        <div class="gius-divider"></div>
-                        <button type="button" id="giu-dismiss-btn" class="gius-btn gius-btn-muted">Dismiss</button>
-                        ${retryPayload ? `<button type="button" id="giu-retry-btn" class="gius-btn gius-btn-danger">Retry Failed (${retryPayload.groups.length})</button>` : ''}
-                    </div>
-                `;
-        
-                card.querySelector('#giu-dismiss-btn').addEventListener('click', () => card.remove());
-        
+            }
+
+            // Done (or cancelled, or found interrupted): the results in a pop-up, and into the log.
+            function renderSummary(results, retryPayload = null, queue = null) {
+                injectStyles();
+                addToLog(results, queue);
+                const c = countResults(results);
+                const hasErrors = c.failed > 0 || c.unknown > 0 || c.cancelled > 0;
+                const title = c.failed > 0 ? 'Sent with errors' : hasErrors ? 'Check the results' : 'Batch complete';
+                const actions = [{ label: 'View log', value: 'log' }];
                 if (retryPayload) {
-                    const retryBtn = card.querySelector('#giu-retry-btn');
-                    retryBtn?.addEventListener('click', () => {
+                    actions.push({ label: 'Close', value: 'close' });
+                    actions.push({ label: `Retry failed (${retryPayload.groups.length})`, value: 'retry', primary: true, id: 'giu-retry-btn' });
+                } else {
+                    actions.push({ label: 'Close', value: 'close', primary: true, id: 'giu-dismiss-btn' });
+                }
+                S.openDialog({
+                    title,
+                    wide: true,
+                    dialogClass: 'gius-batch-summary',
+                    html: `<p class="gius-dialog-text">${escapeHtml(countsText(c))}</p>
+                        <div class="gius-result-list">${resultRowsHtml(results)}</div>`,
+                    actions,
+                }).result.then(act => {
+                    if (act === 'log') openLog();
+                    if (act === 'retry' && retryPayload) {
                         saveQueue({
                             step:          'select',
                             currentIndex:  0,
                             sharedSubject: retryPayload.sharedSubject,
                             sharedBody:    retryPayload.sharedBody,
+                            priority:      retryPayload.priority,
                             groups:        retryPayload.groups,
                             results:       [],
                         });
                         location.reload();
-                    });
-                }
-        
-                const anchor = getInjectionAnchor();
-                if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(card, anchor);
+                    }
+                });
             }
-        
+
+            function openLog() {
+                const log = loadLog();
+                const when = iso => {
+                    const d = new Date(iso);
+                    return isNaN(d) ? '' : d.toLocaleString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+                };
+                const items = log.map(e => `
+                    <details class="gius-log-item">
+                        <summary>
+                            <span class="gius-log-when">${escapeHtml(when(e.at))}</span>
+                            <span class="gius-log-subject">${escapeHtml(e.subject || '(no subject)')}</span>
+                            <span class="gius-log-counts">${escapeHtml(countsText(countResults(e.results || [])))}${e.priority ? ` · ${escapeHtml(e.priority)}` : ''}</span>
+                        </summary>
+                        <div class="gius-result-list">${resultRowsHtml(e.results || [])}</div>
+                    </details>`).join('');
+                S.openDialog({
+                    title: 'Batch notification log',
+                    wide: true,
+                    dialogClass: 'gius-batch-log',
+                    html: log.length
+                        ? `<p class="gius-dialog-text">${log.length === 1 ? 'The batch sent from this browser.' : `The last ${log.length} batches sent from this browser, newest first.`} Open one to see each group.</p>${items}`
+                        : '<p class="gius-dialog-text">No batches sent from this browser yet.</p>',
+                    actions: log.length
+                        ? [{ label: 'Clear log', value: 'clear' }, { label: 'Close', value: 'close', primary: true }]
+                        : [{ label: 'Close', value: 'close', primary: true }],
+                    focus: '[data-act="close"]',
+                    async onAction(act) {
+                        if (act !== 'clear') return true;
+                        const sure = await S.openDialog({
+                            title: 'Clear the log?',
+                            text: 'The record of past batches is removed from this browser. Sent emails are not affected.',
+                            closeX: false,
+                            actions: [{ label: 'Cancel', value: 'cancel' }, { label: 'Clear log', value: 'clear', danger: true }],
+                        }).result;
+                        if (sure !== 'clear') return false;
+                        try { localStorage.removeItem(LOG_KEY); } catch { /* ignore */ }
+                        updateLogLink();
+                        return true;
+                    },
+                });
+            }
+
+            // "View log (N)" under the Batch card.
+            function addLogLink(card) {
+                const body = card.querySelector('.gius-card-body');
+                if (!body) return;
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.id = 'giu-log-link';
+                btn.className = 'gius-native-toggle gs-btn gs-btn--quiet';
+                btn.addEventListener('click', openLog);
+                body.appendChild(btn);
+                updateLogLink();
+            }
+
+            function updateLogLink() {
+                const btn = getEl('giu-log-link');
+                if (btn) btn.textContent = `View log (${loadLog().length})`;
+            }
+
             // ── Entry point ──────────────────────────────────────────────────────────────
         
             function renderOtherTabNotice() {
@@ -1112,7 +1397,7 @@ function notificationBatch(S) {
                 }
         
                 if (queue.step === 'done') {
-                    renderSummary(queue.results);
+                    renderSummary(queue.results, null, queue);
                     clearQueue();
                     injectPanel();
                     return;
@@ -1130,7 +1415,7 @@ function notificationBatch(S) {
                         results.push({ label: g.label, status: 'cancelled', info: 'Not sent — the batch was interrupted' });
                     });
                     clearQueue();
-                    renderSummary(results);
+                    renderSummary(results, null, queue);
                     injectPanel();
                     return;
                 }

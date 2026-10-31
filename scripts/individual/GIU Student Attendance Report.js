@@ -3,7 +3,7 @@
 // @description Auto-scrapes all sessions for a group and shows absence level report above the student table
 // @match       https://portal.giu-uni.de/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx*
 // @namespace   Cyn0
-// @version     4.10.1
+// @version     5.0
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Student%20Attendance%20Report.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Student%20Attendance%20Report.js
 // @icon        data:image/png;base64,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
@@ -44,6 +44,180 @@ function injectStyle(id, css) {
             return el;
         }
 
+// The one button style every SuperScript feature uses (mock board 1), injected once: `gs-btn` (white),
+// `gs-btn--primary` (yellow, the one main action), `gs-btn--danger` (solid red), `gs-btn--quiet` (blue
+// text), `gs-btn--sm` (compact). Colours come from the 5.0 tokens when the portal look is on, with the
+// light values as fallback, so a token theme (dark) reaches every button. Features keep their own old
+// class names next to it as hooks for their code.
+function uiStyles() {
+            if (document.getElementById('gius-ui-styles')) return;
+            const style = document.createElement('style');
+            style.id = 'gius-ui-styles';
+            const B = ':is(button, a, input).gs-btn.gs-btn';
+            style.textContent = `
+                ${B} {
+                    display: inline-flex; align-items: center; justify-content: center; gap: 6px; box-sizing: border-box;
+                    height: 36px; min-height: 0; padding: 0 14px; border: 1px solid var(--gs-line, #d0d7de); border-radius: 6px;
+                    background: var(--gs-card, #ffffff); color: var(--gs-text, #1f2328); box-shadow: none; transform: none;
+                    font: 600 13px/1 var(--gs-font, system-ui, 'Segoe UI', Roboto, Arial, sans-serif); letter-spacing: normal; text-transform: none;
+                    text-decoration: none; white-space: nowrap; vertical-align: middle; cursor: pointer; opacity: 1; transition: background-color .12s, border-color .12s;
+                }
+                ${B}:hover:not(:disabled) { background: var(--gs-sunk, #f6f8fa); border-color: var(--gs-line-2, #afb8c1); color: var(--gs-text, #1f2328); box-shadow: none; transform: none; }
+                ${B}:focus-visible { outline: 2px solid var(--gs-focus, #0969da); outline-offset: 2px; }
+                ${B}.gs-btn--primary { border-color: var(--gs-accent-line, #d9a400); background: var(--gs-accent, #ffc107); color: var(--gs-accent-fg, #1a1a1a); }
+                ${B}.gs-btn--primary:hover:not(:disabled) { border-color: var(--gs-accent-line, #d9a400); background: var(--gs-accent-h, #ffb300); color: var(--gs-accent-fg, #1a1a1a); }
+                ${B}.gs-btn--danger { border-color: var(--gs-danger, #cf222e); background: var(--gs-danger, #cf222e); color: #ffffff; }
+                ${B}.gs-btn--danger:hover:not(:disabled) { border-color: var(--gs-danger-h, #a40e26); background: var(--gs-danger-h, #a40e26); color: #ffffff; }
+                ${B}.gs-btn--quiet { height: auto; padding: 2px 0; border-color: transparent; background: transparent; color: var(--gs-focus, #0969da); }
+                ${B}.gs-btn--quiet:hover:not(:disabled) { border-color: transparent; background: transparent; color: var(--gs-focus, #0969da); text-decoration: underline; }
+                ${B}.gs-btn--sm { height: 30px; padding: 0 10px; font-size: 12px; }
+                ${B}:disabled { border-color: var(--gs-line, #d0d7de); background: var(--gs-disabled-bg, #eaeef2); color: var(--gs-disabled-fg, #6e7781); cursor: not-allowed; }`;
+            (document.head || document.documentElement).appendChild(style);
+        }
+
+// The one dialog every feature uses, in the 5.0 look (mock: Feedback board): a title, an optional ✕,
+// a body (a line of text, HTML or a node) and a row of actions, the primary one yellow. Escape, the ✕
+// and a click outside dismiss it; Tab stays inside. Options:
+//   title; text (one muted line) or html / node (the body); actions: [{ label, value, primary, danger,
+//   id, disabled }]; wide; closeX (default true); id (layer id); layerClass; dialogClass; focus (a
+//   selector, else the primary action); onAction(value, dlg): return false (or a promise of false) to
+//   keep it open.
+// Returns { el, body, result, setBody(html | node), setActions(list), button(value), close(value) };
+// `result` resolves with the value it closed with (null when dismissed).
+function openDialog(opts) {
+            const o = Object.assign({ actions: [], closeX: true }, opts);
+            uiStyles();
+            if (!document.getElementById('gius-dialog-style')) {
+                const style = document.createElement('style');
+                style.id = 'gius-dialog-style';
+                const font = "system-ui, 'Segoe UI', Roboto, Arial, sans-serif";
+                style.textContent = `
+                    .gius-dialog-layer { position: fixed; inset: 0; z-index: 2147483647; display: flex; align-items: center; justify-content: center; padding: 16px; background: rgba(31, 35, 40, .45); font-family: ${font}; }
+                    .gius-dialog { display: flex; flex-direction: column; box-sizing: border-box; width: 100%; max-width: 420px; max-height: calc(100vh - 32px); background: #ffffff; border-radius: 10px; box-shadow: 0 16px 40px rgba(31, 35, 40, .3); color: #1f2328; text-align: left; font: 400 14px/1.5 ${font}; }
+                    .gius-dialog.gius-dialog--wide { max-width: 560px; }
+                    .gius-dialog-hdr { display: flex; align-items: flex-start; gap: 12px; padding: 18px 20px 0; }
+                    .gius-dialog-title { flex: 1; margin: 0; font: 700 16px/1.35 ${font}; color: #1f2328; }
+                    .gius-dialog-x { flex: none; width: 28px; height: 28px; margin: -4px -6px 0 0; padding: 0; border: 0; border-radius: 6px; background: transparent; color: #59636e; font: 400 15px/28px ${font}; cursor: pointer; }
+                    .gius-dialog-x:hover { background: #f6f8fa; color: #1f2328; }
+                    .gius-dialog-body { display: flex; flex-direction: column; gap: 12px; padding: 8px 20px 4px; overflow-y: auto; overflow-wrap: anywhere; }
+                    .gius-dialog-body:empty { display: none; }
+                    .gius-dialog-text { margin: 0; color: #59636e; font-size: 13px; white-space: pre-line; }
+                    .gius-dialog-field { display: grid; gap: 4px; font: 600 13px ${font}; color: #59636e; }
+                    .gius-dialog-field input { box-sizing: border-box; height: 36px; padding: 0 10px; border: 1px solid #d0d7de; border-radius: 6px; font: 400 14px ${font}; color: #1f2328; }
+                    .gius-dialog-field input:focus { border-color: #0969da; box-shadow: 0 0 0 3px rgba(9, 105, 218, .25); outline: 0; }
+                    .gius-dialog-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 10px; padding: 16px 20px 20px; }
+                    .gius-dialog-actions:empty { display: none; }
+                    .gius-dialog input:is([type="checkbox"], [type="radio"]) { width: 18px; height: 18px; margin: 0; accent-color: #272c33; vertical-align: -4px; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog { background: var(--gs-dk-card, #1e1e2e); color: var(--gs-dk-text, #cdd6f4); }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog-title { color: var(--gs-dk-text, #cdd6f4); }
+                    html:is(.gius-dark, [data-gius-dark]) :is(.gius-dialog-text, .gius-dialog-field, .gius-dialog-x) { color: var(--gs-dk-muted, #a6adc8); }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog-x:hover { background: var(--gs-dk-line, #313244); }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog-field input { background: var(--gs-dk-card, #1e1e2e); border-color: var(--gs-dk-line-2, #45475a); color: var(--gs-dk-text, #cdd6f4); }
+                    /* 5.0 dark mode (portal look): the same parts in its tokens. */
+                    html[data-gius-dark] .gius-dialog { background: var(--gs-card); color: var(--gs-text); }
+                    html[data-gius-dark] .gius-dialog-title { color: var(--gs-text); }
+                    html[data-gius-dark] :is(.gius-dialog-text, .gius-dialog-field, .gius-dialog-x) { color: var(--gs-muted); }
+                    html[data-gius-dark] .gius-dialog-x:hover { background: var(--gs-sunk); }
+                    html[data-gius-dark] .gius-dialog-field input { background: var(--gs-sunk); border-color: var(--gs-line); color: var(--gs-text); }
+                    html[data-gius-dark] .gius-dialog input:is([type="checkbox"], [type="radio"]) { accent-color: var(--gs-accent); }`;
+                (document.head || document.documentElement).appendChild(style);
+            }
+            const layer = document.createElement('div');
+            layer.className = 'gius-dialog-layer' + (o.layerClass ? ' ' + o.layerClass : '');
+            if (o.id) layer.id = o.id;
+            layer.innerHTML = '<div class="gius-dialog" role="dialog" aria-modal="true"><div class="gius-dialog-hdr"><h2 class="gius-dialog-title"></h2></div>'
+                + '<div class="gius-dialog-body"></div><div class="gius-dialog-actions"></div></div>';
+            const box = layer.firstElementChild;
+            if (o.wide) box.classList.add('gius-dialog--wide');
+            if (o.dialogClass) box.className += ' ' + o.dialogClass;
+            const titleEl = box.querySelector('.gius-dialog-title');
+            titleEl.id = 'gius-dialog-title-' + Math.random().toString(36).slice(2, 8);
+            titleEl.textContent = o.title || '';
+            box.setAttribute('aria-labelledby', titleEl.id);
+            if (o.closeX) {
+                const x = document.createElement('button');
+                x.type = 'button';
+                x.className = 'gius-dialog-x';
+                x.setAttribute('aria-label', 'Close');
+                x.textContent = '✕';
+                box.querySelector('.gius-dialog-hdr').appendChild(x);
+            }
+            const body = box.querySelector('.gius-dialog-body');
+            const actionsEl = box.querySelector('.gius-dialog-actions');
+            let settle;
+            const result = new Promise(resolve => { settle = resolve; });
+            const before = document.activeElement;
+            let closed = false;
+            // Only the topmost dialog answers the keyboard.
+            const onKey = e => {
+                const layers = document.querySelectorAll('.gius-dialog-layer');
+                if (layers[layers.length - 1] !== layer) return;
+                if (e.key === 'Escape') { e.preventDefault(); e.stopImmediatePropagation(); dlg.close(null); return; }
+                if (e.key !== 'Tab') return;
+                const stops = Array.from(box.querySelectorAll('button, input, select, textarea, a[href], [tabindex]:not([tabindex="-1"])'))
+                    .filter(el => !el.disabled && el.offsetParent !== null);
+                if (!stops.length) return;
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                const i = stops.indexOf(document.activeElement);
+                stops[(i + (e.shiftKey ? -1 : 1) + stops.length) % stops.length].focus();
+            };
+            const dlg = {
+                el: box,
+                body,
+                result,
+                setBody(content) {
+                    if (content == null) body.textContent = '';
+                    else if (typeof content === 'string') body.innerHTML = content;
+                    else body.replaceChildren(content);
+                },
+                setActions(list) {
+                    actionsEl.textContent = '';
+                    (list || []).forEach(a => {
+                        const b = document.createElement('button');
+                        b.type = 'button';
+                        b.className = 'gius-dialog-btn gs-btn' + (a.primary ? ' gius-dialog-btn--primary gs-btn--primary' : '') + (a.danger ? ' gius-dialog-btn--danger gs-btn--danger' : '');
+                        b.dataset.act = String(a.value);
+                        if (a.id) b.id = a.id;
+                        if (a.disabled) b.disabled = true;
+                        b.textContent = a.label;
+                        b.addEventListener('click', async () => {
+                            const keep = o.onAction ? await o.onAction(a.value, dlg) : undefined;
+                            if (keep !== false) dlg.close(a.value);
+                        });
+                        actionsEl.appendChild(b);
+                    });
+                },
+                button(value) { return actionsEl.querySelector(`[data-act="${String(value)}"]`); },
+                close(value = null) {
+                    if (closed) return;
+                    closed = true;
+                    document.removeEventListener('keydown', onKey, true);
+                    layer.remove();
+                    if (before && typeof before.focus === 'function' && document.contains(before)) before.focus();
+                    settle(value);
+                },
+            };
+            if (o.node) dlg.setBody(o.node);
+            else if (o.html != null) dlg.setBody(o.html);
+            else if (o.text) {
+                const p = document.createElement('p');
+                p.className = 'gius-dialog-text';
+                p.textContent = o.text;
+                body.appendChild(p);
+            }
+            dlg.setActions(o.actions);
+            layer.addEventListener('click', e => {
+                if (e.target === layer || e.target.closest('.gius-dialog-x')) dlg.close(null);
+            });
+            document.addEventListener('keydown', onKey, true);
+            document.body.appendChild(layer);
+            const first = (o.focus && box.querySelector(o.focus)) || actionsEl.querySelector('.gius-dialog-btn--primary:not(:disabled)')
+                || actionsEl.querySelector('.gius-dialog-btn:not(:disabled)');
+            if (first) first.focus();
+            return dlg;
+        }
+
 function warn(feature, ...args) { console.warn(`[GIU-SS:${feature}]`, ...args); }
 
 function portalUrl(path) { return location.origin + path; }
@@ -60,7 +234,7 @@ function isServerErrorPage() {
     // Server error page (e.g. IIS 401): no portal markup — inject nothing.
     if (isServerErrorPage()) return;
 
-    const S = { waitFor, escapeHtml, injectStyle, warn, portalUrl };
+    const S = { waitFor, escapeHtml, injectStyle, warn, portalUrl, openDialog, uiStyles };
 
 function studentAttendance(S) {
             const PAGE_URL       = S.portalUrl('/GIUb/INTStaff/ClassAttendance_ManageStudentAttendancesH003.aspx');
@@ -398,7 +572,9 @@ function studentAttendance(S) {
         }
         .gius-att-title { font-size: 14px; font-weight: 700; flex: 1; }
         .gius-att-chevron { transition: transform 0.25s ease; margin-right: 5px; font-size: 11px; }
-        .gius-att-panel.gius-att-collapsed .gius-att-body { display: none; }
+        .gius-att-body { overflow: clip; min-height: 0; interpolate-size: allow-keywords; transition: height .3s ease-out, visibility 0s; }
+        .gius-att-panel.gius-att-collapsed .gius-att-body { height: 0; visibility: hidden; transition: height .3s ease-out, visibility 0s .3s; }
+        @media (prefers-reduced-motion: reduce) { .gius-att-body { transition: none !important; } }
         .gius-att-panel.gius-att-collapsed .gius-att-chevron { transform: rotate(-90deg); }
         .gius-att-meta  { font-size: 12px; color: rgba(255,255,255,0.65); }
         .gius-att-refresh {
@@ -454,7 +630,7 @@ function studentAttendance(S) {
             color: #d97706; font-size: 11px; font-weight: 700;
             cursor: help; margin-left: 4px;
         }
-        html.gius-dark .gius-att-partial { color: #fbbf24 !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-att-partial { color: #fbbf24 !important; }
         /* ── Absent detail row ───────────────────────────────────────── */
         .gius-att-data-row { cursor: pointer; }
         .gius-att-detail-row td {
@@ -489,32 +665,32 @@ function studentAttendance(S) {
         .gius-att-miss-btn.active[data-val="absent"]   { background: #fee2e2; color: #991b1b; }
         .gius-att-miss-btn.active[data-val="onHold"]   { background: #fef3c7; color: #92400e; }
         .gius-att-adjusted { font-size: 12px; margin-top: 6px; font-weight: 700; color: #4338ca; }
-        html.gius-dark .gius-att-missing-section { border-top-color: #4338ca !important; }
-        html.gius-dark .gius-att-miss-grp { border-color: #45475a !important; }
-        html.gius-dark tr.gius-att-detail-row td button.gius-att-miss-btn { border-left-color: #45475a !important; color: #9399b2 !important; background: transparent !important; }
-        html.gius-dark tr.gius-att-detail-row td button.gius-att-miss-btn:not(.active):hover { background: #313244 !important; color: #cdd6f4 !important; }
-        html.gius-dark tr.gius-att-detail-row td button.gius-att-miss-btn.active[data-val="attended"] { background: #166534 !important; color: #86efac !important; }
-        html.gius-dark tr.gius-att-detail-row td button.gius-att-miss-btn.active[data-val="absent"]   { background: #7f1d1d !important; color: #fca5a5 !important; }
-        html.gius-dark tr.gius-att-detail-row td button.gius-att-miss-btn.active[data-val="onHold"]   { background: #78350f !important; color: #fcd34d !important; }
-        html.gius-dark .gius-att-adjusted { color: #a5b4fc !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-att-missing-section { border-top-color: #4338ca !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-att-miss-grp { border-color: var(--gs-dk-line-2, #45475a) !important; }
+        html:is(.gius-dark, [data-gius-dark]) tr.gius-att-detail-row td button.gius-att-miss-btn { border-left-color: var(--gs-dk-line-2, #45475a) !important; color: var(--gs-dk-muted, #9399b2) !important; background: transparent !important; }
+        html:is(.gius-dark, [data-gius-dark]) tr.gius-att-detail-row td button.gius-att-miss-btn:not(.active):hover { background: var(--gs-dk-line, #313244) !important; color: var(--gs-dk-text, #cdd6f4) !important; }
+        html:is(.gius-dark, [data-gius-dark]) tr.gius-att-detail-row td button.gius-att-miss-btn.active[data-val="attended"] { background: #166534 !important; color: #86efac !important; }
+        html:is(.gius-dark, [data-gius-dark]) tr.gius-att-detail-row td button.gius-att-miss-btn.active[data-val="absent"]   { background: #7f1d1d !important; color: #fca5a5 !important; }
+        html:is(.gius-dark, [data-gius-dark]) tr.gius-att-detail-row td button.gius-att-miss-btn.active[data-val="onHold"]   { background: #78350f !important; color: #fcd34d !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-att-adjusted { color: #a5b4fc !important; }
         /* ── Dark mode ───────────────────────────────────────────────── */
-        html.gius-dark .gius-att-panel { background: #181825 !important; border-color: transparent !important; }
-        html.gius-dark .gius-att-header { background: #11111b !important; }
-        html.gius-dark .gius-att-body   { color: #cdd6f4 !important; }
-        html.gius-dark .gius-att-progress-bar  { background: #313244 !important; }
-        html.gius-dark .gius-att-progress-fill { background: #89b4fa !important; }
-        html.gius-dark .gius-att-progress-text { color: #cdd6f4 !important; }
-        html.gius-dark .gius-att-error { background: #45475a !important; color: #f38ba8 !important; border-color: transparent !important; }
-        html.gius-dark .gius-att-stat  { color: #cdd6f4 !important; }
-        html.gius-dark .gius-att-atrisk-title { color: #cdd6f4 !important; }
-        html.gius-dark .gius-att-atrisk-table tbody tr { border-bottom-color: #313244 !important; }
-        html.gius-dark .gius-att-atrisk-table tbody tr:nth-child(even) { background: #181825 !important; }
-        html.gius-dark .gius-att-atrisk-table tbody tr:hover { background: #1e3a6e !important; }
-        html.gius-dark .gius-att-atrisk-table td { color: #cdd6f4 !important; }
-        html.gius-dark .gius-att-badge-red   { background: #3d1218 !important; color: #f38ba8 !important; border-color: #7f1d1d !important; }
-        html.gius-dark .gius-att-badge-amber { background: #2d1f00 !important; color: #fbbf24 !important; border-color: #78350f !important; }
-        html.gius-dark .gius-att-detail-row td { background: #1e2050 !important; color: #e0e7ff !important; border-top-color: #4338ca !important; border-left-color: #818cf8 !important; }
-        html.gius-dark .gius-att-detail-label { color: #a5b4fc !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-att-panel { background: var(--gs-dk-sunk, #181825) !important; border-color: transparent !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-att-header { background: var(--gs-dk-bg, #11111b) !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-att-body   { color: var(--gs-dk-text, #cdd6f4) !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-att-progress-bar  { background: var(--gs-dk-line, #313244) !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-att-progress-fill { background: var(--gs-dk-accent, #89b4fa) !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-att-progress-text { color: var(--gs-dk-text, #cdd6f4) !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-att-error { background: var(--gs-dk-line-2, #45475a) !important; color: var(--gs-dk-err, #f38ba8) !important; border-color: transparent !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-att-stat  { color: var(--gs-dk-text, #cdd6f4) !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-att-atrisk-title { color: var(--gs-dk-text, #cdd6f4) !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-att-atrisk-table tbody tr { border-bottom-color: var(--gs-dk-line, #313244) !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-att-atrisk-table tbody tr:nth-child(even) { background: var(--gs-dk-sunk, #181825) !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-att-atrisk-table tbody tr:hover { background: #1e3a6e !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-att-atrisk-table td { color: var(--gs-dk-text, #cdd6f4) !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-att-badge-red   { background: #3d1218 !important; color: var(--gs-dk-err, #f38ba8) !important; border-color: #7f1d1d !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-att-badge-amber { background: #2d1f00 !important; color: #fbbf24 !important; border-color: #78350f !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-att-detail-row td { background: #1e2050 !important; color: #e0e7ff !important; border-top-color: #4338ca !important; border-left-color: #818cf8 !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-att-detail-label { color: #a5b4fc !important; }
         /* ── Idle / fetch state ─────────────────────────────────────────── */
         .gius-att-idle { display: flex; align-items: center; gap: 10px; padding: 4px 0; }
         .gius-att-idle-text { font-size: 12px; color: #6b7280; }
@@ -525,7 +701,7 @@ function studentAttendance(S) {
             display: inline-flex; align-items: center; gap: 4px;
         }
         .gius-att-fetch-btn:hover { background: #e6ac00; }
-        html.gius-dark .gius-att-idle-text { color: #cdd6f4 !important; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-att-idle-text { color: var(--gs-dk-text, #cdd6f4) !important; }
         `;
                 document.head.appendChild(style);
             }

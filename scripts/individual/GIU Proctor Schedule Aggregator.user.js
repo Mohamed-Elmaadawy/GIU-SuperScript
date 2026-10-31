@@ -3,7 +3,7 @@
 // @description Aggregates all proctor exam assignments across departments into a live dashboard
 // @match       https://portal.giu-uni.de/GIUb/INTStaff/ProctorExchange_m.aspx
 // @namespace   Cyn0
-// @version     4.10.1
+// @version     5.0
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Proctor%20Schedule%20Aggregator.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Proctor%20Schedule%20Aggregator.js
 // @author      Mo.Elmaadawy
@@ -44,6 +44,180 @@ function injectStyle(id, css) {
             return el;
         }
 
+// The one button style every SuperScript feature uses (mock board 1), injected once: `gs-btn` (white),
+// `gs-btn--primary` (yellow, the one main action), `gs-btn--danger` (solid red), `gs-btn--quiet` (blue
+// text), `gs-btn--sm` (compact). Colours come from the 5.0 tokens when the portal look is on, with the
+// light values as fallback, so a token theme (dark) reaches every button. Features keep their own old
+// class names next to it as hooks for their code.
+function uiStyles() {
+            if (document.getElementById('gius-ui-styles')) return;
+            const style = document.createElement('style');
+            style.id = 'gius-ui-styles';
+            const B = ':is(button, a, input).gs-btn.gs-btn';
+            style.textContent = `
+                ${B} {
+                    display: inline-flex; align-items: center; justify-content: center; gap: 6px; box-sizing: border-box;
+                    height: 36px; min-height: 0; padding: 0 14px; border: 1px solid var(--gs-line, #d0d7de); border-radius: 6px;
+                    background: var(--gs-card, #ffffff); color: var(--gs-text, #1f2328); box-shadow: none; transform: none;
+                    font: 600 13px/1 var(--gs-font, system-ui, 'Segoe UI', Roboto, Arial, sans-serif); letter-spacing: normal; text-transform: none;
+                    text-decoration: none; white-space: nowrap; vertical-align: middle; cursor: pointer; opacity: 1; transition: background-color .12s, border-color .12s;
+                }
+                ${B}:hover:not(:disabled) { background: var(--gs-sunk, #f6f8fa); border-color: var(--gs-line-2, #afb8c1); color: var(--gs-text, #1f2328); box-shadow: none; transform: none; }
+                ${B}:focus-visible { outline: 2px solid var(--gs-focus, #0969da); outline-offset: 2px; }
+                ${B}.gs-btn--primary { border-color: var(--gs-accent-line, #d9a400); background: var(--gs-accent, #ffc107); color: var(--gs-accent-fg, #1a1a1a); }
+                ${B}.gs-btn--primary:hover:not(:disabled) { border-color: var(--gs-accent-line, #d9a400); background: var(--gs-accent-h, #ffb300); color: var(--gs-accent-fg, #1a1a1a); }
+                ${B}.gs-btn--danger { border-color: var(--gs-danger, #cf222e); background: var(--gs-danger, #cf222e); color: #ffffff; }
+                ${B}.gs-btn--danger:hover:not(:disabled) { border-color: var(--gs-danger-h, #a40e26); background: var(--gs-danger-h, #a40e26); color: #ffffff; }
+                ${B}.gs-btn--quiet { height: auto; padding: 2px 0; border-color: transparent; background: transparent; color: var(--gs-focus, #0969da); }
+                ${B}.gs-btn--quiet:hover:not(:disabled) { border-color: transparent; background: transparent; color: var(--gs-focus, #0969da); text-decoration: underline; }
+                ${B}.gs-btn--sm { height: 30px; padding: 0 10px; font-size: 12px; }
+                ${B}:disabled { border-color: var(--gs-line, #d0d7de); background: var(--gs-disabled-bg, #eaeef2); color: var(--gs-disabled-fg, #6e7781); cursor: not-allowed; }`;
+            (document.head || document.documentElement).appendChild(style);
+        }
+
+// The one dialog every feature uses, in the 5.0 look (mock: Feedback board): a title, an optional ✕,
+// a body (a line of text, HTML or a node) and a row of actions, the primary one yellow. Escape, the ✕
+// and a click outside dismiss it; Tab stays inside. Options:
+//   title; text (one muted line) or html / node (the body); actions: [{ label, value, primary, danger,
+//   id, disabled }]; wide; closeX (default true); id (layer id); layerClass; dialogClass; focus (a
+//   selector, else the primary action); onAction(value, dlg): return false (or a promise of false) to
+//   keep it open.
+// Returns { el, body, result, setBody(html | node), setActions(list), button(value), close(value) };
+// `result` resolves with the value it closed with (null when dismissed).
+function openDialog(opts) {
+            const o = Object.assign({ actions: [], closeX: true }, opts);
+            uiStyles();
+            if (!document.getElementById('gius-dialog-style')) {
+                const style = document.createElement('style');
+                style.id = 'gius-dialog-style';
+                const font = "system-ui, 'Segoe UI', Roboto, Arial, sans-serif";
+                style.textContent = `
+                    .gius-dialog-layer { position: fixed; inset: 0; z-index: 2147483647; display: flex; align-items: center; justify-content: center; padding: 16px; background: rgba(31, 35, 40, .45); font-family: ${font}; }
+                    .gius-dialog { display: flex; flex-direction: column; box-sizing: border-box; width: 100%; max-width: 420px; max-height: calc(100vh - 32px); background: #ffffff; border-radius: 10px; box-shadow: 0 16px 40px rgba(31, 35, 40, .3); color: #1f2328; text-align: left; font: 400 14px/1.5 ${font}; }
+                    .gius-dialog.gius-dialog--wide { max-width: 560px; }
+                    .gius-dialog-hdr { display: flex; align-items: flex-start; gap: 12px; padding: 18px 20px 0; }
+                    .gius-dialog-title { flex: 1; margin: 0; font: 700 16px/1.35 ${font}; color: #1f2328; }
+                    .gius-dialog-x { flex: none; width: 28px; height: 28px; margin: -4px -6px 0 0; padding: 0; border: 0; border-radius: 6px; background: transparent; color: #59636e; font: 400 15px/28px ${font}; cursor: pointer; }
+                    .gius-dialog-x:hover { background: #f6f8fa; color: #1f2328; }
+                    .gius-dialog-body { display: flex; flex-direction: column; gap: 12px; padding: 8px 20px 4px; overflow-y: auto; overflow-wrap: anywhere; }
+                    .gius-dialog-body:empty { display: none; }
+                    .gius-dialog-text { margin: 0; color: #59636e; font-size: 13px; white-space: pre-line; }
+                    .gius-dialog-field { display: grid; gap: 4px; font: 600 13px ${font}; color: #59636e; }
+                    .gius-dialog-field input { box-sizing: border-box; height: 36px; padding: 0 10px; border: 1px solid #d0d7de; border-radius: 6px; font: 400 14px ${font}; color: #1f2328; }
+                    .gius-dialog-field input:focus { border-color: #0969da; box-shadow: 0 0 0 3px rgba(9, 105, 218, .25); outline: 0; }
+                    .gius-dialog-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 10px; padding: 16px 20px 20px; }
+                    .gius-dialog-actions:empty { display: none; }
+                    .gius-dialog input:is([type="checkbox"], [type="radio"]) { width: 18px; height: 18px; margin: 0; accent-color: #272c33; vertical-align: -4px; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog { background: var(--gs-dk-card, #1e1e2e); color: var(--gs-dk-text, #cdd6f4); }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog-title { color: var(--gs-dk-text, #cdd6f4); }
+                    html:is(.gius-dark, [data-gius-dark]) :is(.gius-dialog-text, .gius-dialog-field, .gius-dialog-x) { color: var(--gs-dk-muted, #a6adc8); }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog-x:hover { background: var(--gs-dk-line, #313244); }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dialog-field input { background: var(--gs-dk-card, #1e1e2e); border-color: var(--gs-dk-line-2, #45475a); color: var(--gs-dk-text, #cdd6f4); }
+                    /* 5.0 dark mode (portal look): the same parts in its tokens. */
+                    html[data-gius-dark] .gius-dialog { background: var(--gs-card); color: var(--gs-text); }
+                    html[data-gius-dark] .gius-dialog-title { color: var(--gs-text); }
+                    html[data-gius-dark] :is(.gius-dialog-text, .gius-dialog-field, .gius-dialog-x) { color: var(--gs-muted); }
+                    html[data-gius-dark] .gius-dialog-x:hover { background: var(--gs-sunk); }
+                    html[data-gius-dark] .gius-dialog-field input { background: var(--gs-sunk); border-color: var(--gs-line); color: var(--gs-text); }
+                    html[data-gius-dark] .gius-dialog input:is([type="checkbox"], [type="radio"]) { accent-color: var(--gs-accent); }`;
+                (document.head || document.documentElement).appendChild(style);
+            }
+            const layer = document.createElement('div');
+            layer.className = 'gius-dialog-layer' + (o.layerClass ? ' ' + o.layerClass : '');
+            if (o.id) layer.id = o.id;
+            layer.innerHTML = '<div class="gius-dialog" role="dialog" aria-modal="true"><div class="gius-dialog-hdr"><h2 class="gius-dialog-title"></h2></div>'
+                + '<div class="gius-dialog-body"></div><div class="gius-dialog-actions"></div></div>';
+            const box = layer.firstElementChild;
+            if (o.wide) box.classList.add('gius-dialog--wide');
+            if (o.dialogClass) box.className += ' ' + o.dialogClass;
+            const titleEl = box.querySelector('.gius-dialog-title');
+            titleEl.id = 'gius-dialog-title-' + Math.random().toString(36).slice(2, 8);
+            titleEl.textContent = o.title || '';
+            box.setAttribute('aria-labelledby', titleEl.id);
+            if (o.closeX) {
+                const x = document.createElement('button');
+                x.type = 'button';
+                x.className = 'gius-dialog-x';
+                x.setAttribute('aria-label', 'Close');
+                x.textContent = '✕';
+                box.querySelector('.gius-dialog-hdr').appendChild(x);
+            }
+            const body = box.querySelector('.gius-dialog-body');
+            const actionsEl = box.querySelector('.gius-dialog-actions');
+            let settle;
+            const result = new Promise(resolve => { settle = resolve; });
+            const before = document.activeElement;
+            let closed = false;
+            // Only the topmost dialog answers the keyboard.
+            const onKey = e => {
+                const layers = document.querySelectorAll('.gius-dialog-layer');
+                if (layers[layers.length - 1] !== layer) return;
+                if (e.key === 'Escape') { e.preventDefault(); e.stopImmediatePropagation(); dlg.close(null); return; }
+                if (e.key !== 'Tab') return;
+                const stops = Array.from(box.querySelectorAll('button, input, select, textarea, a[href], [tabindex]:not([tabindex="-1"])'))
+                    .filter(el => !el.disabled && el.offsetParent !== null);
+                if (!stops.length) return;
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                const i = stops.indexOf(document.activeElement);
+                stops[(i + (e.shiftKey ? -1 : 1) + stops.length) % stops.length].focus();
+            };
+            const dlg = {
+                el: box,
+                body,
+                result,
+                setBody(content) {
+                    if (content == null) body.textContent = '';
+                    else if (typeof content === 'string') body.innerHTML = content;
+                    else body.replaceChildren(content);
+                },
+                setActions(list) {
+                    actionsEl.textContent = '';
+                    (list || []).forEach(a => {
+                        const b = document.createElement('button');
+                        b.type = 'button';
+                        b.className = 'gius-dialog-btn gs-btn' + (a.primary ? ' gius-dialog-btn--primary gs-btn--primary' : '') + (a.danger ? ' gius-dialog-btn--danger gs-btn--danger' : '');
+                        b.dataset.act = String(a.value);
+                        if (a.id) b.id = a.id;
+                        if (a.disabled) b.disabled = true;
+                        b.textContent = a.label;
+                        b.addEventListener('click', async () => {
+                            const keep = o.onAction ? await o.onAction(a.value, dlg) : undefined;
+                            if (keep !== false) dlg.close(a.value);
+                        });
+                        actionsEl.appendChild(b);
+                    });
+                },
+                button(value) { return actionsEl.querySelector(`[data-act="${String(value)}"]`); },
+                close(value = null) {
+                    if (closed) return;
+                    closed = true;
+                    document.removeEventListener('keydown', onKey, true);
+                    layer.remove();
+                    if (before && typeof before.focus === 'function' && document.contains(before)) before.focus();
+                    settle(value);
+                },
+            };
+            if (o.node) dlg.setBody(o.node);
+            else if (o.html != null) dlg.setBody(o.html);
+            else if (o.text) {
+                const p = document.createElement('p');
+                p.className = 'gius-dialog-text';
+                p.textContent = o.text;
+                body.appendChild(p);
+            }
+            dlg.setActions(o.actions);
+            layer.addEventListener('click', e => {
+                if (e.target === layer || e.target.closest('.gius-dialog-x')) dlg.close(null);
+            });
+            document.addEventListener('keydown', onKey, true);
+            document.body.appendChild(layer);
+            const first = (o.focus && box.querySelector(o.focus)) || actionsEl.querySelector('.gius-dialog-btn--primary:not(:disabled)')
+                || actionsEl.querySelector('.gius-dialog-btn:not(:disabled)');
+            if (first) first.focus();
+            return dlg;
+        }
+
 function warn(feature, ...args) { console.warn(`[GIU-SS:${feature}]`, ...args); }
 
 function portalUrl(path) { return location.origin + path; }
@@ -60,9 +234,10 @@ function isServerErrorPage() {
     // Server error page (e.g. IIS 401): no portal markup — inject nothing.
     if (isServerErrorPage()) return;
 
-    const S = { waitFor, escapeHtml, injectStyle, warn, portalUrl };
+    const S = { waitFor, escapeHtml, injectStyle, warn, portalUrl, openDialog, uiStyles };
 
 function proctorAggregator(S) {
+            let exchangeDialog = null; // the open exchange dialog (S.openDialog)
         
             const CACHE_KEY = 'giuProctorScheduleV1';
             const MAX_CONCURRENT = 20;
@@ -463,6 +638,7 @@ function proctorAggregator(S) {
             // ── Styles ────────────────────────────────────────────────────────────────
         
             function injectStyles() {
+                S.uiStyles();
                 if (document.getElementById('gius-proctor-styles')) return;
                 const s = document.createElement('style');
                 s.id = 'gius-proctor-styles';
@@ -545,13 +721,20 @@ function proctorAggregator(S) {
                     }
                     .gius-fetch-dept-input:focus { outline: 2px solid #60a5fa; outline-offset: 1px; border-color: #1B59C6; }
                     .gius-fetch-dept-input.gius-fetch-dept-error { border-color: #dc2626; outline-color: #f87171; }
-                    html.gius-dark .gius-fetch-dept-input {
-                        background: #313244 !important; border-color: #45475a !important; color: #cdd6f4 !important;
+                    html:is(.gius-dark, [data-gius-dark]) .gius-fetch-dept-input {
+                        background: var(--gs-dk-line, #313244) !important; border-color: var(--gs-dk-line-2, #45475a) !important; color: var(--gs-dk-text, #cdd6f4) !important;
                     }
                     .gius-proctor-body {
                         padding: 14px 16px;
+                        overflow: clip; min-height: 0; interpolate-size: allow-keywords;
+                        transition: height .3s ease-out, padding-top .3s ease-out, padding-bottom .3s ease-out, visibility 0s;
                     }
-                    .gius-proctor-body.collapsed { display: none; }
+                    /* Folds with a slide like the other cards (browsers without interpolate-size just snap). */
+                    .gius-proctor-body.collapsed {
+                        height: 0; padding-top: 0 !important; padding-bottom: 0 !important; visibility: hidden;
+                        transition: height .3s ease-out, padding-top .3s ease-out, padding-bottom .3s ease-out, visibility 0s .3s;
+                    }
+                    @media (prefers-reduced-motion: reduce) { .gius-proctor-body { transition: none !important; } }
         
                     .gius-proctor-hdr { cursor: pointer; }
                     .gius-proctor-hdr:hover { opacity: 0.92; }
@@ -571,52 +754,15 @@ function proctorAggregator(S) {
                         padding: 8px 12px !important;
                     }
                     .gius-empty-hint .fa { color: #1B59C6; margin-right: 4px; }
-                    html.gius-dark .gius-empty-hint {
-                        background: #181825 !important; border-color: #313244 !important; color: #9399b2 !important;
+                    html:is(.gius-dark, [data-gius-dark]) .gius-empty-hint {
+                        background: var(--gs-dk-sunk, #181825) !important; border-color: var(--gs-dk-line, #313244) !important; color: var(--gs-dk-muted, #9399b2) !important;
                     }
-                    html.gius-dark .gius-empty-hint .fa { color: #89b4fa !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-empty-hint .fa { color: var(--gs-dk-accent, #89b4fa) !important; }
         
-                    .gius-btn {
-                        height: 32px; padding: 0 14px; border-radius: 6px;
-                        font-size: 13px; font-weight: 700; cursor: pointer;
-                        border: 1px solid transparent;
-                        transition: all 0.2s ease;
-                        display: inline-flex; align-items: center; gap: 5px;
-                        white-space: nowrap;
-                        font-family: 'Open Sans', Arial, sans-serif;
-                    }
-                    .gius-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-                    .gius-btn-primary  { background: #1B59C6; border-color: #1648a8; color: #fff; }
-                    .gius-btn-primary:not(:disabled):hover  { background: #1648a8; }
-                    .gius-btn-outline  { background: #fff; border-color: #d1d5db; color: #374151; }
-                    .gius-btn-outline:not(:disabled):hover  { background: #f9fafb; }
-                    .gius-btn-muted    { background: #f9fafb; border-color: #d1d5db; color: #374151; }
-                    .gius-btn-muted:not(:disabled):hover    { background: #e5e7eb; }
-                    .gius-btn-sm { height: 26px; padding: 0 10px; font-size: 12px; }
         
-                    /* Entry trigger — dark slate + gold accent, matches the panel header */
-                    #gius-proctor-trigger {
-                        margin: 10px 0 0 !important;
-                        height: 34px !important; padding: 0 16px !important;
-                        display: inline-flex !important; align-items: center; gap: 7px;
-                        background: #272c33 !important; color: #fff !important;
-                        border: 1px solid #1c2025 !important;
-                        border-left: 3px solid #ffc107 !important;
-                        border-radius: 6px !important;
-                        font: 700 13px/1 'Open Sans', Arial, sans-serif !important;
-                        cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,.15);
-                        transition: background .2s ease, transform .1s ease;
-                        animation: giusSlideDown 0.3s ease both;
-                    }
-                    #gius-proctor-trigger:hover { background: #363d47 !important; }
-                    #gius-proctor-trigger:active { transform: translateY(1px); }
-                    #gius-proctor-trigger .fa { color: #ffc107 !important; }
+                    /* Entry trigger: the page's main action (gs-btn--primary). */
+                    #gius-proctor-trigger { margin: 10px 0 0; animation: giusSlideDown 0.3s ease both; }
                     #gius-proctor-trigger.gius-hide { display: none !important; }
-                    html.gius-dark #gius-proctor-trigger {
-                        background: #11111b !important; color: #fff !important;
-                        border-color: #0b0b12 !important; border-left-color: #ffc107 !important;
-                    }
-                    html.gius-dark #gius-proctor-trigger .fa { color: #ffc107 !important; }
         
                     .gius-progress-wrap {
                         background: #e5e7eb; border-radius: 999px; height: 8px; overflow: hidden; margin-bottom: 6px;
@@ -692,15 +838,15 @@ function proctorAggregator(S) {
                     .gius-cover-view-row { border-left: 3px solid #6366f1; background: #eef2ff !important; }
                     .gius-cover-view-row td:first-child { font-style: italic; color: #4338ca; font-weight: 600; }
                     .gius-cover-view-row:hover { background: #e0e7ff !important; }
-                    html.gius-dark .gius-cover-view-row { border-left-color: #818cf8 !important; background: #1e1e38 !important; }
-                    html.gius-dark .gius-cover-view-row td:first-child { color: #a5b4fc !important; }
-                    html.gius-dark .gius-cover-view-row:hover { background: #25254a !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-cover-view-row { border-left-color: #818cf8 !important; background: #1e1e38 !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-cover-view-row td:first-child { color: #a5b4fc !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-cover-view-row:hover { background: #25254a !important; }
                     .gius-covered-row { border-left: 3px solid #f59e0b; background: #fffbeb !important; }
                     .gius-covered-row td:first-child { color: #92400e; font-weight: 600; }
                     .gius-covered-row:hover { background: #fef3c7 !important; }
-                    html.gius-dark .gius-covered-row { border-left-color: #fbbf24 !important; background: #1c1400 !important; }
-                    html.gius-dark .gius-covered-row td:first-child { color: #fbbf24 !important; }
-                    html.gius-dark .gius-covered-row:hover { background: #2a1e00 !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-covered-row { border-left-color: #fbbf24 !important; background: #1c1400 !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-covered-row td:first-child { color: #fbbf24 !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-covered-row:hover { background: #2a1e00 !important; }
                     .gius-coproctor-row td {
                         background: #e0e7ff !important; color: #1e3a8a !important;
                         font-size: 1em; padding: 8px 16px 8px 20px !important;
@@ -716,25 +862,25 @@ function proctorAggregator(S) {
                     }
                     .gius-coproctor-list li { margin: 2px 0; }
                     .gius-coproctor-dept { color: #6366f1; margin-left: 4px; }
-                    html.gius-dark .gius-coproctor-dept { color: #818cf8 !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-coproctor-dept { color: #818cf8 !important; }
                     .gius-cover-status {
                         display: inline-block; margin-left: 6px; font-size: 10px; font-weight: 600;
                         background: #e0e7ff; color: #4338ca; border-radius: 4px; padding: 1px 5px;
                         vertical-align: middle; letter-spacing: 0.02em;
                     }
-                    html.gius-dark .gius-cover-status { background: #1e2050 !important; color: #a5b4fc !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-cover-status { background: #1e2050 !important; color: #a5b4fc !important; }
                     .gius-original-status {
                         display: inline-block; margin-left: 6px; font-size: 10px; font-weight: 600;
                         background: #fef3c7; color: #92400e; border-radius: 4px; padding: 1px 5px;
                         vertical-align: middle; letter-spacing: 0.02em;
                     }
-                    html.gius-dark .gius-original-status { background: #451a03 !important; color: #fbbf24 !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-original-status { background: #451a03 !important; color: #fbbf24 !important; }
         
                     .gius-covering-badge {
                         display: block; font-size: 11px; color: #6366f1;
                         font-style: italic; margin-top: 2px;
                     }
-                    html.gius-dark .gius-covering-badge { color: #818cf8 !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-covering-badge { color: #818cf8 !important; }
         
                     .gius-table-footer { border-top: 1px solid #e5e7eb; padding: 6px 10px; }
                     .gius-pagination {
@@ -750,15 +896,8 @@ function proctorAggregator(S) {
                         background: #fff; color: #374151; cursor: pointer;
                         font-family: 'Open Sans', sans-serif;
                     }
-                    .gius-page-btn {
-                        height: 26px; min-width: 26px; padding: 0 7px;
-                        border: 1px solid #d1d5db; border-radius: 4px;
-                        background: #fff; color: #374151; font-size: 14px; cursor: pointer;
-                        display: inline-flex; align-items: center; justify-content: center;
-                        font-family: 'Open Sans', sans-serif;
-                    }
-                    .gius-page-btn:hover:not(:disabled) { background: #f3f4f6; }
-                    .gius-page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+                    /* Pager arrows: square, 32px like the Rows select beside them. */
+                    button.gius-page-btn.gs-btn.gs-btn { width: 32px; height: 32px; padding: 0; font-size: 16px; }
                     .gius-page-num { font-size: 12px; color: #374151; white-space: nowrap; }
         
                     .gius-spinner {
@@ -775,56 +914,44 @@ function proctorAggregator(S) {
                     }
         
                     /* ── Dark mode overrides ── */
-                    html.gius-dark .gius-proctor-card {
-                        background: #181825 !important; border-color: transparent !important;
+                    html:is(.gius-dark, [data-gius-dark]) .gius-proctor-card {
+                        background: var(--gs-dk-sunk, #181825) !important; border-color: transparent !important;
                     }
-                    html.gius-dark .gius-proctor-hdr { background: #11111b !important; }
-                    html.gius-dark .gius-proctor-body { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-proctor-table tbody tr { border-color: #313244 !important; }
-                    html.gius-dark .gius-proctor-table tbody tr:nth-child(even) { background: #181825 !important; }
-                    html.gius-dark .gius-proctor-table tbody tr:hover { background: #1e3a6e !important; }
-                    html.gius-dark .gius-proctor-table td { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-proctor-table td.muted { color: #9399b2 !important; }
-                    html.gius-dark .gius-progress-wrap { background: #313244 !important; }
-                    html.gius-dark .gius-progress-label { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-filter-select, html.gius-dark .gius-filter-input {
-                        background: #313244 !important; color: #cdd6f4 !important;
-                        border-color: #45475a !important;
+                    html:is(.gius-dark, [data-gius-dark]) .gius-proctor-hdr { background: var(--gs-dk-bg, #11111b) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-proctor-body { color: var(--gs-dk-text, #cdd6f4) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-proctor-table tbody tr { border-color: var(--gs-dk-line, #313244) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-proctor-table tbody tr:nth-child(even) { background: var(--gs-dk-sunk, #181825) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-proctor-table tbody tr:hover { background: #1e3a6e !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-proctor-table td { color: var(--gs-dk-text, #cdd6f4) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-proctor-table td.muted { color: var(--gs-dk-muted, #9399b2) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-progress-wrap { background: var(--gs-dk-line, #313244) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-progress-label { color: var(--gs-dk-text, #cdd6f4) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-filter-select, html:is(.gius-dark, [data-gius-dark]) .gius-filter-input {
+                        background: var(--gs-dk-line, #313244) !important; color: var(--gs-dk-text, #cdd6f4) !important;
+                        border-color: var(--gs-dk-line-2, #45475a) !important;
                     }
-                    html.gius-dark .gius-btn-outline {
-                        background: #313244 !important; border-color: #45475a !important;
-                        color: #cdd6f4 !important;
+                    html:is(.gius-dark, [data-gius-dark]) .gius-page-info  { color: var(--gs-dk-text, #cdd6f4) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-page-num   { color: var(--gs-dk-text, #cdd6f4) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-page-size-label { color: var(--gs-dk-text, #cdd6f4) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-page-size-select {
+                        background: var(--gs-dk-line, #313244) !important; color: var(--gs-dk-text, #cdd6f4) !important; border-color: var(--gs-dk-line-2, #45475a) !important;
                     }
-                    html.gius-dark .gius-btn-muted {
-                        background: #313244 !important; border-color: #45475a !important;
-                        color: #cdd6f4 !important;
-                    }
-                    html.gius-dark .gius-page-info  { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-page-num   { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-page-size-label { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-page-size-select {
-                        background: #313244 !important; color: #cdd6f4 !important; border-color: #45475a !important;
-                    }
-                    html.gius-dark .gius-page-btn {
-                        background: #313244 !important; color: #cdd6f4 !important; border-color: #45475a !important;
-                    }
-                    html.gius-dark .gius-page-btn:hover:not(:disabled) { background: #45475a !important; }
-                    html.gius-dark .gius-table-section { border-color: #45475a !important; }
-                    html.gius-dark .gius-table-footer { border-top-color: #45475a !important; }
-                    html.gius-dark .gius-empty-state p { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-chip {
-                        background: #1a2a4a !important; color: #89b4fa !important;
+                    html:is(.gius-dark, [data-gius-dark]) .gius-table-section { border-color: var(--gs-dk-line-2, #45475a) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-table-footer { border-top-color: var(--gs-dk-line-2, #45475a) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-empty-state p { color: var(--gs-dk-text, #cdd6f4) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-chip {
+                        background: #1a2a4a !important; color: var(--gs-dk-accent, #89b4fa) !important;
                         border-color: #1e3a6e !important;
                     }
-                    html.gius-dark .gius-warn-pill {
+                    html:is(.gius-dark, [data-gius-dark]) .gius-warn-pill {
                         background: #2d1f00 !important; color: #fbbf24 !important;
                         border-color: #78350f !important;
                     }
-                    html.gius-dark .gius-coproctor-row td {
+                    html:is(.gius-dark, [data-gius-dark]) .gius-coproctor-row td {
                         background: #1e2050 !important; color: #e0e7ff !important;
                         border-top-color: #4338ca !important; border-left-color: #818cf8 !important;
                     }
-                    html.gius-dark .gius-coproctor-label { color: #a5b4fc !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-coproctor-label { color: #a5b4fc !important; }
         
                     /* ── Dropdown search ── */
                     .gius-dd-wrap   { position: relative; display: inline-block; z-index: 1000; }
@@ -843,18 +970,18 @@ function proctorAggregator(S) {
                     .gius-dd-fuzzy-mark { font-size: 10px; margin-right: 4px; color: #9ca3af; }
                     .gius-dd-empty  { padding: 6px 10px; font-size: 12px; color: #9ca3af;
                                       font-family: 'Open Sans', sans-serif; }
-                    html.gius-dark .gius-dd-panel  {
-                        background: #313244 !important; border-color: #45475a !important;
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dd-panel  {
+                        background: var(--gs-dk-line, #313244) !important; border-color: var(--gs-dk-line-2, #45475a) !important;
                         box-shadow: 0 4px 12px rgba(0,0,0,.4) !important;
                     }
-                    html.gius-dark .gius-dd-item { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-dd-item:hover,
-                    html.gius-dark .gius-dd-item.gius-dd-hi  {
-                        background: #45475a !important; color: #cdd6f4 !important;
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dd-item { color: var(--gs-dk-text, #cdd6f4) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dd-item:hover,
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dd-item.gius-dd-hi  {
+                        background: var(--gs-dk-line-2, #45475a) !important; color: var(--gs-dk-text, #cdd6f4) !important;
                     }
-                    html.gius-dark .gius-dd-fuzzy  { color: #6c7086 !important; }
-                    html.gius-dark .gius-dd-fuzzy-mark { color: #585b70 !important; }
-                    html.gius-dark .gius-dd-empty  { color: #6c7086 !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dd-fuzzy  { color: var(--gs-dk-muted, #6c7086) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dd-fuzzy-mark { color: var(--gs-dk-line-2, #585b70) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-dd-empty  { color: var(--gs-dk-muted, #6c7086) !important; }
         
                     .gius-take-th { width: 1%; }
                     .gius-take-btn { white-space: nowrap; }
@@ -865,34 +992,11 @@ function proctorAggregator(S) {
                         padding: 2px 10px; font-size: 12px; font-weight: 700;
                         font-family: 'Open Sans', sans-serif; white-space: nowrap;
                     }
-                    html.gius-dark .gius-taken-badge {
+                    html:is(.gius-dark, [data-gius-dark]) .gius-taken-badge {
                         background: #052e16 !important; color: #4ade80 !important;
                         border-color: #14532d !important;
                     }
         
-                    .gius-ex-overlay {
-                        position: fixed; inset: 0; z-index: 2147483646;
-                        background: rgba(17, 24, 39, 0.55);
-                        display: flex; align-items: center; justify-content: center;
-                        animation: giusSlideDown 0.15s ease both;
-                    }
-                    .gius-ex-modal {
-                        background: #fff; border-radius: 10px; width: 420px; max-width: 92vw;
-                        box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-                        font-family: 'Open Sans', Arial, sans-serif;
-                        overflow: hidden;
-                    }
-                    .gius-ex-hdr {
-                        display: flex; align-items: center; justify-content: space-between;
-                        background: #272c33; color: #fff;
-                        padding: 10px 14px; font-size: 14px; font-weight: 700;
-                    }
-                    .gius-ex-close {
-                        background: none; border: none; color: #fff; font-size: 15px;
-                        cursor: pointer; opacity: 0.7; padding: 2px 6px;
-                    }
-                    .gius-ex-close:hover { opacity: 1; }
-                    .gius-ex-body { padding: 18px 16px; }
                     .gius-ex-loading {
                         display: flex; align-items: center; gap: 10px;
                         color: #6b7280; font-size: 14px; padding: 10px 0;
@@ -910,7 +1014,6 @@ function proctorAggregator(S) {
                         margin: 0 0 16px; line-height: 1.5;
                     }
                     .gius-ex-check input { margin-top: 3px; cursor: pointer; }
-                    .gius-ex-actions { display: flex; justify-content: flex-end; gap: 8px; }
                     .gius-ex-result {
                         display: flex; align-items: flex-start; gap: 8px;
                         font-size: 14px; margin: 0 0 16px; line-height: 1.5;
@@ -918,15 +1021,13 @@ function proctorAggregator(S) {
                     .gius-ex-result .fa { margin-top: 2px; }
                     .gius-ex-ok  { color: #166534; }
                     .gius-ex-err { color: #b91c1c; }
-                    html.gius-dark .gius-ex-modal { background: #1e1e2e !important; }
-                    html.gius-dark .gius-ex-hdr { background: #11111b !important; }
-                    html.gius-dark .gius-ex-text { color: #cdd6f4 !important; }
-                    html.gius-dark .gius-ex-exam { color: #9399b2 !important; }
-                    html.gius-dark .gius-ex-check { color: #bac2de !important; }
-                    html.gius-dark .gius-ex-loading { color: #9399b2 !important; }
-                    html.gius-dark .gius-ex-spinner { border-color: #313244 !important; border-top-color: #89b4fa !important; }
-                    html.gius-dark .gius-ex-ok  { color: #4ade80 !important; }
-                    html.gius-dark .gius-ex-err { color: #f87171 !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-ex-text { color: var(--gs-dk-text, #cdd6f4) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-ex-exam { color: var(--gs-dk-muted, #9399b2) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-ex-check { color: var(--gs-dk-text-2, #bac2de) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-ex-loading { color: var(--gs-dk-muted, #9399b2) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-ex-spinner { border-color: var(--gs-dk-line, #313244) !important; border-top-color: var(--gs-dk-accent, #89b4fa) !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-ex-ok  { color: #4ade80 !important; }
+                    html:is(.gius-dark, [data-gius-dark]) .gius-ex-err { color: #f87171 !important; }
                 `;
                 document.head.appendChild(s);
             }
@@ -1190,18 +1291,18 @@ function proctorAggregator(S) {
                         <div class="gius-proctor-hdr-btns">
                             <span id="gius-proctor-warn" style="display:none"></span>
                             <input class="gius-fetch-dept-input" id="gius-fetch-dept" type="text" placeholder="All Departments (type to scope)" title="Scope the fetch — type a department to fetch only it, or leave blank for all" autocomplete="off" />
-                            <button type="button" class="gius-btn gius-btn-outline gius-btn-sm" id="gius-proctor-upload" title="Load rows from a previously exported CSV">
+                            <button type="button" class="gius-btn gius-btn-outline gius-btn-sm gs-btn gs-btn--sm" id="gius-proctor-upload" title="Load rows from a previously exported CSV">
                                 <i class="fa fa-upload"></i> Upload CSV
                             </button>
                             <input type="file" id="gius-file-input" accept=".csv" style="display:none">
-                            <button type="button" class="gius-btn gius-btn-outline gius-btn-sm" id="gius-proctor-csv" title="Export filtered rows as CSV">
+                            <button type="button" class="gius-btn gius-btn-outline gius-btn-sm gs-btn gs-btn--sm" id="gius-proctor-csv" title="Export filtered rows as CSV">
                                 <i class="fa fa-download"></i> Export CSV
                             </button>
-                            <button type="button" class="gius-btn gius-btn-outline gius-btn-sm" id="gius-proctor-refresh" title="Re-fetch using the selected scope">
+                            <button type="button" class="gius-btn gius-btn-outline gius-btn-sm gs-btn gs-btn--sm" id="gius-proctor-refresh" title="Re-fetch using the selected scope">
                                 <i class="fa fa-refresh"></i> Refresh
                             </button>
-                            <button type="button" class="gius-btn gius-btn-outline gius-btn-sm" id="gius-proctor-pause" style="display:none" title="Pause or resume fetching">&#x23F8; Pause</button>
-                            <button type="button" class="gius-btn gius-btn-muted gius-btn-sm" id="gius-proctor-close">&#x2715;</button>
+                            <button type="button" class="gius-btn gius-btn-outline gius-btn-sm gs-btn gs-btn--sm" id="gius-proctor-pause" style="display:none" title="Pause or resume fetching">&#x23F8; Pause</button>
+                            <button type="button" class="gius-btn gius-btn-muted gius-btn-sm gs-btn gs-btn--sm" id="gius-proctor-close">&#x2715;</button>
                         </div>
                     </div>
                     <div class="gius-proctor-body" id="gius-proctor-body">
@@ -1218,7 +1319,7 @@ function proctorAggregator(S) {
                             <input class="gius-filter-input" id="gius-f-proctor"    type="text" placeholder="All Proctors" />
                             <input class="gius-filter-input" id="gius-f-room"       type="text" placeholder="All Rooms" />
                             <input class="gius-filter-input" id="gius-f-department" type="text" placeholder="All Departments" />
-                            <button type="button" class="gius-btn gius-btn-muted gius-btn-sm" id="gius-f-clear" style="display:none">&#x2715; Clear all</button>
+                            <button type="button" class="gius-btn gius-btn-muted gius-btn-sm gs-btn gs-btn--sm" id="gius-f-clear" style="display:none">&#x2715; Clear all</button>
                         </div>
                         <div class="gius-chip-row" id="gius-chip-row"></div>
                         <div id="gius-empty-state" class="gius-empty-state" style="display:none">
@@ -1228,7 +1329,7 @@ function proctorAggregator(S) {
                                 Tip: leave the <b>All Departments</b> box (top-right) blank to fetch every
                                 department, or type one to fetch just that department — much faster.
                             </p>
-                            <button type="button" class="gius-btn gius-btn-primary" id="gius-start-fetch">
+                            <button type="button" class="gius-btn gius-btn-primary gs-btn gs-btn--primary" id="gius-start-fetch">
                                 <i class="fa fa-play"></i> Fetch Schedules
                             </button>
                         </div>
@@ -1371,7 +1472,7 @@ function proctorAggregator(S) {
                         <td class="${r.coverName ? '' : 'muted'}">${escHtml(r.coverName || '—')}</td>
                         <td>${r.coverName === 'You'
                             ? '<span class="gius-taken-badge"><i class="fa fa-check"></i> Taken</span>'
-                            : `<button type="button" class="gius-btn gius-btn-outline gius-btn-sm gius-take-btn" data-idx="${start + i}" title="Replace this proctor for this exam"><i class="fa fa-exchange"></i> Take</button>`}</td>
+                            : `<button type="button" class="gius-btn gius-btn-outline gius-btn-sm gius-take-btn gs-btn gs-btn--sm" data-idx="${start + i}" title="Replace this proctor for this exam"><i class="fa fa-exchange"></i> Take</button>`}</td>
                     </tr>
                 `;
                 }).join('');
@@ -1397,9 +1498,9 @@ function proctorAggregator(S) {
                                     ).join('')}
                                 </select>
                             </label>
-                            <button type="button" class="gius-page-btn" id="gius-page-prev"${_currentPage <= 1 ? ' disabled' : ''}>&#x2039;</button>
+                            <button type="button" class="gius-page-btn gs-btn" id="gius-page-prev"${_currentPage <= 1 ? ' disabled' : ''}>&#x2039;</button>
                             <span class="gius-page-num" id="gius-page-num">Page ${_currentPage} / ${totalPages}</span>
-                            <button type="button" class="gius-page-btn" id="gius-page-next"${_currentPage >= totalPages ? ' disabled' : ''}>&#x203A;</button>
+                            <button type="button" class="gius-page-btn gs-btn" id="gius-page-next"${_currentPage >= totalPages ? ' disabled' : ''}>&#x203A;</button>
                         </div>
                     </div>
                 `;
@@ -1599,105 +1700,76 @@ function proctorAggregator(S) {
             // ── Exchange modal ────────────────────────────────────────────────────────
         
             function closeExchangeModal() {
+                if (exchangeDialog) exchangeDialog.close();
+                exchangeDialog = null;
                 document.getElementById('gius-ex-overlay')?.remove();
-                document.removeEventListener('keydown', onExchangeEsc);
             }
-        
-            function onExchangeEsc(e) {
-                if (e.key === 'Escape') closeExchangeModal();
-            }
-        
+
+            // The shared S.openDialog: "Contacting the portal…", then the portal's replacement question with its
+            // "I am sure" box (Proceed stays off until ticked), then the portal's answer.
             function openExchangeModal(row) {
                 closeExchangeModal();
-                const overlay = document.createElement('div');
-                overlay.id = 'gius-ex-overlay';
-                overlay.className = 'gius-ex-overlay';
-                overlay.innerHTML = `
-                    <div class="gius-ex-modal" role="dialog" aria-modal="true">
-                        <div class="gius-ex-hdr">
-                            <span><i class="fa fa-exchange"></i> Proctoring Exchange</span>
-                            <button type="button" class="gius-ex-close" id="gius-ex-close" title="Close">&#x2715;</button>
-                        </div>
-                        <div class="gius-ex-body" id="gius-ex-body">
-                            <div class="gius-ex-loading">
-                                <span class="gius-ex-spinner"></span>
-                                Contacting the portal&hellip;
-                            </div>
-                        </div>
-                    </div>
-                `;
-                document.body.appendChild(overlay);
-                document.addEventListener('keydown', onExchangeEsc);
-                overlay.addEventListener('click', e => { if (e.target === overlay) closeExchangeModal(); });
-                document.getElementById('gius-ex-close')?.addEventListener('click', closeExchangeModal);
-        
-                const body = document.getElementById('gius-ex-body');
-        
-                prepareExchange(row).then(prep => {
-                    if (!document.getElementById('gius-ex-body')) return; // modal closed meanwhile
-                    body.innerHTML = `
+                const loading = text => `<div class="gius-ex-loading"><span class="gius-ex-spinner"></span> ${text}&hellip;</div>`;
+                let prep = null;
+                const dlg = exchangeDialog = S.openDialog({
+                    id: 'gius-ex-overlay',
+                    dialogClass: 'gius-ex-modal',
+                    title: 'Proctoring Exchange',
+                    html: loading('Contacting the portal'),
+                    onAction(act) {
+                        if (act !== 'go') return true;
+                        proceed();
+                        return false;
+                    },
+                });
+                const open = () => dlg.el.isConnected;
+
+                function showResult(ok, msg) {
+                    if (!open()) return;
+                    dlg.setBody(`<p class="gius-ex-result ${ok ? 'gius-ex-ok' : 'gius-ex-err'}">
+                        <i class="fa ${ok ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i> ${escHtml(msg)}</p>`);
+                    dlg.setActions([{ label: 'Close', value: 'done', id: 'gius-ex-done', primary: ok }]);
+                    dlg.button('done').focus();
+                }
+
+                function showExchangeError(err) {
+                    showResult(false, err && err.message === 'SESSION_EXPIRED'
+                        ? 'Your portal session has expired — reload the page and log in again.'
+                        : (err && err.message) || 'Something went wrong.');
+                }
+
+                function proceed() {
+                    dlg.setBody(loading('Processing replacement'));
+                    dlg.setActions([]);
+                    executeExchange(prep).then(msg => {
+                        const ok = /success/i.test(msg);
+                        showResult(ok, msg || 'No response message from the portal.');
+                        if (ok) markRowTaken(row);
+                    }).catch(showExchangeError);
+                }
+
+                prepareExchange(row).then(p => {
+                    if (!open()) return; // closed meanwhile
+                    prep = p;
+                    dlg.setBody(`
                         <p class="gius-ex-text">I would like to replace<br>
-                            <b>${escHtml(prep.nm)}</b><br>
-                            during the session on <b>${escHtml(prep.tm)}</b>.</p>
+                            <b>${escHtml(p.nm)}</b><br>
+                            during the session on <b>${escHtml(p.tm)}</b>.</p>
                         <p class="gius-ex-exam">${escHtml(row.program || row.courseCode)} &ndash; ${escHtml(row.examName)}</p>
                         <label class="gius-ex-check">
                             <input type="checkbox" id="gius-ex-sure" />
                             I am sure, I want to replace my colleague during this session.
-                        </label>
-                        <div class="gius-ex-actions">
-                            <button type="button" class="gius-btn gius-btn-muted" id="gius-ex-cancel">Cancel</button>
-                            <button type="button" class="gius-btn gius-btn-primary" id="gius-ex-go" disabled>
-                                <i class="fa fa-check"></i> Proceed With Replacement
-                            </button>
-                        </div>
-                    `;
-                    const sure = document.getElementById('gius-ex-sure');
-                    const go = document.getElementById('gius-ex-go');
-                    sure?.addEventListener('change', () => { go.disabled = !sure.checked; });
-                    document.getElementById('gius-ex-cancel')?.addEventListener('click', closeExchangeModal);
-                    go?.addEventListener('click', () => {
-                        go.disabled = true;
-                        body.innerHTML = `
-                            <div class="gius-ex-loading">
-                                <span class="gius-ex-spinner"></span>
-                                Processing replacement&hellip;
-                            </div>
-                        `;
-                        executeExchange(prep).then(msg => {
-                            const ok = /success/i.test(msg);
-                            if (!document.getElementById('gius-ex-body')) return;
-                            body.innerHTML = `
-                                <p class="gius-ex-result ${ok ? 'gius-ex-ok' : 'gius-ex-err'}">
-                                    <i class="fa ${ok ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
-                                    ${escHtml(msg || 'No response message from the portal.')}
-                                </p>
-                                <div class="gius-ex-actions">
-                                    <button type="button" class="gius-btn gius-btn-primary" id="gius-ex-done">Close</button>
-                                </div>
-                            `;
-                            document.getElementById('gius-ex-done')?.addEventListener('click', closeExchangeModal);
-                            if (ok) markRowTaken(row);
-                        }).catch(err => showExchangeError(err));
-                    });
-                }).catch(err => showExchangeError(err));
-        
-                function showExchangeError(err) {
-                    if (!document.getElementById('gius-ex-body')) return;
-                    const msg = err && err.message === 'SESSION_EXPIRED'
-                        ? 'Your portal session has expired — reload the page and log in again.'
-                        : (err && err.message) || 'Something went wrong.';
-                    body.innerHTML = `
-                        <p class="gius-ex-result gius-ex-err">
-                            <i class="fa fa-exclamation-circle"></i> ${escHtml(msg)}
-                        </p>
-                        <div class="gius-ex-actions">
-                            <button type="button" class="gius-btn gius-btn-muted" id="gius-ex-done">Close</button>
-                        </div>
-                    `;
-                    document.getElementById('gius-ex-done')?.addEventListener('click', closeExchangeModal);
-                }
+                        </label>`);
+                    dlg.setActions([
+                        { label: 'Cancel', value: 'cancel', id: 'gius-ex-cancel' },
+                        { label: 'Proceed With Replacement', value: 'go', id: 'gius-ex-go', primary: true, disabled: true },
+                    ]);
+                    const sure = dlg.el.querySelector('#gius-ex-sure');
+                    sure.addEventListener('change', () => { dlg.button('go').disabled = !sure.checked; });
+                    sure.focus();
+                }).catch(showExchangeError);
             }
-        
+
             function markRowTaken(row) {
                 _allRows.forEach(r => {
                     if (r.proctor === row.proctor && r.slotKey === row.slotKey &&
@@ -2023,16 +2095,51 @@ function proctorAggregator(S) {
                 const btn = document.createElement('button');
                 btn.id = 'gius-proctor-trigger';
                 btn.type = 'button';
-                btn.className = 'gius-btn gius-btn-primary';
+                btn.className = 'gius-btn gius-btn-primary gs-btn gs-btn--primary';
                 btn.innerHTML = '<i class="fa fa-laptop"></i> View All Proctor Schedules';
                 btn.addEventListener('click', openPanel);
                 const td = row.querySelector('td') || row;
                 td.appendChild(btn);
             }
         
+            // Picking a proctor posts the page back with their schedule under the
+            // department's long name list, and picking one of their sessions adds the
+            // replacement step under that, both at the end of the page; go to the end
+            // instead of staying where the click was. The portal restores the old
+            // scroll position from window.onload, so this runs after it, and keeps
+            // to the end for a moment while the page settles, until the user scrolls.
+            const SCROLL_KEY = 'giuProctorScrollTo';
+            const PICK_TARGETS = { MainContent_dprtmntDg: 'MainContent_schdlTR', MainContent_schdlDg: 'MainContent_setTR' };
+            function scrollToPicked() {
+                document.addEventListener('click', e => {
+                    const link = e.target.closest('a[href*="__doPostBack"]');
+                    const grid = link && link.closest('#MainContent_dprtmntDg, #MainContent_schdlDg');
+                    if (!grid) return;
+                    try { sessionStorage.setItem(SCROLL_KEY, PICK_TARGETS[grid.id]); } catch { /* ignore */ }
+                }, true);
+                let target = null;
+                try { target = sessionStorage.getItem(SCROLL_KEY); sessionStorage.removeItem(SCROLL_KEY); } catch { /* ignore */ }
+                if (!target || !document.getElementById(target)) return;
+                const toEnd = () => window.scrollTo(0, document.documentElement.scrollHeight);
+                const settle = () => {
+                    toEnd();
+                    const resized = new ResizeObserver(toEnd);
+                    resized.observe(document.body);
+                    const stop = () => {
+                        resized.disconnect();
+                        ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(t => window.removeEventListener(t, stop, true));
+                    };
+                    ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(t => window.addEventListener(t, stop, true));
+                    setTimeout(stop, 1500);
+                };
+                if (document.readyState === 'complete') setTimeout(settle, 0);
+                else window.addEventListener('load', () => setTimeout(settle, 0), { once: true });
+            }
+
             function init() {
                 injectStyles();
                 injectTrigger();
+                scrollToPicked();
             }
         
             init();
