@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         GIU CMS Download All
-// @description  Adds a "Download all" button to CMS course pages (GIU Cairo and GIU Berlin) that saves every file in one zip; single downloads keep the content title too
+// @description  Adds a "Download all" button to CMS course pages (GIU Cairo and GIU Berlin) that saves every file in one zip (links as .txt); single downloads keep the content title too
 // @match        https://cms.giu-uni.de/apps/staff/StudentCourseView.aspx*
 // @match        https://cms.giu-berlin.de/apps/staff/StudentCourseView.aspx*
 // @namespace    Cyn0
@@ -20,8 +20,8 @@
     if (document.getElementById(BUTTON_ID)) return;
 
     function cleanName(text) {
-        return text.replace(/[\\/:*?"<>|\u0000-\u001f]/g, '-')
-            .replace(/\s+/g, ' ')
+        return text.replace(/\s+/g, ' ')
+            .replace(/[\\/:*?"<>|\u0000-\u001f]/g, '-')
             .trim()
             .replace(/[. ]+$/, '');
     }
@@ -54,28 +54,44 @@
         return cleanName(desc) || cleanName(date.replace(/^\s*Week:\s*/, '')) || 'Other';
     }
 
-    // Each content item has one "Download Content" link (a.contentbtn) and a
-    // title in #content<id> > strong, e.g. "3 - Practice Assignment 10".
+    // Each content item is #content<id> (title in its <strong>, e.g. "3 - Practice
+    // Assignment 10") inside a .card-body. A file item has one "Download Content"
+    // link (a.contentbtn); a link item has no button, only the address as text.
     function collectFiles() {
         const seen = new Set();
         const used = new Map();
         const files = [];
-        document.querySelectorAll('a.contentbtn[href]').forEach(link => {
-            const url = link.href;
-            if (!/\/Uploads\//i.test(url) || seen.has(url)) return;
-            seen.add(url);
-            const card = link.closest('.weeksdata');
-            const folder = card ? weekFolder(card) : 'Other';
-            const titleEl = document.querySelector('#content' + link.dataset.contentid + ' > strong');
-            const title = cleanName((titleEl ? titleEl.textContent : '').replace(/^\s*\d+\s*-\s*/, ''))
-                || decodeURIComponent(url.split('/').pop().replace(/\.[^.]*$/, ''));
-            const ext = (url.split('?')[0].match(/\.[a-z0-9]{1,8}$/i) || [''])[0];
+        const add = (folder, title, ext, item) => {
             // Same title twice in a week (e.g. a re-uploaded file) -> "Name (2).pdf".
             const key = (folder + '/' + title + ext).toLowerCase();
             const n = (used.get(key) || 0) + 1;
             used.set(key, n);
             const name = title + (n > 1 ? ` (${n})` : '') + ext;
-            files.push({ url, name, path: folder + '/' + name, link });
+            files.push(Object.assign({ name, path: folder + '/' + name }, item));
+        };
+        document.querySelectorAll('[id^="content"]').forEach(titleBox => {
+            if (!/^content\d+$/.test(titleBox.id)) return;
+            const body = titleBox.closest('.card-body') || titleBox.parentNode;
+            const card = titleBox.closest('.weeksdata');
+            const folder = card ? weekFolder(card) : 'Other';
+            const titleEl = titleBox.querySelector('strong');
+            const title = cleanName((titleEl ? titleEl.textContent : '').replace(/^\s*\d+\s*-\s*/, ''));
+            const link = body.querySelector('a.contentbtn[href]');
+            if (link && /\/Uploads\//i.test(link.href)) {
+                const url = link.href;
+                if (seen.has(url)) return;
+                seen.add(url);
+                const ext = (url.split('?')[0].match(/\.[a-z0-9]{1,8}$/i) || [''])[0];
+                add(folder, title || decodeURIComponent(url.split('/').pop().replace(/\.[^.]*$/, '')), ext, { url, link });
+                return;
+            }
+            // Link item: every web address in the item (as text or as <a>) goes into "<title>.txt".
+            // Its "Download Content" link is hidden and points back at this page: skip it.
+            const urls = new Set();
+            body.querySelectorAll('a[href^="http"]:not(.contentbtn)').forEach(a => urls.add(a.href));
+            ((body.textContent || '').match(/https?:\/\/[^\s<>"']+/g) || []).forEach(u => urls.add(u));
+            if (!urls.size) return;
+            add(folder, title || 'Link', '.txt', { text: [...urls].join('\r\n') + '\r\n' });
         });
         return files;
     }
@@ -160,7 +176,7 @@
     // Single "Download Content" clicks also save under the content title. The
     // download attribute alone is not enough: a server file name
     // (Content-Disposition) would win, so fetch the file and save it ourselves.
-    files.forEach(file => {
+    files.filter(file => file.link).forEach(file => {
         file.link.download = file.name;
         file.link.addEventListener('click', async e => {
             if (e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
@@ -209,6 +225,10 @@
         const failed = [];
         for (let i = 0; i < files.length; i++) {
             button.textContent = `Fetching ${i + 1} of ${files.length}…`;
+            if (files[i].text) {
+                entries.push({ path: files[i].path, data: new TextEncoder().encode(files[i].text) });
+                continue;
+            }
             try {
                 const res = await fetch(files[i].url, { credentials: 'include' });
                 if (!res.ok) throw new Error('HTTP ' + res.status);
