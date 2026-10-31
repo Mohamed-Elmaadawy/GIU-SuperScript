@@ -36,6 +36,7 @@ Each SuperScript has a **Control Center** card on the portal Home page where you
 | Manage Group Grades | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Manage%20Group%20Grades.user.js) |
 | Notification Batch Send | Cairo | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Notification%20Batch%20Send.user.js) |
 | Berlin Session Form Filler | Berlin (Microsoft Form) | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Session%20Form%20Filler.user.js) |
+| CMS Download All | Cairo + Berlin (CMS) | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20CMS%20Download%20All.user.js) |
 
 All scripts share one version number. Current release: **4.10.1**.
 
@@ -166,6 +167,8 @@ Nothing is saved, started or ended for you — the buttons only press the portal
 **Not Entered Sessions** — 🅒 · Home page. Lists Regular sessions 1–21 days old with no attendance entered yet; click one to open it on the attendance page, already selected. Hidden when there's nothing to enter.
 
 **Berlin Session Form Filler** — 🅑 separate script · the Berlin session attendance Microsoft Form. Save your name once and a preset per course / session type / group; one click fills name, course, session type and group. You still enter the session date and Ref. ID, attach the attendance sheet and press Submit yourself.
+
+**CMS Download All** — 🅒 🅑 separate script · CMS course pages (cms.giu-uni.de and cms.giu-berlin.de). One "Download all files" button above the weeks saves the whole course as one zip (`GIU - ICS504 Machine Learning - Winter 2025.zip`, `GIU Berlin - …` on Berlin), a folder per week, each file named after its content title (e.g. `Week 10/Practice Assignment 9.pdf`) instead of the server's `GIU_2620_67_…` name.
 
 **Student Attendance Report** — 🅒 single-feature script only for now (not in the SuperScript) · Manage Student Attendances page. For the selected group: absence level per student (Level 0 → 3 / drop), group averages, and an at-risk list you can expand to see the missed sessions.
 
