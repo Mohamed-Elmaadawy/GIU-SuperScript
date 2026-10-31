@@ -168,7 +168,7 @@ Nothing is saved, started or ended for you — the buttons only press the portal
 
 **Berlin Session Form Filler** — 🅑 separate script · the Berlin session attendance Microsoft Form. Save your name once and a preset per course / session type / group; one click fills name, course, session type and group. You still enter the session date and Ref. ID, attach the attendance sheet and press Submit yourself.
 
-**CMS Download All** — 🅒 🅑 separate script · CMS course pages (cms.giu-uni.de and cms.giu-berlin.de). One "Download all files" button above the weeks saves the whole course as one zip (`GIU - ICS504 Machine Learning - Winter 2025.zip`, `GIU Berlin - …` on Berlin), a folder per week, each file named after its content title (e.g. `Week 10/Practice Assignment 9.pdf`) instead of the server's `GIU_2620_67_…` name.
+**CMS Download All** — 🅒 🅑 separate script · CMS course pages (cms.giu-uni.de and cms.giu-berlin.de). One "Download all files" button above the weeks saves the whole course as one zip (`GIU - ICS504 Machine Learning - Winter 2025.zip`, `GIU Berlin - …` on Berlin), a folder per week, each file named after its content title (e.g. `Week 10/Practice Assignment 9.pdf`) instead of the server's `GIU_2620_67_…` name. A normal "Download Content" click saves under the content title too.
 
 **Student Attendance Report** — 🅒 single-feature script only for now (not in the SuperScript) · Manage Student Attendances page. For the selected group: absence level per student (Level 0 → 3 / drop), group averages, and an at-risk list you can expand to see the missed sessions.
 

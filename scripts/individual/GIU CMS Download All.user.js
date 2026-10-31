@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         GIU CMS Download All
-// @description  Adds a "Download all" button to CMS course pages (GIU Cairo and GIU Berlin) that saves every file in one zip, named by content title
+// @description  Adds a "Download all" button to CMS course pages (GIU Cairo and GIU Berlin) that saves every file in one zip; single downloads keep the content title too
 // @match        https://cms.giu-uni.de/apps/staff/StudentCourseView.aspx*
 // @match        https://cms.giu-berlin.de/apps/staff/StudentCourseView.aspx*
 // @namespace    Cyn0
@@ -75,7 +75,7 @@
             const n = (used.get(key) || 0) + 1;
             used.set(key, n);
             const name = title + (n > 1 ? ` (${n})` : '') + ext;
-            files.push({ url, name, path: folder + '/' + name });
+            files.push({ url, name, path: folder + '/' + name, link });
         });
         return files;
     }
@@ -156,6 +156,35 @@
 
     const files = collectFiles();
     if (!files.length) return;
+
+    // Single "Download Content" clicks also save under the content title. The
+    // download attribute alone is not enough: a server file name
+    // (Content-Disposition) would win, so fetch the file and save it ourselves.
+    files.forEach(file => {
+        file.link.download = file.name;
+        file.link.addEventListener('click', async e => {
+            if (e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+            e.preventDefault();
+            const link = file.link;
+            if (link.dataset.giusBusy) return;
+            link.dataset.giusBusy = '1';
+            const text = link.textContent;
+            link.textContent = 'Downloading…';
+            try {
+                const res = await fetch(file.url, { credentials: 'include' });
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                const blobUrl = URL.createObjectURL(await res.blob());
+                save(blobUrl, file.name);
+                setTimeout(() => URL.revokeObjectURL(blobUrl), 60000);
+            } catch (err) {
+                console.warn('[GIU CMS Download All]', file.name, err);
+                location.href = file.url;
+            } finally {
+                link.textContent = text;
+                delete link.dataset.giusBusy;
+            }
+        });
+    });
 
     const anchor = document.querySelector('.weeksdata');
     if (!anchor) return;
