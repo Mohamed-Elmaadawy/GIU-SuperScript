@@ -1,10 +1,12 @@
 // ==UserScript==
 // @name         GIU CMS Download All
-// @description  Adds a "Download all" button to CMS course pages (GIU Cairo and GIU Berlin, student view and Manage Course) that saves every file in one zip (links as .txt); single downloads keep the content title too
+// @description  Adds a "Download all" button to CMS course pages (GIU Cairo and GIU Berlin: student view, Manage Course, a week's Manage Content) that saves the files in one zip (links as .txt); single downloads keep the content title too
 // @match        https://cms.giu-uni.de/apps/staff/StudentCourseView.aspx*
 // @match        https://cms.giu-berlin.de/apps/staff/StudentCourseView.aspx*
 // @match        https://cms.giu-uni.de/apps/staff/ManageCourse.aspx*
 // @match        https://cms.giu-berlin.de/apps/staff/ManageCourse.aspx*
+// @match        https://cms.giu-uni.de/apps/staff/ManageContent.aspx*
+// @match        https://cms.giu-berlin.de/apps/staff/ManageContent.aspx*
 // @namespace    Cyn0
 // @version      5.0
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20CMS%20Download%20All.js
@@ -175,6 +177,35 @@
         a.remove();
     }
 
+    // Single download clicks also save under the content title. The download
+    // attribute alone is not enough: a server file name (Content-Disposition)
+    // would win, so fetch the file and save it ourselves.
+    function nameDownload(file) {
+        file.link.download = file.name;
+        file.link.addEventListener('click', async e => {
+            if (e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+            e.preventDefault();
+            const link = file.link;
+            if (link.dataset.giusBusy) return;
+            link.dataset.giusBusy = '1';
+            const text = link.textContent;
+            link.textContent = 'Downloading…';
+            try {
+                const res = await fetch(file.url, { credentials: 'include' });
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                const blobUrl = URL.createObjectURL(await res.blob());
+                save(blobUrl, file.name);
+                setTimeout(() => URL.revokeObjectURL(blobUrl), 60000);
+            } catch (err) {
+                console.warn('[GIU CMS Download All]', file.name, err);
+                location.href = file.url;
+            } finally {
+                link.textContent = text;
+                delete link.dataset.giusBusy;
+            }
+        });
+    }
+
     function makeBar(label) {
         const bar = document.createElement('div');
         bar.style.cssText = 'display:flex;align-items:center;justify-content:flex-end;gap:12px;margin:0 0 16px;';
@@ -190,7 +221,7 @@
     }
 
     // Fetch every file, zip them with the link .txt files and save the zip.
-    async function downloadZip(files, doc, button, status) {
+    async function downloadZip(files, fileName, button, status) {
         const entries = [];
         const failed = [];
         for (let i = 0; i < files.length; i++) {
@@ -211,7 +242,7 @@
         if (entries.length) {
             button.textContent = 'Building zip…';
             const blobUrl = URL.createObjectURL(buildZip(entries));
-            save(blobUrl, zipName(doc));
+            save(blobUrl, fileName);
             setTimeout(() => URL.revokeObjectURL(blobUrl), 60000);
         }
         // Files that could not be fetched still download on their own, under the server's name.
@@ -249,8 +280,70 @@
                 if (!res.ok) throw new Error('HTTP ' + res.status);
                 const doc = new DOMParser().parseFromString(await res.text(), 'text/html');
                 const files = collectFiles(doc, studentUrl);
-                if (files.length) await downloadZip(files, doc, button, status);
+                if (files.length) await downloadZip(files, zipName(doc), button, status);
                 else status.textContent = 'No files on this course yet.';
+            } catch (err) {
+                console.warn('[GIU CMS Download All]', studentUrl, err);
+                status.textContent = 'Could not read the student view. Open it and use the button there.';
+            }
+            button.textContent = label;
+            button.disabled = false;
+        });
+        return;
+    }
+
+    // ── Manage Content (one week): zip the week from the student view, the same
+    // page its "View Course" button opens (course id + season), picking the week
+    // card with this start date. Single "Download" clicks use the Title column.
+    if (/\/ManageContent\.aspx$/i.test(location.pathname)) {
+        const grid = document.getElementById('ContentPlaceHolderright_ContentPlaceHoldercontent_GridView1');
+        const course = (document.getElementById('Labelcourseid') || {}).textContent;
+        const season = (document.getElementById('Labelseasonid') || {}).textContent;
+        // "10/21/2026" here; the student view's card says "Week: 2026-10-21".
+        const start = labelText(document, 'Labelstartdate').trim().match(/^(\d+)\/(\d+)\/(\d+)$/);
+        if (!grid || !course || !season || !start) return;
+        const startKey = [+start[3], +start[1], +start[2]].join('-');
+
+        const heads = [...grid.querySelectorAll('tr:first-child > th')].map(th => th.textContent.trim());
+        const titleCol = heads.indexOf('Title');
+        const used = new Map();
+        grid.querySelectorAll('tr').forEach(row => {
+            const link = row.querySelector('a[href*="/Uploads/"]');
+            if (!link || titleCol < 0 || !row.cells[titleCol]) return;
+            const url = link.href;
+            const title = cleanName(row.cells[titleCol].textContent) || decodeURIComponent(url.split('/').pop().replace(/\.[^.]*$/, ''));
+            const ext = (url.split('?')[0].match(/\.[a-z0-9]{1,8}$/i) || [''])[0];
+            const n = (used.get((title + ext).toLowerCase()) || 0) + 1;
+            used.set((title + ext).toLowerCase(), n);
+            nameDownload({ link, url, name: title + (n > 1 ? ` (${n})` : '') + ext });
+        });
+
+        const studentUrl = new URL('StudentCourseView.aspx?id=' + encodeURIComponent(course.trim()) + '&sid=' + encodeURIComponent(season.trim()), location.href).href;
+        const label = 'Download this week';
+        const { bar, status, button } = makeBar(label);
+        grid.parentNode.insertBefore(bar, grid);
+
+        button.addEventListener('click', async () => {
+            button.disabled = true;
+            status.textContent = '';
+            button.textContent = 'Reading course…';
+            try {
+                const res = await fetch(studentUrl, { credentials: 'include' });
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                const doc = new DOMParser().parseFromString(await res.text(), 'text/html');
+                const cards = [...doc.querySelectorAll('.weeksdata')].filter(card => {
+                    const m = ((card.querySelector('.card-header h2') || {}).textContent || '').match(/(\d+)-(\d+)-(\d+)/);
+                    return m && [+m[1], +m[2], +m[3]].join('-') === startKey;
+                });
+                const files = cards.flatMap(card => collectFiles(card, studentUrl))
+                    .map(f => Object.assign(f, { path: f.name }));
+                const week = cards.length ? weekFolder(cards[0]) : '';
+                if (files.length) {
+                    const name = zipName(doc).replace(/\.zip$/, ' - ' + (week || 'Week ' + startKey) + '.zip');
+                    await downloadZip(files, name, button, status);
+                } else {
+                    status.textContent = cards.length ? 'No files in this week yet.' : 'This week is not on the student view (inactive?).';
+                }
             } catch (err) {
                 console.warn('[GIU CMS Download All]', studentUrl, err);
                 status.textContent = 'Could not read the student view. Open it and use the button there.';
@@ -264,35 +357,7 @@
     // ── Student view ──
     const files = collectFiles(document, location.href);
     if (!files.length) return;
-
-    // Single "Download Content" clicks also save under the content title. The
-    // download attribute alone is not enough: a server file name
-    // (Content-Disposition) would win, so fetch the file and save it ourselves.
-    files.filter(file => file.link).forEach(file => {
-        file.link.download = file.name;
-        file.link.addEventListener('click', async e => {
-            if (e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
-            e.preventDefault();
-            const link = file.link;
-            if (link.dataset.giusBusy) return;
-            link.dataset.giusBusy = '1';
-            const text = link.textContent;
-            link.textContent = 'Downloading…';
-            try {
-                const res = await fetch(file.url, { credentials: 'include' });
-                if (!res.ok) throw new Error('HTTP ' + res.status);
-                const blobUrl = URL.createObjectURL(await res.blob());
-                save(blobUrl, file.name);
-                setTimeout(() => URL.revokeObjectURL(blobUrl), 60000);
-            } catch (err) {
-                console.warn('[GIU CMS Download All]', file.name, err);
-                location.href = file.url;
-            } finally {
-                link.textContent = text;
-                delete link.dataset.giusBusy;
-            }
-        });
-    });
+    files.filter(file => file.link).forEach(nameDownload);
 
     const anchor = document.querySelector('.weeksdata');
     if (!anchor) return;
@@ -304,7 +369,7 @@
     button.addEventListener('click', async () => {
         button.disabled = true;
         status.textContent = '';
-        await downloadZip(files, document, button, status);
+        await downloadZip(files, zipName(document), button, status);
         button.textContent = label;
         button.disabled = false;
     });
