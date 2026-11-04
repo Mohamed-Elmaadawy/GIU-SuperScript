@@ -40,7 +40,7 @@ Each SuperScript has a **Control Center** card on the portal Home page where you
 | Berlin Session Form Filler | Berlin (Microsoft Form) | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Session%20Form%20Filler.user.js) |
 | CMS Download All | Cairo + Berlin (CMS) | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20CMS%20Download%20All.user.js) |
 
-All scripts share one version number. Current release: **5.0**.
+All scripts share one version number. Current release: **5.0.1**.
 
 </details>
 
@@ -109,7 +109,7 @@ A pasted copy doesn't auto-update. Reinstall it once from the install link above
 - **Home widget** with this payroll month's worked vs required hours, balance, and absent days (one click to file an absent day as holiday, annual leave or compensation).
 - **Full report** with both payroll months (11th → 10th), late arrivals, audit log, and progress bars.
 - **Plan my days** — when to come in or leave on each working day left this payroll month so it ends even (see below). The Home widget shows today's answer: **Leave today by 5:42 PM** (or **Come in today by…**).
-- **Settings** for holidays and annual leave (ranges supported), leave balance with monthly accrual, attendance overrides (missions, missing punches), compensation days, Ramadan and exam periods.
+- **Settings** for holidays and annual leave (ranges supported), leave balance with monthly accrual, attendance overrides (missions, missing punches; full day, custom hours, or custom in/out times), compensation days, Ramadan and exam periods.
 - **Backup:** export/import all settings as a `.json` file.
 
 ![Attendance dashboard](screenshots/attendance.gif)

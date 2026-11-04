@@ -10,7 +10,7 @@
 // @match       https://apps.guc.edu.eg/external/tempprojects/swiftreports.aspx*
 // @match       https://apps.guc.edu.eg/External/TempProjects/SwiftReports.aspx*
 // @namespace   Cyn0
-// @version     5.0
+// @version     5.0.1
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Attendance.js
 // @author      Mo.Elmaadawy
@@ -3131,8 +3131,9 @@ function staffAttendance(S) {
             // ───────────────────────────────────────────────────────────────────────────
             //  HolidayEntry      { type: "single"|"range", category: "holiday"|"annual"|"sick",
             //                      date?: "YYYY-MM-DD", start?, end? }
-            //  OverrideEntry     { date: "YYYY-MM-DD", type: "full_day"|"custom_actual",
-            //                      actualSeconds?: number, reason?: string, note?: string }
+            //  OverrideEntry     { date: "YYYY-MM-DD", type: "full_day"|"custom_actual"|"custom_in_out",
+            //                      actualSeconds?: number, inSeconds?: number, outSeconds?: number,
+            //                      reason?: string, note?: string }
             //  CompensationLeave { date: "YYYY-MM-DD", reason?: string }
             //  DayOffSchedule    { startDate: "YYYY-MM-DD", code: "Sat"|"Sun"|... }
             //  RamadanRange      { start: "YYYY-MM-DD", end: "YYYY-MM-DD" }
@@ -4005,13 +4006,23 @@ function staffAttendance(S) {
                 if (!entry || typeof entry !== "object") return null;
                 const date = normalizeYMD(entry.date || "");
                 if (!date) return null;
-                const type = entry.type === "custom_actual" ? "custom_actual" : "full_day";
+                const type = entry.type === "custom_actual" || entry.type === "custom_in_out" ? entry.type : "full_day";
                 const normalized = { date, type };
 
                 const reason = typeof entry.reason === "string" ? entry.reason.trim() : "";
                 const note = typeof entry.note === "string" ? entry.note.trim() : "";
                 if (reason) normalized.reason = reason;
                 if (note) normalized.note = note;
+
+                if (type === "custom_in_out") {
+                    const inSeconds = Number(entry.inSeconds);
+                    const outSeconds = Number(entry.outSeconds);
+                    if (!Number.isFinite(inSeconds) || !Number.isFinite(outSeconds)) return null;
+                    if (inSeconds < 0 || outSeconds > 86399 || outSeconds <= inSeconds) return null;
+                    normalized.inSeconds = Math.floor(inSeconds);
+                    normalized.outSeconds = Math.floor(outSeconds);
+                    return normalized;
+                }
 
                 if (type === "custom_actual") {
                     let actualSeconds = Number(entry.actualSeconds);
@@ -4330,6 +4341,7 @@ function staffAttendance(S) {
             function getOverrideTypeLabel(type) {
                 if (type === "full_day") return "Full Day";
                 if (type === "custom_actual") return "Custom Hours";
+                if (type === "custom_in_out") return "Custom In/Out";
                 return type;
             }
 
@@ -6947,7 +6959,8 @@ function staffAttendance(S) {
                 const typeFilter = createUiSelect("", [
                     { value: "", label: "All override types" },
                     { value: "full_day", label: "Full Day" },
-                    { value: "custom_actual", label: "Custom Actual" }
+                    { value: "custom_actual", label: "Custom Actual" },
+                    { value: "custom_in_out", label: "Custom In/Out" }
                 ], getTableFilterValue("overrides", "type", ""));
                 const dateFilter = createUiInput("text", "", {
                     placeholder: "Filter by date (YYYY-MM)",
@@ -7020,7 +7033,12 @@ function staffAttendance(S) {
 
                     const hoursTd = document.createElement("td");
                     const ovSec = ov.actualSeconds != null ? ov.actualSeconds : (ov.actualMinutes != null ? ov.actualMinutes * 60 : null);
-                    if (ov.type === "custom_actual" && ovSec != null) {
+                    if (ov.type === "custom_in_out") {
+                        const inHM = secondsToHMS(ov.inSeconds);
+                        const outHM = secondsToHMS(ov.outSeconds);
+                        const countedHMS = secondsToHMS(getOverrideActualSecondsForDate(ov, ov.date, getStoredRamadan(), getStoredExamPeriod()));
+                        hoursTd.textContent = `${formatTime12(inHM.hours, inHM.minutes)} – ${formatTime12(outHM.hours, outHM.minutes)} · ${formatHMS(countedHMS.hours, countedHMS.minutes, countedHMS.seconds)}`;
+                    } else if (ov.type === "custom_actual" && ovSec != null) {
                         const hms = secondsToHMS(ovSec);
                         hoursTd.textContent = formatHMS(hms.hours, hms.minutes, hms.seconds);
                     } else {
@@ -7111,7 +7129,7 @@ function staffAttendance(S) {
                     "giu-override-title"
                 ));
                 section.appendChild(createUiDescription(
-                    'Manually override attendance for specific dates (e.g. IN/OUT forms or mission days). Use "Full Day Counted" to count a day as fully attended, or "Custom Actual Hours" to set exact worked hours.'
+                    'Manually override attendance for specific dates (e.g. IN/OUT forms or mission days). Use "Full Day Counted" to count a day as fully attended, "Custom Actual Hours" to set exact worked hours, or "Custom In/Out" to enter the time you came in and left and let the hours be calculated.'
                 ));
 
                 const controls = document.createElement("div");
@@ -7120,7 +7138,8 @@ function staffAttendance(S) {
                 const dateInput = createUiInput("date", "giu-override-date");
                 const typeSelect = createUiSelect("giu-override-type", [
                     { value: "full_day", label: "Full Day Counted" },
-                    { value: "custom_actual", label: "Custom Actual Hours" }
+                    { value: "custom_actual", label: "Custom Actual Hours" },
+                    { value: "custom_in_out", label: "Custom In/Out" }
                 ]);
                 const hoursInput = createUiInput("number", "giu-override-hours", {
                     placeholder: "H", min: 0, max: 23, step: 1, hidden: true, width: "55px"
@@ -7128,8 +7147,36 @@ function staffAttendance(S) {
                 const minutesInput = createUiInput("number", "giu-override-minutes", {
                     placeholder: "M", min: 0, max: 59, step: 1, hidden: true, width: "55px"
                 });
+                const inInput = createUiInput("time", "giu-override-in", { placeholder: "In", hidden: true, width: "110px" });
+                const outInput = createUiInput("time", "giu-override-out", { placeholder: "Out", hidden: true, width: "110px" });
+                inInput.setAttribute("aria-label", "Check-in time");
+                outInput.setAttribute("aria-label", "Check-out time");
+                const inOutPreview = document.createElement("span");
+                inOutPreview.className = "giu-override-preview";
+                inOutPreview.style.cssText = "display:none;font-size:12px;color:#6b7280;align-self:center;";
                 const reasonInput = createUiInput("text", "giu-override-reason", { placeholder: "Reason (optional)" });
                 const noteInput = createUiInput("text", "giu-override-note", { placeholder: "Note (optional)" });
+
+                function updateInOutPreview() {
+                    const inSeconds = parseTimeToSeconds(inInput.value);
+                    const outSeconds = parseTimeToSeconds(outInput.value);
+                    if (inSeconds === null || outSeconds === null || outSeconds <= inSeconds) {
+                        inOutPreview.textContent = "";
+                        return;
+                    }
+                    const date = normalizeYMD(dateInput.value) || getTodayLocalYMD();
+                    const cap = getLastOutCapForDate(date, getStoredRamadan(), getStoredExamPeriod());
+                    const counted = Math.max(0, Math.min(outSeconds, cap) - inSeconds);
+                    const hms = secondsToHMS(counted);
+                    let text = "= " + formatHMS(hms.hours, hms.minutes, hms.seconds);
+                    if (outSeconds > cap) {
+                        text += " (counted to " + formatTime12(Math.floor(cap / 3600), Math.floor((cap % 3600) / 60)) + ")";
+                    }
+                    inOutPreview.textContent = text;
+                }
+                inInput.addEventListener("input", updateInOutPreview);
+                outInput.addEventListener("input", updateInOutPreview);
+                dateInput.addEventListener("input", updateInOutPreview);
 
                 if (pendingMissionDate) {
                     dateInput.value = pendingMissionDate;
@@ -7138,9 +7185,14 @@ function staffAttendance(S) {
                 }
 
                 typeSelect.addEventListener("change", function () {
-                    const show = typeSelect.value === "custom_actual" ? "" : "none";
-                    hoursInput.style.display = show;
-                    minutesInput.style.display = show;
+                    const showHM = typeSelect.value === "custom_actual" ? "" : "none";
+                    hoursInput.style.display = showHM;
+                    minutesInput.style.display = showHM;
+                    const showInOut = typeSelect.value === "custom_in_out" ? "" : "none";
+                    inInput.style.display = showInOut;
+                    outInput.style.display = showInOut;
+                    inOutPreview.style.display = showInOut;
+                    updateInOutPreview();
                 });
 
                 const addBtn = createUiButton("Add", "giu-add-override-btn", function () {
@@ -7171,6 +7223,21 @@ function staffAttendance(S) {
                         entry.actualSeconds = h * 3600 + m * 60;
                     }
 
+                    if (typeSelect.value === "custom_in_out") {
+                        const inSeconds = parseTimeToSeconds(inInput.value);
+                        const outSeconds = parseTimeToSeconds(outInput.value);
+                        if (inSeconds === null || outSeconds === null) {
+                            alert("Please enter both the In and Out times.");
+                            return;
+                        }
+                        if (outSeconds <= inSeconds) {
+                            alert("Out time must be after In time.");
+                            return;
+                        }
+                        entry.inSeconds = inSeconds;
+                        entry.outSeconds = outSeconds;
+                    }
+
                     const reason = reasonInput.value.trim();
                     if (reason) entry.reason = reason;
                     const note = noteInput.value.trim();
@@ -7187,6 +7254,9 @@ function staffAttendance(S) {
                 controls.appendChild(typeSelect);
                 controls.appendChild(hoursInput);
                 controls.appendChild(minutesInput);
+                controls.appendChild(inInput);
+                controls.appendChild(outInput);
+                controls.appendChild(inOutPreview);
                 controls.appendChild(reasonInput);
                 controls.appendChild(noteInput);
                 controls.appendChild(addBtn);
@@ -7897,7 +7967,7 @@ function staffAttendance(S) {
                 return Math.max(0, durationSeconds);
             }
 
-            function getOverrideActualSecondsForDate(override, date, ramadan) {
+            function getOverrideActualSecondsForDate(override, date, ramadan, examPeriod) {
                 if (!override) return 0;
 
                 if (override.type === "full_day") {
@@ -7908,6 +7978,12 @@ function staffAttendance(S) {
                     return override.actualSeconds != null
                         ? Math.max(0, override.actualSeconds)
                         : Math.max(0, (override.actualMinutes || 0) * 60);
+                }
+
+                if (override.type === "custom_in_out") {
+                    // Same last-out cap as a gate row, so Ramadan and exam caps apply.
+                    const cap = getLastOutCapForDate(date, ramadan, examPeriod);
+                    return Math.max(0, Math.min(override.outSeconds, cap) - override.inSeconds);
                 }
 
                 return 0;
@@ -7968,7 +8044,7 @@ function staffAttendance(S) {
 
                     let workedSeconds = 0;
                     if (override) {
-                        workedSeconds = getOverrideActualSecondsForDate(override, date, ramadan);
+                        workedSeconds = getOverrideActualSecondsForDate(override, date, ramadan, examPeriod);
                     } else if (row) {
                         workedSeconds = getEffectiveRowActualSeconds(row, ramadan, examPeriod);
                     }
@@ -8327,7 +8403,7 @@ function staffAttendance(S) {
 
                     if (override) {
                         acc.overriddenDays += 1;
-                        const overrideActualSeconds = getOverrideActualSecondsForDate(override, date, ramadan);
+                        const overrideActualSeconds = getOverrideActualSecondsForDate(override, date, ramadan, examPeriod);
                         if (dayOffMatch && overrideActualSeconds > 0) {
                             acc.compensationEarnedSeconds += overrideActualSeconds;
                         }
@@ -8347,7 +8423,7 @@ function staffAttendance(S) {
                         }
 
                         const detail = { date, type: override.type, reason: override.reason || "" };
-                        if (override.type === "custom_actual") detail.actualSeconds = overrideActualSeconds;
+                        if (override.type === "custom_actual" || override.type === "custom_in_out") detail.actualSeconds = overrideActualSeconds;
                         acc.overriddenDayDetails.push(detail);
 
                         // Hours from overrides are always added to actual time.
@@ -9043,7 +9119,7 @@ function staffAttendance(S) {
                     const entrySec = entry.actualSeconds != null
                         ? entry.actualSeconds
                         : (entry.actualMinutes != null ? entry.actualMinutes * 60 : null);
-                    if (entry.type === "custom_actual" && entrySec != null) {
+                    if ((entry.type === "custom_actual" || entry.type === "custom_in_out") && entrySec != null) {
                         const hms = secondsToHMS(entrySec);
                         infoSpan.appendChild(document.createTextNode(" " + formatHMS(hms.hours, hms.minutes, hms.seconds)));
                     }
@@ -10040,7 +10116,7 @@ function staffAttendance(S) {
                     const override = overrideByDate.get(date);
                     if (override) {
                         // Already counted by buildPeriodStats above.
-                        day.fixedSeconds = getOverrideActualSecondsForDate(override, date, ramadan);
+                        day.fixedSeconds = getOverrideActualSecondsForDate(override, date, ramadan, examPeriod);
                         day.inBase = true;
                     } else if (isToday) {
                         // The gate report lags; use today's row when it is there.

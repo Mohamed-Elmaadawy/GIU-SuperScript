@@ -10,7 +10,7 @@
 // @match       https://apps.guc.edu.eg/external/tempprojects/swiftreports.aspx*
 // @match       https://apps.guc.edu.eg/External/TempProjects/SwiftReports.aspx*
 // @namespace   Cyn0
-// @version     5.0
+// @version     5.0.1
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Berlin%20SuperScript.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/GIU%20Berlin%20SuperScript.js
 // @author      Mo.Elmaadawy
@@ -366,6 +366,46 @@ function buildAccessDeniedMessage() {
     form.insertBefore(accessDeniedCard({ title: "You can't open this page", reason }), outer);
 }
 
+// Take Attendance shows its save result ("Updated attendance: 12 records.") with an alert() from an inline
+// script in the middle of the page. An alert stops the page loading, and the features start only once it
+// has loaded, so their widgets were missing for as long as the message stayed open. Alerts raised while
+// the page is still loading wait until it has loaded and the features have drawn, then show unchanged.
+// The page's own window (the Berlin bundle runs sandboxed), so this goes in as a page script.
+const LOAD_ALERT_PAGES = /\/ClassAttendance_ManageStudentAttendances(H003|Berlin)\.aspx$/i;
+
+function deferLoadAlerts() {
+    if (!LOAD_ALERT_PAGES.test(location.pathname) || document.readyState !== 'loading') return;
+    const code = '(' + function () {
+        const real = window.alert, held = [];
+        window.alert = function (m) {
+            if (document.readyState !== 'loading') return real.apply(window, arguments);
+            held.push(m);
+        };
+        document.addEventListener('DOMContentLoaded', function () {
+            window.alert = real;
+            // After the features' start (one tick after DOMContentLoaded) and a paint.
+            setTimeout(function () {
+                requestAnimationFrame(function () {
+                    setTimeout(function () { held.splice(0).forEach(function (m) { real.call(window, m); }); }, 50);
+                });
+            }, 0);
+        }, { once: true });
+    } + ')();';
+    const inject = () => {
+        const s = document.createElement('script');
+        s.textContent = code;
+        (document.head || document.documentElement).appendChild(s);
+        s.remove();
+    };
+    // At document-start <html> itself can still be missing; it exists before any of the page's scripts run.
+    if (document.documentElement) inject();
+    else {
+        new MutationObserver((_, obs) => {
+            if (document.documentElement) { obs.disconnect(); inject(); }
+        }).observe(document, { childList: true });
+    }
+}
+
 function applyPortalSkin(host) {
     if ((host && location.hostname !== host) || !portalSkinEnabled()) return;
     const file = location.pathname.split('/').pop().replace(/\.aspx$/i, '').toLowerCase();
@@ -413,6 +453,7 @@ function applyPortalSkin(host) {
     else mark();
 }
     try { applyPortalSkin('portal.giu-berlin.de'); } catch (e) { console.warn('[GIU-SS:portalLook]', e); }
+    try { if (location.hostname === 'portal.giu-berlin.de') deferLoadAlerts(); } catch (e) { console.warn('[GIU-SS:loadAlerts]', e); }
 
     // Everything else needs the parsed page. At document-start, start one tick
     // after DOMContentLoaded so the portal's own ready handlers (jQuery, Chosen)
@@ -3878,8 +3919,9 @@ function renderAttendancePlanner(S, api, host) {
             // ───────────────────────────────────────────────────────────────────────────
             //  HolidayEntry      { type: "single"|"range", category: "holiday"|"annual"|"sick",
             //                      date?: "YYYY-MM-DD", start?, end? }
-            //  OverrideEntry     { date: "YYYY-MM-DD", type: "full_day"|"custom_actual",
-            //                      actualSeconds?: number, reason?: string, note?: string }
+            //  OverrideEntry     { date: "YYYY-MM-DD", type: "full_day"|"custom_actual"|"custom_in_out",
+            //                      actualSeconds?: number, inSeconds?: number, outSeconds?: number,
+            //                      reason?: string, note?: string }
             //  CompensationLeave { date: "YYYY-MM-DD", reason?: string }
             //  DayOffSchedule    { startDate: "YYYY-MM-DD", code: "Sat"|"Sun"|... }
             //  RamadanRange      { start: "YYYY-MM-DD", end: "YYYY-MM-DD" }
@@ -4752,13 +4794,23 @@ function renderAttendancePlanner(S, api, host) {
                 if (!entry || typeof entry !== "object") return null;
                 const date = normalizeYMD(entry.date || "");
                 if (!date) return null;
-                const type = entry.type === "custom_actual" ? "custom_actual" : "full_day";
+                const type = entry.type === "custom_actual" || entry.type === "custom_in_out" ? entry.type : "full_day";
                 const normalized = { date, type };
 
                 const reason = typeof entry.reason === "string" ? entry.reason.trim() : "";
                 const note = typeof entry.note === "string" ? entry.note.trim() : "";
                 if (reason) normalized.reason = reason;
                 if (note) normalized.note = note;
+
+                if (type === "custom_in_out") {
+                    const inSeconds = Number(entry.inSeconds);
+                    const outSeconds = Number(entry.outSeconds);
+                    if (!Number.isFinite(inSeconds) || !Number.isFinite(outSeconds)) return null;
+                    if (inSeconds < 0 || outSeconds > 86399 || outSeconds <= inSeconds) return null;
+                    normalized.inSeconds = Math.floor(inSeconds);
+                    normalized.outSeconds = Math.floor(outSeconds);
+                    return normalized;
+                }
 
                 if (type === "custom_actual") {
                     let actualSeconds = Number(entry.actualSeconds);
@@ -5077,6 +5129,7 @@ function renderAttendancePlanner(S, api, host) {
             function getOverrideTypeLabel(type) {
                 if (type === "full_day") return "Full Day";
                 if (type === "custom_actual") return "Custom Hours";
+                if (type === "custom_in_out") return "Custom In/Out";
                 return type;
             }
 
@@ -7694,7 +7747,8 @@ function renderAttendancePlanner(S, api, host) {
                 const typeFilter = createUiSelect("", [
                     { value: "", label: "All override types" },
                     { value: "full_day", label: "Full Day" },
-                    { value: "custom_actual", label: "Custom Actual" }
+                    { value: "custom_actual", label: "Custom Actual" },
+                    { value: "custom_in_out", label: "Custom In/Out" }
                 ], getTableFilterValue("overrides", "type", ""));
                 const dateFilter = createUiInput("text", "", {
                     placeholder: "Filter by date (YYYY-MM)",
@@ -7767,7 +7821,12 @@ function renderAttendancePlanner(S, api, host) {
 
                     const hoursTd = document.createElement("td");
                     const ovSec = ov.actualSeconds != null ? ov.actualSeconds : (ov.actualMinutes != null ? ov.actualMinutes * 60 : null);
-                    if (ov.type === "custom_actual" && ovSec != null) {
+                    if (ov.type === "custom_in_out") {
+                        const inHM = secondsToHMS(ov.inSeconds);
+                        const outHM = secondsToHMS(ov.outSeconds);
+                        const countedHMS = secondsToHMS(getOverrideActualSecondsForDate(ov, ov.date, getStoredRamadan(), getStoredExamPeriod()));
+                        hoursTd.textContent = `${formatTime12(inHM.hours, inHM.minutes)} – ${formatTime12(outHM.hours, outHM.minutes)} · ${formatHMS(countedHMS.hours, countedHMS.minutes, countedHMS.seconds)}`;
+                    } else if (ov.type === "custom_actual" && ovSec != null) {
                         const hms = secondsToHMS(ovSec);
                         hoursTd.textContent = formatHMS(hms.hours, hms.minutes, hms.seconds);
                     } else {
@@ -7858,7 +7917,7 @@ function renderAttendancePlanner(S, api, host) {
                     "giu-override-title"
                 ));
                 section.appendChild(createUiDescription(
-                    'Manually override attendance for specific dates (e.g. IN/OUT forms or mission days). Use "Full Day Counted" to count a day as fully attended, or "Custom Actual Hours" to set exact worked hours.'
+                    'Manually override attendance for specific dates (e.g. IN/OUT forms or mission days). Use "Full Day Counted" to count a day as fully attended, "Custom Actual Hours" to set exact worked hours, or "Custom In/Out" to enter the time you came in and left and let the hours be calculated.'
                 ));
 
                 const controls = document.createElement("div");
@@ -7867,7 +7926,8 @@ function renderAttendancePlanner(S, api, host) {
                 const dateInput = createUiInput("date", "giu-override-date");
                 const typeSelect = createUiSelect("giu-override-type", [
                     { value: "full_day", label: "Full Day Counted" },
-                    { value: "custom_actual", label: "Custom Actual Hours" }
+                    { value: "custom_actual", label: "Custom Actual Hours" },
+                    { value: "custom_in_out", label: "Custom In/Out" }
                 ]);
                 const hoursInput = createUiInput("number", "giu-override-hours", {
                     placeholder: "H", min: 0, max: 23, step: 1, hidden: true, width: "55px"
@@ -7875,8 +7935,36 @@ function renderAttendancePlanner(S, api, host) {
                 const minutesInput = createUiInput("number", "giu-override-minutes", {
                     placeholder: "M", min: 0, max: 59, step: 1, hidden: true, width: "55px"
                 });
+                const inInput = createUiInput("time", "giu-override-in", { placeholder: "In", hidden: true, width: "110px" });
+                const outInput = createUiInput("time", "giu-override-out", { placeholder: "Out", hidden: true, width: "110px" });
+                inInput.setAttribute("aria-label", "Check-in time");
+                outInput.setAttribute("aria-label", "Check-out time");
+                const inOutPreview = document.createElement("span");
+                inOutPreview.className = "giu-override-preview";
+                inOutPreview.style.cssText = "display:none;font-size:12px;color:#6b7280;align-self:center;";
                 const reasonInput = createUiInput("text", "giu-override-reason", { placeholder: "Reason (optional)" });
                 const noteInput = createUiInput("text", "giu-override-note", { placeholder: "Note (optional)" });
+
+                function updateInOutPreview() {
+                    const inSeconds = parseTimeToSeconds(inInput.value);
+                    const outSeconds = parseTimeToSeconds(outInput.value);
+                    if (inSeconds === null || outSeconds === null || outSeconds <= inSeconds) {
+                        inOutPreview.textContent = "";
+                        return;
+                    }
+                    const date = normalizeYMD(dateInput.value) || getTodayLocalYMD();
+                    const cap = getLastOutCapForDate(date, getStoredRamadan(), getStoredExamPeriod());
+                    const counted = Math.max(0, Math.min(outSeconds, cap) - inSeconds);
+                    const hms = secondsToHMS(counted);
+                    let text = "= " + formatHMS(hms.hours, hms.minutes, hms.seconds);
+                    if (outSeconds > cap) {
+                        text += " (counted to " + formatTime12(Math.floor(cap / 3600), Math.floor((cap % 3600) / 60)) + ")";
+                    }
+                    inOutPreview.textContent = text;
+                }
+                inInput.addEventListener("input", updateInOutPreview);
+                outInput.addEventListener("input", updateInOutPreview);
+                dateInput.addEventListener("input", updateInOutPreview);
 
                 if (pendingMissionDate) {
                     dateInput.value = pendingMissionDate;
@@ -7885,9 +7973,14 @@ function renderAttendancePlanner(S, api, host) {
                 }
 
                 typeSelect.addEventListener("change", function () {
-                    const show = typeSelect.value === "custom_actual" ? "" : "none";
-                    hoursInput.style.display = show;
-                    minutesInput.style.display = show;
+                    const showHM = typeSelect.value === "custom_actual" ? "" : "none";
+                    hoursInput.style.display = showHM;
+                    minutesInput.style.display = showHM;
+                    const showInOut = typeSelect.value === "custom_in_out" ? "" : "none";
+                    inInput.style.display = showInOut;
+                    outInput.style.display = showInOut;
+                    inOutPreview.style.display = showInOut;
+                    updateInOutPreview();
                 });
 
                 const addBtn = createUiButton("Add", "giu-add-override-btn", function () {
@@ -7918,6 +8011,21 @@ function renderAttendancePlanner(S, api, host) {
                         entry.actualSeconds = h * 3600 + m * 60;
                     }
 
+                    if (typeSelect.value === "custom_in_out") {
+                        const inSeconds = parseTimeToSeconds(inInput.value);
+                        const outSeconds = parseTimeToSeconds(outInput.value);
+                        if (inSeconds === null || outSeconds === null) {
+                            alert("Please enter both the In and Out times.");
+                            return;
+                        }
+                        if (outSeconds <= inSeconds) {
+                            alert("Out time must be after In time.");
+                            return;
+                        }
+                        entry.inSeconds = inSeconds;
+                        entry.outSeconds = outSeconds;
+                    }
+
                     const reason = reasonInput.value.trim();
                     if (reason) entry.reason = reason;
                     const note = noteInput.value.trim();
@@ -7934,6 +8042,9 @@ function renderAttendancePlanner(S, api, host) {
                 controls.appendChild(typeSelect);
                 controls.appendChild(hoursInput);
                 controls.appendChild(minutesInput);
+                controls.appendChild(inInput);
+                controls.appendChild(outInput);
+                controls.appendChild(inOutPreview);
                 controls.appendChild(reasonInput);
                 controls.appendChild(noteInput);
                 controls.appendChild(addBtn);
@@ -8644,7 +8755,7 @@ function renderAttendancePlanner(S, api, host) {
                 return Math.max(0, durationSeconds);
             }
 
-            function getOverrideActualSecondsForDate(override, date, ramadan) {
+            function getOverrideActualSecondsForDate(override, date, ramadan, examPeriod) {
                 if (!override) return 0;
 
                 if (override.type === "full_day") {
@@ -8655,6 +8766,12 @@ function renderAttendancePlanner(S, api, host) {
                     return override.actualSeconds != null
                         ? Math.max(0, override.actualSeconds)
                         : Math.max(0, (override.actualMinutes || 0) * 60);
+                }
+
+                if (override.type === "custom_in_out") {
+                    // Same last-out cap as a gate row, so Ramadan and exam caps apply.
+                    const cap = getLastOutCapForDate(date, ramadan, examPeriod);
+                    return Math.max(0, Math.min(override.outSeconds, cap) - override.inSeconds);
                 }
 
                 return 0;
@@ -8715,7 +8832,7 @@ function renderAttendancePlanner(S, api, host) {
 
                     let workedSeconds = 0;
                     if (override) {
-                        workedSeconds = getOverrideActualSecondsForDate(override, date, ramadan);
+                        workedSeconds = getOverrideActualSecondsForDate(override, date, ramadan, examPeriod);
                     } else if (row) {
                         workedSeconds = getEffectiveRowActualSeconds(row, ramadan, examPeriod);
                     }
@@ -9074,7 +9191,7 @@ function renderAttendancePlanner(S, api, host) {
 
                     if (override) {
                         acc.overriddenDays += 1;
-                        const overrideActualSeconds = getOverrideActualSecondsForDate(override, date, ramadan);
+                        const overrideActualSeconds = getOverrideActualSecondsForDate(override, date, ramadan, examPeriod);
                         if (dayOffMatch && overrideActualSeconds > 0) {
                             acc.compensationEarnedSeconds += overrideActualSeconds;
                         }
@@ -9094,7 +9211,7 @@ function renderAttendancePlanner(S, api, host) {
                         }
 
                         const detail = { date, type: override.type, reason: override.reason || "" };
-                        if (override.type === "custom_actual") detail.actualSeconds = overrideActualSeconds;
+                        if (override.type === "custom_actual" || override.type === "custom_in_out") detail.actualSeconds = overrideActualSeconds;
                         acc.overriddenDayDetails.push(detail);
 
                         // Hours from overrides are always added to actual time.
@@ -9790,7 +9907,7 @@ function renderAttendancePlanner(S, api, host) {
                     const entrySec = entry.actualSeconds != null
                         ? entry.actualSeconds
                         : (entry.actualMinutes != null ? entry.actualMinutes * 60 : null);
-                    if (entry.type === "custom_actual" && entrySec != null) {
+                    if ((entry.type === "custom_actual" || entry.type === "custom_in_out") && entrySec != null) {
                         const hms = secondsToHMS(entrySec);
                         infoSpan.appendChild(document.createTextNode(" " + formatHMS(hms.hours, hms.minutes, hms.seconds)));
                     }
@@ -10787,7 +10904,7 @@ function renderAttendancePlanner(S, api, host) {
                     const override = overrideByDate.get(date);
                     if (override) {
                         // Already counted by buildPeriodStats above.
-                        day.fixedSeconds = getOverrideActualSecondsForDate(override, date, ramadan);
+                        day.fixedSeconds = getOverrideActualSecondsForDate(override, date, ramadan, examPeriod);
                         day.inBase = true;
                     } else if (isToday) {
                         // The gate report lags; use today's row when it is there.
@@ -12449,6 +12566,17 @@ function renderAttendancePlanner(S, api, host) {
                         flex-wrap: wrap;
                         gap: 8px;
                     }
+                    .giug-group-pick {
+                        display: flex;
+                        align-items: center;
+                        flex-wrap: wrap;
+                        gap: 6px 16px;
+                        margin-top: 10px;
+                        font-size: 13px;
+                    }
+                    .giug-group-pick-title { font-weight: 600; }
+                    .giug-group-pick label { display: inline-flex; align-items: center; gap: 6px; margin: 0; font-weight: 400; cursor: pointer; }
+                    .giug-group-pick input { margin: 0; }
                     .giug-select {
                         height: 32px;
                         padding: 4px 8px;
@@ -12816,7 +12944,10 @@ function renderAttendancePlanner(S, api, host) {
                 if (field !== '' || row.length) { row.push(field); rows.push(row); }
 
                 const headerLen = rows.length ? rows[0].length : 0;
+                // A "Group" column (Batch Download writes one) ties each grade to its group.
+                const groupCol = rows.length ? rows[0].findIndex(h => /^\s*group\s*$/i.test(h)) : -1;
                 const map = {};
+                const entries = [];
                 const skipped = [];
                 rows.forEach(cols => {
                     const label = (cols[0] || '').trim();
@@ -12830,8 +12961,43 @@ function renderAttendancePlanner(S, api, host) {
                     raw = raw.replace(/^(-?\d+),(\d+)$/, '$1.$2');
                     if (raw === '' || !Number.isFinite(+raw)) { skipped.push(label); return; }
                     map[m[1]] = raw;
+                    entries.push({ id: m[1], grade: raw, group: groupCol > 0 ? (cols[groupCol] || '').trim() : '' });
                 });
-                return { map, skipped };
+                return { map, entries, skipped };
+            }
+
+            // Which grade a student gets in a group. Once a row's Group names one of the page's groups
+            // (its full label, or its end: "L001" for "ICS 509 5SE L001"), the column counts: a row
+            // with a Group only fills that group, and a student listed with groups is left alone in
+            // the others. Rows with an empty Group fill every group the student is in. When no Group
+            // in the file matches any of the page's groups, the column is ignored (byGroup false).
+            function gradePlan(parsed, groupLabels) {
+                const norm = v => String(v ?? '').toLowerCase().replace(/\s+/g, ' ').trim();
+                const matches = (csvGroup, label) => {
+                    const g = norm(csvGroup), l = norm(label);
+                    return !!g && (l === g || l.endsWith(' ' + g));
+                };
+                const known = e => e.group && groupLabels.some(l => matches(e.group, l));
+                const byGroup = parsed.entries.some(known);
+                const grouped = {};
+                const loose = {};
+                parsed.entries.forEach(e => {
+                    if (byGroup && e.group) (grouped[e.id] = grouped[e.id] || []).push(e);
+                    else loose[e.id] = e.grade;
+                });
+                return {
+                    byGroup,
+                    // undefined: leave this student's grade as it is.
+                    gradeFor(id, label) {
+                        if (grouped[id]) {
+                            const hit = grouped[id].filter(e => matches(e.group, label)).pop();
+                            return hit ? hit.grade : undefined;
+                        }
+                        return loose[id];
+                    },
+                    // The grade comes from a row without a group, so it goes to every group.
+                    loose: id => !grouped[id] && loose[id] !== undefined,
+                };
             }
 
             function parseCSV(file) {
@@ -12920,33 +13086,37 @@ function renderAttendancePlanner(S, api, host) {
         
             // ── Batch upload (State A) ───────────────────────────────────────────────
         
-            async function batchUpload(evalId, csvMap, toolbar, evalPicker) {
-                const { groups, hidden, season, course } = readPageState();
-        
-                if (!groups.length) { showError(toolbar, 'No groups found.'); return; }
-        
+            async function batchUpload(evalId, parsed, toolbar, evalPicker, pickedGroups) {
+                const { groups: allGroups, hidden, season, course } = readPageState();
+                const groups = allGroups.filter(g => pickedGroups.includes(g.value));
+
+                if (!allGroups.length) { showError(toolbar, 'No groups found.'); return; }
+                if (!groups.length) { showError(toolbar, 'Tick at least one group to upload to.'); return; }
+
                 const maxGrade = getMaxGrade(evalPicker);
-                const validationErrors = validateCsvMap(csvMap, maxGrade);
+                const validationErrors = validateCsvMap(parsed.map, maxGrade);
                 if (validationErrors.length) {
                     showError(toolbar, `${validationErrors.length} grade(s) failed validation: ${validationErrors.slice(0, 5).join('; ')}${validationErrors.length > 5 ? ` … and ${validationErrors.length - 5} more` : ''}`);
                     return;
                 }
-        
+                const plan = gradePlan(parsed, allGroups.map(g => g.label));
+
                 const groupStats = [];
                 let saved  = 0;
                 let errors = 0;
-        
+
+                // Step 1: read every ticked group's grade sheet; nothing is saved yet.
+                const sheets = [];
                 for (let i = 0; i < groups.length; i++) {
                     const group = groups[i];
-                    showInfo(toolbar, `Uploading group ${i + 1} of ${groups.length}: ${group.label}…`);
-        
+                    showInfo(toolbar, `Reading group ${i + 1} of ${groups.length}: ${group.label}…`);
                     try {
                         const doc1 = await doPostBack(hidden, 'ctl00$MainContent$grpLst', {
                             'ctl00$MainContent$dlSeason': season,
                             'ctl00$MainContent$smCrsLst': course,
                             'ctl00$MainContent$grpLst':   group.value,
                         });
-        
+
                         const doc1Hidden = extractFormFields(doc1);
                         const doc2 = await doPostBack(doc1Hidden, 'ctl00$MainContent$evalMethIdLst', {
                             'ctl00$MainContent$dlSeason':       season,
@@ -12954,13 +13124,49 @@ function renderAttendancePlanner(S, api, host) {
                             'ctl00$MainContent$grpLst':         group.value,
                             'ctl00$MainContent$evalMethIdLst':  evalId,
                         });
-        
+
                         const rows = getRows(doc2);
                         if (!rows.length) throw new Error('no student rows found');
-        
                         const saveBtnEl = doc2.querySelector(SEL.saveBtn);
                         if (!saveBtnEl) throw new Error('save button not found in fetched page');
-        
+                        sheets.push({ group, doc2, rows, saveName: saveBtnEl.name });
+                    } catch (err) {
+                        if (err.message === 'SESSION_EXPIRED') {
+                            showError(toolbar, `Your session expired at group ${i + 1} of ${groups.length}: ${saved} group(s) were saved, the rest were not touched. Sign in again and retry.`);
+                            return;
+                        }
+                        errors++;
+                        groupStats.push({ label: group.label, stats: null });
+                        showError(toolbar, `Group "${group.label}": ${err.message}`);
+                    }
+                }
+
+                // A student in two ticked groups whose grade has no group would get it in both.
+                const seen = {};
+                sheets.forEach(sh => sh.rows.forEach(row => {
+                    const id = extractId(row.cells[0]?.querySelector('span')?.textContent ?? '');
+                    if (id && plan.loose(id)) (seen[id] = seen[id] || []).push(sh.group.label);
+                }));
+                const twice = Object.keys(seen).filter(id => seen[id].length > 1);
+                if (twice.length) {
+                    const names = [...new Set(twice.flatMap(id => seen[id]))];
+                    const answer = await S.openDialog({
+                        id: 'giug-twice',
+                        title: 'Students in more than one group',
+                        html: `<p class="gius-dialog-text">${twice.length} student(s) are in more than one of the ticked groups (${S.escapeHtml(names.join(', '))}). Their grade would be saved in each of them.\n\nUntick the groups this grade isn't for, or add a Group column to the CSV (Batch Download writes one).</p>`,
+                        actions: [{ label: 'Cancel', value: 'cancel' }, { label: 'Save in every group', value: 'all', primary: true }],
+                    }).result;
+                    if (answer !== 'all') {
+                        showInfo(toolbar, 'Upload cancelled: nothing was saved.', false);
+                        return;
+                    }
+                }
+
+                // Step 2: save each group.
+                for (let i = 0; i < sheets.length; i++) {
+                    const { group, doc2, rows, saveName } = sheets[i];
+                    showInfo(toolbar, `Uploading group ${i + 1} of ${sheets.length}: ${group.label}…`);
+                    try {
                         const doc2Hidden     = extractFormFields(doc2);
                         const gradeOverrides = {};
                         rows.forEach(row => {
@@ -12968,34 +13174,33 @@ function renderAttendancePlanner(S, api, host) {
                             const gradeEl = row.cells[2]?.querySelector('input');
                             if (!gradeEl?.name) return;
                             const id = extractId(nameEl?.textContent ?? '');
-                            gradeOverrides[gradeEl.name] = (id && csvMap[id] !== undefined)
-                                ? csvMap[id]
-                                : gradeEl.value;
+                            const grade = id ? plan.gradeFor(id, group.label) : undefined;
+                            gradeOverrides[gradeEl.name] = grade !== undefined ? grade : gradeEl.value;
                         });
-        
-                        const savedDoc = await doPostBack(doc2Hidden, saveBtnEl.name, gradeOverrides);
+
+                        const savedDoc = await doPostBack(doc2Hidden, saveName, gradeOverrides);
                         // The portal re-shows the grade grid after a save; anything else
                         // (an error page) means this group's grades may not be saved.
                         if (!getRows(savedDoc).length) throw new Error('the portal did not confirm the save — check this group');
-        
+
                         groupStats.push({ label: group.label, stats: computeStats(Object.values(gradeOverrides), maxGrade) });
                         saved++;
-                        } catch (err) {
-                            if (err.message === 'SESSION_EXPIRED') {
-                                showError(toolbar, `Your session expired at group ${i + 1} of ${groups.length}: ${saved} group(s) were saved, the rest were not touched. Sign in again and retry.`);
-                                renderBatchStats(toolbar, groupStats);
-                                return;
-                            }
-                            errors++;
-                            groupStats.push({ label: group.label, stats: null });
-                            showError(toolbar, `Group "${group.label}": ${err.message}`);
+                    } catch (err) {
+                        if (err.message === 'SESSION_EXPIRED') {
+                            showError(toolbar, `Your session expired at group ${i + 1} of ${sheets.length}: ${saved} group(s) were saved, the rest were not touched. Sign in again and retry.`);
+                            renderBatchStats(toolbar, groupStats);
+                            return;
                         }
+                        errors++;
+                        groupStats.push({ label: group.label, stats: null });
+                        showError(toolbar, `Group "${group.label}": ${err.message}`);
                     }
+                }
 
-                    showInfo(toolbar, `Done — ${saved} group(s) saved${errors ? `, ${errors} failed` : ''}.`, false);
+                showInfo(toolbar, `Done — ${saved} group(s) saved${errors ? `, ${errors} failed` : ''}.`, false);
                 renderBatchStats(toolbar, groupStats);
             }
-        
+
             // ── State A toolbar: intercept eval dropdown + batch buttons ─────────────
         
             function injectBatchToolbar() {
@@ -13040,7 +13245,29 @@ function renderAttendancePlanner(S, api, host) {
                 const batchDlBtn = makeBtn('Batch Download', 'primary', true);
                 const batchUpBtn = makeBtn('Batch Upload', 'success', true);
         
-                let csvMap = null;
+                let parsedCsv = null;
+
+                // The groups Batch Upload writes to (all ticked to start with).
+                const groupPick = document.createElement('div');
+                groupPick.className = 'giug-group-pick';
+                const groupEl = document.querySelector(SEL.group);
+                const groupOptions = groupEl ? Array.from(groupEl.options).filter(o => o.value) : [];
+                if (groupOptions.length) {
+                    const title = document.createElement('span');
+                    title.className = 'giug-group-pick-title';
+                    title.textContent = 'Upload to:';
+                    groupPick.appendChild(title);
+                    groupOptions.forEach(o => {
+                        const label = document.createElement('label');
+                        const box = document.createElement('input');
+                        box.type = 'checkbox';
+                        box.checked = true;
+                        box.value = o.value;
+                        label.append(box, ' ' + o.text.trim());
+                        groupPick.appendChild(label);
+                    });
+                }
+                const pickedGroups = () => Array.from(groupPick.querySelectorAll('input:checked')).map(b => b.value);
         
                 const getEvalId    = () => evalPicker.value;
                 const getEvalLabel = () => evalPicker.options[evalPicker.selectedIndex]?.text ?? evalPicker.value;
@@ -13048,7 +13275,7 @@ function renderAttendancePlanner(S, api, host) {
                 evalPicker.onchange = () => {
                     const valid = isValidId(evalPicker.value);
                     batchDlBtn.disabled = !valid;
-                    batchUpBtn.disabled = !(valid && csvMap);
+                    batchUpBtn.disabled = !(valid && parsedCsv);
                 };
         
                 loadCsvBtn.onclick = () => fileInput.click();
@@ -13058,8 +13285,13 @@ function renderAttendancePlanner(S, api, host) {
                     if (!file) return;
                     fileInput.value = ''; // the same file can be picked again after editing it
                     const parsed = await parseCSV(file);
-                    csvMap = parsed.map;
-                    showInfo(card, `CSV loaded — ${Object.keys(csvMap).length} student grade(s) ready.${skippedNote(parsed.skipped)}`, false);
+                    parsedCsv = parsed;
+                    const csvMap = parsed.map;
+                    const plan = gradePlan(parsed, groupOptions.map(o => o.text.trim()));
+                    const groupNote = parsed.entries.some(e => e.group)
+                        ? (plan.byGroup ? ' Each grade goes to the group in its Group column.' : " The Group column names none of this course's groups, so it is ignored.")
+                        : '';
+                    showInfo(card, `CSV loaded — ${Object.keys(csvMap).length} student grade(s) ready.${groupNote}${skippedNote(parsed.skipped)}`, false);
                     batchUpBtn.disabled = !isValidId(evalPicker.value);
                     const maxGrade = getMaxGrade(evalPicker);
                     const previewStats = computeStats(Object.values(csvMap), maxGrade);
@@ -13074,9 +13306,9 @@ function renderAttendancePlanner(S, api, host) {
                 };
         
                 batchUpBtn.onclick = async () => {
-                    if (!csvMap || !isValidId(getEvalId())) return;
+                    if (!parsedCsv || !isValidId(getEvalId())) return;
                     batchUpBtn.disabled = true;
-                    await batchUpload(getEvalId(), csvMap, card, evalPicker);
+                    await batchUpload(getEvalId(), parsedCsv, card, evalPicker, pickedGroups());
                     batchUpBtn.disabled = false;
                 };
         
@@ -13092,6 +13324,7 @@ function renderAttendancePlanner(S, api, host) {
         
                 const btnRow = card.querySelector('#giug-btn-row');
                 btnRow.append(evalPicker, loadCsvBtn, fileInput, batchDlBtn, batchUpBtn);
+                if (groupOptions.length) btnRow.after(groupPick);
         
                 const anchor = pageEvalEl?.closest('tr') ?? pageEvalEl?.closest('div') ?? document.querySelector(SEL.group);
                 anchor?.insertAdjacentElement('afterend', card);
@@ -13124,12 +13357,14 @@ function renderAttendancePlanner(S, api, host) {
                     if (!file) return;
                     fileInput.value = ''; // the same file can be picked again after editing it
                     const parsed = await parseCSV(file);
-                    const csvMap = parsed.map;
+                    const thisGroup = (document.querySelector(SEL.crntLbl)?.textContent ?? '').split(' - ')[0].trim();
+                    const plan = gradePlan(parsed, [thisGroup]);
                     if (parsed.skipped.length) showInfo(card, `Grades applied.${skippedNote(parsed.skipped)}`, false);
                     getRows().forEach(row => {
                         const id      = extractId(row.cells[0]?.querySelector('span')?.textContent ?? '');
                         const gradeEl = row.cells[2]?.querySelector('input');
-                        if (id && gradeEl && id in csvMap) gradeEl.value = csvMap[id];
+                        const grade   = id ? plan.gradeFor(id, thisGroup) : undefined;
+                        if (gradeEl && grade !== undefined) gradeEl.value = grade;
                     });
                     const grades = getRows().map(row => row.cells[2]?.querySelector('input')?.value ?? '');
                     const crntText = document.querySelector(SEL.crntLbl)?.textContent ?? '';
@@ -14858,6 +15093,8 @@ function renderAttendancePlanner(S, api, host) {
             const SHEET_KEY       = 'giuTakeSheetV2';      // paper-sheet options
             const SHEET_KEY_V1    = 'giuTakeSheetV1';      // read once: its ref / marks choices carry over
             const SHEET_ROWS      = 25;                    // paper-sheet rows per page, as on the template
+            const SEMESTER_WEEKS  = 12;                    // week columns on the semester sheet (W1 … W12)
+            const SEMESTER_WEEKS_MAX = 24;                 // tailored sheet: 24 = a tutorial's 12 weeks then a lab's 12
             // Styles and the session picker first: both apply before a session is picked too.
             injectStyles();
             try { sessionPicker(); } catch (e) { S.warn('takeAttendance', 'session picker crashed:', e); }
@@ -15030,6 +15267,27 @@ function renderAttendancePlanner(S, api, host) {
         html:is(.gius-dark, [data-gius-dark]) .gius-take-session-text, html:is(.gius-dark, [data-gius-dark]) label.gius-take-portal-radio { color: var(--gs-dk-text, #cdd6f4) !important; }
         .gius-take-radio { display: inline-flex; align-items: center; gap: 6px; margin: 0 14px 4px 0 !important; font-size: 13px; font-weight: 400; color: #374151; cursor: pointer; }
         .gius-take-input.gius-take-num { width: 64px; }
+        .gius-semester-pick { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+        .gius-semester-tools { display: flex; flex-wrap: wrap; gap: 8px; }
+        .gius-semester-list { display: flex; flex-direction: column; gap: 4px; max-height: 220px; overflow-y: auto; }
+        .gius-semester-item { display: flex; align-items: center; gap: 10px; padding: 4px 8px; border: 1px solid #d1d5db; border-radius: 6px; background: #fff; color: #1f2328; font-size: 13px; text-align: left; cursor: pointer; }
+        .gius-semester-num { flex: none; width: 22px; height: 22px; border: 1.5px solid #9ca3af; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+        .gius-semester-item.on .gius-semester-num { background: #1f2328; border-color: #1f2328; color: #fff; }
+        .gius-semester-day { flex: 1; }
+        .gius-semester-target { font-size: 12px; color: #6b7280; }
+        .gius-semester-weeks { display: flex; flex-wrap: wrap; gap: 4px; }
+        .gius-semester-week { min-width: 40px; padding: 3px 6px; border: 1px solid #d1d5db; border-radius: 6px; background: #fff; color: #1f2328; font-size: 12px; cursor: pointer; }
+        .gius-semester-week.off { background: #f3f4f6; color: #9ca3af; text-decoration: line-through; }
+        .gius-semester-item.sel { border-color: #1f2328; background: #f3f4f6; font-weight: 700; }
+        .gius-semester-filter { width: 100%; }
+        .gius-semester-groups > .gius-take-label { margin: 6px 0 0; }
+        .gius-semester-presets { align-items: center; }
+        .gius-semester-note { min-height: 0; font-size: 12px; color: #b45309; }
+        html:is(.gius-dark, [data-gius-dark]) .gius-semester-item, html:is(.gius-dark, [data-gius-dark]) .gius-semester-week { background: var(--gs-dk-card, #1e1e2e); border-color: var(--gs-dk-line-2, #45475a); color: var(--gs-dk-text, #cdd6f4); }
+        html:is(.gius-dark, [data-gius-dark]) .gius-semester-week.off { background: var(--gs-dk-sunk, #181825); color: var(--gs-dk-muted, #6c7086); }
+        html:is(.gius-dark, [data-gius-dark]) .gius-semester-item.on .gius-semester-num { background: var(--gs-dk-text, #cdd6f4); border-color: var(--gs-dk-text, #cdd6f4); color: var(--gs-dk-card, #1e1e2e); }
+        html:is(.gius-dark, [data-gius-dark]) .gius-semester-target { color: var(--gs-dk-muted, #a6adc8); }
+        html:is(.gius-dark, [data-gius-dark]) .gius-semester-item.sel { border-color: var(--gs-dk-text, #cdd6f4); background: var(--gs-dk-line, #313244); }
         html:is(.gius-dark, [data-gius-dark]) .gius-take-radio { color: var(--gs-dk-text, #cdd6f4) !important; }
         .gius-take-pill-grey { background: #f3f4f6; color: #374151; border: 1px solid #d1d5db; }
         .gius-take-pill-blue { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
@@ -15338,12 +15596,13 @@ function renderAttendancePlanner(S, api, host) {
                 });
             }
 
-            // Groups listed under their course: "W26 ICS 501 Software Project I - 5Dsc P001".
-            function groupPicker() {
+            // [{value, text, course, name, type}] for the page's group control:
+            // "W26 ICS 501 Software Project I - 5Dsc P001" → course + group name + Lecture/Practical/Tutorial.
+            function groupOptions() {
                 const ddl = document.getElementById('MainContent_DDL_StudentGroup');
-                if (!ddl || ddl.dataset.giusPicker) return;
+                if (!ddl) return [];
                 const TYPES = { L: 'Lecture', P: 'Practical', T: 'Tutorial' };
-                const groups = Array.from(ddl.options)
+                return Array.from(ddl.options)
                     .filter(o => o.value && o.value !== '0')
                     .map(o => {
                         const text = o.textContent.replace(/\s+/g, ' ').trim();
@@ -15352,6 +15611,19 @@ function renderAttendancePlanner(S, api, host) {
                         const typeM = name.match(/\b([LPT])\d{3}\b/);
                         return { value: o.value, text, course: cut > 0 ? text.slice(0, cut) : '', name, type: typeM ? TYPES[typeM[1]] : '' };
                     });
+            }
+
+            // True on the starter page: the page has a group control and none is picked yet.
+            function noGroupSelected() {
+                const ddl = document.getElementById('MainContent_DDL_StudentGroup');
+                return !!ddl && (!ddl.value || ddl.value === '0');
+            }
+
+            // Groups listed under their course: "W26 ICS 501 Software Project I - 5Dsc P001".
+            function groupPicker() {
+                const ddl = document.getElementById('MainContent_DDL_StudentGroup');
+                if (!ddl || ddl.dataset.giusPicker) return;
+                const groups = groupOptions();
                 if (!groups.length) return;
                 const cur = groups.find(g => g.value === ddl.value);
 
@@ -15581,26 +15853,38 @@ function renderAttendancePlanner(S, api, host) {
             // The student list for a session that is not started yet: read from the
             // group's latest past sessions in the background (the same request the
             // portal sends when you pick one). Never touches upcoming sessions.
-            async function fetchRoster() {
+            // Every dated session of the chosen group (the session list may hold other
+            // groups' too). With a session picked, matched on its course; otherwise on
+            // the group's course code and group code.
+            // `pickedText`: a group's label chosen in the tailored semester dialog, used
+            // instead of the page's own group control (which has none picked there).
+            function groupSessions(cur, pickedText) {
                 const ddl = document.getElementById('MainContent_DDL_Sessions');
-                const form = ddl && ddl.form;
-                const sel = ddl && ddl.options[ddl.selectedIndex];
-                const cur = sel && sel.value && sel.value !== '0' ? parseSessionOption(sel) : null;
-                if (!form) return [];
-                // No session picked: the chosen group's sessions (the list may hold other
-                // groups' too), matched on its course code and group code.
+                if (!ddl) return [];
                 const groupDdl = document.getElementById('MainContent_DDL_StudentGroup');
                 const groupOpt = groupDdl && groupDdl.options[groupDdl.selectedIndex];
-                const groupText = groupOpt && groupOpt.value !== '0' ? groupOpt.textContent.replace(/\s+/g, ' ').trim() : '';
+                const groupText = pickedText != null ? pickedText
+                    : groupOpt && groupOpt.value !== '0' ? groupOpt.textContent.replace(/\s+/g, ' ').trim() : '';
                 const groupCode = groupText.slice(groupText.lastIndexOf(' - ') + 3);
                 const courseCode = (groupText.match(/\b[A-Z]{2,5} ?\d{3}\b/) || [''])[0];
                 const sameGroup = s => (cur ? s.course === cur.course
                     : !!groupText && s.text.includes(groupCode) && (!courseCode || s.text.includes(courseCode)));
-                const today = new Date(); today.setHours(0, 0, 0, 0);
-                const past = Array.from(ddl.options)
-                    .filter(o => o.value && o.value !== '0' && (!cur || o.value !== cur.value))
+                return Array.from(ddl.options)
+                    .filter(o => o.value && o.value !== '0')
                     .map(parseSessionOption)
-                    .filter(s => s.date && s.date < today && sameGroup(s))
+                    .filter(s => s.date && sameGroup(s));
+            }
+
+            // `pickedText`: read the students of that group's label instead of the page's own group.
+            async function fetchRoster(pickedText) {
+                const ddl = document.getElementById('MainContent_DDL_Sessions');
+                const form = ddl && ddl.form;
+                const sel = ddl && ddl.options[ddl.selectedIndex];
+                const cur = pickedText == null && sel && sel.value && sel.value !== '0' ? parseSessionOption(sel) : null;
+                if (!form) return [];
+                const today = new Date(); today.setHours(0, 0, 0, 0);
+                const past = groupSessions(cur, pickedText)
+                    .filter(s => (!cur || s.value !== cur.value) && s.date < today)
                     .sort((a, b) => b.date - a.date)
                     .slice(0, 3);
                 for (const s of past) {
@@ -15653,9 +15937,14 @@ function renderAttendancePlanner(S, api, host) {
                         <span class="gius-take-session-text">Choose a group, then a session, to see its students.</span>
                         <div class="gius-take-actions">
                             <button type="button" class="gius-take-btn gius-take-btn-outline gs-btn" data-act="blank-sheet">Print blank sheet</button>
+                            <button type="button" class="gius-take-btn gius-take-btn-outline gs-btn" data-act="semester-sheet">Print semester sheet</button>
                         </div>
                     </div>`;
                 panel.querySelector('[data-act="blank-sheet"]').addEventListener('click', e => printBlankSheet(e.currentTarget));
+                // No group picked yet: the tailored sheet (any group, any number of weeks).
+                // A group already picked keeps the usual 12-week semester sheet.
+                panel.querySelector('[data-act="semester-sheet"]').addEventListener('click', e =>
+                    (noGroupSelected() ? openTailoredSemesterDialog() : printSemesterSheet(e.currentTarget, null)));
                 anchor.before(panel);
                 if (heading) {
                     hide(heading);
@@ -15701,6 +15990,7 @@ function renderAttendancePlanner(S, api, host) {
                         <div class="gius-take-actions">
                             <button type="button" class="gius-take-btn gius-take-btn-outline gs-btn" data-act="sheet">Print sheet</button>
                             <button type="button" class="gius-take-btn gius-take-btn-outline gs-btn" data-act="blank-sheet">Print blank sheet</button>
+                            <button type="button" class="gius-take-btn gius-take-btn-outline gs-btn" data-act="semester-sheet">Print semester sheet</button>
                         </div>
                     </div>`;
 
@@ -15719,6 +16009,7 @@ function renderAttendancePlanner(S, api, host) {
 
                 const sheetBtn = panel.querySelector('[data-act="sheet"]');
                 panel.querySelector('[data-act="blank-sheet"]').addEventListener('click', e => printBlankSheet(e.currentTarget));
+                panel.querySelector('[data-act="semester-sheet"]').addEventListener('click', e => printSemesterSheet(e.currentTarget, null));
                 sheetBtn.addEventListener('click', async () => {
                     sheetBtn.disabled = true;
                     sheetBtn.textContent = 'Loading students…';
@@ -15746,10 +16037,12 @@ function renderAttendancePlanner(S, api, host) {
                         <span class="gius-take-session-text">The portal returned no students for this session. If you expected some, check the group, or ask your academic coordinator.</span>
                         <div class="gius-take-actions">
                             <button type="button" class="gius-take-btn gius-take-btn-outline gs-btn" data-act="blank-sheet">Print blank sheet</button>
+                            <button type="button" class="gius-take-btn gius-take-btn-outline gs-btn" data-act="semester-sheet">Print semester sheet</button>
                             ${endBtn ? '<button type="button" class="gius-take-btn gius-take-btn-end gs-btn gs-btn--danger" data-act="end">End Session…</button>' : ''}
                         </div>
                     </div>`;
                 panel.querySelector('[data-act="blank-sheet"]').addEventListener('click', e => printBlankSheet(e.currentTarget));
+                panel.querySelector('[data-act="semester-sheet"]').addEventListener('click', e => printSemesterSheet(e.currentTarget, null));
                 panel.querySelector('[data-act="end"]')?.addEventListener('click', openEndConfirm);
                 table.before(panel);
                 hide(table);
@@ -15787,6 +16080,7 @@ function renderAttendancePlanner(S, api, host) {
                         <button type="button" class="gius-take-btn gius-take-btn-outline gs-btn" data-act="invert">Invert</button>
                         <button type="button" class="gius-take-btn gius-take-btn-outline gs-btn" data-act="sheet">Print sheet</button>
                         <button type="button" class="gius-take-btn gius-take-btn-outline gs-btn" data-act="blank-sheet">Print blank sheet</button>
+                        <button type="button" class="gius-take-btn gius-take-btn-outline gs-btn" data-act="semester-sheet">Print semester sheet</button>
                         ${copySlots().map(s => `<button type="button" class="gius-take-btn gius-take-btn-outline gs-btn" data-copy-slot="${S.escapeHtml(s.value)}">Copy ${S.escapeHtml(s.slot ? `Slot ${s.slot}` : 'other slot')}</button>`).join('')}
                     </div>
                     <label class="gius-take-find">Find
@@ -15906,7 +16200,9 @@ function renderAttendancePlanner(S, api, host) {
                 const groupOpt = groupDdl && groupDdl.options[groupDdl.selectedIndex];
                 // o.template: one page with the course, date, session type and students;
                 // week, slot and Ref are left to fill in by hand.
-                const group = groupOpt && groupOpt.value !== '0' ? groupOpt.textContent.replace(/\s+/g, ' ').trim() : '';
+                // o.groupText: a group chosen in the tailored semester dialog (none is picked on the page).
+                const group = o.groupText != null ? o.groupText
+                    : groupOpt && groupOpt.value !== '0' ? groupOpt.textContent.replace(/\s+/g, ' ').trim() : '';
                 const people = roster.slice();
                 if (o.template) picked = [{ text: picked[0] ? picked[0].text : '', date: picked[0] && picked[0].date }];
                 if (o.sort === 'name') people.sort((a, b) => a.name.localeCompare(b.name));
@@ -15915,12 +16211,28 @@ function renderAttendancePlanner(S, api, host) {
                 // students not on the list (never a whole extra page just for them).
                 const total = Math.max(SHEET_ROWS, Math.ceil(people.length / SHEET_ROWS) * SHEET_ROWS);
                 const rowsAll = Array.from({ length: total }, (_, i) => people[i] || { id: '', name: '' });
+                // Semester sheet: one empty column per week replaces the Attendance column.
+                // o.weekCount (tailored sheet): 1 … SEMESTER_WEEKS_MAX columns, else the usual 12.
+                const weekCount = o.semester
+                    ? Math.min(SEMESTER_WEEKS_MAX, Math.max(1, Math.round(+o.weekCount) || SEMESTER_WEEKS))
+                    : SEMESTER_WEEKS;
+                const weekHead = Array.from({ length: weekCount }, (_, i) => `<th class="wk">W${i + 1}</th>`).join('');
+                // o.weeks[k]: { studentId → attended } for week k+1, or null when not taken.
+                const weekCellsFor = p => Array.from({ length: weekCount }, (_, k) => {
+                    const week = o.weeks && o.weeks[k];
+                    const mark = week && p.id && week.has(p.id) ? (week.get(p.id) ? '✓' : '✗') : '';
+                    return `<td class="wk">${mark}</td>`;
+                }).join('');
                 const field = (label, value) => `<span class="f"><b>${label}</b> <span class="v">${esc(value || '')}</span></span>`;
                 // "W26 ICS 501 Software Project I - 5Dsc P001": course (without the term
                 // prefix) and group go in separate fields.
                 const cut = group.lastIndexOf(' - ');
                 const courseName = (cut > 0 ? group.slice(0, cut) : group).replace(/^[A-Z]\d{2}\s+/, '');
                 const groupName = cut > 0 ? group.slice(cut + 3) : '';
+                // The term code (e.g. W26) leads the group on the semester sheet: "W26 1INF P013".
+                const term = (group.match(/^([A-Z]\d{2})\s/) || [])[1] || '';
+                const groupValue = o.semester ? [term, groupName].filter(Boolean).join(' ') : groupName;
+                const printedOn = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
 
                 const pages = [];
                 for (const s of picked) {
@@ -15934,31 +16246,65 @@ function renderAttendancePlanner(S, api, host) {
                         .map(t => `<span class="t${t === type ? ' on' : ''}">${t}</span>`).join('');
                     for (let start = 0; start < rowsAll.length; start += SHEET_ROWS) {
                         const body = rowsAll.slice(start, start + SHEET_ROWS).map((p, i) =>
-                            `<tr><td class="sr">${start + i + 1}</td><td>${esc(p.id)}</td><td class="name${p.name.length > 36 ? ' long' : ''}">${esc(p.name)}</td><td class="att">${mark(p)}</td><td></td></tr>`).join('');
+                            `<tr><td class="sr">${start + i + 1}</td><td class="id">${esc(p.id)}</td><td class="name${!o.semester && p.name.length > 36 ? ' long' : ''}">${esc(p.name)}</td>${o.semester ? weekCellsFor(p) : `<td class="att">${mark(p)}</td><td></td>`}</tr>`).join('');
                         pages.push(`<div class="page"><div class="frame">
                             ${o.logo ? `<div class="logo"><img src="${esc(o.logo)}" alt=""></div>` : ''}
                             <h1>Attendance sheet</h1>
                             <div class="grid">
-                                ${field('Course Name:', courseName)}${field('Week:', '')}
-                                ${field('Group:', groupName)}${field('Slot No:', s.slot)}
-                                ${field('Date:', dateText)}
+                                ${field('Course Name:', courseName)}${o.semester ? '' : field('Week:', '')}
+                                ${field('Group:', groupValue)}${o.semester ? field('Slot:', '') : field('Slot No:', s.slot)}
+                                ${o.semester ? '' : field('Date:', dateText)}
                             </div>
                             <div class="line"><b>Session type (Circle the correct one):</b>${types}</div>
-                            <div class="line">${field('Session Ref. ID:', o.ref ? s.value : '')}</div>
-                            <table>
-                                <thead><tr><th class="sr">Sr.</th><th class="id">Student ID</th><th>Student Name</th><th class="att">Attendance</th><th class="notes">Notes</th></tr></thead>
+                            ${o.semester ? '' : `<div class="line">${field('Session Ref. ID:', o.ref ? s.value : '')}</div>`}
+                            <table class="${o.semester ? 'semester' : ''}">
+                                <thead><tr><th class="sr">Sr.</th><th class="id">Student ID</th><th class="nm">Student Name</th>${o.semester ? weekHead : '<th class="att">Attendance</th><th class="notes">Notes</th>'}</tr></thead>
                                 <tbody>${body}</tbody>
                             </table>
-                            <div class="sig"><b>TA Signature:</b></div>
+                            <div class="sig"><b>TA Signature:</b>${o.semester ? `<span>Printed on ${printedOn}</span>` : ''}</div>
                         </div></div>`);
                     }
                 }
+                // Sr. and ID columns are sized to their widest text (headers included), so
+                // the Name column takes the rest of the line.
+                const srChars = Math.max('Sr.'.length, String(total).length);
+                const idChars = Math.max('Student ID'.length, ...people.map(p => p.id.length));
+                // Semester sheet only: tighter spacing and fixed row heights so all 25 rows
+                // fit one landscape page (see the frame height in the base styles).
+                const semesterCss = o.semester ? `
+                    .page { padding: 6mm; }
+                    .frame { padding: 4mm 10mm; }
+                    .logo { height: 12mm; margin-bottom: 0; }
+                    .logo img { max-height: 12mm; }
+                    h1 { margin: 0 0 2mm; font-size: 16px; }
+                    .grid { grid-template-columns: 1.5fr 1fr 0.6fr; gap: 1mm 8mm; margin-bottom: 1.5mm; }
+                    .f .v { font-size: 13px; }
+                    .line { margin-bottom: 1.5mm; }
+                    table { margin-top: 1.5mm; }
+                    table.semester th, table.semester td { height: 4.8mm; }
+                    td, td.name { font-size: 12px; }
+                    .sig { padding-top: 2mm; font-size: 12px; display: flex; justify-content: space-between; }
+                    td.sr, th.sr { width: calc(${srChars}ch + 3mm); padding: 0 1mm; }
+                    .id { width: calc(${idChars}ch + 3mm); padding: 0 1mm; }
+                ` : '';
+                // More than 12 weeks: the week columns keep their width and the Name column takes
+                // what is left, so it narrows (a smaller font keeps long names readable).
+                // Fewer than 12: Name keeps the width it has at 12 (the line minus Sr., ID and 12 weeks
+                // of 8mm; the A4-landscape frame leaves a 264mm table) and the weeks share the rest.
+                const weekCss = !o.semester || weekCount === SEMESTER_WEEKS ? ''
+                    : weekCount > SEMESTER_WEEKS ? `
+                    table.semester td.name { font-size: ${weekCount > 18 ? 10 : 11}px; }
+                ` : `
+                    table.semester th.nm, table.semester td.name { width: calc(264mm - (${srChars}ch + 3mm) - (${idChars}ch + 3mm) - ${SEMESTER_WEEKS * 8}mm); }
+                    table.semester th.wk, table.semester td.wk { width: auto; }
+                    table.semester td.wk { font-size: 14px; }
+                `;
                 return `<!doctype html><html><head><meta charset="utf-8"><title>Attendance sheet</title><style>
                     /* No page margin: the browser has nowhere to print its own date / title
                        header and footer. Each page draws its own frame instead. */
-                    @page { size: A4 portrait; margin: 0; }
+                    @page { size: ${o.semester ? 'A4 landscape' : 'A4 portrait'}; margin: 0; }
                     body { margin: 0; font: 12px Verdana, Geneva, Arial, sans-serif; color: #000; }
-                    .page { width: 210mm; height: 297mm; box-sizing: border-box; padding: 10mm; page-break-after: always; break-after: page; }
+                    .page { width: ${o.semester ? '297mm' : '210mm'}; height: ${o.semester ? '210mm' : '297mm'}; box-sizing: border-box; padding: 10mm; page-break-after: always; break-after: page; }
                     .page:last-child { page-break-after: auto; break-after: auto; }
                     /* The frame is a column: header, table, then TA Signature pushed to the
                        bottom. Fixed row heights keep 25 rows inside one A4 frame. */
@@ -15986,26 +16332,285 @@ function renderAttendancePlanner(S, api, host) {
                     th { font-weight: 700; }
                     td.sr, th.sr { width: 9mm; font-weight: 700; }
                     .id { width: 23mm; } .att { width: 22mm; } .notes { width: 20mm; }
+                    /* Week columns only hold a ✓ or ✗ mark, so they stay narrow and equal. */
+                    .wk { width: 8mm; padding: 0; text-align: center; font-size: 11px; font-weight: 700; }
                     .sig { margin-top: auto; padding-top: 6mm; font-family: Calibri, Arial, sans-serif; font-size: 14px; }
+                    ${semesterCss}${weekCss}
                 </style></head><body>${pages.join('')}</body></html>`;
             }
 
             // The blank sheet: course, date, session type and students filled in, the
             // rest left empty. Students come from this page, or else from a past
             // session of the group.
+            async function rosterOrFetch(btn, roster) {
+                if (roster) return roster;
+                const old = btn.textContent;
+                btn.disabled = true;
+                btn.textContent = 'Loading students…';
+                const people = await fetchRoster();
+                btn.disabled = false;
+                btn.textContent = old;
+                return people;
+            }
+
             async function printBlankSheet(btn, roster) {
                 const { cur } = sheetSessions();
-                let people = roster;
-                if (!people) {
-                    const old = btn.textContent;
-                    btn.disabled = true;
-                    btn.textContent = 'Loading students…';
-                    people = await fetchRoster();
-                    btn.disabled = false;
-                    btn.textContent = old;
-                }
+                const people = await rosterOrFetch(btn, roster);
                 const { sort, date } = sheetOptions();
                 printSheet({ template: true, sort, date }, cur ? [cur] : [], people);
+            }
+
+            // The semester sheet asks first: name order, and whether to fill the weeks
+            // with the attendance already taken in the group's sessions.
+            async function printSemesterSheet(btn, roster) {
+                const { cur } = sheetSessions();
+                const people = await rosterOrFetch(btn, roster);
+                openSemesterDialog(people, cur);
+            }
+
+            function openSemesterDialog(people, cur) {
+                closeModal();
+                const sort = sheetOptions().sort;
+                const items = semesterItems(cur);
+                const seg = (value, text) =>
+                    `<label class="gius-take-radio"><input type="radio" name="gius-semester-sort" value="${value}"${sort === value ? ' checked' : ''}> ${text}</label>`;
+                // Marks are numbered in the order they were made. Each marked session fills
+                // the next week that is not excluded; an excluded week stays blank.
+                let marked = [];
+                const excluded = new Set();
+                const freeWeeks = () => Array.from({ length: SEMESTER_WEEKS }, (_, k) => k + 1).filter(w => !excluded.has(w));
+                const pickHtml = () => {
+                    const free = freeWeeks();
+                    const overflow = Math.max(0, marked.length - free.length);
+                    const rows = items.map((item, i) => {
+                        const n = marked.indexOf(i) + 1;
+                        const target = n ? free[n - 1] : 0;
+                        const slots = item.sessions.map(s => (s.slot ? `Slot ${s.slot}` : 'Session')).join(' + ');
+                        return `<button type="button" class="gius-semester-item${n ? ' on' : ''}" data-item="${i}">
+                            <span class="gius-semester-num">${n || ''}</span>
+                            <span class="gius-semester-day">${S.escapeHtml(dayText(item.date))} · ${S.escapeHtml(slots)}</span>
+                            <span class="gius-semester-target">${n ? (target ? `→ W${target}` : 'no free week') : ''}</span>
+                        </button>`;
+                    }).join('');
+                    const weekButtons = Array.from({ length: SEMESTER_WEEKS }, (_, k) => k + 1).map(w =>
+                        `<button type="button" class="gius-semester-week${excluded.has(w) ? ' off' : ''}" data-week="${w}" aria-pressed="${excluded.has(w)}" aria-label="Exclude week ${w}">W${w}</button>`).join('');
+                    return `
+                        <div class="gius-semester-tools">
+                            <button type="button" class="gius-take-btn gius-take-btn-outline gs-btn" data-pick="all">Mark all visible weeks</button>
+                            <button type="button" class="gius-take-btn gius-take-btn-outline gs-btn" data-pick="clear">Clear marks</button>
+                        </div>
+                        <div class="gius-semester-list">${rows || '<span class="gius-take-session-text">No sessions found for this group.</span>'}</div>
+                        <span class="gius-take-label">Exclude weeks (left blank on the sheet)</span>
+                        <div class="gius-semester-weeks">${weekButtons}</div>
+                        <div class="gius-semester-note">${overflow ? `${overflow} marked session(s) have no free week: unmark one or include an excluded week.` : ''}</div>`;
+                };
+                const chosen = { sort, weeks: null };
+                activeDialog = S.openDialog({
+                    id: 'gius-take-overlay',
+                    title: 'Print semester sheet',
+                    html: `
+                        <p class="gius-dialog-text">One sheet for the whole semester: 12 week columns, 25 rows, landscape.</p>
+                        ${people.length ? '' : '<div class="gius-take-warn">Could not load the student list — the sheet will have empty rows only.</div>'}
+                        <div><span class="gius-take-label">Sort names by</span>
+                            ${seg('portal', 'Portal order')}${seg('name', 'Name')}${seg('id', 'ID')}
+                        </div>
+                        <div><span class="gius-take-label">Weeks: click a session to mark it (the number is its order)</span>
+                            <div class="gius-semester-pick"></div>
+                        </div>
+                        <div class="gius-semester-note" data-note role="alert"></div>`,
+                    actions: [{ label: 'Cancel', value: 'cancel' }, { label: 'Print / Save as PDF', value: 'print', primary: true }],
+                    async onAction(act, dlg) {
+                        if (act !== 'print') return true;
+                        const el = dlg.el;
+                        const note = el.querySelector('[data-note]');
+                        chosen.sort = el.querySelector('input[name="gius-semester-sort"]:checked')?.value || 'portal';
+                        try { localStorage.setItem(SHEET_KEY, JSON.stringify({ ...sheetOptions(), sort: chosen.sort })); } catch { /* ignore */ }
+                        const btn = dlg.button('print');
+                        btn.disabled = true;
+                        btn.textContent = 'Reading attendance…';
+                        note.textContent = '';
+                        try {
+                            chosen.weeks = await semesterWeeks(items, marked, freeWeeks(), cur);
+                        } catch (e) {
+                            note.textContent = `${e.message} Nothing was printed: check your connection and try again.`;
+                            btn.disabled = false;
+                            btn.textContent = 'Retry';
+                            return false;
+                        }
+                        return true;
+                    },
+                });
+                const pick = activeDialog.body.querySelector('.gius-semester-pick');
+                const render = () => { pick.innerHTML = pickHtml(); };
+                pick.addEventListener('click', e => {
+                    const item = e.target.closest('[data-item]');
+                    const week = e.target.closest('[data-week]');
+                    const tool = e.target.closest('[data-pick]')?.dataset.pick;
+                    if (item) {
+                        const i = +item.dataset.item;
+                        marked = marked.includes(i) ? marked.filter(x => x !== i) : marked.concat(i);
+                    } else if (week) {
+                        const w = +week.dataset.week;
+                        if (excluded.has(w)) excluded.delete(w); else excluded.add(w);
+                    } else if (tool === 'all') {
+                        marked = items.map((_, i) => i);
+                    } else if (tool === 'clear') {
+                        marked = [];
+                    } else {
+                        return;
+                    }
+                    render();
+                });
+                render();
+                activeDialog.result.then(act => {
+                    if (act === 'print') printSheet({ template: true, semester: true, sort: chosen.sort, weeks: chosen.weeks }, cur ? [cur] : [], people);
+                });
+            }
+
+            // Starter page (no group picked): a semester sheet for any group on the list, with
+            // its students and name on it and no attendance marks, and as many week columns as
+            // asked (1 … SEMESTER_WEEKS_MAX; 24 fits a tutorial's 12 weeks then a lab's 12).
+            function openTailoredSemesterDialog() {
+                closeModal();
+                const groups = groupOptions();
+                let group = null;
+                let weeks = SEMESTER_WEEKS;
+                const sort = sheetOptions().sort;
+                const seg = (value, text) =>
+                    `<label class="gius-take-radio"><input type="radio" name="gius-semester-sort" value="${value}"${sort === value ? ' checked' : ''}> ${text}</label>`;
+                const PRESETS = [[8, '8'], [12, '12'], [16, '16'], [24, '24 · tutorial + lab']];
+                const chosen = { people: [] };
+                activeDialog = S.openDialog({
+                    id: 'gius-take-overlay',
+                    title: 'Print semester sheet',
+                    html: `
+                        <p class="gius-dialog-text">A sheet for one group: its students and name filled in, the week columns left empty.</p>
+                        <div><span class="gius-take-label">Group</span>
+                            <div class="gius-semester-pick">
+                                <input type="search" class="gius-take-input gius-semester-filter" placeholder="Course or group" aria-label="Filter groups">
+                                <div class="gius-semester-list gius-semester-groups"></div>
+                            </div>
+                        </div>
+                        <div><span class="gius-take-label">Week columns (1–${SEMESTER_WEEKS_MAX})</span>
+                            <div class="gius-take-chips gius-semester-presets">
+                                ${PRESETS.map(([n, text]) => `<button type="button" class="gius-take-chip" data-weeks="${n}">${text}</button>`).join('')}
+                                <input type="number" class="gius-take-input gius-take-num gius-semester-count" min="1" max="${SEMESTER_WEEKS_MAX}" value="${weeks}" aria-label="Number of week columns">
+                            </div>
+                            <span class="gius-semester-target">More than ${SEMESTER_WEEKS}: the Name column narrows. Fewer: the week columns widen.</span>
+                        </div>
+                        <div><span class="gius-take-label">Sort names by</span>
+                            ${seg('portal', 'Portal order')}${seg('name', 'Name')}${seg('id', 'ID')}
+                        </div>
+                        <div class="gius-semester-note" data-note></div>`,
+                    actions: [{ label: 'Cancel', value: 'cancel' }, { label: 'Print / Save as PDF', value: 'print', primary: true }],
+                    async onAction(act, dlg) {
+                        if (act !== 'print') return true;
+                        const note = dlg.el.querySelector('[data-note]');
+                        if (!group) { note.textContent = 'Choose a group first.'; return false; }
+                        chosen.sort = dlg.el.querySelector('input[name="gius-semester-sort"]:checked')?.value || 'portal';
+                        try { localStorage.setItem(SHEET_KEY, JSON.stringify({ ...sheetOptions(), sort: chosen.sort })); } catch { /* ignore */ }
+                        const btn = dlg.button('print');
+                        const old = btn.textContent;
+                        btn.disabled = true;
+                        btn.textContent = 'Loading students…';
+                        note.textContent = '';
+                        chosen.people = await fetchRoster(group.text);
+                        btn.disabled = false;
+                        btn.textContent = old;
+                        if (!chosen.people.length) {
+                            note.textContent = 'Could not load the students of this group. Try again, or pick another group.';
+                            return false;
+                        }
+                        return true;
+                    },
+                });
+
+                const el = activeDialog.el;
+                const list = el.querySelector('.gius-semester-groups');
+                const filter = el.querySelector('.gius-semester-filter');
+                const count = el.querySelector('.gius-semester-count');
+                const renderGroups = () => {
+                    const q = filter.value.trim().toLowerCase();
+                    let last = null;
+                    const html = [];
+                    for (const g of groups) {
+                        if (q && !g.text.toLowerCase().includes(q)) continue;
+                        if (g.course !== last) {
+                            last = g.course;
+                            html.push(`<span class="gius-take-label">${S.escapeHtml(g.course || 'Other')}</span>`);
+                        }
+                        html.push(`<button type="button" class="gius-semester-item${group && group.value === g.value ? ' sel' : ''}" data-group="${S.escapeHtml(g.value)}">
+                            <span class="gius-semester-day">${S.escapeHtml(g.name)}</span>
+                            <span class="gius-semester-target">${S.escapeHtml(g.type)}</span>
+                        </button>`);
+                    }
+                    list.innerHTML = html.join('') || `<span class="gius-take-session-text">${groups.length ? 'No groups match.' : 'No groups on this page.'}</span>`;
+                };
+                const setWeeks = n => {
+                    weeks = Math.min(SEMESTER_WEEKS_MAX, Math.max(1, Math.round(n) || SEMESTER_WEEKS));
+                    count.value = weeks;
+                    el.querySelectorAll('[data-weeks]').forEach(b => b.classList.toggle('gius-take-chip-on', +b.dataset.weeks === weeks));
+                };
+                filter.addEventListener('input', renderGroups);
+                list.addEventListener('click', e => {
+                    const item = e.target.closest('[data-group]');
+                    if (!item) return;
+                    group = groups.find(g => g.value === item.dataset.group) || null;
+                    renderGroups();
+                });
+                el.querySelector('.gius-semester-presets').addEventListener('click', e => {
+                    const chip = e.target.closest('[data-weeks]');
+                    if (chip) setWeeks(+chip.dataset.weeks);
+                });
+                count.addEventListener('change', () => setWeeks(+count.value));
+                renderGroups();
+                setWeeks(weeks);
+                activeDialog.result.then(act => {
+                    if (act !== 'print' || !group) return;
+                    printSheet({ template: true, semester: true, sort: chosen.sort, weekCount: weeks, groupText: group.text, weeks: null }, [], chosen.people);
+                });
+            }
+
+            // The group's visible sessions, one item per date: two slots on one date are one week.
+            function semesterItems(cur) {
+                const byDate = new Map();
+                for (const s of groupSessions(cur)) {
+                    const key = s.date.getTime();
+                    const item = byDate.get(key) || { date: s.date, sessions: [] };
+                    item.sessions.push(s);
+                    byDate.set(key, item);
+                }
+                return Array.from(byDate.values()).sort((a, b) => a.date - b.date);
+            }
+
+            // Each marked item fills the next free week, in mark order. Only the marked
+            // sessions are read; a marked item with nothing ticked leaves its week blank.
+            async function semesterWeeks(items, marked, free, cur) {
+                const weeks = Array.from({ length: SEMESTER_WEEKS }, () => null);
+                for (let n = 0; n < Math.min(marked.length, free.length); n++) {
+                    weeks[free[n] - 1] = await readWeekAttendance(items[marked[n]], cur);
+                }
+                return weeks;
+            }
+
+            // One week's attendance: a student is attended if any of the item's slots was
+            // ticked. Null when nothing was ticked. A slot that could not be read throws:
+            // skipping it would print ✗ for students who attended only that slot.
+            async function readWeekAttendance(item, cur) {
+                let merged = null;
+                for (const s of item.sessions) {
+                    let tbl = table && cur && s.value === cur.value ? table : null;
+                    if (!tbl) {
+                        const doc = await fetchSessionDoc(s.value);
+                        if (!doc) throw new Error(`Could not read ${dayText(item.date)}${s.slot ? ` (Slot ${s.slot})` : ''}.`);
+                        tbl = doc.getElementById('MainContent_DG_StudentAttendance');
+                    }
+                    const people = tbl ? rosterFrom(tbl) : [];
+                    if (!people.some(p => p.attended)) continue;
+                    merged = merged || new Map();
+                    for (const p of people) if (p.id) merged.set(p.id, merged.get(p.id) || p.attended);
+                }
+                return merged;
             }
 
             // The campus logo from the portal's own header: each portal serves its
@@ -16030,7 +16635,8 @@ function renderAttendancePlanner(S, api, host) {
             // Attendance already entered for the sessions on the sheet: this page's own
             // session as the portal saved it, and on Berlin the other slots too (read
             // in the background like Copy Slot; not yet on Cairo). Unentered sessions
-            // (nobody ticked) are left out, so their sheets stay blank.
+            // (nobody ticked) are left out, so their sheets stay blank. A session that could
+            // not be read throws, rather than printing a blank sheet as if unentered.
             async function sessionMarks(picked) {
                 const ddl = document.getElementById('MainContent_DDL_Sessions');
                 const marks = {};
@@ -16039,7 +16645,8 @@ function renderAttendancePlanner(S, api, host) {
                     if (table && ddl && s.value === ddl.value) tbl = table;
                     else if (/ManageStudentAttendancesBerlin\.aspx/i.test(location.pathname)) {
                         const doc = await fetchSessionDoc(s.value);
-                        tbl = doc && doc.getElementById('MainContent_DG_StudentAttendance');
+                        if (!doc) throw new Error(`Could not read ${s.slot ? `Slot ${s.slot}` : 'the session'}.`);
+                        tbl = doc.getElementById('MainContent_DG_StudentAttendance');
                     }
                     if (!tbl) continue;
                     const people = rosterFrom(tbl);
@@ -16087,7 +16694,8 @@ function renderAttendancePlanner(S, api, host) {
                             <label class="gius-take-radio"><input type="checkbox" data-opt="date"${o.date ? ' checked' : ''}> Date</label>
                             <label class="gius-take-radio"><input type="checkbox" data-opt="ref"${o.ref ? ' checked' : ''}> Session Ref. ID</label>
                             <label class="gius-take-radio"><input type="checkbox" data-opt="marks"${o.marks ? ' checked' : ''}> Attendance already entered (✓ for each attended student)</label>
-                        </div>`,
+                        </div>
+                        <div class="gius-semester-note" data-note role="alert"></div>`,
                     actions: [{ label: 'Cancel', value: 'cancel' }, { label: 'Print / Save as PDF', value: 'print', primary: true }],
                     async onAction(act, dlg) {
                         if (act !== 'print') return true;
@@ -16102,10 +16710,19 @@ function renderAttendancePlanner(S, api, host) {
                         const chosen = Array.from(el.querySelectorAll('[data-slot]')).filter(b => b.checked).map(b => slots[+b.dataset.slot]);
                         picked = chosen.length ? chosen : slots.slice(0, 1);
                         if (next.marks) {
+                            const note = el.querySelector('[data-note]');
                             const btn = dlg.button('print');
                             btn.disabled = true;
                             btn.textContent = 'Reading attendance…';
-                            marks = await sessionMarks(picked);
+                            note.textContent = '';
+                            try {
+                                marks = await sessionMarks(picked);
+                            } catch (e) {
+                                note.textContent = `${e.message} Nothing was printed: check your connection and try again, or untick "Attendance already entered".`;
+                                btn.disabled = false;
+                                btn.textContent = 'Retry';
+                                return false;
+                            }
                         }
                         return true;
                     },
@@ -16247,6 +16864,7 @@ function renderAttendancePlanner(S, api, host) {
                     if (act === 'invert') setAll(r => !r.cb.checked);
                     if (act === 'sheet')  openSheetDialog(rosterFrom(table));
                     if (act === 'blank-sheet') printBlankSheet(e.target.closest('[data-act]'), rosterFrom(table));
+                    if (act === 'semester-sheet') printSemesterSheet(e.target.closest('[data-act]'), rosterFrom(table));
                     const copy = e.target.closest('[data-copy-slot]');
                     if (copy && !copy.disabled) copyFromSlot(copy.dataset.copySlot, copy);
                 });

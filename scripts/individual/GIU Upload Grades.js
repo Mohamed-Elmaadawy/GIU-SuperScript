@@ -3,7 +3,7 @@
 // @description Upload/download grades per group + batch all groups via fetch chain.
 // @match       https://portal.giu-uni.de/*
 // @namespace   Cyn0
-// @version     5.0
+// @version     5.0.1
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Upload%20Grades.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Upload%20Grades.js
 // @author      Ahmed Sherif, Mo.Elmaadawy
@@ -315,6 +315,17 @@ function uploadGrades(S) {
                         flex-wrap: wrap;
                         gap: 8px;
                     }
+                    .giug-group-pick {
+                        display: flex;
+                        align-items: center;
+                        flex-wrap: wrap;
+                        gap: 6px 16px;
+                        margin-top: 10px;
+                        font-size: 13px;
+                    }
+                    .giug-group-pick-title { font-weight: 600; }
+                    .giug-group-pick label { display: inline-flex; align-items: center; gap: 6px; margin: 0; font-weight: 400; cursor: pointer; }
+                    .giug-group-pick input { margin: 0; }
                     .giug-select {
                         height: 32px;
                         padding: 4px 8px;
@@ -682,7 +693,10 @@ function uploadGrades(S) {
                 if (field !== '' || row.length) { row.push(field); rows.push(row); }
 
                 const headerLen = rows.length ? rows[0].length : 0;
+                // A "Group" column (Batch Download writes one) ties each grade to its group.
+                const groupCol = rows.length ? rows[0].findIndex(h => /^\s*group\s*$/i.test(h)) : -1;
                 const map = {};
+                const entries = [];
                 const skipped = [];
                 rows.forEach(cols => {
                     const label = (cols[0] || '').trim();
@@ -696,8 +710,43 @@ function uploadGrades(S) {
                     raw = raw.replace(/^(-?\d+),(\d+)$/, '$1.$2');
                     if (raw === '' || !Number.isFinite(+raw)) { skipped.push(label); return; }
                     map[m[1]] = raw;
+                    entries.push({ id: m[1], grade: raw, group: groupCol > 0 ? (cols[groupCol] || '').trim() : '' });
                 });
-                return { map, skipped };
+                return { map, entries, skipped };
+            }
+
+            // Which grade a student gets in a group. Once a row's Group names one of the page's groups
+            // (its full label, or its end: "L001" for "ICS 509 5SE L001"), the column counts: a row
+            // with a Group only fills that group, and a student listed with groups is left alone in
+            // the others. Rows with an empty Group fill every group the student is in. When no Group
+            // in the file matches any of the page's groups, the column is ignored (byGroup false).
+            function gradePlan(parsed, groupLabels) {
+                const norm = v => String(v ?? '').toLowerCase().replace(/\s+/g, ' ').trim();
+                const matches = (csvGroup, label) => {
+                    const g = norm(csvGroup), l = norm(label);
+                    return !!g && (l === g || l.endsWith(' ' + g));
+                };
+                const known = e => e.group && groupLabels.some(l => matches(e.group, l));
+                const byGroup = parsed.entries.some(known);
+                const grouped = {};
+                const loose = {};
+                parsed.entries.forEach(e => {
+                    if (byGroup && e.group) (grouped[e.id] = grouped[e.id] || []).push(e);
+                    else loose[e.id] = e.grade;
+                });
+                return {
+                    byGroup,
+                    // undefined: leave this student's grade as it is.
+                    gradeFor(id, label) {
+                        if (grouped[id]) {
+                            const hit = grouped[id].filter(e => matches(e.group, label)).pop();
+                            return hit ? hit.grade : undefined;
+                        }
+                        return loose[id];
+                    },
+                    // The grade comes from a row without a group, so it goes to every group.
+                    loose: id => !grouped[id] && loose[id] !== undefined,
+                };
             }
 
             function parseCSV(file) {
@@ -786,33 +835,37 @@ function uploadGrades(S) {
         
             // ── Batch upload (State A) ───────────────────────────────────────────────
         
-            async function batchUpload(evalId, csvMap, toolbar, evalPicker) {
-                const { groups, hidden, season, course } = readPageState();
-        
-                if (!groups.length) { showError(toolbar, 'No groups found.'); return; }
-        
+            async function batchUpload(evalId, parsed, toolbar, evalPicker, pickedGroups) {
+                const { groups: allGroups, hidden, season, course } = readPageState();
+                const groups = allGroups.filter(g => pickedGroups.includes(g.value));
+
+                if (!allGroups.length) { showError(toolbar, 'No groups found.'); return; }
+                if (!groups.length) { showError(toolbar, 'Tick at least one group to upload to.'); return; }
+
                 const maxGrade = getMaxGrade(evalPicker);
-                const validationErrors = validateCsvMap(csvMap, maxGrade);
+                const validationErrors = validateCsvMap(parsed.map, maxGrade);
                 if (validationErrors.length) {
                     showError(toolbar, `${validationErrors.length} grade(s) failed validation: ${validationErrors.slice(0, 5).join('; ')}${validationErrors.length > 5 ? ` … and ${validationErrors.length - 5} more` : ''}`);
                     return;
                 }
-        
+                const plan = gradePlan(parsed, allGroups.map(g => g.label));
+
                 const groupStats = [];
                 let saved  = 0;
                 let errors = 0;
-        
+
+                // Step 1: read every ticked group's grade sheet; nothing is saved yet.
+                const sheets = [];
                 for (let i = 0; i < groups.length; i++) {
                     const group = groups[i];
-                    showInfo(toolbar, `Uploading group ${i + 1} of ${groups.length}: ${group.label}…`);
-        
+                    showInfo(toolbar, `Reading group ${i + 1} of ${groups.length}: ${group.label}…`);
                     try {
                         const doc1 = await doPostBack(hidden, 'ctl00$MainContent$grpLst', {
                             'ctl00$MainContent$dlSeason': season,
                             'ctl00$MainContent$smCrsLst': course,
                             'ctl00$MainContent$grpLst':   group.value,
                         });
-        
+
                         const doc1Hidden = extractFormFields(doc1);
                         const doc2 = await doPostBack(doc1Hidden, 'ctl00$MainContent$evalMethIdLst', {
                             'ctl00$MainContent$dlSeason':       season,
@@ -820,13 +873,49 @@ function uploadGrades(S) {
                             'ctl00$MainContent$grpLst':         group.value,
                             'ctl00$MainContent$evalMethIdLst':  evalId,
                         });
-        
+
                         const rows = getRows(doc2);
                         if (!rows.length) throw new Error('no student rows found');
-        
                         const saveBtnEl = doc2.querySelector(SEL.saveBtn);
                         if (!saveBtnEl) throw new Error('save button not found in fetched page');
-        
+                        sheets.push({ group, doc2, rows, saveName: saveBtnEl.name });
+                    } catch (err) {
+                        if (err.message === 'SESSION_EXPIRED') {
+                            showError(toolbar, `Your session expired at group ${i + 1} of ${groups.length}: ${saved} group(s) were saved, the rest were not touched. Sign in again and retry.`);
+                            return;
+                        }
+                        errors++;
+                        groupStats.push({ label: group.label, stats: null });
+                        showError(toolbar, `Group "${group.label}": ${err.message}`);
+                    }
+                }
+
+                // A student in two ticked groups whose grade has no group would get it in both.
+                const seen = {};
+                sheets.forEach(sh => sh.rows.forEach(row => {
+                    const id = extractId(row.cells[0]?.querySelector('span')?.textContent ?? '');
+                    if (id && plan.loose(id)) (seen[id] = seen[id] || []).push(sh.group.label);
+                }));
+                const twice = Object.keys(seen).filter(id => seen[id].length > 1);
+                if (twice.length) {
+                    const names = [...new Set(twice.flatMap(id => seen[id]))];
+                    const answer = await S.openDialog({
+                        id: 'giug-twice',
+                        title: 'Students in more than one group',
+                        html: `<p class="gius-dialog-text">${twice.length} student(s) are in more than one of the ticked groups (${S.escapeHtml(names.join(', '))}). Their grade would be saved in each of them.\n\nUntick the groups this grade isn't for, or add a Group column to the CSV (Batch Download writes one).</p>`,
+                        actions: [{ label: 'Cancel', value: 'cancel' }, { label: 'Save in every group', value: 'all', primary: true }],
+                    }).result;
+                    if (answer !== 'all') {
+                        showInfo(toolbar, 'Upload cancelled: nothing was saved.', false);
+                        return;
+                    }
+                }
+
+                // Step 2: save each group.
+                for (let i = 0; i < sheets.length; i++) {
+                    const { group, doc2, rows, saveName } = sheets[i];
+                    showInfo(toolbar, `Uploading group ${i + 1} of ${sheets.length}: ${group.label}…`);
+                    try {
                         const doc2Hidden     = extractFormFields(doc2);
                         const gradeOverrides = {};
                         rows.forEach(row => {
@@ -834,34 +923,33 @@ function uploadGrades(S) {
                             const gradeEl = row.cells[2]?.querySelector('input');
                             if (!gradeEl?.name) return;
                             const id = extractId(nameEl?.textContent ?? '');
-                            gradeOverrides[gradeEl.name] = (id && csvMap[id] !== undefined)
-                                ? csvMap[id]
-                                : gradeEl.value;
+                            const grade = id ? plan.gradeFor(id, group.label) : undefined;
+                            gradeOverrides[gradeEl.name] = grade !== undefined ? grade : gradeEl.value;
                         });
-        
-                        const savedDoc = await doPostBack(doc2Hidden, saveBtnEl.name, gradeOverrides);
+
+                        const savedDoc = await doPostBack(doc2Hidden, saveName, gradeOverrides);
                         // The portal re-shows the grade grid after a save; anything else
                         // (an error page) means this group's grades may not be saved.
                         if (!getRows(savedDoc).length) throw new Error('the portal did not confirm the save — check this group');
-        
+
                         groupStats.push({ label: group.label, stats: computeStats(Object.values(gradeOverrides), maxGrade) });
                         saved++;
-                        } catch (err) {
-                            if (err.message === 'SESSION_EXPIRED') {
-                                showError(toolbar, `Your session expired at group ${i + 1} of ${groups.length}: ${saved} group(s) were saved, the rest were not touched. Sign in again and retry.`);
-                                renderBatchStats(toolbar, groupStats);
-                                return;
-                            }
-                            errors++;
-                            groupStats.push({ label: group.label, stats: null });
-                            showError(toolbar, `Group "${group.label}": ${err.message}`);
+                    } catch (err) {
+                        if (err.message === 'SESSION_EXPIRED') {
+                            showError(toolbar, `Your session expired at group ${i + 1} of ${sheets.length}: ${saved} group(s) were saved, the rest were not touched. Sign in again and retry.`);
+                            renderBatchStats(toolbar, groupStats);
+                            return;
                         }
+                        errors++;
+                        groupStats.push({ label: group.label, stats: null });
+                        showError(toolbar, `Group "${group.label}": ${err.message}`);
                     }
+                }
 
-                    showInfo(toolbar, `Done — ${saved} group(s) saved${errors ? `, ${errors} failed` : ''}.`, false);
+                showInfo(toolbar, `Done — ${saved} group(s) saved${errors ? `, ${errors} failed` : ''}.`, false);
                 renderBatchStats(toolbar, groupStats);
             }
-        
+
             // ── State A toolbar: intercept eval dropdown + batch buttons ─────────────
         
             function injectBatchToolbar() {
@@ -906,7 +994,29 @@ function uploadGrades(S) {
                 const batchDlBtn = makeBtn('Batch Download', 'primary', true);
                 const batchUpBtn = makeBtn('Batch Upload', 'success', true);
         
-                let csvMap = null;
+                let parsedCsv = null;
+
+                // The groups Batch Upload writes to (all ticked to start with).
+                const groupPick = document.createElement('div');
+                groupPick.className = 'giug-group-pick';
+                const groupEl = document.querySelector(SEL.group);
+                const groupOptions = groupEl ? Array.from(groupEl.options).filter(o => o.value) : [];
+                if (groupOptions.length) {
+                    const title = document.createElement('span');
+                    title.className = 'giug-group-pick-title';
+                    title.textContent = 'Upload to:';
+                    groupPick.appendChild(title);
+                    groupOptions.forEach(o => {
+                        const label = document.createElement('label');
+                        const box = document.createElement('input');
+                        box.type = 'checkbox';
+                        box.checked = true;
+                        box.value = o.value;
+                        label.append(box, ' ' + o.text.trim());
+                        groupPick.appendChild(label);
+                    });
+                }
+                const pickedGroups = () => Array.from(groupPick.querySelectorAll('input:checked')).map(b => b.value);
         
                 const getEvalId    = () => evalPicker.value;
                 const getEvalLabel = () => evalPicker.options[evalPicker.selectedIndex]?.text ?? evalPicker.value;
@@ -914,7 +1024,7 @@ function uploadGrades(S) {
                 evalPicker.onchange = () => {
                     const valid = isValidId(evalPicker.value);
                     batchDlBtn.disabled = !valid;
-                    batchUpBtn.disabled = !(valid && csvMap);
+                    batchUpBtn.disabled = !(valid && parsedCsv);
                 };
         
                 loadCsvBtn.onclick = () => fileInput.click();
@@ -924,8 +1034,13 @@ function uploadGrades(S) {
                     if (!file) return;
                     fileInput.value = ''; // the same file can be picked again after editing it
                     const parsed = await parseCSV(file);
-                    csvMap = parsed.map;
-                    showInfo(card, `CSV loaded — ${Object.keys(csvMap).length} student grade(s) ready.${skippedNote(parsed.skipped)}`, false);
+                    parsedCsv = parsed;
+                    const csvMap = parsed.map;
+                    const plan = gradePlan(parsed, groupOptions.map(o => o.text.trim()));
+                    const groupNote = parsed.entries.some(e => e.group)
+                        ? (plan.byGroup ? ' Each grade goes to the group in its Group column.' : " The Group column names none of this course's groups, so it is ignored.")
+                        : '';
+                    showInfo(card, `CSV loaded — ${Object.keys(csvMap).length} student grade(s) ready.${groupNote}${skippedNote(parsed.skipped)}`, false);
                     batchUpBtn.disabled = !isValidId(evalPicker.value);
                     const maxGrade = getMaxGrade(evalPicker);
                     const previewStats = computeStats(Object.values(csvMap), maxGrade);
@@ -940,9 +1055,9 @@ function uploadGrades(S) {
                 };
         
                 batchUpBtn.onclick = async () => {
-                    if (!csvMap || !isValidId(getEvalId())) return;
+                    if (!parsedCsv || !isValidId(getEvalId())) return;
                     batchUpBtn.disabled = true;
-                    await batchUpload(getEvalId(), csvMap, card, evalPicker);
+                    await batchUpload(getEvalId(), parsedCsv, card, evalPicker, pickedGroups());
                     batchUpBtn.disabled = false;
                 };
         
@@ -958,6 +1073,7 @@ function uploadGrades(S) {
         
                 const btnRow = card.querySelector('#giug-btn-row');
                 btnRow.append(evalPicker, loadCsvBtn, fileInput, batchDlBtn, batchUpBtn);
+                if (groupOptions.length) btnRow.after(groupPick);
         
                 const anchor = pageEvalEl?.closest('tr') ?? pageEvalEl?.closest('div') ?? document.querySelector(SEL.group);
                 anchor?.insertAdjacentElement('afterend', card);
@@ -990,12 +1106,14 @@ function uploadGrades(S) {
                     if (!file) return;
                     fileInput.value = ''; // the same file can be picked again after editing it
                     const parsed = await parseCSV(file);
-                    const csvMap = parsed.map;
+                    const thisGroup = (document.querySelector(SEL.crntLbl)?.textContent ?? '').split(' - ')[0].trim();
+                    const plan = gradePlan(parsed, [thisGroup]);
                     if (parsed.skipped.length) showInfo(card, `Grades applied.${skippedNote(parsed.skipped)}`, false);
                     getRows().forEach(row => {
                         const id      = extractId(row.cells[0]?.querySelector('span')?.textContent ?? '');
                         const gradeEl = row.cells[2]?.querySelector('input');
-                        if (id && gradeEl && id in csvMap) gradeEl.value = csvMap[id];
+                        const grade   = id ? plan.gradeFor(id, thisGroup) : undefined;
+                        if (gradeEl && grade !== undefined) gradeEl.value = grade;
                     });
                     const grades = getRows().map(row => row.cells[2]?.querySelector('input')?.value ?? '');
                     const crntText = document.querySelector(SEL.crntLbl)?.textContent ?? '';
