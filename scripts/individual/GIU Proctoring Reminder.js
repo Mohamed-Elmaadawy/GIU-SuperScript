@@ -3,7 +3,7 @@
 // @description Shows your next proctoring session on the portal home page and exports reminders to calendar/email
 // @match       https://portal.giu-uni.de/GIUb/INTStaff/Home.aspx
 // @namespace   Cyn0
-// @version     5.0.1
+// @version     5.0.2
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Proctoring%20Reminder.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Proctoring%20Reminder.js
 // @author      Mo.Elmaadawy
@@ -242,6 +242,7 @@ function proctorReminder(S) {
             const TTL_MS = 6 * 60 * 60 * 1000; // 6h
             const FETCH_TIMEOUT_MS = 15000;
             const HOME_BOOT_DELAY_MS = 800;
+            const GCAL_IMPORT_URL = 'https://calendar.google.com/calendar/r/settings/export';
 
             let allExpanded = false; // "Remaining exams" open state, persisted across re-renders
             let lastRendered = null; // last session list rendered (for re-render after toggle)
@@ -497,6 +498,14 @@ function proctorReminder(S) {
                 // "Download all" → every upcoming session in one file.
                 const allBtn = host.querySelector('#gius-pr-ics-all');
                 if (allBtn) allBtn.addEventListener('click', () => downloadICS(sessions, 'proctoring-all.ics'));
+
+                // A Google Calendar link holds one event only, so "all" = save the .ics and open
+                // Google Calendar's Import page (tab opened first, inside the click, so it is not blocked).
+                const gcalAllBtn = host.querySelector('#gius-pr-gcal-all');
+                if (gcalAllBtn) gcalAllBtn.addEventListener('click', () => {
+                    window.open(GCAL_IMPORT_URL, '_blank', 'noopener');
+                    downloadICS(sessions, 'proctoring-all.ics');
+                });
             }
 
             async function fetchTimetable() {
@@ -577,6 +586,25 @@ function proctorReminder(S) {
                 return `in ${d} days`;
             }
 
+            const REFRESH_BTN = '<button type="button" class="gius-pr-refresh gius-btn" title="Refresh schedule (cached up to 6 hours)">⟳</button>';
+            const TIP_TEXT = 'Shows your upcoming proctoring duties from the timetable. Export any duty as .ics, Google Calendar, or an email reminder. Cached for 6 hours; hit ⟳ after a schedule change.';
+
+            // ⟳ forces a timetable read past the 6h cache; on failure the current render stays.
+            function wireRefresh(host) {
+                const btn = host.querySelector('.gius-pr-refresh');
+                if (!btn) return;
+                btn.addEventListener('click', async () => {
+                    btn.disabled = true;
+                    try {
+                        const sessions = await fetchTimetable();
+                        saveCache(sessions);
+                        render(sessions);
+                    } catch {
+                        btn.disabled = false;
+                    }
+                });
+            }
+
             function render(sessions, opts = {}) {
                 lastRendered = sessions;
                 const now = new Date();
@@ -587,7 +615,7 @@ function proctorReminder(S) {
                 const host = ensureHost();
 
                 if (!next) {
-                    host.innerHTML = `<div class="gius-pr-head">Proctoring</div>
+                    host.innerHTML = `<div class="gius-pr-head">Proctoring ${REFRESH_BTN}</div>
                         <div class="gius-pr-empty-state">
                             <svg class="gius-pr-empty-icon" viewBox="0 0 24 24" width="44" height="44" fill="none"
                                 stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -598,8 +626,8 @@ function proctorReminder(S) {
                             <div class="gius-pr-empty-title">You're all caught up</div>
                             <div class="gius-pr-empty-sub">No proctoring scheduled${opts.stale ? ' · offline cache' : ''}.</div>
                         </div>`;
-                    Tips.show({ id: 'proctorReminder', el: host, title: 'Next Proctoring',
-                        text: 'Shows your upcoming proctoring duties from the timetable. Export any duty as .ics, Google Calendar, or an email reminder.' });
+                    wireRefresh(host);
+                    Tips.show({ id: 'proctorReminder', el: host, title: 'Next Proctoring', text: TIP_TEXT });
                     return;
                 }
 
@@ -625,7 +653,8 @@ function proctorReminder(S) {
                     <div id="gius-pr-next" class="gius-pr-next">
                         <div class="gius-pr-next-head">${fmtDateOnly(next.start)} · <b>${whenLabel(next, now)}</b>${nextDay.length > 1 ? ` · ${nextDay.length} duties` : ''}</div>
                         ${nextDay.map(nextCard).join('')}
-                        ${upcoming.length > 1 ? `<button type="button" id="gius-pr-ics-all" class="gius-pr-act gius-btn gius-pr-act-all gs-btn gs-btn--sm" title="Download all upcoming as .ics">Download all</button>` : ''}
+                        ${upcoming.length > 1 ? `<button type="button" id="gius-pr-ics-all" class="gius-pr-act gius-btn gius-pr-act-all gs-btn gs-btn--sm" title="Download all upcoming as .ics">Download all</button>
+                            <button type="button" id="gius-pr-gcal-all" class="gius-pr-act gius-btn gius-pr-act-all gs-btn gs-btn--sm" title="Saves proctoring-all.ics and opens Google Calendar's Import page: choose the file there">Add all to Google Calendar</button>` : ''}
                     </div>`;
 
                 // Exams left after the next session's day (the next block already shows that day).
@@ -648,8 +677,9 @@ function proctorReminder(S) {
                         </div>
                     </div>` : '';
 
-                host.innerHTML = `<div class="gius-pr-head">Next Proctoring${opts.stale ? ' · <span class="gius-pr-stale">offline cache</span>' : ''}</div>
+                host.innerHTML = `<div class="gius-pr-head">Next Proctoring${opts.stale ? ' · <span class="gius-pr-stale">offline cache</span>' : ''} ${REFRESH_BTN}</div>
                     ${nextHtml}${listHtml}`;
+                wireRefresh(host);
 
                 const toggleBtn = host.querySelector('#gius-pr-toggle-all');
                 if (toggleBtn) {
@@ -664,8 +694,7 @@ function proctorReminder(S) {
 
                 host._sessions = upcoming;
                 wireExports(host);
-                Tips.show({ id: 'proctorReminder', el: host, title: 'Next Proctoring',
-                    text: 'Shows your upcoming proctoring duties from the timetable. Export any duty as .ics, Google Calendar, or an email reminder.' });
+                Tips.show({ id: 'proctorReminder', el: host, title: 'Next Proctoring', text: TIP_TEXT });
             }
 
             function injectStyles() {
@@ -677,6 +706,10 @@ function proctorReminder(S) {
                         background:#ffffff;color:#1e1e2e;box-shadow:0 2px 10px rgba(0,0,0,.12);}
                     .gius-pr-widget *{box-sizing:border-box;}
                     .gius-pr-head{font-weight:700;font-size:16px;margin-bottom:12px;}
+                    .gius-pr-refresh{float:right;border:none;background:transparent;cursor:pointer;
+                        font-size:15px;line-height:1;color:inherit;opacity:.55;padding:2px 4px;}
+                    .gius-pr-refresh:hover{opacity:1;}
+                    .gius-pr-refresh:disabled{opacity:.3;cursor:wait;}
                     .gius-pr-stale{color:#b8860b;font-weight:600;font-size:12px;}
                     .gius-pr-next{background:#f8f9fa;border:1px solid #e9ecef;border-left:4px solid #ffc107;
                         border-radius:12px;padding:14px;margin-bottom:14px;}

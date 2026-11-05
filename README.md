@@ -40,7 +40,7 @@ Each SuperScript has a **Control Center** card on the portal Home page where you
 | Berlin Session Form Filler | Berlin (Microsoft Form) | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Berlin%20Session%20Form%20Filler.user.js) |
 | CMS Download All | Cairo + Berlin (CMS) | [install](https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20CMS%20Download%20All.user.js) |
 
-All scripts share one version number. Current release: **5.0.1**.
+All scripts share one version number. Current release: **5.0.2**.
 
 </details>
 
