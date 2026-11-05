@@ -3,7 +3,7 @@
 // @description Aggregates all proctor exam assignments across departments into a live dashboard
 // @match       https://portal.giu-uni.de/GIUb/INTStaff/ProctorExchange_m.aspx
 // @namespace   Cyn0
-// @version     5.0.2
+// @version     5.0.3
 // @updateURL    https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Proctor%20Schedule%20Aggregator.js
 // @downloadURL  https://raw.githubusercontent.com/Mohamed-Elmaadawy/GIU-SuperScript/master/scripts/individual/GIU%20Proctor%20Schedule%20Aggregator.js
 // @author      Mo.Elmaadawy
@@ -525,12 +525,11 @@ function proctorAggregator(S) {
                 }).find(x => x && x.slotKey === row.slotKey && x.hall === row.hall);
                 if (!examEntry || !examEntry.a) throw new Error("This exam is no longer on the proctor's schedule. Refresh the data.");
         
-                // Freshness check: someone may have already covered it since the last scrape
-                if (examEntry.cover) {
-                    // Reflect the fresh cover in our data so the table updates
-                    markRowCovered(row, examEntry.cover);
-                    throw new Error(`Already taken by ${examEntry.cover}.`);
-                }
+                // Covered exam (e.g. a colleague took it by mistake and the original proctor wants
+                // it back): the portal lists it only on the original proctor's schedule, so arm it
+                // there like any exchange and let the portal decide. Arming changes nothing.
+                const coveredBy = examEntry.cover || '';
+                if (coveredBy) markRowCovered(row, coveredBy); // reflect the fresh cover so the table updates
                 const examTarget = ((examEntry.a.getAttribute('href') || '').match(/__doPostBack\('([^']+)'/) || [])[1];
                 if (!examTarget) throw new Error('Could not read the exam link.');
                 const confirmDoc = await doPostback(
@@ -551,9 +550,10 @@ function proctorAggregator(S) {
                 const tm = (getEl('MainContent_tmLbl')?.textContent || `${row.date} ${row.startTime} ${row.hall}`).trim();
                 if (!prctrId || !getEl('MainContent_setBtn')) {
                     const msg = (getEl('MainContent_msgLbl')?.textContent || '').trim();
+                    if (coveredBy) throw new Error(`Already taken by ${coveredBy}.${msg ? ' The portal says: ' + msg : ''}`);
                     throw new Error(msg || 'The portal did not offer a replacement for this exam.');
                 }
-                return { deptValue, prctrId, cvrStfId, nm, tm, state: extractFormState(confirmDoc) };
+                return { deptValue, prctrId, cvrStfId, nm, tm, coveredBy, state: extractFormState(confirmDoc) };
             }
         
             async function executeExchange(prep) {
@@ -1755,6 +1755,7 @@ function proctorAggregator(S) {
                         <p class="gius-ex-text">I would like to replace<br>
                             <b>${escHtml(p.nm)}</b><br>
                             during the session on <b>${escHtml(p.tm)}</b>.</p>
+                        ${p.coveredBy ? `<p class="gius-ex-exam">${escHtml(p.coveredBy)} is covering this exam for ${escHtml(row.proctor)}.</p>` : ''}
                         <p class="gius-ex-exam">${escHtml(row.program || row.courseCode)} &ndash; ${escHtml(row.examName)}</p>
                         <label class="gius-ex-check">
                             <input type="checkbox" id="gius-ex-sure" />
